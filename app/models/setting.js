@@ -27,6 +27,7 @@ export default ModelBase.extend({
   twConsumerKey                : attr('string'),
   twConsumerSecret             : attr('string'),
   inClientId                   : attr('string'),
+  startPgEventId               : attr('string'),
   inClientSecret               : attr('string'),
   paypalMode                   : attr('string'),
   paypalClient                 : attr('string'),
