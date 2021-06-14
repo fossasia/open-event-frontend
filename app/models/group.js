@@ -20,11 +20,11 @@ export default class Group extends ModelBase.extend({
   user       : belongsTo('user'),
   events     : hasMany('event'),
   roles      : hasMany('users-groups-role'),
-  followers  : hasMany('user-follow-group')
-}) {}
+  followers  : hasMany('user-follow-group'),
 
   url: computed('identifier', function() {
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
     return origin + this.router.urlFor('groups.edit', this.id);
   })
-});
+}) {}
+
