@@ -203,6 +203,9 @@ export default class IndexRoute extends Route {
     controller.set('filteredEvents', model.filteredEvents);
     controller.set('featuredEvents', model.featuredEvents);
     this.set('controller', controller);
+    if (this.routing.currentRouteName === 'index' && this.settings.startPgEnabled === 'event' && this.settings.startPgEventId) {
+      this.router.transitionTo('event,view', '7a110a99');
+    }
   }
 
   @action

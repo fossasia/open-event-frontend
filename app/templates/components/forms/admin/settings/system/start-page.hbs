@@ -1,0 +1,20 @@
+<h3 class="ui header">
+  {{t 'Start Page'}}
+  <div class="sub header">
+    {{t 'To customize the default start page'}}
+  </div>
+</h3>
+<div class="field">
+  <UiRadio @label={{t "Use default start page"}} @name="start"  @value="default" @current={{this.settings.startPgEnabled}}  @onChange={{action (mut this.settings.startPgEnabled)}} />
+</div>
+<div class="field">
+  <UiRadio @label={{t "Use event as start page with ID (Enter event ID here)"}} @name="start" @value="event" @current={{this.settings.startPgEnabled}}   @onChange={{action (mut this.settings.startPgEnabled)}}  />
+</div>
+{{#if (eq this.settings.startPgEnabled 'event') }}
+  <div class="field">
+    <label>
+      {{t 'Use event as start page with ID (Enter event ID here)'}}
+    </label>
+    <Input @type="text" @name="start_page" @value={{this.settings.startPgEventId}} />
+  </div>
+{{/if}}
