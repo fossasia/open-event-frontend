@@ -33,7 +33,7 @@ export default Component.extend(FormMixin, {
 
   hasPaidOrder: computed('paidTickets.@each.orderQuantity', function() {
     for (const paidTicket of this.paidTickets) {
-      if (paidTicket.orderQuantity > 0) {
+      if (paidTicket.orderQuantity > 0 || paidTicket.orderQuantity === undefined) {
         return true;
       }
     }
