@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 @classic
 export default class NewSessionRoute extends Route {
@@ -9,19 +10,19 @@ export default class NewSessionRoute extends Route {
 
   async model() {
     const eventDetails = this.modelFor('public');
-    return {
+    return hash({
       event : eventDetails,
-      forms : await eventDetails.query('customForms', {
+      forms : eventDetails.query('customForms', {
         sort         : 'id',
         'page[size]' : 0
       }),
-      session: await this.store.createRecord('session', {
+      session: this.store.createRecord('session', {
         event       : eventDetails,
         creator     : this.authManager.currentUser,
         track       : null,
         sessionType : null
       }),
-      speaker: await eventDetails.query('speakers', {
+      speaker: eventDetails.query('speakers', {
         filter: [
           {
             name : 'email',
@@ -30,9 +31,9 @@ export default class NewSessionRoute extends Route {
           }
         ]
       }),
-      tracks       : await eventDetails.query('tracks', {}),
-      sessionTypes : await eventDetails.query('sessionTypes', {})
-    };
+      tracks       : eventDetails.query('tracks', {}),
+      sessionTypes : eventDetails.query('sessionTypes', {})
+    });
   }
 
   resetController(controller) {

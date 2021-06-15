@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 @classic
 export default class EventsRoute extends Route {
@@ -8,14 +9,14 @@ export default class EventsRoute extends Route {
   }
 
   async model() {
-    return {
-      'eventTopics': await this.store.query('event-topic', {
+    return hash({
+      'eventTopics': this.store.query('event-topic', {
         sort    : 'name',
         include : 'event-sub-topics'
       }),
 
-      'eventTypes': await this.store.query('event-type', {})
-    };
+      'eventTypes': this.store.query('event-type', {})
+    });
   }
 
   setupController(controller, model) {
