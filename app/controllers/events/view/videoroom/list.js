@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   @service settings;
-  
+
   per_page = 25;
   count = 0;
 
