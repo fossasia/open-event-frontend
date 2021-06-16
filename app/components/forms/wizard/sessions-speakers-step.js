@@ -167,7 +167,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please add the announcement to enable call for speakers')
+              prompt : this.l10n.t('Please add announcement to enable call for speakers')
             }
           ]
         }
