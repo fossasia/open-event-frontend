@@ -62,7 +62,7 @@
               @class="slider"
               @checked={{field.isIncluded}}
               @disabled={{field.isFixed}}
-              @onChange={{action (mut field.isIncluded)}}
+              @onChange={{pipe-action (action (mut field.isIncluded)) (action "checkLevel" field.name field.isIncluded @event)}}
               @label={{if this.device.isMobile (t "Include")}} />
           </td>
           <td class="border center aligned">
