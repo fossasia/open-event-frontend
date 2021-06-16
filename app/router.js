@@ -84,6 +84,11 @@ Router.map(function() {
   });
   this.route('role-invites');
   this.route('group-invites');
+  this.route('speaker-invites', function() {
+    this.route('view-speaker', { path: '/view-speaker' });
+    this.route('create-speaker', { path: '/create-speaker' });
+    this.route('edit-speaker', { path: '/edit-speaker' });
+  });
   this.route('pricing');
   this.route('create');
   this.route('not-found');

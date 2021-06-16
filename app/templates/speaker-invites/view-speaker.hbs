@@ -1,0 +1,31 @@
+<div class="ui grid container mb-4">
+    <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'View Speaker'}}
+    </h2>
+    <div class="ui divider"></div>
+    </div>
+    <div class="column sixteen wide">
+    <LinkTo
+        @route="speaker-invites.edit-speaker"
+        @query={{hash token=this.token}}>
+        <button
+        class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker'}}</button>
+    </LinkTo>
+    </div>
+    <div class="column sixteen wide">
+    <h3 class="ui header">
+        {{t 'Speaker details'}}
+    </h3>
+    </div>
+    <Events::View::Overview::SpeakerView
+    @fields={{this.allFields}}
+    @speaker={{this.model.speaker}} />
+    <div class="ui hidden divider"></div>
+    <button type="submit" class="ui teal submit button update-changes mt-4" {{action 'accept'}}>
+        {{t 'Accept Invite'}}
+    </button>
+    <button type="submit" class="ui red submit button update-changes mt-4 ml-2" {{action 'reject'}}>
+        {{t 'Reject Invite'}}
+    </button>
+</div>

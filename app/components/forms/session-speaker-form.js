@@ -9,11 +9,14 @@ import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { levels } from 'open-event-frontend/utils/dictionary/levels';
 import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
 import { SPEAKER_FORM_ORDER, SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
+import { all } from 'rsvp';
 
 export default Component.extend(FormMixin, {
 
-  newSpeakerSelected : false,
-  newSessionSelected : false,
+  newSpeakerSelected    : false,
+  newSessionSelected    : false,
+  speakerInviteEmail    : '',
+  deletedSpeakerInvites : [],
 
   getValidationRules() {
     const validationRules = {
@@ -441,9 +444,33 @@ export default Component.extend(FormMixin, {
     return this.newSessionSelected && !this.sessionDetails;
   }),
 
+  speakerEmails: computed('data.session.speakers', function() {
+    return this.data.session.speakers.map(speaker => speaker.email);
+  }),
+
   actions: {
-    submit() {
-      this.onValid(() => {
+    async submit() {
+      this.onValid(async() => {
+        if (this.isCfsPage) {
+          this.set('isLoading', true);
+          try {
+            const saveSpeakerInvites = this.data.session.speakerInvites.toArray().map(speakerInvite => {
+              if (speakerInvite.id) {
+                return speakerInvite;
+              }
+              return speakerInvite.save();
+            });
+            this.deletedSpeakerInvites.filter(speakerInvite => (speakerInvite.id === null));
+            const deleteSpeakerInvites = this.deletedSpeakerInvites.map(speakerInvite => {
+              return speakerInvite.destroyRecord();
+            });
+            await all([...saveSpeakerInvites, ...deleteSpeakerInvites]);
+          } catch (e) {
+            console.error('Error while saving speaker invite', e);
+            this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+          }
+          this.set('isLoading', false);
+        }
         this.sendAction('save');
       });
     },
@@ -451,6 +478,38 @@ export default Component.extend(FormMixin, {
     toggleNewSessionSelected(value) {
       this.set('sessionDetails', null);
       this.set('newSessionSelected', !value);
+    },
+
+    addSpeakerInvite() {
+      if (this.speakerInviteEmail === '') {
+        return;
+      }
+      this.onValid(() => {
+        if (this.speakerEmails.includes(this.speakerInviteEmail)) {
+          this.notify.error(this.l10n.t('User is already a speaker of this session.'));
+          this.speakerInviteEmail = '';
+          return;
+        }
+        const existingEmails = this.data.session.speakerInvites.filter(speakerInvite => speakerInvite.status === 'pending');
+        existingEmails.map(speakerInvite => speakerInvite.email);
+        if (!existingEmails.includes(this.speakerInviteEmail)) {
+          const speakerInvite = this.store.createRecord('speaker-invite', {
+            email   : this.speakerInviteEmail,
+            session : this.data.session,
+            event   : this.data.event
+          });
+          this.data.session.speakerInvites.pushObject(speakerInvite);
+        }
+        this.deletedSpeakerInvites = this.deletedSpeakerInvites.filter(speakerInvite => speakerInvite.email !== this.speakerInviteEmail);
+        this.speakerInviteEmail = '';
+      });
+    },
+
+    deleteSpeakerInvite(speakerInvite) {
+      this.data.session.speakerInvites.removeObject(speakerInvite);
+      if (speakerInvite.id) {
+        this.deletedSpeakerInvites.push(speakerInvite);
+      }
     }
   },
   didInsertElement() {

@@ -1,18 +1,18 @@
-<div class="ui container mb-4">
+<div class="ui container">
   <div class="column sixteen wide">
     <h2 class="ui header center aligned">
-      {{t 'Edit Session'}}
+      {{t 'Speaker Details'}}
     </h2>
     <div class="ui container">
       <Forms::SessionSpeakerForm
         @fields={{this.model.forms}}
+        @event={{this.model.event}}
         @data={{this.model}}
         @isLoading={{this.isLoading}}
         @save={{action "save"}}
-        @isSession={{true}}
-        @includeSession={{true}}
-        @isCfsPage={{true}}
-        @isSessionSpeaker={{true}} />
+        @isSpeaker={{true}}
+        @includeSpeaker={{true}}
+        @isCFS={{true}} />
     </div>
   </div>
 </div>
