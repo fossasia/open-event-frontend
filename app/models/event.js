@@ -73,8 +73,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   schedulePublishedOn: attr('moment', { defaultValue: () => moment(0) }),
 
-  hasOwnerInfo     : attr('boolean',  { defaultValue: false }),
-  hasSessionLevels : attr('boolean',  { defaultValue: false }),
+  hasOwnerInfo: attr('boolean',  { defaultValue: false }),
 
   ownerName        : attr('string'),
   ownerDescription : attr('string'),

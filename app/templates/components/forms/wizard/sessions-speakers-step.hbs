@@ -256,14 +256,12 @@
         <Forms::Wizard::CustomForms::Table
           @headerText={{t "Collect Session Details"}}
           @fields={{this.customForm.session}}
-          @event={{this.data.event}}
           @updateField={{action (mut this.sessionField)}} 
           @removeField={{action "removeField"}}
         />
 
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}
-          @event={{this.data.event.hasSessionLevels}}
           @form="session"
           @field={{this.sessionField}}
           @onSave={{action (mut this.sessionField) null}} />

@@ -133,7 +133,7 @@
                   {{/each}}
                 </div>
               </UiDropdown>
-              {{#if this.model.hasSessionLevels}}
+              {{#if this.hasSessionLevel}}
                 <h4>
                   {{t 'Session Levels'}}
                   <LinkTo @route="public.sessions" {{action this.removeActiveSessionLevel}} @models={{array this.model.id}} @query={{hash level=null}} data-tooltip="{{t 'Clear Session Level Filter'}}">
