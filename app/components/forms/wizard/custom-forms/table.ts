@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+
 interface CustomForm { isComplex: boolean }
 
 interface Args {
