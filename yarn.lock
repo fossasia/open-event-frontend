@@ -558,21 +558,13 @@
     "@babel/helper-plugin-utils" "^7.13.0"
     "@babel/plugin-syntax-logical-assignment-operators" "^7.10.4"
 
-"@babel/plugin-proposal-nullish-coalescing-operator@^7.13.8":
+"@babel/plugin-proposal-nullish-coalescing-operator@^7.13.8", "@babel/plugin-proposal-nullish-coalescing-operator@^7.4.4":
   version "7.13.8"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-nullish-coalescing-operator/-/plugin-proposal-nullish-coalescing-operator-7.13.8.tgz#3730a31dafd3c10d8ccd10648ed80a2ac5472ef3"
   integrity sha512-iePlDPBn//UhxExyS9KyeYU7RM9WScAG+D3Hhno0PLJebAEpDZMocbDe64eqynhNAnwz/vZoL/q/QB2T1OH39A==
   dependencies:
     "@babel/helper-plugin-utils" "^7.13.0"
     "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.3"
-
-"@babel/plugin-proposal-nullish-coalescing-operator@^7.4.4":
-  version "7.12.1"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-nullish-coalescing-operator/-/plugin-proposal-nullish-coalescing-operator-7.12.1.tgz#3ed4fff31c015e7f3f1467f190dbe545cd7b046c"
-  integrity sha512-nZY0ESiaQDI1y96+jk6VxMOaL4LPo/QDHBqL+SF3/vl6dHkTwHlOI8L4ZwuRBHgakRBw5zsVylel7QPbbGuYgg==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.10.4"
-    "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.0"
 
 "@babel/plugin-proposal-numeric-separator@^7.12.13":
   version "7.12.13"
@@ -601,7 +593,7 @@
     "@babel/helper-plugin-utils" "^7.13.0"
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
 
-"@babel/plugin-proposal-optional-chaining@^7.13.12":
+"@babel/plugin-proposal-optional-chaining@^7.13.12", "@babel/plugin-proposal-optional-chaining@^7.6.0":
   version "7.13.12"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.13.12.tgz#ba9feb601d422e0adea6760c2bd6bbb7bfec4866"
   integrity sha512-fcEdKOkIB7Tf4IxrgEVeFC4zeJSTr78no9wTdBuZZbqF64kzllU0ybo2zrzm7gUQfxGhBgq4E39oRs8Zx/RMYQ==
@@ -609,15 +601,6 @@
     "@babel/helper-plugin-utils" "^7.13.0"
     "@babel/helper-skip-transparent-expression-wrappers" "^7.12.1"
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
-
-"@babel/plugin-proposal-optional-chaining@^7.6.0":
-  version "7.12.1"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.12.1.tgz#cce122203fc8a32794296fc377c6dedaf4363797"
-  integrity sha512-c2uRpY6WzaVDzynVY9liyykS+kVU+WRZPMPYpkelXH8KBt1oXoI89kPbZKKG/jDT5UK92FTW2fZkZaJhdiBabw==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.10.4"
-    "@babel/helper-skip-transparent-expression-wrappers" "^7.12.1"
-    "@babel/plugin-syntax-optional-chaining" "^7.8.0"
 
 "@babel/plugin-proposal-private-methods@^7.13.0":
   version "7.13.0"
@@ -709,7 +692,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/plugin-syntax-nullish-coalescing-operator@^7.8.0", "@babel/plugin-syntax-nullish-coalescing-operator@^7.8.3":
+"@babel/plugin-syntax-nullish-coalescing-operator@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-nullish-coalescing-operator/-/plugin-syntax-nullish-coalescing-operator-7.8.3.tgz#167ed70368886081f74b5c36c65a88c03b66d1a9"
   integrity sha512-aSff4zPII1u2QD7y+F8oDsz19ew4IGEJg9SVW+bqwpwtfFleiQDMdzA/R+UlWDzfnHFCxxleFT0PMIrR36XLNQ==
@@ -737,7 +720,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-optional-chaining@^7.8.0", "@babel/plugin-syntax-optional-chaining@^7.8.3":
+"@babel/plugin-syntax-optional-chaining@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-chaining/-/plugin-syntax-optional-chaining-7.8.3.tgz#4f69c2ab95167e0180cd5336613f8c5788f7d48a"
   integrity sha512-KoK9ErH1MBlCPxV0VANkXW2/dw4vlbGDrFgz8bmUsBGYkFRcbRwMh6cIJubdPrkxRwuGdtCk0v/wPTKbQgBjkg==
@@ -2980,11 +2963,12 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
-ansi-to-html@^0.6.6:
-  version "0.6.10"
-  resolved "https://registry.yarnpkg.com/ansi-to-html/-/ansi-to-html-0.6.10.tgz#412114353bac2589a034db7ec5b371b8ba771131"
+ansi-to-html@^0.6.15, ansi-to-html@^0.6.6:
+  version "0.6.15"
+  resolved "https://registry.yarnpkg.com/ansi-to-html/-/ansi-to-html-0.6.15.tgz#ac6ad4798a00f6aa045535d7f6a9cb9294eebea7"
+  integrity sha512-28ijx2aHJGdzbs+O5SNQF65r6rrKYnkuwTYm8lZlChuoJ9P1vVzIpWO20sQTqTPDXYp6NFwk326vApTtLVFXpQ==
   dependencies:
-    entities "^1.1.1"
+    entities "^2.0.0"
 
 ansicolors@~0.2.1:
   version "0.2.1"
@@ -7159,12 +7143,12 @@ ember-cli-typescript@^3.0.0, ember-cli-typescript@^3.1.3, ember-cli-typescript@^
     stagehand "^1.0.0"
     walk-sync "^2.0.0"
 
-ember-cli-typescript@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-typescript/-/ember-cli-typescript-4.1.0.tgz#2ff17be2e6d26b58c88b1764cb73887e7176618b"
-  integrity sha512-zSuKG8IQuYE3vS+c7V0mHJqwrN/4Wo9Wr50+0NUjnZH3P99ChynczQHu/P7WSifkO6pF6jaxwzf09XzWvG8sVw==
+ember-cli-typescript@^4.1.0, ember-cli-typescript@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-typescript/-/ember-cli-typescript-4.2.0.tgz#e748f08b490500d757345b8520cc13804b923085"
+  integrity sha512-kqbzGqgKDX7ZIA0PQI1/E6OWqWMVT7fgSZ3Q8UsJggi6ljKCWgHycKuTD+aRYSwo8gmq3D5AWx9pj1GOhtiAWA==
   dependencies:
-    ansi-to-html "^0.6.6"
+    ansi-to-html "^0.6.15"
     broccoli-stew "^3.0.0"
     debug "^4.0.0"
     execa "^4.0.0"
@@ -8183,7 +8167,12 @@ entities@1.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.0.0.tgz#b2987aa3821347fcde642b24fdfc9e4fb712bf26"
 
-entities@^1.1.1, entities@~1.1.1:
+entities@^2.0.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
+  integrity sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==
+
+entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
