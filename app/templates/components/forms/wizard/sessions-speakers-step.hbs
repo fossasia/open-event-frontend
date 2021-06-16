@@ -263,6 +263,7 @@
         <Forms::Wizard::CustomFormInput
           @customForms={{this.data.customForms}}
           @form="session"
+          @event={{this.data.event}}
           @field={{this.sessionField}}
           @onSave={{action (mut this.sessionField) null}} />
       </div>
