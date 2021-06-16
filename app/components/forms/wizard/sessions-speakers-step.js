@@ -161,6 +161,15 @@ export default Component.extend(EventWizardMixin, FormMixin, {
               prompt : this.l10n.t('Please enter floor for microlocation')
             }
           ]
+        },
+        announcement: {
+          identifier : 'announcement',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please add the announcement to enable call for speakers')
+            }
+          ]
         }
       }
     };
