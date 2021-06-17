@@ -84,7 +84,7 @@ export default class OptionsController extends Controller {
         });
         this.set('isLoading', false);
         return;
-      } 
+      }
 
       await this.currentInvite.save();
       this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
