@@ -18,6 +18,9 @@ export default class ApplicationController extends Controller {
   @service
   fastboot;
 
+  @service
+  settings;
+
   @tracked event_name = null;
 
   @filterBy('model.notifications', 'isRead', false)
@@ -55,5 +58,12 @@ export default class ApplicationController extends Controller {
   search() {
     this.transitionToRoute('explore', { queryParams: { event_name: this.event_name } });
     this.event_name = null;
+  }
+
+  @action
+  setup() {
+    if (this.routing.currentRouteName === 'index' && this.settings.startPgEnabled === 'event' && this.settings.startPgEventId) {
+      this.router.replaceWith('public.index',  this.settings.startPgEventId);
+    }
   }
 }
