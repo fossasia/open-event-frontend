@@ -83,6 +83,7 @@ export default class PublicController extends Controller {
     });
     try {
       await followGroup.save();
+      this.notify.success(this.l10n.t('You have successfully followed this group.'));
     } catch (e) {
       this.errorHandler.handle(e);
     }
