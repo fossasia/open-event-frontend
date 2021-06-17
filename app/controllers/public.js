@@ -83,13 +83,10 @@ export default class PublicController extends Controller {
     });
     try {
       await followGroup.save();
-    } catch(e) {
+    } catch (e) {
       this.errorHandler.handle(e);
     }
-    // group.followers.pushObject(followGroup);
-    // group.save();
   }
-
 
 
   @action
