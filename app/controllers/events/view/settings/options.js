@@ -67,12 +67,25 @@ export default class OptionsController extends Controller {
     try {
       this.set('isLoading', true);
       this.currentInvite.set('roleName', 'owner');
-      await this.currentInvite.save();
+      const invite = this.model.roleInvites.filter(invite => invite.email === this.currentInvite.email)[0];
+      if (invite) {
+        const res = await this.loader.post('/role-invites/' + invite.id + '/resend-invite');
+        if (res.success) {
+          this.notify.success(this.l10n.t('Invite resent successfully'),
+            {
+              id: 'resend_invite_succ'
+            });
+        } else {
+          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+        }
+      } else {
+        await this.currentInvite.save();
+        this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
+      }
       this.setProperties({
         'isConfirmEventTransferModalOpen' : false,
         'checked'                         : false
       });
-      this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
     } catch (error) {
       console.error('Error while sending role Invite', error, error.message);
       this.errorHandler.handle(error);
