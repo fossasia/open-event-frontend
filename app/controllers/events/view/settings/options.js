@@ -87,11 +87,11 @@ export default class OptionsController extends Controller {
       }
 
       await this.currentInvite.save();
-      this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
       this.setProperties({
         'isConfirmEventTransferModalOpen' : false,
         'checked'                         : false
       });
+      this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
     } catch (error) {
       console.error('Error while sending role Invite', error, error.message);
       this.errorHandler.handle(error);
