@@ -38,7 +38,7 @@ export default class OptionsRoute extends Route {
       roleInvites : eventDetails.query('roleInvites', {
         filter: filterOptions
       }),
-      roles       : this.store.findAll('role')
+      roles: this.store.findAll('role')
     });
   }
 }
