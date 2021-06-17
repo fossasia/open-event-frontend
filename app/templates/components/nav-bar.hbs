@@ -16,9 +16,9 @@
         @route="pricing" class="item"
         @activeClass="">{{t 'Pricing'}}</LinkTo>
     {{/if}}
-      {{#if this.session.isAuthenticated}}
+      {{!-- {{#if this.session.isAuthenticated}}
         <NotificationDropdown />
-      {{/if}}
+      {{/if}} --}}
       {{#if this.session.isAuthenticated}}
         <UiDropdown
           @class="item"
