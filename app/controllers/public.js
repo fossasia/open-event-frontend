@@ -10,6 +10,7 @@ import { levels } from 'open-event-frontend/utils/dictionary/levels';
 @classic
 export default class PublicController extends Controller {
   @service event;
+  @service errorHandler;
 
   queryParams = ['side_panel', 'video_dialog'];
 
@@ -62,6 +63,34 @@ export default class PublicController extends Controller {
       return this.l10n.t('Location to be announced');
     }
   }
+
+  @action
+  async follow() {
+    if (!this.session.isAuthenticated) {
+      try {
+        await this.confirm.prompt(this.l10n.t('Please login to add a session to your personal schedule.'));
+        this.router.transitionTo('login');
+      } catch (e) {
+        if (e) {
+          console.error(e);
+        }
+      }
+      return;
+    }
+    const group = await this.model.group;
+    const followGroup = await this.store.createRecord('user-follow-group', {
+      group
+    });
+    try {
+      await followGroup.save();
+    } catch(e) {
+      this.errorHandler.handle(e);
+    }
+    // group.followers.pushObject(followGroup);
+    // group.save();
+  }
+
+
 
   @action
   toLogin() {
