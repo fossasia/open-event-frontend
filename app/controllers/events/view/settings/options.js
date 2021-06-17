@@ -78,10 +78,16 @@ export default class OptionsController extends Controller {
         } else {
           this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
         }
-      } else {
-        await this.currentInvite.save();
-        this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
-      }
+        this.setProperties({
+          'isConfirmEventTransferModalOpen' : false,
+          'checked'                         : false
+        });
+        this.set('isLoading', false);
+        return;
+      } 
+
+      await this.currentInvite.save();
+      this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
       this.setProperties({
         'isConfirmEventTransferModalOpen' : false,
         'checked'                         : false
