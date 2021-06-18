@@ -103,7 +103,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
    */
   type                : belongsTo('event-type'),
   topic               : belongsTo('event-topic'),
-  group               : belongsTo('group'),
+  group               : belongsTo('group', {inverse: null}),
   subTopic            : belongsTo('event-sub-topic'),
   location            : belongsTo('event-location'),
   sessions            : hasMany('session'),
