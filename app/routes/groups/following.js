@@ -23,13 +23,12 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       }
     }
     ];
-    return this.infinity.model('groups', {
+    return this.infinity.model('group', {
       filter       : filterOptions,
       perPage      : 10,
       startingPage : 1,
       perPageParam : 'page[size]',
-      pageParam    : 'page[number]',
-      store        : this.authManager.currentUser
+      pageParam    : 'page[number]'
     });
   }
 
