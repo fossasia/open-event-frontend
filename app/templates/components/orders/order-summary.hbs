@@ -127,7 +127,7 @@
                       @ticket={{ticket}}
                       @currency={{this.eventCurrency}}
                       @amount={{mult (sub ticket.price ticket.discount) tickets.length}} />
-                    <p>
+                      <p>
                     {{#if this.event.tax.isTaxIncludedInPrice}}
                       <small class="ui gray-text small">
                         {{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.includedTaxAmount}}/>
@@ -137,10 +137,10 @@
                         + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
                       </small>
                     {{/if}}
-                    <span>
+                     <span>
                       <small class="ui gray-text tiny aligned right">({{this.event.tax.name}})</small>
-                    </span>
-                    </p>
+                     </span>
+                      </p>
                   </td> 
                 {{/if}}   
               </tr>
