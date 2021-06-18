@@ -68,7 +68,7 @@ export default class PublicController extends Controller {
   async follow() {
     if (!this.session.isAuthenticated) {
       try {
-        await this.confirm.prompt(this.l10n.t('Please login to add a session to your personal schedule.'));
+        await this.confirm.prompt(this.l10n.t('Please login to follow a group.'));
         this.router.transitionTo('login');
       } catch (e) {
         if (e) {
