@@ -89,12 +89,18 @@ export default class PublicController extends Controller {
       return;
     }
     const group = await this.model.group;
-    const followGroup = await this.store.createRecord('user-follow-group', {
-      group
-    });
+    const follower = group.belongsTo('follower').value();
     try {
-      await followGroup.save();
-      this.notify.success(this.l10n.t('You have successfully followed this group.'));
+      if (follower) {
+        await follower.destroyRecord();
+        this.notify.info(this.l10n.t('You have successfully unfollowed this group.'));
+      } else {
+        const followGroup = await this.store.createRecord('user-follow-group', {
+          group
+        });
+        await followGroup.save();
+        this.notify.success(this.l10n.t('You have successfully followed this group.'));
+      }
     } catch (e) {
       this.errorHandler.handle(e);
     }

@@ -164,7 +164,14 @@
               </div>
             </div>
           {{/if}}
-          <button class="ui blue fluid button" {{action this.follow}}>{{t 'Follow Group'}}</button>
+          <button class="{{if this.model.group.follower 'red' 'blue'}} ui fluid button" {{action this.follow}}>
+            {{#if this.model.group.follower}}
+              {{t 'Unfollow Group'}}            
+            {{else}}
+              {{t 'Follow Group'}}            
+            {{/if}}
+            {{this.model.group.name}}
+          </button>
           {{#if (and (not this.device.isMobile) this.twitterLink (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
               <div class="item">
                 <div class="twitter content">
