@@ -225,13 +225,13 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       if (this.data.stream.id && this.data.stream.videoChannel.get('provider') === 'bbb') {
         if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
           try {
-            const heading = this.l10n.t('Do you want to update changes now?');
+            const heading = this.l10n.t('Do you want to update the changes now?');
             const content =  this.l10n.t('You have changed your video room\'s configurations') + '. '
               + this.l10n.t('Do you want to update these configurations now') + '?<br><br>'
-              + this.l10n.t('Choosing \"Yes\" will end any ongoing meeting in order to apply new changes') + '. '
-              + this.l10n.t('Users need to rejoin meeting') + '. '
+              + this.l10n.t('Choosing \"Yes\" would end ongoing meetings related to this video room in order to apply new changes.') + '. '
+              + this.l10n.t('Users would need to rejoin the meeting') + '. '
               + this.l10n.t('Choosing \"No\" will not affect ongoing meeting') + '. '
-              + this.l10n.t('But it may take few minutes after ending of current meeting in order to apply new changes for your next meetings') + '.<br><br>'
+              + this.l10n.t('However, it may take a few minutes to apply new changes for your next meetings') + '.<br><br>'
               + this.l10n.t('If there is no ongoing meeting, then it is recommended to choose \"Yes\"') + '.';
             const options = {
               denyText     : 'No',
