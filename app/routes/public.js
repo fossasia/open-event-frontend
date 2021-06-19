@@ -9,7 +9,7 @@ export default class PublicRoute extends Route {
 
   model(params) {
     return this.store.findRecord('event', params.event_id, {
-      include: 'social-links,event-copyright,speakers-call,tax,owner,organizers,video-stream'
+      include: 'social-links,event-copyright,speakers-call,tax,owner,organizers,video-stream,custom-forms'
     });
   }
 
