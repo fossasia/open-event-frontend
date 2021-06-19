@@ -1,5 +1,5 @@
 <HeadLayout />
-<div id='device-type-identifier'></div>
+<div id='device-type-identifier' {{did-insert this.setup}}></div>
 {{#if this.showCookie}}
   <div class="ui inline warning large message">
     <i class="close icon" onclick={{action 'hideCookieMessage'}} role="button"></i>
