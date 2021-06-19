@@ -1,9 +1,11 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class RegisterController extends Controller {
+  @service settings;
   queryParams = ['inviteToken', 'event', 'inviteEmail'];
   event = null;
   inviteEmail = null;
@@ -22,7 +24,7 @@ export default class RegisterController extends Controller {
     this.model.save()
       .then(async user => {
         this.set('session.newUser', user.get('email'));
-        await this.confirm.prompt(this.l10n.t('Thank you for signing up on eventyay.com.'), { hideDeny: true, approveText: this.l10n.t('OK'), extra: this.l10n.t('We have sent an email with a verification link to you. Please go to your email account and verify your email to get full access to the system. We are logging you into your newly created account now, but your account functionalities are limited until your email is verified. Please press "Ok" to be redirected to the previous page.') });
+        await this.confirm.prompt(this.l10n.t('Thank you for signing up on ' + this.settings.appName + '.com.'), { hideDeny: true, approveText: this.l10n.t('OK'), extra: this.l10n.t('We have sent an email with a verification link to you. Please go to your email account and verify your email to get full access to the system. We are logging you into your newly created account now, but your account functionalities are limited until your email is verified. Please press "Ok" to be redirected to the previous page.') });
         this.send('loginExistingUser', user.get('email'), password, this.inviteToken, this.event);
       })
       .catch(reason => {

@@ -34,6 +34,17 @@ export default class PublicController extends Controller {
     return this.model.socialLinks.findBy('isTwitter', true);
   }
 
+  @computed('model.customForms')
+  get hasSessionLevel() {
+    let hasLevel = false;
+    this.model.customForms.forEach(cf => {
+      if (cf.form === 'session' && cf.name === 'Level' && cf.isIncluded) {
+        hasLevel = true;
+      }
+    });
+    return hasLevel;
+  }
+
   @computed('session.currentRouteName')
   get smallLead() {
     return this.session.currentRouteName && this.session.currentRouteName !== 'public.index';
