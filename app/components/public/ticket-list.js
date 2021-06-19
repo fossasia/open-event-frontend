@@ -13,8 +13,8 @@ export default Component.extend(FormMixin, {
 
   orderAmount    : null,
   amountOverride : null,
-  hasPaidOrder: false,
-  addedTickets:{},
+  hasPaidOrder   : false,
+  addedTickets   : {},
 
   overridenAmount: computed('orderAmount', 'amountOverride', {
     get() {
@@ -186,13 +186,13 @@ export default Component.extend(FormMixin, {
 
     async updateOrder(ticket, count) {
       ticket.set('orderQuantity', count);
-      if(ticket.type === "paid") {
+      if (ticket.type === 'paid') {
         this.addedTickets[ticket] = count;
       }
       this.set('hasPaidOrder', false);
-      for(const i in this.addedTickets) {
-        if(this.addedTickets[i] > 0) {
-          this.set('hasPaidOrder',true);
+      for (const i in this.addedTickets) {
+        if (this.addedTickets[i] > 0) {
+          this.set('hasPaidOrder', true);
           break;
         }
       }
