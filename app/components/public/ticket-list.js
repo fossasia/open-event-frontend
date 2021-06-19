@@ -13,6 +13,8 @@ export default Component.extend(FormMixin, {
 
   orderAmount    : null,
   amountOverride : null,
+  hasPaidOrder: false,
+  addedTickets:{},
 
   overridenAmount: computed('orderAmount', 'amountOverride', {
     get() {
@@ -29,19 +31,8 @@ export default Component.extend(FormMixin, {
       && !this.authManager?.currentUser?.isVerified;
   }),
 
-  paidTickets: computed.filterBy('data', 'type', 'paid'),
-
-  hasPaidOrder: computed('paidTickets.@each.orderQuantity', function() {
-    for (const paidTicket of this.paidTickets) {
-      if (paidTicket.orderQuantity > 0 || paidTicket.orderQuantity === undefined) {
-        return true;
-      }
-    }
-    return false;
-  }),
-
   shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', 'isUnverified', function() {
-    if (this.isUnverified && !this.hasPaidOrder) {return true}
+    if (this.isUnverified) {return true}
     const quantityDonation = sumBy(this.donationTickets.toArray(),
       donationTicket => (donationTicket.orderQuantity || 0));
     if (quantityDonation > 0) {
@@ -195,6 +186,16 @@ export default Component.extend(FormMixin, {
 
     async updateOrder(ticket, count) {
       ticket.set('orderQuantity', count);
+      if(ticket.type === "paid") {
+        this.addedTickets[ticket] = count;
+      }
+      this.set('hasPaidOrder', false);
+      for(const i in this.addedTickets) {
+        if(this.addedTickets[i] > 0) {
+          this.set('hasPaidOrder',true);
+          break;
+        }
+      }
       if (count > 0) {
         this.order.tickets.addObject(ticket);
       } else {
