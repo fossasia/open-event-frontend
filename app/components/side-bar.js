@@ -60,20 +60,12 @@ export default class SideBar extends Component {
 }
 
 $(function() {
-
-  $(window).bind('scroll', function() {
-    const menuPosition = $('#col-content').offset().top;
-
+  $(window).on("scroll", function() {
+    const menuPosition = $('#event-contents').offset().top;
     if ($(window).scrollTop() > menuPosition) {
       $('#public-event-content').addClass('fixed');
     } else {
       $('#public-event-content').removeClass('fixed');
-    }
-    const ticketPosition = $('#tickets').offset().top;
-    if ($(window).scrollTop() > ticketPosition) {
-      $('#public-event-content .text').html('<i class="mr-4  ticket icon"></i>Tickets');
-    } else {
-      $('#public-event-content .text').html('<i class="mr-4  info icon"></i>Info');
     }
   });
 });
