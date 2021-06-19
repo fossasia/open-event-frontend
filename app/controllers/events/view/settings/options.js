@@ -82,6 +82,7 @@ export default class OptionsController extends Controller {
           'isConfirmEventTransferModalOpen' : false,
           'checked'                         : false
         });
+        this.currentInvite.rollbackAttributes();
         this.set('isLoading', false);
         return;
       }
