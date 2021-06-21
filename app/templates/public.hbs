@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}">
+  <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}" id="event-contents">
     <div class="ui stackable grid">
       <div class="three wide column" id="public-event-content">
         {{#if this.device.isMobile}}
@@ -133,32 +133,34 @@
                   {{/each}}
                 </div>
               </UiDropdown>
-              <h4>
-                {{t 'Session Levels'}}
-                <LinkTo @route="public.sessions" {{action this.removeActiveSessionLevel}} @models={{array this.model.id}} @query={{hash level=null}} data-tooltip="{{t 'Clear Session Level Filter'}}">
-                  <Icons::ClearFilter />
-                </LinkTo>
-              </h4> 
-              {{#each this.activeSessionLevel as |level|}}
-                <span class="p-1 mb-1 rounded-default">
-                  {{level}}
-                </span>
-              {{/each}}
-              <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
-                <div class="default">
-                  {{t 'Select Session level'}}
-                </div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                  {{#each this.levels as |level|}}
-                    <UiCheckbox 
-                    @class="item"
-                    @label={{level.name}}
-                    @checked={{if (includes this.activeSessionLevel level.name) "active"}}
-                    @onChange={{action this.sessionLevelFilter level.name}}/>
-                  {{/each}}
-                </div>
-              </UiDropdown>
+              {{#if this.hasSessionLevel}}
+                <h4>
+                  {{t 'Session Levels'}}
+                  <LinkTo @route="public.sessions" {{action this.removeActiveSessionLevel}} @models={{array this.model.id}} @query={{hash level=null}} data-tooltip="{{t 'Clear Session Level Filter'}}">
+                    <Icons::ClearFilter />
+                  </LinkTo>
+                </h4> 
+                {{#each this.activeSessionLevel as |level|}}
+                  <span class="p-1 mb-1 rounded-default">
+                    {{level}}
+                  </span>
+                {{/each}}
+                <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+                  <div class="default">
+                    {{t 'Select Session level'}}
+                  </div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    {{#each this.levels as |level|}}
+                      <UiCheckbox 
+                      @class="item"
+                      @label={{level.name}}
+                      @checked={{if (includes this.activeSessionLevel level.name) "active"}}
+                      @onChange={{action this.sessionLevelFilter level.name}}/>
+                    {{/each}}
+                  </div>
+                </UiDropdown>
+              {{/if}}
               </div>
             </div>
           {{/if}}
