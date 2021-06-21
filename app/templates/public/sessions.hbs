@@ -89,7 +89,7 @@
   </InfinityLoader>
 {{/if}}
 
-<div class="mt-8">
+<div class="mt-8 y-scrollable" style="display: block">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
     <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">
