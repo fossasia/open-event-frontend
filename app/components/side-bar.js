@@ -63,9 +63,9 @@ $(function() {
   $(window).on('scroll', function() {
     const menuPosition = $('#event-contents').offset().top;
     if ($(window).scrollTop() > menuPosition) {
-      $('#public-event-content').addClass('fixed');
+      $('#public-event-content').addClass('menu-fixed');
     } else {
-      $('#public-event-content').removeClass('fixed');
+      $('#public-event-content').removeClass('menu-fixed');
     }
   });
 });
