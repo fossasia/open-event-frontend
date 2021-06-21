@@ -89,7 +89,7 @@
   </InfinityLoader>
 {{/if}}
 
-<div class="mt-8 y-scrollable" style="display: block">
+<div class="mt-8">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
     <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">
@@ -99,8 +99,8 @@
         {{t 'Not yet scheduled'}}
       {{/if}}
     </h3>
-    <table class="ui very basic table">
-      <thead class="full-width">
+    <table class="ui very basic fixed table">
+      <thead>
         <tr>
           <th class="two wide" style="border: none;"></th>
           <th style="border: none;"></th>
