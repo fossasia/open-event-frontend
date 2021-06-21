@@ -58,3 +58,14 @@ export default class SideBar extends Component {
     }
   }
 }
+
+$(function() {
+  $(window).on('scroll', function() {
+    const menuPosition = $('#event-contents').offset().top;
+    if ($(window).scrollTop() > menuPosition) {
+      $('#public-event-content').addClass('fixed');
+    } else {
+      $('#public-event-content').removeClass('fixed');
+    }
+  });
+});
