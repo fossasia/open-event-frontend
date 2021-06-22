@@ -20,7 +20,7 @@ export default class GruopInvitesRoute extends Route.extend(AuthenticatedRouteMi
     };
     if (this.session.isAuthenticated) {
       const invite = await this.loader.post('/users-groups-roles/accept-invite', payload);
-      return this.transitionTo('groups.view', invite.group);
+      return this.transitionTo('groups.team', invite.group);
     }
     this.set('redirectionParams',  {
       queryParams: {
