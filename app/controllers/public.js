@@ -106,7 +106,6 @@ export default class PublicController extends Controller {
     }
   }
 
-
   @action
   toLogin() {
     if (!this.authManager.currentUser) {
