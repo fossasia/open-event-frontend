@@ -96,6 +96,7 @@ export default class User extends ModelBase.extend({
   discountCodes        : hasMany('discount-code'),
   accessCodes          : hasMany('access-code'),
   favourites           : hasMany('user-favourite-session'),
+  followers            : hasMany('user-follow-group'),
   ownerEvents          : hasMany('event', { readOnly: true }),
   organizerEvents      : hasMany('event', { readOnly: true }),
   coorganizerEvents    : hasMany('event', { readOnly: true }),
