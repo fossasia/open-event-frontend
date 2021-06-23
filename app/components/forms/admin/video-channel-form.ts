@@ -21,7 +21,7 @@ export default class VideoChannelForm extends Component<Args> {
     try {
       this.loading = true;
       await this.args.videoChannel.save();
-      this.router.transitionTo('admin.video-channels');
+      this.router.transitionTo('admin.video');
       this.notify.success(this.l10n.t('Your video channel has been saved'),
         {
           id: 'channel_save'

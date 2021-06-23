@@ -1,0 +1,19 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.video.channels.index" class="item">
+          {{t 'Video Channels'}}
+        </LinkTo>
+        <LinkTo @route="admin.video.recordings" class="item">
+          {{t 'Video Recordings'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>

@@ -227,9 +227,12 @@ Router.map(function() {
       });
       this.route('list', { path: '/:users_status' });
     });
-    this.route('video-channels', function() {
-      this.route('create');
-      this.route('edit', { path: '/:videoChannel_id/edit' });
+    this.route('video', function() {
+      this.route('channels', function() {
+        this.route('create');
+        this.route('edit', { path: '/:videoChannel_id/edit' });
+      });
+      this.route('recordings');
     });
     this.route('permissions', function() {
       this.route('event-roles');
