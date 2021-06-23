@@ -60,7 +60,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : 'Actions',
         valuePath       : 'id',
         width           : 90,
-        extraValuePaths : ['order', 'isCheckedIn'],
+        extraValuePaths : ['order', 'isCheckedIn', 'event', 'checkinTimes', 'checkoutTimes'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-action',
         actions         : {
           toggleCheckIn: this.toggleCheckIn.bind(this)
@@ -70,16 +70,23 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  toggleCheckIn(attendee_id) {
+  toggleCheckIn(attendee_id, date, isCheckedInCurrently) {
     const attendee = this.store.peekRecord('attendee', attendee_id, { backgroundReload: false });
-    attendee.toggleProperty('isCheckedIn');
-    if (attendee.isCheckedIn) {
-      const newCheckinTimes = attendee.get('checkinTimes') === null ? `${moment().toISOString()}` : `${attendee.get('checkinTimes')},${moment().toISOString()}`;
+    let myTime = moment().toISOString();
+    if (moment(date, 'MM-DD-YYYY').format('MM-DD-YYYY') !== moment().format('MM-DD-YYYY')) {
+      myTime = moment(date, 'MM-DD-YYYY');
+      myTime = myTime.format('YYYY-MM-DD') +  'T13:00:00.000Z';
+    }
+    if (!isCheckedInCurrently) {
+      const newCheckinTimes = attendee.get('checkinTimes') === null ? `${myTime}` : `${attendee.get('checkinTimes')},${myTime}`;
       attendee.set('checkinTimes', newCheckinTimes);
+    } else {
+      const newCheckoutTimes = attendee.get('checkoutTimes') === null ? `${myTime}` : `${attendee.get('checkoutTimes')},${myTime}`;
+      attendee.set('checkoutTimes', newCheckoutTimes);
     }
     attendee.save()
-      .then(savedAttendee => {
-        const message = savedAttendee.isCheckedIn ? this.l10n.t('Attendee Checked-In Successfully') : this.l10n.t('Attendee Checked-Out Successfully');
+      .then(() => {
+        const message = !isCheckedInCurrently ? this.l10n.t('Attendee Checked-In Successfully') : this.l10n.t('Attendee Checked-Out Successfully');
         this.notify.success(message);
         this.refreshModel.bind(this)();
       })
