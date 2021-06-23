@@ -9,6 +9,9 @@ export default class extends Controller {
   @action
   async toggleDocument() {
     this.set('model.isDocumentEnabled', !this.model.isDocumentEnabled);
+    if (!this.model.documentLinks && this.model.isDocumentEnabled) {
+      this.model.documentLinks = [{ name: '', link: '' }];
+    }
     try {
       await this.model.save();
     } catch (error) {
@@ -24,9 +27,6 @@ export default class extends Controller {
 
   @action
   addEventDocument() {
-    if (!this.model.documentLinks) {
-      this.model.documentLinks = [];
-    }
     this.model.documentLinks = [...this.model.documentLinks, { name: '', link: '' }];
   }
 
