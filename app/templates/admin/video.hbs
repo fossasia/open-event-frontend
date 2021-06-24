@@ -1,16 +1,18 @@
 <div class="ui grid">
-  <div class="row">
-    <div class="sixteen wide column">
-      <TabbedNavigation @isNonPointing={{true}}>
-        <LinkTo @route="admin.video.channels.index" class="item">
-          {{t 'Video Channels'}}
-        </LinkTo>
-        <LinkTo @route="admin.video.recordings" class="item">
-          {{t 'Video Recordings'}}
-        </LinkTo>
-      </TabbedNavigation>
+  {{#if (or (eq this.router.currentRoute.name 'admin.video.channels.index') (eq this.router.currentRoute.name 'admin.video.recordings') )}}
+    <div class="row">
+      <div class="sixteen wide column">
+        <TabbedNavigation @isNonPointing={{true}}>
+          <LinkTo @route="admin.video.channels.index" class="item">
+            {{t 'Video Channels'}}
+          </LinkTo>
+          <LinkTo @route="admin.video.recordings" class="item">
+            {{t 'Video Recordings'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
     </div>
-  </div>
+  {{/if}}
   <div class="row">
     <div class="sixteen wide column">
       {{outlet}}
