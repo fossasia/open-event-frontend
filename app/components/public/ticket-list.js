@@ -189,7 +189,6 @@ export default Component.extend(FormMixin, {
       if (ticket.type === 'paid') {
         this.addedTickets[ticket] = count;
       }
-      this.set('hasPaidOrder', false);
       for (const i in this.addedTickets) {
         if (this.addedTickets[i] > 0) {
           this.set('hasPaidOrder', true);
