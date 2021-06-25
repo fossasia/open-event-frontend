@@ -19,28 +19,4 @@ export default class extends Controller {
       this.errorHandler.handle(error);
     }
   }
-
-  @action
-  removeDocument(document) {
-    this.model.documentLinks = this.model.documentLinks.filter(dl => dl !== document);
-  }
-
-  @action
-  addEventDocument() {
-    this.model.documentLinks = [...this.model.documentLinks, { name: '', link: '' }];
-  }
-
-  @action
-  async submit() {
-    try {
-      await this.model.save();
-      this.notify.success(this.l10n.t('Document updated successfully'),
-        {
-          id: 'doc_upd_succ'
-        });
-    } catch (error) {
-      console.error('Error while saving document', error);
-      this.errorHandler.handle(error);
-    }
-  }
 }

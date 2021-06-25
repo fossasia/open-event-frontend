@@ -1,0 +1,53 @@
+import classic from 'ember-classic-decorator';
+import Component from '@ember/component';
+import { action } from '@ember/object';
+import FormMixin from 'open-event-frontend/mixins/form';
+
+@classic
+export default class DocumentUpload extends Component.extend(FormMixin) {
+
+  getValidationRules() {
+    return {
+      inline : true,
+      delay  : false,
+      on     : 'blur',
+      fields : {
+        document: {
+          identifier : 'document',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter document name')
+            }
+          ]
+        }
+      }
+    };
+  }
+
+  @action
+  removeDocument(document) {
+    this.event.documentLinks = this.event.documentLinks.filter(dl => dl !== document);
+  }
+
+  @action
+  addEventDocument() {
+    this.event.documentLinks = [...this.event.documentLinks, { name: '', link: '' }];
+  }
+
+  @action
+  submit() {
+    this.onValid(async() => {
+      try {
+        await this.event.save();
+        this.notify.success(this.l10n.t('Document updated successfully'),
+          {
+            id: 'doc_upd_succ'
+          });
+      } catch (error) {
+        console.error('error while saving document', error);
+      }
+    });
+  }
+
+}
