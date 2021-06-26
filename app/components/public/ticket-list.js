@@ -210,7 +210,7 @@ export default Component.extend(FormMixin, {
     },
 
     async updateOrderAmount() {
-      if (this.shouldDisableOrderButton) {
+      if (this.shouldDisableOrderButton && !this.hasPaidOrder) {
         this.set('orderAmount', null);
         this.set('amountOverride', null);
         return;
