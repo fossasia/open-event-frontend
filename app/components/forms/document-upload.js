@@ -2,9 +2,12 @@ import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class DocumentUpload extends Component.extend(FormMixin) {
+
+  @service errorHandler;
 
   getValidationRules() {
     return {
@@ -46,6 +49,7 @@ export default class DocumentUpload extends Component.extend(FormMixin) {
           });
       } catch (error) {
         console.error('error while saving document', error);
+        this.errorHandler.handle(error);
       }
     });
   }
