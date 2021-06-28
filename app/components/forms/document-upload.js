@@ -20,7 +20,8 @@ export default class DocumentUpload extends Component.extend(FormMixin) {
   }
 
   @action
-  submit() {
+  submit(event) {
+    event.preventDefault();
     this.onValid(async() => {
       try {
         await this.event.save();
