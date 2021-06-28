@@ -5,4 +5,11 @@
       @events={{this.model.filteredEvents}}
       @isLoading={{this.isLoading}} />
   </div>
+  <div class="sixteen wide column">
+    <InfinityLoader @infinityModel={{this.model.filteredEvents}} @triggerOffset={{1000}} @eventDebounce={{50}}>
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
+  </div>
 </div>
