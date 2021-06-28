@@ -9,25 +9,6 @@ export default class DocumentUpload extends Component.extend(FormMixin) {
 
   @service errorHandler;
 
-  getValidationRules() {
-    return {
-      inline : true,
-      delay  : false,
-      on     : 'blur',
-      fields : {
-        document: {
-          identifier : 'document',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter document name')
-            }
-          ]
-        }
-      }
-    };
-  }
-
   @action
   removeDocument(document) {
     this.event.documentLinks = this.event.documentLinks.filter(dl => dl !== document);
