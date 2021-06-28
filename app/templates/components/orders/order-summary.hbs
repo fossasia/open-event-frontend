@@ -56,9 +56,9 @@
             {{#if this.data.discountCode}}
               <th class="ui aligned two wide">{{t 'Discount'}}</th>
             {{/if}}
-            <th class="four wide">{{t 'Quantity'}}</th>
+            <th class="three wide">{{t 'Quantity'}}</th>
             {{#if this.event.tax}}
-              <th class="three wide">{{t 'Tax'}}</th>
+              <th class="four wide">{{t 'Tax'}}</th>
             {{/if}}
             <th class="ui aligned four wide">{{t 'Subtotal'}}</th>
             
@@ -133,13 +133,17 @@
                         {{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.includedTaxAmount}}/>
                         </small>
                       {{else}}
-                        <small class="ui gray-text small">
-                        + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
-                        </small>
+                        {{#if (gt (sub ticket.ticketPriceWithTax ticket.price) 0)}}
+                          <small class="ui gray-text small">
+                          + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                          </small>
+                          {{/if}}
                       {{/if}}
-                      <span>
-                        <small class="ui gray-text tiny aligned right">({{this.event.tax.name}})</small>
-                      </span>
+                      {{#if this.event.tax.name}}
+                        <span>
+                          <small class="ui gray-text tiny aligned right">({{this.event.tax.name}})</small>
+                        </span>
+                      {{/if}}
                     </p>
                   </td> 
                 {{/if}}   
