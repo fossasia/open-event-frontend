@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 @classic
 export default class ImagesRoute extends Route {
@@ -9,10 +10,10 @@ export default class ImagesRoute extends Route {
   }
 
   async model() {
-    return {
-      speakerImageSize : await this.store.queryRecord('speaker-image-size', 1),
-      eventImageSize   : await this.store.queryRecord('event-image-size', 1)
-    };
+    return hash({
+      speakerImageSize : this.store.queryRecord('speaker-image-size', 1),
+      eventImageSize   : this.store.queryRecord('event-image-size', 1)
+    });
   }
 
   @action

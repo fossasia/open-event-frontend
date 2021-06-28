@@ -10,6 +10,7 @@ import { levels } from 'open-event-frontend/utils/dictionary/levels';
 @classic
 export default class PublicController extends Controller {
   @service event;
+  @service errorHandler;
 
   queryParams = ['side_panel', 'video_dialog'];
 
@@ -32,6 +33,17 @@ export default class PublicController extends Controller {
   @computed('model.socialLinks')
   get twitterLink() {
     return this.model.socialLinks.findBy('isTwitter', true);
+  }
+
+  @computed('model.customForms')
+  get hasSessionLevel() {
+    let hasLevel = false;
+    this.model.customForms.forEach(cf => {
+      if (cf.form === 'session' && cf.name === 'Level' && cf.isIncluded) {
+        hasLevel = true;
+      }
+    });
+    return hasLevel;
   }
 
   @computed('session.currentRouteName')
@@ -60,6 +72,37 @@ export default class PublicController extends Controller {
       return this.model.locationName;
     } else {
       return this.l10n.t('Location to be announced');
+    }
+  }
+
+  @action
+  async follow() {
+    if (!this.session.isAuthenticated) {
+      try {
+        await this.confirm.prompt(this.l10n.t('Please login to follow a group.'));
+        this.router.transitionTo('login');
+      } catch (e) {
+        if (e) {
+          console.error(e);
+        }
+      }
+      return;
+    }
+    const group = await this.model.group;
+    const follower = group.belongsTo('follower').value();
+    try {
+      if (follower) {
+        await follower.destroyRecord();
+        this.notify.info(this.l10n.t('You have successfully unfollowed this group.'));
+      } else {
+        const followGroup = await this.store.createRecord('user-follow-group', {
+          group
+        });
+        await followGroup.save();
+        this.notify.success(this.l10n.t('You have successfully followed this group.'));
+      }
+    } catch (e) {
+      this.errorHandler.handle(e);
     }
   }
 

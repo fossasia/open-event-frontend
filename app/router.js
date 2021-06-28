@@ -175,6 +175,7 @@ Router.map(function() {
   this.route('groups', function() {
     this.route('list');
     this.route('create');
+    this.route('following');
     this.route('view', { path: '/:group_id' });
     this.route('edit', { path: '/:group_id/edit' });
   });
@@ -187,9 +188,9 @@ Router.map(function() {
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
   });
-  this.route('notifications', function() {
-    this.route('all', { path: '/:notification_state' });
-  });
+  // this.route('notifications', function() {
+  //   this.route('all', { path: '/:notification_state' });
+  // });
   this.route('admin', function() {
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });

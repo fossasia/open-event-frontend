@@ -2,9 +2,10 @@ import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import { action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
-
+  @service settings;
   @tracked isFeatureModalOpen = false;
 
   @action
@@ -47,7 +48,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : this.l10n.t('Video Source URL'),
         valuePath     : 'videoStream',
-        helperInfo    : 'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com.',
+        helperInfo    : 'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into' + this.settings.appName + '.com.',
         cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url',
         width         : 60
       },
