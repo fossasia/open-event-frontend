@@ -8,7 +8,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     let queryString = {
-      include: 'video-stream.event,video-stream.video-channel',
+      include        : 'video-stream.event,video-stream.video-channel',
       'page[size]'   : params.per_page || 100,
       'page[number]' : params.page || 1
     };

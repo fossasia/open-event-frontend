@@ -43,14 +43,14 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           cellComponent   : 'ui-table/cell/cell-duration'
         },
         {
-          name          : this.l10n.t('Channel'),
-          valuePath     : 'videoStream.videoChannel.name',
+          name      : this.l10n.t('Channel'),
+          valuePath : 'videoStream.videoChannel.name'
         },
         {
           name          : this.l10n.t('View'),
           valuePath     : 'url',
           cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-recording'
-        },
+        }
       ];
     }
 
