@@ -39,6 +39,7 @@ export default class L10nService extends L10n {
   jsonPath = '/assets/locales';
 
   switchLanguage(locale, skipRefresh) {
+    if(this.locale === locale) {return}
     this.setLocale(locale);
     this.cookies.write(this.localStorageKey, locale, { path: '/' });
     if (!this.fastboot.isFastBoot && !skipRefresh) {
