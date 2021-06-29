@@ -5,4 +5,13 @@ export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     return this.l10n.t('Video Recordings');
   }
+
+  async model(params) {
+    let queryString = {
+      'page[size]'   : params.per_page || 100,
+      'page[number]' : params.page || 1
+    };
+    queryString = this.applySortFilters(queryString, params);
+    return this.asArray(this.store.query('video-recording', queryString));
+  }
 }
