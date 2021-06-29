@@ -1,0 +1,27 @@
+<div class="sixteen wide column">
+    <div class="ui centered grid">
+    <div class="column">
+      <div class="ui segment">
+        <div class="center aligned text">
+          <div class=" field">
+            <div class="d-flex" style="justify-content: center;">
+              <UiCheckbox
+                @class="ui slider"
+                @checked={{if this.model.isDocumentEnabled 'active'}}
+                @onChange={{action 'toggleDocument'}} />
+              <label class="weight-300" style="font-size: large">
+                {{if this.model.isDocumentEnabled (t 'Disable') (t 'Enable')}}
+                {{t 'Add Event Documents'}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{#if this.model.isDocumentEnabled}}
+        <div class="sixteen wide column">
+          <Forms::DocumentUpload @event={{this.model}} />
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
