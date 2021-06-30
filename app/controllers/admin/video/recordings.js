@@ -12,11 +12,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       return [
         {
           name      : this.l10n.t('Event Name'),
-          valuePath : 'videoStream.event.name'
+          valuePath : 'videoStream.event.name',
+          headerComponent : 'tables/headers/sort',
+        },
+        {
+          name          : this.l10n.t('Public URL'),
+          valuePath     : 'videoStream.event.url',
+          cellComponent : 'ui-table/cell/cell-link',
         },
         {
           name      : this.l10n.t('Number of Participants'),
-          valuePath : 'participants'
+          valuePath : 'participants',
         },
         {
           name          : this.l10n.t('Start time'),
