@@ -11,8 +11,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     get recordingColumns() {
       return [
         {
-          name            : this.l10n.t('Event Name'),
-          valuePath       : 'videoStream.event.name',
+          name      : this.l10n.t('Event Name'),
+          valuePath : 'videoStream.event.name'
         },
         {
           name          : this.l10n.t('Public URL'),
