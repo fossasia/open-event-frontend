@@ -1,17 +1,38 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { hash } from 'rsvp';
 
 @classic
-export default class ViewRoute extends Route {
+export default class ViewRoute extends Route.extend(AuthenticatedRouteMixin) {
+  titleToken(model) {
+    const groupTitle = model.group.name;
+    return groupTitle.concat(' - View');
+  }
 
-  async model(params) {
-    // How to query role-invites here. And roles to be include with group
-    const group = await this.store.findRecord('group', params.group_id, {
-      include: 'events,roles'
+  model(params) {
+    const filterOptions = [
+      {
+        name : 'deleted-at',
+        op   : 'eq',
+        val  : null
+      }
+    ];
+
+    return hash({
+      filteredEvents: this.infinity.model('events', {
+        filter       : filterOptions,
+        perPage      : 25,
+        startingPage : 1,
+        perPageParam : 'page[size]',
+        pageParam    : 'page[number]',
+        store        : this.authManager.currentUser,
+        include      : 'event-topic,event-sub-topic,event-type,speakers-call',
+        sort         : 'name'
+      }),
+      group: this.store.findRecord('group', params.group_id, {
+        include: 'events'
+      })
     });
-    return {
-      group,
-      roles: await this.store.findAll('role')
-    };
   }
 }
