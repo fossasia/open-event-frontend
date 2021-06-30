@@ -68,10 +68,10 @@
         {{/if}}
       </span>
       {{#if this.addToGroup}}
-        <button class="fluid ui blue button" {{action this.addEvent this.event}}>Add event to group</button>
+        <button class="fluid ui blue button" {{action this.addEvent this.event}}>{{t 'Add event to group'}}</button>
       {{/if}}
       {{#if this.removeFromGroup}}
-        <button class="fluid ui red button" {{action this.removeEvent this.event}}>Remove event from group</button>
+        <button class="fluid ui red button" {{action this.removeEvent this.event}}>{{t 'Remove event from group'}}</button>
       {{/if}}
     </div>
   </div>

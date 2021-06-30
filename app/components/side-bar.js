@@ -61,7 +61,7 @@ export default class SideBar extends Component {
 
 $(function() {
   $(window).on('scroll', function() {
-    const menuPosition = $('#event-contents').offset().top;
+    const menuPosition = $('#event-contents').offset()?.top;
     if ($(window).scrollTop() > menuPosition) {
       $('#public-event-content').addClass('menu-fixed');
     } else {
