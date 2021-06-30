@@ -72,8 +72,7 @@
 <Modals::SimpleModal
   @isOpen={{this.isFeatureModalOpen}}
   @action={{this.toggleVideoRoom}}
-  @actionName={{if this.model.event.isVideoroomEnabled 'switches it off. "Continue using video rooms.' 'Yes - activate video rooms now. I agree to pay the fees.'}}
+  @actionName={{if this.model.event.isVideoroomEnabled 'switches it off. Continue using video rooms.' 'Yes - activate video rooms now. I agree to pay the fees.'}}
   @cancelName={{if this.model.event.isVideoroomEnabled 'leaves them on as is' 'No, do not activate it'}}>
   {{if this.model.event.isVideoroomEnabled 'If you switch off the feature, video rooms will no longer be available for ticket holders. Data you entered will no longer be visible for your attendees and speakers. Fees for ticket holders you might have paid already will not be refunded. Do you really want to switch off this video feature?' 'The video room feature is available free of charge for events with up to 25 tickets. For events with more than 25 ticket registrations a one-time charge of 2 USD (or 2 Euro for Euro events) will be added per ticket. This fee will be charged monthly for any new registrations only. It is non-refundable in case ticket holders cancel their registration or if the feature is switched off at a later time. By activating this feature you agree to pay the one-time fee per ticket. Do you want to activate this feature now and agree to pay the additional ticket fee per ticket if the number of your tickets is above 25 tickets?'}}
 </Modals::SimpleModal>
-
