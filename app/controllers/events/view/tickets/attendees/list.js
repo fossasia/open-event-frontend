@@ -25,7 +25,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : 'Date and Time',
-        width           : 140,
+        width           : 120,
         valuePath       : 'order.completed_at',
         extraValuePaths : ['order'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-date',
@@ -34,7 +34,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name            : 'Ticket Price',
-        width           : 90,
+        width           : 50,
         valuePath       : 'ticket.price',
         extraValuePaths : ['event', 'discountCode'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price',
@@ -44,22 +44,22 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name      : 'First Name',
         valuePath : 'firstname',
-        width     : 100
+        width     : 60
       },
       {
         name      : 'Last Name',
         valuePath : 'lastname',
-        width     : 90
+        width     : 60
       },
       {
         name      : 'Email',
         valuePath : 'email',
-        width     : 120
+        width     : 130
       },
       {
         name            : 'Actions',
         valuePath       : 'id',
-        width           : 90,
+        width           : 130,
         extraValuePaths : ['order', 'isCheckedIn', 'event', 'checkinTimes', 'checkoutTimes'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-action',
         actions         : {
