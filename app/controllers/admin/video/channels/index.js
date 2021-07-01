@@ -69,6 +69,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     @action
     editChannel(videoChannel_id) {
-      this.transitionToRoute('admin.video-channels.edit', videoChannel_id);
+      this.transitionToRoute('admin.video.channels.edit', videoChannel_id);
     }
 }
