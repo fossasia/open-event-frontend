@@ -63,9 +63,9 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           valuePath     : 'id',
           width         : 40,
           actions       : {
-            deleteRecording : this.deleteRecording.bind(this),
+            deleteRecording: this.deleteRecording.bind(this)
           }
-        },
+        }
       ];
     }
 
