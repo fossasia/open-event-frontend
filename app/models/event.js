@@ -51,6 +51,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isDemoted                 : attr('boolean', { defaultValue: false }),
   isChatEnabled             : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
+  isDocumentEnabled         : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
@@ -95,14 +96,16 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   chatRoomName: attr('string'),
 
-  createdAt : attr('moment', { readOnly: true }),
-  deletedAt : attr('moment'),
+  createdAt     : attr('moment', { readOnly: true }),
+  deletedAt     : attr('moment'),
+  documentLinks : attr(),
 
   /**
    * Relationships
    */
   type                : belongsTo('event-type'),
   topic               : belongsTo('event-topic'),
+  group               : belongsTo('group', { inverse: null }),
   subTopic            : belongsTo('event-sub-topic'),
   location            : belongsTo('event-location'),
   sessions            : hasMany('session'),
