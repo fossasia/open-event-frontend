@@ -70,10 +70,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     }
 
     @action
-    async deleteRecording(videoRecording_id) {
+    async deleteRecording(recId) {
       this.set('isLoading', true);
       try {
-        const videoRecording =  this.store.peekRecord('video-recording', videoRecording_id, { backgroundReload: false });
+        const videoRecording =  this.store.peekRecord('video-recording', recId, { backgroundReload: false });
         await videoRecording.destroyRecord();
         this.notify.success(this.l10n.t('Video recording has been deleted successfully.'),
           {
