@@ -76,8 +76,8 @@
                 </div>
             {{/if}}
           {{/if}}
-          {{#if this.model.group}}
-            <button class="{{if this.model.group.follower 'red' 'blue'}} ui fluid button" {{action this.follow}}>
+          {{#if (and this.device.isMobile this.model.group)}}
+            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
               {{#if this.model.group.follower}}
                 {{t 'Unfollow Group'}}            
               {{else}}
@@ -180,6 +180,16 @@
                   <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
                 </div>
               </div>
+          {{/if}}
+          {{#if (and (not this.device.isMobile) this.model.group (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
+            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
+              {{#if this.model.group.follower}}
+                {{t 'Unfollow Group'}}            
+              {{else}}
+                {{t 'Follow Group'}}            
+              {{/if}}
+              {{this.model.group.name}}
+            </button>
           {{/if}}
         {{/if}}
       </div>
