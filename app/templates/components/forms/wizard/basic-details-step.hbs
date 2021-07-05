@@ -273,6 +273,11 @@
         </i>
         {{t 'Donation Ticket'}}
       </button>
+      <UiCheckbox
+          @class="slider"
+          @checked={{this.data.event.isOneclickSignupEnabled}}
+          @onChange={{action 'addTicket' 'registration' this.data.event.tickets.length}}
+          @label={{t 'Registration'}} />
     </div>
   {{#if this.hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.

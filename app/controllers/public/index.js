@@ -123,6 +123,30 @@ export default class IndexController extends Controller {
   }
 
   @action
+  async oneClickSignup() {
+    const input = {
+      tickets: this.model.tickets.toArray().map(ticket => {
+        if (ticket.type === 'registration') {
+          return {
+            id       : ticket.id,
+            quantity : 1,
+            price    : 0
+          };
+        }
+      })
+    };
+    try {
+      const order = await this.loader.post('/orders/create-order', input);
+      this.notify.success(this.l10n.t('Order details saved. Please fill further details within {{time}} minutes.', {
+        time: this.settings.orderExpiryTime
+      }));
+      this.transitionToRoute('orders.new', order.data.attributes.identifier);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  @action
   async save() {
     try {
       this.set('isLoading', true);

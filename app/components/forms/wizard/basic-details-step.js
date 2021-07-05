@@ -470,18 +470,37 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         });
 
     },
+
     addTicket(type, position) {
       const { event } = this.data;
       const salesStartDateTime = moment();
       const salesEndDateTime = this.data.event.startsAt;
+      if (type === 'registration') {
+        if (this.data.event.isOneclickSignupEnabled) {
+          this.data.event.isOneclickSignupEnabled = false;
+          return;
+        }
+        this.data.event.isOneclickSignupEnabled = true;
+        let countRegistration = 0;
+        this.data.event.tickets?.toArray().filter(x => {
+          if (x.type === 'registration') {
+            countRegistration += 1;
+          }
+        });
+        if (countRegistration > 0) {
+          return;
+        }
+      }
+      // this.data.event.tickets?.toArray().filter( x => console.log(x.type));
       this.data.event.tickets.pushObject(this.store.createRecord('ticket', {
+        name          : type === 'registration' ? 'registration' : '',
         event,
         type,
         position,
         quantity      : 100,
         maxPrice      : type === 'donation' ? 10000 : null,
         salesStartsAt : salesStartDateTime,
-        salesEndsAt   : salesEndDateTime
+        salesEndsAt   : type === 'registration' ? this.data.event.endsAt : salesEndDateTime
       }));
     },
 

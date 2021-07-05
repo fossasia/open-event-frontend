@@ -5,38 +5,47 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if (or this.model.event.ticketUrl this.model.tickets)}}
-    <div class="tickets mt-16" id="tickets">
-      <div class="ui segments ticket-list">
-        <div class="ui segment">
-          <h2 class="ui header">{{t 'Tickets'}}</h2>
-        </div>
-        <div class="ui segment">
-          <Public::TicketList
-            @eventCurrency={{this.model.event.paymentCurrency}}
-            @ticketUrl={{this.model.event.ticketUrl}}
-            @data={{this.model.tickets}}
-            @order={{this.model.order}}
-            @event={{this.model.event}}
-            @attendees={{this.model.attendees}}
-            @code={{code}}
-            @taxInfo={{this.model.tax}}
-            @currentEventIdentifier={{this.model.event.identifier}}
-            @createNewUserViaEmail={{action "createNewUserViaEmail"}}
-            @loginExistingUser={{action "loginExistingUser"}}
-            @openContactOrganizerModal={{action "openContactOrganizerModal"}}
-            @isLoginModalOpen={{this.isLoginModalOpen}}
-            @isContactOrganizerModalOpen={{this.isContactOrganizerModalOpen}}
-            @placeOrder={{action "placeOrder"}}
-            @isLoading={{this.isLoading}}
-            @userExists={{this.userExists}}
-            @errorMessage={{this.errorMessage}}
-            @save="save" />
-        </div>
-        <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />
-      </div>
+  {{#if this.model.event.isOneclickSignupEnabled}}
+    <div>
+      <button type="button" class="ui green medium button {{if this.device.isMobile 'field fluid'}}" {{action "oneClickSignup"}}>
+        <i class="heart icon"></i>
+        {{t 'One Click Signup'}}
+      </button>
     </div>
-    <div class="ui hidden divider"></div>
+  {{else}}
+    {{#if (or this.model.event.ticketUrl this.model.tickets)}}
+      <div class="tickets mt-16" id="tickets">
+        <div class="ui segments ticket-list">
+          <div class="ui segment">
+            <h2 class="ui header">{{t 'Tickets'}}</h2>
+          </div>
+          <div class="ui segment">
+            <Public::TicketList
+              @eventCurrency={{this.model.event.paymentCurrency}}
+              @ticketUrl={{this.model.event.ticketUrl}}
+              @data={{this.model.tickets}}
+              @order={{this.model.order}}
+              @event={{this.model.event}}
+              @attendees={{this.model.attendees}}
+              @code={{code}}
+              @taxInfo={{this.model.tax}}
+              @currentEventIdentifier={{this.model.event.identifier}}
+              @createNewUserViaEmail={{action "createNewUserViaEmail"}}
+              @loginExistingUser={{action "loginExistingUser"}}
+              @openContactOrganizerModal={{action "openContactOrganizerModal"}}
+              @isLoginModalOpen={{this.isLoginModalOpen}}
+              @isContactOrganizerModalOpen={{this.isContactOrganizerModalOpen}}
+              @placeOrder={{action "placeOrder"}}
+              @isLoading={{this.isLoading}}
+              @userExists={{this.userExists}}
+              @errorMessage={{this.errorMessage}}
+              @save="save" />
+          </div>
+          <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />
+        </div>
+      </div>
+      <div class="ui hidden divider"></div>
+    {{/if}}
   {{/if}}
   {{#if this.model.featuredSpeakers}}
     <div class="featured-speakers" id="speakers">
