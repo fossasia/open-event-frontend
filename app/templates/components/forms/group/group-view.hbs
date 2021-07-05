@@ -1,0 +1,12 @@
+<div class="ui container">
+    <div class="mb-4">
+      {{#if @group.events}}
+        <h2 class="main-heading mb-4">{{@group.name}}</h2>
+        <div class="ui stackable three column grid">
+          {{#each @group.events as |event|}}
+            <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{false}} />
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+</div>
