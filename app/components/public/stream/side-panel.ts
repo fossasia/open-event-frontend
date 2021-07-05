@@ -27,6 +27,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showSpeakers: number | null = null;
   @tracked showExhibitors: number | null = null;
   @tracked showChat = false;
+  @tracked showVideoRoom = false;
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -67,6 +68,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.checkSpeakers();
     this.checkExhibitors();
     this.showChat = this.args.event.isChatEnabled && this.settings.rocketChatUrl;
+    this.showVideoRoom = this.args.event.isVideoroomEnabled;
 
     if (this.args.event.isSchedulePublished) {
       try {
