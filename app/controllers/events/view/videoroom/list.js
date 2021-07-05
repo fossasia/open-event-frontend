@@ -1,17 +1,10 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import { action, computed } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   @service settings;
-  @tracked isFeatureModalOpen = false;
-
-  @action
-  toggleModal() {
-    this.isFeatureModalOpen = !this.isFeatureModalOpen;
-  }
 
   @action
   async toggleVideoRoom() {
