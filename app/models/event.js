@@ -141,6 +141,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   moderators        : hasMany('user', { inverse: null }),
   roles             : hasMany('users-events-role'),
   sessionFavourites : hasMany('user-favourite-session'),
+  speakerInvites    : hasMany('speaker-invite'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

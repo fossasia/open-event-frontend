@@ -10,6 +10,5 @@ export default ModelBase.extend({
   status    : attr('string', { defaultValue: 'pending' }),
   createdAt : attr('moment', { defaultValue: () => moment.tz(detectedTimezone) }),
   event     : belongsTo('event'),
-  session   : belongsTo('session'),
-  speaker   : belongsTo('speaker')
+  session   : belongsTo('session')
 });

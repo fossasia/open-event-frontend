@@ -35,6 +35,24 @@ export default class CallForSpeakers extends Component {
     }
   }
 
+  @action
+  viewInvitedSession(inviteID) {
+    if (this.data.userSpeaker && this.data.userSpeaker.toArray().length) {
+      // speaker detail exists
+      this.router.transitionTo('public.speaker-invite.view-session', this.data.event.id, inviteID);
+    } else {
+      this.notify.error(this.l10n.t('You need to add your speaker details first before accepting invite for a session'),
+        {
+          id: 'add_new_session_error'
+        });
+    }
+  }
+
+  @computed('data.userSpeakerInvite')
+  get userSpeakerInvite() {
+    return this.data.userSpeakerInvite.filter(invite => invite.email === this.authManager.currentUser.email);
+  }
+
   @computed('data.userSpeaker')
   get isNewSpeaker() {
     return !(this.data.userSpeaker && this.data.userSpeaker.toArray().length);
@@ -43,5 +61,10 @@ export default class CallForSpeakers extends Component {
   @computed('data.userSession')
   get isNewSession() {
     return !(this.data.userSession && this.data.userSession.toArray().length);
+  }
+
+  @computed('data.userSpeakerInvite')
+  get haveNoSpeakerInvite() {
+    return !(this.data.userSpeakerInvite && this.data.userSpeakerInvite.toArray().length);
   }
 }

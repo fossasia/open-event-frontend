@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { SPEAKER_FORM_ORDER } from 'open-event-frontend/models/custom-form';
+import { SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { groupBy } from 'lodash-es';
 import { computed, action } from '@ember/object';
@@ -7,13 +7,11 @@ import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
 
 
 export default class extends Controller.extend(FormMixin) {
-  queryParams = ['token'];
-  token = '';
 
   @computed('model.form')
   get allFields() {
-    const grouped = groupBy(this.model.forms.toArray(), field => field.get('form'));
-    const fields = sortCustomFormFields(grouped.speaker, SPEAKER_FORM_ORDER);
+    const grouped = groupBy(this.model.form.toArray(), field => field.get('form'));
+    const fields = sortCustomFormFields(grouped.session, SESSION_FORM_ORDER);
     return fields;
   }
 
@@ -26,18 +24,13 @@ export default class extends Controller.extend(FormMixin) {
       return;
     }
     this.set('isLoading', true);
-    this.model.speakerInvite.status = 'accepted';
-    this.model.speakerInvite.save()
+    this.loader.load(`/speaker-invites/${this.model.speakerInvite.id}/accept-invite`)
       .then(() => {
-        this.model.speaker.sessions.pushObject(this.model.session);
-        this.model.speaker.save()
-          .then(() => {
-            this.notify.success(this.l10n.t('Speaker invite has been accepted'),
-              {
-                id: 'speaker_det_save'
-              });
-            this.transitionToRoute('public.cfs.view-session', this.model.event.identifier, this.model.session.id);
+        this.notify.success(this.l10n.t('Speaker invite has been accepted'),
+          {
+            id: 'speaker_det_save'
           });
+        this.transitionToRoute('public.cfs.view-session', this.model.event.identifier, this.model.session.id);
       })
       .catch(e => {
         console.error('Error while accepting speaker invite', e);
@@ -57,14 +50,13 @@ export default class extends Controller.extend(FormMixin) {
       return;
     }
     this.set('isLoading', true);
-    this.model.speakerInvite.status = 'rejected';
-    this.model.speakerInvite.save()
+    this.loader.load(`/speaker-invites/${this.model.speakerInvite.id}/reject-invite`)
       .then(() => {
         this.notify.success(this.l10n.t('Speaker invite has been rejected'),
           {
             id: 'speaker_det_save'
           });
-        this.transitionToRoute('index');
+        this.transitionToRoute('public.cfs', this.model.event.identifier);
       })
       .catch(e => {
         console.error('Error while rejecting speaker invite', e);
