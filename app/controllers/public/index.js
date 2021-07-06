@@ -137,8 +137,8 @@ export default class IndexController extends Controller {
     };
 
     let myinput = {};
-    for(let t of input['tickets']) {
-      if(t) {
+    for (const t of input.tickets) {
+      if (t) {
         myinput = {
           tickets: [t]
         };
