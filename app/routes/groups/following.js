@@ -24,6 +24,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     }
     ];
     return this.infinity.model('group', {
+      include      : 'follower',
       filter       : filterOptions,
       perPage      : 10,
       startingPage : 1,
