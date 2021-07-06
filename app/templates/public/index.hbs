@@ -7,7 +7,7 @@
   {{/if}}
   {{#if this.model.event.isOneclickSignupEnabled}}
     <div class="ui right floated ml-auto">
-      <button type="button" class="ui green medium button {{if this.device.isMobile 'field fluid'}}" {{action "oneClickSignup"}}>
+      <button type="button" class="ui green medium button {{if this.device.isMobile 'field fluid'}} {{if (not this.authManager.currentUser) 'disabled'}}" {{action "oneClickSignup"}}>
         <i class="user icon"></i>
         {{t 'One Click Signup'}}
       </button>
