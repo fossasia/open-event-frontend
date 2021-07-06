@@ -135,8 +135,17 @@ export default class IndexController extends Controller {
         }
       })
     };
+
+    let myinput = {};
+    for(let t of input['tickets']) {
+      if(t) {
+        myinput = {
+          tickets: [t]
+        };
+      }
+    }
     try {
-      const order = await this.loader.post('/orders/create-order', input);
+      const order = await this.loader.post('/orders/create-order', myinput);
       this.notify.success(this.l10n.t('Order details saved. Please fill further details within {{time}} minutes.', {
         time: this.settings.orderExpiryTime
       }));

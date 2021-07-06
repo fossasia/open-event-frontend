@@ -6,9 +6,9 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if this.model.event.isOneclickSignupEnabled}}
-    <div>
+    <div class="ui right floated ml-auto">
       <button type="button" class="ui green medium button {{if this.device.isMobile 'field fluid'}}" {{action "oneClickSignup"}}>
-        <i class="heart icon"></i>
+        <i class="user icon"></i>
         {{t 'One Click Signup'}}
       </button>
     </div>
