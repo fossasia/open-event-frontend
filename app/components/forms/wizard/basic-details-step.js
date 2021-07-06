@@ -471,7 +471,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     },
 
-    addTicket(type, position) {
+    async addTicket(type, position) {
       const { event } = this.data;
       const salesStartDateTime = moment();
       const salesEndDateTime = this.data.event.startsAt;
@@ -480,15 +480,21 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           this.data.event.isOneclickSignupEnabled = false;
           return;
         }
-        this.data.event.isOneclickSignupEnabled = true;
-        let countRegistration = 0;
-        this.data.event.tickets?.toArray().filter(x => {
-          if (x.type === 'registration') {
-            countRegistration += 1;
+        try {
+          await this.confirm.prompt(this.l10n.t('If you choose this option other ticket options will not be available. Do you want to proceed? '));
+          this.data.event.isOneclickSignupEnabled = true;
+          let countRegistration = 0;
+          this.data.event.tickets?.toArray().filter(x => {
+            if (x.type === 'registration') {
+              countRegistration += 1;
+            }
+          });
+          if (countRegistration > 0) {
+            return;
           }
-        });
-        if (countRegistration > 0) {
-          return;
+        } catch(e) {
+          this.data.event.isOneclickSignupEnabled = false;
+          console.warn(e);
         }
       }
       // this.data.event.tickets?.toArray().filter( x => console.log(x.type));
