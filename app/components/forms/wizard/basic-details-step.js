@@ -492,9 +492,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           if (countRegistration > 0) {
             return;
           }
-        } catch(e) {
+        } catch (e) {
           this.data.event.isOneclickSignupEnabled = false;
-          console.warn(e);
         }
       }
       // this.data.event.tickets?.toArray().filter( x => console.log(x.type));
