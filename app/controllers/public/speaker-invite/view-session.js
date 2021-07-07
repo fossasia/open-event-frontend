@@ -18,8 +18,8 @@ export default class extends Controller.extend(FormMixin) {
   @action
   async accept() {
     try {
-      const header = this.l10n.t('Do you want to accept invite for session');
-      await this.confirm.prompt(header + ': ' + this.model.session.title + '?');
+      const header = this.l10n.t('Do you want to accept the invite');
+      await this.confirm.prompt(header + '?');
     } catch {
       return;
     }
@@ -44,8 +44,8 @@ export default class extends Controller.extend(FormMixin) {
   @action
   async reject() {
     try {
-      const header = this.l10n.t('Do you want to reject invite for session');
-      await this.confirm.prompt(header + ': ' + this.model.session.title + '?');
+      const header = this.l10n.t('Do you want to reject the invite');
+      await this.confirm.prompt(header + '?');
     } catch {
       return;
     }

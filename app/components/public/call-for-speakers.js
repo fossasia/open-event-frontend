@@ -28,7 +28,7 @@ export default class CallForSpeakers extends Component {
       // speaker detail exists
       this.router.transitionTo('public.cfs.new-session');
     } else {
-      this.notify.error(this.l10n.t('You need to add your speaker details first before submitting a session'),
+      this.notify.error(this.l10n.t('You need to add your speaker details first before submitting a session.'),
         {
           id: 'add_new_session_error'
         });
@@ -37,11 +37,16 @@ export default class CallForSpeakers extends Component {
 
   @action
   viewInvitedSession(inviteID) {
-    if (this.data.userSpeaker && this.data.userSpeaker.toArray().length) {
+    if (!this.authManager.currentUser.isVerified) {
+      this.notify.error(this.l10n.t('You need to verify your email first before accepting an invite for a session.'),
+        {
+          id: 'add_new_session_error'
+        });
+    } else if (this.data.userSpeaker && this.data.userSpeaker.toArray().length) {
       // speaker detail exists
       this.router.transitionTo('public.speaker-invite.view-session', this.data.event.id, inviteID);
     } else {
-      this.notify.error(this.l10n.t('You need to add your speaker details first before accepting invite for a session'),
+      this.notify.error(this.l10n.t('You need to add your speaker details first before accepting an invite for a session.'),
         {
           id: 'add_new_session_error'
         });
@@ -50,7 +55,7 @@ export default class CallForSpeakers extends Component {
 
   @computed('data.userSpeakerInvite')
   get userSpeakerInvite() {
-    return this.data.userSpeakerInvite.filter(invite => invite.email === this.authManager.currentUser.email);
+    return this.data.userSpeakerInvite?.filter(invite => invite.email === this.authManager.currentUser.email);
   }
 
   @computed('data.userSpeaker')
@@ -65,6 +70,6 @@ export default class CallForSpeakers extends Component {
 
   @computed('data.userSpeakerInvite')
   get haveNoSpeakerInvite() {
-    return !(this.data.userSpeakerInvite && this.data.userSpeakerInvite.toArray().length);
+    return !(this.userSpeakerInvite && this.userSpeakerInvite.toArray().length);
   }
 }

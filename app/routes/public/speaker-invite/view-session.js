@@ -18,6 +18,14 @@ export default class ViewSessionRoute extends Route.extend(AuthenticatedRouteMix
       include : 'session-type,speakers,track,event,speaker-invites',
       reload  : true
     });
+    const speaker = await eventDetails.query('speakers', {
+      filter: [
+        {
+          name : 'email',
+          op   : 'eq',
+          val  : this.authManager.currentUser.email
+        }
+      ] });
     return {
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
@@ -25,14 +33,15 @@ export default class ViewSessionRoute extends Route.extend(AuthenticatedRouteMix
         sort         : 'id'
       }),
       session: sessionDetails,
-      speakerInvite
+      speakerInvite,
+      speaker
     };
   }
 
   afterModel(model) {
     super.afterModel(...arguments);
     const user = this.authManager.currentUser;
-    if (!(model.event.hasAccess(user) || model.speakerInvite.email === user.email || model.speakerInvite.status === 'accepted')) {
+    if (!user.isVerified || !(model.event.hasAccess(user) || (model.speakerInvite.email === user.email && model.speakerInvite.status === 'pending' && model.speaker.toArray().length))) {
       this.transitionTo('not-found');
     }
   }

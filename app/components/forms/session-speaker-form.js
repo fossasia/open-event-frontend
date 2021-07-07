@@ -454,6 +454,7 @@ export default Component.extend(FormMixin, {
         if (this.isCfsPage) {
           this.set('isLoading', true);
           try {
+            await this.data.session.save();
             const saveSpeakerInvites = this.data.session.speakerInvites.toArray().map(speakerInvite => {
               if (speakerInvite.id) {
                 return speakerInvite;
