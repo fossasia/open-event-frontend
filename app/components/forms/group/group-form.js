@@ -29,6 +29,25 @@ export default class GroupForm extends Component.extend(FormMixin) {
   }
 
   @action
+  addSocialLink(type) {
+    const { group } = this;
+    if (!group.socialLinks) {
+      group.socialLinks = [];
+    }
+    if (type === 'customLink') {
+      group.socialLinks = [...group.socialLinks, { name: '', link: '', is_custom: true }];
+    } else {
+      group.socialLinks = [...group.socialLinks, { name: '', link: '', is_custom: false }];
+    }
+  }
+
+  @action
+  removeSocialLink(link) {
+    const { group } = this;
+    group.socialLinks = group.socialLinks.filter(sl => sl !== link);
+  }
+
+  @action
   addEvent(event) {
     this.group.events.pushObject(event);
   }
