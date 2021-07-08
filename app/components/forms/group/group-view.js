@@ -10,12 +10,12 @@ export default class GroupView extends Component.extend(FormMixin) {
 
   @computed('events.[]', 'group.events.[]')
   get pastEvents() {
-    return sortBy(this.group.events.toArray().filter(event => { return moment(event.endsAt) < moment()}), ['startsAt']);
+    return sortBy(this.group.events.toArray().filter(event => { return moment(event.endsAt) < moment()}), ['startsAt']).reverse();
   }
 
   @computed('events.[]', 'group.events.[]')
   get upcomingEvents() {
-    return sortBy(this.group.events.toArray().filter(event => { return moment(event.endsAt) > moment()}),['startsAt']);
+    return sortBy(this.group.events.toArray().filter(event => { return moment(event.endsAt) > moment()}), ['startsAt']).reverse();
   }
 
   @action
