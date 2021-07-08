@@ -19,9 +19,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked moderatorEmail = '';
   @tracked deletedModerators = [];
   @tracked videoRecordings = [];
-  @tracked actualBBBExtra = {};
+  @tracked actualBBBExtra = null;
   @tracked selectedVideo = '';
   @tracked previousVideo = '';
+  @tracked showUpdateOptions = false;
+  @tracked endCurrentMeeting = false;
 
   get recordingColumns() {
     return [
@@ -219,39 +221,42 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  async toggleRecord() {
+    this.data.stream.extra.bbb_options.record = !this.data.stream.extra.bbb_options.record;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
+  async toggleMuteOnStart() {
+    this.data.stream.extra.bbb_options.muteOnStart = !this.data.stream.extra.bbb_options.muteOnStart;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
+  async toggleAutoStartRecording() {
+    this.data.stream.extra.bbb_options.autoStartRecording = !this.data.stream.extra.bbb_options.autoStartRecording;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
   async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
-      if (this.data.stream.id && this.data.stream.videoChannel.get('provider') === 'bbb') {
-        if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
-          try {
-            const heading = this.l10n.t('Do you want to update the changes now?');
-            const content =  this.l10n.t('You have changed your video room\'s configurations') + '. '
-              + this.l10n.t('Do you want to update these configurations now') + '?<br><br>'
-              + this.l10n.t('Choosing \"Yes\" would end ongoing meetings related to this video room in order to apply new changes.') + '. '
-              + this.l10n.t('Users would need to rejoin the meeting') + '. '
-              + this.l10n.t('Choosing \"No\" will not affect ongoing meeting') + '. '
-              + this.l10n.t('However, it may take a few minutes to apply new changes for your next meetings') + '.<br><br>'
-              + this.l10n.t('If there is no ongoing meeting, then it is recommended to choose \"Yes\"') + '.';
-            const options = {
-              denyText     : 'No',
-              denyColor    : 'red',
-              approveText  : 'Yes',
-              approveColor : 'green',
-              extra        : content
-            };
-            await this.confirm.prompt(heading, options);
-            this.data.stream.extra.bbb_options.endCurrentMeeting = true;
-          } catch {
-            this.data.stream.extra.bbb_options.endCurrentMeeting = false;
-          }
-        } else if (this.data.stream.extra.bbb_options?.endCurrentMeeting) {
-          this.data.stream.extra.bbb_options.endCurrentMeeting = false;
-        }
-      }
-
       try {
-        this.loading = true;
+        this.set('isLoading', true);
+        this.data.stream.extra.bbb_options.endCurrentMeeting = this.endCurrentMeeting;
         await this.data.stream.save();
         const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
           return moderator.save();
@@ -273,7 +278,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
             id: 'stream_save_error'
           });
       } finally {
-        this.loading = false;
+        this.set('isLoading', false);
       }
     });
   }
