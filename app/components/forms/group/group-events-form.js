@@ -1,3 +1,4 @@
+
 import Component from '@ember/component';
 import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
@@ -5,7 +6,7 @@ import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
 
 @classic
-export default class GroupForm extends Component.extend(FormMixin) {
+export default class GroupEventsForm extends Component.extend(FormMixin) {
 
   @service errorHandler;
 
@@ -26,25 +27,6 @@ export default class GroupForm extends Component.extend(FormMixin) {
         }
       }
     };
-  }
-
-  @action
-  addSocialLink(type) {
-    const { group } = this;
-    if (!group.socialLinks) {
-      group.socialLinks = [];
-    }
-    if (type === 'customLink') {
-      group.socialLinks = [...group.socialLinks, { name: '', link: '', is_custom: true }];
-    } else {
-      group.socialLinks = [...group.socialLinks, { name: '', link: '', is_custom: false }];
-    }
-  }
-
-  @action
-  removeSocialLink(link) {
-    const { group } = this;
-    group.socialLinks = group.socialLinks.filter(sl => sl !== link);
   }
 
   @action
