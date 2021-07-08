@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
 import moment from 'moment';
+import { sortBy } from 'lodash-es';
+
 @classic
 export default class GroupForm extends Component.extend(FormMixin) {
 
@@ -40,17 +42,17 @@ export default class GroupForm extends Component.extend(FormMixin) {
 
   @computed('events.[]', 'group.events.[]')
   get remainingEvents() {
-    return this.events.toArray().filter(event => !this.group.events.toArray().includes(event));
+    return sortBy(this.events.toArray().filter(event => !this.group.events.toArray().includes(event)), ['startsAt']);
   }
 
   @computed('events.[]', 'group.events.[]')
   get pastEvents() {
-    return this.events.toArray().filter(event => { return moment(event.endsAt) < moment()});
+    return sortBy(this.events.toArray().filter(event => { return moment(event.endsAt) < moment()}), ['startsAt']);
   }
 
   @computed('events.[]', 'group.events.[]')
   get upcomingEvents() {
-    return this.events.toArray().filter(event => { return moment(event.endsAt) > moment()});
+    return sortBy(this.events.toArray().filter(event => { return moment(event.endsAt) > moment()}), ['startsAt']);
   }
 
   @action
