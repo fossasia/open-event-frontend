@@ -1,7 +1,18 @@
 <div class="ui container">
     <div class="mb-4">
       {{#if @group.events}}
-        <h2 class="main-heading mb-4">{{@group.name}}</h2>
+        <div class="d-flex space-between items-center mb-4">
+          <h2 class="main-heading m-0">{{@group.name}}</h2>
+          <div>
+            <button class="{{if @group.follower 'red' 'blue'}} ui fluid button" {{action 'follow'}}>
+              {{#if @group.follower}}
+                {{t 'Unfollow Group'}}            
+              {{else}}
+                {{t 'Follow Group'}}            
+              {{/if}}                   
+            </button>
+          </div>
+        </div>
         <div class="ui stackable three column grid">
           {{#each @group.events as |event|}}
             <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{false}} />
