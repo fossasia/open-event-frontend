@@ -18,6 +18,12 @@
         placeholder={{t "Name"}}
         @value={{@group.name}} />
     </div>
+    <div class="field">
+      <label>{{t 'About'}}</label>
+      <Widgets::Forms::RichTextEditor
+        @value={{@group.about}}
+        @name="description" />
+    </div>
     <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
     <div class="ui hidden divider"></div>
     <div class="mb-4">

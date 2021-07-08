@@ -27,13 +27,7 @@
         {{/if}}
       </div>
       <div class="meta">
-        <span class="time">
-            {{general-date @group.modifieddAt 'date-time-short'}}
-        </span>
-        <br>
-        {{#each @group.events as |event|}}
-          <a href="{{event.url}}" target="_blank" rel="noopener"  class="ui blue basic compact button">{{event.name}} </a>
-        {{/each}}
+        {{@group.about}}
       </div>
     </div>
   </div>

@@ -11,6 +11,7 @@ export default class Group extends ModelBase.extend({
 
 
   name       : attr('string'),
+  about      : attr('string'), 
   createdAt  : attr('moment', { readOnly: true }),
   modifiedAt : attr('moment'),
   deletedAt  : attr('moment'),
