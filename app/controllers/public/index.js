@@ -126,11 +126,11 @@ export default class IndexController extends Controller {
   async oneClickSignup(ticket) {
     const input = {
       tickets: [{
-            id       : ticket.id,
-            quantity : 1,
-            price    : 0
-          }]   
-      }
+        id       : ticket.id,
+        quantity : 1,
+        price    : 0
+      }]
+    };
 
     let myinput = {};
     for (const t of input.tickets) {
