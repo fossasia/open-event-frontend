@@ -8,7 +8,7 @@ module('Acceptance | admin sales', function(hooks) {
 
   test('visiting admin-sales unauthenticated', async function(assert) {
     assert.ok(currentSession().session.isAuthenticated !== true);
-    await visit('/admin/sales');
+    await visit('/admin/sales/live');
     assert.equal(currentURL(), '/login');
   });
 

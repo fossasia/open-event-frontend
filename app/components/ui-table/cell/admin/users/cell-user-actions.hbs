@@ -1,0 +1,14 @@
+<div class="ui unordered list">
+  {{#unless @record}}
+    <div class="item">
+      <button type="button" class="w-full ui button" {{action @props.actions.sendVerificationMail @extraRecords.email}}>
+        {{t "Resend Verification Email"}}
+      </button>
+    </div>
+  {{/unless}}
+  <div class="item">
+    <button type="button" class="w-full ui button" {{action @props.actions.resetPasswordMail @extraRecords.email}}>
+      {{t "Password Reset Email"}}
+    </button>
+  </div>
+</div>

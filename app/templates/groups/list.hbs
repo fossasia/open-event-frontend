@@ -1,9 +1,9 @@
 <div class="row">
   <div class="sixteen wide column">
     <div class="ui grid space-between items-center mt-4 mb-4">
-      <h1>
+      <h2>
         {{t 'Groups'}}
-      </h1>
+      </h2>
       <LinkTo @route="groups.create" class="item">
         <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
           {{t 'Create Group'}}
@@ -13,6 +13,9 @@
     <TabbedNavigation>
       <LinkTo @route="groups.list" class="item">
         {{t 'My Groups'}}
+      </LinkTo>
+      <LinkTo @route="groups.following" class="item">
+        {{t 'Following'}}
       </LinkTo>
     </TabbedNavigation>
   </div>

@@ -92,7 +92,7 @@
       </div>
       <div class="field">
         <label>
-          {{t 'Slides URL'}}
+          {{t 'Slides'}}
         </label>
         <Widgets::Forms::FileUpload
           @fileUrl={{@exhibitor.slidesUrl}}
@@ -100,7 +100,7 @@
           @id="slidesUrl"
           @icon="file"
           @hint={{t "Select a file"}}
-          @maxSizeInKb={{10000}} />
+          @maxSizeInKb={{20000}} />
       </div>
         <UiCheckbox 
           @class="toggle mt-2 mb-2 weight-600"

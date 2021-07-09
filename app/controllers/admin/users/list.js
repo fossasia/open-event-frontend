@@ -2,9 +2,11 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { or } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { inject as service } from '@ember/service';
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  @service errorHandler;
   sort_by = 'created-at';
 
   sort_dir = 'DSC';
@@ -100,6 +102,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         actions         : {
           toggleVerify: this.toggleVerify.bind(this)
         }
+      },
+      {
+        name            : this.l10n.t('Actions'),
+        valuePath       : 'isVerified',
+        extraValuePaths : ['email'],
+        width           : 200,
+        cellComponent   : 'ui-table/cell/admin/users/cell-user-actions',
+        actions         : {
+          sendVerificationMail : this.sendVerificationMail.bind(this),
+          resetPasswordMail    : this.resetPasswordMail.bind(this)
+        }
       }
     ];
   }
@@ -123,10 +136,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     } catch (e) {
       console.error('Error while marking user as spam', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_spam_error'
-        });
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
@@ -139,17 +149,14 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       const user = this.store.peekRecord('user', user_id, { backgroundReload: false });
       user.toggleProperty('isVerified');
       await user.save();
-      this.notify.success(this.l10n.t('User verifiation state changed successfully.'),
+      this.notify.success(this.l10n.t('User verification state changed successfully.'),
         {
           id: 'user_verf_succ'
         });
 
     } catch (e) {
       console.error('Error while verifying user', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_verf_error'
-        });
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
@@ -168,10 +175,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     } catch (e) {
       console.error('Error while deleting user', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_delete_error'
-        });
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
@@ -199,13 +203,49 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         });
     } catch (e) {
       console.error('Error while restoring user', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'user_restore_error'
-        });
-      console.warn(e);
+      this.errorHandler.handle(e);
     }
 
     this.set('isLoading', false);
+  }
+
+  @action
+  sendVerificationMail(email) {
+    const payload = {
+      'data': {
+        email
+      }
+    };
+    this.loader
+      .post('/auth/resend-verification-email', payload)
+      .then(() => {
+        this.notify.success(this.l10n.t('Verification mail sent successfully'), {
+          id: 'ver_mail_succ'
+        });
+      })
+      .catch(e => {
+        console.error('Error while sending verification email', e);
+        this.errorHandler.handle(e);
+      });
+  }
+
+  @action
+  resetPasswordMail(email) {
+    const payload = {
+      'data': {
+        email
+      }
+    };
+    this.loader
+      .post('auth/reset-password', payload)
+      .then(() => {
+        this.notify.success(this.l10n.t('Password Reset Email is successfully sent.'), {
+          id: 'reset_link_sent'
+        });
+      })
+      .catch(e => {
+        console.error('Error while sending reset password email', e);
+        this.errorHandler.handle(e);
+      });
   }
 }

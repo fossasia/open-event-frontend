@@ -8,7 +8,7 @@
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
       <UiDropdown
         @class="ui floating labeled icon dropdown blue button"
-        @selected={{this.data.stream.videoChannel}}
+        @selected={{this.previousVideo}}
         @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
         <div class="default text">
@@ -48,7 +48,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com.'}} />
+          @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into ' this.settings.appName '.com.'}} />
       </label>
       {{#if (eq this.data.stream.videoChannel.provider 'youtube')}}
         <Widgets::Forms::SocialLinkField
@@ -75,7 +75,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'}} />
+          @content={{'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in ' this.settings.appName '.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'}} />
         </label>
       <Input
         @value={{this.data.stream.password}} />
@@ -112,6 +112,35 @@
         @onChange={{action (mut this.data.stream.extra.loop)}} />
     </div>
   {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label>
+          {{t 'Enable Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.record}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.record)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Auto Start Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.autoStartRecording)}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
+        @onChange={{action (mut this.data.stream.extra.bbb_options.muteOnStart)}} />
+    </div>
+  {{/if}}
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>
@@ -134,18 +163,6 @@
       {{t 'Add'}}
     </button>
   </div>
-  {{#if this.videoRecordings}}
-    <div class="ui hidden divider"></div>
-      <div class="mt-2">
-        <p class="weight-600">{{t 'BBB Recordings'}}</p>
-        <div>
-          {{#each this.videoRecordings as |recording|}}
-            <a target="_blank" href={{recording}} rel="noopener">{{recording}}</a>
-            <br />
-          {{/each}}
-        </div>
-    </div>
-  {{/if}}
   <div class="mt-2">
     {{#each this.data.stream.moderators as |moderator|}}
       <span class="ui label transition visible" style="display: inline-block !important;">{{moderator.email}}
@@ -153,6 +170,21 @@
       </span>
     {{/each}}
   </div>
+  <p>{{t 'Please ask moderators to get a ticket for the event. Moderators can access an event only after getting a ticket.'}}</p>
+  {{#if this.videoRecordings}}
+    <div class="ui header">{{t 'BBB Recordings'}}</div>
+    <Tables::Default
+      @color='green'
+      @columns={{this.recordingColumns}}
+      @rows={{this.videoRecordings}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column"
+      @hideSearchBox={{true}}
+      @hidePagination={{true}}
+      @hidePageSize={{true}} />
+  {{/if}}
+
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
   <LinkTo @route="events.view.videoroom.index" class="ui red button">

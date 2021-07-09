@@ -9,9 +9,13 @@
     {{/if}}
     {{#each this.socialLinks as |socialLink|}}
       {{#if (not-eq socialLink.normalizedName 'globe')}}
-        <div >
+        <div>
           <a href="{{socialLink.link}}" class="ui icon social-link-button mb-1 {{socialLink.normalizedName}} {{socialLink.buttonColor}} d-flex items-center content-center button">
-            <i class="ui inverted {{socialLink.normalizedName}} icon"></i>
+            {{#if (eq socialLink.normalizedName 'mastodon')}}
+              <Icons::Mastodon />
+            {{else}}
+              <i class="ui inverted {{socialLink.normalizedName}} icon"></i>
+            {{/if}}
           </a>
         </div>
       {{/if}}

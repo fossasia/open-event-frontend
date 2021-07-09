@@ -1,7 +1,9 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-
+import { inject as service } from '@ember/service';
 export default class OptionsController extends Controller {
+
+  @service errorHandler;
 
   @action
   openDeleteEventModal() {
@@ -65,6 +67,26 @@ export default class OptionsController extends Controller {
     try {
       this.set('isLoading', true);
       this.currentInvite.set('roleName', 'owner');
+      const invite =  this.model.roleInvites.filter(invite => invite.email === this.currentInvite.email)[0];
+      if (invite.id) {
+        const res = await this.loader.post('/role-invites/' + invite.id + '/resend-invite');
+        if (res.success) {
+          this.notify.success(this.l10n.t('Invite resent successfully'),
+            {
+              id: 'resend_invite_succ'
+            });
+        } else {
+          this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+        }
+        this.setProperties({
+          'isConfirmEventTransferModalOpen' : false,
+          'checked'                         : false
+        });
+        this.currentInvite.rollbackAttributes();
+        this.set('isLoading', false);
+        return;
+      }
+
       await this.currentInvite.save();
       this.setProperties({
         'isConfirmEventTransferModalOpen' : false,
@@ -73,7 +95,7 @@ export default class OptionsController extends Controller {
       this.notify.success(this.l10n.t('Owner Role Invite sent successfully.'));
     } catch (error) {
       console.error('Error while sending role Invite', error, error.message);
-      this.notify.error(error.message);
+      this.errorHandler.handle(error);
     }
 
     this.set('isLoading', false);

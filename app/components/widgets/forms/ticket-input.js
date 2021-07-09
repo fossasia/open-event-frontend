@@ -25,10 +25,4 @@ export default class TicketInput extends Component {
     super.willDestroyElement(...arguments);
     $('.icon.buttons', this.element).find('.button').popup('destroy');
   }
-
-  @action
-  hideTicket() {
-    this.toggleProperty('ishidden');
-  }
-
 }

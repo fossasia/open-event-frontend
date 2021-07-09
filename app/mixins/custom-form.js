@@ -106,6 +106,15 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'mastodon',
+        form            : 'session',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'comments',
         form            : 'session',
         type            : 'text',
@@ -136,7 +145,7 @@ export default Mixin.create(MutableArray, {
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'level',
         form            : 'session',
-        type            : 'text',
+        type            : 'select',
         isRequired      : false,
         isIncluded      : false,
         isPublic        : true,
@@ -367,6 +376,15 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isPublic        : true,
         isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        fieldIdentifier : 'mastodon',
+        form            : 'speaker',
+        type            : 'text',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
         event           : parent
       })
     ];

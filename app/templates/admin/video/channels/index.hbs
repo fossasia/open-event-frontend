@@ -1,0 +1,23 @@
+<div class="sixteen wide column">
+  <div class="ui grid space-between items-center mt-4 mb-4">
+      <div>
+        <h2 class="header">{{t 'Video Channels'}}</h2>
+      </div>
+      <div>
+        <LinkTo @route="admin.video.channels.create" class="ui blue button">
+          {{t 'Add Video Channel'}}
+        </LinkTo>
+      </div>
+    </div>
+  <Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.model.data}}
+    @currentPage={{this.page}}
+    @hideSearchBox={{true}}
+    @pageSize={{this.per_page}}
+    @sortBy={{this.sort_by}}
+    @metaData={{this.model.meta}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
+</div>
