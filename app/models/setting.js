@@ -105,6 +105,9 @@ export default ModelBase.extend({
   isGoogleRecaptchaEnabled     : attr('boolean', { defaultValue: false }),
   startPgEnabled               : attr('string'),
   googleRecaptchaSite          : attr('string'),
-  googleRecaptchaSecret        : attr('string')
+  googleRecaptchaSecret        : attr('string'),
+  logoSize                     : attr('number', { defaultValue: 1000 }),
+  imageSize                    : attr('number', { defaultValue: 10000 }),
+  slideSize                    : attr('number', { defaultValue: 20000 })
 
 });
