@@ -6,12 +6,37 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if this.model.event.isOneclickSignupEnabled}}
-    <div class="ui right floated ml-auto">
-      <button type="button" class="ui green medium button {{if this.device.isMobile 'field fluid'}} {{if (not this.authManager.currentUser) 'disabled'}}" {{action "oneClickSignup"}}>
-        <i class="user icon"></i>
-        {{t 'One Click Signup'}}
-      </button>
-    </div>
+    <h2>{{t 'Registration for event.'}}</h2>
+    <table class="ui single line table stackable" style="margin-bottom: 0;">
+    <thead class="full-width">
+      <tr>
+        <th>{{t 'Name'}} <i class="ticket alternate icon"></i> </th>
+        <th>{{t 'Type'}}</th>
+        <th></th>
+      </tr>
+    </thead>
+    {{#each this.model.tickets as |ticket| }}
+      <tbody>
+      {{#if (includes ticket.type 'Registration')}}
+        <tr>
+          <td>{{ticket.name}}</td>
+          <td>
+            {{#if (includes ticket.type 'free')}}
+              {{t 'Free'}}
+            {{else if (includes ticket.type 'paid')}}
+              {{t 'Paid'}}
+            {{else}}
+              {{t 'Donation'}}
+            {{/if}}
+          </td>       
+          <td>
+            <i role="button" {{action "oneClickSignup" ticket}} class="arrow circle right large violet icon"></i>
+          </td>
+        </tr>
+      {{/if}}
+      </tbody>
+    {{/each}}
+    </table>
   {{else}}
     {{#if (or this.model.event.ticketUrl this.model.tickets)}}
       <div class="tickets mt-16" id="tickets">

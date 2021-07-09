@@ -1,28 +1,4 @@
 <form class="ui form" {{action 'submit' this.data on='submit' }}>
-  {{#if this.data.event.isOneclickSignupEnabled}}
-    <Input
-      @type="hidden"
-      @name="first_name"
-      @value={{this.buyerFirstName}} />
-    <Input
-      @type="hidden"
-      @name="last_name"
-      @value={{this.buyerLastName}} />
-
-    <Input
-      @type="hidden"
-      @name="email"
-      readonly
-      disabled
-      @value={{this.buyer.email}} />
-          
-  <div>
-    <button type="submit" class="ui teal submit button">
-      <i class="heart icon"></i>
-      {{t 'One Click Signup'}}
-    </button>
-  </div>
-{{else}}
   <div class="ui segments">
     <div class="ui aligned secondary segment">
       <h3 class="weight-400">{{t 'Registration Information'}}</h3>
@@ -337,9 +313,12 @@
         </GetText>
       </p>
       <div class="center aligned">
-        <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
+        {{#if this.data.event.isOneclickSignupEnabled}}
+          <button type="submit" class="ui violet submit button">{{t 'One Click Signup'}}</button>
+        {{else}}
+          <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
+        {{/if}}
       </div>
      </div>
   </div>
-  {{/if}}
 </form>

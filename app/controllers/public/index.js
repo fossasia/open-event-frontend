@@ -123,18 +123,14 @@ export default class IndexController extends Controller {
   }
 
   @action
-  async oneClickSignup() {
+  async oneClickSignup(ticket) {
     const input = {
-      tickets: this.model.tickets.toArray().map(ticket => {
-        if (ticket.type === 'registration') {
-          return {
+      tickets: [{
             id       : ticket.id,
             quantity : 1,
             price    : 0
-          };
-        }
-      })
-    };
+          }]   
+      }
 
     let myinput = {};
     for (const t of input.tickets) {
