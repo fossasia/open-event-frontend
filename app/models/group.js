@@ -4,7 +4,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
-export default ModelBase.extend({
+export default class Group extends ModelBase.extend({
 
   router   : service(),
   fastboot : service(),
@@ -20,10 +20,11 @@ export default ModelBase.extend({
   user       : belongsTo('user'),
   events     : hasMany('event'),
   roles      : hasMany('users-groups-role'),
-
+  follower   : belongsTo('user-follow-group'),
 
   url: computed('identifier', function() {
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
     return origin + this.router.urlFor('groups.edit', this.id);
   })
-});
+}) {}
+

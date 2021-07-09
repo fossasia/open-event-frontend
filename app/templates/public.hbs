@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}">
+  <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}" id="event-contents">
     <div class="ui stackable grid">
       <div class="three wide column" id="public-event-content">
         {{#if this.device.isMobile}}
@@ -75,6 +75,16 @@
                   </div>
                 </div>
             {{/if}}
+          {{/if}}
+          {{#if (and this.device.isMobile this.model.group)}}
+            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
+              {{#if this.model.group.follower}}
+                {{t 'Unfollow Group'}}            
+              {{else}}
+                {{t 'Follow Group'}}            
+              {{/if}}
+              {{this.model.group.name}}
+            </button>
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions.index')}}
             <div class="{{if this.device.isMobile 'd-flex'}} filters ui basic segment m-0 pr-0 pl-0 pt-2">
@@ -170,6 +180,16 @@
                   <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
                 </div>
               </div>
+          {{/if}}
+          {{#if (and (not this.device.isMobile) this.model.group (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
+            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
+              {{#if this.model.group.follower}}
+                {{t 'Unfollow Group'}}            
+              {{else}}
+                {{t 'Follow Group'}}            
+              {{/if}}
+              {{this.model.group.name}}
+            </button>
           {{/if}}
         {{/if}}
       </div>

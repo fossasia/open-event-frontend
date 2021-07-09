@@ -138,6 +138,7 @@ Router.map(function() {
         this.route('view', { path: '/:speaker_id' });
         this.route('edit', { path: '/:speaker_id/edit' });
       });
+      this.route('documents');
       this.route('chat');
       this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });
@@ -175,6 +176,8 @@ Router.map(function() {
   this.route('groups', function() {
     this.route('list');
     this.route('create');
+    this.route('following');
+    this.route('team', { path: '/team/:group_id' });
     this.route('view', { path: '/:group_id' });
     this.route('edit', { path: '/:group_id/edit' });
   });
@@ -226,9 +229,12 @@ Router.map(function() {
       });
       this.route('list', { path: '/:users_status' });
     });
-    this.route('video-channels', function() {
-      this.route('create');
-      this.route('edit', { path: '/:videoChannel_id/edit' });
+    this.route('video', function() {
+      this.route('channels', function() {
+        this.route('create');
+        this.route('edit', { path: '/:videoChannel_id/edit' });
+      });
+      this.route('recordings');
     });
     this.route('permissions', function() {
       this.route('event-roles');

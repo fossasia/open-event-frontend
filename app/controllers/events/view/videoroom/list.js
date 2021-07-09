@@ -6,6 +6,16 @@ import { inject as service } from '@ember/service';
 export default class extends Controller.extend(EmberTableControllerMixin) {
   @service settings;
 
+  @action
+  async toggleVideoRoom() {
+    this.set('model.event.isVideoroomEnabled', !this.model.event.isVideoroomEnabled);
+    try {
+      await this.model.event.save();
+    } catch (e) {
+      console.error('Error while Enabling TheRoom', e);
+    }
+  }
+
   per_page = 25;
   count = 0;
 

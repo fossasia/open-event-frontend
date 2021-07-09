@@ -16,6 +16,10 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
   color: #555 !important;
 }
 
+.black-text {
+  color: #000 !important;
+}
+
 .text.center.aligned {
   text-align: center;
 }
@@ -170,6 +174,10 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
   min-width: 90px !important;
 }
 
+.w-140 {
+  min-width: 140% !important;
+}
+
 .color-inherit {
   color: inherit;
 
@@ -177,4 +185,11 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
     color: inherit;
   }
 }
-
+@media only screen and (max-width: 767px) {
+  .menu-fixed {
+    position: fixed !important;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+}
