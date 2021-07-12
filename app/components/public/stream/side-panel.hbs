@@ -44,20 +44,24 @@
           {{t 'Chat'}}</span>
         </a>
       {{/if}}
-
-      <div class="item">
-        <span><i class="video icon"></i>
-        {{t 'Video Rooms'}}</span>
+      
+      {{#if this.showVideoRoom}}
+        <div class="item">
+          <span><i class="video icon"></i>
+          {{t 'Video Rooms'}}</span>
+        </div>
+      {{/if}}
+    </div>
+    {{#if this.showVideoRoom}}
+      <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
+        {{#each this.streams as |stream|}}
+          <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
+            <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
+            <span class="ml-2">{{stream.name}}</span>
+          </a>
+        {{/each}}
       </div>
-    </div>
-    <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
-      {{#each this.streams as |stream|}}
-        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
-          <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
-          <span class="ml-2">{{stream.name}}</span>
-        </a>
-      {{/each}}
-    </div>
+    {{/if}}
     {{#if this.loading}}
       <div class="ui active centered inline loader"></div>
     {{/if}}

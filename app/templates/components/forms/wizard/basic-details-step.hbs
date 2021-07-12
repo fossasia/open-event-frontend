@@ -165,7 +165,7 @@
         @hint={{t "Select Event Header Image"}}
         @imageText={{t "Header Image"}}
         @isHeaderImage={{true}}
-        @maxSizeInKb={{10000}}
+        @maxSizeInKb={{this.settings.imageSize}}
         @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
         @requiresDivider={{true}} />
     </div>
@@ -177,7 +177,7 @@
         @icon="image"
         @hint={{t "Select Logo"}}
         @imageText={{t "Logo"}}
-        @maxSizeInKb={{1000}} />
+        @maxSizeInKb={{this.settings.logoSize}} />
     </div>
   </div>
 
