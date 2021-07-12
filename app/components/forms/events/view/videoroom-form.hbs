@@ -120,7 +120,7 @@
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.record}}
-        @onChange={{action (mut this.data.stream.extra.bbb_options.record)}} />
+        @onChange={{action this.toggleRecord}} />
     </div>
     <div class="field">
       <label>
@@ -129,7 +129,7 @@
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
-        @onChange={{action (mut this.data.stream.extra.bbb_options.autoStartRecording)}} />
+        @onChange={{action this.toggleAutoStartRecording}} />
     </div>
     <div class="field">
       <label>
@@ -138,9 +138,29 @@
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
-        @onChange={{action (mut this.data.stream.extra.bbb_options.muteOnStart)}} />
+        @onChange={{action this.toggleMuteOnStart}} />
     </div>
   {{/if}}
+
+  {{#if (and showUpdateOptions (and this.data.stream.id this.actualBBBExtra))}}
+    <div class="ui divider"></div>
+    <div class="grouped fields">
+        <label for="bbb_update">{{t 'You have changed your video room\'s configurations. Do you want to update these configurations now?'}}</label>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <Widgets::Forms::RadioButton @name="bbb_update_now" @id="update_now" @value={{true}} @checked={{this.endCurrentMeeting}} />
+            <label for="update_now">{{t 'Yes, update it now. End ongoing meetings.'}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <Widgets::Forms::RadioButton @name="bbb_update_later" @id="update_later" @value={{false}} @checked={{this.endCurrentMeeting}} />
+            <label for="update_later">{{t 'Apply changes when a new meeting is started.'}}</label>
+          </div>
+        </div>
+      </div>
+  {{/if}}
+
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>
@@ -190,4 +210,5 @@
   <LinkTo @route="events.view.videoroom.index" class="ui red button">
     {{t 'Cancel'}}
   </LinkTo>
+
 </form>

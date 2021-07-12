@@ -75,6 +75,31 @@
   <Forms::Admin::Settings::System::OrderExpiryForm @settings={{this.settings}} />
   <div class="ui hidden divider"></div>
   <h3 class="ui header">
+    {{t 'Upload Size'}}
+    <div class="sub header">
+      {{t 'Set maximum upload size in KB.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Logo Size'}}
+    </label>
+    <Input @type="number" @name="logo_size" @value={{this.settings.logoSize}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Image Size'}}
+    </label>
+    <Input @type="number" @name="image_size" @value={{this.settings.imageSize}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Slide Size'}}
+    </label>
+    <Input @type="number" @name="slide_size" @value={{this.settings.slideSize}} />
+  </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
     {{t 'Rocket Chat Integration'}}
   </h3>
   <div class="field">
