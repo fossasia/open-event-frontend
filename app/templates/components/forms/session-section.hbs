@@ -41,7 +41,7 @@
           @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
           @icon="image"
           @hint={{t "Select an image"}}
-          @maxSizeInKb={{1000}} />
+          @maxSizeInKb={{this.settings.logoSize}} />
       {{/if}}
       {{#if (eq field.type 'file')}}
         <Widgets::Forms::FileUpload
@@ -50,7 +50,7 @@
           @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
           @icon="file"
           @hint={{t "Select a file"}}
-          @maxSizeInKb={{30000}} />
+          @maxSizeInKb={{this.settings.slideSize}} />
       {{/if}}
       {{#if (eq field.type 'select')}}
         {{#if (eq field.fieldIdentifier 'language')}}
