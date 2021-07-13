@@ -19,11 +19,22 @@
               {{/if}}
           {{/each}}
         </div>
-        <div class="ui stackable three column grid">
-          {{#each @group.events as |event|}}
-            <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{false}} />
-          {{/each}}
-        </div>
+        {{#if this.upcomingEvents}}
+          <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
+          <div class="ui stackable three column grid">
+            {{#each this.upcomingEvents as |event|}}
+              <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+            {{/each}}
+          </div>
+        {{/if}}
+        {{#if this.pastEvents}}
+          <h2 class="main-heading mb-4">{{t 'Past Events'}}</h2>
+          <div class="ui stackable three column grid">
+            {{#each this.pastEvents as |event|}}
+              <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+            {{/each}}
+          </div>
+        {{/if}}
       {{/if}}
     </div>
 </div>
