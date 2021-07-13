@@ -15,7 +15,7 @@
           @aspectRatio={{if (eq this.placeholder.name "avatar") (array 1 1) (array 2 1)}}
           @icon="photo"
           @hint={{t "Select Image"}}
-          @maxSizeInKb={{10000}}
+          @maxSizeInKb={{this.settings.imageSize}}
           @helpText={{t "For Cover Photos : 300x150px (2:1 ratio) image.
                     For Avatar Photos : 150x150px (1:1 ratio) image."}} />
         <form class="ui form">

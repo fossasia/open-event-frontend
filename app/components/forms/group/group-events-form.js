@@ -1,3 +1,4 @@
+
 import Component from '@ember/component';
 import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
@@ -7,7 +8,7 @@ import moment from 'moment';
 import { sortBy } from 'lodash-es';
 
 @classic
-export default class GroupForm extends Component.extend(FormMixin) {
+export default class GroupEventsForm extends Component.extend(FormMixin) {
 
   @service errorHandler;
 
@@ -64,6 +65,11 @@ export default class GroupForm extends Component.extend(FormMixin) {
     this.onValid(async() => {
       try {
         this.loading = true;
+        /* For the first save throws an error -> field may not be null, as social links are added in group-settings-form
+        Hence, passing an empty array. */
+        if (!this.group.socialLinks) {
+          this.group.socialLinks = [];
+        }
         await this.group.save();
         this.notify.success(this.l10n.t('Your group has been saved'),
           {

@@ -6,9 +6,9 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
+import _ from 'lodash-es';
 
-
-const bbb_options = { 'record': true, 'autoStartRecording': false, 'muteOnStart': true };
+const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true, 'endCurrentMeeting': false };
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
@@ -19,8 +19,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked moderatorEmail = '';
   @tracked deletedModerators = [];
   @tracked videoRecordings = [];
+  @tracked actualBBBExtra = null;
   @tracked selectedVideo = '';
   @tracked previousVideo = '';
+  @tracked showUpdateOptions = false;
+  @tracked endCurrentMeeting = false;
 
   get recordingColumns() {
     return [
@@ -218,11 +221,42 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  async toggleRecord() {
+    this.data.stream.extra.bbb_options.record = !this.data.stream.extra.bbb_options.record;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
+  async toggleMuteOnStart() {
+    this.data.stream.extra.bbb_options.muteOnStart = !this.data.stream.extra.bbb_options.muteOnStart;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
+  async toggleAutoStartRecording() {
+    this.data.stream.extra.bbb_options.autoStartRecording = !this.data.stream.extra.bbb_options.autoStartRecording;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
   async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
       try {
-        this.loading = true;
+        this.set('isLoading', true);
+        this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
         await this.data.stream.save();
         const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
           return moderator.save();
@@ -244,7 +278,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
             id: 'stream_save_error'
           });
       } finally {
-        this.loading = false;
+        this.set('isLoading', false);
       }
     });
   }
@@ -286,6 +320,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   didInsertElement() {
     if (this.data.stream.videoChannel.get('provider') === 'bbb') {
+      if (this.data.stream.extra?.bbb_options) {
+        this.set('actualBBBExtra', { ...this.data.stream.extra.bbb_options });
+      }
       this.loadRecordings();
     }
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {

@@ -1,0 +1,61 @@
+<div class="ui container">
+  <div class="column sixteen wide center aligned mb-4">
+    <h2 class="ui header center aligned">
+      {{#if @group.id}}
+        {{t 'Edit Group'}}
+      {{else}}
+        {{t 'Create a Group'}}
+      {{/if}}
+    </h2>
+  </div>
+
+  <form class="ui form {{if this.isLoading 'loading'}}" >
+    <div class="mt-4 mb-8">
+      <h4>
+        {{t 'Social Media'}}
+        <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button ml-2" style="margin-left: 1rem !important;" @click={{action this.addSocialLink 'socialLink'}} @position="top center">
+          <i class="plus icon"></i>
+        </UiPopup>
+      </h4>
+      {{#each @group.socialLinks as |socialLink|}}
+        {{#if (not socialLink.is_custom)}}
+          <Widgets::Forms::SocialLinkField
+            @site={{socialLink.name}}
+            @onSiteChange={{action (mut socialLink.name)}}
+            @value={{socialLink.link}}
+            @onChange={{action (mut socialLink.link)}}>
+            <div class="ui icon buttons">
+              <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action this.removeSocialLink socialLink}} @position="top center">
+                <i class="minus icon"></i>
+              </UiPopup>
+            </div>
+          </Widgets::Forms::SocialLinkField>
+        {{/if}}
+      {{/each}}
+      <h4>
+        {{t 'Extra Links'}}
+        <UiPopup @content={{t "Add custom link"}} @class="ui compact icon blue circular button" style="margin-left: 1rem !important;" @click={{action this.addSocialLink 'customLink'}} @position="top center">
+          <i class="plus icon"></i>
+        </UiPopup>
+      </h4>
+      {{#each @group.socialLinks as |socialLink|}}
+        {{#if socialLink.is_custom}}
+          <Widgets::Forms::SocialLinkField
+            @custom={{true}}
+            @site={{socialLink.name}}
+            @onSiteChange={{action (mut socialLink.name)}}
+            @value={{socialLink.link}}
+            @onChange={{action (mut socialLink.link)}}>
+            <div class="ui icon buttons">
+              <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action this.removeSocialLink socialLink}} @position="top center">
+                <i class="minus icon"></i>
+              </UiPopup>
+            </div>
+          </Widgets::Forms::SocialLinkField>
+        {{/if}}
+      {{/each}}
+    </div>
+    <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    <div class="ui hidden divider"></div>
+  </form>
+</div>
