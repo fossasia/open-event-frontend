@@ -1,29 +1,43 @@
-<div class="ui container">
-    <div class="mb-4">
-      {{#if @group.events}}
-        <h2 class="main-heading mb-4 centered text">{{@group.name}}</h2>
-        <div class="social-icons d-flex mt-8 mb-8 wrap" style="justify-content: center;">
-          {{#each @group.socialLinks as |socialLink|}}
-              {{#if (eq socialLink.name 'website')}}
-                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
-              {{else if (eq socialLink.name 'groups.google')}}
-                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
-              {{else if (eq socialLink.name 'mastodon')}}
-                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon /></a>
-              {{else if socialLink.is_custom}}
-                  <UiPopup @content={{t-var socialLink.name}}>
-                      <a class="m-1 ml-0" href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i style="font-size: 1.5rem;" class="external alternate icon"></i></a>
-                  </UiPopup>
-              {{else}}
-                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
-              {{/if}}
-          {{/each}}
+<div class="ui fluid public-event ui relaxed grid mt-0 pt-0">
+  <div class="sixteen wide column lead">
+    <Widgets::SafeImage class="background" @src={{if @group.bannerUrl @group.bannerUrl "/images/landing.jpg"}} />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          {{#if @group.logoUrl}}
+            <img src="{{@group.logoUrl}}" class="logo mr-8" />
+          {{/if}}
+          <div>
+            <h1 class="event name text-white">{{@group.name}}</h1>
+          </div>
         </div>
-        <div class="ui stackable three column grid">
-          {{#each @group.events as |event|}}
-            <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{false}} />
-          {{/each}}
-        </div>
-      {{/if}}
+      </div>
     </div>
+  </div>
+  <div style="margin: auto;" class="mb-4 twelve wide column container">
+    {{#if @group.events}}
+      <div class="social-icons d-flex mt-4 mb-8 wrap" style="justify-content: center;">
+        {{#each @group.socialLinks as |socialLink|}}
+            {{#if (eq socialLink.name 'website')}}
+                <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
+            {{else if (eq socialLink.name 'groups.google')}}
+                <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+            {{else if (eq socialLink.name 'mastodon')}}
+                <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon /></a>
+            {{else if socialLink.is_custom}}
+                <UiPopup @content={{t-var socialLink.name}}>
+                    <a class="m-1 ml-0" href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i style="font-size: 1.5rem;" class="external alternate icon"></i></a>
+                </UiPopup>
+            {{else}}
+                <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
+            {{/if}}
+        {{/each}}
+      </div>
+      <div class="ui stackable three column grid">
+        {{#each @group.events as |event|}}
+          <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{false}} />
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
 </div>
