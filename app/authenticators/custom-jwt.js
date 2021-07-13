@@ -50,7 +50,7 @@ export default JWT.extend({
 
   refreshAccessToken(token) {
     this.headers[ENV['ember-simple-auth-token'].authorizationHeaderName] = ENV['ember-simple-auth-token'].authorizationPrefix + token;
-    this.headers['X-CSRF-Token'] = this.session.data.authenticated.tokenData.csrf;
+    this.headers['X-CSRF-Token'] = this.session.data.authenticated.tokenData?.csrf;
 
     const data = this.makeRefreshData(token);
     return this.makeRequest(this.serverTokenRefreshEndpoint, data, this.headers).then(response => {
