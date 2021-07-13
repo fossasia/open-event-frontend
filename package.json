@@ -13,6 +13,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember test",
+    "cypress-test": "cypress run",
     "exam": "ember exam --launch=chrome --random",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:js": "eslint --cache --fix app ember-cli-build.js testem.js tests config",
@@ -172,6 +173,8 @@
   },
   "private": true,
   "dependencies": {
+    "cypress": "^7.7.0",
+    "cypress-plugin-snapshots": "^1.4.4",
     "ua-parser-js": "^0.7.28"
   },
   "ember": {
