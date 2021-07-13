@@ -9,5 +9,5 @@ export default ModelBase.extend({
   startsAt        : attr('moment'),
   paymentCurrency : attr('string'),
   sales           : attr(),
-  ownerId         : attr(),
+  ownerId         : attr()
 });

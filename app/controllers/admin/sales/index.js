@@ -23,8 +23,8 @@ get columns() {
       cellComponent   : 'ui-table/cell/admin/sales/cell-first-name',
       isSortable      : true,
       headerComponent : 'tables/headers/sort',
-      actions: {
-        moveToUserDetails : this.moveToUserDetails.bind(this)
+      actions         : {
+        moveToUserDetails: this.moveToUserDetails.bind(this)
       }
     },
     {
