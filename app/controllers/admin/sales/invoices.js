@@ -54,17 +54,17 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : this.l10n.t('Sent To'),
         valuePath     : 'user',
-        cellComponent : 'ui-table/cell/admin/sales/invoice-user',
+        cellComponent : 'ui-table/cell/admin/sales/invoice-user'
       },
       {
         name            : this.l10n.t('Status'),
         valuePath       : 'status',
-        extraValuePaths : ['id'], 
+        extraValuePaths : ['id'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/sales/cell-status-action',
         options         : {
-          paymentStateMap: ["paid", "due", "refunding", "refunded", "failed", "resolved"]
+          paymentStateMap: [{"name":'paid', "color":"green"}, {"name":'due', "color":"red"} , {"name":'refunding', "color": "orange"}, {"name": 'refunded',"color":"violet"}, {"name": 'failed', "color": "black"}, {"name":'resolved', "color": "green"}]
         },
         actions: {
           changeState: this.changeState.bind(this)
