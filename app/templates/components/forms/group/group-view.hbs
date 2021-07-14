@@ -33,6 +33,13 @@
             {{/if}}
         {{/each}}
       </div>
+      {{#if @group.about}}
+        <br>
+        <div class="description">
+          {{sanitize @group.about}}
+        </div>
+        <br>
+      {{/if}}
       {{#if this.upcomingEvents}}
         <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
         <div class="ui stackable three column grid">
@@ -40,13 +47,6 @@
             <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
           {{/each}}
         </div>
-        {{#if @group.about}}
-          <br>
-          <div class="description">
-            {{sanitize @group.about}}
-          </div>
-          <br>
-        {{/if}}
         {{#if this.upcomingEvents}}
           <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
           <div class="ui stackable three column grid">
