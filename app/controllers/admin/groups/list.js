@@ -13,7 +13,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name            : this.l10n.t('Group Name'),
         valuePath       : 'name',
         extraValuePaths : ['id', 'deletedAt'],
-        width           : 155,
+        width           : 120,
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/groups/cell-group-name',
@@ -22,12 +22,18 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : this.l10n.t('Owner'),
-        valuePath : 'user.email'
+        name            : this.l10n.t('Owner'),
+        valuePath       : 'user.email',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
       },
       {
         name      : this.l10n.t('Number of Events'),
         valuePath : 'events.length'
+      },
+      {
+        name      : this.l10n.t('Number of Followers'),
+        valuePath : 'followers.length'
       },
       {
         name            : this.l10n.t('Created At'),
