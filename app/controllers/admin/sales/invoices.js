@@ -64,7 +64,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/sales/cell-status-action',
         options         : {
-          paymentStateMap: [{"name":'paid', "color":"green"}, {"name":'due', "color":"red"} , {"name":'refunding', "color": "orange"}, {"name": 'refunded',"color":"violet"}, {"name": 'failed', "color": "black"}, {"name":'resolved', "color": "green"}]
+          paymentStateMap: [{ 'name': 'paid', 'color': 'green' }, { 'name': 'due', 'color': 'red' }, { 'name': 'refunding', 'color': 'orange' }, { 'name': 'refunded', 'color': 'violet' }, { 'name': 'failed', 'color': 'black' }, { 'name': 'resolved', 'color': 'green' }]
         },
         actions: {
           changeState: this.changeState.bind(this)
