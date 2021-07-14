@@ -22,6 +22,9 @@ export default class IndexRoute extends Route {
       }),
       sessions: this.store.queryRecord('admin-statistics-session', {
         filterOptions
+      }),
+      groups: this.store.queryRecord('admin-statistics-group', {
+        filterOptions
       })
     });
   }
