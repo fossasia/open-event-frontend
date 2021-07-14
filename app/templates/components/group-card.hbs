@@ -2,7 +2,7 @@
   {{#unless this.device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
       <a class="image" href={{href-to 'groups.view' @group.id}}>
-        <Widgets::SafeImage @src={{"/images/landing.jpg"}} />
+        <Widgets::SafeImage @src={{if @group.bannerUrl  @group.bannerUrl "/images/landing.jpg"}} />
       </a>
     </div>
   {{/unless}}
@@ -18,7 +18,7 @@
                 <i class="list icon"></i>
             </UiPopup>
           </LinkTo>
-          <LinkTo @route="groups.edit" @model={{@group.id}}>
+          <LinkTo @route="groups.edit.events" @model={{@group.id}}>
             <UiPopup @content={{t "Edit"}} @class="ml-2 ui circular icon button compact positive" @position="left center">
                 <i class="edit icon"></i>
             </UiPopup>

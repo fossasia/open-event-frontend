@@ -38,18 +38,20 @@
             </p>
             <br/><br/>
         {{/if}}
-        <div class="social-icons d-flex" style="justify-content: center;">
+        <div class="social-icons d-flex wrap" style="justify-content: center;">
             {{#each this.links as |socialLink|}}
                 {{#if (eq socialLink.name 'website')}}
-                    <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
                 {{else if (eq socialLink.name 'groups.google')}}
-                    <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+                {{else if (eq socialLink.name 'mastodon')}}
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon /></a>
                 {{else if socialLink.is_custom}}
                     <UiPopup @content={{t-var socialLink.name}}>
-                        <a href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i style="font-size: 1.5rem;" class="external alternate icon"></i></a>
+                        <a class="m-1 ml-0" href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i style="font-size: 1.5rem;" class="external alternate icon"></i></a>
                     </UiPopup>
                 {{else}}
-                    <a href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
                 {{/if}}
             {{/each}}
         </div>
