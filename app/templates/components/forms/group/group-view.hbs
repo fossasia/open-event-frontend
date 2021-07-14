@@ -1,14 +1,47 @@
 <div class="ui container">
     <div class="mb-4">
-      {{@group.about}}
-      <br>
       {{#if @group.events}}
-        <h2 class="main-heading mb-4">{{@group.name}}</h2>
-        <div class="ui stackable three column grid">
-          {{#each @group.events as |event|}}
-            <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{false}} />
+        <h2 class="main-heading mb-4 centered text">{{@group.name}}</h2>
+        <div class="social-icons d-flex mt-8 mb-8 wrap" style="justify-content: center;">
+          {{#each @group.socialLinks as |socialLink|}}
+              {{#if (eq socialLink.name 'website')}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
+              {{else if (eq socialLink.name 'groups.google')}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+              {{else if (eq socialLink.name 'mastodon')}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon /></a>
+              {{else if socialLink.is_custom}}
+                  <UiPopup @content={{t-var socialLink.name}}>
+                      <a class="m-1 ml-0" href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i style="font-size: 1.5rem;" class="external alternate icon"></i></a>
+                  </UiPopup>
+              {{else}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
+              {{/if}}
           {{/each}}
         </div>
+        {{#if @group.about}}
+          <br>
+          <div class="description">
+            {{sanitize @group.about}}
+          </div>
+          <br>
+        {{/if}}
+        {{#if this.upcomingEvents}}
+          <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
+          <div class="ui stackable three column grid">
+            {{#each this.upcomingEvents as |event|}}
+              <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+            {{/each}}
+          </div>
+        {{/if}}
+        {{#if this.pastEvents}}
+          <h2 class="main-heading mb-4">{{t 'Past Events'}}</h2>
+          <div class="ui stackable three column grid">
+            {{#each this.pastEvents as |event|}}
+              <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+            {{/each}}
+          </div>
+        {{/if}}
       {{/if}}
     </div>
 </div>

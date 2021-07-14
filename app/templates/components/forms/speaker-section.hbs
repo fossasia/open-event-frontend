@@ -52,7 +52,7 @@
           @icon="image"
           @aspectRatio={{array 2 2}}
           @hint={{t "Select an image"}}
-          @maxSizeInKb={{1000}}
+          @maxSizeInKb={{this.settings.logoSize}}
           @helpText={{t "We recommend using a 1:1 ratio image"}}
           @requiresDivider={{true}} />
       {{/if}}

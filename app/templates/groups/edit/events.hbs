@@ -1,6 +1,7 @@
+<GroupNav @group={{this.model.group}} />
 <div class="row">
   <div class="sixteen wide column">
-    <Forms::group::GroupForm
+    <Forms::group::GroupEventsForm
       @group={{this.model.group}}
       @events={{this.model.filteredEvents}}
       @isLoading={{this.isLoading}} />

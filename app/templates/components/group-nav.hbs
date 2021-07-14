@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="sixteen wide column">
+    <div class="ui grid space-between items-center mt-4 mb-4">
+      <h2>
+        {{@group.name}}
+      </h2>
+    </div>
+    <TabbedNavigation>
+      <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
+        {{t 'Events'}}
+      </LinkTo>
+      <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
+        {{t 'Settings'}}
+      </LinkTo>
+    </TabbedNavigation>
+  </div>
+</div>

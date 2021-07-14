@@ -76,7 +76,7 @@
             @imageUrl={{sponsor.logoUrl}}
             @icon="image"
             @hint={{t "Select Logo"}}
-            @maxSizeInKb={{1000}} />
+            @maxSizeInKb={{this.settings.logoSize}} />
         </div>
       </div>
       {{#if (not-eq (inc index) this.data.event.sponsors.length)}}
