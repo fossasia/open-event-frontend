@@ -1,4 +1,3 @@
-{{this.record}}
-<UiPopup @tagName="a" @click={{action this.props.actions.moveToUserDetails this.extraRecords.ownerId}} @content={{t "View"}} @class="ui icon button">
-    <i class="unhide icon"></i>
-</UiPopup>
+<LinkTo @route="admin.users.view" @model={{this.extraRecords.ownerId}}>
+    {{this.record}}    
+</LinkTo>

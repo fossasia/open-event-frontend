@@ -2,7 +2,6 @@ import Controller from '@ember/controller';
 import AdminSalesMixin from 'open-event-frontend/mixins/admin-sales';
 import { or } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
-import { action } from '@ember/object';
 
 export default class IndexController extends Controller.extend(AdminSalesMixin, EmberTableControllerMixin) {
 
@@ -22,10 +21,7 @@ get columns() {
       extraValuePaths : ['ownerId'],
       cellComponent   : 'ui-table/cell/admin/sales/cell-first-name',
       isSortable      : true,
-      headerComponent : 'tables/headers/sort',
-      actions         : {
-        moveToUserDetails: this.moveToUserDetails.bind(this)
-      }
+      headerComponent : 'tables/headers/sort'
     },
     {
       name            : this.l10n.t('Type'),
@@ -97,10 +93,4 @@ get columns() {
     }
   ];
 }
-
-@action
-moveToUserDetails(id) {
-  this.transitionToRoute('admin.users.view', id);
-}
-
 }
