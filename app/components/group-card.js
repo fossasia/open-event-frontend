@@ -6,7 +6,7 @@ import Component from '@ember/component';
 export default class GroupCard extends Component {
   @computed('group')
   get about() {
-    if (this.group.about.length > 350) {
+    if (this.group.about?.length > 350) {
       return this.group.about.slice(0, 350) + '...';
     }
     return this.group.about;
