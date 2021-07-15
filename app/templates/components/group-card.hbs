@@ -15,6 +15,15 @@
         <div class="meta mb-2">
           {{@group.about}}
         </div>
+        <div class="meta mb-2">
+          <span class="time">
+              {{general-date @group.modifieddAt 'date-time-short'}}
+          </span>
+          <br>
+          {{#each @group.events as |event|}}
+            <a href="{{event.url}}" target="_blank" rel="noopener"  class="ui blue basic compact button">{{event.name}} </a>
+          {{/each}}
+        </div>
         {{#if (not @followedGroups)}}
           <LinkTo @route="groups.team" @model={{@group.id}}>
             <UiPopup @content={{t "Manage"}} @class="ml-2 ui circular icon button compact blue" @position="left center">
