@@ -12,17 +12,8 @@
         <div class="header mb-1">
           <a href={{href-to 'groups.view' @group.id}} class="black-text">{{@group.name}}</a>
         </div>
-        <div class="meta mb-2">
-          {{sanitize @group.about}}
-        </div>
-        <div class="meta mb-2">
-          <span class="time">
-              {{general-date @group.modifieddAt 'date-time-short'}}
-          </span>
-          <br>
-          {{#each @group.events as |event|}}
-            <a href="{{event.url}}" target="_blank" rel="noopener"  class="ui blue basic compact button">{{event.name}} </a>
-          {{/each}}
+        <div class="meta mb-2 word-break">
+          {{sanitize this.about}}
         </div>
         {{#if (not @followedGroups)}}
           <LinkTo @route="groups.team" @model={{@group.id}}>
