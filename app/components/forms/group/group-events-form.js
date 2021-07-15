@@ -57,7 +57,10 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
   }
 
   @action
-  shareEvent() {}
+  shareEvent(event) {
+    this.set('eventToShare', event);
+    this.set('isShareModalOpen', true);
+  }
 
   @action
   submit(event) {
