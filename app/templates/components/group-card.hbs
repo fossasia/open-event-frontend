@@ -13,7 +13,7 @@
           <a href={{href-to 'groups.view' @group.id}} class="black-text">{{@group.name}}</a>
         </div>
         <div class="meta mb-2">
-          {{@group.about}}
+          {{sanitize @group.about}}
         </div>
         <div class="meta mb-2">
           <span class="time">
