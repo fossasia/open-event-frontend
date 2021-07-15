@@ -10,6 +10,12 @@
   </div>
 
   <form class="ui form {{if this.isLoading 'loading'}}" >
+    <div class="field mt-4">
+      <label>{{t 'About'}}</label>
+      <Widgets::Forms::RichTextEditor
+        @value={{@group.about}}
+        @name="description" />
+    </div>
     <div class="fields">
       <div class="fifteen wide field">
         <Widgets::Forms::ImageUpload
