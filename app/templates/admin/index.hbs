@@ -47,6 +47,29 @@
           </div>
         </div>
       </div>
+      <div class="ui center aligned fluid segment">
+        <h3 class="ui left aligned header">
+          {{t 'Groups'}}
+        </h3>
+        <div class="ui divider">
+        </div>
+        <table class="ui celled table">
+          <tbody>
+            <tr>
+              <td>{{t 'No. of Groups'}}</td>
+              <td class="right aligned">{{this.model.groups.groups}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Group Events'}}</td>
+              <td class="right aligned">{{this.model.groups.groupEvents}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of All Followers'}}</td>
+              <td class="right aligned">{{this.model.groups.followers}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="six wide column">
       <div class="ui center aligned fluid segment">

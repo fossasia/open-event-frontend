@@ -16,6 +16,20 @@ get columns() {
       headerComponent : 'tables/headers/sort'
     },
     {
+      name            : this.l10n.t('Owner'),
+      valuePath       : 'owner',
+      extraValuePaths : ['ownerId'],
+      cellComponent   : 'ui-table/cell/admin/sales/cell-first-name',
+      isSortable      : true,
+      headerComponent : 'tables/headers/sort'
+    },
+    {
+      name            : this.l10n.t('Type'),
+      valuePath       : 'type',
+      isSortable      : true,
+      headerComponent : 'tables/headers/sort'
+    },
+    {
       name            : this.l10n.t('Event Date'),
       valuePath       : 'startsAt',
       isSortable      : true,
@@ -79,5 +93,4 @@ get columns() {
     }
   ];
 }
-
 }
