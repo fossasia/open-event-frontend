@@ -7,6 +7,7 @@ export default class IndexController extends Controller.extend(AdminSalesMixin, 
 
 @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 sort_by = 'starts-at';
+sort_dir = 'DSC';
 get columns() {
   return [
     {
