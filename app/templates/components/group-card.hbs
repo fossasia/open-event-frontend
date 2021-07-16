@@ -16,6 +16,11 @@
           {{sanitize this.about}}
         </div>
         {{#if (not @followedGroups)}}
+          <LinkTo @route="groups.view" @model={{@group.id}}>
+            <UiPopup @content={{t "View"}} @class="ml-2 ui circular icon button compact white" @position="left center">
+                <i class="eye icon"></i>
+            </UiPopup>
+          </LinkTo>
           <LinkTo @route="groups.team" @model={{@group.id}}>
             <UiPopup @content={{t "Manage"}} @class="ml-2 ui circular icon button compact blue" @position="left center">
                 <i class="list icon"></i>
