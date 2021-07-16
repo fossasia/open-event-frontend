@@ -38,6 +38,7 @@ export default class GroupView extends Component.extend(FormMixin) {
     } catch (e) {
       this.errorHandler.handle(e);
     }
+  }
 
   shareEvent(event) {
     this.set('eventToShare', event);
