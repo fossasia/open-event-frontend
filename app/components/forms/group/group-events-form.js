@@ -78,7 +78,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
           {
             id: 'group_save'
           });
-        this.router.transitionTo('groups.list');
+        this.router.transitionTo('groups.edit.settings', this.group.id);
       } catch (e) {
         console.error('Error while saving group', e);
         this.errorHandler.handle(e);
