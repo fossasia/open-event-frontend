@@ -19,9 +19,6 @@ export default class GroupView extends Component.extend(FormMixin) {
   }
 
   @action
-  shareEvent() {}
-
-  @action
   async follow() {
     const { group } = this;
     const follower = group.belongsTo('follower').value();
@@ -41,5 +38,9 @@ export default class GroupView extends Component.extend(FormMixin) {
     } catch (e) {
       this.errorHandler.handle(e);
     }
+
+  shareEvent(event) {
+    this.set('eventToShare', event);
+    this.set('isShareModalOpen', true);
   }
 }
