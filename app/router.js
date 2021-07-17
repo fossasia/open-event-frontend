@@ -73,6 +73,9 @@ Router.map(function() {
       this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
       this.route('edit-session', { path: '/session/:session_id/edit' });
     });
+    this.route('speaker-invite', function() {
+      this.route('view-session', { path: '/:invite_id/session' });
+    });
     this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');

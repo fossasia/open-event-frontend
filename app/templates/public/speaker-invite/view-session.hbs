@@ -31,35 +31,17 @@
   </div>
   <div class="column eight wide">
     <div class="d-flex wrap" style="justify-content: flex-end;">
-      {{#if (not-eq this.model.session.status 'withdrawn')}}
+        <button class="ui green button {{if this.device.isMobile 'fluid'}}"
+          {{action 'accept'}}>{{t 'Accept'}}</button>
+        {{#if this.device.isMobile}}
+          <div class="ui hidden fitted divider"></div>
+        {{/if}}
         <button class="ui red button {{if this.device.isMobile 'fluid'}}"
-          {{action 'openProposalWithdrawModal'}}>{{t 'Withdraw'}}</button>
+          {{action 'reject'}}>{{t 'Reject'}}</button>
         {{#if this.device.isMobile}}
           <div class="ui hidden fitted divider"></div>
         {{/if}}
-      {{/if}}
-      {{#each this.model.session.speakers as |speaker|}}
-        {{#if (eq (lowercase speaker.email) (lowercase this.authManager.currentUser.email))}}
-          <LinkTo
-            @route="public.cfs.edit-speaker"
-            @models={{array this.model.event.id speaker.id}}>
-            <button
-              class="ui blue button {{if this.device.isMobile 'fluid'}}">{{t 'Edit Speaker'}}</button>
-            {{#if this.device.isMobile}}
-              <div class="ui hidden fitted divider"></div>
-            {{/if}}
-          </LinkTo>
-        {{/if}}
-      {{/each}}
-      <LinkTo
-        @route="public.cfs.edit-session"
-        @models={{array this.model.session.event.id this.model.session.id}}>
-        <button
-          class="ui blue button {{if this.device.isMobile 'fluid'}}">{{t 'Edit Session'}}</button>
-        {{#if this.device.isMobile}}
-          <div class="ui hidden fitted divider"></div>
-        {{/if}}
-      </LinkTo>
+      
     </div>
   </div>
   <div class="column sixteen wide">
@@ -71,6 +53,7 @@
 <Events::View::Overview::SessionView
   @fields={{this.allFields}}
   @session={{this.model.session}} />
+
 <div class="ui grid container mb-4">
   <div class="weight-600 column five wide">{{t 'Speakers'}}</div>
     <div class="column eleven wide">
@@ -87,20 +70,3 @@
       {{/each}}
     </div>
 </div>
-
-<div class="ui grid container mb-4">
-  <div class="weight-600 column five wide">{{t 'Speakers Invited'}}</div>
-    <div class="column eleven wide">
-      {{#each this.model.session.speakerInvites as |speakerInvite|}}
-      {{#if (eq speakerInvite.status 'pending')}}
-        <div>{{speakerInvite.email}}</div>
-      {{/if}}
-      {{/each}}
-    </div>
-</div>
-
-<Modals::ProposalWithdrawModal
-  @isOpen={{this.isProposalWithdrawModalOpen}}
-  @proposalName={{this.model.session.title}}
-  @withdrawProposal={{action "withdrawProposal"}} />
-
