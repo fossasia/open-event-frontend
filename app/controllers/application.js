@@ -64,6 +64,7 @@ export default class ApplicationController extends Controller {
   setup() {
     if (this.routing.currentRouteName === 'index' && this.settings.startPgEnabled === 'event' && this.settings.startPgEventId) {
       this.router.replaceWith('public.index',  this.settings.startPgEventId);
+      location.replace(`/e/${this.settings.startPgEventId}`);
     }
   }
 }
