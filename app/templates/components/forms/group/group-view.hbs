@@ -40,17 +40,17 @@
           </div>
         {{/if}}
         {{#if this.contactGroup}}
-        <div class="d-flex content-center mt-4 flex-column items-center">
-          <h2>{{t 'Get in touch'}}</h2>
-          <div>
-            {{if @group.contactEmail}}
-              <a target="_blank" href="mailto:{{@group.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
-            {{/if}}
-            {{if @group.contactLink}}
-              <a target="_blank" href="{{@group.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
-            {{/if}}
+          <div class="d-flex content-center mt-4 flex-column items-center">
+            <h2>{{t 'Get in touch'}}</h2>
+            <div>
+              {{#if @group.contactEmail}}
+                <a target="_blank" href="mailto:{{@group.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+              {{/if}}
+              {{#if @group.contactLink}}
+                <a target="_blank" href="{{@group.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+              {{/if}}
+            </div>
           </div>
-        </div>
         {{/if}}
         {{#if this.upcomingEvents}}
           <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
