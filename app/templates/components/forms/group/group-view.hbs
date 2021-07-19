@@ -39,6 +39,22 @@
             {{sanitize @group.about}}
           </div>
         {{/if}}
+        {{#if this.contactGroup}}
+        <br/><br/>
+        <div class="d-flex content-center mt-8 flex-column items-center">
+          <h2>{{t 'Get in touch'}}</h2>
+          <div>
+            {{#if (and @group.contactEmail @group.contactLink)}}
+              <a target="_blank" href="mailto:{{@group.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+              <a target="_blank" href="{{@group.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+            {{else if @group.contactEmail}}
+              <a target="_blank" href="mailto:{{@group.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+            {{else if @group.contactLink}}
+              <a target="_blank" href="{{@group.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+            {{/if}}
+          </div>
+        </div>
+        {{/if}}
         {{#if this.upcomingEvents}}
           <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
           <div class="ui stackable three column grid">

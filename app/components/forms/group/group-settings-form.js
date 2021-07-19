@@ -4,11 +4,44 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
+import { protocolLessValidUrlPattern, validEmail } from 'open-event-frontend/utils/validators';
 
 @classic
 export default class GroupEventsForm extends Component.extend(FormMixin) {
 
   @service errorHandler;
+
+  getValidationRules() {
+    return {
+      inline : true,
+      delay  : false,
+      on     : 'blur',
+      fields : {
+        contactEmail: {
+          identifier : 'contactEmail',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : validEmail,
+              prompt : this.l10n.t('Please enter a valid email address')
+            }
+          ]
+        },
+        contactLink: {
+          identifier : 'contactLink',
+          optional   : true,
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : protocolLessValidUrlPattern,
+              prompt : this.l10n.t('Please enter a valid contact link')
+            }
+          ]
+        }
+      }
+    };
+  }
 
   @action
   addSocialLink(type) {

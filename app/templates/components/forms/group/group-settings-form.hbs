@@ -16,6 +16,17 @@
         @value={{@group.about}}
         @name="description" />
     </div>
+    <div class="field">
+      <label>{{t 'Contact Email'}}</label>
+      <Input type="text" name="contactEmail" @value={{@group.contactEmail}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Contact URL'}}</label>
+      <Widgets::Forms::LinkField
+        name="contactLink"
+        @value={{@group.contactLink}}
+        @onChange={{action (mut @group.contactLink)}} />
+    </div>
     <div class="fields">
       <div class="fifteen wide field">
         <Widgets::Forms::ImageUpload
