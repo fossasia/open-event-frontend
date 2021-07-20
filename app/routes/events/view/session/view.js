@@ -12,7 +12,7 @@ export default class ViewRoute extends Route.extend(AuthenticatedRouteMixin) {
     const eventDetails = this.modelFor('events.view');
     return {
       session: this.store.findRecord('session', params.session_id, {
-        include: 'session-type,speakers,track,event'
+        include: 'session-type,speakers,track,event,speaker-invites'
       }),
       form: await eventDetails.query('customForms', {
         'page[size]' : 0,
