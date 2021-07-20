@@ -10,6 +10,14 @@
   </div>
 
   <form class="ui form {{if this.isLoading 'loading'}}" >
+    <div class="field">
+      <label class="required">{{t 'Group name'}}</label>
+      <Input
+        type="text"
+        name="name"
+        placeholder={{t "Name"}}
+        @value={{@group.name}} />
+    </div>
     <div class="field mt-4">
       <label>{{t 'About'}}</label>
       <Widgets::Forms::RichTextEditor

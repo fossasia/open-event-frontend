@@ -6,12 +6,14 @@
       </h2>
     </div>
     <TabbedNavigation>
-      <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
-        {{t 'Events'}}
-      </LinkTo>
       <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
         {{t 'Settings'}}
       </LinkTo>
+      {{#if @group.id}}
+        <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
+          {{t 'Events'}}
+        </LinkTo>
+      {{/if}}
     </TabbedNavigation>
   </div>
 </div>
