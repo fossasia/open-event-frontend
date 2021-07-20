@@ -9,6 +9,15 @@
           {{/if}}
           <div>
             <h1 class="event name text-white">{{@group.name}}</h1>
+            <div>
+              <button class="{{if @group.follower 'red' 'blue'}} ui fluid button" {{action 'follow'}}>
+                {{#if @group.follower}}
+                  {{t 'Unfollow Group'}}            
+                {{else}}
+                  {{t 'Follow Group'}}            
+                {{/if}}                   
+              </button>
+             </div>
           </div>
         </div>
       </div>

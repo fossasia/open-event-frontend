@@ -11,6 +11,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     this.set('params', params);
     const filterOptions = [];
     return this.infinity.model('groups', {
+      include      : 'follower,user,events',
       filter       : filterOptions,
       perPage      : 10,
       startingPage : 1,

@@ -31,7 +31,7 @@ export default class ViewRoute extends Route.extend(AuthenticatedRouteMixin) {
         sort         : 'name'
       }),
       group: this.store.findRecord('group', params.group_id, {
-        include: 'events'
+        include: 'events,follower,user'
       })
     });
   }
