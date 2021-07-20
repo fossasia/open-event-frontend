@@ -10,7 +10,10 @@
   </div>
 
   <form class="ui form {{if this.isLoading 'loading'}}" >
-    <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    <div class="d-flex space-between items-center mt-2">
+      <h2>{{t 'Events'}}</h2>
+      <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    </div>
     <div class="mb-4">
       {{#if @group.events}}
         <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
@@ -23,7 +26,6 @@
     </div>
     <div class="mb-4">
       {{#if this.remainingEvents}}
-        <div class="ui hidden divider"></div>
         <h2 class="main-heading">{{t 'Upcoming Events'}}</h2>
         <div class="ui stackable three column grid">
           {{#each this.upcomingEvents as |event|}}
