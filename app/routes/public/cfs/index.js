@@ -53,6 +53,25 @@ export default class IndexRoute extends Route {
             val  : currentUser.email
           }
         ] });
+      const userSpeakerInvite = await eventDetails.query('speakerInvites', {
+        filter: [
+          {
+            and: [
+              {
+                name : 'email',
+                op   : 'eq',
+                val  : currentUser.email
+              },
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'pending'
+              }
+            ]
+          }
+        ],
+        include: 'event,session'
+      });
       const userSession = await eventDetails.query('sessions', {
         filter: [
           {
@@ -71,6 +90,7 @@ export default class IndexRoute extends Route {
         user         : currentUser,
         userSpeaker,
         userSession,
+        userSpeakerInvite,
         speakersCall : await eventDetails.get('speakersCall')
       };
     } else {
