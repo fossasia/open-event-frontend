@@ -1,7 +1,11 @@
 import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+
+  @service errorHandler;
 
   get columns() {
     return [
@@ -55,8 +59,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Status'),
         valuePath       : 'status',
+        extraValuePaths : ['id'],
         isSortable      : true,
-        headerComponent : 'tables/headers/sort'
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/admin/sales/cell-status-action',
+        options         : {
+          paymentStateMap: [{ 'name': 'paid', 'color': 'green' }, { 'name': 'due', 'color': 'red' }, { 'name': 'refunding', 'color': 'orange' }, { 'name': 'refunded', 'color': 'violet' }, { 'name': 'failed', 'color': 'black' }, { 'name': 'resolved', 'color': 'green' }]
+        },
+        actions: {
+          changeState: this.changeState.bind(this)
+        }
       },
       {
         name            : this.l10n.t('Action'),
@@ -66,4 +78,28 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
+
+  @action
+  async changeState(invoice_id, status) {
+    const invoice =  this.store.peekRecord('eventInvoice', invoice_id, { backgroundReload: false });
+    const oldState = invoice.status;
+    invoice.set('status', status);
+    this.set('isLoading', true);
+
+    try {
+      await invoice.save();
+      this.notify.success(this.l10n.t('Invoice state has been changed to {{action}} successfully.', {
+        action: status
+      }), {
+        id: 'invoice_state'
+      });
+    } catch (e) {
+      invoice.set('status', oldState);
+      this.errorHandler.handle(e);
+    } finally {
+      this.set('isLoading', false);
+    }
+  }
+
+
 }

@@ -17,6 +17,12 @@
         <LinkTo @route="account.billing.invoices.list" @model="refunded" class="item">
           {{t 'Refunded'}}
         </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="failed" class="item">
+          {{t 'Failed'}}
+        </LinkTo>
+        <LinkTo @route="account.billing.invoices.list" @model="resolved" class="item">
+          {{t 'Resolved'}}
+        </LinkTo>
       </TabbedNavigation>
     </div>
   </div>
