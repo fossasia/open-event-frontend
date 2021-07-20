@@ -8,7 +8,7 @@
         {{t 'Call for Speakers will softly closed on'}} {{general-date this.data.speakersCall.softEndsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
         {{t 'and finally closed on'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
       {{else}}
-        {{t 'Call for Speakers will closed on'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+        {{t 'Call for Speakers will close on'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}.
       {{/if}}
     </div>
   {{else}}
@@ -25,7 +25,16 @@
 <div class="ui divider"></div>
 {{sanitize this.data.speakersCall.announcement}}
 <div class="ui hidden divider"></div>
- <h3 class="ui header">{{t 'Submitted Sessions'}}</h3>
+<h3 class="ui header">{{t 'Submitted Sessions'}}</h3>
+  {{#if this.isNewSession}}
+    {{#if this.authManager.currentUser}}
+      <p>{{t 'You have not submitted any session.'}}</p>
+    {{else}}
+      <p>{{t 'You need to login to view and submit session(s).'}}</p>
+    {{/if}}
+  {{else}}
+    <p>{{t 'You have submitted the following session(s).'}}</p>
+  {{/if}}
   {{#unless this.isNewSpeaker}}
     {{#unless this.isNewSession}}
       <div class="ui very relaxed horizontal divided list">
@@ -41,14 +50,33 @@
       </div>
     {{/unless}}
   {{/unless}}
-<div class="ui hidden divider"></div>
-{{#if this.isNewSession}}
-  {{#if this.authManager.currentUser}}
-    <p>{{t 'You have not submitted any sessions.'}}</p>
+
+<h3 class="ui header">{{t 'Invitation for Sessions'}}</h3>
+  {{#if this.haveNoSpeakerInvite}}
+    {{#if this.authManager.currentUser}}
+      <p>{{t 'You have not been invited for any session.'}}</p>
+    {{else}}
+      <p>{{t 'You need to login to view and accept invite(s).'}}</p>
+    {{/if}}
   {{else}}
-    <p>{{t 'You need to login to submit and view sessions.'}}</p>
+    <p>{{t 'You have been invited for the following session(s).'}}</p>
   {{/if}}
-{{/if}}
+  {{#unless this.haveNoSpeakerInvite}}
+    <div class="ui very relaxed horizontal divided list">
+      {{#each this.userSpeakerInvite as |speakerInvite|}}
+        {{#if speakerInvite.session.id }}
+          <div class="item">
+              <button class="ui very tiny basic blue button" {{action 'viewInvitedSession' speakerInvite.id}}>
+                {{speakerInvite.session.title}}
+              </button>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/unless}}
+
+<div class="ui hidden divider"></div>
+
 {{#if (and this.data.speakersCall.isOpen this.isNewSpeaker)}}
   <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
     {{t 'Add Speaker Details'}}
