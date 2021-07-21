@@ -415,28 +415,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
               prompt : this.l10n.t('Please select your country')
             }
           ]
-        },
-        liveStreamUrl: {
-          identifier : 'live_stream_url',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
-        webinarUrl: {
-          identifier : 'webinar_url',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
         }
       }
     };
