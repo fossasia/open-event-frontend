@@ -2,7 +2,7 @@
   {{#unless this.device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
       <a class="image" href={{href-to 'groups.view' @group.id}}>
-        <Widgets::SafeImage @src={{"/images/landing.jpg"}} />
+        <Widgets::SafeImage @src={{if @group.bannerUrl  @group.bannerUrl "/images/group.png"}} />
       </a>
     </div>
   {{/unless}}
@@ -12,7 +12,15 @@
         <div class="header mb-1">
           <a href={{href-to 'groups.view' @group.id}} class="black-text">{{@group.name}}</a>
         </div>
+        <div class="meta mb-2 word-break">
+          {{sanitize this.about}}
+        </div>
         {{#if (not @followedGroups)}}
+          <LinkTo @route="groups.view" @model={{@group.id}}>
+            <UiPopup @content={{t "View"}} @class="ml-2 ui circular icon button compact white" @position="left center">
+                <i class="eye icon"></i>
+            </UiPopup>
+          </LinkTo>
           <LinkTo @route="groups.team" @model={{@group.id}}>
             <UiPopup @content={{t "Manage"}} @class="ml-2 ui circular icon button compact blue" @position="left center">
                 <i class="list icon"></i>
@@ -25,15 +33,6 @@
           </LinkTo>
           <button class="ml-2 ui circular icon button compact red" {{action (confirm (t "Are you sure you would like to delete this group?") (action @deleteGroup @group.id))}}><i class="trash icon"></i></button>
         {{/if}}
-      </div>
-      <div class="meta">
-        <span class="time">
-            {{general-date @group.modifieddAt 'date-time-short'}}
-        </span>
-        <br>
-        {{#each @group.events as |event|}}
-          <a href="{{event.url}}" target="_blank" rel="noopener"  class="ui blue basic compact button">{{event.name}} </a>
-        {{/each}}
       </div>
     </div>
   </div>
