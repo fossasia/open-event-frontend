@@ -259,6 +259,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
         await this.data.stream.save();
         const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
+          if (moderator.id) {
+            return moderator;
+          }
           return moderator.save();
         });
         const deleteModerators = this.deletedModerators.map(moderator => {
@@ -297,14 +300,17 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         });
         this.data.stream.moderators.pushObject(moderator);
       }
+      this.deletedModerators = this.deletedModerators.filter(moderator => moderator.email !== this.moderatorEmail);
       this.moderatorEmail = '';
     });
   }
 
   @action
   deleteModerator(moderator) {
-    this.deletedModerators.push(moderator);
     this.data.stream.moderators.removeObject(moderator);
+    if (moderator.id) {
+      this.deletedModerators.push(moderator);
+    }
   }
 
   async loadRecordings() {
