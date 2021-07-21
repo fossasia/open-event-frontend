@@ -30,6 +30,7 @@ export default class Session extends ModelBase.extend({
   linkedin      : attr('string'),
   instagram     : attr('string'),
   slidesUrl     : attr('string'),
+  slides        : attr(),
   videoUrl      : attr('string'),
   audioUrl      : attr('string'),
   signupUrl     : attr('string'),

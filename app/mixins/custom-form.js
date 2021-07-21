@@ -161,6 +161,15 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        fieldIdentifier : 'slides',
+        form            : 'session',
+        type            : 'file',
+        isRequired      : false,
+        isPublic        : true,
+        isIncluded      : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         fieldIdentifier : 'slidesUrl',
         form            : 'session',
         type            : 'file',
