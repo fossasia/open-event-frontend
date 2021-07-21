@@ -1,7 +1,18 @@
 {{#if (eq this.extraRecords.order.status 'completed')}}
-  {{#if this.extraRecords.isCheckedIn}}
-    <button class="tiny ui labeled icon negative button" {{action this.props.actions.toggleCheckIn this.record}}><i class="remove icon"></i>{{t 'Check-Out'}}</button>
-  {{else}}
-    <button class="tiny ui labeled icon positive button" {{action this.props.actions.toggleCheckIn this.record}}><i class="checkmark icon"></i>{{t 'Check‑In'}}</button>
-  {{/if}}
+  <UiDropdown @class="d-flex items-center pl-4 fluid multiple selection">
+    <div class="default">
+      {{t 'Checkin'}}
+    </div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each this.allDates as |date|}}
+        <UiCheckbox 
+          @class="item"
+          @label={{date}}
+          @checked={{if (includes this.currentlyChecked date) true}}
+          @onChange={{action this.props.actions.toggleCheckIn this.record date (includes this.currentlyChecked date)}}
+        />
+      {{/each}}
+    </div>
+  </UiDropdown>
 {{/if}}
