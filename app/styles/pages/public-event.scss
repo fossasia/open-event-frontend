@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .public-event {
 
   margin-top: -$page-top-margin;
@@ -8,7 +10,7 @@
     &::before {
       content: '';
       display: block;
-      padding-top: ($height / $width) * 100%;
+      padding-top: (math.div($height, $width)) * 100%;
       width: 100%;
     }
 

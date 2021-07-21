@@ -116,6 +116,32 @@
         @data={{this.data}} />
     {{/if}}
   {{/if}}
+
+  {{#if this.isCfsPage}}
+    <div class="ui divider"></div>
+    <div class="ui header">{{t 'Speaker Invites'}}</div>
+    <div class="ui action input">
+      <Input
+        @type="email"
+        @id="email"
+        @value={{this.speakerInviteEmail}}
+        placeholder={{t 'Add Email of Speakers'}} />
+      <button class="ui blue right labeled icon button" style="font-size: 1rem;" type="button" {{action "addSpeakerInvite"}}>
+        <i class="add icon"></i>
+        {{t 'Add'}}
+      </button>
+    </div>
+    <div class="mt-2">
+      {{#each this.data.session.speakerInvites as |speakerInvite|}}
+        {{#if (eq speakerInvite.status 'pending')}}
+          <span class="ui label transition visible" style="display: inline-block !important;">{{speakerInvite.email}}
+            <i role="button" class="delete icon" {{action "deleteSpeakerInvite" speakerInvite}}></i>
+          </span>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/if}}
+
   <button type="submit" class="ui teal submit button update-changes mt-4">
     {{t 'Submit'}}
   </button>

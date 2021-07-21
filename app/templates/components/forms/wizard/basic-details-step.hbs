@@ -71,19 +71,8 @@
     </div>
   {{/if}}
   {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Hybrid'))}}
-    <div class="{{unless this.device.isMobile 'six wide'}} field">
-      <label>{{t "Live Stream URL"}}</label>
-      <Widgets::Forms::LinkField
-        @inputId="live_stream_url"
-        @value={{this.data.event.liveStreamUrl}}
-        @onChange={{action (mut this.data.event.liveStreamUrl)}} />
-    </div>
-    <div class="{{unless this.device.isMobile 'six wide'}} field">
-      <label>{{t "Webinar URL"}}</label>
-      <Widgets::Forms::LinkField
-        @inputId="webinar_url"
-        @value={{this.data.event.webinarUrl}}
-        @onChange={{action (mut this.data.event.webinarUrl)}} />
+    <div class="mb-2 mt-2">
+      {{t 'You can add video meeting rooms or streams after you created a draft of the event.'}}
     </div>
   {{/if}}
  <br>
