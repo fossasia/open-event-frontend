@@ -21,14 +21,19 @@
                 <i class="eye icon"></i>
             </UiPopup>
           </LinkTo>
-          <LinkTo @route="groups.team" @model={{@group.id}}>
-            <UiPopup @content={{t "Manage"}} @class="ml-2 ui circular icon button compact blue" @position="left center">
-                <i class="list icon"></i>
+          <LinkTo @route="groups.edit.events" @model={{@group.id}}>
+            <UiPopup @content={{t "Events"}} @class="ml-2 ui circular icon button compact blue" @position="left center">
+                <i class="calendar check outline icon"></i>
             </UiPopup>
           </LinkTo>
-          <LinkTo @route="groups.edit.events" @model={{@group.id}}>
+          <LinkTo @route="groups.edit.settings" @model={{@group.id}}>
             <UiPopup @content={{t "Edit"}} @class="ml-2 ui circular icon button compact positive" @position="left center">
                 <i class="edit icon"></i>
+            </UiPopup>
+          </LinkTo>
+          <LinkTo @route="groups.team" @model={{@group.id}}>
+            <UiPopup @content={{t "Team Members"}} @class="ml-2 ui circular icon button compact blue" @position="left center">
+                <i class="users icon"></i>
             </UiPopup>
           </LinkTo>
           <button class="ml-2 ui circular icon button compact red" {{action (confirm (t "Are you sure you would like to delete this group?") (action @deleteGroup @group.id))}}><i class="trash icon"></i></button>
