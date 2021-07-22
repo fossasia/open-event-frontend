@@ -25,6 +25,8 @@ export default class NewController extends Controller {
         order.set('status', 'completed');
       } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite') {
         order.set('status', 'placed');
+      } else if (data.event.get('isOneclickSignupEnabled')) {
+        order.set('status', 'completed');
       } else {
         order.set('status', 'pending');
       }
