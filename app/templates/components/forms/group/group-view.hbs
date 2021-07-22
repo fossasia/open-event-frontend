@@ -39,17 +39,12 @@
             {{sanitize @group.about}}
           </div>
         {{/if}}
-        {{#if this.contactGroup}}
-          <div class="d-flex content-center mt-4 flex-column items-center">
-            <h2>{{t 'Get in touch'}}</h2>
-            <div>
-              {{#if @group.contactEmail}}
-                <a target="_blank" href="mailto:{{@group.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
-              {{/if}}
-              {{#if @group.contactLink}}
-                <a target="_blank" href="{{@group.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
-              {{/if}}
-            </div>
+        {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+          <div class="mt-4">
+            <button class="ui mini labeled red icon floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+              <i class="envelope icon"></i>
+              {{t 'Contact Organizer'}}
+            </button>
           </div>
         {{/if}}
         {{#if this.upcomingEvents}}
@@ -73,3 +68,9 @@
   </div>
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
 </div>
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.group}}
+    @group={{true}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}

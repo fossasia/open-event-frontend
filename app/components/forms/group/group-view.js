@@ -23,9 +23,4 @@ export default class GroupView extends Component.extend(FormMixin) {
     this.set('eventToShare', event);
     this.set('isShareModalOpen', true);
   }
-
-  @computed('group')
-  get contactGroup() {
-    return this.session.isAuthenticated && (this.group.contactEmail || this.group.contactLink);
-  }
 }

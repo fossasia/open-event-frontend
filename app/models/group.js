@@ -10,24 +10,22 @@ export default class Group extends ModelBase.extend({
   fastboot : service(),
 
 
-  name         : attr('string'),
-  about        : attr('string'),
-  logoUrl      : attr('string'),
-  bannerUrl    : attr('string'),
-  contactEmail : attr('string'),
-  contactLink  : attr('string'),
-  createdAt    : attr('moment', { readOnly: true }),
-  modifiedAt   : attr('moment'),
-  deletedAt    : attr('moment'),
-  socialLinks  : attr(),
+  name        : attr('string'),
+  about       : attr('string'),
+  logoUrl     : attr('string'),
+  bannerUrl   : attr('string'),
+  createdAt   : attr('moment', { readOnly: true }),
+  modifiedAt  : attr('moment'),
+  deletedAt   : attr('moment'),
+  socialLinks : attr(),
   /**
    * Relationships
    */
-  user         : belongsTo('user'),
-  events       : hasMany('event'),
-  roles        : hasMany('users-groups-role'),
-  follower     : belongsTo('user-follow-group', { inverse: 'group' }),
-  followers    : hasMany('user-follow-group'),
+  user        : belongsTo('user'),
+  events      : hasMany('event'),
+  roles       : hasMany('users-groups-role'),
+  follower    : belongsTo('user-follow-group', { inverse: 'group' }),
+  followers   : hasMany('user-follow-group'),
 
   url: computed('identifier', function() {
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
