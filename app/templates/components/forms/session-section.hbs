@@ -45,13 +45,13 @@
       {{/if}}
       {{#if (and (eq field.type 'file') (eq field.fieldIdentifier 'slides'))}}
           <div class="flex flex-column">
-              <UiPopup @content={{t "Add Session document"}} @class="ui compact icon blue circular button" style="margin-left: 1rem !important;" @click={{action 'addSessionDocument'}}>
-                <i class="plus icon"></i>
-              </UiPopup>
+            <UiPopup @content={{t "Add Session document"}} @class="ui compact icon blue circular button" @click={{action 'addSessionDocument'}}>
+              <i class="plus icon"></i>
+            </UiPopup>
             {{#if this.data.session.slides}}
               {{#each this.data.session.slides as |slide| }}
-                <div class="ui grid mt-2 mb-2">
-                  <div class="field ui input">
+                <div class="ui d-flex items-center mt-2 mb-2">
+                  <div class="field ui m-0 input mr-2 w-30">
                     <Input type="text" placeholder={{t "Document Name"}}  @value={{slide.name}}/>
                   </div>
                   <Widgets::Forms::FileUpload
@@ -61,11 +61,11 @@
                     @icon="file"
                     @hint={{t "Select a file"}}
                     @maxSizeInKb={{this.settings.slideSize}} />
-                    <div class="ui icon buttons">
-                      <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action 'removeDocument' slide}} @position="top center">
-                        <i class="minus icon"></i>
-                      </UiPopup>
-                    </div>
+                  <div class="ui icon buttons ml-2">
+                    <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action 'removeDocument' slide}} @position="top center">
+                      <i class="minus icon"></i>
+                    </UiPopup>
+                  </div>
                 </div>
               {{/each}}
             {{/if}}
