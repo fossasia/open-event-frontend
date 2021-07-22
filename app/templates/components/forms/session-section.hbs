@@ -52,7 +52,7 @@
               {{#each this.data.session.slides as |slide| }}
                 <div class="ui grid mt-2 mb-2">
                   <div class="field ui input">
-                    <Input type="text" @id="slide" placeholder={{t "Document Name"}}  @value={{slide.name}}/>
+                    <Input type="text" placeholder={{t "Document Name"}}  @value={{slide.name}}/>
                   </div>
                   <Widgets::Forms::FileUpload
                     @fileUrl={{slide.link}}

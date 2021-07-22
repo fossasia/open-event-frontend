@@ -13,7 +13,11 @@ export default Component.extend(FormMixin, {
       this.data.session.slides = this.data.session.slides.filter(dl => dl !== document);
     },
     addSessionDocument() {
-      this.data.session.slides = [...this.data.session.slides, { name: '', link: '' }];
+      if (this.data.session.slides) {
+        this.data.session.slides = [...this.data.session.slides, { name: '', link: '' }];
+      } else {
+        this.data.session.slides = [{ name: '', link: '' }];
+      }
     }
   }
 
