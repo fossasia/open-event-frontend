@@ -41,6 +41,7 @@ export const SESSION_FORM_FIELDS = {
   language      : tn.t('Language'),
   level         : tn.t('Level'),
   slidesUrl     : tn.t('Slides'),
+  slides        : tn.t('Test Slide'),
   videoUrl      : tn.t('Video'),
   audioUrl      : tn.t('Audio'),
   website       : tn.t('Website'),
