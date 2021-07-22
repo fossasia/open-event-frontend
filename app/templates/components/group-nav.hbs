@@ -13,12 +13,25 @@
       </a>
     </div>
     <TabbedNavigation>
-      <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
-        {{t 'Events'}}
-      </LinkTo>
-      <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
-        {{t 'Settings'}}
-      </LinkTo>
+      {{#if @createPage}}
+        <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
+          {{t 'Settings'}}
+        </LinkTo>
+        {{#if @group.id}}
+          <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
+            {{t 'Events'}}
+          </LinkTo>
+        {{/if}}
+      {{else}}
+        {{#if @group.id}}
+          <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
+            {{t 'Events'}}
+          </LinkTo>
+        {{/if}}
+        <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
+          {{t 'Settings'}}
+        </LinkTo>
+      {{/if}}
     </TabbedNavigation>
   </div>
 </div>
