@@ -24,6 +24,9 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
     if (this.savedEvents.includes(event.id) && eventIds.includes(event.id)) {
       event.isAnnounced = true;
       this.eventToBeUpdate = this.eventToBeUpdate.filter(event => event.identifier === event.id);
+    } else {
+      event.isAnnounced = false;
+      this.eventToBeUpdate.push(event);
     }
     this.group.events.pushObject(event);
   }
@@ -40,6 +43,11 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
   @action
   async announceEvent(event) {
     this.set('isLoading', true);
+    try {
+      await this.confirm.prompt(this.l10n.t('Do you want to announce event') + ': ' + event.name + '?');
+    } catch {
+      return;
+    }
     this.loader.load(`/groups/${this.group.id}/events/${event.identifier}/announce`)
       .then(() => {
         event.isAnnounced = true;
