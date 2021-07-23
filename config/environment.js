@@ -89,11 +89,17 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    refreshAccessTokens     : false,
-    serverTokenEndpoint     : `${ENV.APP.apiHost}/auth/session`,
-    tokenPropertyName       : 'access_token',
-    authorizationPrefix     : 'JWT ',
-    authorizationHeaderName : 'Authorization'
+    tokenDataPropertyName            : 'tokenData', // Key in session to store token data
+    refreshAccessTokens              : true,
+    serverTokenEndpoint              : `${ENV.APP.apiHost}/auth/session`,
+    tokenPropertyName                : 'access_token',
+    authorizationPrefix              : 'JWT ',
+    authorizationHeaderName          : 'Authorization',
+    refreshLeeway                    : 120, // refresh 2 minutes (120 seconds) before expiration
+    tokenExpirationInvalidateSession : true, // Enables session invalidation on token expiration
+    serverTokenRefreshEndpoint       : `${ENV.APP.apiHost}/v1/auth/token/refresh`, // Server endpoint to send refresh request
+    refreshTokenPropertyName         : 'refresh_token', // Key in server response that contains the refresh token
+    tokenExpireName                  : 'exp' // Field containing token expiration
   };
 
   ENV['g-map'] = {
