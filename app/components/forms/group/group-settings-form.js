@@ -10,6 +10,25 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
 
   @service errorHandler;
 
+  getValidationRules() {
+    return {
+      inline : true,
+      delay  : false,
+      on     : 'blur',
+
+      fields: {
+        name: {
+          rules: [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter a name')
+            }
+          ]
+        }
+      }
+    };
+  }
+
   @action
   addSocialLink(type) {
     const { group } = this;
@@ -45,7 +64,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
           {
             id: 'group_save'
           });
-        this.router.transitionTo('groups.list');
+        this.router.transitionTo('groups.edit.events', this.group.id);
       } catch (e) {
         console.error('Error while saving group', e);
         this.errorHandler.handle(e);
