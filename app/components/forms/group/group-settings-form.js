@@ -35,6 +35,11 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
     this.onValid(async() => {
       try {
         this.loading = true;
+        /* For the first save throws an error -> field may not be null, as social links are added in group-settings-form
+        Hence, passing an empty array. */
+        if (!this.group.socialLinks) {
+          this.group.socialLinks = [];
+        }
         await this.group.save();
         this.notify.success(this.l10n.t('Your group settings have been saved'),
           {
