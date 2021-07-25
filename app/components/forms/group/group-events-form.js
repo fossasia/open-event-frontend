@@ -53,6 +53,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
       };
       await this.confirm.prompt(heading, options);
     } catch {
+      this.set('isLoading', false);
       return;
     }
     this.loader.load(`/groups/${this.group.id}/events/${event.identifier}/announce`)
