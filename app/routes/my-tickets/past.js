@@ -15,7 +15,6 @@ export default class PastRoute extends Route {
 
   model(params) {
     this.set('params', params);
-    
     const filterOptions = [];
     if (params.ticket_status === 'completed') {
       filterOptions.push(
