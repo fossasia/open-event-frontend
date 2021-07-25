@@ -32,7 +32,7 @@ export default class IndexRoute extends Route {
      - CFS is public and a valid hash is entered
      - CFS is private and a valid hash is entered
     */
-    if (!speakersCall.announcement) {
+    if (!eventDetails.isCfsEnabled) {
       this.transitionTo('public.speakers', eventDetails.identifier);
       return;
     }
