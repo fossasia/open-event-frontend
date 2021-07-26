@@ -32,7 +32,7 @@
             {{/if}}
           {{/if}}
           {{#if @showFavButton}}
-            <div class="self-center" role="button" style="width: 25px;" onclick={{prevent-bubbling (action this.favourite)}}>
+            <div class="self-center" role="button" style="width: 25px;" onclick={{prevent-bubbling (action this.favourite)}} data-tooltip="{{t "Add to My Schedule"}}">
               <i class="ui {{if @session.favourite 'check' 'outline'}} circle icon"></i>
             </div>
           {{/if}}
@@ -40,7 +40,7 @@
             <div class="ui black circular label">{{@session.favouriteCount}}</div>
           </div>
           {{#unless @hideSessionLink}}
-            <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
+            <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="external alternate icon"></i></a>
           {{/unless}}
         </div>
       </h3>
