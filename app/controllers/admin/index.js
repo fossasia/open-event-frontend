@@ -14,10 +14,9 @@ serverVersion = '';
 
 @action
 async setup() {
-  const fVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-frontend/git/refs/heads/development', { isExternal: true });
+  const fVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-frontend/git/refs/heads/master', { isExternal: true });
   this.frontendVersion = fVersion.object?.sha;
-  const bVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-server/git/refs/heads/development', { isExternal: true });
+  const bVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-server/git/refs/heads/master', { isExternal: true });
   this.serverVersion = bVersion.object?.sha;
 }
 }
-
