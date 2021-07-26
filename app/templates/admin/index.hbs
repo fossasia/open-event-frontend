@@ -1,4 +1,11 @@
-<div class="ui stackable grid" {{did-insert this.setup}}>
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="center aligned column">
+      <h5 class="ui sub header">
+        {{t 'Version 1.0.0-alpha.10'}}
+      </h5>
+    </div>
+  </div>
   <div class="row">
     <div class="five wide column">
       <div class="ui center aligned fluid segment">
@@ -207,13 +214,4 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="center aligned column">
-      <h5 class="ui sub header">
-        {{t 'Frontend Version: '}}<a href="https://github.com/fossasia/open-event-frontend/tree/{{this.frontendVersion}}" target="_blank" rel="noopener">{{this.frontendVersion}}</a> <br>
-        {{t 'Server Version: '}}<a href="https://github.com/fossasia/open-event-server/tree/{{this.serverVersion}}" target="_blank" rel="noopener">{{this.serverVersion}}</a>
-      </h5>
-    </div>
-  </div>
-  
 </div>
