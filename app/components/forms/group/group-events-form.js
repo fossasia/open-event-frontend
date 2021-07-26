@@ -12,25 +12,6 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
 
   @service errorHandler;
 
-  getValidationRules() {
-    return {
-      inline : true,
-      delay  : false,
-      on     : 'blur',
-
-      fields: {
-        name: {
-          rules: [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter a name')
-            }
-          ]
-        }
-      }
-    };
-  }
-
   @action
   addEvent(event) {
     this.group.events.pushObject(event);
@@ -57,7 +38,10 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
   }
 
   @action
-  shareEvent() {}
+  shareEvent(event) {
+    this.set('eventToShare', event);
+    this.set('isShareModalOpen', true);
+  }
 
   @action
   submit(event) {

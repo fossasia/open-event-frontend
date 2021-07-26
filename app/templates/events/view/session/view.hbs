@@ -46,3 +46,14 @@
       {{/each}}
     </div>
 </div>
+
+{{#if this.model.session.speakerInvites}}
+  <div class="ui grid container mb-4">
+    <div class="weight-600 column five wide">{{t 'Speakers Invited'}}</div>
+      <div class="column eleven wide">
+        {{#each this.model.session.speakerInvites as |speakerInvite|}}
+          <div>{{speakerInvite.email}}</div>
+        {{/each}}
+      </div>
+  </div>
+{{/if}}

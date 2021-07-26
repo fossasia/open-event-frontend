@@ -1,6 +1,6 @@
 <div class="ui fluid public-event ui relaxed grid mt-0 pt-0">
   <div class="sixteen wide column lead">
-    <Widgets::SafeImage class="background" @src={{if @group.bannerUrl @group.bannerUrl "/images/landing.jpg"}} />
+    <Widgets::SafeImage class="background" @src={{if @group.bannerUrl @group.bannerUrl "/images/group.png"}} />
     <div class="content">
       <div class="ui container">
         <div class="ui info d-flex">
@@ -14,9 +14,9 @@
       </div>
     </div>
   </div>
-  <div style="margin: auto;" class="mb-4 twelve wide column container">
+  <div style="margin: auto;" class="mb-4 sixteen wide column container">
     {{#if @group.events}}
-      <div class="social-icons d-flex mt-4 mb-8 wrap" style="justify-content: center;">
+      <div class="social-icons d-flex mt-4 mb-4 wrap" style="justify-content: center;">
         {{#each @group.socialLinks as |socialLink|}}
             {{#if (eq socialLink.name 'website')}}
                 <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
@@ -33,25 +33,25 @@
             {{/if}}
         {{/each}}
       </div>
-      {{#if @group.about}}
-        <br>
-        <div class="description">
-          {{sanitize @group.about}}
-        </div>
-        <br>
-      {{/if}}
-      {{#if this.upcomingEvents}}
-        <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
-        <div class="ui stackable three column grid">
-          {{#each this.upcomingEvents as |event|}}
-            <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
-          {{/each}}
-        </div>
+      <div class="ui container">
+        {{#if @group.about}}
+          <div class="description">
+            {{sanitize @group.about}}
+          </div>
+        {{/if}}
+        {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+          <div class="mt-4">
+            <button class="ui mini labeled red icon floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+              <i class="envelope icon"></i>
+              {{t 'Contact Organizer'}}
+            </button>
+          </div>
+        {{/if}}
         {{#if this.upcomingEvents}}
           <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
           <div class="ui stackable three column grid">
             {{#each this.upcomingEvents as |event|}}
-              <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+              <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} />
             {{/each}}
           </div>
         {{/if}}
@@ -59,19 +59,18 @@
           <h2 class="main-heading mb-4">{{t 'Past Events'}}</h2>
           <div class="ui stackable three column grid">
             {{#each this.pastEvents as |event|}}
-              <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+              <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} />
             {{/each}}
           </div>
         {{/if}}
-      {{/if}}
-      {{#if this.pastEvents}}
-        <h2 class="main-heading mb-4">{{t 'Past Events'}}</h2>
-        <div class="ui stackable three column grid">
-          {{#each this.pastEvents as |event|}}
-            <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
-          {{/each}}
-        </div>
-      {{/if}}
+      </div>
     {{/if}}
   </div>
+  <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
 </div>
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.group}}
+    @group={{true}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}
