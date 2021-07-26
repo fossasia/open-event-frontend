@@ -1,9 +1,16 @@
 <div class="mobile hidden row">
   <div class="ui menu">
-    <LinkTo
-      @route="index" class="header item" @activeClass="">
-      <h3>{{this.settings.appName}}</h3>
-    </LinkTo>
+    {{#if (eq this.settings.startPgEnabled 'event')}}
+      <LinkTo
+        @route="public.index" class="header item" @model={{this.settings.startPgEventId}} @activeClass="">
+        <h3>{{this.settings.appName}}</h3>
+      </LinkTo>
+    {{else}}
+      <LinkTo
+        @route="index" class="header item" @activeClass="">
+        <h3>{{this.settings.appName}}</h3>
+      </LinkTo>
+    {{/if}}
     <div class="right menu nav-bar">
     {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
       <div class="search-bar d-flex items-center space-between m-2 p-2">
