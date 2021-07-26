@@ -10,11 +10,11 @@ export default class SessionDocuments extends Component {
 @tracked currDoc = this.args.session?.slides[0].link;
 
   @action
-  refreshSlide() {
-    if (document.getElementById('googleFrame')) {
-      document.getElementById('googleFrame').src += '';
-    }
+refreshSlide() {
+  if (document.getElementById('googleFrame')) {
+    document.getElementById('googleFrame').src += '';
   }
+}
 
   @action
   selectedDocument(doc) {
