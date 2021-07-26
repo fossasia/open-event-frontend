@@ -6,17 +6,18 @@ import { tracked } from '@glimmer/tracking';
 @classic
 export default class IndexController extends Controller {
 
-@tracked
-frontendVersion = '';
+  @tracked
+  frontendVersion = '';
 
-@tracked
-serverVersion = '';
+  @tracked
+  serverVersion = '';
 
-@action
-async setup() {
-  const fVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-frontend/git/refs/heads/master', { isExternal: true });
-  this.frontendVersion = fVersion.object?.sha;
-  const bVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-server/git/refs/heads/master', { isExternal: true });
-  this.serverVersion = bVersion.object?.sha;
+  @action
+  async setup() {
+    const fVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-frontend/git/refs/heads/master', { isExternal: true });
+    this.frontendVersion = fVersion.object?.sha;
+    const bVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-server/git/refs/heads/master', { isExternal: true });
+    this.serverVersion = bVersion.object?.sha;
+  }
 }
-}
+
