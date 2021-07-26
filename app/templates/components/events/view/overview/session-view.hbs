@@ -13,6 +13,12 @@
             </div>     
             {{#if field.isLongText}}
                 <div class="column eleven wide">{{sanitize (get @session field.fieldIdentifier)}}</div>
+            {{else if (eq field.fieldIdentifier 'slides')}}
+                <div class="column eleven wide">
+                  {{#each @session.slides as |document|}}
+                     <a href="{{ document.link }}" target="_blank" rel="noopener" class="mr-4"> {{document.name}}</a>
+                  {{/each}}   
+                </div>
             {{else if (eq field.fieldIdentifier 'language')}}
                 <div class="column eleven wide">{{@session.language}}</div>
             {{else if (eq field.fieldIdentifier 'track')}}
