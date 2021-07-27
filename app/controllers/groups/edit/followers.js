@@ -11,9 +11,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     get followersColumn() {
       return [
         {
-          name          : this.l10n.t('User Image'),
-          valuePath     : 'user.avatarUrl',
-          cellComponent : 'ui-table/cell/user-image'
+          name            : this.l10n.t('User Image'),
+          valuePath       : 'user.avatarUrl',
+          extraValuePaths : ['user'],
+          cellComponent   : 'ui-table/cell/cell-user-image'
         },
         {
           name      : this.l10n.t('Public Profile Name'),
