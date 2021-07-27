@@ -4,8 +4,9 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 @classic
 export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
-  titleToken() {
-    return this.l10n.t('Followers');
+  titleToken(model) {
+    const groupTitle = model.group.name;
+    return groupTitle.concat(' - Followers');
   }
 
   async model(params) {
@@ -19,7 +20,8 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
     const group = await this.store.findRecord('group', params.group_id);
     const followers = await this.asArray(group.query('followers', queryString));
     return {
-      followers
+      followers,
+      group
     };
   }
 }
