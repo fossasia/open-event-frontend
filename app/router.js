@@ -185,6 +185,7 @@ Router.map(function() {
     this.route('edit', { path: '/edit' }, function() {
       this.route('events', { path: '/:group_id/events' });
       this.route('settings', { path: '/:group_id/settings' });
+      this.route('followers', { path: '/:group_id/followers' });
     });
   });
   this.route('my-tickets', function() {
