@@ -4,9 +4,8 @@ import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 
 @classic
 export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
-  titleToken(model) {
-    const groupTitle = model.group.name;
-    return groupTitle.concat(' - Followers');
+  titleToken() {
+    return this.l10n.t('Followers');
   }
 
   async model(params) {
