@@ -95,6 +95,24 @@ export default class PublicController extends Controller {
         await follower.destroyRecord();
         this.notify.info(this.l10n.t('You have successfully unfollowed this group.'));
       } else {
+        try {
+          const heading = this.l10n.t('By following this group you accept that:');
+          const content =  this.l10n.t('1. You will receive announcement emails for events of this group.') + '<br/>'
+            + this.l10n.t('2. You share your email with the group owners and organizers.') + '<br/>'
+            + this.l10n.t('3. All group members will be able to see your public profile image and name.') + '<br/><br/>'
+            + this.l10n.t('Do you want to proceed?');
+
+          const options = {
+            denyText     : 'Cancel',
+            denyColor    : 'red',
+            approveText  : 'Yes, follow this group',
+            approveColor : 'green',
+            extra        : content
+          };
+          await this.confirm.prompt(heading, options);
+        } catch {
+          return;
+        }
         const followGroup = await this.store.createRecord('user-follow-group', {
           group
         });
