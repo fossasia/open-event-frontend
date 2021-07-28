@@ -19,106 +19,154 @@ export default class GroupsRoute extends Route {
    * @private
    */
 
-  _loadEvents(params) {
+  _loadGroups(params) {
     const filterOptions = [
       {
-        name : 'state',
-        op   : 'eq',
-        val  : 'published'
+        name : 'events',
+        op   : 'any',
+        val  : {
+          name : 'state',
+          op   : 'eq',
+          val  : 'published'
+        }
       },
       {
-        name : 'privacy',
-        op   : 'eq',
-        val  : 'public'
+        name : 'events',
+        op   : 'any',
+        val  : {
+          name : 'privacy',
+          op   : 'eq',
+          val  : 'public'
+        }
       }
     ];
     const onlineFilter = {
       and: [
         {
-          name : 'online',
-          op   : 'eq',
-          val  : true
+          name : 'events',
+          op   : 'any',
+          val  : {
+            name : 'online',
+            op   : 'eq',
+            val  : true
+          }
         },
         {
-          name : 'location_name',
-          op   : 'eq',
-          val  : null
+          name : 'events',
+          op   : 'any',
+          val  : {
+            name : 'location_name',
+            op   : 'eq',
+            val  : null
+          }
         }
       ]
     };
     const locationFilter = {
       and: [
         {
-          name : 'location_name',
-          op   : params.location ? 'ilike' : 'ne',
-          val  : params.location ? `%${params.location}%` : null
+          name : 'events',
+          op   : 'any',
+          val  : {
+            name : 'location_name',
+            op   : params.location ? 'ilike' : 'ne',
+            val  : params.location ? `%${params.location}%` : null
+          }
         },
         {
-          name : 'online',
-          op   : 'eq',
-          val  : false
+          name : 'events',
+          op   : 'any',
+          val  : {
+            name : 'online',
+            op   : 'eq',
+            val  : false
+          }
         }
       ]
     };
     const mixedFilter = {
       and: [
         {
-          name : 'online',
-          op   : 'eq',
-          val  : true
+          name : 'events',
+          op   : 'any',
+          val  : {
+            name : 'online',
+            op   : 'eq',
+            val  : true
+          }
         },
         {
-          name : 'location_name',
-          op   : params.location ? 'ilike' : 'ne',
-          val  : params.location ? `%${params.location}%` : null
+          name : 'events',
+          op   : 'any',
+          val  : {
+            name : 'location_name',
+            op   : params.location ? 'ilike' : 'ne',
+            val  : params.location ? `%${params.location}%` : null
+          }
         }
       ]
     };
 
     if (params.category) {
       filterOptions.push({
-        name : 'event-topic',
-        op   : 'has',
+        name : 'events',
+        op   : 'any',
         val  : {
-          name : 'name',
-          op   : 'eq',
-          val  : params.category
+          name : 'event-topic',
+          op   : 'has',
+          val  : {
+            name : 'name',
+            op   : 'eq',
+            val  : params.category
+          }
         }
       });
     }
 
     if (params.sub_category) {
       filterOptions.push({
-        name : 'event-sub-topic',
-        op   : 'has',
+        name : 'events',
+        op   : 'any',
         val  : {
-          name : 'slug',
-          op   : 'eq',
-          val  : params.sub_category
+          name : 'event-sub-topic',
+          op   : 'has',
+          val  : {
+            name : 'slug',
+            op   : 'eq',
+            val  : params.sub_category
+          }
         }
       });
     }
 
     if (params.event_type) {
       filterOptions.push({
-        name : 'event-type',
-        op   : 'has',
+        name : 'events',
+        op   : 'any',
         val  : {
-          name : 'name',
-          op   : 'eq',
-          val  : params.event_type
+          name : 'event-type',
+          op   : 'has',
+          val  : {
+            name : 'name',
+            op   : 'eq',
+            val  : params.event_type
+          }
         }
       });
     }
 
     if (params.ticket_type) {
       filterOptions.push({
-        name : 'tickets',
+        name : 'events',
         op   : 'any',
         val  : {
-          name : 'type',
-          op   : 'eq',
-          val  : params.ticket_type
+          name : 'tickets',
+          op   : 'any',
+          val  : {
+            name : 'type',
+            op   : 'eq',
+            val  : params.ticket_type
+          }
         }
       });
     }
@@ -139,24 +187,36 @@ export default class GroupsRoute extends Route {
         });
       } else {
         filterOptions.push({
-          name : 'location_name',
-          op   : 'ilike',
-          val  : `%${params.location}%`
+          name : 'events',
+          op   : 'any',
+          val  : {
+            name : 'location_name',
+            op   : 'ilike',
+            val  : `%${params.location}%`
+          }
         });
       }
     }
     if (params.has_image) {
       filterOptions.push({
-        name : 'original-image-url',
-        op   : 'ne',
-        val  : null
+        name : 'events',
+        op   : 'any',
+        val  : {
+          name : 'original-image-url',
+          op   : 'ne',
+          val  : null
+        }
       });
     }
     if (params.has_logo) {
       filterOptions.push({
-        name : 'logo-url',
-        op   : 'ne',
-        val  : null
+        name : 'events',
+        op   : 'any',
+        val  : {
+          name : 'logo-url',
+          op   : 'ne',
+          val  : null
+        }
       });
     }
     if (params.name) {
@@ -169,9 +229,13 @@ export default class GroupsRoute extends Route {
 
     if (params.cfs) {
       filterOptions.push({
-        name : 'is_sessions_speakers_enabled',
-        op   : 'eq',
-        val  : params.cfs === 'open'
+        name : 'events',
+        op   : 'any',
+        val  : {
+          name : 'is_sessions_speakers_enabled',
+          op   : 'eq',
+          val  : params.cfs === 'open'
+        }
       });
     }
 
@@ -182,42 +246,66 @@ export default class GroupsRoute extends Route {
             {
               and: [
                 {
-                  name : 'starts-at',
-                  op   : 'ge',
-                  val  : params.start_date
+                  name : 'events',
+                  op   : 'any',
+                  val  : {
+                    name : 'starts-at',
+                    op   : 'ge',
+                    val  : params.start_date
+                  }
                 },
                 {
-                  name : 'starts-at',
-                  op   : 'le',
-                  val  : params.end_date
+                  name : 'events',
+                  op   : 'any',
+                  val  : {
+                    name : 'starts-at',
+                    op   : 'le',
+                    val  : params.end_date
+                  }
                 }
               ]
             },
             {
               and: [
                 {
-                  name : 'ends-at',
-                  op   : 'ge',
-                  val  : params.start_date
+                  name : 'events',
+                  op   : 'any',
+                  val  : {
+                    name : 'ends-at',
+                    op   : 'ge',
+                    val  : params.start_date
+                  }
                 },
                 {
-                  name : 'ends-at',
-                  op   : 'le',
-                  val  : params.end_date
+                  name : 'events',
+                  op   : 'any',
+                  val  : {
+                    name : 'ends-at',
+                    op   : 'le',
+                    val  : params.end_date
+                  }
                 }
               ]
             },
             {
               and: [
                 {
-                  name : 'starts-at',
-                  op   : 'le',
-                  val  : params.start_date
+                  name : 'events',
+                  op   : 'any',
+                  val  : {
+                    name : 'starts-at',
+                    op   : 'le',
+                    val  : params.start_date
+                  }
                 },
                 {
-                  name : 'ends-at',
-                  op   : 'ge',
-                  val  : params.end_date
+                  name : 'events',
+                  op   : 'any',
+                  val  : {
+                    name : 'ends-at',
+                    op   : 'ge',
+                    val  : params.end_date
+                  }
                 }
               ]
             }
@@ -228,14 +316,22 @@ export default class GroupsRoute extends Route {
         filterOptions.push({
           or: [
             {
-              name : 'starts-at',
-              op   : 'le',
-              val  : moment().toISOString()
+              name : 'events',
+              op   : 'any',
+              val  : {
+                name : 'starts-at',
+                op   : 'le',
+                val  : moment().toISOString()
+              }
             },
             {
-              name : 'ends-at',
-              op   : 'ge',
-              val  : moment().toISOString()
+              name : 'events',
+              op   : 'any',
+              val  : {
+                name : 'ends-at',
+                op   : 'ge',
+                val  : moment().toISOString()
+              }
             }
           ]
         });
@@ -243,14 +339,22 @@ export default class GroupsRoute extends Route {
         filterOptions.push({
           or: [
             {
-              name : 'starts-at',
-              op   : 'ge',
-              val  : params.start_date
+              name : 'events',
+              op   : 'any',
+              val  : {
+                name : 'starts-at',
+                op   : 'ge',
+                val  : params.start_date
+              }
             },
             {
-              name : 'ends-at',
-              op   : 'ge',
-              val  : params.start_date
+              name : 'events',
+              op   : 'any',
+              val  : {
+                name : 'ends-at',
+                op   : 'ge',
+                val  : params.start_date
+              }
             }
           ]
         });
@@ -259,14 +363,22 @@ export default class GroupsRoute extends Route {
       filterOptions.push({
         and: [
           {
-            name : 'starts-at',
-            op   : 'lt',
-            val  : moment().toISOString()
+            name : 'events',
+            op   : 'any',
+            val  : {
+              name : 'starts-at',
+              op   : 'lt',
+              val  : moment().toISOString()
+            }
           },
           {
-            name : 'ends-at',
-            op   : 'lt',
-            val  : moment().toISOString()
+            name : 'events',
+            op   : 'any',
+            val  : {
+              name : 'ends-at',
+              op   : 'lt',
+              val  : moment().toISOString()
+            }
           }
         ]
       });
@@ -274,23 +386,31 @@ export default class GroupsRoute extends Route {
       filterOptions.push({
         or: [
           {
-            name : 'starts-at',
-            op   : 'ge',
-            val  : new Date()
+            name : 'events',
+            op   : 'any',
+            val  : {
+              name : 'starts-at',
+              op   : 'ge',
+              val  : new Date()
+            }
           },
           {
-            name : 'ends-at',
-            op   : 'ge',
-            val  : new Date()
+            name : 'events',
+            op   : 'any',
+            val  : {
+              name : 'ends-at',
+              op   : 'ge',
+              val  : new Date()
+            }
           }
         ]
       });
     }
 
-    return this.infinity.model('event', {
-      include      : 'event-topic,event-sub-topic,event-type',
+    return this.infinity.model('group', {
+      include      : 'events',
       filter       : filterOptions,
-      sort         : params.is_past || (params.start_date === 'all_date') ? '-starts-at' : 'starts-at',
+      // sort         : params.is_past || (params.start_date === 'all_date') ? '-starts-at' : 'starts-at',
       perPage      : 6,
       startingPage : 1,
       perPageParam : 'page[size]',
@@ -311,7 +431,7 @@ export default class GroupsRoute extends Route {
     return hash({
       eventTypes     : this.store.findAll('event-type'),
       eventTopics    : this.store.findAll('event-topic', { include: 'event-sub-topics' }),
-      filteredEvents : this._loadEvents(params),
+      filteredGroups : this._loadGroups(params),
       lat            : cords[0].lat,
       lng            : cords[0].lon
     });
@@ -319,13 +439,13 @@ export default class GroupsRoute extends Route {
 
   setupController(controller, model) {
     super.setupController(...arguments);
-    controller.set('filteredEvents', model.filteredEvents);
+    controller.set('filteredGroups', model.filteredGroups);
     this.set('controller', controller);
   }
 
   debouncedFilterChange = debounce(async params => {
     if (this.controller) {
-      this.controller.set('filteredEvents', await this._loadEvents(params));
+      this.controller.set('filteredGroups', await this._loadGroups(params));
       this.controller.set('filters', params);
     }
   }, 250)
