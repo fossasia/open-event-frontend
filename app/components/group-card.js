@@ -18,12 +18,12 @@ export default class GroupCard extends Component {
         this.notify.info(
           this.l10n.t('You have successfully unfollowed this group.')
         );
-      } 
+      }
     } catch (e) {
       this.errorHandler.handle(e);
     }
   }
-    
+
   @computed('group')
   get about() {
     if (this.group.about?.length > 350) {

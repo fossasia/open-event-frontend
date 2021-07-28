@@ -12,7 +12,7 @@
         <div class="header mb-1">
           <a href={{href-to 'groups.view' @group.id}} class="black-text">{{@group.name}}</a>
         </div>
-        <div class="meta mb-2 word-break">
+        <div class="meta mb-2 mt-4 word-break">
           {{sanitize this.about}}
         </div>
         {{#if (not @followedGroups)}}
