@@ -4,10 +4,10 @@
   </div>
   <div class="thirteen wide column">
     <TabbedNavigation>
-      <LinkTo @route="explore.events" class="item">
+      <LinkTo @route="explore.events" @query={{hash category=this.category sub_category=this.sub_category event_type=this.event_type start_date=this.start_date end_date=this.end_date location=this.location ticket_type=this.ticket_type cfs=this.cfs name=this.name is_online=this.is_online is_location=this.is_location is_mixed=this.is_mixed has_logo=this.has_logo has_image=this.has_image is_past=this.is_past}} class="item">
         {{t 'Events'}}
       </LinkTo>
-      <LinkTo @route="explore.groups" class="item">
+      <LinkTo @route="explore.groups" @query={{hash category=this.category sub_category=this.sub_category event_type=this.event_type start_date=this.start_date end_date=this.end_date location=this.location ticket_type=this.ticket_type cfs=this.cfs name=this.name is_online=this.is_online is_location=this.is_location is_mixed=this.is_mixed has_logo=this.has_logo has_image=this.has_image is_past=this.is_past}} class="item">
         {{t 'Groups'}}
       </LinkTo>
     </TabbedNavigation>

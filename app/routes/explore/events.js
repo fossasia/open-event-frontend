@@ -335,8 +335,10 @@ export default class EventsRoute extends Route {
     this.debouncedFilterChange(params);
   }
 
-  resetController(controller) {
+  resetController(controller, isExiting, transition) {
     super.resetController(...arguments);
-    controller.clearAllFilters();
+    if (transition.to.name !== 'explore.groups') {
+      controller.clearAllFilters();
+    }
   }
 }

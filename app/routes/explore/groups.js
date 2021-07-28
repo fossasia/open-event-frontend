@@ -410,7 +410,7 @@ export default class GroupsRoute extends Route {
     return this.infinity.model('group', {
       include      : 'events',
       filter       : filterOptions,
-      // sort         : params.is_past || (params.start_date === 'all_date') ? '-starts-at' : 'starts-at',
+      sort         : 'name',
       perPage      : 6,
       startingPage : 1,
       perPageParam : 'page[size]',
@@ -455,8 +455,10 @@ export default class GroupsRoute extends Route {
     this.debouncedFilterChange(params);
   }
 
-  resetController(controller) {
+  resetController(controller, isExiting, transition) {
     super.resetController(...arguments);
-    controller.clearAllFilters();
+    if (transition.to.name !== 'explore.events') {
+      controller.clearAllFilters();
+    }
   }
 }

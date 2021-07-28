@@ -22,12 +22,6 @@ export default class ExploreController extends Controller {
   cfs = null;
 
   @action
-  shareEvent(event) {
-    this.set('eventToShare', event);
-    this.set('isShareModalOpen', true);
-  }
-
-  @action
   clearFilter(filterType) {
     if (filterType === 'name') {
       this.set('name', null);
