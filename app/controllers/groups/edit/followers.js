@@ -2,6 +2,7 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { action } from '@ember/object';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
     per_page = 10;
@@ -34,5 +35,10 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           valuePath : 'user.email'
         }
       ];
+    }
+
+    @action
+    refreshRoute() {
+      this.refresh();
     }
 }
