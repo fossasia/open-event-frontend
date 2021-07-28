@@ -6,13 +6,13 @@
       </a>
     </div>
   {{/unless}}
-  <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
+  <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column relative">
     <div class="main content">
       <div class="inline field">
         <div class="header mb-1">
           <a href={{href-to 'groups.view' @group.id}} class="black-text">{{@group.name}}</a>
         </div>
-        <div class="meta mb-2 word-break">
+        <div class="meta mb-2 mt-4 word-break">
           {{sanitize this.about}}
         </div>
         {{#if (not @followedGroups)}}
@@ -40,5 +40,12 @@
         {{/if}}
       </div>
     </div>
+    {{#if (and @group.follower @followedGroups)}}
+      <div class="absolute mr-4 mt-2" style="right: 0; top: 0;">
+        <button class="{{if @group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action 'follow'}}>
+          {{t 'Unfollow Group'}}                   
+        </button>
+      </div>
+    {{/if}}
   </div>
 </div>
