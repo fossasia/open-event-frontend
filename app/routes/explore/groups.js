@@ -7,7 +7,7 @@ import { hash } from 'rsvp';
 @classic
 export default class GroupsRoute extends Route {
   titleToken() {
-    return this.l10n.t('explore.groups');
+    return this.l10n.t('Explore Groups');
   }
 
   /**

@@ -8,7 +8,7 @@ import { hash } from 'rsvp';
 @classic
 export default class EventsRoute extends Route {
   titleToken() {
-    return this.l10n.t('explore.events');
+    return this.l10n.t('Explore Events');
   }
 
   /**

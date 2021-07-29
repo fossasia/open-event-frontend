@@ -19,9 +19,9 @@ export default class SideBar extends Component {
   @tracked suggestions = [];
   isMapVisible = true;
 
-  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'name', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
+  @computed('category', 'sub_category', 'event_type', 'startDate', 'endDate', 'location', 'ticket_type', 'cfs', 'is_online', 'is_location', 'is_mixed', 'has_logo', 'has_image', 'is_past')
   get hideDefaultFilters() {
-    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.name || this.is_online || this.is_location || this.is_mixed || this.has_logo || this.has_image || this.is_past);
+    return !(this.category || this.sub_category || this.event_type || this.startDate || this.endDate || this.location || this.ticket_type || this.cfs || this.is_online || this.is_location || this.is_mixed || this.has_logo || this.has_image || this.is_past);
   }
 
   @computed('model')
