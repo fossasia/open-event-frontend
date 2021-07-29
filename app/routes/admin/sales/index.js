@@ -67,26 +67,26 @@ export default class IndexRoute  extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);
-    let x = await this.asArray(this.store.query('admin-sales-by-event', queryString));
-    
-    switch(params.sort){
+    const x = await this.asArray(this.store.query('admin-sales-by-event', queryString));
+
+    switch (params.sort) {
       case 'completed_ticket':
-        x.data.sort(function(a, b) { return b.sales.completed['ticket_count'] - a.sales.completed['ticket_count'] });
+        x.data.sort(function(a, b) { return b.sales.completed.ticket_count - a.sales.completed.ticket_count });
         break;
       case 'placed_ticket':
-        x.data.sort(function(a, b) { return b.sales.placed['ticket_count'] - a.sales.placed['ticket_count'] });
+        x.data.sort(function(a, b) { return b.sales.placed.ticket_count - a.sales.placed.ticket_count });
         break;
       case 'pending_ticket':
-        x.data.sort(function(a, b) { return b.sales.pending['ticket_count'] - a.sales.pending['ticket_count'] });
+        x.data.sort(function(a, b) { return b.sales.pending.ticket_count - a.sales.pending.ticket_count });
         break;
       case 'completed_sales':
-        x.data.sort(function(a, b) { return b.sales.completed['sales_total'] - a.sales.completed['sales_total'] });
+        x.data.sort(function(a, b) { return b.sales.completed.sales_total - a.sales.completed.sales_total });
         break;
       case 'placed_sales':
-        x.data.sort(function(a, b) { return b.sales.placed['sales_total'] - a.sales.placed['sales_total'] });
+        x.data.sort(function(a, b) { return b.sales.placed.sales_total - a.sales.placed.sales_total });
         break;
       case 'pending_sales':
-        x.data.sort(function(a, b) { return b.sales.pending['sales_total'] - a.sales.pending['sales_total'] });
+        x.data.sort(function(a, b) { return b.sales.pending.sales_total - a.sales.pending.sales_total });
         break;
       default:
         break;
