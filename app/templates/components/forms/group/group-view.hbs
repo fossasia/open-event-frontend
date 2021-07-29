@@ -69,7 +69,6 @@
       {{/if}}
     </div>
     <div class="three wide column">
-      {{#if this.session.isAuthenticated}}
         <button class="{{if @group.follower 'red' 'blue'}} mt-4 ui fluid button" {{action 'follow'}}>
           {{#if @group.follower}}
             {{t 'Unfollow Group'}}            
@@ -77,7 +76,6 @@
             {{t 'Follow Group'}}            
           {{/if}}                   
         </button>
-      {{/if}}
     </div>
   </div>
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
