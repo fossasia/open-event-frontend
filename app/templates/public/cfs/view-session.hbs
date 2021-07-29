@@ -88,6 +88,17 @@
     </div>
 </div>
 
+<div class="ui grid container mb-4">
+  <div class="weight-600 column five wide">{{t 'Speakers Invited'}}</div>
+    <div class="column eleven wide">
+      {{#each this.model.session.speakerInvites as |speakerInvite|}}
+      {{#if (eq speakerInvite.status 'pending')}}
+        <div>{{speakerInvite.email}}</div>
+      {{/if}}
+      {{/each}}
+    </div>
+</div>
+
 <Modals::ProposalWithdrawModal
   @isOpen={{this.isProposalWithdrawModalOpen}}
   @proposalName={{this.model.session.title}}

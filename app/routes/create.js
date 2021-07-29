@@ -17,6 +17,7 @@ export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, E
 
   beforeModel() {
     if (!this.session.isAuthenticated) {
+      this.session.previousRouteName = '/create';
       this.flashMessages.add({
         message           : 'Please login to create an event. If you have not registered yet, please create an account first. Thank you!',
         type              : 'negative',

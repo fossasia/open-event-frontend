@@ -1,0 +1,12 @@
+<UiDropdown @class="ui floating dropdown button w-content-button">
+  <div class="ui blue empty circular label"></div>
+  {{t-var (capitalize @record)}}
+  <div class="menu">
+    {{#each @props.options.paymentStateMap as |state|}}
+      <div class="item" role="button" {{action @props.actions.changeState @extraRecords.id state.name}}>
+        <div class="ui {{state.color}} empty circular label"></div>
+        {{t-var (capitalize state.name)}}
+      </div>
+    {{/each}}
+  </div>
+</UiDropdown>

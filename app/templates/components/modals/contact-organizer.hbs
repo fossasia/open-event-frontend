@@ -5,7 +5,7 @@
 <div class="ui content">
     {{#if this.mailSent}}
         <h4>
-            {{t 'Your message was sent to the organizers of this event.'}} 
+            {{t 'Your message was sent to the organizers of this'}} {{if @group 'group' 'event'}}.  
             {{t 'You should receive a copy of the message to your email inbox.'}} 
             {{t 'The organizers will contact you by email.'}}
         </h4>
@@ -27,7 +27,7 @@
                 <Input
                     type="text"
                     name="cc"
-                    value={{t 'Event Organizer'}}
+                    value={{if @group (t 'Group Organizer') (t 'Event Organizer')}}
                     disabled />
             </div>   
             <div class="field">
