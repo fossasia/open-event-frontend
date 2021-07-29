@@ -13,8 +13,8 @@
           <div class="ui green large label">{{tickets.length}} x {{name}}</div>
         {{/each-in}}
         {{#if (not @restrictTicketCancellation)}}
-          <UiPopup @content={{t "Cancel Order"}} @click={{action (confirm (t "This action will cancel the entire order. If there is more than one ticket in this order the other tickets will also be canceled. Are you sure you would like to cancel this order now? Yes, cancel order now. / No, do not cancel the order.") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
-            {{t 'Cancel Order'}}
+          <UiPopup @content={{t "Cancel Ticket"}} @click={{action (confirm (t "Are you sure you would like to cancel this ticket?") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
+            {{t 'Cancel Ticket'}}
           </UiPopup>
         {{/if}}
       </div>

@@ -5,57 +5,50 @@ import moment from 'moment';
 @classic
 export default class PastRoute extends Route {
   titleToken() {
-    switch (this.params.ticket_status) {
-      case 'completed':
-        return this.l10n.t('Completed');
-      case 'open':
-        return this.l10n.t('Open');
-    }
+    return this.l10n.t('Past');
   }
 
-  model(params) {
-    this.set('params', params);
+  model() {
     const filterOptions = [];
-    if (params.ticket_status === 'completed') {
-      filterOptions.push(
-        {
-          and: [
-            {
-              name : 'event',
-              op   : 'has',
-              val  : {
-                name : 'starts-at',
-                op   : 'lt',
-                val  : moment().toISOString()
-              }
-            },
-            {
-              or: [
-                {
-                  name : 'status',
-                  op   : 'eq',
-                  val  : 'completed'
-                },
-                {
-                  name : 'status',
-                  op   : 'eq',
-                  val  : 'placed'
-                }
-              ]
-            },
-            {
-              name : 'event',
-              op   : 'has',
-              val  : {
-                name : 'deleted-at',
-                op   : 'eq',
-                val  : null
-              }
+    filterOptions.push(
+      {
+        and: [
+          {
+            name : 'event',
+            op   : 'has',
+            val  : {
+              name : 'starts-at',
+              op   : 'lt',
+              val  : moment().toISOString()
             }
-          ]
-        }
-      );
-    }
+          },
+          {
+            or: [
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'completed'
+              },
+              {
+                name : 'status',
+                op   : 'eq',
+                val  : 'placed'
+              }
+            ]
+          },
+          {
+            name : 'event',
+            op   : 'has',
+            val  : {
+              name : 'deleted-at',
+              op   : 'eq',
+              val  : null
+            }
+          }
+        ]
+      }
+    );
+
     return this.infinity.model('orders', {
       include      : 'event,attendees.ticket',
       filter       : filterOptions,

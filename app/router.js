@@ -191,7 +191,6 @@ Router.map(function() {
     this.route('upcoming', function() {
       this.route('list', { path: '/:ticket_status' });
     });
-    this.route('past', { path: '/past/:ticket_status' });
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
