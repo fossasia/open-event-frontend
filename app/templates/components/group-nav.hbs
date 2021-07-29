@@ -28,6 +28,9 @@
             {{t 'Events'}}
           </LinkTo>
         {{/if}}
+        <LinkTo @route="groups.edit.followers" @model={{@group.id}} class="item">
+          {{t 'Followers'}}
+        </LinkTo>
         <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
           {{t 'Settings'}}
         </LinkTo>
