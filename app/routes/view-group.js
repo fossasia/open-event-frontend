@@ -13,7 +13,7 @@ export default class ViewRoute extends Route {
 
     return hash({
       group: this.store.findRecord('group', params.group_id, {
-        include: 'events'
+        include: 'events,follower,user'
       })
     });
   }
