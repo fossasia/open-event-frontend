@@ -13,6 +13,25 @@
           <LinkTo @route="admin.sales.index" @model="all" class="item">{{t 'All'}}</LinkTo>
         </div>
       </UiDropdown>
+      <UiDropdown class="labeled icon button mb-2 mr-2">
+        <i class="ticket icon"></i>
+        <span class="default text">{{t 'Sort By Tickets'}}</span>
+        <div class="menu">
+          <LinkTo @route="admin.sales.index" @query={{hash sort='completed_ticket'}} class="item">{{t 'By Completed'}}</LinkTo>
+          <LinkTo @route="admin.sales.index" @query={{hash sort='placed_ticket'}} class="item">{{t 'By Placed'}}</LinkTo>
+          <LinkTo @route="admin.sales.index" @query={{hash sort='pending_ticket'}} class="item">{{t 'By Pending'}}</LinkTo>
+        </div>
+      </UiDropdown>
+      <UiDropdown class="labeled icon button mb-2 mr-2">
+        <i class="sort amount down icon"></i>
+        <span class="default text">{{t 'Sort By Sales'}}</span>
+        <div class="menu">
+          <LinkTo @route="admin.sales.index" @query={{hash sort='completed_sales'}} class="item">{{t 'By Completed'}}</LinkTo>
+          <LinkTo @route="admin.sales.index" @query={{hash sort='placed_sales'}} class="item">{{t 'By Placed'}}</LinkTo>
+          <LinkTo @route="admin.sales.index" @query={{hash sort='pending_sales'}} class="item">{{t 'By Pending'}}</LinkTo>
+        </div>
+      </UiDropdown>
+        
     </div>
   </div>
 </div>
