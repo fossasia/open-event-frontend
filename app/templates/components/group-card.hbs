@@ -1,7 +1,7 @@
 <div class="event wide ui grid row">
   {{#unless this.device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
-      <a class="image" href={{href-to 'view-group' @group.id}}>
+      <a class="image" href={{href-to 'groups.view' @group.id}}>
         <Widgets::SafeImage @src={{if @group.bannerUrl  @group.bannerUrl "/images/group.png"}} />
       </a>
     </div>
@@ -10,13 +10,13 @@
     <div class="main content">
       <div class="inline field">
         <div class="header mb-1">
-          <a href={{href-to 'view-group' @group.id}} class="black-text">{{@group.name}}</a>
+          <a href={{href-to 'groups.view' @group.id}} class="black-text">{{@group.name}}</a>
         </div>
         <div class="meta mb-2 mt-4 word-break">
           {{sanitize this.about}}
         </div>
         {{#if (not @followedGroups)}}
-          <LinkTo @route="view-group" @model={{@group.id}}>
+          <LinkTo @route="groups.view" @model={{@group.id}}>
             <UiPopup @content={{t "View"}} @class="ml-2 ui circular icon button compact white" @position="left center">
                 <i class="eye icon"></i>
             </UiPopup>

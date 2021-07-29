@@ -184,13 +184,13 @@ Router.map(function() {
     this.route('create');
     this.route('following');
     this.route('team', { path: '/team/:group_id' });
+    this.route('view', { path: '/:group_id' });
     this.route('edit', { path: '/edit' }, function() {
       this.route('events', { path: '/:group_id/events' });
       this.route('settings', { path: '/:group_id/settings' });
       this.route('followers', { path: '/:group_id/followers' });
     });
   });
-  this.route('view-group', { path: 'g/:group_id' });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {
       this.route('list', { path: '/:ticket_status' });
