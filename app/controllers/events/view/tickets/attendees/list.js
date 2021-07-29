@@ -75,7 +75,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     let myTime = moment().toISOString();
     if (moment(date, 'MM-DD-YYYY').format('MM-DD-YYYY') !== moment().format('MM-DD-YYYY')) {
       myTime = moment(date, 'MM-DD-YYYY');
-      myTime = myTime.format('YYYY-MM-DD') +  'T13:00:00.000Z';
+      myTime = myTime.format('YYYY-MM-DD') + 'T13:00:00.000Z';
     }
     if (!isCheckedInCurrently) {
       const newCheckinTimes = attendee.get('checkinTimes') === null ? `${myTime}` : `${attendee.get('checkinTimes')},${myTime}`;
