@@ -17,7 +17,7 @@ export default class extends Controller {
     return SESSION_STATES;
   }
 
-    @action
+  @action
   export(status) {
     this.set('isLoading', true);
     const payload = {
