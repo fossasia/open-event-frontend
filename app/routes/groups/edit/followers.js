@@ -1,9 +1,10 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 @classic
-export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
+export default class FollowersRoute extends Route.extend(EmberTableRouteMixin, AuthenticatedRouteMixin) {
   titleToken(model) {
     const groupTitle = model.group.name;
     return groupTitle.concat(' - Followers');
@@ -23,5 +24,11 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
       followers,
       group
     };
+  }
+
+  afterModel(model) {
+    if (this.authManager.currentUser.email !== model.group.user.get('email')) {
+      this.transitionTo('index');
+    }
   }
 }
