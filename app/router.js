@@ -198,7 +198,7 @@ Router.map(function() {
     this.route('list');
     this.route('following');
   });
-  this.route('group-public', { path: 'g/:group_id' });
+  this.route('group-public', { path: '/g/:group_id' });
   // this.route('notifications', function() {
   //   this.route('all', { path: '/:notification_state' });
   // });
