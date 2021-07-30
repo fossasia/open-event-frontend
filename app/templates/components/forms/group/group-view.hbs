@@ -76,10 +76,10 @@
             {{t 'Follow Group'}}            
           {{/if}}                   
         </button>
-        <button class="ui primary basic fluid button mt-2">
+        <div class="ui blue horizontal basic label fluid text center aligned mt-2 p-2">
           <i class="users icon"></i>
           ({{@group.followerCount}} {{t 'followers'}})
-        </button>
+        </div>
     </div>
   </div>
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
