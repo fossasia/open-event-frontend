@@ -78,7 +78,10 @@
           {{/if}}                   
         </button>
       {{/if}}
-    </div>
+        <div class="ui blue horizontal basic label fluid text center aligned mt-2 p-2">
+          <i class="users icon"></i>
+          ({{@group.followerCount}} {{t 'followers'}})
+        </div>
   </div>
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
 </div>
