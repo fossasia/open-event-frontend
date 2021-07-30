@@ -7,17 +7,27 @@ import { tracked } from '@glimmer/tracking';
 export default class IndexController extends Controller {
 
   @tracked
-  frontendVersion = '';
+  frontendProductionVersion = '';
 
   @tracked
-  serverVersion = '';
+  serverProductionVersion = '';
+
+  @tracked
+  frontendTestingVersion = '';
+
+  @tracked
+  serverTestingVersion = '';
 
   @action
   async setup() {
-    const fVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-frontend/git/refs/heads/master', { isExternal: true });
-    this.frontendVersion = fVersion.object?.sha;
-    const bVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-server/git/refs/heads/master', { isExternal: true });
-    this.serverVersion = bVersion.object?.sha;
+    const fPVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-frontend/git/refs/heads/master', { isExternal: true });
+    this.frontendProductionVersion = fPVersion.object?.sha;
+    const bPVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-server/git/refs/heads/master', { isExternal: true });
+    this.serverProductionVersion = bPVersion.object?.sha;
+    const fTVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-frontend/git/refs/heads/development', { isExternal: true });
+    this.frontendTestingVersion = fTVersion.object?.sha;
+    const bTVersion = await this.loader.load('https://api.github.com/repos/fossasia/open-event-server/git/refs/heads/development', { isExternal: true });
+    this.serverTestingVersion = bTVersion.object?.sha;
   }
 }
 
