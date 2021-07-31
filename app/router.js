@@ -73,6 +73,9 @@ Router.map(function() {
       this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
       this.route('edit-session', { path: '/session/:session_id/edit' });
     });
+    this.route('speaker-invite', function() {
+      this.route('view-session', { path: '/:invite_id/session' });
+    });
     this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
@@ -179,7 +182,11 @@ Router.map(function() {
     this.route('following');
     this.route('team', { path: '/team/:group_id' });
     this.route('view', { path: '/:group_id' });
-    this.route('edit', { path: '/:group_id/edit' });
+    this.route('edit', { path: '/edit' }, function() {
+      this.route('events', { path: '/:group_id/events' });
+      this.route('settings', { path: '/:group_id/settings' });
+      this.route('followers', { path: '/:group_id/followers' });
+    });
   });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {

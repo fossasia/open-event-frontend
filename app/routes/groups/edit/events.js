@@ -4,10 +4,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 import { hash } from 'rsvp';
 
 @classic
-export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
+export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
     const groupTitle = model.group.name;
-    return groupTitle.concat(' - Edit');
+    return groupTitle.concat(' - Events');
   }
 
   model(params) {

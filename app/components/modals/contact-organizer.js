@@ -35,11 +35,19 @@ export default ModalBase.extend(FormMixin, {
         const payload = {};
         payload.email = this.message;
         try {
-          const response = await this.loader.post(`/events/${this.event.id}/contact-organizer`, payload);
-          if (!response?.success) {throw response}
-          this.notify.success(this.l10n.t('Organizer contacted successfully'), {
-            id: 'contact_organizer_succ'
-          });
+          if (this.group) {
+            const response = await this.loader.post(`/groups/${this.event.id}/contact-organizer`, payload);
+            if (!response?.success) {throw response}
+            this.notify.success(this.l10n.t('Organizer contacted successfully'), {
+              id: 'contact_organizer_succ'
+            });
+          } else {
+            const response = await this.loader.post(`/events/${this.event.id}/contact-organizer`, payload);
+            if (!response?.success) {throw response}
+            this.notify.success(this.l10n.t('Organizer contacted successfully'), {
+              id: 'contact_organizer_succ'
+            });
+          }
           this.set('mailSent', true);
         } catch (e) {
           console.error('Error while contacting organizer', e);

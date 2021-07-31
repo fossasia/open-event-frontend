@@ -46,6 +46,8 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isOneclickSignupEnabled   : attr('boolean', { defaultValue: false }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketFormEnabled       : attr('boolean', { defaultValue: false }),
+  isCfsEnabled              : attr('boolean', { defaultValue: false }),
+  isVideoroomEnabled        : attr('boolean', { defaultValue: false }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
   isPromoted                : attr('boolean', { defaultValue: false }),
@@ -91,9 +93,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   xcalUrl      : attr('string', { readOnly: true }),
   icalUrl      : attr('string', { readOnly: true }),
 
-  online        : attr('boolean', { defaultValue: false }),
-  liveStreamUrl : attr('string'),
-  webinarUrl    : attr('string'),
+  online: attr('boolean', { defaultValue: false }),
 
   chatRoomName: attr('string'),
 
@@ -142,6 +142,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   moderators        : hasMany('user', { inverse: null }),
   roles             : hasMany('users-events-role'),
   sessionFavourites : hasMany('user-favourite-session'),
+  speakerInvites    : hasMany('speaker-invite'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

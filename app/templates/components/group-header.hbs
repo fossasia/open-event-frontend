@@ -4,6 +4,11 @@
       <h2>
         {{t 'Groups'}}
       </h2>
+      <LinkTo @route="groups.create" class="item">
+        <button class="ui blue button" {{action (mut @isRoomModalOpen) true}}>
+          {{t 'Create Group'}}
+        </button>
+      </LinkTo>
     </div>
     <TabbedNavigation>
       <LinkTo @route="groups.list" class="item">

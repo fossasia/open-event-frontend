@@ -1,0 +1,5 @@
+{{#if @extraRecords.user.isProfilePublic}}
+    <img class="ui tiny image" src="{{or @record '/images/placeholders/avatar.png'}}" alt="Logo">
+{{else}}
+    <img class="ui tiny image" src="{{'/images/placeholders/avatar.png'}}" alt="Logo">
+{{/if}}

@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
@@ -55,8 +56,38 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           name          : this.l10n.t('View'),
           valuePath     : 'url',
           cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-recording'
+        },
+        {
+          name          : this.l10n.t('Actions'),
+          cellComponent : 'ui-table/cell/admin/cell-recording-action',
+          valuePath     : 'id',
+          width         : 40,
+          actions       : {
+            deleteRecording: this.deleteRecording.bind(this)
+          }
         }
       ];
+    }
+
+    @action
+    async deleteRecording(recId) {
+      this.set('isLoading', true);
+      try {
+        const videoRecording =  this.store.peekRecord('video-recording', recId, { backgroundReload: false });
+        await videoRecording.destroyRecord();
+        this.notify.success(this.l10n.t('Video recording has been deleted successfully.'),
+          {
+            id: 'recording_deleted_succ'
+          });
+        this.refreshModel.bind(this)();
+      } catch (e) {
+        console.error('Error while deleting video recording', e);
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+          {
+            id: 'unexpected_recording_error'
+          });
+      }
+      this.set('isLoading', false);
     }
 
 }

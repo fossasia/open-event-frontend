@@ -43,7 +43,7 @@
             @hint={{t "Select Banner"}}
             @needsCropper={{true}}
             @isHeaderImage={{true}}
-            @maxSizeInKb={{10000}}
+            @maxSizeInKb={{this.settings.imageSize}}
             @aspectRatio={{array 2 1}}
             @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
             @requiresDivider={{true}} />
@@ -55,7 +55,7 @@
             @icon="image"
             @name="logoUrl"
             @hint={{t "Select Logo"}}
-            @maxSizeInKb={{1000}} />
+            @maxSizeInKb={{this.settings.logoSize}} />
         </div>
       </div>
       <div class="field">
@@ -100,7 +100,7 @@
           @id="slidesUrl"
           @icon="file"
           @hint={{t "Select a file"}}
-          @maxSizeInKb={{10000}} />
+          @maxSizeInKb={{this.settings.slideSize}} />
       </div>
         <UiCheckbox 
           @class="toggle mt-2 mb-2 weight-600"
