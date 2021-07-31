@@ -212,7 +212,7 @@
     <UiCheckbox
         @class="toggle"
         @checked={{this.data.event.isOneclickSignupEnabled}}
-        @onChange={{action 'addTicket' 'registration' this.data.event.tickets.length}}
+        @onChange={{action (mut this.data.event.isOneclickSignupEnabled) }}
         @label={{t 'Registration'}} />
     <br><br>
     {{#if (not this.data.event.isOneclickSignupEnabled)}}
