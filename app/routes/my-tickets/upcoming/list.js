@@ -70,15 +70,6 @@ export default class ListRoute extends Route {
               name : 'status',
               op   : 'eq',
               val  : 'cancelled'
-            },
-            {
-              name : 'event',
-              op   : 'has',
-              val  : {
-                name : 'deleted-at',
-                op   : 'eq',
-                val  : null
-              }
             }
           ]
         }
