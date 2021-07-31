@@ -43,7 +43,7 @@
           {{/if}}
           {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
             <div class="ui basic center aligned segment mt-4">
-              <button class="ui mini labeled teal icon floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+              <button class="ui mini labeled blue icon floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
                 <i class="envelope icon"></i>
                 {{t 'Contact Organizer'}}
               </button>
@@ -76,6 +76,10 @@
             {{t 'Follow Group'}}            
           {{/if}}                   
         </button>
+        <div class="ui blue horizontal basic label fluid text center aligned mt-2 p-2">
+          <i class="users icon"></i>
+          ({{@group.followerCount}} {{t 'followers'}})
+        </div>
     </div>
   </div>
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
