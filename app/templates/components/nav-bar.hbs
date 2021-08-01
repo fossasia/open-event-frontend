@@ -18,6 +18,20 @@
         <i class="search icon"></i>
       </div>
     {{/if}}
+
+         {{#unless this.isNotExplorePageRoute }}
+        
+  <div class="ui input d-flex items-center space-between m-2 p-2" >
+    <Input
+      @name="name"
+      @value={{this.event_name}}
+      @type="text"
+      @placeholder={{t "Enter Event Name"}} />
+  </div>
+
+    {{/unless}}
+
+
     {{#if (and (not this.session.isAuthenticated) this.isNotEventPageRoute)}}
       <LinkTo
         @route="pricing" class="item"
