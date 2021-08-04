@@ -9,6 +9,6 @@ module('Integration | Component | footer main', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{footer-main l10n=l10n}}`);
-    assert.dom(this.element).includesText('footer');
+    assert.ok(this.element.innerHTML.trim().includes('footer'));
   });
 });
