@@ -1,0 +1,20 @@
+{{#if (and (or @videoStream @hasStreams) @event.isVideoroomEnabled )}}
+  <div ...attributes>
+    {{#if (and @showVideo @videoStream)}}
+      <a class="ui basic {{text-color @color 'basic' 'inverted'}} button no-wrap"
+        style={{css color=(text-color @color 'grey' 'lightgrey')}}
+        href="{{href-to 'public.stream.view' @event @videoStream.slugName @videoStream}}"
+        target="{{if (or @videoStream.videoChannel.isInternalStream @sameTab) '' '_blank'}}"
+        rel="noopener">
+        <i class="icon video"></i>
+        {{t 'Join Video'}}
+      </a>
+    {{/if}}
+    {{#if @hasStreams}}
+      <button class="{{unless @showVideo 'w-full primary' 'basic'}} ui button no-wrap" {{action this.openPanel}}>
+        <i class="icon calendar"></i>
+        {{t 'Join Live Event'}}
+      </button>
+    {{/if}}
+  </div>
+{{/if}}

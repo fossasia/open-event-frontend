@@ -1,0 +1,26 @@
+<div class="ui list basic segment m-0 pl-0 pr-0 pb-0">
+  <div class="item mt-1">
+    <i class="clock alternate outline icon pt-1"></i>
+    <div class="content">
+      <Public::EventDateTime @event={{@event}} />
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <UiDropdown class="ui floating dropdown button w-full text center aligned">
+        <i class="add to calendar icon"></i>
+        {{t 'Add to Calendar'}}
+      <div class="menu">
+        <button {{action 'openAddToCalendarModal' this.calendarUrls}} class="ui item inverted fluid button">{{t 'Add Event'}}</button>
+        {{#if (and @event.isSchedulePublished this.showSessions)}}
+          <button {{action 'openAddToCalendarModal' this.sessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add Sessions'}}</button>
+          {{#if this.authManager.currentUser}}
+            <button {{action 'openAddToCalendarModal' this.mySessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add My Schedule'}}</button>
+          {{/if}}
+        {{/if}}
+      </div>
+    </UiDropdown>
+  </div>
+</div>
+
+<Modals::AddToCalendar @isOpen={{this.isAddToCalendarModalOpen}} @calendarUrls={{this.modalUrls}}/>

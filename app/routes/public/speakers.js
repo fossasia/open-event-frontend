@@ -1,43 +1,83 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 
+export const SPEAKERS_FILTER = [
+  {
+    name : 'sessions',
+    op   : 'any',
+    val  : {
+      and: [
+        {
+          name : 'deleted-at',
+          op   : 'eq',
+          val  : null
+        },
+        {
+          or: [{
+            name : 'state',
+            op   : 'eq',
+            val  : 'accepted'
+          }, {
+            name : 'state',
+            op   : 'eq',
+            val  : 'confirmed'
+          }]
+        }
+      ]
+    }
+  }
+];
+
 @classic
 export default class SpeakersRoute extends Route {
-  async model() {
+  queryParams = {
+    search: {
+      refreshModel: true
+    }
+  }
+
+  titleToken() {
+    return this.l10n.t('Speakers');
+  }
+
+  async model(params) {
     const eventDetails = this.modelFor('public');
-    const filterOptions = [
-      {
+    const filterOptions = [...SPEAKERS_FILTER];
+
+    if (params.search) {
+      filterOptions.push({
         or: [
           {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'accepted'
-            }
+            name : 'name',
+            op   : 'ilike',
+            val  : `%${params.search}%`
           },
           {
-            name : 'sessions',
-            op   : 'any',
-            val  : {
-              name : 'state',
-              op   : 'eq',
-              val  : 'confirmed'
-            }
+            name : 'organisation',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'position',
+            op   : 'ilike',
+            val  : `%${params.search}%`
           }
         ]
-      }
-    ];
-    return this.infinity.model('speakers', {
-      filter       : filterOptions,
-      perPage      : 12,
-      startingPage : 1,
-      perPageParam : 'page[size]',
-      pageParam    : 'page[number]',
-      store        : eventDetails
-    });
-
-
+      });
+    }
+    return {
+      event    : eventDetails,
+      speakers : await this.infinity.model('speakers', {
+        filter       : filterOptions,
+        perPage      : 9,
+        startingPage : 1,
+        perPageParam : 'page[size]',
+        pageParam    : 'page[number]',
+        store        : eventDetails,
+        include      : 'sessions.track',
+        sort         : 'order',
+        public       : true
+      })
+    };
   }
 }

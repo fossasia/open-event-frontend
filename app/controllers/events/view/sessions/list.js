@@ -2,16 +2,22 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { mapBy } from '@ember/object/computed';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
+import { inject as service } from '@ember/service';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  sort_by = '-submitted-at';
+
+  @service errorHandler;
+
   @mapBy('model.feedbacks', 'session.id') ratedSessions;
 
   get columns() {
     return [
       {
-        name            : 'State',
+        name            : this.l10n.t('State'),
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
+        width           : 90,
         valuePath       : 'state',
         isSortable      : true,
         extraValuePaths : ['id', 'status'],
@@ -23,13 +29,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Title',
+        name            : this.l10n.t('Title'),
         valuePath       : 'title',
+        width           : 180,
         extraValuePaths : ['id', 'event', 'isLocked'],
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-session-title',
-        width           : 160,
         actions         : {
           viewSession   : this.viewSession.bind(this),
           editSession   : this.editSession.bind(this),
@@ -37,14 +43,18 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : 'Speakers',
+        name          : this.l10n.t('Speakers'),
+        width         : 120,
         valuePath     : 'speakers',
         cellComponent : 'ui-table/cell/cell-speakers'
       },
       {
-        name            : 'Rating',
-        valuePath       : 'id',
-        extraValuePaths : ['feedbacks'],
+        name            : this.l10n.t('Rating'),
+        width           : 60,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'averageRating',
+        extraValuePaths : ['id', 'feedbacks'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-rating',
         options         : {
           ratedSessions: this.ratedSessions
@@ -55,40 +65,46 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name      : 'Track',
-        valuePath : 'track.name'
+        name            : this.l10n.t('Track'),
+        width           : 80,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'track.name'
       },
       {
-        name      : 'Type',
-        valuePath : 'sessionType.name'
+        name            : this.l10n.t('Type'),
+        width           : 70,
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'sessionType.name'
       },
       {
-        name          : 'Submission Date',
-        valuePath     : 'submittedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        width         : 60,
-        options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm A'
-        }
+        name            : this.l10n.t('Submission Date'),
+        width           : 100,
+        valuePath       : 'submittedAt',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
-        name          : 'Last Modified',
-        valuePath     : 'lastModifiedAt',
-        cellComponent : 'ui-table/cell/cell-simple-date',
-        width         : 60,
-        options       : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm A'
-        }
+        name            : this.l10n.t('Last Modified'),
+        width           : 100,
+        valuePath       : 'lastModifiedAt',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
-        name            : 'Notify',
+        name            : this.l10n.t('Notify'),
         valuePath       : 'id',
+        width           : 40,
         extraValuePaths : ['status'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-notify'
       },
       {
-        name            : 'Lock Session',
+        name            : this.l10n.t('Lock Session'),
         valuePath       : 'id',
+        width           : 70,
         extraValuePaths : ['isLocked'],
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-lock-session',
         actions         : {
@@ -110,11 +126,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_unex_del'
-          });
+      .catch(e => {
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -122,13 +135,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  editSession(session_id, event_id) {
-    this.transitionToRoute('events.view.sessions.edit', event_id, session_id);
+  editSession(id) {
+    this.transitionToRoute('events.view.session.edit', id);
   }
 
   @action
-  viewSession(session_id, event_id) {
-    this.transitionToRoute('public.session.view', event_id, session_id);
+  viewSession(id) {
+    this.transitionToRoute('events.view.session.view', id);
   }
 
   @action
@@ -137,21 +150,20 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
     const { isLocked } = session;
     session.set('isLocked', lock);
     this.set('isLoading', true);
-    const lockMessage = lock ? 'locked' : 'unlocked';
+    const lockMessage = lock ? this.l10n.t('locked') : this.l10n.t('unlocked');
     try {
       await session.save();
-      this.notify.success(this.l10n.t(`Session has been ${ lockMessage } successfully.`),
-        {
-          id: 'session_lock'
-        });
+      this.notify.success(this.l10n.t('Session has been {{action}} successfully.', {
+        action: lockMessage
+      }),
+      {
+        id: 'session_lock'
+      });
       this.refreshModel.bind(this)();
     } catch (e) {
       session.set('isLocked', isLocked);
       console.error('Error while changing session lock in organizer session list', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-        {
-          id: 'session_unexpected_lock'
-        });
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }
@@ -166,17 +178,15 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
 
     try {
       await session.save();
-      const message = `Session has been ${state}`;
-      this.notify.success(this.l10n.t(message), {
+      this.notify.success(this.l10n.t('Session has been {{action}} successfully.', {
+        action: state
+      }), {
         id: 'session_state'
       });
       this.refreshModel.bind(this)();
     } catch (e) {
       session.set('state', oldState);
-      console.error('Error while changing session state in organizer session list', e);
-      this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
-        id: 'session_state_unexpected'
-      });
+      this.errorHandler.handle(e);
     } finally {
       this.set('isLoading', false);
     }
@@ -195,11 +205,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-            {
-              id: 'session_feedback_error'
-            });
+        .catch(e => {
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -213,11 +220,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
             });
           this.refreshModel.bind(this)();
         })
-        .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-            {
-              id: 'session_feed_error'
-            });
+        .catch(e => {
+          this.errorHandler.handle(e);
         })
         .finally(() => {
           this.set('isLoading', false);
@@ -243,11 +247,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
           });
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred.'),
-          {
-            id: 'session_feed_error_created'
-          });
+      .catch(e => {
+        this.errorHandler.handle(e);
       })
       .finally(() => {
         this.set('isLoading', false);

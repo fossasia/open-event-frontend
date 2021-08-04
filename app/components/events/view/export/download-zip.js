@@ -8,7 +8,7 @@ export default class DownloadZip extends Component {
   async exportEventDownload(eventDownloadUrl) {
     this.set('isLoading', true);
     try {
-      const res = await this.loader.downloadFile(`${eventDownloadUrl}`);
+      const res = await this.loader.downloadFile(eventDownloadUrl, null, { isExternal: true });
       const anchor = document.createElement('a');
       anchor.style.display = 'none';
       anchor.href = URL.createObjectURL(new Blob([res], { type: 'octet/stream' }));
@@ -19,7 +19,7 @@ export default class DownloadZip extends Component {
       });
     } catch (e) {
       console.error('Error while downloading event zip', e);
-      this.notify.error(this.l10n.t(e), {
+      this.notify.error(e, {
         id: 'err_down'
       });
     }

@@ -1,0 +1,70 @@
+<div class="ui warning message mt-4 mb-8 ml--4 mr--4">
+  <div class="header">
+    {{t 'This feature is still in alpha stage'}}
+  </div>
+  {{t 'Please use with care.'}} {{t 'Thank You.'}}
+</div>
+<div class="ui {{if this.model.event.isVideoroomEnabled 'basic'}} segment ">
+  <div class="center aligned text">
+    <div class=" field">
+      <div class="d-flex" style="justify-content: center;">
+        <UiCheckbox
+          @class="ui slider"
+          @checked={{if this.model.event.isVideoroomEnabled 'active'}}
+          @onChange={{action 'toggleVideoRoom'}} />
+        <label class="weight-300" style="font-size: large">
+          {{if this.model.event.isVideoroomEnabled (t 'Turn off') (t 'Turn on')}}
+          {{t 'Video Room'}}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+{{#if this.model.event.isVideoroomEnabled }}
+  <div class="sixteen wide column">
+    <div class="d-flex flex-row">
+      <h2 class="ui header mb-0">{{t 'Virtual Event Room'}}</h2>
+    </div>
+    <p>{{t 'This category is especially suitable for welcome, support, discussion or social video rooms. Virtual event video rooms do not require dedicated sessions and do not need a schedule setup.'}}</p>  
+    <Tables::Default
+      @color='green'
+      @columns={{this.eventColumns}}
+      @rows={{this.events}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column"
+      @hideSearchBox={{true}}
+      @hidePagination={{true}}
+      @hidePageSize={{true}} />
+    <div class="ui grid space-between items-center mt-4 mb-4">
+        <div class="d-flex flex-row">
+          <h2 class="header">{{t 'Microlocation Video Rooms'}}</h2>
+        </div>
+        <div>
+          <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
+            {{t 'Add Microlocation'}}
+          </button>
+        </div>
+        <p>{{t 'Microlocation video rooms are suitable for events with different tracks, rooms and sessions that are listed in a schedule. All microlocations are listed on the event schedule. Note: Microlocation rooms require a session in order to be visible to attendees.They are only listed on the video channel list on side panels of online events, if sessions have been added into the location in the schedule.'}}</p>
+      </div>
+    <Tables::Default
+      @color='blue'
+      @columns={{this.columns}}
+      @rows={{this.model.rooms.data}}
+      @currentPage={{this.page}}
+      @pageSize={{this.per_page}}
+      @searchQuery={{this.search}}
+      @sortBy={{this.sort_by}}
+      @sortDir={{this.sort_dir}}
+      @metaData={{this.model.rooms.meta}}
+      @filterOptions={{this.filterOptions}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column" />
+  </div>
+{{/if}}
+
+<Modals::AddRoomModal
+  @event={{this.model.event}}
+  @isOpen={{this.isRoomModalOpen}}
+  @onAdded={{action this.refreshModel}} />

@@ -1,4 +1,4 @@
-{{#if (and (or (eq this.session.currentRouteName 'events.view.index') (eq this.session.currentRouteName 'events.view.export')) (gt this.unverified-user-message.length 0))}} 
+{{#if (and (or (eq this.session.currentRouteName 'events.view.index') (eq this.session.currentRouteName 'events.view.settings.export')) (gt this.unverified-user-message.length 0))}} 
   {{#if (eq this.model.state 'draft')}}
     <UnverifiedUserMessage />
   {{/if}}
@@ -6,64 +6,15 @@
 {{#if (not-includes this.session.currentRouteName 'events.view.edit')}}
   <div class="ui grid stackable">
     <div class="row">
-      <div class="four wide column">
+      <div class="ten wide column">
         <h2 class="ui header">
           {{this.model.name}}
         </h2>
       </div>
-      <div class="twelve wide column {{unless this.device.isMobile 'right aligned'}}">
-        {{#if this.device.isMobile}}
-          <div class="ui icon fluid buttons">
-            <a 
-              href="{{this.model.url}}" 
-              class="ui button {{if (eq this.model.state 'published') 'green'}}" 
-              target="_blank" 
-              rel="noopener" 
-              data-tooltip="{{if (eq this.model.state 'published') 'View' 'Preview'}}" 
-              data-position="top left" 
-            >
-              <i class="unhide icon"></i>
-            </a>
-            <button 
-              class="ui button {{if (eq this.model.state 'published') 'orange' 'green'}}"
-              {{action 'openConfirmModal'}} 
-              data-tooltip="{{if (eq this.model.state 'published') 'Unpublish' 'Publish'}}" 
-              data-position="top left"
-            >
-              <i class="{{if (eq this.model.state 'published') 'ban' 'check'}} icon"></i>
-            </button>
-            {{!-- <button class="ui button {{if this.isCopying 'loading'}}" {{action 'copyEvent'}} data-tooltip={{t 'Copy'}} data-position="top left">
-              <i class="copy icon"></i>
-            </button> --}}
-          </div>
-        {{else}}
-          <a 
-            href="{{this.model.url}}" 
-            target="_blank" rel="noopener" 
-            class="ui button labeled icon small {{if (eq this.model.state 'published') 'green'}}" >
-            <i class="unhide icon"></i>
-            {{#if (eq this.model.state 'published')}}
-              {{t 'View'}}
-            {{else}}
-              {{t 'Preview'}}
-            {{/if}}
-          </a>
-          
-            <button class="ui button labeled icon small {{if (eq this.model.state 'published') 'orange' 'green'}}" {{action 'openConfirmModal'}}>
-              {{#if (eq this.model.state 'published')}}
-                <i class="ban icon"></i>
-                {{t 'Unpublish'}}
-              {{else}}
-                <i class="check icon"></i>
-                {{t 'Publish'}}
-              {{/if}}
-            </button>
-            {{!-- <button class="ui button labeled icon small {{if this.isCopying 'loading'}}" {{action 'copyEvent'}} disabled={{this.isCopying}}>
-              <i class="copy icon"></i>
-              {{t 'Copy'}}
-            </button> --}}
-          
-        {{/if}}
+      <div class="six wide column {{unless this.device.isMobile 'right aligned'}}">
+        <div class="{{ if this.device.isMobile 'ui icon fluid buttons'}}">
+          <Events::View::PublishBar @event={{this.model}} @showOnInvalid={{true}} />
+        </div>
       </div>
     </div>
   </div>
@@ -77,17 +28,29 @@
         <LinkTo @route="events.view.tickets" class="item">
           {{t 'Tickets'}}
         </LinkTo>
-        <LinkTo @route="events.view.scheduler" class="item">
-          {{t 'Scheduler'}}
+        <LinkTo @route="events.view.speakers" class="item">
+          {{t 'Speakers'}}
         </LinkTo>
         <LinkTo @route="events.view.sessions" class="item">
           {{t 'Sessions'}}
         </LinkTo>
-        <LinkTo @route="events.view.speakers" class="item">
-          {{t 'Speakers'}}
+        <LinkTo @route="events.view.scheduler" class="item">
+          {{t 'Scheduler'}}
         </LinkTo>
-        <LinkTo @route="events.view.export" class="item">
-          {{t 'Export'}}
+        <LinkTo @route="events.view.videoroom" class="item">
+          {{t 'Video'}}
+        </LinkTo>
+        <LinkTo @route="events.view.documents" class="item">
+          {{t 'Documents'}}
+        </LinkTo>
+        <LinkTo @route="events.view.chat" class="item">
+          {{t 'Chat'}}
+        </LinkTo>
+        <LinkTo @route="events.view.exhibitors" class="item">
+          {{t 'Exhibitors'}}
+        </LinkTo>
+        <LinkTo @route="events.view.team" class="item">
+          {{t 'Team'}}
         </LinkTo>
         {{#if (or this.authManager.currentUser.isAnAdmin (eq this.model.owner.email this.authManager.currentUser.email))}}
           <LinkTo @route="events.view.settings" class="item">
@@ -105,4 +68,3 @@
   {{!-- the edit page will be rendered without any of the above tabs --}}
   {{outlet}}
 {{/if}}
-<Modals::PublishUnpublishModal @isOpen={{this.isPublishUnpublishModalOpen}} @state={{this.model.state}} @isEventPublishable={{this.isEventPublishable}} @togglePublishState={{action 'togglePublishState'}} />

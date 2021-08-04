@@ -1,0 +1,59 @@
+<div class="ui grid container">
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'View Session'}}
+    </h2>
+    <div class="ui divider"></div>
+  </div>
+  <div class="column three wide">
+    <div class="ui {{ this.model.session.color }} large label">{{capitalize this.model.session.status}}</div>
+  </div>
+  <div class="column nine wide">
+    <div class="ui {{ this.model.session.color }} large label">
+      {{#if this.model.session.startsAt}}
+        {{t 'Timing:'}} {{general-date this.model.session.startsAt 'date-time-tz-short' tz=this.model.session.event.timezone}} {{t ' - '}} {{general-date this.model.session.endsAt 'date-time-tz-short' tz=this.model.session.event.timezone}}
+      {{else}}
+        {{t 'Not yet scheduled'}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="column four wide">
+    <LinkTo
+      @route="events.view.session.edit"
+      @models={{array this.model.session.event.id this.model.session.id}}>
+      <button
+        class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Session'}}</button>
+    </LinkTo>
+  </div>
+  <div class="column sixteen wide">
+    <h3 class="ui header">
+      {{t 'Session details'}}
+    </h3>
+  </div>
+</div>
+<Events::View::Overview::SessionView
+  @fields={{this.allFields}}
+  @session={{this.model.session}} />
+<div class="ui grid container mb-4">
+  <div class="weight-600 column five wide">{{t 'Speakers'}}</div>
+    <div class="column eleven wide">
+      {{#each this.model.session.speakers as |speaker|}}
+        <LinkTo
+          @route="public.cfs.view-speaker"
+          @models={{array this.model.session.event.id speaker.id}}>
+          <div>{{speaker.name}}</div>
+        </LinkTo>
+      {{/each}}
+    </div>
+</div>
+
+{{#if this.model.session.speakerInvites}}
+  <div class="ui grid container mb-4">
+    <div class="weight-600 column five wide">{{t 'Speakers Invited'}}</div>
+      <div class="column eleven wide">
+        {{#each this.model.session.speakerInvites as |speakerInvite|}}
+          <div>{{speakerInvite.email}}</div>
+        {{/each}}
+      </div>
+  </div>
+{{/if}}

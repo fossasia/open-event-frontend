@@ -3,6 +3,7 @@
     {{#each this.record as |ticket|}}
       <div class="item">{{ticket.name}} ({{add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed}}/{{ticket.quantity}}) <span class="item muted text">[{{ticket.type}}]</span></div>
     {{/each}}
+    <div>Total Sales - {{this.extraRecords.totalSales}}</div>
   </div>
 {{else}}
   <div>{{t 'No Ticket Information'}}</div>

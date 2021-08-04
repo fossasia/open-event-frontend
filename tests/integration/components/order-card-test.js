@@ -9,11 +9,13 @@ module('Integration | Component | order card', function(hooks) {
   setupIntegrationTest(hooks);
 
   const event = EmberObject.create({ originalImageUrl: 'abc.png', name: 'Pragma', startsAt: new Date(), shortLocationName: 'IN', paymentCurrency: 'INR' });
+  const ticket = EmberObject.create({ name: 'community', type: 'Free' });
   const attendees = A(
     [
       EmberObject.create({
         email       : 'test@gmail.com',
-        isCheckedIn : false
+        isCheckedIn : false,
+        ticket
       })
     ]
   );

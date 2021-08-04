@@ -1,0 +1,21 @@
+<div id="video-root" class="video-root" {{did-insert this.setup}} {{did-update this.setup @videoStream}}>
+  {{#if this.loading}}
+    <div class="ui active centered inline loader"></div>
+  {{/if}}
+  {{#if this.iframeUrl}}
+    <iframe src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" />
+  {{/if}}
+  {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
+    <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
+  {{/if}}
+  {{#if (and (eq @videoStream.videoChannel.provider 'youtube') this.youtubeId)}}
+    <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}" gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+  {{/if}}
+  {{#if (and (eq @videoStream.videoChannel.provider 'vimeo') this.vimeoId)}}
+    <iframe src="https://player.vimeo.com/video/{{this.vimeoId}}?autoplay={{if @videoStream.extra.autoplay 1 0}}&loop={{if @videoStream.extra.loop 1 0}}" width="100%" height="100%" frameborder="0" title="Vimeo Live Stream" allow="autoplay" allowfullscreen="true"></iframe>
+  {{/if}}
+</div>
+<Public::Stream::SidePanel @event={{@event}} @videoStream={{@videoStream}} />
+{{#if this.isRocketChatEnabled}}
+  <Public::Stream::ChatPanel @event={{@event}}/>
+{{/if}}

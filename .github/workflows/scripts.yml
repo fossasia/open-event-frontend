@@ -1,0 +1,44 @@
+name: "Scripts"
+
+on:
+  pull_request_target:
+
+jobs:
+  dependabot-approve:
+    runs-on: ubuntu-latest
+
+    if: github.actor == 'dependabot-preview[bot]'
+    steps:
+      - uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'APPROVE'
+            })
+
+  branch-check:
+    runs-on: ubuntu-latest
+
+    if: (github.base_ref == 'development' && github.head_ref == 'development') || (github.base_ref == 'testing' && github.head_ref == 'testing')
+    steps:
+      - uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "We don't accept pull requests from `development` or `testing` branch. Please send a pull request from some other branch. Thank You!"
+            })
+            await github.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              state: "closed"
+            })
+            

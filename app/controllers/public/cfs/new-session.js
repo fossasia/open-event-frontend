@@ -14,7 +14,7 @@ export default class NewSessionController extends Controller {
         {
           id: 'sess_save_succ'
         });
-      this.transitionToRoute('public.cfs.index');
+      this.transitionToRoute('public.cfs.view-session', this.model.event.identifier, this.model.session.id);
     } catch (e) {
       console.error('Error while saving new session', e);
       this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));

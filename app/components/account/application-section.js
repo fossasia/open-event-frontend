@@ -41,7 +41,7 @@ export default class ApplicationSection extends Component {
         });
       }
     } catch (error) {
-      this.notify.error(this.l10n.t(error.message), {
+      this.notify.error(error.message, {
         id: 'error_message'
       });
       this.set('isLoading', false);

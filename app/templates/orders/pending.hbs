@@ -8,7 +8,7 @@
     <div class="row">
       <div class="column">
         <div class="ui small gray-text">
-          {{header-date this.model.order.event.startsAt}} - {{header-date this.model.order.event.endsAt}}
+          {{general-date this.model.order.event.startsAt 'date-time-long'}} - {{general-date this.model.order.event.endsAt 'date-time-long'}}
           <br>
           {{this.model.order.event.locationName}}
         </div>
@@ -20,64 +20,63 @@
           @data={{this.model.order}}
           @event={{this.model.event}}
           @eventCurrency={{this.model.order.event.paymentCurrency}} />
-      </div>
-      <div class="mobile hidden seven wide column">
-        <Orders::EventInfo
-          @data={{this.model.order}} />
-      </div>
-    </div>
-    <div class="row">
-      <div class="nine wide right aligned column">
-        {{#if this.isStripe}}
-          <StripeCheckout
-            @image="https://stripe.com/img/documentation/checkout/marketplace.png"
-            @currency={{this.model.order.event.paymentCurrency}}
-            @locale="auto"
-            @name="Open Event"
-            @class="ui right labeled icon blue button"
-            @description={{this.paymentDescription}}
-            @amount={{this.paymentAmount}}
-            @key={{this.model.order.event.stripeAuthorization.stripePublishableKey}}
-            @onToken={{action "processStripeToken"}}
-            @onClosed={{action "checkoutClosed"}}
-            @onOpened={{action "checkoutOpened"}}>
-            {{t 'Pay Now'}}
-            <i class="credit card icon"></i>
-          </StripeCheckout>
+        <br/>
+        {{#if this.model.event.afterOrderMessage}}
+          <Orders::AfterOrderMessage
+            @event={{this.model.event}} />
+          <br/>
         {{/if}}
-        {{#if this.isPaypal}}
-          <div class='paypal-button'>
-            <PaypalButton
-              @data={{this.model.order}}
-              @paymentFor="order" />
-          </div>
-        {{/if}}
-        {{#if this.isOmise}}
-          <div>
-            <form class="checkout-form" name="checkoutForm" method='POST' action={{this.omiseFormAction}}>
-              <script type="text/javascript" src="https://cdn.omise.co/omise.js" data-key="{{this.publicKeyOmise}}" data-amount="{{this.paymentAmount}}" data-currency="{{this.model.order.event.paymentCurrency}}" data-default-payment-method="credit_card">
-                </script>
-            </form>
-          </div>
-        {{/if}}
-        {{#if this.isPaytm}}
-          <button class="ui button primary" {{action "openPaytmModal"}}>{{t 'Pay with PayTM'}}</button>
-        {{/if}}
-        {{#if this.isAliPay}}
-          <button class="ui button primary"
-            {{action "alipayCheckout" this.model.order.identifier}}>{{t 'Pay with AliPay'}}</button>
-        {{/if}}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="nine wide column">
         <Forms::Orders::AttendeeList
           @save="save"
           @data={{this.model.order}}
           @fields={{this.model.form}} />
       </div>
       <div class="seven wide column">
+        <Orders::EventInfo
+          @data={{this.model.order}} />
+        <br/>
+        <div>
+          {{#if this.isStripe}}
+            <StripeCheckout
+              @image="https://stripe.com/img/documentation/checkout/marketplace.png"
+              @currency={{this.model.order.event.paymentCurrency}}
+              @locale="auto"
+              @name="Open Event"
+              @class="ui right labeled icon blue button weight-400 width-full"
+              @description={{this.paymentDescription}}
+              @amount={{this.paymentAmount}}
+              @key={{this.model.order.event.stripeAuthorization.stripePublishableKey}}
+              @onToken={{action "processStripeToken"}}
+              @onClosed={{action "checkoutClosed"}}
+              @onOpened={{action "checkoutOpened"}}>
+              {{t 'Pay Now'}}
+              <i class="credit card icon"></i>
+            </StripeCheckout>
+          {{/if}}
+          {{#if this.isPaypal}}
+            <div class='paypal-button ui fluid button'>
+              <PaypalButton
+                @data={{this.model.order}}
+                @paymentFor="order" />
+            </div>
+          {{/if}}
+          {{#if this.isOmise}}
+            <div>
+              <form class="checkout-form" name="checkoutForm" method='POST' action={{this.omiseFormAction}}>
+                <script type="text/javascript" src="https://cdn.omise.co/omise.js" data-key="{{this.publicKeyOmise}}" data-amount="{{this.paymentAmount}}" data-currency="{{this.model.order.event.paymentCurrency}}" data-default-payment-method="credit_card">
+                </script>
+              </form>
+            </div>
+          {{/if}}
+          {{#if this.isPaytm}}
+            <button class="ui fluid button primary" {{action "openPaytmModal"}}>{{t 'Pay with PayTM'}}</button>
+          {{/if}}
+          {{#if this.isAliPay}}
+            <button class="ui fluid button primary"
+              {{action "alipayCheckout" this.model.order.identifier}}>{{t 'Pay with AliPay'}}</button>
+          {{/if}}
+        </div>
+        <br/>
         <Orders::TicketHolder
           @data={{this.model.order}} />
       </div>

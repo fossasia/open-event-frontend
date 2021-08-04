@@ -1,0 +1,69 @@
+<button {{did-insert this.setup}} class="ui icon button stream-side-panel-button" {{action (mut this.shown) true}}>
+  <i class="angle right icon"></i>
+</button>
+{{#if this.shown}}
+  <div class="d-flex flex-column stream-side-panel" >
+    <div class="ui header inverted ml-4 mt-4">
+      <a href={{href-to 'public' @event (query-params side_panel='true')}}>
+        <p class="text-white">{{@event.name}}</p>
+      </a>
+    </div>
+    <div class="ml-4">
+      <div class="mr-8 pt-1" style="font-size: 0.9rem;">
+        <Public::EventDateTime @event={{@event}} />
+      </div>
+      <button class="ui icon button stream-side-panel-button right" {{action (mut this.shown) false}}>  
+        <i class="angle left icon pr-2"></i>
+      </button>
+    </div>
+    <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="flex-shrink: 0;">
+      {{#if (and @event.isSchedulePublished this.showSessions)}}
+        <a class="ui labeled fluid item {{if (eq @currentRoute 'public.sessions.index') 'video-active'}}" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
+          <span><i class="calendar icon"></i>
+          {{t 'Schedule'}}</span>
+        </a>
+      {{/if}}
+
+      {{#if this.showSpeakers}}
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.speakers') 'video-active'}}" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
+          <span><i class="bullhorn icon"></i>
+          {{t 'Speakers'}}</span>
+        </a>
+      {{/if}}
+
+      {{#if this.showExhibitors}}
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.exhibition.index') 'video-active'}}" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
+          <span><i class="image icon"></i>
+          {{t 'Exhibition'}}</span>
+        </a>
+      {{/if}}
+
+      {{#if this.showChat}}
+        <a class="ui labeled icon item {{if (eq @currentRoute 'public.chat') 'video-active'}}" href={{href-to 'public.chat' @event (query-params side_panel='true')}}>
+          <span><i class="comment icon"></i>
+          {{t 'Chat'}}</span>
+        </a>
+      {{/if}}
+      
+      {{#if this.showVideoRoom}}
+        <div class="item">
+          <span><i class="video icon"></i>
+          {{t 'Video Rooms'}}</span>
+        </div>
+      {{/if}}
+    </div>
+    {{#if this.showVideoRoom}}
+      <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
+        {{#each this.streams as |stream|}}
+          <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
+            <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
+            <span class="ml-2">{{stream.name}}</span>
+          </a>
+        {{/each}}
+      </div>
+    {{/if}}
+    {{#if this.loading}}
+      <div class="ui active centered inline loader"></div>
+    {{/if}}
+  </div>
+{{/if}}

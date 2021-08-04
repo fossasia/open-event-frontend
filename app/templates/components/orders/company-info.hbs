@@ -1,0 +1,105 @@
+<div class="ui segments">
+  <div class="ui green inverted segment center aligned">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Company Information'}}
+      </div>
+    </div>
+  </div>
+  <div class="ui padded segment">
+    <table class="ui very basic compact unstackable table company-info">
+      <tbody>
+        {{#if @tax.registeredCompany}}
+          <tr>
+            <td>
+              <strong>{{t 'Name'}}:</strong>
+            </td>
+            <td>
+              {{@tax.registeredCompany}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.address}}
+          <tr>
+            <td>
+              <strong>{{t 'Address'}}:</strong>
+            </td>
+            <td>
+              {{@tax.address}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.country}}
+          <tr>
+            <td>
+              <strong>{{t 'Country'}}:</strong>
+            </td>
+            <td>
+              {{@tax.country}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.state}}
+          <tr>
+            <td>
+              <strong>{{t 'State'}}:</strong>
+            </td>
+            <td>
+              {{@tax.state}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.city}}
+          <tr>
+            <td>
+              <strong>{{t 'City'}}:</strong>
+            </td>
+            <td>
+              {{@tax.city}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.zip}}
+          <tr>
+            <td>
+              <strong>{{t 'ZIP Code'}}:</strong>
+            </td>
+            <td>
+              {{@tax.zip}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.name}}
+          <tr>
+            <td>
+              <strong>{{t 'Tax Name'}}:</strong>
+            </td>
+            <td>
+              {{@tax.name}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.taxId}}
+          <tr>
+            <td>
+              <strong>{{t 'Tax ID'}}:</strong>
+            </td>
+            <td>
+              {{@tax.taxId}}
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @tax.rate}}
+          <tr>
+            <td>
+              <strong>{{t 'Tax Rate'}}:</strong>
+            </td>
+            <td>
+              {{@tax.rate}}%
+            </td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+ </div>
+</div>

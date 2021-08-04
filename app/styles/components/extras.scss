@@ -1,0 +1,31 @@
+a.link-item,
+p.link-item {
+  color: #333;
+  display: table;
+
+  &.active {
+    background-color: rgba(0, 0, 0, .1);
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .05);
+  }
+}
+
+.leaflet-container {
+  height: 300px;
+}
+
+.sub.header {
+  color: #555 !important;
+}
+
+.meta {
+  color: #555 !important;
+}
+
+@media screen and (max-width: 467px) {
+  a.link-item {
+    font-size: .9rem;
+  }
+}

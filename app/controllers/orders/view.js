@@ -1,5 +1,5 @@
 import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
@@ -10,6 +10,31 @@ export default class ViewController extends Controller {
 
   @service
   printThis;
+
+  @computed('model.order.user', 'authManager.currentUser')
+  get showTicketsButton() {
+    return this.model.order.get('user.id') === this.authManager.currentUser.id || this.authManager.currentUser.isAdmin;
+  }
+
+
+  @action
+  async cancelOrder(order_id) {
+    this.set('isLoading', true);
+    const order = await this.store.peekRecord('order', order_id, { backgroundReload: false });
+    order.set('status', 'cancelled');
+    try {
+      await order.save();
+      this.notify.success(this.l10n.t('Order has been cancelled successfully.'));
+    } catch (e) {
+      console.error('Error while cancelling order', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'));
+    } finally {
+      this.set('isLoading', false);
+      document.querySelector('#top').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  }
 
   @action
   downloadInvoice(eventName, orderId) {

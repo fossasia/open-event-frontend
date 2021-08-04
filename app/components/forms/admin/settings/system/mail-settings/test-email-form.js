@@ -45,7 +45,7 @@ export default class TestEmailForm extends Component.extend(FormMixin) {
         })
         .catch(e => {
           console.error('Error while sending test email', e);
-          this.notify.error(this.l10n.t('An unexpected error has occurred'), {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
             id: 'test_mail_err'
           });
         });

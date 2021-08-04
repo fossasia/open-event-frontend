@@ -1,9 +1,9 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
-import { computedSegmentedLink } from 'open-event-frontend/utils/computed-helpers';
+import { computed } from '@ember/object';
 
-export default ModelBase.extend({
+export default class Speaker extends ModelBase.extend({
 
   /**
    * Attributes
@@ -25,6 +25,7 @@ export default ModelBase.extend({
   facebook           : attr('string'),
   github             : attr('string'),
   linkedin           : attr('string'),
+  mastodon           : attr('string'),
   instagram          : attr('string'),
   organisation       : attr('string'),
   isFeatured         : attr('boolean', { default: false }),
@@ -34,14 +35,8 @@ export default ModelBase.extend({
   city               : attr('string'),
   gender             : attr('string'),
   heardFrom          : attr('string'),
+  order              : attr('number'),
   complexFieldValues : attr(),
-
-  segmentedLinkWebsite   : computedSegmentedLink.bind(this)('website'),
-  segmentedLinkTwitter   : computedSegmentedLink.bind(this)('twitter'),
-  segmentedLinkGithub    : computedSegmentedLink.bind(this)('github'),
-  segmentedLinkFacebook  : computedSegmentedLink.bind(this)('facebook'),
-  segmentedLinkLinkedin  : computedSegmentedLink.bind(this)('linkedin'),
-  segmentedLinkInstagram : computedSegmentedLink.bind(this)('instagram'),
 
   /**
    * Relationships
@@ -51,10 +46,20 @@ export default ModelBase.extend({
   event    : belongsTo('event'),
   sessions : hasMany('session'),
 
+  positionOrganisation: computed('position', 'organization', function() {
+    return [this.position, this.organisation].filter(Boolean).join(', ');
+  }),
+
   ready() {
     if (!this.complexFieldValues) {
       this.complexFieldValues = {};
     }
   }
 
-});
+}) {
+
+  get image() {
+    return this.thumbnailImageUrl || this.photoUrl || '/images/placeholders/avatar.png';
+  }
+
+}

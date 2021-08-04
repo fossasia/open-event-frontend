@@ -1,0 +1,85 @@
+<div class="vl"></div>
+<UiAccordion class="tracks">
+  <div class="title tracks" {{action 'hideSpeakerImage'}} role="button" style="padding-left:10px; color:white">
+        <div class="ui">
+          <h3 class="ui header">
+            {{this.session.title}}
+            <div class="sub header">
+              {{this.session.track.name}}
+            </div>
+          </h3>
+        </div>
+        <br>
+        <div class="ui grid stackable">
+          {{#if this.hideImage}}
+            <div class="left floated twelve wide column">           
+            </div>
+          {{else}}
+            <div class="left floated three wide column">
+              <div class="session-speakers">
+                {{#each this.session.speakers as |speaker|}}
+                  <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                {{/each}}
+              </div>
+            </div>
+            <div class="right floated seven wide column">
+              <div class="session-speakers">
+                {{#each this.session.speakers as |speaker|}}
+                  {{speaker.name}} ({{speaker.shortBiography}})
+                {{/each}}
+              </div>
+            </div>
+            <div class="right floated six wide column">
+              {{#if this.session.startsAt}}
+                <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
+              {{/if}}
+            </div>
+            <br>
+            {{this.session.sessionType.name}}
+          {{/if}}
+        </div>
+      </div>
+  <div class="content">
+    {{sanitize this.session.shortAbstract}}
+    <div class="ui divider"></div>
+    {{#each this.session.speakers as |speaker|}}
+      <div class="ui divider"></div>
+      <img alt="speaker" class="ui tiny avatar image" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      <p>
+        <br>
+        {{speaker.name}}
+        <br>
+        {{#if speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
+        {{/if}}
+        <br>
+        {{#if speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
+        {{/if}}
+        {{#if speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
+        {{/if}}
+      </p>
+      <div class="social-icons">
+        {{#if speaker.website}}
+          <a href={{speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe f icon"></i>Website</a>
+        {{/if}}
+        {{#if speaker.facebook}}
+          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>Facebook</a>
+        {{/if}}
+        {{#if speaker.linkedin}}
+          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>Linkedin</a>
+        {{/if}}
+        {{#if speaker.twitter}}
+          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>Twitter</a>
+        {{/if}}
+        {{#if speaker.github}}
+          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>GitHub</a>
+        {{/if}}
+      </div>
+    {{/each}}
+    <div class=""><i class="icon map marker alternate"></i>{{this.session.microlocation.name}}</div>
+    {{general-date this.session.startsAt tz=this.session.event.timezone}} - {{general-date this.session.endsAt tz=this.session.event.timezone}}<br/>
+    {{this.session.track.name}}
+  </div>
+</UiAccordion>

@@ -1,0 +1,31 @@
+.tracks {
+  border-radius: 5px;
+}
+
+.vl {
+  border-left: 1px solid rgba(86, 86, 87, .25);
+  height: 100%;
+  left: -3%;
+  margin-left: -8px;
+  position: absolute;
+  top: 0;
+}
+
+@media (min-width: 600px) {
+  .slide-iframe,
+  .video-iframe {
+    height: 370px;
+  }
+}
+
+@media (max-width: 600px) {
+  .slide-iframe,
+  .video-iframe {
+    height: 250px;
+  }
+}
+
+.slide-iframe,
+.video-iframe {
+  max-width: 670px;
+}

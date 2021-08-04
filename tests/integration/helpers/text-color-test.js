@@ -9,9 +9,9 @@ module('Integration | Helper | text-color', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{text-color '#000000'}}`);
-    assert.equal(this.element.textContent.trim(), '#FFFFFF');
+    assert.equal(this.element.textContent.trim(), '#fff');
     await render(hbs`{{text-color '#FFFFFF'}}`);
-    assert.equal(this.element.textContent.trim(), '#000000');
+    assert.equal(this.element.textContent.trim(), '#000');
   });
 });
 

@@ -1,0 +1,41 @@
+<div class="column sixteen wide">
+  <h2 class="ui header center aligned">
+    {{t 'Reorder Exhibitors'}}
+  </h2>
+  <div class="ui container">
+    <UiCheckbox
+      @class="toggle mb-8 ml-4"
+      @checked={{this.useSwap}}
+      @onChange={{action (mut this.useSwap)}}
+      @label={{t "Swap Places"}} />
+
+
+    <button class="ui primary button right floated mr-4" {{action this.save}}>{{t "Save"}}</button>
+    <button class="ui negative button right floated" {{action (confirm (t 'This will reset the order of all exhibitors to default unordered list. Continue?') this.reset)}}>{{t "Reset"}}</button>
+
+    <SortableObjects
+      @sortableObjectList={{this.model.exhibitors}}
+      @overrideClass="ui stackable grid container four column"
+      @sortEndAction={{action this.sortEndAction}}
+      @enableSort={{true}}
+      @useSwap={{this.useSwap}}>
+      {{#each this.model.exhibitors as |exhibitor|}}
+        <DraggableObject @content={{exhibitor}} @overrideClass="column" @isSortable={{true}}>
+          <div class="ui card pointer">
+            <div class="image">
+              <img src="{{exhibitor.bannerUrl}}">
+            </div>
+            <div class="content">
+              <div class="header">
+                <span>{{exhibitor.name}}</span>
+              </div>
+              <div class="meta">
+                <span>{{exhibitor.defaultValue}}</span>
+              </div>
+            </div>
+          </div>
+        </DraggableObject>
+      {{/each}}
+    </SortableObjects>
+  </div>
+</div>

@@ -1,8 +1,9 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
+import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
-export default Component.extend(FormMixin, {
+export default Component.extend(FormMixin, EventWizardMixin, {
 
   getValidationRules() {
     return {
@@ -52,28 +53,14 @@ export default Component.extend(FormMixin, {
     removeSponsor(sponsor) {
       sponsor.deleteRecord();
     },
-    saveDraft() {
-      this.onValid(() => {
-        this.set('data.event.state', 'draft');
-        this.sendAction('save');
-      });
-    },
-    move(direction) {
-      this.onValid(() => {
-        this.sendAction('move', direction);
-      });
-    },
-    publish() {
-      this.onValid(() => {
-        this.set('data.event.state', 'published');
-        this.sendAction('save');
-      });
-    }
-  },
-
-  didInsertElement() {
-    if (this.data.sponsors && !this.data.sponsors.length) {
-      this.data.sponsors.addObject(this.store.createRecord('sponsor'));
+    toggleSponsors() {
+      if (this.data.sponsors && !this.data.sponsors.length) {
+        this.data.event.isSponsorsEnabled = true;
+        this.data.sponsors.addObject(this.store.createRecord('sponsor'));
+      } else {
+        this.data.event.isSponsorsEnabled = false;
+        this.data.sponsors.clear();
+      }
     }
   }
 });

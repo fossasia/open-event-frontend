@@ -7,14 +7,18 @@ export default class extends Controller {
   isLoading = false;
 
   @action
-  export() {
+  export(status) {
     this.set('isLoading', true);
+    const payload = {
+      status
+    };
     this.loader
-      .load(`/events/${this.model.id}/export/speakers/csv`)
+      .post(`/events/${this.model.id}/export/speakers/csv`, payload)
       .then(exportJobInfo => {
         this.requestLoop(exportJobInfo);
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while exporting', e);
         this.set('isLoading', false);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
@@ -35,7 +39,8 @@ export default class extends Controller {
             this.notify.error(this.l10n.t('CSV Export has failed.'));
           }
         })
-        .catch(() => {
+        .catch(e => {
+          console.error('Error while exporting CSV', e);
           this.notify.error(this.l10n.t('CSV Export has failed.'));
         })
         .finally(() => {

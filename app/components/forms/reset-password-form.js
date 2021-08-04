@@ -1,13 +1,18 @@
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { inject as service } from '@ember/service';
+import ENV from 'open-event-frontend/config/environment';
 
 export default Component.extend(FormMixin, {
 
-  identification : '',
-  password       : '',
-  isLoading      : false,
-  router         : service(),
+  identification  : '',
+  password        : '',
+  isLoading       : false,
+  router          : service(),
+  captcha         : false,
+  showHcaptcha    : !!ENV.hcaptchaKey,
+  captchaRendered : false,
+
   getValidationRules() {
     return {
       inline : true,
@@ -23,7 +28,7 @@ export default Component.extend(FormMixin, {
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email ID')
+              prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
         },
@@ -85,8 +90,8 @@ export default Component.extend(FormMixin, {
             })
             .catch(e => {
               console.error('Error while resetting password', e);
-              this.set('errorMessage', this.l10n.t('An unexpected error occurred.'), {
-                id: 'reset_unexpect'
+              this.set('errorMessage', this.l10n.t('Password reset link is either invalid or used already'), {
+                id: 'reset_invalid'
               });
             })
             .finally(() => {
@@ -114,7 +119,7 @@ export default Component.extend(FormMixin, {
                 this.set('errorMessage', this.l10n.t('No account is registered with this email address.'));
               } else {
                 console.error('Error while submitting reset password', reason);
-                this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+                this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
               }
             })
             .finally(() => {

@@ -1,0 +1,14 @@
+<span>{{t @record}}</span>
+<div class="ui hidden divider"></div>
+<div class="ui horizontal compact basic buttons">
+  <LinkTo @route="groups.edit.settings" @model={{@extraRecords.id}}>
+    <UiPopup @content={{t "Edit"}}  @class="ui icon button">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
+  {{#if (not @extraRecords.deletedAt)}}
+    <UiPopup @content={{t "Delete"}} @class="ui icon button" @click={{action @props.actions.deleteGroup @extraRecords.id}}>
+      <i class="trash icon"></i>
+    </UiPopup>
+  {{/if}}
+</div>

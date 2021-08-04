@@ -6,7 +6,7 @@ import { FORM_TIME_FORMAT } from 'open-event-frontend/utils/dictionary/date-time
 
 export default Component.extend({
 
-  classNames        : ['ui', 'calendar', 'time', 'picker', 'input', 'fluid', 'field'],
+  classNames        : ['ui', 'calendar', 'time', 'picker', 'input', 'fluid'],
   classNameBindings : ['icon:left', 'icon'],
 
   icon: true,
@@ -34,7 +34,7 @@ export default Component.extend({
   actions: {
     onChange() {
       if (this.onChange) {
-        this.sendAction('onChange', this.value);
+        this.onChange(this.value);
       }
     }
   }

@@ -1,0 +1,223 @@
+{{!-- template-lint-disable no-nested-interactive  --}}
+<UiAccordion class="segment p-0" style={{css background-color=@session.track.color border-color='lightgray'}}>
+  <div class="title p-4 pr-1" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
+    <div class="ui">
+      <h3 class="ui header d-flex" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
+        <div>
+          {{@session.title}}
+          <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
+            {{@session.sessionType.name}}
+          </div>
+        </div>
+        <div class="d-flex ml-auto" style="height: fit-content;">
+          {{#if @session.slidesUrl}}
+            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
+              <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
+              {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
+            </button>
+          {{/if}}
+          {{#if this.sessionEnded}}
+            {{#if @session.videoUrl}}
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToVideo}}>
+                <i class="icon video"></i>
+                {{t 'Watch Video'}}
+              </button>
+            {{/if}}      
+          {{else}}
+            {{#if @session.microlocation.hasVideoStream}}
+              <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} onclick={{prevent-bubbling (action this.goToStream)}}>
+                <i class="icon video"></i>
+                {{t 'Join Video'}}
+              </button>
+            {{/if}}
+          {{/if}}
+          {{#if @showFavButton}}
+            <div class="self-center" role="button" style="width: 25px;" onclick={{prevent-bubbling (action this.favourite)}} data-tooltip="{{t "Add to My Schedule"}}">
+              <i class="ui {{if @session.favourite 'check' 'outline'}} circle icon"></i>
+            </div>
+          {{/if}}
+          <div class="pr-2 self-center">
+            <div class="ui black circular label">{{@session.favouriteCount}}</div>
+          </div>
+          {{#unless @hideSessionLink}}
+            <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="external alternate icon"></i></a>
+          {{/unless}}
+        </div>
+      </h3>
+    </div>
+    <br>
+    <div class="ui grid stackable">
+      {{#if this.hideImage}}
+        <div class="left floated twelve wide column">
+          <div>
+            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+              <i class="train icon pr-2"></i>{{@session.track.name}}
+            </a>
+          </div>
+          {{#if @session.startsAt}}
+            <div>
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="icon map marker alternate pr-2"></i>{{@session.microlocation.name}}
+              </a>
+            </div>
+          {{/if}}
+          {{#if @session.language}}
+            <div>
+              <div class="color-inherit">
+                <i class="icon language alternate pr-2"></i>{{@session.language}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if @session.startsAt}}
+            <div class="small text">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="wait icon pr-2"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
+              </a>
+            </div>
+          {{/if}}
+        </div>
+      {{else}}
+        <div class="left floated eleven wide column" style="padding-bottom: 0 !important;">
+          <div class="d-flex wrap">
+            {{#each @session.speakers as |speaker|}}
+              <div class="d-flex items-center speaker-card pr-2 pb-4">
+                <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                <div class="ml-2">
+                  {{speaker.name}}
+                  {{#if speaker.positionOrganisation}}<div class="speaker-details">{{speaker.positionOrganisation}}</div>{{/if}}
+                </div> 
+              </div>
+            {{/each}}
+          </div>
+        </div>
+        <div class="right floated five wide column" style="padding-top: .25rem !important;" >
+          <div>
+            <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params track=@session.track.name date=null search=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+              <i class="train icon pr-2"></i>{{@session.track.name}}
+            </a>
+          </div>
+          {{#if @session.startsAt}}
+            <div>
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params room=@session.microlocation.name date=null search=null track=null sessionType=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="icon map marker alternate pr-2"></i>{{@session.microlocation.name}}
+              </a>
+            </div>
+          {{/if}}
+          {{#if @session.language}}
+            <div>
+              <div class="color-inherit">
+                <i class="icon language alternate pr-2"></i>{{@session.language}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if @session.startsAt}}
+            <div class="small text">
+              <a class="color-inherit" href="{{href-to 'public.sessions' (or @event @session.event) (query-params date=(moment-format @session.startsAt "YYYY-MM-DD") search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null)}}">
+                <i class="wait icon pr-2"></i>{{general-date @session.startsAt 'date-time-tz-short' tz=@timezone}}
+              </a>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <div class="content pt-0 p-4 pr-1 rounded-t-none {{if @expanded 'active'}}" style={{css background-color='white' border-radius='0.2rem'}}>
+    <div class="ui pt-4 row">
+      <div class="column session-description">
+        {{sanitize @session.shortAbstract}}
+      </div>
+      <div class="mt-4 social-icons">
+        {{#if @session.website}}
+          <a href={{@session.website}} target="_blank" rel="noopener noreferrer"><i class="external alternate icon"></i>{{t 'Website'}}</a>
+        {{/if}}
+        {{#if @session.facebook}}
+          <a href={{@session.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>{{t 'Facebook'}}</a>
+        {{/if}}
+        {{#if @session.linkedin}}
+          <a href={{@session.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>{{t 'LinkedIn'}}</a>
+        {{/if}}
+        {{#if @session.twitter}}
+          <a href={{@session.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>{{t 'Twitter'}}</a>
+        {{/if}}
+        {{#if @session.github}}
+          <a href={{@session.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>{{t 'GitHub'}}</a>
+        {{/if}}
+        {{#if @session.gitlab}}
+          <a href={{@session.gitlab}} target="_blank" rel="noopener noreferrer"><i class="gitlab icon"></i>{{t 'GitLab'}}</a>
+        {{/if}}
+        {{#if @session.mastodon}}
+          <a href={{@session.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
+        {{/if}}
+         </div>
+    </div>
+    {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
+      <div class="row p-4">
+        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>
+          {{#if (or this.pdfLink this.pptLink)}}
+            <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ @session.slidesUrl }}&embedded=true"></iframe>
+          {{else if @session.slidesUrl}}
+            <a class="mb-2" href={{ @session.slidesUrl }} target="_blank" rel="noopener noreferrer">
+              <button class="ui labeled icon button">
+                <i class="file powerpoint icon"></i>
+                {{t 'Slides'}}
+              </button>
+            </a>
+          {{/if}}
+          
+          {{#if this.youtubeLink}}
+            <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}?enablejsapi=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+          {{else if @session.videoUrl}}
+            <a class="mb-2" href={{ @session.videoUrl }} target="_blank" rel="noopener noreferrer">
+              <button class="ui labeled icon button">
+                <i class="video icon"></i>
+                {{t 'Video'}}
+              </button>
+            </a>
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if @session.microlocation.hasVideoStream}}
+      <Public::Stream::StreamInfo @event={{or @event @session.event}} @videoStream={{@session.microlocation.videoStream}} />
+    {{/if}}
+    
+    {{#each @session.speakers as |speaker|}}
+      <img alt="speaker" class="ui tiny avatar image mt-8" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
+      <p>
+        <br>
+        {{speaker.name}}
+        <br>
+        {{speaker.positionOrganisation}}
+        <br>
+        {{#if speaker.shortBiography}}
+          {{sanitize speaker.shortBiography}}
+        {{else if speaker.longBiography}}
+          {{sanitize speaker.longBiography}}
+        {{else if speaker.speakingExperience}}
+          {{sanitize speaker.speakingExperience}}
+        {{/if}}
+      </p>
+      <div class="social-icons">
+        {{#if speaker.facebook}}
+          <a href={{speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i>{{t 'Facebook'}}</a>
+        {{/if}}
+        {{#if speaker.linkedin}}
+          <a href={{speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i>{{t 'Linkedin'}}</a>
+        {{/if}}
+        {{#if speaker.twitter}}
+          <a href={{speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i>{{t 'Twitter'}}</a>
+        {{/if}}
+        {{#if speaker.github}}
+          <a href={{speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i>{{t 'GitHub'}}</a>
+        {{/if}}
+        {{#if speaker.website}}
+          <a href={{speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i>{{t 'Website'}}</a>
+        {{/if}}
+        {{#if speaker.mastodon}}
+          <a href={{speaker.mastodon}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon />{{t 'Mastodon'}}</a>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+</UiAccordion>

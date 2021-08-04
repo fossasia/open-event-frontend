@@ -1,4 +1,4 @@
-<div class="ui container">
+<div class="ui container mb-4">
   <div class="column sixteen wide">
     <h2 class="ui header center aligned">
       {{t 'Edit Session'}}
@@ -11,6 +11,7 @@
         @save={{action "save"}}
         @isSession={{true}}
         @includeSession={{true}}
+        @isCfsPage={{true}}
         @isSessionSpeaker={{true}} />
     </div>
   </div>

@@ -13,3 +13,70 @@
     width: 100%;
   }
 }
+
+.search-bar {
+
+  background-color: #fafafa;
+  border-radius: .5rem;
+  color: #808080;
+
+
+  input {
+    &[type='text'] {
+      background-color: #fafafa;
+      border: 0;
+      outline: 0;
+      transition: width .2s ease-in-out;
+      width: 140px;
+
+      &:focus {
+        width: 200px;
+      }
+    }
+  }
+
+  i {
+    margin-bottom: .5rem;
+  }
+
+  &-mobile {
+    position: absolute;
+    backface-visibility: hidden;
+    z-index: -1;
+
+    input {
+      &[type='text'] {
+        width: 100%;
+
+        &:focus {
+          width: 100%;
+        }
+      }
+    }
+
+  }
+}
+
+@keyframes anima {
+  0% {
+    right: 11%;
+    width: 35%;
+    transform: none;
+  }
+
+  99% {
+    right: 11%;
+    transform: none;
+  }
+
+  100% {
+    right: 50%;
+    transform: translateX(48%);
+    width: 77%;
+  }
+}
+
+.show-bar {
+  z-index: 1;
+  animation: anima .2s ease-in-out 1 both;
+}

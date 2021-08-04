@@ -1,15 +1,14 @@
 # Open Event Frontend
 ![Open Event Frontend](docs/images/Frontend_Branding.png)
 
-[![Build Status](https://travis-ci.org/fossasia/open-event-frontend.svg?branch=development)](https://travis-ci.org/fossasia/open-event-frontend)
+[![Build Status](https://github.com/fossasia/open-event-frontend/workflows/CI/badge.svg?branch=development)](https://github.com/fossasia/open-event-frontend/actions?query=workflow%3Aci)
 [![Netlify](https://img.shields.io/netlify/89d57fdc-826c-400b-af13-c542e9513f62)](https://app.netlify.com/sites/open-event/deploys)
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
-[![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d51cf60fc734d3699fd6eff6054e483)](https://www.codacy.com/app/fossasia/open-event-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fossasia/open-event-frontend&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/fossasia/open-event-frontend/branch/development/graph/badge.svg)](https://codecov.io/gh/fossasia/open-event-frontend)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/open-event-frontend/localized.svg)](http://translate.eventyay.com/project/open-event-frontend)
-[![Mailing List](https://img.shields.io/badge/Mailing%20List-FOSSASIA-blue.svg)](https://groups.google.com/forum/#!forum/open-event)
+[![Weblate](https://hosted.weblate.org/widgets/open-event/-/frontend/svg-badge.svg)](https://hosted.weblate.org/projects/open-event/frontend/)
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-frontend)
+[![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 [![Twitter Follow](https://img.shields.io/twitter/follow/eventyay.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/eventyay)
 
 The front end for the **Open Event Server**
@@ -17,8 +16,8 @@ The front end for the **Open Event Server**
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 **API Documentation:**
--   Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event-api.herokuapp.com](https://open-event-api.herokuapp.com)).
--   A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://dev.eventyay.com/api/v1](http://dev.eventyay.com/api/v1)
+-   Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)).
+-   A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://api.eventyay.com](http://api.eventyay.com)
 
 ## Communication
 
@@ -34,7 +33,17 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ## Running / Development
 
--   `ember serve`
+[Click to see installation video](https://asciinema.org/a/370458?speed=5&autoplay=1)
+
+**Note**: Please follow [installation steps](/docs/installation/local.md#steps) listed above carefully before running 
+
+Unfortunately, no one reads the note above, so please just run the following commands when setting up for the first time:
+-   `yarn`
+-   `cp .env.example .env`
+-   `yarn l10n:generate`
+
+Running:
+-   `yarn start`
 -   Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
@@ -45,13 +54,13 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 This project has acceptance, integration and unit tests located inside the `tests/` folder.
 
--   `ember test` - CLI output
--   `ember test --server` - Live browser preview and console access
+-   `yarn test` - CLI output
+-   `yarn test --server` - Live browser preview and console access
 
 ### Building
 
--   `ember build` (development)
--   `ember build --environment production` (production)
+-   `yarn build` (development)
+-   `yarn build -prod` (production)
 
 ## Deployments, Docker images and Releases
 
@@ -64,7 +73,7 @@ It consumes the API exposed by master branch deployment of open event server, ho
 #### Development branch
 
 The **development** branch of open-event-frontend gets deployed at [https://open-event-frontend.now.sh/](https://open-event-frontend.now.sh/)
-It consumes the API exposed by development branch of open event server, hosted at [https://open-event-api-dev.herokuapp.com](https://open-event-api-dev.herokuapp.com)
+It consumes the API exposed by development branch of open event server, hosted at [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)
 
 ### Release Cycle
 

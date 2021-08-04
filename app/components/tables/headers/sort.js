@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { kebabCase } from 'lodash-es';
+import { kebabCase } from 'open-event-frontend/utils/text';
 
 @classic
 export default class Sort extends Component {

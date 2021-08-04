@@ -5,6 +5,8 @@ import moment from 'moment';
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  sort_by = 'order.completed_at';
+  sort_dir = 'DSC';
   get columns() {
     return [
       {
@@ -15,37 +17,50 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-order'
       },
       {
-        name      : 'Ticket Name',
-        width     : 110,
-        valuePath : 'ticket.name'
+        name            : 'Ticket Name',
+        width           : 80,
+        valuePath       : 'ticket.name',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
+      },
+      {
+        name            : 'Date and Time',
+        width           : 120,
+        valuePath       : 'order.completed_at',
+        extraValuePaths : ['order'],
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-date',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
       },
       {
         name            : 'Ticket Price',
+        width           : 50,
         valuePath       : 'ticket.price',
-        width           : 100,
         extraValuePaths : ['event', 'discountCode'],
-        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price'
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-price',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
       },
       {
         name      : 'First Name',
         valuePath : 'firstname',
-        width     : 100
+        width     : 60
       },
       {
         name      : 'Last Name',
         valuePath : 'lastname',
-        width     : 90
+        width     : 60
       },
       {
         name      : 'Email',
         valuePath : 'email',
-        width     : 160
+        width     : 130
       },
       {
         name            : 'Actions',
         valuePath       : 'id',
         width           : 130,
-        extraValuePaths : ['order', 'isCheckedIn'],
+        extraValuePaths : ['order', 'isCheckedIn', 'event', 'checkinTimes', 'checkoutTimes'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-action',
         actions         : {
           toggleCheckIn: this.toggleCheckIn.bind(this)
@@ -55,20 +70,29 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   }
 
   @action
-  toggleCheckIn(attendee_id) {
+  toggleCheckIn(attendee_id, date, isCheckedInCurrently) {
     const attendee = this.store.peekRecord('attendee', attendee_id, { backgroundReload: false });
-    attendee.toggleProperty('isCheckedIn');
-    if (attendee.isCheckedIn) {
-      const newCheckinTimes = attendee.get('checkinTimes') === null ? `${moment().toISOString()}` : `${attendee.get('checkinTimes')},${moment().toISOString()}`;
+    let myTime = moment().toISOString();
+    if (moment(date, 'MM-DD-YYYY').format('MM-DD-YYYY') !== moment().format('MM-DD-YYYY')) {
+      myTime = moment(date, 'MM-DD-YYYY');
+      myTime = myTime.format('YYYY-MM-DD') + 'T13:00:00.000Z';
+    }
+    if (!isCheckedInCurrently) {
+      const newCheckinTimes = attendee.get('checkinTimes') === null ? `${myTime}` : `${attendee.get('checkinTimes')},${myTime}`;
       attendee.set('checkinTimes', newCheckinTimes);
+    } else {
+      const newCheckoutTimes = attendee.get('checkoutTimes') === null ? `${myTime}` : `${attendee.get('checkoutTimes')},${myTime}`;
+      attendee.set('checkoutTimes', newCheckoutTimes);
     }
     attendee.save()
-      .then(savedAttendee => {
-        this.notify.success(this.l10n.t(`Attendee ${savedAttendee.isCheckedIn ? 'Checked-In' : 'Checked-Out'} Successfully`));
+      .then(() => {
+        const message = !isCheckedInCurrently ? this.l10n.t('Attendee Checked-In Successfully') : this.l10n.t('Attendee Checked-Out Successfully');
+        this.notify.success(message);
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
-        this.notify.error(this.l10n.t('An unexpected error has occurred'));
+      .catch(e => {
+        console.error('Error while attendee checking IN/OUT', e);
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       });
   }
 }

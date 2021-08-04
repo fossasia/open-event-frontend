@@ -21,6 +21,7 @@ export default Component.extend({
       'ol'     : 1,
       'li'     : 1,
       'ul'     : 1,
+      'br'     : 1,
       'a'      : {
         'check_attributes': {
           'href': 'url'
@@ -34,7 +35,7 @@ export default Component.extend({
   },
 
   valueObserver: observer('value', function() {
-    if (this.editor && this.value !== this._value) {
+    if (this.editor && this.editor.getValue() !== this.value) {
       this.editor.setValue(this.value);
     }
   }),
@@ -61,7 +62,18 @@ export default Component.extend({
 
       const updateValue = () => {
         debounce(this, () => {
-          const value = this.editor.getValue();
+          let value = String(this.editor.getValue()).replace(/(<br>)*$/g, '');
+          if (navigator.userAgent.indexOf('Firefox') !== -1) {
+            value = value + '<br>';
+          }
+          let trimmedValue = new String('');
+          let i = value.length;
+          while (i--) {
+            if (value.charCodeAt(i) !== 10) {
+              trimmedValue = (value.charAt(i)) + trimmedValue;
+            }
+          }
+          value = trimmedValue;
           this.setProperties({ _value: value, value });
         }, 200);
       };

@@ -1,0 +1,15 @@
+{{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') (not-eq this.session.currentRouteName 'public.cfs.new-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
+  {{#if this.device.isMobile}}
+    <UiDropdown class="ui selection dropdown fluid vertical" @selected={{this.activeMenuSection}}>
+      <div class="default text">{{this.activeMenu}}</div>
+      <i class="dropdown icon"></i>
+      <div style="max-height: none !important;" class="menu">
+        <Public::SideMenu @activeMenuSection={{this.activeMenuSection}} @activeSection={{this.activeSection}} @event={{@event}} />
+      </div>
+    </UiDropdown>
+  {{else}}
+    <div class="ui fluid vertical pointing menu">
+      <Public::SideMenu @activeMenuSection={{this.activeMenuSection}} @activeSection={{this.activeSection}} @event={{@event}} />
+    </div>
+  {{/if}}
+{{/if}}

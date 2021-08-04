@@ -1,6 +1,13 @@
-<div class="content">
-  <button class="ui right floated blue button" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
-  <div class="header">{{t 'Manage roles'}}</div>
+<div class="content d-flex" style="align-items: center;">
+  <div class="header">{{t 'Team Members'}}</div>
+  {{#if @editable}}
+    <button class="ui blue button ml-auto" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
+  {{/if}}
+  {{#if @showLink}}
+    <LinkTo @route="events.view.team.index" class="item ml-auto">
+      <button class="ui blue button">{{t 'Edit'}}</button>
+    </LinkTo>
+  {{/if}}
 </div>
 <div class="content">
   <button class="ui {{if (eq this.roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
@@ -10,47 +17,64 @@
   <table class="ui very basic unstackable table">
     <thead>
       <tr>
-        <th>{{t 'User(Email)'}}</th>
+        <th>{{t 'User (Email)'}}</th>
         <th>{{t 'Role'}}</th>
-        <th>{{t 'Options'}}</th>
+        {{#if @editable}}
+          <th>{{t 'Options'}}</th>
+        {{/if}}
       </tr>
     </thead>
     <tbody>
-      {{#each this.roleInvites as |roleInvite|}}
-        <tr>
-          <td>{{roleInvite.email}}</td>
-          <td>{{roleInvite.roleName}}</td>
-          <td>
-            <div class="ui horizontal compact basic buttons">
-              <UiPopup
-                @content={{t "Edit"}}
-                @class="ui icon button"
-                @click={{action "openAddUserRoleModal" roleInvite}}>
-                <i class="edit icon"></i>
-              </UiPopup>
-              {{#if (eq this.roleType 'accepted')}}
-                <UiPopup
-                  @content={{t "Delete"}}
-                  @class="ui icon button"
-                  @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" roleInvite))}}>
-                  <i class="trash icon"></i>
-                </UiPopup>
-              {{else}}
-                <UiPopup
-                  @content={{t "Delete"}}
-                  @class="ui icon button"
-                  @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
-                  <i class="trash icon"></i>
-                </UiPopup>
-              {{/if}}
-            </div>
-          </td>
-        </tr>
+      {{#if (eq this.roleType 'pending')}}
+        {{#each this.roleInvites as |roleInvite|}}
+          <tr>
+            <td>{{roleInvite.email}}</td>
+            <td>{{t-var roleInvite.role.titleName}}</td>
+            {{#if (and @editable  (eq this.roleType 'pending'))}}
+              <td>
+                <div class="ui horizontal compact basic buttons">
+                    <UiPopup
+                      @content={{t "Delete"}}
+                      @class="ui icon button"
+                      @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleInvite))}}>
+                      <i class="trash icon"></i>
+                    </UiPopup>
+                    <UiPopup
+                      @content={{t "Resend invite"}}
+                      @click={{action "resendInvite" roleInvite}}
+                      @class="ui icon button"
+                      @position="top center">
+                      <i class="mail outline icon"></i>
+                    </UiPopup>
+                </div>
+              </td>
+            {{/if}}
+          </tr>
+        {{else}}
+          <div class="ui basic segment">
+            {{t 'No records to show'}}
+          </div>
+        {{/each}}
       {{else}}
-        <div class="ui basic segment">
-          {{t 'No records to show'}}
-        </div>
-      {{/each}}
+        {{#each this.data.usersEventsRoles as |eventRole|}}
+          <tr>
+            <td>{{eventRole.user.email}}</td>
+            <td>{{eventRole.role.titleName}}</td>
+            {{#if (and @editable  (not-eq eventRole.role.name 'owner'))}}
+              <td>
+                <div class="ui horizontal compact basic buttons">
+                    <UiPopup
+                      @content={{t "Delete"}}
+                      @class="ui icon button"
+                      @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" eventRole))}}>
+                      <i class="trash icon"></i>
+                    </UiPopup>
+                </div>
+              </td>
+            {{/if}}
+          </tr>
+        {{/each}}
+      {{/if}}
     </tbody>
   </table>
 </div>
@@ -59,4 +83,4 @@
   @isLoading={{this.isLoading}}
   @data={{this.data}}
   @isOpen={{this.isAddUserRoleModalOpen}}
-  @updateUserRoles={{action "updateUserRoles"}} />
+  @addUserRoles={{action "addUserRoles"}} />

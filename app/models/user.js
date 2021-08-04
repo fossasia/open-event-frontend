@@ -6,14 +6,17 @@ import ModelBase from 'open-event-frontend/models/base';
 import { hasMany } from 'ember-data/relationships';
 import { toString } from 'lodash-es';
 
-export default ModelBase.extend({
+export default class User extends ModelBase.extend({
 
-  authManager: service(),
+  authManager : service(),
+  l10n        : service(),
 
   email                  : attr('string'),
   password               : attr('string'),
-  isVerified             : attr('boolean', { readOnly: true }),
+  isVerified             : attr('boolean'),
   isSuperAdmin           : attr('boolean', { readOnly: true }),
+  isBlocked              : attr('boolean'),
+  isProfilePublic        : attr('boolean'),
   isAdmin                : attr('boolean'),
   isUserOwner            : attr('boolean'),
   isUserOrganizer        : attr('boolean'),
@@ -25,10 +28,11 @@ export default ModelBase.extend({
   isMarketer             : attr('boolean'),
   wasRegisteredWithOrder : attr('boolean'),
 
-  firstName : attr('string'),
-  lastName  : attr('string'),
-  details   : attr('string'),
-  contact   : attr('string'),
+  firstName  : attr('string'),
+  lastName   : attr('string'),
+  publicName : attr('string'),
+  details    : attr('string'),
+  contact    : attr('string'),
 
   avatarUrl         : attr('string'),
   iconImageUrl      : attr('string'),
@@ -62,6 +66,8 @@ export default ModelBase.extend({
   billingAdditionalInfo : attr('string'),
   billingState          : attr('string'),
 
+  isRocketChatRegistered: attr('boolean', { readOnly: true }),
+
   status: computed('lastAccessedAt', 'deletedAt', function() {
     if (this.deletedAt == null) {
       if (this.lastAccessedAt == null) {
@@ -81,21 +87,24 @@ export default ModelBase.extend({
   notifications        : hasMany('notification'),
   orders               : hasMany('order'),
   events               : hasMany('event', { inverse: 'user' }),
+  groups               : hasMany('group'),
   sessions             : hasMany('session'),
   feedbacks            : hasMany('feedback'),
-  invoice              : hasMany('event-invoice'),
+  eventInvoices        : hasMany('event-invoice'),
   attendees            : hasMany('attendee'),
   speakers             : hasMany('speaker'),
   discountCodes        : hasMany('discount-code'),
   accessCodes          : hasMany('access-code'),
-  ownerEvents          : hasMany('event'),
-  organizerEvents      : hasMany('event'),
-  coorganizerEvents    : hasMany('event'),
-  trackOrganizerEvents : hasMany('event'),
-  registrarEvents      : hasMany('event'),
-  moderatorEvents      : hasMany('event'),
-  marketerEvents       : hasMany('event'),
-  salesAdminEvents     : hasMany('event'),
+  favourites           : hasMany('user-favourite-session'),
+  followers            : hasMany('user-follow-group'),
+  ownerEvents          : hasMany('event', { readOnly: true }),
+  organizerEvents      : hasMany('event', { readOnly: true }),
+  coorganizerEvents    : hasMany('event', { readOnly: true }),
+  trackOrganizerEvents : hasMany('event', { readOnly: true }),
+  registrarEvents      : hasMany('event', { readOnly: true }),
+  moderatorEvents      : hasMany('event', { readOnly: true }),
+  marketerEvents       : hasMany('event', { readOnly: true }),
+  salesAdminEvents     : hasMany('event', { readOnly: true }),
 
   didUpdate() {
     this._super(...arguments);
@@ -103,5 +112,13 @@ export default ModelBase.extend({
       const user = this.store.peekRecord('user', this.id);
       this.authManager.persistCurrentUser(user);
     }
-  }
-});
+  },
+
+  fullName: computed('firstName', 'lastName', function() {
+    return [this.firstName, this.lastName].filter(Boolean).join(' ');
+  }),
+
+  resolvedName: computed('publicName', 'fullName', function() {
+    return this.publicName || this.fullName || this.l10n.t('Anonymous User');
+  })
+}) {}

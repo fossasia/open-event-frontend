@@ -3,13 +3,15 @@
 </div>
 {{#if this.confirm.options.extra}}
   <div class="content">
-    {{this.confirm.options.extra}}
+    {{sanitize this.confirm.options.extra}}
   </div>
 {{/if}}
 <div class="actions">
-  <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
-    {{if this.confirm.options.denyText this.confirm.options.denyText (t 'No')}}
-  </button>
+  {{#unless this.confirm.options.hideDeny}}
+    <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
+      {{if this.confirm.options.denyText this.confirm.options.denyText (t 'No')}}
+    </button>
+  {{/unless}}
   <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.approveColor 'green'}} button" {{action 'confirm'}}>
     {{if this.confirm.options.approveText this.confirm.options.approveText (t 'Yes')}}
   </button>

@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+<form class="ui form {{if this.isLoading 'loading'}} text-cursor" {{action 'submit' on='submit'}}>
   <h2 class="ui header">{{t 'Event Images'}}</h2>
   <h3 class="ui header">{{t 'Large Size'}}</h3>
   <div class="three fields">
@@ -84,7 +84,7 @@
   <h3 class="ui header">{{t 'Thumbnail Size'}}</h3>
   <div class="two fields">
     <div class="field">
-      <label>{{t 'Width & Height(in px)'}}</label>
+      <label>{{t 'Width & Height (in px)'}}</label>
       <Input @type="number" @name="profile_small_size" @value={{this.image.speakerImageSize.thumbnailSizeWidthHeight}} @min={{1}} />
     </div>
     <div class="field">
@@ -100,7 +100,7 @@
   <h3 class="ui header">{{t 'Small Size'}}</h3>
   <div class="two fields">
     <div class="field">
-      <label>{{t 'Width & Height(in px)'}}</label>
+      <label>{{t 'Width & Height (in px)'}}</label>
       <Input @type="number" @name="profile_thumb_size" @value={{this.image.speakerImageSize.smallSizeWidthHeight}} @min={{1}} />
     </div>
     <div class="field">
@@ -116,7 +116,7 @@
   <h3 class="ui header">{{t 'Icon Size'}}</h3>
   <div class="two fields">
     <div class="field">
-      <label>{{t 'Width & Height(in px)'}}</label>
+      <label>{{t 'Width & Height (in px)'}}</label>
       <Input @type="number" @name="profile_icon_size" @value={{this.image.speakerImageSize.iconSizeWidthHeight}} @min={{1}} />
     </div>
     <div class="field">

@@ -5,7 +5,7 @@ import Route from '@ember/routing/route';
 export default class PendingRoute extends Route {
   titleToken(model) {
     const order = model.order.get('identifier');
-    return this.l10n.t(`Pending Order -${order}`);
+    return this.l10n.t('Pending Order')  + ' - ' + order;
   }
 
   async model(params) {

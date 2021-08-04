@@ -11,7 +11,7 @@ export default class AddUserRoleModal extends ModalBase.extend(FormMixin) {
   @action
   addRole() {
     this.onValid(() => {
-      this.sendAction('updateUserRoles');
+      this.addUserRoles();
     });
   }
 

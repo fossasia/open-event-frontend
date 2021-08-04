@@ -2,11 +2,20 @@ import classic from 'ember-classic-decorator';
 import { classNames, tagName } from '@ember-decorators/component';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
+import { filterBy } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
+import { sortBy } from 'lodash-es';
 
 @classic
 @tagName('footer')
-@classNames('ui', 'inverted', 'vertical', 'footer', 'segment')
+@classNames('ui', 'inverted', 'vertical', 'footer', 'segment', 'mt-16')
 export default class FooterMain extends Component {
+
+  @service cache;
+
+  @filterBy('pages', 'place', 'footer')
+  footerPages;
+
   @computed
   get currentLocale() {
     return this.l10n.getLocale();
@@ -17,17 +26,7 @@ export default class FooterMain extends Component {
     this.l10n.switchLanguage(locale);
   }
 
-  didInsertElement() {
-    this.set('eventLocations', this.eventLocations.sortBy('name'));
-
-    const eventTypes = this.eventTypes.sortBy('name').toArray();
-    eventTypes.forEach(eventType => {
-      if (eventType.name === 'Other') {
-        const other = eventType;
-        eventTypes.splice(eventTypes.indexOf(eventType), 1);
-        eventTypes.push(other);
-      }
-    });
-    this.set('eventTypes', eventTypes);
+  async didInsertElement() {
+    this.set('pages', sortBy((await this.cache.query('pages', 'page', { public: true })).toArray(), 'index'));
   }
 }

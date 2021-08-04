@@ -6,7 +6,7 @@ import { SESSION_STATES } from 'open-event-frontend/utils/dictionary/sessions';
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     if ([...SESSION_STATES, 'deleted'].includes(this.params.sessions_state)) {
-      return this.l10n.t(capitalize(this.params.sessions_state));
+      return capitalize(this.params.sessions_state);
     } else {
       return this.l10n.t('Session');
     }
@@ -86,6 +86,12 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
     queryString = this.applySortFilters(queryString, params);
 
-    return this.asArray(this.store.query('session', queryString));
+    const feedbacksPromise = this.authManager.currentUser.query('feedbacks', {});
+    const sessionsPromise = this.asArray(this.store.query('session', queryString));
+    const [feedbacks, sessions] = await Promise.all([feedbacksPromise, sessionsPromise]);
+    return {
+      sessions,
+      feedbacks
+    };
   }
 }

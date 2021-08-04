@@ -3,52 +3,59 @@ import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  sort_by = 'starts-at';
 
   get columns() {
     return [
       {
-        name            : 'Name',
+        name            : this.l10n.t('Name'),
         valuePath       : 'name',
-        width           : 150,
+        width           : 180,
         isSortable      : true,
         extraValuePaths : ['identifier', 'logoUrl'],
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-general',
         options         : {
-          dateFormat: 'MMMM DD, YYYY - HH:mm A'
+          dateFormat: 'D MMM, YYYY h:mm A'
         }
       },
       {
-        name            : 'Date',
+        name            : this.l10n.t('Date'),
         valuePath       : 'startsAt',
         extraValuePaths : ['endsAt', 'timezone'],
         isSortable      : true,
-        width           : 180,
+        width           : 220,
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/cell-event-date'
 
       },
       {
-        name            : 'Roles',
-        valuePath       : 'owner',
-        extraValuePaths : ['organizers', 'coorganizers', 'trackOrganizers', 'registrars', 'moderators'],
-        width           : 180,
-        cellComponent   : 'ui-table/cell/cell-roles'
+        name          : this.l10n.t('Roles'),
+        valuePath     : 'roles',
+        width         : 180,
+        cellComponent : 'ui-table/cell/cell-roles'
       },
       {
-        name          : 'Sessions',
+        name            : this.l10n.t('Tickets'),
+        width           : 180,
+        valuePath       : 'tickets',
+        extraValuePaths : ['totalSales'],
+        cellComponent   : 'ui-table/cell/cell-tickets'
+      },
+      {
+        name          : this.l10n.t('Sessions'),
         valuePath     : 'generalStatistics',
         cellComponent : 'ui-table/cell/cell-sessions-dashboard'
       },
       {
-        name          : 'Speakers',
+        name          : this.l10n.t('Speakers'),
         valuePath     : 'generalStatistics',
         cellComponent : 'ui-table/cell/cell-speakers-dashboard'
       },
       {
-        name          : 'Public URL',
+        name          : this.l10n.t('Public URL'),
         valuePath     : 'url',
-        width         : 250,
+        width         : 220,
         cellComponent : 'ui-table/cell/cell-link'
       }
     ];

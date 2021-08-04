@@ -6,7 +6,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 @classic
 export default class AttendeeController extends Controller.extend(EventWizardMixin) {
   async saveForms(data) {
-    await Promise.all((data.customForms ? data.customForms.toArray() : []).map(customForm => customForm.save()));
+    await Promise.all((data?.customForms?.toArray() ?? []).map(customForm => customForm.save()));
     return data;
   }
 
@@ -20,7 +20,7 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
       );
     } catch (error) {
       console.error('Error while updating attendee', error);
-      this.notify.error(this.l10n.t(error.message),
+      this.notify.error(error.message,
         {
           id: 'attendee_error_serv'
         });
@@ -32,12 +32,12 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
     try {
       await this.saveForms(data);
       this.saveEventDataAndRedirectTo(
-        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.basic-details',
+        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.other-details',
         ['tickets']
       );
     } catch (error) {
       console.error('Error while moving attendee', error);
-      this.notify.error(this.l10n.t(error.message),
+      this.notify.error(error.message,
         {
           id: 'attendee_move_error'
         });

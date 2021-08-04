@@ -1,73 +1,83 @@
-{{#if (and (not-eq this.session.currentRouteName 'public.cfs.new-session') (not-eq this.session.currentRouteName 'public.cfs.new-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-speaker') (not-eq this.session.currentRouteName 'public.cfs.edit-session'))}}
-  <div class="ui fluid vertical {{unless this.device.isMobile 'pointing'}} menu">
-    {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#info' {{action "scrollToTarget"}} class='item active scroll'>
-        {{t 'Info'}}
-      </a>
-      {{#if this.event.tickets.length}}
-        <a href='#tickets' {{action "scrollToTarget"}} class='item scroll'>
-          {{t 'Tickets'}}
-        </a>
-      {{/if}}
-      {{#if this.event.speakers.length}}
-        <LinkTo @route="public.speakers" class="item">
-          {{t 'Speakers'}}
-        </LinkTo>
-      {{/if}}
-    {{else}}
-      <a class="item" href="{{href-to 'public.index'}}">
-        {{t 'Info'}}
-      </a>
-      {{#if this.event.tickets.length}}
-        <a class="item" href="{{href-to 'public.index'}}#tickets">
-          {{t 'Tickets'}}
-        </a>
-      {{/if}}
-      {{#if this.event.speakers.length}}
-        <LinkTo @route="public.speakers" class="item">
-          {{t 'Speakers'}}
-        </LinkTo>
-      {{/if}}
-    {{/if}}
-    {{#if this.event.sessions.length}}
-      <LinkTo @route="public.sessions" class="item">
-        {{t 'Sessions'}}
-      </LinkTo>
-    {{/if}}
-    {{#if this.isSchedulePublished}}
-      <LinkTo @route="public.schedule" class="item">
-        {{t 'Schedule'}}
-      </LinkTo>
-    {{/if}}  
-    {{#if this.shouldShowCallforSpeakers }}
-      <LinkTo @route="public.cfs" class="item">
-        {{t 'Call for Speakers'}}
-      </LinkTo>
-    {{/if}}
-    {{#if this.event.hasOwnerInfo}}
-      {{#if (eq this.session.currentRouteName 'public.index')}}
-        <a href='#owner' {{action "scrollToTarget"}} class='item scroll'>
-          {{t 'Organizer'}}
-        </a>
-      {{else}}
-        <a class="item" href="{{href-to 'public.index'}}#owner">
-          {{t 'Organizer'}}
-        </a>
-      {{/if}}
-    {{/if}}
-    {{#if (eq this.session.currentRouteName 'public.index')}}
-      <a href='#getting-here' class='item scroll'>
-        {{t 'Getting here'}}
-      </a>
-    {{else}}
-      <a class="item" href="{{href-to 'public.index'}}#getting-here">
-        {{t 'Getting here'}}
-      </a>
-    {{/if}}
-    {{#if this.event.codeOfConduct}}
-      <LinkTo @route="public.coc" class="item">
-        {{t 'Code of Conduct'}}
-      </LinkTo>
-    {{/if}}
-  </div>
+{{#if (eq this.session.currentRouteName 'public.index')}}
+  <a href='#info' {{action "scrollToTarget" 'info' }} class='item active scroll'>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} info icon"></i>{{t 'Info'}}</div>
+  </a>
+  {{#if this.event.tickets.length}}
+    <a href='#tickets' {{action "scrollToTarget" 'tickets' }} class='item scroll'>
+      <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} ticket icon"></i>{{t 'Tickets'}}</div>
+    </a>
+  {{/if}}
+
+{{else}}
+  <LinkTo class="item" @route="public.index" {{action 'goToSection' 'info' }}>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} info icon"></i>{{t 'Info'}}</div>
+  </LinkTo>
+  {{#if this.event.tickets.length}}
+    <LinkTo class="item" @route="public.index" {{action 'goToSection' 'tickets' }}>
+      <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} ticket icon"></i>{{t 'Tickets'}}</div>
+    </LinkTo>
+  {{/if}}
+
+{{/if}}
+
+{{#if (and this.event.isSchedulePublished this.showSessions)}}
+  <LinkTo @route="public.sessions" @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} class="item">
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} book icon"></i>{{t 'Schedule'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if this.showSpeakers}}
+  <LinkTo @route="public.speakers" @query={{hash search=null}} class="item">
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} bullhorn icon"></i>{{t 'Speakers'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if (and this.isSchedulePublished this.showSessions)}}
+  <LinkTo @route="public.schedule" class="item">
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} calendar icon"></i>{{t 'Calendar'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if (and this.event.isSponsorsEnabled this.event.sponsors)}}
+ {{#if (eq this.session.currentRouteName 'public.index')}}
+   <a href='#sponsor' {{action "scrollToTarget" 'sponsor' }} class='item scroll'>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>{{t 'Sponsors'}}</div>
+   </a>
+ {{else}}
+   <LinkTo class="item" @route="public.index" {{action 'goToSection' 'sponsor' }}>
+      <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>{{t 'Sponsors'}}</div>
+   </LinkTo>
+ {{/if}}
+{{/if}}
+{{#if this.showExhibitors}}
+  <LinkTo @route="public.exhibition" class="item">
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} users icon"></i>{{t 'Exhibition'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if this.event.hasOwnerInfo}}
+ {{#if (eq this.session.currentRouteName 'public.index')}}
+   <a href='#organizer' {{action "scrollToTarget" 'organizer' }} class='item scroll'>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} users icon"></i>{{t 'Organizer'}}</div>
+   </a>
+ {{else}}
+   <LinkTo class="item" @route="public.index" {{action 'goToSection' 'organizer' }}>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} users icon"></i>{{t 'Organizer'}}</div>
+   </LinkTo>
+ {{/if}}
+{{/if}}
+{{#if this.shouldShowCallforSpeakers }}
+  <LinkTo @route="public.cfs" class="item">
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} bullhorn icon"></i>{{t 'Call for Speakers'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if (eq this.session.currentRouteName 'public.index')}}
+  <a href='#getting-here' {{action "scrollToTarget" 'getting-here' }} class='item scroll'>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} icon map marker alternate"></i>{{t 'Getting here'}}</div>
+  </a>
+{{else}}
+  <LinkTo class="item" @route="public.index" {{action 'goToSection' 'getting-here' }}>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} icon map marker alternate"></i>{{t 'Getting here'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if this.event.codeOfConduct}}
+  <LinkTo @route="public.coc" class="item">
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} book icon"></i>{{t 'Code of Conduct'}}</div>
+  </LinkTo>
 {{/if}}

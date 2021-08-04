@@ -1,0 +1,47 @@
+<i class="black close icon"></i>
+<div class="header">
+    {{t 'Contact the Organizer'}}
+</div>
+<div class="ui content">
+    {{#if this.mailSent}}
+        <h4>
+            {{t 'Your message was sent to the organizers of this'}} {{if @group 'group' 'event'}}.  
+            {{t 'You should receive a copy of the message to your email inbox.'}} 
+            {{t 'The organizers will contact you by email.'}}
+        </h4>
+        <button class="ui red deny right floated button" {{action 'close'}}>
+            {{t 'Close'}}
+        </button>
+    {{else}}
+        <div class="ui form">
+            <div class="field">
+                <label>{{t 'From'}}</label>
+                <Input
+                    type="text"
+                    name="from"
+                    value={{this.from}}
+                    disabled />
+            </div>
+            <div class="field">
+                <label>{{t 'To'}}</label>
+                <Input
+                    type="text"
+                    name="cc"
+                    value={{if @group (t 'Group Organizer') (t 'Event Organizer')}}
+                    disabled />
+            </div>   
+            <div class="field">
+                <label  for="message">{{t 'Message'}}</label>
+                <Textarea @type="text" @name="message" @value={{this.message}} />
+            </div>
+            <button class="ui positive right labeled icon submit right floated button" {{action 'contactOrganizer'}}>
+                {{t 'Send Email'}}
+                <i class="checkmark icon"></i>
+            </button>
+            <button class="ui red deny right floated button" {{action 'close'}}>
+                {{t 'Cancel'}}
+            </button>
+        </div>
+    {{/if}}
+</div>
+<div class="ui hidden divider"></div>

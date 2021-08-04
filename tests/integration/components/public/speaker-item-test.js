@@ -8,21 +8,21 @@ module('Integration | Component | public/speaker item', function(hooks) {
   setupIntegrationTest(hooks);
 
   const speaker = EmberObject.create({
-    name           : 'Non featured Jane',
-    email          : 'John@Doe.com',
-    photoUrl       : 'https://image.ibb.co/ffRqs5/avatar.png',
-    website        : 'https://johndoe.com',
-    city           : 'Delhi',
-    gender         : 'female',
-    country        : 'India',
-    organisation   : 'FOSSASIA',
-    isFeatured     : false,
-    shortBiography : 'iOS developer, deep learning enthusiast.',
-    linkedin       : 'https://www.linkedin.com',
-    longBiography  : 'iOs developer, deep learning enthusiast',
-    mobile         : '888794238',
-    github         : 'https://www.github.com',
-    facebook       : 'https://www.facebook.com'
+    name                 : 'Non featured Jane',
+    email                : 'John@Doe.com',
+    photoUrl             : 'https://image.ibb.co/ffRqs5/avatar.png',
+    website              : 'https://johndoe.com',
+    city                 : 'Delhi',
+    gender               : 'female',
+    country              : 'India',
+    positionOrganisation : 'FOSSASIA',
+    isFeatured           : false,
+    shortBiography       : 'iOS developer, deep learning enthusiast.',
+    linkedin             : 'https://www.linkedin.com',
+    longBiography        : 'iOs developer, deep learning enthusiast',
+    mobile               : '888794238',
+    github               : 'https://www.github.com',
+    facebook             : 'https://www.facebook.com'
   });
 
   test('it renders', async function(assert) {

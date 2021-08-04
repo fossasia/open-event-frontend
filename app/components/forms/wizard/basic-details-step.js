@@ -2,8 +2,7 @@ import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import moment from 'moment';
-import { merge, orderBy, filter, find } from 'lodash-es';
-import { licenses } from 'open-event-frontend/utils/dictionary/licenses';
+import { orderBy, filter, find, difference } from 'lodash-es';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
@@ -13,18 +12,39 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import ENV from 'open-event-frontend/config/environment';
 import $ from 'jquery';
+import { tn } from 'open-event-frontend/utils/text';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
 
   currentTimezone: moment.tz.guess(),
   timezones,
 
-  torii: service(),
+  torii : service(),
+  tn    : service(),
+
+  locationMenuItems: [tn.t('Venue'), tn.t('Online'), tn.t('Hybrid'), tn.t('To be announced')],
+
+  selectedLocationType: 'Venue',
 
   deletedTickets: [],
 
-  licenses: computed(function() {
-    return orderBy(licenses, 'name');
+  init() {
+    this._super(...arguments);
+    if (this.data.event.online) {
+      if (this.data.event.locationName) {
+        this.selectedLocationType = 'Hybrid';
+      } else {
+        this.selectedLocationType = 'Online';
+      }
+    } else if (this.data.event.locationName) {
+      this.selectedLocationType = 'Venue';
+    } else {
+      this.selectedLocationType = 'To be announced';
+    }
+  },
+
+  isLocationRequired: computed('selectedLocationType', function() {
+    return ['Venue', 'Hybrid'].includes(this.selectedLocationType);
   }),
 
   countries: computed(function() {
@@ -63,35 +83,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
   }),
 
-  socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
-    return this.data.event.socialLinks.filterBy('isDeleted', false);
-  }),
-
   isUserUnverified: computed('authManager.currentUser.isVerified', function() {
-    return !this.authManager.currentUser.isVerified;
-  }),
-  /**
-   * returns the validation rules for the social links.
-   */
-  socialLinksValidationRules: computed('socialLinks', function() {
-    let validationRules = {};
-    for (let i = 0; i < this.socialLinks.length; i++) {
-      validationRules = merge(validationRules, {
-        [this.socialLinks.get(i).identifier]: {
-          identifier : this.socialLinks.get(i).identifier,
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        }
-      });
-    }
-
-    return validationRules;
+    return !this.authManager?.currentUser?.isVerified;
   }),
 
   subTopics: computed('data.event.topic', function() {
@@ -119,8 +112,21 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
   }),
 
-  hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
-    return !!this.data.event.codeOfConduct;
+  ticketCount: computed('data.event.tickets.[]', 'deletedTickets.[]', function() {
+    return difference(this.data.event.tickets.toArray(), this.deletedTickets).length;
+  }),
+
+  timezoneObserver: observer('data.event.timezone', function() {
+    const { event } = this.data;
+    const { oldTimezone } = this;
+    this.oldTimezone = this.data.event.timezone;
+    if (!oldTimezone || !this.oldTimezone || oldTimezone === this.oldTimezone) {return}
+    if (event.startsAt) {
+      event.startsAt = moment.tz(event.startsAt.clone().tz(oldTimezone).format('YYYY-MM-DDTHH:mm:ss.SSS'), moment.ISO_8601, this.data.event.timezone);
+    }
+    if (event.endsAt) {
+      event.endsAt = moment.tz(event.endsAt.clone().tz(oldTimezone).format('YYYY-MM-DDTHH:mm:ss.SSS'), moment.ISO_8601, this.data.event.timezone);
+    }
   }),
 
   discountCodeObserver: observer('data.event.discountCode', function() {
@@ -136,16 +142,22 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   // TODO: Removing the Event Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
     $.fn.form.settings.rules.checkMaxMinPrice = () => {
-      return $('.ui.form').form('get value', 'min_price') <= $('.ui.form').form('get value', 'max_price');
+      return parseInt($('.ui.form').form('get value', 'min_price'), 10) <= parseInt($('.ui.form').form('get value', 'max_price'), 10);
     };
     $.fn.form.settings.rules.checkMaxMinOrder = () => {
-      return $('.ui.form').form('get value', 'ticket_min_order') <= $('.ui.form').form('get value', 'ticket_max_order');
+      return parseInt($('.ui.form').form('get value', 'ticket_min_order'), 10) <= parseInt($('.ui.form').form('get value', 'ticket_max_order'), 10);
+    };
+    $.fn.form.settings.rules.checkValidTimeDifference = () => {
+      return !($('[name=start_date]')[0].value === $('[name=end_date]')[0].value && moment($('[name=start_time]')[0].value, 'HH:mm').isSameOrAfter(moment($('[name=end_time]')[0].value, 'HH:mm')));
+    };
+    $.fn.form.settings.rules.checkDateDifference = () => {
+      return moment($('[name=end_date]')[0].value, 'MM-DD-YYYY').diff(moment($('[name=start_date]')[0].value, 'MM-DD-YYYY'), 'days') <= 20;
     };
 
     const validationRules = {
       inline : true,
       delay  : false,
-      on     : 'blur',
+      on     : 'change',
       fields : {
         name: {
           identifier : 'name',
@@ -153,15 +165,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give your event a name')
-            }
-          ]
-        },
-        location: {
-          identifier : 'location',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Location is required to save an event')
             }
           ]
         },
@@ -197,6 +200,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'date',
               prompt : this.l10n.t('Please give a valid end date')
+            },
+            {
+              type   : 'checkDateDifference',
+              prompt : this.l10n.t('Event duration can not be more than 20 days')
             }
           ]
         },
@@ -207,6 +214,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give a start time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Starting time should be lesser than the ending time')
             }
           ]
         },
@@ -217,6 +228,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give an end time')
+            },
+            {
+              type   : 'checkValidTimeDifference',
+              prompt : this.l10n.t('Ending time should be greater than the starting time')
             }
           ]
         },
@@ -346,7 +361,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email')
+              prompt : this.l10n.t('Please enter a valid email address')
             },
             {
               type   : 'empty',
@@ -404,7 +419,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       }
     };
     // Merging the predetermined rules with the rules for social links.
-    validationRules.fields = merge(validationRules.fields, this.socialLinksValidationRules);
     return validationRules;
   },
 
@@ -419,7 +433,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         })
         .catch(error => {
           console.error('Error while setting stripe authorization in event', error);
-          this.notify.error(this.l10n.t(`${error.message}. Please try again`), {
+          this.notify.error(error.message + '. ' + this.l10n.t('Please try again'), {
             id: 'basic_detail_err'
           });
         });
@@ -442,6 +456,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         event,
         type,
         position,
+        quantity      : 100,
+        maxPrice      : type === 'donation' ? 10000 : null,
         salesStartsAt : salesStartDateTime,
         salesEndsAt   : salesEndDateTime
       }));
@@ -463,12 +479,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           ticket.set('position', ticket.get('position') - 1);
         }
       });
-      this.deletedTickets.push(deleteTicket);
+      this.set('deletedTickets', [...this.deletedTickets, deleteTicket]);
       deleteTicket.deleteRecord();
     },
 
-    moveTicket(ticket, direction) {
-      const index = ticket.get('position');
+    moveTicket(ticket, index, direction) {
       const otherTicket = this.data.event.tickets.find(otherTicket => otherTicket.get('position') === (direction === 'up' ? (index - 1) : (index + 1)));
       otherTicket.set('position', index);
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
@@ -528,16 +543,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     //   });
     // },
 
-    async updateCopyright(name) {
-      const { event } = this.data;
-      const copyright = await this.getOrCreate(event, 'copyright', 'event-copyright');
-      const license = find(licenses, { name });
-      copyright.setProperties({
-        licence    : name,
-        logoUrl    : license.logoUrl,
-        licenceUrl : license.link
-      });
-    },
     onChange() {
       this.onValid(() => {});
     }

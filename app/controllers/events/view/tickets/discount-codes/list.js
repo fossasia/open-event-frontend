@@ -62,7 +62,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.notify.success(this.l10n.t('Discount Code has been deleted successfully.'));
         this.refreshModel.bind(this)();
       })
-      .catch(() => {
+      .catch(e => {
+        console.error('Error while deleting discount code', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       })
       .finally(() => {
@@ -81,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         this.refreshModel.bind(this)();
       })
       .catch(e => {
-        console.warn(e);
+        console.error('Error while updating discount code', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
       })
       .finally(() => {

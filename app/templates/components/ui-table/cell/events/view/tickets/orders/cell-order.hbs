@@ -2,9 +2,6 @@
   <a class="main content" href="{{href-to 'orders.view' this.record}}">
     {{this.record}}
   </a>
-  <span class="weight-400">
-    {{t 'by'}} {{if this.extraRecords.user.firstName this.extraRecords.user.firstName (t 'Name not provided')}}
-  </span>
   <div class="ui basic mini {{order-color this.extraRecords.status}} label">
     {{this.extraRecords.status}}
   </div>
@@ -16,9 +13,9 @@
     {{/if}}
     <span class="muted text">
       {{#if this.extraRecords.completedAt}}
-        {{moment-format this.extraRecords.completedAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now this.extraRecords.completedAt}}
+        {{general-date this.extraRecords.completedAt 'date-time-short'}} {{moment-from-now this.extraRecords.completedAt}}
       {{else}}
-        {{moment-format this.extraRecords.createdAt 'MMMM Do YYYY, h:mm A -'}} {{moment-from-now this.extraRecords.createdAt}}
+        {{general-date this.extraRecords.createdAt 'date-time-short'}} {{moment-from-now this.extraRecords.createdAt}}
       {{/if}}
     </span>
   </div>
@@ -32,11 +29,6 @@
   {{#if (and (not-eq this.extraRecords.status 'cancelled') (not-eq this.extraRecords.status 'expired') (can-modify-order this.record))}}
     <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Order?") (action this.props.actions.cancelOrder this.record))}} @class="ui icon button" @position="top center">
       <i class="delete icon"></i>
-    </UiPopup>
-  {{/if}}
-  {{#if (can-modify-order this.record)}}
-    <UiPopup @content={{t "Delete order"}} @click={{action (confirm (t "Are you sure you would like to delete this Order?") (action this.props.actions.deleteOrder this.record))}} @class="ui icon button" @position="top center">
-      <i class="trash icon"></i>
     </UiPopup>
   {{/if}}
   <UiPopup @content={{t "Resend order confirmation"}} @click={{action this.props.actions.resendConfirmation this.record}} @class="ui icon button" @position="top center">

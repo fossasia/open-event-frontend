@@ -11,7 +11,7 @@ export default class AddSystemRoleModal extends ModalBase.extend(FormMixin) {
   @action
   addRole() {
     this.onValid(() => {
-      this.sendAction('addSystemRole');
+      this.addSystemRole();
     });
   }
 

@@ -64,6 +64,7 @@ const config = {
     ],
     'no-console': ["error", { allow: ["warn", "error"] }],
     'prefer-template': 'off',
+    'prefer-rest-params': 'off',
     'camelcase': 'off',
     'eqeqeq': ['error', 'smart'],
     "prefer-const": ["error", {
@@ -135,7 +136,9 @@ config.overrides.push({
   env: config.env,
   rules: {
     ...config.rules,
-    '@typescript-eslint/no-explicit-any': 'off'
+    "@typescript-eslint/no-unused-vars": ["error"],
+    '@typescript-eslint/no-explicit-any': 'off',
+    'semi': 'off'
   },
   globals: config.globals
 })

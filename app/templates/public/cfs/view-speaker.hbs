@@ -1,0 +1,49 @@
+<div class="ui grid container mb-4">
+  <div class="column sixteen wide">
+    <LinkTo
+      @route="my-sessions">
+      <button
+        class="ui button {{if this.device.isMobile 'fluid'}}">{{t 'My Sessions'}}</button>
+    </LinkTo>
+    <LinkTo
+      @route="public.cfs">
+      <button
+        class="ui button {{if this.device.isMobile 'fluid' }}">{{this.model.event.name}} {{t 'Call for Speakers'}}</button>
+    </LinkTo>
+  </div>  
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'View Speaker'}}
+    </h2>
+    <div class="ui divider"></div>
+  </div>
+  <div class="column sixteen wide">
+    <LinkTo
+      @route="public.cfs.edit-speaker"
+      @models={{array this.model.speaker.event.id this.model.speaker.id}}>
+      <button
+        class="ui blue button {{if this.device.isMobile 'fluid' 'right floated'}}">{{t 'Edit Speaker'}}</button>
+    </LinkTo>
+  </div>
+  <div class="column sixteen wide">
+    <h3 class="ui header">
+      {{t 'Speaker details'}}
+    </h3>
+  </div>
+  <Events::View::Overview::SpeakerView
+    @fields={{this.allFields}}
+    @speaker={{this.model.speaker}} />
+  <div class="ui grid container mb-4">
+  <div class="weight-600 column five wide">{{t 'Sessions'}}</div>
+  <div class="column eleven wide">
+    {{#each this.model.speaker.sessions as |session|}}
+      <LinkTo
+        @route="public.cfs.view-session"
+        @models={{array this.model.speaker.event.id session.id}}>
+        <div>{{session.title}}</div>
+      </LinkTo>
+    {{/each}}
+  </div>
+  </div>
+</div>
+

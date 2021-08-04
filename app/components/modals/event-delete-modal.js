@@ -8,6 +8,6 @@ export default class EventDeleteModal extends ModalBase {
   @tracked confirmName = '';
 
   get isNameDifferent() {
-    return this.confirmName !== this.eventName;
+    return this.confirmName?.trim() !== this.eventName?.trim();
   }
 }

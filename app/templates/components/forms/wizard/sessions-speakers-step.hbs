@@ -1,4 +1,4 @@
-<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}}>
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}}>
 
   <div class="ui centered grid">
     <div class="column">
@@ -31,7 +31,7 @@
       {{#each this.tracks as |track|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
-            <Input @type="text" @name="track" @value={{track.name}} placeholder="Name" />
+            <Input @type="text" @name="track" @value={{track.name}} placeholder={{t "Name"}} />
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <Widgets::Forms::ColorPicker @value={{track.color}} @fontColor={{track.fontColor}}>
@@ -57,24 +57,42 @@
     </div>
 
     <div class="field">
-      <label class="required">{{t 'Microlocations'}}</label>
-      {{#each this.microlocations as |microlocation|}}
+      <label class="required">{{t 'Microlocations or Virtual Online Rooms'}}</label>
+      {{#each this.microlocations as |microlocation index|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
-            <Input @type="text" @id="microlocation" @value={{microlocation.name}} placeholder="Name" />
+            <Input @type="text" @value={{microlocation.name}} placeholder={{t "Name"}} />
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
-              <Input @type="number" @id="microlocation_floor" @value={{microlocation.floor}} placeholder="Floor" />
+              <Input @type="number" @value={{microlocation.floor}} placeholder={{t "Floor"}} />
               {{#if (gt this.microlocations.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' microlocation}}>
+                <button class="ui icon red button" type="button" {{action 'removeRoom' microlocation index}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'microlocation'}}>
+              <button class="ui icon primary button" type="button" {{action 'addRoom' index}}>
                 <i class="plus icon"></i>
               </button>
             </div>
+          </div>
+          <div class="field mt-2" data-tooltip={{if microlocation.hiddenInScheduler "Hidden In Scheduler" "Hide in Scheduler"}}>
+            <UiCheckbox
+              class="toggle"
+              @checked={{microlocation.hiddenInScheduler}}
+              @onChange={{action (mut microlocation.hiddenInScheduler)}} />
+          </div>
+          <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
+            {{#if (not-eq index 0)}}
+              <button type="button" class="ui button" {{action "moveRoom" microlocation "up"}} data-content="Move room up">
+                <i class="up arrow icon"></i>
+              </button>
+            {{/if}}
+            {{#if (not-eq microlocation.position (dec this.microlocations.length))}}
+              <button type="button" class="ui button" {{action "moveRoom" microlocation "down"}} data-content="Move room down">
+                <i class="down arrow icon"></i>
+              </button>
+            {{/if}}
           </div>
         </div>
       {{/each}}
@@ -84,7 +102,7 @@
       {{#each this.sessionTypes as |sessionType|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
-            <Input @type="text" @name="session" @value={{sessionType.name}} placeholder="Name" />
+            <Input @type="text" @name="session" @value={{sessionType.name}} placeholder={{t "Name"}} />
           </div>
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <div class="ui action input fluid">
@@ -104,198 +122,150 @@
     </div>
 
     <br>
-    <h3 class="ui dividing header">
-      <i class="announcement icon"></i>
-      <div class="content">
-        {{t 'Call for speakers'}}
-      </div>
-    </h3>
+    <div class="ui section divider"></div>
     <div class="field">
-      <label>{{t 'Announcement'}}</label>
-      <Widgets::Forms::RichTextEditor @name="announcement" @textareaId="announcement" @value={{this.data.speakersCall.announcement}} />
-    </div>
-    <div class="fields">
-      <div class="five wide field">
-        <label class="required" for="start_date">{{t 'Starts'}}</label>
-        <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="MM/DD/YYYY" @rangePosition="start" @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtDate}} />
-      </div>
-      <div class="two wide field">
-        <label for="start_time">&nbsp;</label>
-        <Widgets::Forms::TimePicker @type="text" @name="start_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtTime}} />
-      </div>
-      <div class="five wide field">
-        <label class="required" for="end_date">{{t 'Ends'}}</label>
-        <Widgets::Forms::DatePicker @type="text" @name="end_date" @placeholder="MM/DD/YYYY" @rangePosition="end" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtDate}} />
-      </div>
-      <div class="two wide field">
-        <label for="end_time">&nbsp;</label>
-        <Widgets::Forms::TimePicker @type="text" @name="end_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtTime}} />
-      </div>
-      <div class="five wide field">
-        <label class="required" for="timezone">{{t 'Timezone'}}</label>
-        <Input @type="text" @disabled={{true}} @value={{this.data.event.timezone}} />
+      <div class="ui slider checkbox">
+        <Input
+          @type="checkbox"
+          @checked={{this.hasCallForSpeaker}}
+          @id="add_call_for_speaker" 
+          {{action "resetCFS" on="change"}}
+          />
+        <label for="add_call_for_speaker">{{t 'Enable Call For Speakers'}}</label>
       </div>
     </div>
-    <div class="field">
-      <label>{{t 'Private Link'}}</label>
-      <div class="ui action input fluid">
-        <input type="text" name="private_link" value="{{concat this.data.event.url '/cfs/' this.data.speakersCall.hash}}" placeholder="{{concat this.data.event '/cfs/' this.data.speakersCall.hash}}" readonly>
-        <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
-          <CopyButton @clipboardText={{concat this.data.event.url "/cfs/" this.data.speakersCall.hash}} @class="ui black right labeled icon copy button">
-            <i class="copy icon"></i>
-            {{t 'Copy'}}
-          </CopyButton>
-        </UiPopup>
-      </div>
-      <span class="text muted">
-        {{t 'Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)'}}
-      </span>
-    </div>
-    <div class="grouped fields">
-      <label for="privacy">{{t 'Privacy'}}</label>
+    {{#if this.hasCallForSpeaker}}
+      <h3 class="ui dividing header">
+        <i class="announcement icon"></i>
+        <div class="content">
+          {{t 'Call for speakers'}}
+        </div>
+      </h3>
       <div class="field">
-        <div class="ui radio checkbox">
-          {{widgets/forms/radio-button this.value name='privacy' id='privacy_public' value='public' checked=this.data.speakersCall.privacy}}
-          <label for="privacy_public">
-            <strong>{{t 'Public'}}:</strong>
-            {{t 'Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published.'}}
-          </label>
+        <label class="required">{{t 'Announcement'}}</label>
+        <Widgets::Forms::RichTextEditor @name="announcement" @textareaId="announcement" @value={{this.data.speakersCall.announcement}} />
+      </div>
+      <div class="fields">
+        <div class="five wide field">
+          <label class="required" for="start_date">{{t 'Starts'}}</label>
+          <Widgets::Forms::DatePicker @type="text" @name="start_date" @placeholder="MM/DD/YYYY"  @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtDate}} />
+        </div>
+        <div class="two wide field">
+          <label for="start_time">&nbsp;</label>
+          <Widgets::Forms::TimePicker @type="text" @name="start_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{this.data.speakersCall.startsAtTime}} />
+        </div>
+        <div class="five wide field">
+          <label class="required" for="end_date">{{t 'Ends'}}</label>
+          <Widgets::Forms::DatePicker @type="text" @name="end_date" @placeholder="MM/DD/YYYY" @rangePosition="end" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtDate}} />
+        </div>
+        <div class="two wide field">
+          <label for="end_time">&nbsp;</label>
+          <Widgets::Forms::TimePicker @type="text" @name="end_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{this.data.speakersCall.endsAtTime}} />
+        </div>
+        <div class="five wide field">
+          <label class="required" for="timezone">{{t 'Timezone'}}</label>
+          <Input @type="text" @disabled={{true}} @value={{this.data.event.timezone}} />
         </div>
       </div>
       <div class="field">
-        <div class="ui radio checkbox">
-          {{widgets/forms/radio-button this.value name='privacy' id='privacy_private' value='private' checked=this.data.speakersCall.privacy}}
-          <label for="privacy_private">
-            <strong>{{t 'Private'}}:</strong>
-            {{t 'Do not display this publicly. Proposals can be submitted only using the private link.'}}
-          </label>
-        </div>
+      <div class="ui slider checkbox">
+        <Input
+          @type="checkbox"
+          @checked={{this.hasSoftClosing}}
+          @id="add_soft_closing" 
+          {{action "resetSoftClosing" on="change"}}
+          />
+        <label for="add_soft_closing">{{t 'Enable Soft Closing'}}</label>
       </div>
     </div>
-
+    {{#if this.hasSoftClosing}}
+      <div class="fields">
+        <div class="five wide field" style="max-width: 300px !important;">
+          <label for="soft_end_date">{{t 'Soft Ends'}}</label>
+          <Widgets::Forms::DatePicker @type="text" @name="soft_end_date" @placeholder="MM/DD/YYYY" @onChange={{action "onChange"}} @value={{this.data.speakersCall.softEndsAtDate}} />
+        </div>
+        <div class="two wide field">
+          <label for="soft_end_time">&nbsp;</label>
+          <Widgets::Forms::TimePicker @type="text" @name="soft_end_time" @placeholder="HH:MM" @onChange={{action "onChange"}} @value={{this.data.speakersCall.softEndsAtTime}} />
+        </div>
+      </div>
+    {{/if}}
+      <div class="field">
+        <label>{{t 'Private Link'}}</label>
+        <div class="ui action input fluid">
+          <input type="text" name="private_link" value="{{concat this.data.event.url '/cfs/' this.data.speakersCall.hash}}" placeholder="{{concat this.data.event '/cfs/' this.data.speakersCall.hash}}" readonly>
+          <UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
+            <CopyButton @clipboardText={{concat this.data.event.url "/cfs/" this.data.speakersCall.hash}} @class="ui black right labeled icon copy button h-full">
+              <i class="copy icon"></i>
+              {{t 'Copy'}}
+            </CopyButton>
+          </UiPopup>
+        </div>
+        <span class="text muted">
+          {{t 'Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)'}}
+        </span>
+      </div>
+      <div class="grouped fields">
+        <label for="privacy">{{t 'Privacy'}}</label>
+        <div class="field">
+          <div class="ui radio checkbox">
+            {{widgets/forms/radio-button this.value name='privacy' id='privacy_public' value='public' checked=this.data.speakersCall.privacy}}
+            <label for="privacy_public">
+              <strong>{{t 'Public'}}:</strong>
+              {{t 'Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published.'}}
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            {{widgets/forms/radio-button this.value name='privacy' id='privacy_private' value='private' checked=this.data.speakersCall.privacy}}
+            <label for="privacy_private">
+              <strong>{{t 'Private'}}:</strong>
+              {{t 'Do not display this publicly. Proposals can be submitted only using the private link.'}}
+            </label>
+          </div>
+        </div>
+      </div>
+    {{/if}}
     <br>
     <h3 class="ui dividing header">
       <i class="checkmark box icon"></i>
       <div class="content">
-        {{t 'Customize registration form'}}
+        {{t 'Customize submission forms'}}
       </div>
     </h3>
 
     <div class="ui two column stackable grid">
       <div class="column">
-        <table class="ui selectable celled table">
-          <thead>
-            <tr>
-              <th colspan="4" class="text center aligned">
-                {{t 'Collect Speaker Details'}}
-              </th>
-            </tr>
-            <tr>
-              {{#if this.device.isMobile}}
-                <th class="center aligned">
-                  {{t 'Options'}}
-                </th>
-              {{else}}
-                <th class="right aligned">
-                  {{t 'Option'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Type'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Include'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Require'}}
-                </th>
-              {{/if}}
-            </tr>
-          </thead>
-          <tbody>
-            {{#each this.customForm.speaker as |field|}}
-              <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
-                  <label class="{{if field.isFixed 'required'}}">
-                    {{field.name}}
-                  </label>
-                </td>
-                <td class="center aligned">
-                  {{field.type}}
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if this.device.isMobile (t "Require")}} />
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
+        <Forms::Wizard::CustomForms::Table
+          @headerText={{t "Collect Speaker Details"}}
+          @fields={{this.customForm.speaker}}
+          @updateField={{action (mut this.speakerField)}} 
+          @removeField={{action "removeField"}}
+        />
 
         <Forms::Wizard::CustomFormInput
-          @newFormField={{this.data.newSpeakerForm}}
           @customForms={{this.data.customForms}}
           @event={{this.data.event}}
-          @form="speaker" />
+          @form="speaker"
+          @field={{this.speakerField}}
+          @onSave={{action (mut this.speakerField) null}} />
 
       </div>
       <div class="column">
-        <table class="ui selectable celled table">
-          <thead>
-            <tr>
-              <th colspan="4" class="text center aligned">
-                {{t 'Collect Session Details'}}
-              </th>
-            </tr>
-            <tr>
-              {{#if this.device.isMobile}}
-                <th class="center aligned">
-                  {{t 'Options'}}
-                </th>
-              {{else}}
-                <th class="right aligned">
-                  {{t 'Option'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Type'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Include'}}
-                </th>
-                <th class="center aligned">
-                  {{t 'Require'}}
-                </th>
-              {{/if}}
-            </tr>
-          </thead>
-          <tbody>
-            {{#each this.customForm.session as |field|}}
-              <tr class="{{if field.isIncluded 'positive'}}">
-                <td class="{{if this.device.isMobile 'center' 'right'}} aligned">
-                  <label class="{{if field.isFixed 'required'}}">
-                    {{field.name}}
-                  </label>
-                </td>
-                <td class="center aligned">
-                  {{field.type}}
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isIncluded}} @disabled={{field.isFixed}} @onChange={{action (mut field.isIncluded)}} @label={{if this.device.isMobile (t "Include")}} />
-                </td>
-                <td class="center aligned">
-                  <UiCheckbox @class="slider" @checked={{field.isRequired}} @disabled={{field.isFixed}} @onChange={{action (mut field.isRequired)}} @label={{if this.device.isMobile (t "Require")}} />
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
+        <Forms::Wizard::CustomForms::Table
+          @headerText={{t "Collect Session Details"}}
+          @fields={{this.customForm.session}}
+          @updateField={{action (mut this.sessionField)}} 
+          @removeField={{action "removeField"}}
+        />
 
         <Forms::Wizard::CustomFormInput
-          @newFormField={{this.data.newSessionForm}}
           @customForms={{this.data.customForms}}
           @event={{this.data.event}}
-          @form="session" />
+          @form="session"
+          @field={{this.sessionField}}
+          @onSave={{action (mut this.sessionField) null}} />
       </div>
     </div>
     <div class="spacer-50"></div>
@@ -342,22 +312,15 @@
   <button type="button" class="ui primary {{if device.isMobile 'small'}} button" {{action 'addCustomField'}}>{{t 'Add another custom field'}}</button>
 
  --}}
-  <div class="ui fields buttons {{if this.device.isMobile 'mini three' 'right floated large'}}">
-    <button class="ui three field left labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'move' 'backwards'}}>
-      {{t 'Previous'}}
-      <i class="left chevron icon"></i>
-    </button>
-    {{#if (not-eq this.data.event.state 'published')}}
-      <button class="blue ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'saveDraft'}}>
-        {{t 'Save draft'}}
-        <i class="save icon"></i>
-      </button>
-    {{/if}}
-    {{#if this.data.event.locationName}}
-      <button class="green ui three field right labeled icon button {{if this.isLoading 'disabled'}}" type="button" {{action 'publish'}}>
-        {{t 'Publish'}}
-        <i class="check icon"></i>
-      </button>
-    {{/if}}
-  </div>
+
 </form>
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @device={{this.device}}
+  @last={{true}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}} />
+  

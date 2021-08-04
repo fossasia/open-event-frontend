@@ -1,47 +1,57 @@
+import { tn } from 'open-event-frontend/utils/text';
 import { computed, observer } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export const SPEAKER_FORM_FIELDS = {
-  name                : 'Name',
-  email               : 'Email',
-  position            : 'Position',
-  organisation        : 'Organisation',
-  address             : 'Address',
-  city                : 'City',
-  country             : 'Country',
-  mobile              : 'Mobile',
-  gender              : 'Gender',
-  shortBiography      : 'Short Biography',
-  longBiography       : 'Long Biography',
-  speakingExperience  : 'Speaking Experience',
-  photoUrl            : 'Photo',
-  website             : 'Website',
-  github              : 'GitHub',
-  facebook            : 'Facebook',
-  twitter             : 'Twitter',
-  instagram           : 'Instagram',
-  linkedin            : 'Linkedin',
-  heardFrom           : 'Heard From',
-  sponsorshipRequired : 'Sponsorship Required'
+  name                : tn.t('Name'),
+  email               : tn.t('Email'),
+  position            : tn.t('Position'),
+  organisation        : tn.t('Organisation'),
+  address             : tn.t('Address'),
+  city                : tn.t('City'),
+  country             : tn.t('Country'),
+  mobile              : tn.t('Mobile'),
+  gender              : tn.t('Gender'),
+  shortBiography      : tn.t('Short Biography'),
+  longBiography       : tn.t('Long Biography'),
+  speakingExperience  : tn.t('Speaking Experience'),
+  photoUrl            : tn.t('Photo'),
+  website             : tn.t('Website'),
+  github              : tn.t('GitHub'),
+  facebook            : tn.t('Facebook'),
+  twitter             : tn.t('Twitter'),
+  instagram           : tn.t('Instagram'),
+  mastodon            : tn.t('Mastodon'),
+  linkedin            : tn.t('Linkedin'),
+  heardFrom           : tn.t('Heard From'),
+  sponsorshipRequired : tn.t('Sponsorship Required')
 };
 
 export const SPEAKER_FORM_ORDER = Object.keys(SPEAKER_FORM_FIELDS);
 
 export const SESSION_FORM_FIELDS = {
-  title         : 'Title',
-  subtitle      : 'Subtitle',
-  track         : 'Track',
-  sessionType   : 'Session Type',
-  shortAbstract : 'Short Abstract',
-  longAbstract  : 'Long Abstract',
-  language      : 'Language',
-  level         : 'Level',
-  slidesUrl     : 'Slides',
-  videoUrl      : 'Video',
-  audioUrl      : 'Audio',
-  comments      : 'Comments'
+  title         : tn.t('Title'),
+  subtitle      : tn.t('Subtitle'),
+  track         : tn.t('Track'),
+  sessionType   : tn.t('Session Type'),
+  shortAbstract : tn.t('Short Abstract'),
+  longAbstract  : tn.t('Long Abstract'),
+  language      : tn.t('Language'),
+  level         : tn.t('Level'),
+  slidesUrl     : tn.t('Slides'),
+  videoUrl      : tn.t('Video'),
+  audioUrl      : tn.t('Audio'),
+  website       : tn.t('Website'),
+  github        : tn.t('GitHub'),
+  facebook      : tn.t('Facebook'),
+  twitter       : tn.t('Twitter'),
+  instagram     : tn.t('Instagram'),
+  linkedin      : tn.t('Linkedin'),
+  gitlab        : tn.t('GitLab'),
+  mastodon      : tn.t('Mastodon'),
+  comments      : tn.t('Comments')
 };
 
 export const SESSION_FORM_ORDER = Object.keys(SESSION_FORM_FIELDS);
@@ -53,8 +63,10 @@ export default ModelBase.extend({
   type            : attr('string', { defaultValue: 'text' }),
   name            : attr('string'),
   isRequired      : attr('boolean', { defaultValue: false }),
+  isPublic        : attr('boolean', { defaultValue: false }),
   isIncluded      : attr('boolean', { defaultValue: false }),
   isFixed         : attr('boolean', { defaultValue: false }),
+  position        : attr('number'),
   isComplex       : attr('boolean', { defaultValue: false }),
   description     : attr('string', { defaultValue: 'text' }),
 
@@ -67,29 +79,31 @@ export default ModelBase.extend({
   speaker: SPEAKER_FORM_FIELDS,
 
   attendee: {
-    firstname       : 'First Name',
-    lastname        : 'Last Name',
-    email           : 'Email',
-    address         : 'Address',
-    city            : 'City',
-    state           : 'State',
-    country         : 'Country',
-    jobTitle        : 'Job Title',
-    phone           : 'Phone',
-    taxBusinessInfo : 'Tax Business Info',
-    billingAddress  : 'Billing Address',
-    homeAddress     : 'Home Address',
-    shippingAddress : 'Shipping Address',
-    company         : 'Company',
-    workAddress     : 'Work Address',
-    workPhone       : 'Work Phone',
-    website         : 'Website',
-    blog            : 'Blog',
-    twitter         : 'Twitter',
-    facebook        : 'Facebook',
-    github          : 'GitHub',
-    gender          : 'Gender',
-    ageGroup        : 'Age Group'
+    firstname            : tn.t('First Name'),
+    lastname             : tn.t('Last Name'),
+    email                : tn.t('Email'),
+    address              : tn.t('Address (Street, Building, Number etc.)'),
+    city                 : tn.t('City'),
+    state                : tn.t('State'),
+    country              : tn.t('Country'),
+    jobTitle             : tn.t('Job Title'),
+    phone                : tn.t('Phone'),
+    taxBusinessInfo      : tn.t('Tax Business Info'),
+    company              : tn.t('Organisation'),
+    workPhone            : tn.t('Work Phone'),
+    website              : tn.t('Website'),
+    blog                 : tn.t('Blog'),
+    twitter              : tn.t('Twitter'),
+    facebook             : tn.t('Facebook'),
+    github               : tn.t('GitHub'),
+    instagram            : tn.t('Instagram'),
+    linkedin             : tn.t('LinkedIn'),
+    mastodon             : tn.t('Mastodon'),
+    gender               : tn.t('Gender'),
+    acceptReceiveEmails  : tn.t('Email consent'),
+    acceptVideoRecording : tn.t('Photo & video & text consent'),
+    acceptShareDetails   : tn.t('Partner contact consent'),
+    ageGroup             : tn.t('Age Group')
   },
 
   ready() {
@@ -115,11 +129,7 @@ export default ModelBase.extend({
 
   isUrlField: computed('type', 'fieldIdentifier', function() {
     return this.type === 'text'
-    && (['website', 'twitter', 'github', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
-  }),
-
-  segmentedLinkName: computed('fieldIdentifier', function() {
-    return `segmentedLink${this.fieldIdentifier.charAt(0).toUpperCase()  + this.fieldIdentifier.slice(1)}`;
+    && (['website', 'twitter', 'github', 'gitlab', 'mastodon', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
   }),
 
   isRequiredObserver: observer('isRequired', function() {

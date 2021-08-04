@@ -41,8 +41,9 @@ export default class ImageUpload extends Component {
       })
       .catch(e => {
         console.error('Error while uploading and setting image URL', e);
+        this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         this.set('uploadingImage', false);
-        this.set('errorMessage', this.i18n.t('An unexpected error occurred.'));
+        this.set('selectedImage', null);
       });
   }
 
@@ -91,8 +92,10 @@ export default class ImageUpload extends Component {
     if (!this.needsConfirmation) {
       this.set('selectedImage', null);
       this.set('imageUrl', null);
-      this.user.set('avatarUrl', null);
-      this.user.save();
+      if (this.user) {
+        this.user.set('avatarUrl', null);
+        this.user.save();
+      }
     } else {
       this.set('needsConfirmation', false);
     }

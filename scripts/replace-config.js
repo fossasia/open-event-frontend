@@ -6,7 +6,9 @@ const { merge } = require('lodash');
 const env = require('../config/environment');
 const appName = 'open-event-frontend';
 
-const environment = env('production');
+function getEnv() {
+  return env('production');
+}
 
 /**
  * Replace the fastboot-context config located within dist/package.json
@@ -15,7 +17,8 @@ function replaceFastbootConfig() {
   const packagePath = './dist/package.json';
   const packageInfo = require(`.${packagePath}`);
   const old = packageInfo.fastboot.config[appName];
-  packageInfo.fastboot.config[appName] = merge(old, environment);
+  process.env.npm_package_version = old.APP.version;
+  packageInfo.fastboot.config[appName] = merge(old, getEnv());
   fs.writeFileSync(packagePath, JSON.stringify(packageInfo));
 }
 
@@ -28,7 +31,7 @@ function replaceWebConfig() {
   const indexFileContent = fs.readFileSync(indexFilePath).toString();
   const regex = new RegExp(`name="${configPath}" content="([^"]+)"`, 'i');
   const existingEnvironment = JSON.parse(decodeURIComponent(regex.exec(indexFileContent)[1]));
-  const newEnvironment = encodeURIComponent(JSON.stringify(merge(existingEnvironment, environment)));
+  const newEnvironment = encodeURIComponent(JSON.stringify(merge(existingEnvironment, getEnv())));
   fs.writeFileSync(
     indexFilePath,
     indexFileContent.replace(

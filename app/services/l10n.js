@@ -2,6 +2,8 @@ import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
+import moment from 'moment';
+import { getScript } from 'open-event-frontend/utils/loader';
 
 @classic
 export default class L10nService extends L10n {
@@ -13,21 +15,21 @@ export default class L10nService extends L10n {
 
   @computed(function() {
     return {
-      'bn'      : this.t('Bengali/Bangla'),
-      'zh_Hans' : this.t('Chinese (Simplified)'),
-      'zh_Hant' : this.t('Chinese (Traditional)'),
-      'en'      : this.t('English'),
-      'fr'      : this.t('French'),
-      'de'      : this.t('German'),
-      'id'      : this.t('Indonesian'),
-      'ko'      : this.t('Korean'),
-      'pl'      : this.t('Polish'),
-      'es'      : this.t('Spanish'),
-      'th'      : this.t('Thai'),
-      'vi'      : this.t('Vietnamese'),
-      'hi'      : this.t('Hindi'),
-      'ja'      : this.t('Japanese'),
-      'ru'      : this.t('Russian')
+      'bn'      : 'বাংলা',
+      'de'      : 'Deutsch',
+      'en'      : 'English',
+      'es'      : 'Español',
+      'fr'      : 'Français',
+      'hi'      : 'हिंदी',
+      'id'      : 'Bahasa Indonesia',
+      'ja'      : '日本語',
+      'pl'      : 'Polski',
+      'ru'      : 'Русский',
+      'th'      : 'ไทย',
+      'vi'      : 'Tiếng Việt',
+      'zh_Hans' : '中文（简体)',
+      'zh_Hant' : '中文（繁體)',
+      'ko'      : '한국어'
     };
   })
   availableLocales;
@@ -36,24 +38,41 @@ export default class L10nService extends L10n {
   autoInitialize = false;
   jsonPath = '/assets/locales';
 
-  switchLanguage(locale) {
+  switchLanguage(locale, skipRefresh) {
+    if (this.locale === locale) {return}
     this.setLocale(locale);
-    this.cookies.write(this.localStorageKey, locale);
-    if (!this.fastboot.isFastBoot) {
+    this.cookies.write(this.localStorageKey, locale, { path: '/' });
+    if (!this.fastboot.isFastBoot && !skipRefresh) {
       location.reload();
     }
   }
 
+  detectQueryLang() {
+    const params = new URLSearchParams(location.search);
+    const locale = params.get('lang');
+    if (!locale || !Object.keys(this.availableLocales).includes(locale)) {return}
+    this.switchLanguage(locale, true);
+  }
+
   init() {
     super.init(...arguments);
+    this.detectQueryLang();
     const currentLocale = this.cookies.read(this.localStorageKey);
     const detectedLocale = this.detectLocale();
+
+    let locale = 'en';
     if (currentLocale) {
-      this.setLocale(currentLocale);
+      locale = currentLocale;
     } else if (detectedLocale) {
-      this.setLocale(detectedLocale);
-    } else {
-      this.setLocale('en');
+      locale = detectedLocale;
+    }
+
+    this.setLocale(locale);
+    if (locale !== 'en') {
+      getScript(`/assets/moment-locales/${locale}.js`)
+        .then(() => {
+          moment.locale(locale);
+        });
     }
   }
 }

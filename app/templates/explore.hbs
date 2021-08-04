@@ -1,8 +1,8 @@
 <div class="ui stackable grid">
-  <div class="four wide column">
-    <Explore::SideBar @model={{this.model}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
+  <div class="three wide column">
+    <Explore::SideBar @model={{this.model}} @clearQueryParams={{this.clearAllFilters}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @event_name={{this.event_name}} @is_past={{this.is_past}} @is_online={{this.is_online}} @is_location={{this.is_location}} @is_mixed={{this.is_mixed}} @has_logo={{this.has_logo}} @has_image={{this.has_image}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
   </div>
-  <div class="twelve wide column">
+  <div class="thirteen wide column">
     <h1 class="ui header">{{t 'Events'}}</h1>
     <div class="ui labels">
       {{#if this.filters.category}}
@@ -23,15 +23,15 @@
           <a href="#" role="button" {{action 'clearFilter' 'event_type'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
-      {{#if this.filters.start_date}}
+      {{#if (and this.filters.start_date (not-eq this.filters.start_date "all_date"))}}
         <div class="ui mini label">
-          {{moment-format this.filters.start_date 'ddd, MMM DD'}}
+          {{general-date this.filters.start_date 'date-short'}}
           <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
       {{#if this.filters.end_date}}
         <div class="ui mini label">
-          {{moment-format this.filters.end_date 'ddd, MMM DD'}}
+          {{general-date this.filters.end_date 'date-short'}}
           <a href="#" role="button" {{action 'clearFilter' 'end_date'}}><i class="icon close"></i></a>
         </div>
       {{/if}}
@@ -49,7 +49,7 @@
       {{/if}}
     </div>
     {{#each this.filteredEvents as |event|}}
-      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}} @category={{this.category}} @subCategory={{this.sub_category}} @eventType={{this.event_type}} @shareEvent={{action "shareEvent"}} />
+      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}} @category={{this.category}} @subCategory={{this.sub_category}} @eventType={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @eventName={{this.event_name}} @isPast={{this.is_past}} @isOnline={{this.is_online}} @hasLogo={{this.has_logo}} @hasImage={{this.has_image}} @location={{this.location}} @ticketType={{this.ticket_type}} @cfs={{this.cfs}} @shareEvent={{action "shareEvent"}} />      <div class="ui hidden divider"></div>
       <div class="ui hidden divider"></div>
     {{else}}
       <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>

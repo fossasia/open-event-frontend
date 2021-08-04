@@ -14,7 +14,7 @@ export default class OrderSummary extends Component.extend(FormMixin) {
   @computed('data.tickets', 'data.tickets.@each.attendees')
   get total() {
     return sumBy(this.data.tickets.toArray(),
-      ticket => (ticket.getWithDefault('price', 0) - ticket.getWithDefault('discount', 0)) * ticket.getWithDefault('attendees.length', 0)
+      ticket => (ticket.get('price') ?? 0 - ticket.get('discount') ?? 0) * ticket.get('attendees.length') ?? 0
     );
   }
 

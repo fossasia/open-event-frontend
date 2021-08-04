@@ -1,1142 +1,1013 @@
+import { tn } from '../text';
+
+export interface Country {
+  name: string;
+  code: string;
+}
+
 /**
  * Using a lean list of countries instead of an external dependency.
  * All the libraries have a lot of extra data which is of no use to us at this point and unnecessarily takes up more space.
  */
-export const countries = [
+export const countries: Country[] = [
   {
-    name : 'Ascension Island',
-    code : 'AC'
-  },
-  {
-    name : 'Andorra',
+    name : tn.t('Andorra'),
     code : 'AD'
   },
   {
-    name : 'United Arab Emirates',
+    name : tn.t('United Arab Emirates'),
     code : 'AE'
   },
   {
-    name : 'Afghanistan',
+    name : tn.t('Afghanistan'),
     code : 'AF'
   },
   {
-    name : 'Antigua And Barbuda',
+    name : tn.t('Antigua And Barbuda'),
     code : 'AG'
   },
   {
-    name : 'Anguilla',
+    name : tn.t('Anguilla'),
     code : 'AI'
   },
   {
-    name : 'French Afar and Issas',
-    code : 'AI'
-  },
-  {
-    name : 'Albania',
+    name : tn.t('Albania'),
     code : 'AL'
   },
   {
-    name : 'Armenia',
+    name : tn.t('Armenia'),
     code : 'AM'
   },
   {
-    name : 'Netherlands Antilles',
-    code : 'AN'
-  },
-  {
-    name : 'Angola',
+    name : tn.t('Angola'),
     code : 'AO'
   },
   {
-    name : 'Antarctica',
+    name : tn.t('Antarctica'),
     code : 'AQ'
   },
   {
-    name : 'Argentina',
+    name : tn.t('Argentina'),
     code : 'AR'
   },
   {
-    name : 'American Samoa',
+    name : tn.t('American Samoa'),
     code : 'AS'
   },
   {
-    name : 'Austria',
+    name : tn.t('Austria'),
     code : 'AT'
   },
   {
-    name : 'Australia',
+    name : tn.t('Australia'),
     code : 'AU'
   },
   {
-    name : 'Aruba',
+    name : tn.t('Aruba'),
     code : 'AW'
   },
   {
-    name : 'Åland Islands',
+    name : tn.t('Åland'),
     code : 'AX'
   },
   {
-    name : 'Azerbaijan',
+    name : tn.t('Azerbaijan'),
     code : 'AZ'
   },
   {
-    name : 'Bosnia & Herzegovina',
+    name : tn.t('Bosnia and Herzegovina'),
     code : 'BA'
   },
   {
-    name : 'Barbados',
+    name : tn.t('Barbados'),
     code : 'BB'
   },
   {
-    name : 'Bangladesh',
+    name : tn.t('Bangladesh'),
     code : 'BD'
   },
   {
-    name : 'Belgium',
+    name : tn.t('Belgium'),
     code : 'BE'
   },
   {
-    name : 'Burkina Faso',
+    name : tn.t('Burkina Faso'),
     code : 'BF'
   },
   {
-    name : 'Bulgaria',
+    name : tn.t('Bulgaria'),
     code : 'BG'
   },
   {
-    name : 'Bahrain',
+    name : tn.t('Bahrain'),
     code : 'BH'
   },
   {
-    name : 'Burundi',
+    name : tn.t('Burundi'),
     code : 'BI'
   },
   {
-    name : 'Benin',
+    name : tn.t('Benin'),
     code : 'BJ'
   },
   {
-    name : 'Saint Barthélemy',
+    name : tn.t('Saint Barthélemy'),
     code : 'BL'
   },
   {
-    name : 'Bermuda',
+    name : tn.t('Bermuda'),
     code : 'BM'
   },
   {
-    name : 'Brunei Darussalam',
+    name : tn.t('Brunei'),
     code : 'BN'
   },
   {
-    name : 'Bolivia',
+    name : tn.t('Bolivia'),
     code : 'BO'
   },
   {
-    name : 'Bonaire, Saint Eustatius And Saba',
+    name : tn.t('Bonaire'),
     code : 'BQ'
   },
   {
-    name : 'British Antarctic Territory',
-    code : 'BQ'
-  },
-  {
-    name : 'Brazil',
+    name : tn.t('Brazil'),
     code : 'BR'
   },
   {
-    name : 'Bahamas',
+    name : tn.t('Bahamas'),
     code : 'BS'
   },
   {
-    name : 'Bhutan',
+    name : tn.t('Bhutan'),
     code : 'BT'
   },
   {
-    name : 'Burma',
-    code : 'BU'
-  },
-  {
-    name : 'Bouvet Island',
+    name : tn.t('Bouvet Island'),
     code : 'BV'
   },
   {
-    name : 'Botswana',
+    name : tn.t('Botswana'),
     code : 'BW'
   },
   {
-    name : 'Belarus',
+    name : tn.t('Belarus'),
     code : 'BY'
   },
   {
-    name : 'Byelorussian SSR',
-    code : 'BY'
-  },
-  {
-    name : 'Belize',
+    name : tn.t('Belize'),
     code : 'BZ'
   },
   {
-    name : 'Canada',
+    name : tn.t('Canada'),
     code : 'CA'
   },
   {
-    name : 'Cocos (Keeling) Islands',
+    name : tn.t('Cocos [Keeling] Islands'),
     code : 'CC'
   },
   {
-    name : 'Democratic Republic Of Congo',
+    name : tn.t('Democratic Republic Of Congo'),
     code : 'CD'
   },
   {
-    name : 'Central African Republic',
+    name : tn.t('Central African Republic'),
     code : 'CF'
   },
   {
-    name : 'Republic Of Congo',
+    name : tn.t('Republic Of the Congo'),
     code : 'CG'
   },
   {
-    name : 'Switzerland',
+    name : tn.t('Switzerland'),
     code : 'CH'
   },
   {
-    name : 'Côte d\'Ivoire',
+    name : tn.t('Ivory Coast'),
     code : 'CI'
   },
   {
-    name : 'Cook Islands',
+    name : tn.t('Cook Islands'),
     code : 'CK'
   },
   {
-    name : 'Chile',
+    name : tn.t('Chile'),
     code : 'CL'
   },
   {
-    name : 'Cameroon',
+    name : tn.t('Cameroon'),
     code : 'CM'
   },
   {
-    name : 'China',
+    name : tn.t('China'),
     code : 'CN'
   },
   {
-    name : 'Colombia',
+    name : tn.t('Colombia'),
     code : 'CO'
   },
   {
-    name : 'Clipperton Island',
-    code : 'CP'
-  },
-  {
-    name : 'Costa Rica',
+    name : tn.t('Costa Rica'),
     code : 'CR'
   },
   {
-    name : 'Czechoslovakia',
-    code : 'CS'
-  },
-  {
-    name : 'Serbia and Montenegro',
-    code : 'CS'
-  },
-  {
-    name : 'Canton and Enderbury Islands',
-    code : 'CT'
-  },
-  {
-    name : 'Cuba',
+    name : tn.t('Cuba'),
     code : 'CU'
   },
   {
-    name : 'Cabo Verde',
+    name : tn.t('Cape Verde'),
     code : 'CV'
   },
   {
-    name : 'Curacao',
+    name : tn.t('Curacao'),
     code : 'CW'
   },
   {
-    name : 'Christmas Island',
+    name : tn.t('Christmas Island'),
     code : 'CX'
   },
   {
-    name : 'Cyprus',
+    name : tn.t('Cyprus'),
     code : 'CY'
   },
   {
-    name : 'Czech Republic',
+    name : tn.t('Czech Republic'),
     code : 'CZ'
   },
   {
-    name : 'German Democratic Republic',
-    code : 'DD'
-  },
-  {
-    name : 'Germany',
+    name : tn.t('Germany'),
     code : 'DE'
   },
   {
-    name : 'Diego Garcia',
-    code : 'DG'
-  },
-  {
-    name : 'Djibouti',
+    name : tn.t('Djibouti'),
     code : 'DJ'
   },
   {
-    name : 'Denmark',
+    name : tn.t('Denmark'),
     code : 'DK'
   },
   {
-    name : 'Dominica',
+    name : tn.t('Dominica'),
     code : 'DM'
   },
   {
-    name : 'Dominican Republic',
+    name : tn.t('Dominican Republic'),
     code : 'DO'
   },
   {
-    name : 'Dahomey',
-    code : 'DY'
-  },
-  {
-    name : 'Algeria',
+    name : tn.t('Algeria'),
     code : 'DZ'
   },
   {
-    name : 'Ceuta, Mulilla',
-    code : 'EA'
-  },
-  {
-    name : 'Ecuador',
+    name : tn.t('Ecuador'),
     code : 'EC'
   },
   {
-    name : 'Estonia',
+    name : tn.t('Estonia'),
     code : 'EE'
   },
   {
-    name : 'Egypt',
+    name : tn.t('Egypt'),
     code : 'EG'
   },
   {
-    name : 'Western Sahara',
+    name : tn.t('Western Sahara'),
     code : 'EH'
   },
   {
-    name : 'Eritrea',
+    name : tn.t('Eritrea'),
     code : 'ER'
   },
   {
-    name : 'Spain',
+    name : tn.t('Spain'),
     code : 'ES'
   },
   {
-    name : 'Ethiopia',
+    name : tn.t('Ethiopia'),
     code : 'ET'
   },
   {
-    name : 'European Union',
-    code : 'EU'
-  },
-  {
-    name : 'Finland',
+    name : tn.t('Finland'),
     code : 'FI'
   },
   {
-    name : 'Fiji',
+    name : tn.t('Fiji'),
     code : 'FJ'
   },
   {
-    name : 'Falkland Islands',
+    name : tn.t('Falkland Islands'),
     code : 'FK'
   },
   {
-    name : 'Federated States Of Micronesia',
+    name : tn.t('Micronesia'),
     code : 'FM'
   },
   {
-    name : 'Faroe Islands',
+    name : tn.t('Faroe Islands'),
     code : 'FO'
   },
   {
-    name : 'French Southern and Antarctic Territories',
-    code : 'FQ'
-  },
-  {
-    name : 'France',
+    name : tn.t('France'),
     code : 'FR'
   },
   {
-    name : 'Gabon',
+    name : tn.t('Gabon'),
     code : 'GA'
   },
   {
-    name : 'United Kingdom',
+    name : tn.t('United Kingdom'),
     code : 'GB'
   },
   {
-    name : 'Grenada',
+    name : tn.t('Grenada'),
     code : 'GD'
   },
   {
-    name : 'Georgia',
+    name : tn.t('Georgia'),
     code : 'GE'
   },
   {
-    name : 'Gilbert and Ellice Islands',
-    code : 'GE'
-  },
-  {
-    name : 'French Guiana',
+    name : tn.t('French Guiana'),
     code : 'GF'
   },
   {
-    name : 'Guernsey',
+    name : tn.t('Guernsey'),
     code : 'GG'
   },
   {
-    name : 'Ghana',
+    name : tn.t('Ghana'),
     code : 'GH'
   },
   {
-    name : 'Gibraltar',
+    name : tn.t('Gibraltar'),
     code : 'GI'
   },
   {
-    name : 'Greenland',
+    name : tn.t('Greenland'),
     code : 'GL'
   },
   {
-    name : 'Gambia',
+    name : tn.t('Gambia'),
     code : 'GM'
   },
   {
-    name : 'Guinea',
+    name : tn.t('Guinea'),
     code : 'GN'
   },
   {
-    name : 'Guadeloupe',
+    name : tn.t('Guadeloupe'),
     code : 'GP'
   },
   {
-    name : 'Equatorial Guinea',
+    name : tn.t('Equatorial Guinea'),
     code : 'GQ'
   },
   {
-    name : 'Greece',
+    name : tn.t('Greece'),
     code : 'GR'
   },
   {
-    name : 'South Georgia And The South Sandwich Islands',
+    name : tn.t('South Georgia and The South Sandwich Islands'),
     code : 'GS'
   },
   {
-    name : 'Guatemala',
+    name : tn.t('Guatemala'),
     code : 'GT'
   },
   {
-    name : 'Guam',
+    name : tn.t('Guam'),
     code : 'GU'
   },
   {
-    name : 'Guinea-bissau',
+    name : tn.t('Guinea-Bissau'),
     code : 'GW'
   },
   {
-    name : 'Guyana',
+    name : tn.t('Guyana'),
     code : 'GY'
   },
   {
-    name : 'Hong Kong',
+    name : tn.t('Hong Kong'),
     code : 'HK'
   },
   {
-    name : 'Heard Island And McDonald Islands',
+    name : tn.t('Heard Island And McDonald Islands'),
     code : 'HM'
   },
   {
-    name : 'Honduras',
+    name : tn.t('Honduras'),
     code : 'HN'
   },
   {
-    name : 'Croatia',
+    name : tn.t('Croatia'),
     code : 'HR'
   },
   {
-    name : 'Haiti',
+    name : tn.t('Haiti'),
     code : 'HT'
   },
   {
-    name : 'Hungary',
+    name : tn.t('Hungary'),
     code : 'HU'
   },
   {
-    name : 'Upper Volta',
-    code : 'HV'
-  },
-  {
-    name : 'Canary Islands',
-    code : 'IC'
-  },
-  {
-    name : 'Indonesia',
+    name : tn.t('Indonesia'),
     code : 'ID'
   },
   {
-    name : 'Ireland',
+    name : tn.t('Ireland'),
     code : 'IE'
   },
   {
-    name : 'Israel',
+    name : tn.t('Israel'),
     code : 'IL'
   },
   {
-    name : 'Isle Of Man',
+    name : tn.t('Isle of Man'),
     code : 'IM'
   },
   {
-    name : 'India',
+    name : tn.t('India'),
     code : 'IN'
   },
   {
-    name : 'British Indian Ocean Territory',
+    name : tn.t('British Indian Ocean Territory'),
     code : 'IO'
   },
   {
-    name : 'Iraq',
+    name : tn.t('Iraq'),
     code : 'IQ'
   },
   {
-    name : 'Iran',
+    name : tn.t('Iran'),
     code : 'IR'
   },
   {
-    name : 'Iceland',
+    name : tn.t('Iceland'),
     code : 'IS'
   },
   {
-    name : 'Italy',
+    name : tn.t('Italy'),
     code : 'IT'
   },
   {
-    name : 'Jersey',
+    name : tn.t('Jersey'),
     code : 'JE'
   },
   {
-    name : 'Jamaica',
+    name : tn.t('Jamaica'),
     code : 'JM'
   },
   {
-    name : 'Jordan',
+    name : tn.t('Jordan'),
     code : 'JO'
   },
   {
-    name : 'Japan',
+    name : tn.t('Japan'),
     code : 'JP'
   },
   {
-    name : 'Johnston Island',
-    code : 'JT'
-  },
-  {
-    name : 'Kenya',
+    name : tn.t('Kenya'),
     code : 'KE'
   },
   {
-    name : 'Kyrgyzstan',
+    name : tn.t('Kyrgyzstan'),
     code : 'KG'
   },
   {
-    name : 'Cambodia',
+    name : tn.t('Cambodia'),
     code : 'KH'
   },
   {
-    name : 'Kiribati',
+    name : tn.t('Kiribati'),
     code : 'KI'
   },
   {
-    name : 'Comoros',
+    name : tn.t('Comoros'),
     code : 'KM'
   },
   {
-    name : 'Saint Kitts And Nevis',
+    name : tn.t('Saint Kitts And Nevis'),
     code : 'KN'
   },
   {
-    name : 'North Korea',
+    name : tn.t('North Korea'),
     code : 'KP'
   },
   {
-    name : 'South Korea',
+    name : tn.t('South Korea'),
     code : 'KR'
   },
   {
-    name : 'Kuwait',
+    name : tn.t('Kuwait'),
     code : 'KW'
   },
   {
-    name : 'Cayman Islands',
+    name : tn.t('Cayman Islands'),
     code : 'KY'
   },
   {
-    name : 'Kazakhstan',
+    name : tn.t('Kazakhstan'),
     code : 'KZ'
   },
   {
-    name : 'Lao People\'s Democratic Republic',
+    name : tn.t('Laos'),
     code : 'LA'
   },
   {
-    name : 'Lebanon',
+    name : tn.t('Lebanon'),
     code : 'LB'
   },
   {
-    name : 'Saint Lucia',
+    name : tn.t('Saint Lucia'),
     code : 'LC'
   },
   {
-    name : 'Liechtenstein',
+    name : tn.t('Liechtenstein'),
     code : 'LI'
   },
   {
-    name : 'Sri Lanka',
+    name : tn.t('Sri Lanka'),
     code : 'LK'
   },
   {
-    name : 'Liberia',
+    name : tn.t('Liberia'),
     code : 'LR'
   },
   {
-    name : 'Lesotho',
+    name : tn.t('Lesotho'),
     code : 'LS'
   },
   {
-    name : 'Lithuania',
+    name : tn.t('Lithuania'),
     code : 'LT'
   },
   {
-    name : 'Luxembourg',
+    name : tn.t('Luxembourg'),
     code : 'LU'
   },
   {
-    name : 'Latvia',
+    name : tn.t('Latvia'),
     code : 'LV'
   },
   {
-    name : 'Libya',
+    name : tn.t('Libya'),
     code : 'LY'
   },
   {
-    name : 'Morocco',
+    name : tn.t('Morocco'),
     code : 'MA'
   },
   {
-    name : 'Monaco',
+    name : tn.t('Monaco'),
     code : 'MC'
   },
   {
-    name : 'Moldova',
+    name : tn.t('Moldova'),
     code : 'MD'
   },
   {
-    name : 'Montenegro',
+    name : tn.t('Montenegro'),
     code : 'ME'
   },
   {
-    name : 'Saint Martin',
+    name : tn.t('Saint Martin'),
     code : 'MF'
   },
   {
-    name : 'Madagascar',
+    name : tn.t('Madagascar'),
     code : 'MG'
   },
   {
-    name : 'Marshall Islands',
+    name : tn.t('Marshall Islands'),
     code : 'MH'
   },
   {
-    name : 'Midway Islands',
-    code : 'MI'
-  },
-  {
-    name : 'Macedonia (The Former Yugoslav Republic Of Macedonia)',
+    name : tn.t('North Macedonia'),
     code : 'MK'
   },
   {
-    name : 'Mali',
+    name : tn.t('Mali'),
     code : 'ML'
   },
   {
-    name : 'Myanmar',
+    name : tn.t('Myanmar'),
     code : 'MM'
   },
   {
-    name : 'Mongolia',
+    name : tn.t('Mongolia'),
     code : 'MN'
   },
   {
-    name : 'Macao',
+    name : tn.t('Macao'),
     code : 'MO'
   },
   {
-    name : 'Northern Mariana Islands',
+    name : tn.t('Northern Mariana Islands'),
     code : 'MP'
   },
   {
-    name : 'Martinique',
+    name : tn.t('Martinique'),
     code : 'MQ'
   },
   {
-    name : 'Mauritania',
+    name : tn.t('Mauritania'),
     code : 'MR'
   },
   {
-    name : 'Montserrat',
+    name : tn.t('Montserrat'),
     code : 'MS'
   },
   {
-    name : 'Malta',
+    name : tn.t('Malta'),
     code : 'MT'
   },
   {
-    name : 'Mauritius',
+    name : tn.t('Mauritius'),
     code : 'MU'
   },
   {
-    name : 'Maldives',
+    name : tn.t('Maldives'),
     code : 'MV'
   },
   {
-    name : 'Malawi',
+    name : tn.t('Malawi'),
     code : 'MW'
   },
   {
-    name : 'Mexico',
+    name : tn.t('Mexico'),
     code : 'MX'
   },
   {
-    name : 'Malaysia',
+    name : tn.t('Malaysia'),
     code : 'MY'
   },
   {
-    name : 'Mozambique',
+    name : tn.t('Mozambique'),
     code : 'MZ'
   },
   {
-    name : 'Namibia',
+    name : tn.t('Namibia'),
     code : 'NA'
   },
   {
-    name : 'New Caledonia',
+    name : tn.t('New Caledonia'),
     code : 'NC'
   },
   {
-    name : 'Niger',
+    name : tn.t('Niger'),
     code : 'NE'
   },
   {
-    name : 'Norfolk Island',
+    name : tn.t('Norfolk Island'),
     code : 'NF'
   },
   {
-    name : 'Nigeria',
+    name : tn.t('Nigeria'),
     code : 'NG'
   },
   {
-    name : 'New Hebrides',
-    code : 'NH'
-  },
-  {
-    name : 'Nicaragua',
+    name : tn.t('Nicaragua'),
     code : 'NI'
   },
   {
-    name : 'Netherlands',
+    name : tn.t('Netherlands'),
     code : 'NL'
   },
   {
-    name : 'Norway',
+    name : tn.t('Norway'),
     code : 'NO'
   },
   {
-    name : 'Nepal',
+    name : tn.t('Nepal'),
     code : 'NP'
   },
   {
-    name : 'Dronning Maud Land',
-    code : 'NQ'
-  },
-  {
-    name : 'Nauru',
+    name : tn.t('Nauru'),
     code : 'NR'
   },
   {
-    name : 'Niue',
+    name : tn.t('Niue'),
     code : 'NU'
   },
   {
-    name : 'New Zealand',
+    name : tn.t('New Zealand'),
     code : 'NZ'
   },
   {
-    name : 'Oman',
+    name : tn.t('Oman'),
     code : 'OM'
   },
   {
-    name : 'Panama',
+    name : tn.t('Panama'),
     code : 'PA'
   },
   {
-    name : 'Trust Territory of the Pacific Islands',
-    code : 'PC'
-  },
-  {
-    name : 'Peru',
+    name : tn.t('Peru'),
     code : 'PE'
   },
   {
-    name : 'French Polynesia',
+    name : tn.t('French Polynesia'),
     code : 'PF'
   },
   {
-    name : 'Papua New Guinea',
+    name : tn.t('Papua New Guinea'),
     code : 'PG'
   },
   {
-    name : 'Philippines',
+    name : tn.t('Philippines'),
     code : 'PH'
   },
   {
-    name : 'Pakistan',
+    name : tn.t('Pakistan'),
     code : 'PK'
   },
   {
-    name : 'Poland',
+    name : tn.t('Poland'),
     code : 'PL'
   },
   {
-    name : 'Saint Pierre And Miquelon',
+    name : tn.t('Saint Pierre And Miquelon'),
     code : 'PM'
   },
   {
-    name : 'Pitcairn',
+    name : tn.t('Pitcairn Islands'),
     code : 'PN'
   },
   {
-    name : 'Puerto Rico',
+    name : tn.t('Puerto Rico'),
     code : 'PR'
   },
   {
-    name : 'Palestinian Territory, Occupied',
+    name : tn.t('Palestinian'),
     code : 'PS'
   },
   {
-    name : 'Portugal',
+    name : tn.t('Portugal'),
     code : 'PT'
   },
   {
-    name : 'U.S. Miscellaneous Pacific Islands',
-    code : 'PU'
-  },
-  {
-    name : 'Palau',
+    name : tn.t('Palau'),
     code : 'PW'
   },
   {
-    name : 'Paraguay',
+    name : tn.t('Paraguay'),
     code : 'PY'
   },
   {
-    name : 'Panama Canal Zone',
-    code : 'PZ'
-  },
-  {
-    name : 'Qatar',
+    name : tn.t('Qatar'),
     code : 'QA'
   },
   {
-    name : 'Reunion',
+    name : tn.t('Reunion'),
     code : 'RE'
   },
   {
-    name : 'Southern Rhodesia',
-    code : 'RH'
-  },
-  {
-    name : 'Romania',
+    name : tn.t('Romania'),
     code : 'RO'
   },
   {
-    name : 'Serbia',
+    name : tn.t('Serbia'),
     code : 'RS'
   },
   {
-    name : 'Russian Federation',
+    name : tn.t('Russian'),
     code : 'RU'
   },
   {
-    name : 'Rwanda',
+    name : tn.t('Rwanda'),
     code : 'RW'
   },
   {
-    name : 'Saudi Arabia',
+    name : tn.t('Saudi Arabia'),
     code : 'SA'
   },
   {
-    name : 'Solomon Islands',
+    name : tn.t('Solomon Islands'),
     code : 'SB'
   },
   {
-    name : 'Seychelles',
+    name : tn.t('Seychelles'),
     code : 'SC'
   },
   {
-    name : 'Sudan',
+    name : tn.t('Sudan'),
     code : 'SD'
   },
   {
-    name : 'Sweden',
+    name : tn.t('Sweden'),
     code : 'SE'
   },
   {
-    name : 'Singapore',
+    name : tn.t('Singapore'),
     code : 'SG'
   },
   {
-    name : 'Saint Helena, Ascension And Tristan Da Cunha',
+    name : tn.t('Saint Helena'),
     code : 'SH'
   },
   {
-    name : 'Slovenia',
+    name : tn.t('Slovenia'),
     code : 'SI'
   },
   {
-    name : 'Svalbard And Jan Mayen',
+    name : tn.t('Svalbard And Jan Mayen'),
     code : 'SJ'
   },
   {
-    name : 'Slovakia',
+    name : tn.t('Slovakia'),
     code : 'SK'
   },
   {
-    name : 'Sikkim',
-    code : 'SK'
-  },
-  {
-    name : 'Sierra Leone',
+    name : tn.t('Sierra Leone'),
     code : 'SL'
   },
   {
-    name : 'San Marino',
+    name : tn.t('San Marino'),
     code : 'SM'
   },
   {
-    name : 'Senegal',
+    name : tn.t('Senegal'),
     code : 'SN'
   },
   {
-    name : 'Somalia',
+    name : tn.t('Somalia'),
     code : 'SO'
   },
   {
-    name : 'Suriname',
+    name : tn.t('Suriname'),
     code : 'SR'
   },
   {
-    name : 'South Sudan',
+    name : tn.t('South Sudan'),
     code : 'SS'
   },
   {
-    name : 'Sao Tome and Principe',
+    name : tn.t('Sao Tome and Principe'),
     code : 'ST'
   },
   {
-    name : 'USSR',
-    code : 'SU'
-  },
-  {
-    name : 'El Salvador',
+    name : tn.t('El Salvador'),
     code : 'SV'
   },
   {
-    name : 'Sint Maarten',
+    name : tn.t('Sint Maarten'),
     code : 'SX'
   },
   {
-    name : 'Syrian Arab Republic',
+    name : tn.t('Syria'),
     code : 'SY'
   },
   {
-    name : 'Swaziland',
+    name : tn.t('Swaziland'),
     code : 'SZ'
   },
   {
-    name : 'Tristan de Cunha',
-    code : 'TA'
-  },
-  {
-    name : 'Turks And Caicos Islands',
+    name : tn.t('Turks And Caicos Islands'),
     code : 'TC'
   },
   {
-    name : 'Chad',
+    name : tn.t('Chad'),
     code : 'TD'
   },
   {
-    name : 'French Southern Territories',
+    name : tn.t('French Southern Territories'),
     code : 'TF'
   },
   {
-    name : 'Togo',
+    name : tn.t('Togo'),
     code : 'TG'
   },
   {
-    name : 'Thailand',
+    name : tn.t('Thailand'),
     code : 'TH'
   },
   {
-    name : 'Tajikistan',
+    name : tn.t('Tajikistan'),
     code : 'TJ'
   },
   {
-    name : 'Tokelau',
+    name : tn.t('Tokelau'),
     code : 'TK'
   },
   {
-    name : 'Timor-Leste',
+    name : tn.t('East Timor'),
     code : 'TL'
   },
   {
-    name : 'Turkmenistan',
+    name : tn.t('Turkmenistan'),
     code : 'TM'
   },
   {
-    name : 'Tunisia',
+    name : tn.t('Tunisia'),
     code : 'TN'
   },
   {
-    name : 'Tonga',
+    name : tn.t('Tonga'),
     code : 'TO'
   },
   {
-    name : 'East Timor',
-    code : 'TP'
-  },
-  {
-    name : 'Turkey',
+    name : tn.t('Turkey'),
     code : 'TR'
   },
   {
-    name : 'Trinidad And Tobago',
+    name : tn.t('Trinidad And Tobago'),
     code : 'TT'
   },
   {
-    name : 'Tuvalu',
+    name : tn.t('Tuvalu'),
     code : 'TV'
   },
   {
-    name : 'Taiwan',
+    name : tn.t('Taiwan'),
     code : 'TW'
   },
   {
-    name : 'Tanzania',
+    name : tn.t('Tanzania'),
     code : 'TZ'
   },
   {
-    name : 'Ukraine',
+    name : tn.t('Ukraine'),
     code : 'UA'
   },
   {
-    name : 'Uganda',
+    name : tn.t('Uganda'),
     code : 'UG'
   },
   {
-    name : 'United States Minor Outlying Islands',
+    name : tn.t('United States Minor Outlying Islands'),
     code : 'UM'
   },
   {
-    name : 'United States',
+    name : tn.t('United States'),
     code : 'US'
   },
   {
-    name : 'Uruguay',
+    name : tn.t('Uruguay'),
     code : 'UY'
   },
   {
-    name : 'Uzbekistan',
+    name : tn.t('Uzbekistan'),
     code : 'UZ'
   },
   {
-    name : 'Vatican City State',
+    name : tn.t('Vatican City'),
     code : 'VA'
   },
   {
-    name : 'Saint Vincent And The Grenadines',
+    name : tn.t('Saint Vincent And The Grenadines'),
     code : 'VC'
   },
   {
-    name : 'Venezuela',
+    name : tn.t('Venezuela'),
     code : 'VE'
   },
   {
-    name : 'Virgin Islands (British)',
+    name : tn.t('British Virgin Islands'),
     code : 'VG'
   },
   {
-    name : 'Virgin Islands (US)',
+    name : tn.t('U.S. Virgin Islands'),
     code : 'VI'
   },
   {
-    name : 'Viet Nam',
+    name : tn.t('Vietnam'),
     code : 'VN'
   },
   {
-    name : 'Vanuatu',
+    name : tn.t('Vanuatu'),
     code : 'VU'
   },
   {
-    name : 'Wallis And Futuna',
+    name : tn.t('Wallis And Futuna'),
     code : 'WF'
   },
   {
-    name : 'Wake Island',
-    code : 'WK'
-  },
-  {
-    name : 'Samoa',
+    name : tn.t('Samoa'),
     code : 'WS'
   },
   {
-    name : 'Kosovo',
+    name : tn.t('Kosovo'),
     code : 'XK'
   },
   {
-    name : 'Yemen',
-    code : 'YD'
+    name : tn.t('Yemen'),
+    code : 'YE'
   },
   {
-    name : 'Mayotte',
+    name : tn.t('Mayotte'),
     code : 'YT'
   },
   {
-    name : 'Yugoslavia',
-    code : 'YU'
-  },
-  {
-    name : 'South Africa',
+    name : tn.t('South Africa'),
     code : 'ZA'
   },
   {
-    name : 'Zambia',
+    name : tn.t('Zambia'),
     code : 'ZM'
   },
   {
-    name : 'Zaire',
-    code : 'ZR'
-  },
-  {
-    name : 'Zimbabwe',
+    name : tn.t('Zimbabwe'),
     code : 'ZW'
   }
 ];

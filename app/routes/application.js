@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { merge, values, isEmpty } from 'lodash-es';
+import { hash } from 'rsvp';
 
 @classic
 export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin) {
@@ -12,6 +13,9 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
 
   @service
   currentUser;
+
+  @service
+  cache;
 
   title(tokens) {
     if (!tokens) {
@@ -36,49 +40,11 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
   }
 
   async model() {
-    let notificationsPromise = Promise.resolve([]);
-    if (this.session.isAuthenticated) {
-      try {
-        notificationsPromise = this.authManager.currentUser.query('notifications', {
-          filter: [
-            {
-              name : 'is-read',
-              op   : 'eq',
-              val  : false
-            }
-          ],
-          sort: '-received-at'
-        });
-      } catch (e) {
-        console.warn(e);
-        this.session.invalidate();
-      }
-    }
-
-    const pagesPromise = this.store.query('page', {
-      sort: 'index'
+    return hash({
+      cookiePolicy     : this.settings.cookiePolicy,
+      cookiePolicyLink : this.settings.cookiePolicyLink,
+      socialLinks      : this.settings
     });
-
-    const settingsPromise = this.store.queryRecord('setting', {});
-    const eventTypesPromise = this.store.findAll('event-type');
-    const eventLocationsPromise = this.store.findAll('event-location');
-
-    const [notifications, pages, settings, eventTypes, eventLocations] = await Promise.all([
-      notificationsPromise,
-      pagesPromise,
-      settingsPromise,
-      eventTypesPromise,
-      eventLocationsPromise]);
-
-    return {
-      notifications,
-      pages,
-      cookiePolicy     : settings.cookiePolicy,
-      cookiePolicyLink : settings.cookiePolicyLink,
-      socialLinks      : settings,
-      eventTypes,
-      eventLocations
-    };
   }
 
   sessionInvalidated() {

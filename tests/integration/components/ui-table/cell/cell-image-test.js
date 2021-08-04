@@ -8,12 +8,11 @@ module('Integration | Component | ui table/cell/cell image', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{ui-table/cell/cell-image}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Event logo'));
+    assert.ok(this.element.innerHTML.trim().includes('Logo'));
   });
 
   test('it renders', async function(assert) {
-    const record = { logoUrl: 'logo-url' };
-    this.set('record', record);
+    this.set('record', 'logo-url');
     await render(hbs`{{ui-table/cell/cell-image record=record}}`);
     assert.ok(this.element.innerHTML.trim().includes('logo-url'));
   });

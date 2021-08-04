@@ -9,7 +9,7 @@ let sessionStateMapCached = null;
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
     if (SESSION_STATES.includes(this.params.session_status)) {
-      return this.l10n.t(capitalize(this.params.session_status));
+      return capitalize(this.params.session_status);
     } else {
       return this.l10n.t('Session');
     }
@@ -28,9 +28,36 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
-    const searchField = 'title';
     let filterOptions = [];
-
+    if (params.search) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'title',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          },
+          {
+            name : 'track',
+            op   : 'has',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          },
+          {
+            name : 'speakers',
+            op   : 'any',
+            val  : {
+              name : 'name',
+              op   : 'ilike',
+              val  : `%${params.search}%`
+            }
+          }
+        ]
+      });
+    }
     if (SESSION_STATES.includes(params.session_status)) {
       filterOptions = [
         {
@@ -62,11 +89,10 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     };
     const feedbacksPromise = this.authManager.currentUser.query('feedbacks', queryObject);
 
-    filterOptions = this.applySearchFilters(filterOptions, params, searchField);
     let queryString = {
       include        : 'speakers,feedbacks,session-type,track',
       filter         : filterOptions,
-      'page[size]'   : params.per_page || 10,
+      'page[size]'   : params.per_page || 25,
       'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);

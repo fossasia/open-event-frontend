@@ -1,17 +1,21 @@
 <div class="ui grid">
-  <div class="ui no bottom padding row">
-    <div class="left aligned eight wide column">
-      <Tables::Utilities::PageSizeInput
-        @pageSize={{this.pageSize}} />
-    </div>
-    <div class="eight wide right aligned column">
-      <Tables::Utilities::SearchBox
-        @searchQuery={{this.searchQuery}}
-        @filterOptions={{this.filterOptions}} />
-    </div>
+  <div class="ui no bottom padding row items-center">
+    {{#unless @hidePageSize}}
+      <div class="left aligned eight wide column">
+        <Tables::Utilities::PageSizeInput
+          @pageSize={{this.pageSize}} />
+      </div>
+    {{/unless}}
+    {{#unless @hideSearchBox}}
+      <div class="eight wide right aligned column">
+        <Tables::Utilities::SearchBox
+          @searchQuery={{this.searchQuery}}
+          @filterOptions={{this.filterOptions}} />
+      </div>
+    {{/unless}}
   </div>
-  <div class="row">
-    <EmberTable as |t|>
+  <div class="ui no bottom padding row">
+    <EmberTable @tableColor={{@color}} as |t|>
       <t.head
         @sortFunction={{null}}
         @columns={{this.columns}}
@@ -29,6 +33,12 @@
               {{/component}}
             {{else}}
               {{column.name}}
+            {{/if}}
+            {{#if column.helperInfo}}
+              <UiPopup
+                @tagName="i"
+                @class="info circle icon"
+                @content={{t-var column.helperInfo}} />
             {{/if}}
           </r.cell>
         </h.row>
@@ -54,10 +64,12 @@
     </EmberTable>
   </div>
 
-  <div class="row">
-    <Tables::Utilities::Pagination
-      @currentPage={{this.currentPage}}
-      @pageSize={{this.pageSize}}
-      @metaData={{this.metaData}} />
-  </div>
+  {{#unless @hidePagination}}
+    <div class="ui no top padding row">
+      <Tables::Utilities::Pagination
+        @currentPage={{this.currentPage}}
+        @pageSize={{this.pageSize}}
+        @metaData={{this.metaData}} />
+    </div>
+  {{/unless}}
 </div>

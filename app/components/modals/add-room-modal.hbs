@@ -1,0 +1,37 @@
+<div class="header">
+  {{t 'Add Room'}}
+</div>
+<div class="content">
+  <form class="ui {{if this.isLoading 'loading'}} form" id="room-form" autocomplete="off">
+    <div class="field">
+      <label class="required">
+        {{t 'Name'}}
+      </label>
+      <Input @type="text" @name="name" @value={{this.room.name}} />
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Floor'}}
+      </label>
+      <Input @type="text" @value={{this.room.floor}} />
+    </div>
+    <div class="field">
+      <label>
+        {{t "Hidden In Scheduler"}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.room.hiddenInScheduler}}
+        @onChange={{action (mut this.room.hiddenInScheduler)}} />
+    </div>     
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close' preventDefault=true}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="room-form" class="ui green right labeled icon button">
+    {{t 'Add Room'}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>

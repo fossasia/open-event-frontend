@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900'); // sass-lint:disable-line no-url-domains,no-url-protocols
+@import 'font';
 @import 'vars';
 @import 'libs/helpers';
 @import 'libs/stripe_connect';
@@ -6,3 +6,14 @@
 @import 'pages/all';
 @import 'components/all';
 @import 'ember-power-select';
+
+html,
+body {
+  font-size: 16px;
+}
+
+.ui.button {
+  align-self: center;
+  font-size: 14px;
+}
+

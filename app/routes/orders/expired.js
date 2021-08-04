@@ -5,7 +5,7 @@ import Route from '@ember/routing/route';
 export default class ExpiredRoute extends Route {
   titleToken(model) {
     const order = model.get('identifier');
-    return this.l10n.t(`Expired Order -${order}`);
+    return this.l10n.t('Expired Order') + ' - ' + order;
   }
 
   model(params) {

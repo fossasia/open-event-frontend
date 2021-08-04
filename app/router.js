@@ -24,7 +24,7 @@ class Router extends RouterScroll {
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
       const page = this.url;
-      const title = this.getWithDefault('currentRouteName', 'unknown');
+      const title = this.get('currentRouteName') ?? 'unknown';
       this.metrics.trackPage({ page, title });
       this.set('session.currentRouteName', title);
     });
@@ -40,11 +40,26 @@ Router.map(function() {
   this.route('logout');
   this.route('oauth', { path: '/oauth/callback' });
   this.route('public', { path: '/e/:event_id' }, function() {
-    this.route('sessions', function() {
-      this.route('list', { path: '/:session_status' });
+    this.route('sessions-index', { path: '/sessions' });
+    this.route('sessions', { path: '/schedule' }, function() {
+      this.route('user', function() {
+        this.route('view', { path: '/:user_id' });
+      });
     });
     this.route('session', function() {
-      this.route('view', { path: '/:session_id' });
+      this.route('view', { path: '/:session_id' }, function() {
+        this.route('user', function() {
+          this.route('view', { path: '/:user_id' });
+        });
+      });
+    });
+    this.route('stream', { path: '/video/:video_name' }, function() {
+      this.route('view', { path: '/:stream_id' }, function() {
+        this.route('chat');
+      });
+    });
+    this.route('speaker', function() {
+      this.route('view', { path: '/:speaker_id' });
     });
     this.route('cfs', { path: '/cfs/:speaker_call_hash' }, function() {
       this.route('new-speaker');
@@ -53,14 +68,26 @@ Router.map(function() {
     this.route('cfs', function() {
       this.route('new-speaker');
       this.route('new-session');
+      this.route('view-speaker', { path: '/speaker/:speaker_id' });
+      this.route('view-session', { path: '/session/:session_id' });
       this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
       this.route('edit-session', { path: '/session/:session_id/edit' });
     });
-    this.route('schedule');
+    this.route('speaker-invite', function() {
+      this.route('view-session', { path: '/:invite_id/session' });
+    });
+    this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
-    this.route('role-invites');
+    this.route('exhibition', function() {
+      this.route('view', { path: '/:exhibitor_id' });
+      this.route('video', { path: '/:exhibitor_id/video' });
+    });
+    this.route('chat');
   });
+  this.route('role-invites');
+  this.route('group-invites');
+  this.route('pricing');
   this.route('create');
   this.route('not-found');
   this.route('pages', { path: '/*path' });
@@ -68,15 +95,21 @@ Router.map(function() {
     this.route('view', { path: '/:event_id' }, function() {
       this.route('edit', function() {
         this.route('basic-details');
+        this.route('other-details');
         this.route('sponsors');
         this.route('sessions-speakers');
         this.route('attendee');
       });
-      this.route('export');
-      this.route('settings');
+      this.route('settings', function() {
+        this.route('export');
+        this.route('options');
+      });
       this.route('sessions', function() {
         this.route('list', { path: '/:session_status' });
         this.route('create');
+      });
+      this.route('session', function() {
+        this.route('view', { path: '/:session_id' });
         this.route('edit', { path: '/:session_id/edit' });
       });
       this.route('tickets', function() {
@@ -101,10 +134,30 @@ Router.map(function() {
       });
       this.route('speakers', function() {
         this.route('list', { path: '/:speakers_status' });
+        this.route('create');
+        this.route('reorder');
+      });
+      this.route('speaker', function() {
+        this.route('view', { path: '/:speaker_id' });
         this.route('edit', { path: '/:speaker_id/edit' });
+      });
+      this.route('documents');
+      this.route('chat');
+      this.route('videoroom', { path: '/video' }, function() {
+        this.route('list', { path: '/:status' });
+        this.route('edit', { path: '/:stream_id/edit' });
         this.route('create');
       });
       this.route('scheduler');
+      this.route('team', function() {
+        this.route('permissions');
+      });
+      this.route('exhibitors', function() {
+        this.route('list');
+        this.route('create');
+        this.route('edit', { path: '/:exhibitor_id/edit' });
+        this.route('reorder');
+      });
     });
     this.route('list', { path: '/:event_state' });
     this.route('import');
@@ -123,6 +176,18 @@ Router.map(function() {
     });
   });
   this.route('explore');
+  this.route('groups', function() {
+    this.route('list');
+    this.route('create');
+    this.route('following');
+    this.route('team', { path: '/team/:group_id' });
+    this.route('view', { path: '/:group_id' });
+    this.route('edit', { path: '/edit' }, function() {
+      this.route('events', { path: '/:group_id/events' });
+      this.route('settings', { path: '/:group_id/settings' });
+      this.route('followers', { path: '/:group_id/followers' });
+    });
+  });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {
       this.route('list', { path: '/:ticket_status' });
@@ -132,18 +197,16 @@ Router.map(function() {
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
   });
-  this.route('notifications', function() {
-    this.route('all', { path: '/:notification_state' });
-  });
+  // this.route('notifications', function() {
+  //   this.route('all', { path: '/:notification_state' });
+  // });
   this.route('admin', function() {
-    this.route('messages', function() {
-      this.route('list');
-    });
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });
       this.route('import');
     });
     this.route('sales', function() {
+      this.route('index', { path: '/:event_status' });
       this.route('organizers');
       this.route('marketer');
       this.route('locations');
@@ -173,6 +236,13 @@ Router.map(function() {
       });
       this.route('list', { path: '/:users_status' });
     });
+    this.route('video', function() {
+      this.route('channels', function() {
+        this.route('create');
+        this.route('edit', { path: '/:videoChannel_id/edit' });
+      });
+      this.route('recordings');
+    });
     this.route('permissions', function() {
       this.route('event-roles');
       this.route('system-roles');
@@ -187,6 +257,7 @@ Router.map(function() {
     });
     this.route('messages');
     this.route('settings', function() {
+      this.route('social-media');
       this.route('microlocations');
       this.route('microservices');
       this.route('images');
@@ -194,6 +265,7 @@ Router.map(function() {
       this.route('payment-gateway');
       this.route('ticket-fees');
       this.route('billing');
+      this.route('frontpage');
     });
     this.route('content', function() {
       this.route('social-links');
@@ -203,6 +275,9 @@ Router.map(function() {
       });
       this.route('translations');
       this.route('events');
+    });
+    this.route('groups', function() {
+      this.route('list', { path: '/:group_status' });
     });
   });
   this.route('orders', function() {

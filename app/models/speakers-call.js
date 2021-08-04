@@ -10,17 +10,20 @@ const detectedTimezone = moment.tz.guess();
 
 export default ModelBase.extend({
   announcement : attr('string'),
-  startsAt     : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').startOf('day') }),
-  endsAt       : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).add(1, 'months').hour(17).minute(0) }),
+  startsAt     : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).subtract(3, 'days').startOf('day') }),
+  softEndsAt   : attr('moment', { defaultValue: () => null }),
+  endsAt       : attr('moment', { defaultValue: () => moment.tz(detectedTimezone).subtract(2, 'days').startOf('day') }),
   privacy      : attr('string', { defaultValue: 'public' }),
   hash         : attr('string', { defaultValue: v4() }),
 
   event: belongsTo('event'),
 
-  startsAtDate : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
-  startsAtTime : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
-  endsAtDate   : computedDateTimeSplit.bind(this)('endsAt', 'date'),
-  endsAtTime   : computedDateTimeSplit.bind(this)('endsAt', 'time'),
+  startsAtDate   : computedDateTimeSplit.bind(this)('startsAt', 'date', 'endsAt'),
+  startsAtTime   : computedDateTimeSplit.bind(this)('startsAt', 'time', 'endsAt'),
+  softEndsAtDate : computedDateTimeSplit.bind(this)('softEndsAt', 'date'),
+  softEndsAtTime : computedDateTimeSplit.bind(this)('softEndsAt', 'time'),
+  endsAtDate     : computedDateTimeSplit.bind(this)('endsAt', 'date'),
+  endsAtTime     : computedDateTimeSplit.bind(this)('endsAt', 'time'),
 
   isOpen: computed('startsAt', 'endsAt', function() {
     return moment().isAfter(this.startsAt) && moment().isBefore(this.endsAt);

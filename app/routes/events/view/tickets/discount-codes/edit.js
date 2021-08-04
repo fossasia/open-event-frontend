@@ -1,21 +1,22 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { hash } from 'rsvp';
 
 @classic
 export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
     const discount_code = model.discountCode.get('code');
-    return this.l10n.t(discount_code.concat('-Edit'));
+    return discount_code.concat(' - Edit');
   }
 
   async model(params) {
     const event = this.modelFor('events.view');
-    return {
-      discountCode : await this.store.findRecord('discount-code', params.discount_code_id, {}),
-      tickets      : await this.modelFor('events.view').query('tickets', {}),
+    return hash({
+      discountCode : this.store.findRecord('discount-code', params.discount_code_id, {}),
+      tickets      : this.modelFor('events.view').query('tickets', {}),
       event
-    };
+    });
   }
 
   async afterModel(model) {

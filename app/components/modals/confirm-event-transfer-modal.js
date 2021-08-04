@@ -5,7 +5,7 @@ export default ModalBase.extend(FormMixin, {
   actions: {
     submit() {
       this.onValid(() => {
-        this.sendAction('transferEvent');
+        this.transferEvent();
       });
     },
     close() {

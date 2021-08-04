@@ -7,14 +7,18 @@ import { isTesting } from 'open-event-frontend/utils/testing';
 
 export default UiModal.extend({
   tagName           : 'div',
+  classNames        : ['centered-modal'],
   classNameBindings : ['isFullScreen:fullscreen', 'isSmall:small', 'isLarge:large'],
 
   openObserver: observer('isOpen', function() {
     const $element = $(this.element);
     if (this.isOpen) {
-      $element.modal('show');
+      $element.modal(this.defaultOptions).modal('show');
+      this.onOpen?.();
     } else {
+      this.close();
       $element.modal('hide');
+      this.onClose?.();
     }
   }),
 
@@ -46,8 +50,8 @@ export default UiModal.extend({
   willInitSemantic(settings) {
     this._super(...arguments);
 
-    const defaultOptions = {
-      detachable     : false,
+    this.defaultOptions = {
+      centered       : false,
       duration       : isTesting ? 0 : 200,
       dimmerSettings : {
         dimmerName : `${this.elementId}-modal-dimmer`,
@@ -85,13 +89,13 @@ export default UiModal.extend({
       }
     };
 
-    const options = this.options ? merge(defaultOptions, this.options) : defaultOptions;
+    const options = this.options ? merge(this.defaultOptions, this.options) : this.defaultOptions;
     assign(settings, options);
   },
 
   didInitSemantic() {
     if (this.isOpen) {
-      $(this.element).modal('show');
+      $(this.element).modal(this.defaultOptions).modal('show');
     }
   }
 });

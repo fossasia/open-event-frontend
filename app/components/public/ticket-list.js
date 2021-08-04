@@ -11,11 +11,24 @@ export default Component.extend(FormMixin, {
 
   promotionalCodeApplied: false,
 
-  orderAmount: null,
+  orderAmount    : null,
+  amountOverride : null,
+  hasPaidOrder   : false,
+  addedTickets   : {},
+
+  overridenAmount: computed('orderAmount', 'amountOverride', {
+    get() {
+      return this.amountOverride ?? this.orderAmount?.total;
+    },
+
+    set(key, value) {
+      this.set('amountOverride', value);
+    }
+  }),
 
   isUnverified: computed('session.isAuthenticated', 'authManager.currentUser.isVerified', function() {
     return this.session.isAuthenticated
-      && !this.authManager.currentUser.isVerified;
+      && !this.authManager?.currentUser?.isVerified;
   }),
 
   shouldDisableOrderButton: computed('hasTicketsInOrder', 'isDonationPriceValid', 'isUnverified', function() {
@@ -60,6 +73,10 @@ export default Component.extend(FormMixin, {
     ) > 0;
   }),
 
+  hasOnlyFreeTickets: computed('tickets.@each.type', function() {
+    return !this.tickets.toArray().filter(ticket => ticket.type !== 'free').length > 0;
+  }),
+
   donationTickets: computed.filterBy('data', 'type', 'donation'),
 
   isDonationPriceValid: computed('donationTickets.@each.orderQuantity', 'donationTickets.@each.price', function() {
@@ -74,7 +91,7 @@ export default Component.extend(FormMixin, {
   }),
 
   orderAmountInput: computed('tickets.@each.price', 'order.tickets.@each.orderQuantity', 'order.discountCode', function() {
-    return {
+    const input = {
       tickets: this.order.tickets.toArray().map(ticket => ({
         id       : ticket.id,
         quantity : ticket.orderQuantity,
@@ -82,6 +99,10 @@ export default Component.extend(FormMixin, {
       })),
       'discount-code': this.order.get('discountCode.id')
     };
+    if (this.amountOverride) {
+      input.amount = this.amountOverride;
+    }
+    return input;
   }),
 
   actions: {
@@ -153,7 +174,7 @@ export default Component.extend(FormMixin, {
       }
       if (this.invalidPromotionalCode) {
         this.set('promotionalCodeApplied', false);
-        this.notify.error('This Promotional Code is not valid', {
+        this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
           id: 'prom_inval'
         });
       } else {
@@ -165,6 +186,16 @@ export default Component.extend(FormMixin, {
 
     async updateOrder(ticket, count) {
       ticket.set('orderQuantity', count);
+      if (ticket.type === 'paid') {
+        this.addedTickets[ticket] = count;
+      }
+      this.set('hasPaidOrder', false);
+      for (const i in this.addedTickets) {
+        if (this.addedTickets[i] > 0) {
+          this.set('hasPaidOrder', true);
+          break;
+        }
+      }
       if (count > 0) {
         this.order.tickets.addObject(ticket);
       } else {
@@ -179,14 +210,16 @@ export default Component.extend(FormMixin, {
     },
 
     async updateOrderAmount() {
-      if (this.shouldDisableOrderButton) {
+      if (this.shouldDisableOrderButton && !this.hasPaidOrder) {
         this.set('orderAmount', null);
+        this.set('amountOverride', null);
         return;
       }
 
       try {
         this.set('orderAmount', await this.loader.post('/orders/calculate-amount', this.orderAmountInput));
         this.order.amount = this.orderAmount.total;
+        this.set('amountOverride', null);
       } catch (e) {
         console.error('Error while calculating order amount', e);
         this.notify.error(e.response.errors[0].detail, {
@@ -206,10 +239,35 @@ export default Component.extend(FormMixin, {
       debounce(this, () => this.send('updateOrderAmount'), this.tickets, 250);
     }
   },
+
+  async loadTicketAvailability() {
+    try {
+      const ticketAvailabilities = await this.loader.load(`/events/${this.event?.get('id')}/tickets/availability`);
+      for (const t of ticketAvailabilities) {
+        for (const ticket of this.data.toArray()) {
+          if (+ticket?.id === t?.id) {
+            ticket.set('remaining', t.available);
+            ticket.set('maxOrder', Math.min(ticket.get('maxOrder'), t.available));
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error while fetching ticket availabilities', e);
+    }
+  },
+
   didInsertElement() {
+    this._super(...arguments);
+    this.loadTicketAvailability();
     this.data.forEach(ticket => {
       ticket.set('discount', 0);
     });
+    if (this.tickets.length === 1) {
+      const preSelect = Math.max(this.tickets[0].minOrder, 1);
+      this.tickets[0].set('orderQuantity', preSelect);
+      this.order.tickets.addObject(this.tickets[0]);
+      this.send('updateOrderAmount');
+    }
     if (this.code) {
       this.send('togglePromotionalCode', this.code);
     }
@@ -223,7 +281,10 @@ export default Component.extend(FormMixin, {
         rules      : [
           {
             type   : `integer[${donationTicket.minPrice}..${donationTicket.maxPrice}]`,
-            prompt : this.l10n.t(`Please enter a donation amount between ${donationTicket.minPrice} and ${donationTicket.maxPrice}`)
+            prompt : this.l10n.t('Please enter a donation amount between {{minPrice}} and {{maxPrice}}', {
+              minPrice : donationTicket.minPrice,
+              maxPrice : donationTicket.maxPrice
+            })
           }
         ]
       };

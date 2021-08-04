@@ -17,7 +17,10 @@
   <label>
     {{t 'Frontend Url'}}
   </label>
-  <Widgets::Forms::LinkInput @segmentedLink={{this.settings.segmentedFrontendUrl}} @inputId="frontend_url" />
+  <Widgets::Forms::LinkField
+    @inputId="frontend_url"
+    @value={{this.settings.frontendUrl}}
+    @onChange={{action (mut this.settings.frontendUrl)}} />
 </div>
 <div class="ui hidden divider"></div>
 <div class="field">

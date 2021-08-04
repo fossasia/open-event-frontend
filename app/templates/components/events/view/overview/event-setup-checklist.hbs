@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="header">{{t 'Event setup checklist'}}</div>
+  <div class="header">{{t 'Event Checklist'}}</div>
 </div>
 <div class= "content">
   <div class="ui fluid segments">
@@ -13,6 +13,21 @@
             {{t 'Basic Details'}}
             <div class="sub header">
               {{t 'Basic information including title, date, venue, ticketing'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.other-details'}}" class="ui segment {{unless this.data.event.socialLinks 'secondary'}} grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.socialLinks 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Additional Information'}}
+            <div class="sub header">
+              {{t 'Links, social media, privacy, code of conduct'}}
             </div>
           </h4>
         </div>
@@ -63,10 +78,10 @@
         </div>
       </div>
     </a>
-    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.speakersCall.announcement 'secondary'}} segment grid no margin">
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.isCfsEnabled 'secondary'}} segment grid no margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if this.data.event.speakersCall.announcement 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.isCfsEnabled 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">

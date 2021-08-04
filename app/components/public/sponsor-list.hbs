@@ -1,0 +1,10 @@
+{{#each-in this.sponsorsGrouped as |key sponsorsGroup|}}
+  {{#if (not-eq key 'null')}}
+    <h3 class="ui header">{{key}}</h3>
+  {{/if}}
+  <div class="ui three column stackable grid">
+    {{#each sponsorsGroup.sponsors as |sponsor|}}
+      <Public::SponsorItem @sponsor={{sponsor}} />
+    {{/each}}
+  </div>
+{{/each-in}}

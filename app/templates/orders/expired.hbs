@@ -7,7 +7,7 @@
   <div class="row">
     <div class="column">
       <div class="ui small gray-text">
-        {{header-date this.model.event.startsAt}} - {{header-date this.model.event.endsAt}}
+        {{general-date this.model.event.startsAt 'date-time-long'}} - {{general-date this.model.event.endsAt 'date-time-long'}}
         <br>
         {{this.model.event.locationName}}
       </div>

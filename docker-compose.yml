@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    image: eventyay/open-event-frontend
+    container_name: opev-frontend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      INJECT_ENV: 'true'
+      FASTBOOT_DISABLED: 'true'
+    ports:
+      - 4200:4000

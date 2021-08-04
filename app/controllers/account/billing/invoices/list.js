@@ -2,139 +2,64 @@ import Controller from '@ember/controller';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
+  queryParams = [...this.queryParams, 'user_id']
+
   get columns() {
-    let columns = [];
-    if (this.model.params.invoice_status === 'upcoming') {
-      columns = [
-        {
-          name      : 'Invoice ID',
-          valuePath : 'identifier'
-        },
-        {
-          name          : 'Event Name',
-          valuePath     : 'event',
-          cellComponent : 'ui-table/cell/events/cell-event-invoice'
-        },
-        {
-          name      : 'Date Issued',
-          valuePath : 'createdAt'
-        },
-        {
-          name            : 'Outstanding Amount',
-          valuePath       : 'amount',
-          extraValuePaths : ['event'],
-          cellComponent   : 'ui-table/cell/events/cell-amount'
-        },
-        {
-          name      : 'View Invoice',
-          valuePath : 'invoicePdfUrl'
+    return [
+      {
+        name            : 'Invoice ID',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        valuePath       : 'identifier',
+        extraValuePaths : ['invoicePdfUrl'],
+        cellComponent   : 'ui-table/cell/events/cell-download-invoice'
+      },
+      {
+        name            : 'Event Name',
+        valuePath       : 'event.name',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
+      },
+      {
+        name            : 'Invoice Date',
+        valuePath       : 'issuedAt',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort',
+        cellComponent   : 'ui-table/cell/cell-date',
+        options         : {
+          timezone   : 'UTC',
+          dateFormat : 'D MMM, YYYY'
         }
-      ];
-    } else if (this.model.params.invoice_status === 'paid') {
-      columns = [
-        {
-          name      : 'Invoice ID',
-          valuePath : 'identifier'
-        },
-        {
-          name          : 'Event Name',
-          valuePath     : 'event',
-          cellComponent : 'ui-table/cell/events/cell-event-invoice'
-        },
-        {
-          name      : 'Date Issued',
-          valuePath : 'createdAt'
-        },
-        {
-          name            : 'Amount',
-          valuePath       : 'amount',
-          extraValuePaths : ['event'],
-          cellComponent   : 'ui-table/cell/events/cell-amount'
-        },
-        {
-          name      : 'Date Paid',
-          valuePath : 'completedAt'
-        },
-        {
-          name      : 'View Invoice',
-          valuePath : 'invoicePdfUrl'
-        },
-        {
-          name            : 'Action',
-          valuePath       : 'identifier',
-          extraValuePaths : ['status'],
-          cellComponent   : 'ui-table/cell/events/cell-action'
+      },
+      {
+        name          : 'Due Date',
+        valuePath     : 'dueAt',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'D MMM, YYYY'
         }
-
-      ];
-    } else if (this.model.params.invoice_status === 'due') {
-      columns =   [
-        {
-          name      : 'Invoice ID',
-          valuePath : 'identifier'
-        },
-        {
-          name          : 'Event Name',
-          valuePath     : 'event',
-          cellComponent : 'ui-table/cell/events/cell-event-invoice'
-
-        },
-        {
-          name      : 'Date Issued',
-          valuePath : 'createdAt'
-        },
-        {
-          name            : 'Amount Due',
-          valuePath       : 'amount',
-          extraValuePaths : ['event'],
-          cellComponent   : 'ui-table/cell/events/cell-amount'
-        },
-        {
-          name      : 'View Invoice',
-          valuePath : 'invoicePdfUrl'
-        },
-        {
-          name            : 'Action',
-          valuePath       : 'identifier',
-          extraValuePaths : ['status'],
-          cellComponent   : 'ui-table/cell/events/cell-action'
-        }
-
-      ];
-    } else if (this.model.params.invoice_status === 'all') {
-      columns = [
-        {
-          name      : 'Invoice ID',
-          valuePath : 'identifier'
-        },
-        {
-          name          : 'Event Name',
-          valuePath     : 'event',
-          cellComponent : 'ui-table/cell/events/cell-event-invoice'
-        },
-        {
-          name            : 'Amount',
-          valuePath       : 'amount',
-          extraValuePaths : ['event'],
-          cellComponent   : 'ui-table/cell/events/cell-amount',
-          isSortable      : true,
-          headerComponent : 'tables/headers/sort'
-        },
-        {
-          name            : 'Status',
-          valuePath       : 'status',
-          isSortable      : true,
-          headerComponent : 'tables/headers/sort'
-        },
-        {
-          name            : 'Action',
-          valuePath       : 'identifier',
-          extraValuePaths : ['status'],
-          cellComponent   : 'ui-table/cell/events/cell-action'
-        }
-
-      ];
-    }
-    return columns;
+      },
+      {
+        name            : 'Amount',
+        valuePath       : 'amount',
+        extraValuePaths : ['event'],
+        cellComponent   : 'ui-table/cell/events/cell-amount',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
+      },
+      {
+        name            : 'Status',
+        valuePath       : 'status',
+        isSortable      : true,
+        headerComponent : 'tables/headers/sort'
+      },
+      {
+        name            : 'Action',
+        valuePath       : 'identifier',
+        extraValuePaths : ['status'],
+        cellComponent   : 'ui-table/cell/events/cell-action'
+      }
+    ];
   }
 }

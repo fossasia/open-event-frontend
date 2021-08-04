@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .public-event {
 
   margin-top: -$page-top-margin;
@@ -8,7 +10,7 @@
     &::before {
       content: '';
       display: block;
-      padding-top: ($height / $width) * 100%;
+      padding-top: (math.div($height, $width)) * 100%;
       width: 100%;
     }
 
@@ -20,7 +22,7 @@
       top: 0;
     }
 
-    > img {
+    > img.background {
       bottom: 0;
       left: 0;
       position: absolute;
@@ -39,7 +41,7 @@
       right: 0;
       width: 100%;
 
-      img {
+      img.background {
         left: 0;
         position: absolute;
         right: 0;
@@ -56,8 +58,15 @@
         width: 100%;
 
         .info {
+          align-items: center;
           bottom: 20%;
+          flex-wrap: wrap;
           position: absolute;
+
+          .logo {
+            max-height: 100px;
+            max-width: 260px;
+          }
 
           .event {
             font-weight: 300;
@@ -88,6 +97,7 @@
         @media (max-width: 959px) {
 
           .info {
+            padding: 0 1rem;
 
             .event.name {
               font-size: 2.15rem;
@@ -103,6 +113,39 @@
 
             .event.location {
               font-size: 1.25rem;
+            }
+          }
+        }
+        @media (max-width: 600px) {
+          .logo {
+            height: 50px;
+            padding-bottom: 4px;
+            }
+        }
+        @media (max-width: 470px) {
+          .info {
+            bottom: 0;
+            padding: 1rem;
+
+            .logo {
+              height: 30px;
+              padding-bottom: 4px;
+            }
+
+            .event.name {
+              font-size: 1.4rem;
+            }
+
+            .event.time {
+              font-size: 1rem;
+            }
+
+            .event.time.ends {
+              font-size: 1rem;
+            }
+
+            .event.location {
+              font-size: .95rem;
             }
           }
         }
@@ -151,6 +194,7 @@
 
   .sponsor-image {
     margin: 0 auto;
+    object-fit: contain;
   }
 
   .tickets {

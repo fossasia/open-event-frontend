@@ -1,25 +1,35 @@
-<div class="ui list">
-  {{#if this.externalUrl}}
-    <div class="item">
-      <i class="share square fitted disabled icon"></i>
-      <div class="content">
-        <a href="{{this.externalUrl}}" target="_blank" rel="noopener nofollow">{{t 'External event URL'}}</a>
+<div class="ui list mt-0 mb-0 pt-0 pb-0">
+  <div class="social-links mt-0 mb-0 pt-0 pb-0">
+    {{#if this.externalUrl}}
+      <div>
+        <a href="{{this.externalUrl}}" class="ui icon social-link-button blue button mb-1" target="_blank" rel="noopener nofollow">
+          <div style="font-size: .8rem;">{{t 'Event'}}<br/>{{t 'Site'}}</div>
+        </a>
       </div>
-    </div>
-  {{/if}}
+    {{/if}}
+    {{#each this.socialLinks as |socialLink|}}
+      {{#if (not-eq socialLink.normalizedName 'globe')}}
+        <div>
+          <a href="{{socialLink.link}}" class="ui icon social-link-button mb-1 {{socialLink.normalizedName}} {{socialLink.buttonColor}} d-flex items-center content-center button">
+            {{#if (eq socialLink.normalizedName 'mastodon')}}
+              <Icons::Mastodon />
+            {{else}}
+              <i class="ui inverted {{socialLink.normalizedName}} icon"></i>
+            {{/if}}
+          </a>
+        </div>
+      {{/if}}
+    {{/each}}
   {{#each this.socialLinks as |socialLink|}}
-    <div class="item">
-      <i class="fitted {{socialLink.normalizedName}} disabled icon"></i>
-      <div class="content">
-        <a href="{{socialLink.link}}" target="_blank" rel="noopener nofollow">{{socialLink.name}}</a>
+    {{#if (eq socialLink.normalizedName 'globe')}}
+      <div>
+        <UiPopup @content={{t-var socialLink.displayName}}>
+          <a href="{{socialLink.link}}" class="ui icon blue mb-1 social-link-button button extra-link d-flex items-center content-center" target="_blank" rel="noopener nofollow">
+            <div  class="clamp" style="font-size: .8rem;">{{socialLink.displayName}}</div>
+          </a>
+        </UiPopup>
       </div>
-    </div>
+    {{/if}}
   {{/each}}
-  {{#if this.twitterLink}}
-    <div class="item">
-      <div class="twitter content">
-        <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
-      </div>
-    </div>
-  {{/if}}
+  </div>
 </div>

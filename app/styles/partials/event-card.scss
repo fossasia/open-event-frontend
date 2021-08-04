@@ -1,5 +1,5 @@
 .event.card {
-  height: 355px;
+  height: auto;
 
   .header {
     height: 50px;
@@ -17,6 +17,21 @@
   }
 }
 
+.extra.content {
+
+  .hashtags {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90%;
+  }
+
+  .link.item {
+    color: #555 !important;
+  }
+}
+
 .event.wide {
   border-radius: 0 !important;
   margin: 0 !important;
@@ -27,12 +42,16 @@
   }
 
   img {
-    height: 170px !important;
+    height: 190px !important;
     object-fit: cover;
   }
 
   .main.content {
     display: block;
-    height: 130px;
+    min-height: 130px;
   }
+}
+
+.order.card {
+  height: 100px !important;
 }

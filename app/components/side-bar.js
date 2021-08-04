@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import $ from 'jquery';
 import Component from '@ember/component';
+import { action } from '@ember/object';
 
 @classic
 export default class SideBar extends Component {
@@ -12,6 +13,14 @@ export default class SideBar extends Component {
 
   hideSidebar() {
     this.set('sidebarVisible', false);
+  }
+
+  @action
+  handleKeyPress() {
+    if (event.code === 'Enter') {
+      this.set('sidebarVisible', false);
+      this.search();
+    }
   }
 
   didInsertElement() {
@@ -49,3 +58,14 @@ export default class SideBar extends Component {
     }
   }
 }
+
+$(function() {
+  $(window).on('scroll', function() {
+    const menuPosition = $('#event-contents').offset()?.top;
+    if ($(window).scrollTop() > menuPosition) {
+      $('#public-event-content').addClass('menu-fixed');
+    } else {
+      $('#public-event-content').removeClass('menu-fixed');
+    }
+  });
+});

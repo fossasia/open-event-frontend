@@ -1,13 +1,8 @@
 import { A } from '@ember/array';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 
 export default Component.extend({
-  classNames: ['ui', 'basic', 'segment'],
+  classNames: ['ui', 'basic', 'segment', 'm-0', 'p-0', 'pb-2'],
 
-  socialLinks: A(),
-
-  twitterLink: computed('socialLinks.[]', function() {
-    return this.socialLinks.findBy('isTwitter', true);
-  })
+  socialLinks: A()
 });

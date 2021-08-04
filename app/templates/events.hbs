@@ -12,9 +12,11 @@
         <LinkTo @route="events.list" @model="past" class="item">
           {{t 'Past'}}
         </LinkTo>
-        <LinkTo @route="events.import" class="item">
-          {{t 'Import'}}
-        </LinkTo>
+        {{#if (or this.authManager.currentUser.isAdmin this.authManager.currentUser.isSuperAdmin)}}
+          <LinkTo @route="events.import" class="item">
+            {{t 'Import'}}
+          </LinkTo>
+        {{/if}}
       </TabbedNavigation>
     </div>
   </div>

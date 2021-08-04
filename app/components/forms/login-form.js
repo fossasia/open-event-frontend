@@ -2,14 +2,23 @@ import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { action } from '@ember/object';
+import ENV from 'open-event-frontend/config/environment';
 
 @classic
 export default class LoginForm extends Component.extend(FormMixin) {
 
-  identification = '';
-  password       = '';
-  isLoading      = false;
+  identification   = '';
+  password         = '';
+  isLoading        = false;
+  counter          = 0;
+  captchaValidated = false;
+  showHcaptcha     = !!ENV.hcaptchaKey;
+  rememberMe       = false;
 
+  set setSessionCookie(rememberMe) {
+    const expirationTime = rememberMe ? (365 * 24 * 60 * 60) : (1 * 24 * 60 * 60);
+    this.set('session.store.cookieExpirationTime', expirationTime);
+  }
 
   getValidationRules() {
     return {
@@ -26,7 +35,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
             },
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email ID')
+              prompt : this.l10n.t('Please enter a valid email address')
             }
           ]
         },
@@ -44,10 +53,12 @@ export default class LoginForm extends Component.extend(FormMixin) {
   }
 
   @action
-  async submit() {
+  async submit(e) {
+    e.preventDefault();
     this.onValid(async() => {
-      const credentials = { username: this.identification, password: this.password };
-      const authenticator = 'authenticator:jwt';
+      ENV['ember-simple-auth-token'].refreshAccessTokens = this.rememberMe;
+      const credentials = { username: this.identification, password: this.password, 'remember-me': this.rememberMe, 'include-in-response': this.rememberMe };
+      const authenticator = 'authenticator:custom-jwt';
       this.setProperties({
         errorMessage : null,
         isLoading    : true
@@ -59,15 +70,16 @@ export default class LoginForm extends Component.extend(FormMixin) {
           this.authManager.persistCurrentUser(
             await this.store.findRecord('user', tokenPayload.identity)
           );
-
         }
+        this.set('setSessionCookie', this.rememberMe);
       } catch (e) {
+        this.set('counter', this.counter + 1);
         if (e.json && e.json.error) {
           console.warn('Error while authentication', e);
           this.set('errorMessage', this.l10n.tVar(e.json.error));
         } else {
           console.error('Error while authentication', e);
-          this.set('errorMessage', this.l10n.t('An unexpected error occurred.'));
+          this.set('errorMessage', this.l10n.t('An unexpected error has occurred.'));
         }
       }
 
@@ -94,7 +106,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
           });
         } else {
           console.error('Error while facebook authentication', e);
-          this.notify.error(this.l10n.t('An unexpected error has occurred'), {
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'), {
             id: 'unexpect_error'
           });
         }
@@ -107,6 +119,11 @@ export default class LoginForm extends Component.extend(FormMixin) {
     this.toggleProperty('showPass');
   }
 
+  @action
+  toggleRememberMe() {
+    this.toggleProperty('rememberMe');
+  }
+
 
   didInsertElement() {
     if (this.session.newUser) {
@@ -116,5 +133,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
       });
       this.session.set('newUser', null);
     }
+    ENV['ember-simple-auth-token'].refreshAccessTokens = false;
+    this.rememberMe = false;
   }
 }

@@ -1,0 +1,57 @@
+<div class="event wide ui grid row">
+  {{#unless this.device.isMobile}}
+    <div class="ui card three wide computer six wide tablet column">
+      <a class="image" href={{href-to 'groups.view' @group.id}}>
+        <Widgets::SafeImage @src={{if @group.bannerUrl  @group.bannerUrl "/images/group.png"}} />
+      </a>
+    </div>
+  {{/unless}}
+  <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column relative">
+    <div class="main content">
+      <div class="inline field">
+        <div class="mb-1">
+          <a href={{href-to 'groups.view' @group.id}} class="header black-text">{{@group.name}}</a>
+          <span class="ml-2 ui basic count text blue label w-content-button">{{@group.followerCount}} {{t 'followers'}}</span>
+        </div>
+        <div class="meta mb-2 mt-4 word-break">
+          {{sanitize this.about}}
+        </div>
+        {{#if (not @followedGroups)}}
+          <LinkTo @route="groups.view" @model={{@group.id}}>
+            <UiPopup @content={{t "View"}} @class="ml-2 ui circular icon button compact white" @position="left center">
+                <i class="eye icon"></i>
+            </UiPopup>
+          </LinkTo>
+          <LinkTo @route="groups.edit.events" @model={{@group.id}}>
+            <UiPopup @content={{t "Events"}} @class="ml-2 ui circular icon button compact blue" @position="top center">
+                <i class="calendar check outline icon"></i>
+            </UiPopup>
+          </LinkTo>
+          <LinkTo @route="groups.edit.settings" @model={{@group.id}}>
+            <UiPopup @content={{t "Edit"}} @class="ml-2 ui circular icon button compact positive" @position="top center">
+                <i class="setting icon"></i>
+            </UiPopup>
+          </LinkTo>
+          <LinkTo @route="groups.edit.followers" @model={{@group.id}}>
+            <UiPopup @content={{t "Followers"}} @class="ml-2 ui circular icon button compact yellow" @position="top center">
+                <i class="users icon"></i>
+            </UiPopup>
+          </LinkTo>
+          <LinkTo @route="groups.team" @model={{@group.id}}>
+            <UiPopup @content={{t "Team Members"}} @class="ml-2 ui circular icon button compact blue" @position="top center">
+                <i class="user plus icon"></i>
+            </UiPopup>
+          </LinkTo>
+          <button class="ml-2 ui circular icon button compact red" {{action (confirm (t "Are you sure you would like to delete this group?") (action @deleteGroup @group.id))}}><i class="trash icon"></i></button>
+        {{/if}}
+      </div>
+    </div>
+    {{#if (and @group.follower @followedGroups)}}
+      <div class="absolute mr-4 mt-2" style="right: 0; top: 0;">
+        <button class="{{if @group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action 'follow'}}>
+          {{t 'Unfollow Group'}}                   
+        </button>
+      </div>
+    {{/if}}
+  </div>
+</div>

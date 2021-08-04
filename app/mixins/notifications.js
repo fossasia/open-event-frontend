@@ -9,7 +9,7 @@ export default Mixin.create({
           this.notify.success(this.l10n.t('Marked as Read successfully'));
         })
         .catch(() => {
-          this.notify.error(this.l10n.t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         });
     },
     markAllAsRead(notifications) {
@@ -27,7 +27,7 @@ export default Mixin.create({
         })
         .catch(e => {
           console.error('Error while marking all notifications as read', e);
-          this.notify.error(this.l10n.t('An unexpected error occurred.'));
+          this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         });
     }
   }

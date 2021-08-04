@@ -1,14 +1,23 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class PagesRoute extends Route {
-  titleToken() {
-    return this.l10n.t('Pages');
+
+  @service cache;
+
+  // Enumerate possible page names for extraction for localization
+  pages() {
+    return [this.l10n.t('Terms'), this.l10n.t('Contact'), this.l10n.t('Refund Policy'), this.l10n.t('Privacy')];
   }
 
-  model(params) {
-    return this.modelFor('application').pages.findBy('url', params.path);
+  titleToken(model) {
+    return this.l10n.tVar(model?.name) || this.l10n.t('Pages');
+  }
+
+  async model(params) {
+    return (await this.cache.query('pages', 'page', { public: true })).toArray().findBy('url', params.path);
   }
 
   renderTemplate(model) {
