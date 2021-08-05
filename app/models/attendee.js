@@ -12,6 +12,7 @@ export default ModelBase.extend({
   lastname             : attr('string'),
   isCheckedIn          : attr('boolean', { defaultValue: false }),
   checkinTimes         : attr('string'),
+  checkoutTimes        : attr('string'),
   state                : attr('string'),
   address              : attr('string'),
   pdfUrl               : attr('string'),
