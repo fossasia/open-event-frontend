@@ -71,11 +71,11 @@ export default class LoginForm extends Component.extend(FormMixin) {
           this.authManager.persistCurrentUser(
             await this.store.findRecord('user', tokenPayload.identity)
           );
-        }        
-        if(!this.authManager.currentUser.publicName) {
+        }
+        if (!this.authManager.currentUser.publicName) {
           this.set('publicNameModal', true);
         }
-          this.set('setSessionCookie', this.rememberMe);
+        this.set('setSessionCookie', this.rememberMe);
       } catch (e) {
         this.set('counter', this.counter + 1);
         if (e.json && e.json.error) {
@@ -125,7 +125,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
 
   @action
   closePublicNameDialog() {
-    tthis.set('publicNameModal', true);;
+    this.set('publicNameModal', true);
   }
 
   @action
@@ -137,22 +137,22 @@ export default class LoginForm extends Component.extend(FormMixin) {
   savePublicName() {
     this.set('isLoading', true);
     this.authManager.currentUser.save()
-    .then(() => {
-      this.notify.success(this.l10n.t('Your public name has been updated'), {
-        id: 'profi_update'
+      .then(() => {
+        this.notify.success(this.l10n.t('Your public name has been updated'), {
+          id: 'profi_update'
+        });
+      })
+      .catch(e => {
+        console.error('Error while  updating profile.', e);
+        this.authManager.currentUser.rollbackAttributes();
+        this.notify.error(this.l10n.t('An unexpected error occurred'), {
+          id: 'profi_error'
+        });
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+        this.set('publicNameModal', false);
       });
-    })
-    .catch(e => {
-      console.error('Error while  updating profile.', e);
-      this.authManager.currentUser.rollbackAttributes();
-      this.notify.error(this.l10n.t('An unexpected error occurred'), {
-        id: 'profi_error'
-      });
-    })
-    .finally(() => {
-      this.set('isLoading', false);
-      this.set('publicNameModal', false);
-    });
   }
 
   didInsertElement() {
