@@ -82,3 +82,15 @@
     </form>
   </div>
 </div>
+
+{{#if this.publicNameModal}}
+  <Modals::SimpleModal
+    @isOpen={{true}}
+    @header={{t 'Please set your public profile name here'}}
+    @action={{this.savePublicName}}
+    @cancel={{this.closePublicNameDialog}}>
+    <div class="field ui input w-full">
+      <Input type="text" placeholder={{t "enter public Name"}}  @value={{this.authManager.currentUser.publicName}}/>
+    </div>
+  </Modals::SimpleModal>
+{{/if}}
