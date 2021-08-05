@@ -8,7 +8,7 @@ export default ModelBase.extend({
   endsAt          : attr('moment'),
   startsAt        : attr('moment'),
   paymentCurrency : attr('string'),
-  roughSales      : attr('number'),
+  totalSales      : attr('number'),
   sales           : attr(),
   ownerId         : attr()
 });
