@@ -79,11 +79,11 @@
           {{#if (and this.device.isMobile this.model.group)}}
             <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
               {{#if this.model.group.follower}}
-                {{t 'Unfollow Group'}}            
+                {{t 'Unfollow Group'}}
               {{else}}
                 {{t 'Follow Group'}}            
               {{/if}}
-              {{this.model.group.name}}
+              {{this.model.group.name}} ({{this.model.group.followerCount}} {{t 'followers'}})
             </button>
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions.index')}}
@@ -186,9 +186,9 @@
               {{#if this.model.group.follower}}
                 {{t 'Unfollow Group'}}            
               {{else}}
-                {{t 'Follow Group'}}            
+                {{t 'Follow Group'}}           
               {{/if}}
-              {{this.model.group.name}}
+              {{this.model.group.name}} ({{this.model.group.followerCount}} {{t 'followers'}})
             </button>
           {{/if}}
         {{/if}}
