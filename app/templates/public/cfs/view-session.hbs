@@ -71,12 +71,36 @@
 <Events::View::Overview::SessionView
   @fields={{this.allFields}}
   @session={{this.model.session}} />
-<div class="ui grid container">
+<div class="ui grid container mb-4">
   <div class="weight-600 column five wide">{{t 'Speakers'}}</div>
-  <div class="column eleven wide">{{this.allSpeakers}}</div>
+    <div class="column eleven wide">
+      {{#each this.model.session.speakers as |speaker|}}
+        {{#if (eq this.authManager.currentUser.email speaker.email)}}
+          <LinkTo
+            @route="public.cfs.view-speaker"
+            @models={{array this.model.session.event.id speaker.id}}>
+            <div>{{speaker.name}}</div>
+          </LinkTo>
+        {{else}}
+          <div>{{speaker.name}}</div>
+        {{/if}}   
+      {{/each}}
+    </div>
+</div>
+
+<div class="ui grid container mb-4">
+  <div class="weight-600 column five wide">{{t 'Speakers Invited'}}</div>
+    <div class="column eleven wide">
+      {{#each this.model.session.speakerInvites as |speakerInvite|}}
+      {{#if (eq speakerInvite.status 'pending')}}
+        <div>{{speakerInvite.email}}</div>
+      {{/if}}
+      {{/each}}
+    </div>
 </div>
 
 <Modals::ProposalWithdrawModal
   @isOpen={{this.isProposalWithdrawModalOpen}}
   @proposalName={{this.model.session.title}}
   @withdrawProposal={{action "withdrawProposal"}} />
+

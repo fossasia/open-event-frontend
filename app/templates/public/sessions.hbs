@@ -1,4 +1,4 @@
-<div class="{{if this.device.isMobile 'mt--8'}} d-flex" style="align-items: center;">
+<div class="{{if this.device.isMobile 'mt--8' 'd-flex'}}" style="align-items: center;">
   <div class="d-flex wrap mb-4 items-center">
     <h1 class="m-0 mr-4 ui header" id="session-heading">{{t 'Schedule'}}</h1>
     <div>
@@ -9,14 +9,14 @@
   </div>
     {{#if this.session.isAuthenticated}}
       <LinkTo
-        class="rounded-default link-item ui right floated p-1 ml-auto mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}} mb-4"
+        class="{{if this.device.isMobile '' 'right floated ml-auto mb-4'}} rounded-default link-item ui p-1 mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}}"
         @route="public.sessions"
         @models={{array this.model.event.id}}
         @query={{hash my_schedule=null my_speaker_sessions=null}}>
         <h4>{{t 'Public Schedule'}}</h4>
       </LinkTo>
       <LinkTo
-        class="rounded-default link-item ui right floated p-1 mb-4 mr-4 {{if this.my_schedule 'active'}}"
+        class="rounded-default link-item ui right floated p-1 mr-4 {{if this.device.isMobile '' 'mb-4'}} {{if this.my_schedule 'active'}}"
         @route="public.sessions"
         @models={{array this.model.event.id}}
         @query={{hash my_schedule=true my_speaker_sessions=null}}>
@@ -36,21 +36,20 @@
   {{#each this.allDates as |date|}}
     <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'date-short'}}</LinkTo>
   {{/each}}
-
-  <div class="d-flex content-end wrap ml-auto">
+  <div class={{if this.device.isMobile "" "d-flex content-end wrap ml-auto"}}>
     <Widgets::TimeZonePicker
-      class="mb-2 mr-2 w-90"
+      class="mb-2 mr-2 {{if this.device.isMobile 'w-140' 'w-90'}}"
       @defaultLocal={{this.model.event.online}}
       @eventTimezone={{this.model.event.timezone}}
       @timezone={{this.timezone}} />
 
     <Tables::Utilities::SearchBox
-      class="mb-2 mr-2"
+      class="mb-2 mr-2 {{if this.device.isMobile 'w-140' 'w-90'}}"
       @searchQuery={{this.search}}
       @size="large"
     />
 
-    <UiDropdown class="labeled icon button mb-2 mr-2">
+    <UiDropdown class="labeled icon button mb-2 mr-2 pb-2">
       <i class="sort amount down icon"></i>
       <span class="default text">{{this.sortTitle}}</span>
       <div class="menu">
@@ -59,13 +58,11 @@
         <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='-favourite-count'}} class="item">{{t 'By Popularity'}}</LinkTo>
       </div>
     </UiDropdown>
-
-    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} data-tooltip="{{t 'Clear All Filters'}}" class="pb-2 pt-2 ui button mb-2">
+    <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} @invokeAction={{action this.removeActiveClass}} data-tooltip="{{t 'Clear All Filters'}}" class="pb-2 pt-2 ui button mb-2">
       <i><Icons::ClearFilter /></i>
     </LinkTo>
   </div>
 </div>
-
 {{!-- To be enabled and developed on later --}}
 {{#if this.isTrackVisible}} 
   {{#each this.model.session as |session|}}
@@ -88,7 +85,6 @@
     </div>
   </InfinityLoader>
 {{/if}}
-
 <div class="mt-8">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions as |group|}}
@@ -99,7 +95,7 @@
         {{t 'Not yet scheduled'}}
       {{/if}}
     </h3>
-    <table class="ui very basic table">
+    <table class="ui very basic fixed table">
       <thead class="full-width">
         <tr>
           <th class="two wide" style="border: none;"></th>
@@ -118,7 +114,7 @@
                 {{/if}}
               </h4>
             </td>
-            <td style="border-top: none; border-left: 1px solid lightgrey">
+            <td style="border-top: none; border-left: 1px solid lightgrey; overflow: visible;">
               <Public::SessionItem @session={{session}} @event={{this.model.event}} @timezone={{this.timezone}} @showFavButton={{true}} @sameTab={{this.side_panel}} />
             </td>
           </tr>

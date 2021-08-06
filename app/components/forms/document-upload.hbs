@@ -1,0 +1,36 @@
+<div class="d-flex align-center mt-8 mb-4">
+  <h2 class="header m-0">
+    {{t 'Event Documents'}}
+  </h2>
+  <UiPopup @content={{t "Add event document"}} @class="ui compact icon blue circular button" style="margin-left: 1rem !important;" @click={{action this.addEventDocument}}>
+    <i class="plus icon"></i>
+  </UiPopup>
+</div>
+<form
+  {{action 'submit' on='submit'}}
+>
+  <div class="flex flex-column">
+    {{#if @event.documentLinks}}
+      {{#each @event.documentLinks as |document| }}
+        <div class="ui grid mt-2 mb-2">
+          <div class="field ui input">
+            <Input type="text" @id="document" placeholder={{t "Document Name"}}  @value={{document.name}}/>
+          </div>
+          <Widgets::Forms::FileUpload
+            @fileUrl={{document.link}}
+            @label={{t "document"}}
+            @id={{document.name}}
+            @icon="file"
+            @hint={{t "Select a file"}}
+            @maxSizeInKb={{this.settings.slideSize}} />
+            <div class="ui icon buttons">
+              <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action this.removeDocument document}} @position="top center">
+                <i class="minus icon"></i>
+              </UiPopup>
+            </div>
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+  <button type="submit" class="mt-4 ui blue submit button" name="submit">{{t 'Save'}}</button>
+</form>

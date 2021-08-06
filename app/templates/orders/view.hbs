@@ -55,6 +55,11 @@
         </div>
         <br/>
       {{/if}}
+      {{#if (and this.model.event.isDocumentEnabled this.model.event.documentLinks)}}
+       <Orders::DocumentInfo
+        @event={{this.model.event}} />
+        <br/>
+      {{/if}}
       {{#if this.model.taxDetails}}
         <Orders::CompanyInfo
           @tax={{this.model.taxDetails}} />

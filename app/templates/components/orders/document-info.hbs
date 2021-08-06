@@ -1,0 +1,22 @@
+<div class="ui segments">
+    <div class="ui orange inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          {{t 'Event Documents'}}
+        </div>
+      </div>
+    </div>
+    {{#if @event.isDocumentEnabled}}
+      <div class="ui segment">
+        {{#each @event.documentLinks as |document| }}
+          <div class="column mb-2 right aligned">
+           <a href="{{ document.link }}" target="_blank" rel="noopener"
+            class="ui labeled icon blue button">
+             <i class="file alternate icon"></i>
+            {{document.name}}
+           </a>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+</div>

@@ -1,11 +1,4 @@
-<div class="ui stackable grid">
-  <div class="row">
-    <div class="center aligned column">
-      <h5 class="ui sub header">
-        {{t 'Version 1.0.0-alpha.10'}}
-      </h5>
-    </div>
-  </div>
+<div class="ui stackable grid" {{did-insert this.setup}}>
   <div class="row">
     <div class="five wide column">
       <div class="ui center aligned fluid segment">
@@ -46,6 +39,29 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="ui center aligned fluid segment">
+        <h3 class="ui left aligned header">
+          {{t 'Groups'}}
+        </h3>
+        <div class="ui divider">
+        </div>
+        <table class="ui celled table">
+          <tbody>
+            <tr>
+              <td>{{t 'No. of Groups'}}</td>
+              <td class="right aligned">{{this.model.groups.groups}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Group Events'}}</td>
+              <td class="right aligned">{{this.model.groups.groupEvents}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of All Followers'}}</td>
+              <td class="right aligned">{{this.model.groups.followers}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="six wide column">
@@ -191,4 +207,17 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="center aligned column">
+      <h5 class="m-0 ui sub header">
+        {{t 'Frontend Production Version: '}}<a href="https://github.com/fossasia/open-event-frontend/tree/{{this.frontendProductionVersion}}" target="_blank" rel="noopener">{{this.frontendProductionVersion}}</a> <br>
+        {{t 'Server Production Version: '}}<a href="https://github.com/fossasia/open-event-server/tree/{{this.serverProductionVersion}}" target="_blank" rel="noopener">{{this.serverProductionVersion}}</a>
+      </h5>
+      <h5 class="m-0 ui sub header">
+        {{t 'Frontend Testing Version: '}}<a href="https://github.com/fossasia/open-event-frontend/tree/{{this.frontendTestingVersion}}" target="_blank" rel="noopener">{{this.frontendTestingVersion}}</a> <br>
+        {{t 'Server Testing Version: '}}<a href="https://github.com/fossasia/open-event-server/tree/{{this.serverTestingVersion}}" target="_blank" rel="noopener">{{this.serverTestingVersion}}</a>
+      </h5>
+    </div>
+  </div>
+  
 </div>

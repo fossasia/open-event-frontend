@@ -1,4 +1,4 @@
-{{#if (or @videoStream @hasStreams)}}
+{{#if (and (or @videoStream @hasStreams) @event.isVideoroomEnabled )}}
   <div ...attributes>
     {{#if (and @showVideo @videoStream)}}
       <a class="ui basic {{text-color @color 'basic' 'inverted'}} button no-wrap"

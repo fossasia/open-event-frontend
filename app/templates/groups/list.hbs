@@ -1,22 +1,4 @@
-<div class="row">
-  <div class="sixteen wide column">
-    <div class="ui grid space-between items-center mt-4 mb-4">
-      <h1>
-        {{t 'Groups'}}
-      </h1>
-      <LinkTo @route="groups.create" class="item">
-        <button class="ui blue button" {{action (mut this.isRoomModalOpen) true}}>
-          {{t 'Create Group'}}
-        </button>
-      </LinkTo>
-    </div>
-    <TabbedNavigation>
-      <LinkTo @route="groups.list" class="item">
-        {{t 'My Groups'}}
-      </LinkTo>
-    </TabbedNavigation>
-  </div>
-</div>
+<GroupHeader @isRoomModalOpen={{this.isRoomModalOpen}} />
 <div class="row">
   <div class="sixteen column wide">
     {{#each this.model as |group|}}

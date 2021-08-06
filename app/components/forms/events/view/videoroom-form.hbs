@@ -8,7 +8,7 @@
     <div class="ui right aligned sixteen wide mobile eight wide computer column">
       <UiDropdown
         @class="ui floating labeled icon dropdown blue button"
-        @selected={{this.data.stream.videoChannel}}
+        @selected={{this.previousVideo}}
         @onChange={{action this.setChannel}} as |execute mapper|>
         <i class="video icon"></i>
         <div class="default text">
@@ -48,7 +48,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into eventyay.com.'}} />
+          @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into ' this.settings.appName '.com.'}} />
       </label>
       {{#if (eq this.data.stream.videoChannel.provider 'youtube')}}
         <Widgets::Forms::SocialLinkField
@@ -75,7 +75,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'}} />
+          @content={{'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in ' this.settings.appName '.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'}} />
         </label>
       <Input
         @value={{this.data.stream.password}} />
@@ -115,12 +115,12 @@
   {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label>
-          {{t 'Record'}}
+          {{t 'Enable Recording'}}
       </label>
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.record}}
-        @onChange={{action (mut this.data.stream.extra.bbb_options.record)}} />
+        @onChange={{action this.toggleRecord}} />
     </div>
     <div class="field">
       <label>
@@ -129,7 +129,7 @@
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
-        @onChange={{action (mut this.data.stream.extra.bbb_options.autoStartRecording)}} />
+        @onChange={{action this.toggleAutoStartRecording}} />
     </div>
     <div class="field">
       <label>
@@ -138,9 +138,29 @@
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
-        @onChange={{action (mut this.data.stream.extra.bbb_options.muteOnStart)}} />
+        @onChange={{action this.toggleMuteOnStart}} />
     </div>
   {{/if}}
+
+  {{#if (and showUpdateOptions (and this.data.stream.id this.actualBBBExtra))}}
+    <div class="ui divider"></div>
+    <div class="grouped fields">
+        <label for="bbb_update">{{t 'You have changed your video room\'s configurations. Do you want to update these configurations now?'}}</label>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <Widgets::Forms::RadioButton @name="bbb_update_now" @id="update_now" @value={{true}} @checked={{this.endCurrentMeeting}} />
+            <label for="update_now">{{t 'Yes, update it now. End ongoing meetings.'}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <Widgets::Forms::RadioButton @name="bbb_update_later" @id="update_later" @value={{false}} @checked={{this.endCurrentMeeting}} />
+            <label for="update_later">{{t 'Apply changes when a new meeting is started.'}}</label>
+          </div>
+        </div>
+      </div>
+  {{/if}}
+
   <div class="ui divider"></div>
   <div class="grouped fields">
     <label>{{t 'Access'}}</label>
@@ -170,7 +190,7 @@
       </span>
     {{/each}}
   </div>
-
+  <p>{{t 'Please ask moderators to get a ticket for the event. Moderators can access an event only after getting a ticket.'}}</p>
   {{#if this.videoRecordings}}
     <div class="ui header">{{t 'BBB Recordings'}}</div>
     <Tables::Default
@@ -190,4 +210,5 @@
   <LinkTo @route="events.view.videoroom.index" class="ui red button">
     {{t 'Cancel'}}
   </LinkTo>
+
 </form>

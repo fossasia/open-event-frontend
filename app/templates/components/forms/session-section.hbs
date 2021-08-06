@@ -2,7 +2,11 @@
   {{#if field.isIncluded}}
     <div class="field">
       <div class="inline">
-        <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+        {{#if (eq field.name 'Slide')}}
+          <label class="{{if field.isRequired 'required'}}" for="name">{{t 'Slides'}}</label>
+        {{else}}
+          <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+        {{/if}}
         {{#if field.isPublic}}
           <div class="ui green horizontal label m-1">{{t 'Public'}}</div>
         {{else}}
@@ -20,24 +24,24 @@
               @fixed={{true}}
               @inputId={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
               @site={{field.fieldIdentifier}}
-                 @value={{get this.data.session field.identifierPath}}
-                @onChange={{action (mut (get this.data.session field.identifierPath))}} />
-             {{else}}
-               <Input
+              @value={{get this.data.session field.identifierPath}}
+              @onChange={{action (mut (get this.data.session field.identifierPath))}} />
+          {{else}}
+            <Input
               @type={{field.type}}
               @value={{mut (get this.data.session field.identifierPath)}}
               @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
-             {{/if}}
-           {{/if}}
+          {{/if}}
+      {{/if}}
       {{/if}}
       {{#if (eq field.type 'image')}}
-           <Widgets::Forms::ImageUpload
+        <Widgets::Forms::ImageUpload
           @imageUrl={{mut (get this.data.session field.fieldIdentifier)}}
           @label={{t "Logo"}}
           @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
           @icon="image"
           @hint={{t "Select an image"}}
-          @maxSizeInKb={{1000}} />
+          @maxSizeInKb={{this.settings.logoSize}} />
       {{/if}}
       {{#if (eq field.type 'file')}}
         <Widgets::Forms::FileUpload
@@ -46,7 +50,7 @@
           @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
           @icon="file"
           @hint={{t "Select a file"}}
-          @maxSizeInKb={{30000}} />
+          @maxSizeInKb={{this.settings.slideSize}} />
       {{/if}}
       {{#if (eq field.type 'select')}}
         {{#if (eq field.fieldIdentifier 'language')}}
@@ -55,7 +59,7 @@
             @selected={{this.data.session.language}}
             @forceSelection={{false}}
             @fullTextSearch={{true}}>
-             <Input
+            <Input
               @type="hidden"
               @id="session_language"
               @value={{this.data.session.language}} />
@@ -67,13 +71,31 @@
                   {{language.name}}
                 </div>
               {{/each}}
-               </div>
-           </UiDropdown>
+            </div>
+        </UiDropdown>
+        {{else if (eq field.fieldIdentifier 'level')}}
+          <UiDropdown
+            @class="search selection"
+            @selected={{this.data.session.level}}
+            @onChange={{action (mut this.data.session.level)}} as |execute mapper|>
+            <Input
+              @type="hidden"
+              @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your level'}}</div>
+            <div class="menu">
+              {{#each this.levels as |level|}}
+                <div class="item" data-value="{{map-value mapper level.name}}">
+                  {{level.name}}
+                </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
         {{else}}
           <UiDropdown
-               @class="search selection"
-               @selected={{get this.data.session field.fieldIdentifier}}
-               @onChange={{action (mut (get this.data.session field.fieldIdentifier))}} as |execute mapper|>
+            @class="search selection"
+            @selected={{get this.data.session field.fieldIdentifier}}
+            @onChange={{action (mut (get this.data.session field.fieldIdentifier))}} as |execute mapper|>
             <Input
               @type="hidden"
               @name={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
@@ -84,8 +106,8 @@
             </div>
               <div class="menu">
                 {{#each (get this.data (concat field.fieldIdentifier 's')) as |item|}}
-                   <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
-               {{/each}}
+                  <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+              {{/each}}
               </div>
             </UiDropdown>
           {{/if}}

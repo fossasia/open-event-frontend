@@ -73,6 +73,9 @@ Router.map(function() {
       this.route('edit-speaker', { path: '/speaker/:speaker_id/edit' });
       this.route('edit-session', { path: '/session/:session_id/edit' });
     });
+    this.route('speaker-invite', function() {
+      this.route('view-session', { path: '/:invite_id/session' });
+    });
     this.route('schedule', { path: '/calendar' });
     this.route('coc');
     this.route('speakers');
@@ -138,6 +141,7 @@ Router.map(function() {
         this.route('view', { path: '/:speaker_id' });
         this.route('edit', { path: '/:speaker_id/edit' });
       });
+      this.route('documents');
       this.route('chat');
       this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });
@@ -175,8 +179,14 @@ Router.map(function() {
   this.route('groups', function() {
     this.route('list');
     this.route('create');
+    this.route('following');
+    this.route('team', { path: '/team/:group_id' });
     this.route('view', { path: '/:group_id' });
-    this.route('edit', { path: '/:group_id/edit' });
+    this.route('edit', { path: '/edit' }, function() {
+      this.route('events', { path: '/:group_id/events' });
+      this.route('settings', { path: '/:group_id/settings' });
+      this.route('followers', { path: '/:group_id/followers' });
+    });
   });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {
@@ -187,9 +197,9 @@ Router.map(function() {
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
   });
-  this.route('notifications', function() {
-    this.route('all', { path: '/:notification_state' });
-  });
+  // this.route('notifications', function() {
+  //   this.route('all', { path: '/:notification_state' });
+  // });
   this.route('admin', function() {
     this.route('events', function() {
       this.route('list', { path: '/:events_status' });
@@ -226,9 +236,12 @@ Router.map(function() {
       });
       this.route('list', { path: '/:users_status' });
     });
-    this.route('video-channels', function() {
-      this.route('create');
-      this.route('edit', { path: '/:videoChannel_id/edit' });
+    this.route('video', function() {
+      this.route('channels', function() {
+        this.route('create');
+        this.route('edit', { path: '/:videoChannel_id/edit' });
+      });
+      this.route('recordings');
     });
     this.route('permissions', function() {
       this.route('event-roles');
@@ -262,6 +275,9 @@ Router.map(function() {
       });
       this.route('translations');
       this.route('events');
+    });
+    this.route('groups', function() {
+      this.route('list', { path: '/:group_status' });
     });
   });
   this.route('orders', function() {

@@ -1,0 +1,111 @@
+<div class="ui fluid public-event ui relaxed grid mt-0 pt-0">
+  <div class="sixteen wide column lead">
+    <Widgets::SafeImage class="background" @src={{if @group.bannerUrl @group.bannerUrl "/images/group.png"}} />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          {{#if @group.logoUrl}}
+            <img src="{{@group.logoUrl}}" class="logo mr-8" />
+          {{/if}}
+          <div>
+            <h1 class="event name text-white">{{@group.name}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui grid w-full">
+    <div class="three wide column"></div>
+    <div style="margin: auto;" class="mb-4 ten wide column container">
+      {{#if @group.events}}
+        <div class="social-icons d-flex mt-4 mb-4 wrap" style="justify-content: center;">
+          {{#each @group.socialLinks as |socialLink|}}
+              {{#if (eq socialLink.name 'website')}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
+              {{else if (eq socialLink.name 'groups.google')}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+              {{else if (eq socialLink.name 'mastodon')}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon /></a>
+              {{else if socialLink.is_custom}}
+                  <UiPopup @content={{t-var socialLink.name}}>
+                      <a class="m-1 ml-0" href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i style="font-size: 1.5rem;" class="external alternate icon"></i></a>
+                  </UiPopup>
+              {{else}}
+                  <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
+              {{/if}}
+          {{/each}}
+        </div>
+        <div>
+          {{#if @group.about}}
+            <div class="description">
+              {{sanitize @group.about}}
+            </div>
+          {{/if}}
+          {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+            <div class="ui basic center aligned segment mt-4">
+              <button class="ui mini labeled blue icon floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+                <i class="envelope icon"></i>
+                {{t 'Contact Organizer'}}
+              </button>
+            </div>
+          {{/if}}
+          {{#if this.upcomingEvents}}
+            <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
+            <div class="ui stackable three column grid">
+              {{#each this.upcomingEvents as |event|}}
+                <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} />
+              {{/each}}
+            </div>
+          {{/if}}
+          {{#if this.pastEvents}}
+            <h2 class="main-heading mb-4">{{t 'Past Events'}}</h2>
+            <div class="ui stackable three column grid">
+              {{#each this.pastEvents as |event|}}
+                <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} />
+              {{/each}}
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+    <div class="three wide column">
+        <button class="{{if @group.follower 'red' 'blue'}} mt-4 ui fluid button" {{action 'follow'}}>
+          {{#if @group.follower}}
+            {{t 'Unfollow Group'}}            
+          {{else}}
+            {{t 'Follow Group'}}            
+          {{/if}}                   
+        </button>
+        <div class="ui blue horizontal basic label fluid text center aligned mt-2 p-2">
+          <i class="users icon"></i>
+          ({{@group.followerCount}} {{t 'followers'}})
+        </div>
+        {{#if @group.followers}}
+          <div class="d-flex content-center items-center wrap mt-4">
+            {{#each @group.followers as |follower index|}}
+              {{#if (lt index 6)}}
+                <a href={{if follower.user.isProfilePublic (href-to 'public.sessions.user.view' follower.user.id) '#'}}
+                class="pointer"
+                data-tooltip={{follower.user.resolvedName}}>
+                <img
+                class="ui tiny avatar image mb-2"
+                src={{or follower.user.thumbnailImageUrl follower.user.avatarUrl '/images/placeholders/avatar.png'}} />
+                </a>
+              {{else}}
+                {{#if (eq index 6)}}
+                  <span>{{t 'and'}} {{sub @group.followerCount index}} {{t 'others'}}</span>
+                {{/if}}
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/if}}
+    </div>
+  </div>
+  <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
+</div>
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.group}}
+    @group={{true}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}

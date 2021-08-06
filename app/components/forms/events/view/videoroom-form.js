@@ -6,10 +6,9 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import { protocolLessValidUrlPattern } from 'open-event-frontend/utils/validators';
 import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
-import moment from 'moment';
+import _ from 'lodash-es';
 
-
-const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true };
+const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true, 'endCurrentMeeting': false };
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
@@ -20,6 +19,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked moderatorEmail = '';
   @tracked deletedModerators = [];
   @tracked videoRecordings = [];
+  @tracked actualBBBExtra = null;
+  @tracked selectedVideo = '';
+  @tracked previousVideo = '';
+  @tracked showUpdateOptions = false;
+  @tracked endCurrentMeeting = false;
 
   get recordingColumns() {
     return [
@@ -28,16 +32,28 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         valuePath : 'participants'
       },
       {
-        name      : this.l10n.t('Start time'),
-        valuePath : 'startTime'
+        name          : this.l10n.t('Start time'),
+        valuePath     : 'startTime',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'dddd, D MMMM, YYYY h:mm A'
+        }
       },
       {
-        name      : this.l10n.t('End time'),
-        valuePath : 'endTime'
+        name          : this.l10n.t('End time'),
+        valuePath     : 'endTime',
+        cellComponent : 'ui-table/cell/cell-date',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'dddd, D MMMM, YYYY h:mm A'
+        }
       },
       {
-        name      : this.l10n.t('Duration'),
-        valuePath : 'size'
+        name            : this.l10n.t('Duration'),
+        valuePath       : 'endTime',
+        extraValuePaths : ['startTime'],
+        cellComponent   : 'ui-table/cell/cell-duration'
       },
       {
         name          : this.l10n.t('View'),
@@ -192,6 +208,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       try {
         await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form. Do you want to proceed?'));
       } catch {
+        this.previousVideo = this.selectedVideo;
         return;
       }
     }
@@ -204,13 +221,47 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  async toggleRecord() {
+    this.data.stream.extra.bbb_options.record = !this.data.stream.extra.bbb_options.record;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
+  async toggleMuteOnStart() {
+    this.data.stream.extra.bbb_options.muteOnStart = !this.data.stream.extra.bbb_options.muteOnStart;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
+  async toggleAutoStartRecording() {
+    this.data.stream.extra.bbb_options.autoStartRecording = !this.data.stream.extra.bbb_options.autoStartRecording;
+    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+      this.set('showUpdateOptions', true);
+    } else {
+      this.set('showUpdateOptions', false);
+    }
+  }
+
+  @action
   async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
       try {
-        this.loading = true;
+        this.set('isLoading', true);
+        this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
         await this.data.stream.save();
         const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
+          if (moderator.id) {
+            return moderator;
+          }
           return moderator.save();
         });
         const deleteModerators = this.deletedModerators.map(moderator => {
@@ -230,7 +281,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
             id: 'stream_save_error'
           });
       } finally {
-        this.loading = false;
+        this.set('isLoading', false);
       }
     });
   }
@@ -243,39 +294,47 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.onValid(() => {
       const existingEmails = this.data.stream.moderators.map(moderator => moderator.email);
       if (!existingEmails.includes(this.moderatorEmail)) {
-        const moderator = this.store.createRecord('video-stream-moderator', {
-          email       : this.moderatorEmail,
-          videoStream : this.data.stream
-        });
-        this.data.stream.moderators.pushObject(moderator);
+        const existingModerator = this.deletedModerators.filter(moderator => moderator.email === this.moderatorEmail);
+        if (existingModerator.length === 0) {
+          const newModerator = this.store.createRecord('video-stream-moderator', {
+            email       : this.moderatorEmail,
+            videoStream : this.data.stream
+          });
+          this.data.stream.moderators.pushObject(newModerator);
+        } else {
+          const moderator = this.store.peekRecord('video-stream-moderator', existingModerator[0].id);
+          this.data.stream.moderators.pushObject(moderator);
+        }
       }
+      this.deletedModerators = this.deletedModerators.filter(moderator => moderator.email !== this.moderatorEmail);
       this.moderatorEmail = '';
     });
   }
 
   @action
   deleteModerator(moderator) {
-    this.deletedModerators.push(moderator);
     this.data.stream.moderators.removeObject(moderator);
+    if (moderator.id) {
+      this.deletedModerators.push(moderator);
+    }
   }
 
   async loadRecordings() {
     try {
-      const recordings = await this.loader.load(`/video-streams/${this.data.stream.id}/recordings`);
-      this.videoRecordings = recordings.result.response.recordings?.recording.map(rec => ({
-        participants : rec.participants,
-        startTime    : moment(Number(rec.startTime)).format('dddd, D MMMM, YYYY h:mm A'),
-        endTime      : moment(Number(rec.endTime)).format('dddd, D MMMM, YYYY h:mm A'),
-        size         : moment.duration(Number(rec.endTime) - Number(rec.startTime)).humanize(),
-        url          : rec.playback.format.url
-      }));
+      const recordings = await this.data.stream.query('videoRecordings', {
+        'page[size]': 0
+      });
+      this.videoRecordings = recordings.toArray();
     } catch (e) {
-      console.error('Error while getting recordings f', e);
+      console.error('Error while getting recordings', e);
     }
   }
 
   didInsertElement() {
     if (this.data.stream.videoChannel.get('provider') === 'bbb') {
+      if (this.data.stream.extra?.bbb_options) {
+        this.set('actualBBBExtra', { ...this.data.stream.extra.bbb_options });
+      }
       this.loadRecordings();
     }
     if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
@@ -284,5 +343,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     if (!this.data.stream.extra?.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
       this.data.stream.set('extra', { bbb_options });
     }
+    this.selectedVideo = this.previousVideo = this.data.stream.videoChannel;
   }
 }

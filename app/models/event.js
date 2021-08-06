@@ -45,12 +45,15 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isMapShown                : attr('boolean', { defaultValue: true }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketFormEnabled       : attr('boolean', { defaultValue: false }),
+  isCfsEnabled              : attr('boolean', { defaultValue: false }),
+  isVideoroomEnabled        : attr('boolean', { defaultValue: false }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
   isPromoted                : attr('boolean', { defaultValue: false }),
   isDemoted                 : attr('boolean', { defaultValue: false }),
   isChatEnabled             : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
+  isDocumentEnabled         : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),
@@ -89,20 +92,20 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   xcalUrl      : attr('string', { readOnly: true }),
   icalUrl      : attr('string', { readOnly: true }),
 
-  online        : attr('boolean', { defaultValue: false }),
-  liveStreamUrl : attr('string'),
-  webinarUrl    : attr('string'),
+  online: attr('boolean', { defaultValue: false }),
 
   chatRoomName: attr('string'),
 
-  createdAt : attr('moment', { readOnly: true }),
-  deletedAt : attr('moment'),
+  createdAt     : attr('moment', { readOnly: true }),
+  deletedAt     : attr('moment'),
+  documentLinks : attr(),
 
   /**
    * Relationships
    */
   type                : belongsTo('event-type'),
   topic               : belongsTo('event-topic'),
+  group               : belongsTo('group', { inverse: null }),
   subTopic            : belongsTo('event-sub-topic'),
   location            : belongsTo('event-location'),
   sessions            : hasMany('session'),
@@ -138,6 +141,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   moderators        : hasMany('user', { inverse: null }),
   roles             : hasMany('users-events-role'),
   sessionFavourites : hasMany('user-favourite-session'),
+  speakerInvites    : hasMany('speaker-invite'),
 
   /**
    * The discount code applied to this event [Form(1) discount code]

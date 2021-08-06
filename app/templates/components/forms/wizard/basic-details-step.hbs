@@ -71,19 +71,8 @@
     </div>
   {{/if}}
   {{#if (or (eq this.selectedLocationType 'Online') (eq this.selectedLocationType 'Hybrid'))}}
-    <div class="{{unless this.device.isMobile 'six wide'}} field">
-      <label>{{t "Live Stream URL"}}</label>
-      <Widgets::Forms::LinkField
-        @inputId="live_stream_url"
-        @value={{this.data.event.liveStreamUrl}}
-        @onChange={{action (mut this.data.event.liveStreamUrl)}} />
-    </div>
-    <div class="{{unless this.device.isMobile 'six wide'}} field">
-      <label>{{t "Webinar URL"}}</label>
-      <Widgets::Forms::LinkField
-        @inputId="webinar_url"
-        @value={{this.data.event.webinarUrl}}
-        @onChange={{action (mut this.data.event.webinarUrl)}} />
+    <div class="mb-2 mt-2">
+      {{t 'You can add video meeting rooms or streams after you created a draft of the event.'}}
     </div>
   {{/if}}
  <br>
@@ -165,7 +154,7 @@
         @hint={{t "Select Event Header Image"}}
         @imageText={{t "Header Image"}}
         @isHeaderImage={{true}}
-        @maxSizeInKb={{10000}}
+        @maxSizeInKb={{this.settings.imageSize}}
         @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
         @requiresDivider={{true}} />
     </div>
@@ -177,7 +166,7 @@
         @icon="image"
         @hint={{t "Select Logo"}}
         @imageText={{t "Logo"}}
-        @maxSizeInKb={{1000}} />
+        @maxSizeInKb={{this.settings.logoSize}} />
     </div>
   </div>
 
@@ -237,8 +226,7 @@
               @canMoveDown={{not-eq index (dec this.ticketCount)}}
               @moveTicketUp={{action "moveTicket" ticket index "up"}}
               @moveTicketDown={{action "moveTicket" ticket index "down"}}
-              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}
-              @ishidden = {{ticket.isHidden}} />
+              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
           {{/each}}
         {{else}}
           <h3 class="text muted weight-500">

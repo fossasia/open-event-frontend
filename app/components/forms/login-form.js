@@ -13,6 +13,12 @@ export default class LoginForm extends Component.extend(FormMixin) {
   counter          = 0;
   captchaValidated = false;
   showHcaptcha     = !!ENV.hcaptchaKey;
+  rememberMe       = false;
+
+  set setSessionCookie(rememberMe) {
+    const expirationTime = rememberMe ? (365 * 24 * 60 * 60) : (1 * 24 * 60 * 60);
+    this.set('session.store.cookieExpirationTime', expirationTime);
+  }
 
   getValidationRules() {
     return {
@@ -50,8 +56,9 @@ export default class LoginForm extends Component.extend(FormMixin) {
   async submit(e) {
     e.preventDefault();
     this.onValid(async() => {
-      const credentials = { username: this.identification, password: this.password };
-      const authenticator = 'authenticator:jwt';
+      ENV['ember-simple-auth-token'].refreshAccessTokens = this.rememberMe;
+      const credentials = { username: this.identification, password: this.password, 'remember-me': this.rememberMe, 'include-in-response': this.rememberMe };
+      const authenticator = 'authenticator:custom-jwt';
       this.setProperties({
         errorMessage : null,
         isLoading    : true
@@ -64,6 +71,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
             await this.store.findRecord('user', tokenPayload.identity)
           );
         }
+        this.set('setSessionCookie', this.rememberMe);
       } catch (e) {
         this.set('counter', this.counter + 1);
         if (e.json && e.json.error) {
@@ -111,6 +119,11 @@ export default class LoginForm extends Component.extend(FormMixin) {
     this.toggleProperty('showPass');
   }
 
+  @action
+  toggleRememberMe() {
+    this.toggleProperty('rememberMe');
+  }
+
 
   didInsertElement() {
     if (this.session.newUser) {
@@ -120,5 +133,7 @@ export default class LoginForm extends Component.extend(FormMixin) {
       });
       this.session.set('newUser', null);
     }
+    ENV['ember-simple-auth-token'].refreshAccessTokens = false;
+    this.rememberMe = false;
   }
 }

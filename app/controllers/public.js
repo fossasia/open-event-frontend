@@ -1,13 +1,16 @@
 import classic from 'ember-classic-decorator';
+import { orderBy } from 'lodash-es';
 import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import { levels } from 'open-event-frontend/utils/dictionary/levels';
 
 @classic
 export default class PublicController extends Controller {
   @service event;
+  @service errorHandler;
 
   queryParams = ['side_panel', 'video_dialog'];
 
@@ -16,6 +19,8 @@ export default class PublicController extends Controller {
 
   @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
 
+  @tracked activeSessionLevel = this.router.currentRoute.queryParams.level ? this.router.currentRoute.queryParams.level.split(',') : [];
+
   @tracked activeRoom = this.router.currentRoute.queryParams.room ? this.router.currentRoute.queryParams.room.split(',') : [];
 
   @tracked activeTrack = this.router.currentRoute.queryParams.track ? this.router.currentRoute.queryParams.track.split(',') : [];
@@ -23,9 +28,22 @@ export default class PublicController extends Controller {
   @tracked hasStreams = null;
   @tracked canAccess = null;
 
+  @tracked levels = orderBy(levels, 'position');
+
   @computed('model.socialLinks')
   get twitterLink() {
     return this.model.socialLinks.findBy('isTwitter', true);
+  }
+
+  @computed('model.customForms')
+  get hasSessionLevel() {
+    let hasLevel = false;
+    this.model.customForms.forEach(cf => {
+      if (cf.form === 'session' && cf.name === 'Level' && cf.isIncluded) {
+        hasLevel = true;
+      }
+    });
+    return hasLevel;
   }
 
   @computed('session.currentRouteName')
@@ -58,6 +76,55 @@ export default class PublicController extends Controller {
   }
 
   @action
+  async follow() {
+    if (!this.session.isAuthenticated) {
+      try {
+        await this.confirm.prompt(this.l10n.t('Please login to follow a group.'));
+        this.router.transitionTo('login');
+      } catch (e) {
+        if (e) {
+          console.error(e);
+        }
+      }
+      return;
+    }
+    const group = await this.model.group;
+    const follower = group.belongsTo('follower').value();
+    try {
+      if (follower) {
+        await follower.destroyRecord();
+        this.notify.info(this.l10n.t('You have successfully unfollowed this group.'));
+      } else {
+        try {
+          const heading = this.l10n.t('By following this group you accept that:');
+          const content =  this.l10n.t('1. You will receive announcement emails for events of this group.') + '<br/>'
+            + this.l10n.t('2. You share your email with the group owners and organizers.') + '<br/>'
+            + this.l10n.t('3. All group members will be able to see your public profile image and name.') + '<br/><br/>'
+            + this.l10n.t('Do you want to proceed?');
+
+          const options = {
+            denyText     : 'Cancel',
+            denyColor    : 'red',
+            approveText  : 'Yes, follow this group',
+            approveColor : 'green',
+            extra        : content
+          };
+          await this.confirm.prompt(heading, options);
+        } catch {
+          return;
+        }
+        const followGroup = await this.store.createRecord('user-follow-group', {
+          group
+        });
+        await followGroup.save();
+        this.notify.success(this.l10n.t('You have successfully followed this group.'));
+      }
+    } catch (e) {
+      this.errorHandler.handle(e);
+    }
+  }
+
+  @action
   toLogin() {
     if (!this.authManager.currentUser) {
       this.transitionToRoute('login');
@@ -77,6 +144,18 @@ export default class PublicController extends Controller {
   }
 
   @action
+  removeActiveSessionLevel() {
+    this.activeSessionLevel = [];
+  }
+
+  removeActiveClass(name) {
+    const activeEls = document.querySelectorAll(`.${name}.link-item.active`);
+    activeEls.forEach(el => {
+      el.classList.remove('active');
+    });
+  }
+
+  @action
   sessionFilter(name) {
     if (this.activeSession.includes(name)) {
       this.activeSession = this.activeSession.filter(session => session !== name);
@@ -87,7 +166,27 @@ export default class PublicController extends Controller {
   }
 
   @action
+  sessionLevelFilter(level) {
+    if (this.activeSessionLevel.includes(level)) {
+      this.activeSessionLevel = this.activeSessionLevel.filter(val => val !== level);
+    } else {
+      this.activeSessionLevel = [...this.activeSessionLevel, level];
+    }
+    this.router.transitionTo('public.sessions', { queryParams: { 'level': this.activeSessionLevel } });
+  }
+
+  @action
   applyFilter(value, filterType) {
+    const params = this.router.currentRoute.queryParams;
+    if (!params.track) {
+      this.activeTrack = [];
+    }
+    if (!params.room) {
+      this.activeRoom = [];
+    }
+    if (!params.sessionType) {
+      this.activeSession = [];
+    }
     value = value + ':';
     if (filterType === 'room') {
       if (this.activeRoom.includes(value)) {

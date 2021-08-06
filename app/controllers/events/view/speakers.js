@@ -7,10 +7,13 @@ export default class extends Controller {
   isLoading = false;
 
   @action
-  export() {
+  export(status) {
     this.set('isLoading', true);
+    const payload = {
+      status
+    };
     this.loader
-      .load(`/events/${this.model.id}/export/speakers/csv`)
+      .post(`/events/${this.model.id}/export/speakers/csv`, payload)
       .then(exportJobInfo => {
         this.requestLoop(exportJobInfo);
       })

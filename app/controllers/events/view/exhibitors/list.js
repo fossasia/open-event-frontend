@@ -13,7 +13,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
         name            : this.l10n.t('State'),
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
-        width           : 90,
+        width           : 60,
         valuePath       : 'status',
         isSortable      : true,
         extraValuePaths : ['id', 'status'],
@@ -32,6 +32,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
       {
         name          : this.l10n.t('Logo'),
         valuePath     : 'logoUrl',
+        width         : 60,
         cellComponent : 'ui-table/cell/cell-image'
       },
       {
@@ -52,9 +53,10 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
         }
       },
       {
-        name      : this.l10n.t('Description'),
-        width     : 210,
-        valuePath : 'description'
+        name          : this.l10n.t('Description'),
+        width         : 240,
+        cellComponent : 'ui-table/cell/cell-sponsor-sanitize',
+        valuePath     : 'description'
       },
       {
         name          : this.l10n.t('URL'),

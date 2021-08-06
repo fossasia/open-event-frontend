@@ -1,5 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
@@ -8,11 +9,11 @@ export default class IndexRoute extends Route {
   }
 
   async model() {
-    return {
-      orderStats  : await this.modelFor('events.view').query('orderStatistics', {}),
-      tickets     : await this.modelFor('events.view').query('tickets', {}),
-      eventDetail : await this.modelFor('events.view')
-    };
+    return hash({
+      orderStats  : this.modelFor('events.view').query('orderStatistics', {}),
+      tickets     : this.modelFor('events.view').query('tickets', {}),
+      eventDetail : this.modelFor('events.view')
+    });
   }
 
   setupController(controller, model) {

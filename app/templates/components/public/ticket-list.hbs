@@ -204,7 +204,7 @@
         {{/unless}}
       </div>
       <div class="ui no padding three wide computer four wide tablet column right aligned floated">
-        <button id="total" class="ui primary small button no right margin" disabled={{this.shouldDisableOrderButton}} {{action this.placeOrder this.orderAmountInput}}>
+        <button id="total" class="ui primary small button no right margin" disabled={{and this.shouldDisableOrderButton (not this.hasPaidOrder)}} {{action this.placeOrder this.orderAmountInput}}>
           {{t 'Order Now'}}
         </button>
       </div>

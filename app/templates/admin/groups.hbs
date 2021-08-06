@@ -1,0 +1,17 @@
+<div class="ui grid stackable">
+    <div class="row">
+      <div class="sixteen wide column">
+        <TabbedNavigation @isNonPointing={{true}}>
+          <LinkTo @route="admin.groups.list" @model="live"  class="item">
+            {{t 'Live'}}
+          </LinkTo>
+          <LinkTo @route="admin.groups.list" @model="deleted" class="item">
+            {{t 'Deleted'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
+    </div>
+  <div class="row">
+    {{outlet}}
+  </div>
+</div>

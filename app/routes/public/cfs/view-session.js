@@ -11,7 +11,7 @@ export default class ViewSessionRoute extends Route.extend(AuthenticatedRouteMix
   async model(params) {
     const eventDetails = this.modelFor('public');
     const sessionDetails = await this.store.findRecord('session', params.session_id, {
-      include : 'session-type,speakers,track,event',
+      include : 'session-type,speakers,track,event,speaker-invites',
       reload  : true
     });
     return {
