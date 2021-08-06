@@ -8,6 +8,6 @@ module('Integration | Component | welcome header', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{welcome-header}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Create Event'));
+    assert.dom(this.element).includesText('Create Event');
   });
 });
