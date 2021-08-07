@@ -256,12 +256,6 @@
           </i>
           {{t 'Paid Ticket'}}
         </button>
-        {{!-- {{else}}
-          <div class="field">
-            <label for="ticket_url">{{t 'Ticket URL'}}</label>
-            {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
-          </div>
-        {{/if}} --}}
 
         <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donation' this.data.event.tickets.length}}>
           <i class="large icons basic-details">
@@ -324,13 +318,6 @@
           </i>
           {{t 'Paid Registration'}}
         </button>
-        {{!-- {{else}}
-          <div class="field">
-            <label for="ticket_url">{{t 'Ticket URL'}}</label>
-            {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
-          </div>
-        {{/if}} --}}
-
         <button type="button" class="ui violet small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donationRegistration' this.data.event.tickets.length}}>
           <i class="large icons basic-details">
             <i class="heart icon"></i>

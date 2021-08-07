@@ -474,7 +474,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           this.data.event.isOneclickSignupEnabled = false;
         }
       }
-      // this.data.event.tickets?.toArray().filter( x => console.log(x.type));
       this.data.event.tickets.pushObject(this.store.createRecord('ticket', {
         name          : type === 'registration' ? 'registration' : '',
         event,
