@@ -7,7 +7,7 @@
       <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export' this.router.currentRoute.params.event_status}} >{{t 'Export as CSV'}}</button>
       <UiDropdown class="labeled icon button mb-2 mr-2">
         <i class="sort amount down icon"></i>
-        <span class="default text">{{t 'Live'}}</span>
+        <span class="default text" style="text-transform: capitalize">{{this.router.currentRoute.params.event_status}}</span>
         <div class="menu">
           <LinkTo @route="admin.sales.index" @model="live" class="item">{{t 'Live'}}</LinkTo>
           <LinkTo @route="admin.sales.index" @model="past" class="item">{{t 'Past'}}</LinkTo>

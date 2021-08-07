@@ -175,7 +175,10 @@ Router.map(function() {
       });
     });
   });
-  this.route('explore');
+  this.route('explore', function() {
+    this.route('events');
+    this.route('groups');
+  });
   this.route('groups', function() {
     this.route('list');
     this.route('create');
