@@ -3,6 +3,7 @@ import { classNames } from '@ember-decorators/component';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import { forOwn } from 'lodash-es';
+import moment from 'moment';
 import { pascalCase } from 'open-event-frontend/utils/string';
 
 @classic
@@ -27,6 +28,12 @@ export default class EventCard extends Component {
   @computed
   get eventClass() {
     return this.isWide ? 'thirteen wide computer ten wide tablet sixteen wide mobile column ' + (!this.device.isMobile && 'rounded-l-none') : 'event fluid';
+  }
+
+  @computed
+  get isPastEvent() {
+    const currentTime = moment.tz(this.event.timezone);
+    return this.event.endsAt < currentTime;
   }
 
   @action

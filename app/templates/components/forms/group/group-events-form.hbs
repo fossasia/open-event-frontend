@@ -14,12 +14,18 @@
       <div></div>
       <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
     </div>
-    {{#if @group.events}}
+    {{#if @groupEvents}}
       <div class="mb-4">
         <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
         <div class="ui stackable three column grid">
-          {{#each @group.events as |event|}}
-            <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} @removeFromGroup={{true}} @removeEvent={{action "removeEvent"}} />
+          {{#each @groupEvents as |event|}}
+            <EventCard
+              @event={{event}}
+              @shareEvent={{action "shareEvent"}}
+              @removeFromGroup={{true}}
+              @isSavedEvent={{if (includes this.savedEvents event.id) true false}}
+              @removeEvent={{action "removeEvent"}}
+              @announceEvent={{action "announceEvent"}} />
           {{/each}}
         </div>
       </div>
