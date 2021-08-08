@@ -22,6 +22,9 @@
       <LinkTo @route="groups.edit.settings" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
         {{t 'Settings'}}
       </LinkTo>
+      <LinkTo @route="groups.team" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
+        {{t 'Team'}}
+      </LinkTo>
     </TabbedNavigation>
   </div>
 </div>
