@@ -14,7 +14,7 @@
     <div class="right menu nav-bar">
     {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
       <div class="search-bar d-flex items-center space-between m-2 p-2">
-        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+        <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
         <i class="search icon"></i>
       </div>
     {{/if}}
@@ -77,7 +77,7 @@
       <div class="ui header small text">{{this.settings.appName}}</div>
     </LinkTo>
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
-      <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+      <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
     </div>
     <div class="right menu nav-bar">
