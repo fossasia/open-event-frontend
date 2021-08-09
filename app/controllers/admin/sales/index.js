@@ -6,7 +6,7 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class IndexController extends Controller.extend(AdminSalesMixin, EmberTableControllerMixin) {
 
 @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
-sort_by = 'total-sales';
+// sort_by = 'total-sales';
 sort_dir = 'DSC';
 per_page = 10;
 get columns() {
@@ -45,14 +45,18 @@ get columns() {
       color           : 'green',
       subcolumns      : [
         {
-          name      : this.l10n.t('Tickets'),
-          valuePath : 'sales.completed.ticket_count',
-          width     : 30
+          name            : this.l10n.t('Tickets'),
+          valuePath       : 'completedOrderTickets',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
+          width           : 30
         },
         {
           name            : this.l10n.t('Sales'),
-          valuePath       : 'sales.completed.sales_total',
+          valuePath       : 'completedOrderSales',
           extraValuePaths : ['paymentCurrency'],
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
         }
       ]
@@ -63,13 +67,17 @@ get columns() {
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : this.l10n.t('Tickets'),
-          valuePath : 'sales.placed.ticket_count',
-          width     : 30
+          name            : this.l10n.t('Tickets'),
+          valuePath       : 'placedOrderTickets',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
+          width           : 30
         },
         {
           name            : this.l10n.t('Sales'),
-          valuePath       : 'sales.placed.sales_total',
+          valuePath       : 'placedOrderSales',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
         }
@@ -81,13 +89,17 @@ get columns() {
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : this.l10n.t('Tickets'),
-          valuePath : 'sales.pending.ticket_count',
-          width     : 30
+          name            : this.l10n.t('Tickets'),
+          valuePath       : 'pendingOrderTickets',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
+          width           : 30
         },
         {
           name            : this.l10n.t('Sales'),
-          valuePath       : 'sales.pending.sales_total',
+          valuePath       : 'pendingOrderSales',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
         }
