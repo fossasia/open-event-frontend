@@ -20,9 +20,6 @@ export default class SettingsRoute extends Route.extend(AuthenticatedRouteMixin)
 
   afterModel(model) {
     if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
-      console.log(this.authManager.currentUser.email)
-      console.log(model.group.user.get('email'))
-      console.log(this.authManager.currentUser.isAdmin)
       this.transitionTo('index');
     }
   }
