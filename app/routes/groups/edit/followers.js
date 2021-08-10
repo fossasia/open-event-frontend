@@ -11,8 +11,21 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
+    let filterOptions = [];
+    if(params.search) {
+        filterOptions.push({
+        name : 'user',
+        op   : 'has',
+        val  : {
+          name : 'email',
+          op   : 'ilike',
+          val  : `%${params.search}%`
+        }
+      });
+    }
     let queryString = {
       'include'      : 'user',
+      filter: filterOptions,
       'page[size]'   : params.per_page || 100,
       'page[number]' : params.page || 1
     };
