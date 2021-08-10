@@ -11,9 +11,10 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
-    let filterOptions = [];
-    if(params.search) {
-        filterOptions.push({
+    const filterOptions = [];
+    if (params.search) {
+      filterOptions.push({
+        or: [{
         name : 'user',
         op   : 'has',
         val  : {
@@ -21,11 +22,21 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
           op   : 'ilike',
           val  : `%${params.search}%`
         }
-      });
+      },
+      {
+        name : 'user',
+        op   : 'has',
+        val  : {
+          name : 'public-name',
+          op   : 'ilike',
+          val  : `%${params.search}%`
+        }
+      }
+    ]});
     }
     let queryString = {
       'include'      : 'user',
-      filter: filterOptions,
+      filter         : filterOptions,
       'page[size]'   : params.per_page || 100,
       'page[number]' : params.page || 1
     };
