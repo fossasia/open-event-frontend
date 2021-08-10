@@ -28,18 +28,20 @@
     </TabbedNavigation>
   </div>
 </div>
-<div class="sixteen wide column">
-  <div class="mb-4">
+<div class="row">
+  <div class="ui sixteen wide container column">
     <h2 class="header">{{t 'Followers'}}</h2>
+    <div class="ml-4 mr-4">
+      <Tables::Default
+        @columns={{this.followersColumn}}
+        @rows={{this.model.followers.data}}
+        @currentPage={{this.page}}
+        @hideSearchBox={{true}}
+        @pageSize={{this.per_page}}
+        @metaData={{this.model.followers.meta}}
+        @widthConstraint="eq-container"
+        @resizeMode="fluid"
+        @fillMode="equal-column" />
+    </div>
   </div>
-  <Tables::Default
-    @columns={{this.followersColumn}}
-    @rows={{this.model.followers.data}}
-    @currentPage={{this.page}}
-    @hideSearchBox={{true}}
-    @pageSize={{this.per_page}}
-    @metaData={{this.model.followers.meta}}
-    @widthConstraint="eq-container"
-    @resizeMode="fluid"
-    @fillMode="equal-column" />
 </div>
