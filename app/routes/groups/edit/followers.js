@@ -15,24 +15,24 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin) {
     if (params.search) {
       filterOptions.push({
         or: [{
-        name : 'user',
-        op   : 'has',
-        val  : {
-          name : 'email',
-          op   : 'ilike',
-          val  : `%${params.search}%`
+          name : 'user',
+          op   : 'has',
+          val  : {
+            name : 'email',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          }
+        },
+        {
+          name : 'user',
+          op   : 'has',
+          val  : {
+            name : 'public-name',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          }
         }
-      },
-      {
-        name : 'user',
-        op   : 'has',
-        val  : {
-          name : 'public-name',
-          op   : 'ilike',
-          val  : `%${params.search}%`
-        }
-      }
-    ]});
+        ] });
     }
     let queryString = {
       'include'      : 'user',
