@@ -35,20 +35,20 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name       : this.l10n.t('Video Room Name'),
         valuePath  : 'videoStream.name',
-        helperInfo : 'This column shows the video room name that will be visible to the users on the event page.',
+        helperInfo : this.l10n.t('This column shows the video room name that will be visible to the users on the event page.'),
         width      : 70
       },
       {
         name          : this.l10n.t('Video Source URL'),
         valuePath     : 'videoStream',
-        helperInfo    : 'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into' + this.settings.appName + '.com.',
+        helperInfo    : this.l10n.t('This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into') + this.settings.appName + '.com.',
         cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url',
         width         : 60
       },
       {
         name            : this.l10n.t('Join Video'),
         valuePath       : 'videoStream',
-        helperInfo      : 'You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links.',
+        helperInfo      : this.l10n.t('You can share the links in this columns with attendees of an event. On event or schedule schedule pages attendees of your event will see a Join Video button. These buttons will direct to the links shown here. Only organizers and registered ticket holders will be able to access these links.'),
         extraValuePaths : ['identifier', 'event'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-url',
         width           : 70
@@ -56,7 +56,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name       : this.l10n.t('Room Password'),
         width      : 70,
-        helperInfo : 'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.',
+        helperInfo : this.l10n.t('The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'),
         valuePath  : 'videoStream.password'
       },
       {
@@ -66,7 +66,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name       : this.l10n.t('Additional information'),
-        helperInfo : 'Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.',
+        helperInfo : this.l10n.t('Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.'),
         valuePath  : 'videoStream.additionalInformation'
       }
     ];
