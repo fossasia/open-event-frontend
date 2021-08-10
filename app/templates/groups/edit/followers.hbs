@@ -36,9 +36,10 @@
         @columns={{this.followersColumn}}
         @rows={{this.model.followers.data}}
         @currentPage={{this.page}}
-        @hideSearchBox={{true}}
+        @searchQuery={{this.search}}
         @pageSize={{this.per_page}}
         @metaData={{this.model.followers.meta}}
+        @filterOptions={{this.filterOptions}}
         @widthConstraint="eq-container"
         @resizeMode="fluid"
         @fillMode="equal-column" />
