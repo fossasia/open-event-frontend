@@ -4,13 +4,13 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 import { hash } from 'rsvp';
 
 @classic
-export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
+export default class ViewRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken(model) {
     const groupTitle = model.group.name;
-    return groupTitle.concat(' - Events');
+    return groupTitle.concat(' - View');
   }
 
-  async model(params) {
+  model(params) {
     const filterOptions = [
       {
         name : 'deleted-at',
@@ -18,10 +18,6 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
         val  : null
       }
     ];
-
-    const group = await this.store.findRecord('group', params.group_id, {
-      include: 'events'
-    });
 
     return hash({
       filteredEvents: this.infinity.model('events', {
@@ -34,14 +30,10 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         sort         : 'name'
       }),
-      group,
-      groupEvents: group.query('events', {})
+      group: this.store.findRecord('group', params.group_id, {
+        include: 'events,follower,followers,user'
+      })
     });
   }
-
-  afterModel(model) {
-    if (this.authManager.currentUser.email !== model.group.user.get('email')  && !this.authManager.currentUser.isAdmin) {
-      this.transitionTo('index');
-    }
-  }
 }
+

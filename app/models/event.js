@@ -54,6 +54,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isChatEnabled             : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
   isDocumentEnabled         : attr('boolean', { defaultValue: false }),
+  isAnnounced               : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),

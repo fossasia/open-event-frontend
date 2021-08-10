@@ -82,7 +82,26 @@
           <i class="users icon"></i>
           ({{@group.followerCount}} {{t 'followers'}})
         </div>
-      </div>
+        {{#if @group.followers}}
+          <div class="d-flex content-center items-center wrap mt-4">
+            {{#each @group.followers as |follower index|}}
+              {{#if (lt index 6)}}
+                <a href={{if follower.user.isProfilePublic (href-to 'public.sessions.user.view' follower.user.id) '#'}}
+                class="pointer"
+                data-tooltip={{follower.user.resolvedName}}>
+                <img
+                class="ui tiny avatar image mb-2"
+                src={{or follower.user.thumbnailImageUrl follower.user.avatarUrl '/images/placeholders/avatar.png'}} />
+                </a>
+              {{else}}
+                {{#if (eq index 6)}}
+                  <span>{{t 'and'}} {{sub @group.followerCount index}} {{t 'others'}}</span>
+                {{/if}}
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/if}}
+    </div>
   </div>
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
 </div>
