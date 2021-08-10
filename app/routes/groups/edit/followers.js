@@ -42,7 +42,9 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin, A
       'page[number]' : params.page || 1
     };
     queryString = this.applySortFilters(queryString, params);
-    const group = await this.store.findRecord('group', params.group_id);
+    const group = await this.store.findRecord('group', params.group_id, {
+      include: 'events,user'
+    });
     const followers = await this.asArray(group.query('followers', queryString));
     return {
       followers,
@@ -51,7 +53,7 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin, A
   }
 
   afterModel(model) {
-    if (this.authManager.currentUser.email !== model.group.user.get('email')  && !this.authManager.currentUser.isAdmin) {
+    if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
       this.transitionTo('index');
     }
   }

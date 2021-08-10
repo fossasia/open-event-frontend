@@ -20,7 +20,7 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
     ];
 
     const group = await this.store.findRecord('group', params.group_id, {
-      include: 'events'
+      include: 'events,user'
     });
 
     return hash({
@@ -40,7 +40,7 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
   }
 
   afterModel(model) {
-    if (this.authManager.currentUser.email !== model.group.user.get('email')  && !this.authManager.currentUser.isAdmin) {
+    if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
       this.transitionTo('index');
     }
   }
