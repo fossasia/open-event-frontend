@@ -451,7 +451,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     addTicket(type, position) {
       const { event } = this.data;
       const salesStartDateTime = moment();
-      const salesEndDateTime = this.data.event.startsAt;
+      const salesEndDateTime = this.data.event.endsAt;
       this.data.event.tickets.pushObject(this.store.createRecord('ticket', {
         event,
         type,
