@@ -18,7 +18,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/groups/cell-group-name',
         actions         : {
-          deleteGroup: this.deleteGroup.bind(this),
+          deleteGroup  : this.deleteGroup.bind(this),
           restoreGroup : this.restoreGroup.bind(this)
         }
       },
