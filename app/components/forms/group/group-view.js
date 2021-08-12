@@ -18,13 +18,21 @@ export default class GroupView extends Component.extend(FormMixin) {
     return sortBy(this.group.events.toArray().filter(event => { return moment(event.endsAt) > moment()}), ['startsAt']).reverse();
   }
 
+  @computed('follower')
+  get isFollowed() {
+    return !!this.follower;
+  }
+
   @action
-  async follow() {
+  async toggleFollow() {
     const { group } = this;
-    const follower = group.belongsTo('follower').value();
     try {
-      if (follower) {
-        await follower.destroyRecord();
+      if (this.isFollowed) {
+        await this.follower.destroyRecord();
+        this.set('follower', null);
+        this.set('isFollowed', false);
+        this.group.followerCount--;
+        this.set('followers', this.followers.filter(follower => follower.user.get('id') !== this.authManager.currentUser.id));
         this.notify.info(
           this.l10n.t('You have successfully unfollowed this group.')
         );
@@ -48,12 +56,18 @@ export default class GroupView extends Component.extend(FormMixin) {
           return;
         }
         const followGroup = await this.store.createRecord('user-follow-group', {
-          group
+          group,
+          user: this.authManager.currentUser
         });
         await followGroup.save();
+        this.set('isFollowed', true);
+        this.set('follower', followGroup);
+        this.group.followerCount++;
+        this.followers.pushObject(followGroup);
         this.notify.success(this.l10n.t('You have successfully followed this group.'));
       }
     } catch (e) {
+      console.error(e);
       this.errorHandler.handle(e);
     }
   }
