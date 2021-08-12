@@ -18,7 +18,8 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/admin/groups/cell-group-name',
         actions         : {
-          deleteGroup: this.deleteGroup.bind(this)
+          deleteGroup: this.deleteGroup.bind(this),
+          restoreGroup : this.restoreGroup.bind(this)
         }
       },
       {
@@ -49,6 +50,28 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       }
     ];
   }
+
+  @action
+  async restoreGroup(group_id) {
+    this.set('isLoading', true);
+    try {
+      const group =  this.store.peekRecord('group', group_id, { backgroundReload: false });
+      group.set('deletedAt', null);
+      group.save({ adapterOptions: { getTrashed: true } });
+      this.notify.success(this.l10n.t('Group has been restored successfully.'),
+        {
+          id: 'group_restored'
+        });
+    } catch (e) {
+      console.error('Error while restoring event', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'restore_error'
+        });
+    }
+    this.set('isLoading', false);
+  }
+
 
   @action
   async deleteGroup(groupId) {
