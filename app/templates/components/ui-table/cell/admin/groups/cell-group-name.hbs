@@ -11,4 +11,9 @@
       <i class="trash icon"></i>
     </UiPopup>
   {{/if}}
+  {{#if @extraRecords.deletedAt}}
+    <UiPopup @content={{t "Restore"}} @class="ui icon button" @click={{action @props.actions.restoreGroup @extraRecords.id}}>
+      <i class="redo icon"></i>
+    </UiPopup>
+  {{/if}}
 </div>
