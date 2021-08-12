@@ -10,11 +10,17 @@ export default class SettingsRoute extends Route.extend(AuthenticatedRouteMixin)
     return groupTitle.concat(' - Settings');
   }
 
-  model(params) {
+  async model(params) {
     return hash({
       group: this.store.findRecord('group', params.group_id, {
-        include: 'events'
+        include: 'events,user'
       })
     });
+  }
+
+  afterModel(model) {
+    if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
+      this.transitionTo('index');
+    }
   }
 }

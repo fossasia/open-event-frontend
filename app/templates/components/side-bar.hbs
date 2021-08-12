@@ -1,6 +1,6 @@
 <div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
     <div class="search-bar d-flex items-center space-between m-2 p-2">
-      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search Events"}} />
+      <Input @class="prompt" @type="text" @key-up={{"handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i class="search icon"></i>
     </div>
   {{#if this.session.isAuthenticated}}
@@ -17,7 +17,7 @@
     </div>
     <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
     <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
-    <a href="{{href-to 'groups.list'}}" class="item">{{t 'Groups'}}</a>
+    <a href="{{href-to 'my-groups.list'}}" class="item">{{t 'Groups'}}</a>
     <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
     <div class="divider"></div>
     <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>

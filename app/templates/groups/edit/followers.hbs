@@ -22,6 +22,9 @@
       <LinkTo @route="groups.edit.settings" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
         {{t 'Settings'}}
       </LinkTo>
+      <LinkTo @route="groups.team" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
+        {{t 'Team'}}
+      </LinkTo>
     </TabbedNavigation>
   </div>
 </div>
@@ -33,9 +36,10 @@
     @columns={{this.followersColumn}}
     @rows={{this.model.followers.data}}
     @currentPage={{this.page}}
-    @hideSearchBox={{true}}
+    @searchQuery={{this.search}}
     @pageSize={{this.per_page}}
     @metaData={{this.model.followers.meta}}
+    @filterOptions={{this.filterOptions}}
     @widthConstraint="eq-container"
     @resizeMode="fluid"
     @fillMode="equal-column" />
