@@ -73,17 +73,17 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
       });
   }
 
-  @computed('events.[]', 'group.events.[]')
+  @computed('events.[]', 'groupEvents.[]')
   get remainingEvents() {
-    return sortBy(this.events.toArray().filter(event => !this.group.events.toArray().includes(event)), ['startsAt']).reverse();
+    return sortBy(this.events.toArray().filter(event => !this.groupEvents.toArray().includes(event)), ['startsAt']).reverse();
   }
 
-  @computed('events.[]', 'group.events.[]')
+  @computed('events.[]', 'groupEvents.[]')
   get pastEvents() {
     return sortBy(this.remainingEvents.toArray().filter(event => { return moment(event.endsAt) < moment()}), ['startsAt']).reverse();
   }
 
-  @computed('events.[]', 'group.events.[]')
+  @computed('events.[]', 'groupEvents.[]')
   get upcomingEvents() {
     return sortBy(this.remainingEvents.toArray().filter(event => { return moment(event.endsAt) > moment()}), ['startsAt']).reverse();
   }
@@ -114,7 +114,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
           {
             id: 'group_save'
           });
-        this.router.transitionTo('groups.list');
+        this.router.transitionTo('my-groups.list');
       } catch (e) {
         console.error('Error while saving group', e);
         this.errorHandler.handle(e);

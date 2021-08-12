@@ -452,7 +452,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     async addTicket(type, position) {
       const { event } = this.data;
       const salesStartDateTime = moment();
-      const salesEndDateTime = this.data.event.startsAt;
+      const salesEndDateTime = this.data.event.endsAt;
       if (type === 'registration') {
         if (this.data.event.isOneclickSignupEnabled) {
           this.data.event.isOneclickSignupEnabled = false;
