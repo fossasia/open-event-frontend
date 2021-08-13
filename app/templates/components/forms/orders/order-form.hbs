@@ -313,7 +313,11 @@
         </GetText>
       </p>
       <div class="center aligned">
-        <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
+        {{#if this.data.event.isOneclickSignupEnabled}}
+          <button type="submit" class="ui violet submit button">{{t 'One Click Signup'}}</button>
+        {{else}}
+          <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
+        {{/if}}
       </div>
      </div>
   </div>
