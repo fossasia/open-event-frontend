@@ -1,11 +1,10 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default class extends Route.extend(EmberTableRouteMixin, AuthenticatedRouteMixin) {
+export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
-    return this.l10n.t('Groups');
+    return this.l10n.t('My Groups');
   }
 
   async model(params) {
