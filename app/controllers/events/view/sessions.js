@@ -17,7 +17,7 @@ export default class extends Controller {
     return SESSION_STATES;
   }
 
-    @action
+  @action
   export(status) {
     this.set('isLoading', true);
     const payload = {
@@ -39,40 +39,40 @@ export default class extends Controller {
   }
 
 
-    requestLoop(exportJobInfo) {
-      run.later(() => {
-        this.loader
-          .load(exportJobInfo.task_url, { withoutPrefix: true })
-          .then(exportJobStatus => {
-            if (exportJobStatus.state === 'SUCCESS') {
-              window.location = exportJobStatus.result.download_url;
-              this.notify.success(this.l10n.t('Download Ready'),
-                {
-                  id: 'download_ready'
-                });
-            } else if (exportJobStatus.state === 'WAITING') {
-              this.requestLoop(exportJobInfo);
-              this.notify.alert(this.l10n.t('Task is going on.'),
-                {
-                  id: 'task_going'
-                });
-            } else {
-              this.notify.error(this.l10n.t('CSV Export has failed.'),
-                {
-                  id: 'csv_fail'
-                });
-            }
-          })
-          .catch(() => {
+  requestLoop(exportJobInfo) {
+    run.later(() => {
+      this.loader
+        .load(exportJobInfo.task_url, { withoutPrefix: true })
+        .then(exportJobStatus => {
+          if (exportJobStatus.state === 'SUCCESS') {
+            window.location = exportJobStatus.result.download_url;
+            this.notify.success(this.l10n.t('Download Ready'),
+              {
+                id: 'download_ready'
+              });
+          } else if (exportJobStatus.state === 'WAITING') {
+            this.requestLoop(exportJobInfo);
+            this.notify.alert(this.l10n.t('Task is going on.'),
+              {
+                id: 'task_going'
+              });
+          } else {
             this.notify.error(this.l10n.t('CSV Export has failed.'),
               {
-                id: 'csv_export_fail'
+                id: 'csv_fail'
               });
-          })
-          .finally(() => {
-            this.set('isLoading', false);
-          });
-      }, 3000);
-    }
+          }
+        })
+        .catch(() => {
+          this.notify.error(this.l10n.t('CSV Export has failed.'),
+            {
+              id: 'csv_export_fail'
+            });
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    }, 3000);
+  }
 }
 
