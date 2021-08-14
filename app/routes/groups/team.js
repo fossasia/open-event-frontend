@@ -8,7 +8,7 @@ export default class TeamRoute extends Route.extend(AuthenticatedRouteMixin) {
   async model(params) {
     // How to query role-invites here. And roles to be include with group
     const group = await this.store.findRecord('group', params.group_id, {
-      include: 'events,roles'
+      include: 'events,roles,user'
     });
     return {
       group,
