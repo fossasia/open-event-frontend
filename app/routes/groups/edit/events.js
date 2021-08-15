@@ -10,7 +10,7 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
     return groupTitle.concat(' - Events');
   }
 
-  model(params) {
+  async model(params) {
     const filterOptions = [
       {
         name : 'deleted-at',
@@ -18,6 +18,10 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
         val  : null
       }
     ];
+
+    const group = await this.store.findRecord('group', params.group_id, {
+      include: 'events,user'
+    });
 
     return hash({
       filteredEvents: this.infinity.model('events', {
@@ -30,9 +34,14 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         sort         : 'name'
       }),
-      group: this.store.findRecord('group', params.group_id, {
-        include: 'events'
-      })
+      group,
+      groupEvents: group.query('events', {})
     });
+  }
+
+  afterModel(model) {
+    if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
+      this.transitionTo('index');
+    }
   }
 }

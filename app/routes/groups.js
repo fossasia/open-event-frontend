@@ -5,6 +5,6 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 @classic
 export default class MyGroupsRoute extends Route.extend(AuthenticatedRouteMixin) {
   titleToken() {
-    return this.l10n.t('My Groups');
+    return this.l10n.t('Groups');
   }
 }
