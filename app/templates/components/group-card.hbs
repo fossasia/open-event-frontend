@@ -1,7 +1,7 @@
 <div class="event wide ui grid row">
   {{#unless this.device.isMobile}}
     <div class="ui card three wide computer six wide tablet column">
-      <a class="image" href={{href-to 'groups.view' @group.id}}>
+      <a class="image" href={{href-to 'group-public' @group.id}}>
         <Widgets::SafeImage @src={{if @group.bannerUrl  @group.bannerUrl "/images/group.png"}} />
       </a>
     </div>
@@ -10,14 +10,14 @@
     <div class="main content">
       <div class="inline field">
         <div class="mb-1">
-          <a href={{href-to 'groups.view' @group.id}} class="header black-text">{{@group.name}}</a>
+          <a href={{href-to 'group-public' @group.id}} class="header black-text">{{@group.name}}</a>
           <span class="ml-2 ui basic count text blue label w-content-button">{{@group.followerCount}} {{t 'followers'}}</span>
         </div>
         <div class="meta mb-2 mt-4 word-break">
           {{sanitize this.about}}
         </div>
         {{#if (not @followedGroups)}}
-          <LinkTo @route="groups.view" @model={{@group.id}}>
+          <LinkTo @route="group-public" @model={{@group.id}}>
             <UiPopup @content={{t "View"}} @class="ml-2 ui circular icon button compact white" @position="left center">
                 <i class="eye icon"></i>
             </UiPopup>
@@ -28,7 +28,7 @@
             </UiPopup>
           </LinkTo>
           <LinkTo @route="groups.edit.settings" @model={{@group.id}}>
-            <UiPopup @content={{t "Edit"}} @class="ml-2 ui circular icon button compact positive" @position="top center">
+            <UiPopup @content={{t "Settings"}} @class="ml-2 ui circular icon button compact positive" @position="top center">
                 <i class="setting icon"></i>
             </UiPopup>
           </LinkTo>

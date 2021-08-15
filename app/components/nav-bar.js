@@ -5,18 +5,32 @@ import Component from '@ember/component';
 @classic
 export default class NavBar extends Component {
   @computed('session.currentRouteName')
+  get isGroupRoute() {
+    return (String(this.session.currentRouteName).includes('group'));
+  }
+
+  @computed('session.currentRouteName')
   get isNotEventPageRoute() {
+    if (this.isGroupRoute) {
+      return true;
+    }
     return !(String(this.session.currentRouteName).includes('public'));
   }
 
   @computed('session.currentRouteName')
   get isNotWizardPageRoute() {
+    if (this.isGroupRoute) {
+      return true;
+    }
     return !(String(this.session.currentRouteName).includes('edit'))
     && String(this.session.currentRouteName) !== 'create';
   }
 
   @computed('session.currentRouteName')
   get isNotExplorePageRoute() {
+    if (this.isGroupRoute) {
+      return true;
+    }
     return !(String(this.session.currentRouteName).includes('explore'));
   }
 
