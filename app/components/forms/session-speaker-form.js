@@ -106,31 +106,6 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        slidesUrlRequired: {
-          identifier : 'session_slidesUrl_required',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter a url')
-            },
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
-        slidesUrl: {
-          identifier : 'session_slidesUrl',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
         videoUrlRequired: {
           identifier : 'session_videoUrl_required',
           rules      : [

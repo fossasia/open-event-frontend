@@ -29,7 +29,6 @@ export default class Session extends ModelBase.extend({
   gitlab        : attr('string'),
   linkedin      : attr('string'),
   instagram     : attr('string'),
-  slidesUrl     : attr('string'),
   slides        : attr(),
   videoUrl      : attr('string'),
   audioUrl      : attr('string'),

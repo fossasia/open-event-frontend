@@ -20,15 +20,6 @@ export default class SessionItem extends Component {
     return extractYoutubeUrl(this.args.session.videoUrl);
   }
 
-  get pdfLink() {
-    return this.args.session.slidesUrl?.indexOf('.pdf') > -1;
-  }
-
-  get pptLink() {
-    const { slidesUrl } = this.args.session;
-    return slidesUrl?.indexOf('.pptx') > -1 || slidesUrl?.indexOf('.ppt') > -1;
-  }
-
   get slidesUploaded() {
     const url = this.args.session.slidesUrl;
     return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');

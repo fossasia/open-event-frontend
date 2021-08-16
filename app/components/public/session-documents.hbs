@@ -5,7 +5,7 @@
   <div class="content m-2">
     <div class="d-flex flex-row mb-2 mr-2">
       {{#each @session.slides as |slide|}}
-        <button class="ui button fluid {{if (eq this.currDoc slide.link) 'red' 'blue'}}" style="width:auto;" {{action 'selectedDocument' slide.link}}>
+        <button class="ui button fluid {{if (eq this.currDoc slide.link) 'grey' 'white'}}" style="width:auto;" {{action 'selectedDocument' slide.link}}>
           {{slide.name}}
         </button>
       {{/each}} 

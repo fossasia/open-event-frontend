@@ -40,7 +40,6 @@ export const SESSION_FORM_FIELDS = {
   longAbstract  : tn.t('Long Abstract'),
   language      : tn.t('Language'),
   level         : tn.t('Level'),
-  slidesUrl     : tn.t('Slides'),
   slides        : tn.t('Slides'),
   videoUrl      : tn.t('Video'),
   audioUrl      : tn.t('Audio'),
@@ -130,7 +129,7 @@ export default ModelBase.extend({
 
   isUrlField: computed('type', 'fieldIdentifier', function() {
     return this.type === 'text'
-    && (['website', 'twitter', 'github', 'gitlab', 'mastodon', 'facebook', 'linkedin', 'slidesUrl', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
+    && (['website', 'twitter', 'github', 'gitlab', 'mastodon', 'facebook', 'linkedin', 'instagram', 'videoUrl', 'audioUrl'].includes(this.fieldIdentifier));
   }),
 
   isRequiredObserver: observer('isRequired', function() {
