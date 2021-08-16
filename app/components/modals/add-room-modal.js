@@ -21,6 +21,16 @@ export default class AddRoomModal extends ModalBase.extend(FormMixin) {
     });
   }
 
+  @action
+  async toggle() {
+    try {
+      await this.confirm.prompt(this.l10n.t('If you hide this microlocation you will not be able to schedule sessions in it. The location will still be available for online events without scheduled sessions, e.g. break-out or discussion rooms. '));
+    } catch {
+      return;
+    }
+    this.room.hiddenInScheduler = !this.room.hiddenInScheduler;
+  }
+
   onOpen() {
     this.set('room', this.store.createRecord('microlocation', {
       event: this.event

@@ -22,7 +22,7 @@
       <UiCheckbox
         class="toggle"
         @checked={{this.room.hiddenInScheduler}}
-        @onChange={{action (mut this.room.hiddenInScheduler)}} />
+        @onChange={{action "toggle"}} />
     </div>     
   </form>
 </div>
