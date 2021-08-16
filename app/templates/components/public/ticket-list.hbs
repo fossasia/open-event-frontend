@@ -13,7 +13,9 @@
     </thead>
     <tbody>
       {{#each this.tickets as |ticket|}}
+      {{#if (not (includes ticket.type 'Registration'))}}
         {{#unless ticket.isHidden}}
+        {{#if (not-eq ticket.type 'registration')}}
           <tr>
             <td>
               <div class="ui small">
@@ -112,7 +114,9 @@
                 @amount={{ticket.subTotal}} />
             </td>
           </tr>
+          {{/if}}
         {{/unless}}
+      {{/if}}
       {{/each}}
     </tbody>
     <tfoot class="full-width">
