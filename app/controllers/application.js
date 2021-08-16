@@ -56,7 +56,7 @@ export default class ApplicationController extends Controller {
 
   @action
   search() {
-    this.transitionToRoute('explore', { queryParams: { event_name: this.event_name } });
+    this.transitionToRoute('explore.events', { queryParams: { name: this.event_name } });
     this.event_name = null;
   }
 

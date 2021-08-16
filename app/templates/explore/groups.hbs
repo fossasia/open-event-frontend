@@ -1,0 +1,35 @@
+<div class="ui stackable grid">
+  <div class="three wide column"></div>
+  <div class="thirteen wide column">
+    <div>
+      <div class="ui icon input" style="width: 100%;">
+          <Input
+            @name="name"
+            @value={{this.name}}
+            @type="text"
+            @placeholder={{t "Enter Group Name"}} />
+          <i class="search icon"></i>
+      </div>
+    </div>
+    <TabbedNavigation>
+      <LinkTo @route="explore.events" @query={{hash name=this.name}} class="item">
+        {{t 'Events'}}
+      </LinkTo>
+      <LinkTo @route="explore.groups" @query={{hash name=this.name}} class="item">
+        {{t 'Groups'}}
+      </LinkTo>
+    </TabbedNavigation>
+    <h1 class="ui header">{{t 'Groups'}}</h1>
+    {{#each this.filteredGroups as |group|}}
+      <GroupCard @group={{group}} @followedGroups={{true}} />
+      <div class="ui hidden divider"></div>
+    {{else}}
+      <div class="ui disabled header">{{t 'No groups found for selected filters'}}</div>
+    {{/each}}
+    <InfinityLoader @infinityModel={{this.filteredGroups}}>
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
+  </div>
+</div>

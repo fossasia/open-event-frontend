@@ -1,5 +1,5 @@
 <div class="header">
-  {{t 'Amount to be paid:'}} {{currency-symbol this.currency}} {{amount}}
+  {{t 'Amount to be paid:'}} <CurrencyAmount @currency={{this.currency}} @amount={{amount}}/>
 </div>
 
 <div class="content">

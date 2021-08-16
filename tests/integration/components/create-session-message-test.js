@@ -9,6 +9,6 @@ module('Integration | Component | create session message', function(hooks) {
   test('it renders', async function(assert) {
     this.set('shouldShowMessage', true);
     await render(hbs`{{create-session-message shouldShowMessage=shouldShowMessage}}`);
-    assert.ok(this.element.innerHTML.trim().includes('Your Speaker Details have been saved'));
+    assert.dom(this.element).includesText('Your Speaker Details have been saved');
   });
 });
