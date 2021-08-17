@@ -80,7 +80,7 @@
             <UiCheckbox
               class="toggle"
               @checked={{microlocation.hiddenInScheduler}}
-              @onChange={{action (mut microlocation.hiddenInScheduler)}} />
+              @onChange={{action "toggle" microlocation }}/>
           </div>
           <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
             {{#if (not-eq index 0)}}
