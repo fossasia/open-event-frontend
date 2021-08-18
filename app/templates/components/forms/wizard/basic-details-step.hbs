@@ -238,7 +238,7 @@
             {{/each}}
           {{else}}
             <h3 class="text muted weight-500">
-              {{t 'You don\'t have any tickets added. Please add atleast one ticket to publish your event.'}}
+              {{t 'You don\'t have any tickets added. Please add at least one ticket to publish your event.'}}
             </h3>
           {{/if}}
         </div>
@@ -267,13 +267,13 @@
       </div>
     {{else}}
       <div class="field">
-        <label class="required">{{t 'Ticketing System'}}</label>
+        <label class="required">{{t 'Registration System'}}</label>
         <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
           {{#if this.data.event.tickets}}
             <div class="ui stackable celled five column grid ticket-header">
               <div class="row weight-600">
                 <div class="five wide column">
-                  <label class="required">{{t 'Ticket Name'}}</label>
+                  <label class="required">{{t 'Registration Name'}}</label>
                 </div>
                 <div class="three wide column">
                   <label class="required">{{t 'Price'}}</label>
@@ -296,11 +296,11 @@
                 @canMoveDown={{not-eq index (dec this.ticketCount)}}
                 @moveTicketUp={{action "moveTicket" ticket index "up"}}
                 @moveTicketDown={{action "moveTicket" ticket index "down"}}
-                @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
+                @removeTicket={{confirm "Are you sure you wish to delete this registration ?" (action "removeTicket" ticket)}}/>
             {{/each}}
           {{else}}
             <h3 class="text muted weight-500">
-              {{t 'You don\'t have any tickets added. Please add atleast one ticket to publish your event.'}}
+              {{t 'You don\'t have any registrations added. Please add at least one registration to publish your event.'}}
             </h3>
           {{/if}}
         </div>
