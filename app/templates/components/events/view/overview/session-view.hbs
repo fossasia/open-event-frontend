@@ -13,6 +13,12 @@
             </div>     
             {{#if field.isLongText}}
                 <div class="column eleven wide">{{sanitize (get @session field.fieldIdentifier)}}</div>
+            {{else if (eq field.fieldIdentifier 'slides')}}
+                <div class="column eleven wide">
+                  {{#each @session.slides as |document|}}
+                     <a href="{{ document.link }}" target="_blank" rel="noopener" class="mr-4"> {{document.name}}</a>
+                  {{/each}}   
+                </div>
             {{else if (eq field.fieldIdentifier 'language')}}
                 <div class="column eleven wide">{{@session.language}}</div>
             {{else if (eq field.fieldIdentifier 'track')}}
@@ -30,7 +36,7 @@
                     </div>
                 </div>
                 <div class="column eleven wide">{{@session.sessionType.length}}</div>
-            {{else if (or (eq field.fieldIdentifier 'audioUrl') (eq field.fieldIdentifier 'videoUrl') (eq field.fieldIdentifier 'slidesUrl'))}}
+            {{else if (or (eq field.fieldIdentifier 'audioUrl') (eq field.fieldIdentifier 'videoUrl'))}}
                 <div class="column eleven wide"><a class="truncate" href={{get @session field.fieldIdentifier}} target="_blank" rel="noopener">{{get @session field.fieldIdentifier}}</a></div>
             {{else if (get @session.complexFieldValues field.fieldIdentifier)}}
                 <div class="column eleven wide">{{get @session.complexFieldValues field.fieldIdentifier}}</div>
