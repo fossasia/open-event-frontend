@@ -4,7 +4,11 @@
     @timezone={{this.model.event.timezone}}
     @expanded={{true}}
     @hideSessionLink={{true}} />
-
+  <div class="ui divider"></div>
+  {{#if this.model.slides}}
+    <Public::SessionDocuments
+      @session={{this.model}} />
+  {{/if}}
   {{#if this.model.favourites}}
     <div class="ui divider"></div>
     <div class="ui header">{{t 'Attendees'}} ({{this.model.favourites.length}})</div>
