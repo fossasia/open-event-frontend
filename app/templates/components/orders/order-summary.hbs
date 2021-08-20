@@ -43,7 +43,13 @@
       <thead>
         <tr>
           {{#if (eq this.data.amount 0)}}
-            <th class="ui aligned two wide">{{t 'Ticket Type'}}</th>
+            <th class="ui aligned two wide">
+              {{#if this.event.isOneclickSignupEnabled}}
+                {{t 'Registration Type'}}
+              {{else}} 
+                {{t 'Ticket Type'}}
+              {{/if}} 
+               </th>
             {{#if this.data.discountCode}}
               <th class="two wide">{{t 'Price'}}</th>
               <th class=" two wide">{{t 'Discount'}}</th>
@@ -51,7 +57,13 @@
             {{/if}}
             <th class="two wide">{{t 'Quantity'}}</th>
           {{else}}
-            <th class="four wide">{{t 'Ticket Type'}}</th>
+            <th class="four wide">
+              {{#if this.event.isOneclickSignupEnabled}}
+                {{t 'Registration Type'}}
+              {{else}} 
+                {{t 'Ticket Type'}}
+              {{/if}}
+            </th>
             <th class="four wide">{{t 'Price'}}</th>
             {{#if this.data.discountCode}}
               <th class="ui aligned two wide">{{t 'Discount'}}</th>

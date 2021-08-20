@@ -6,13 +6,24 @@
     <div class="ui padded segment">
       <h4 class="ui horizontal divider header">
         <i class="ticket icon"></i>
-        {{t 'Ticket Holder\'s Information'}}
+        {{#if @event.isOneclickSignupEnabled}}
+          {{t 'Registration Holder\'s Information'}}
+        {{else}}
+          {{t 'Ticket Holder\'s Information'}}
+        {{/if}}
       </h4>
       {{#each this.holders as |holder|}}
         <div class="field">
           <div class="inline field">
             <i class="user icon"></i>
-            <label>{{t 'Ticket Holder '}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+            <label>
+              {{#if @event.isOneclickSignupEnabled}}
+                {{t 'Registration Holder'}}
+              {{else}}
+                {{t 'Ticket Holder'}}
+              {{/if}}
+              {{t ' -for- '}}{{holder.ticket.name}}
+            </label>
             {{#if (eq this.data.status 'completed')}}
              <button class="ui right floated button {{if this.device.isMobile 'fluid'}} button"
                 {{action this.downloadTicketForAttendee @event.name holder.order.id holder.id }}>
