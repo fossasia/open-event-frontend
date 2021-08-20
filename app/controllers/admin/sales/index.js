@@ -8,7 +8,7 @@ import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-co
 export default class IndexController extends Controller.extend(AdminSalesMixin, EmberTableControllerMixin) {
 
 @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
-// sort_by = 'total-sales';
+sort_by = 'starts-at';
 sort_dir = 'DSC';
 per_page = 10;
 get columns() {
