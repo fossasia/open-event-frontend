@@ -18,10 +18,11 @@ export default class TeamRoute extends Route.extend(AuthenticatedRouteMixin) {
 
   afterModel(model) {
     function isUserOwnerOrOrganizer(roles, userEmail, ownerEmail) {
-      if(userEmail === ownerEmail) return true;
-      else return roles.toArray().some(role => {
-        if(userEmail === role.email && role.accepted) return true;
-      });
+      if (userEmail === ownerEmail) {return true} else {
+        return roles.toArray().some(role => {
+          if (userEmail === role.email && role.accepted) {return true}
+        });
+      }
     }
     if (!isUserOwnerOrOrganizer(model.group.roles, this.authManager.currentUser.email, model.group.user.get('email')) && !this.authManager.currentUser.isAdmin) {
       this.transitionTo('index');
