@@ -10,7 +10,6 @@ export default class extends Controller {
 
   @computed('model.group.roles.@each', 'roleType')
   get roleInvites() {
-    console.log(this.model.group.roles.filterBy('accepted', this.roleType));
     return this.model.group.roles.filterBy('accepted', this.roleType);
   }
 
@@ -84,6 +83,6 @@ export default class extends Controller {
 
   @action
   filter(type) {
-    this.set('roleType', type === 'accepted'? true : false);
+    this.set('roleType', type === 'accepted' ? true : false);
   }
 }
