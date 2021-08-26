@@ -6,37 +6,35 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
-    <h2>{{t 'Registration for event.'}}</h2>
+    <h2>{{t 'Registration'}}</h2>
     <table class="ui single line table stackable" style="margin-bottom: 0;width:50%">
-    <thead class="full-width">
-      <tr>
-        <th>{{t 'Name'}} <i class="ticket alternate icon"></i> </th>
-        <th>{{t 'Type'}}</th>
-        <th></th>
-      </tr>
-    </thead>
     {{#each this.model.tickets as |ticket| }}
       <tbody>
       {{#if (includes ticket.type 'Registration')}}
         <tr>
-          <td>{{ticket.name}}</td>
+          <td>
+            <i role="button" {{action "selectTicket" ticket}} class="circle {{if (eq this.selectedRegistration ticket) 'blue' 'outline'}} large icon"></i>
+          </td>
+          <td>{{ticket.name}}
+          <br/>
+          ({{ticket.description}})
+          </td>
           <td>
             {{#if (includes ticket.type 'free')}}
               {{t 'Free'}}
             {{else if (includes ticket.type 'paid')}}
-              {{t 'Paid'}}
+              <CurrencyAmount @amount={{ticket.price}} @currency={{this.model.event.paymentCurrency}} />
             {{else}}
               {{t 'Donation'}}
             {{/if}}
           </td>       
-          <td>
-            <i role="button" {{action "oneClickSignup" ticket}} class="arrow circle right large violet icon"></i>
-          </td>
         </tr>
       {{/if}}
       </tbody>
     {{/each}}
     </table>
+    <br/>
+    <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:50%" {{action "oneClickSignup" this.selectedRegistration}}> Register Now </button>
   {{else}}
     {{#if (or this.model.event.ticketUrl this.model.tickets)}}
       <div class="tickets mt-16" id="tickets">
