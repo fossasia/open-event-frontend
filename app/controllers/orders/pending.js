@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import ENV from 'open-event-frontend/config/environment';
+import { loadStripe } from '@stripe/stripe-js';
 
 @classic
 export default class PendingController extends Controller {
@@ -122,6 +123,7 @@ export default class PendingController extends Controller {
       'data': {
         'attributes': {
           'stripe'            : token.id,
+          'stripe_version'    : 'legacy',
           'paypal_payer_id'   : null,
           'paypal_payment_id' : null
         },
@@ -140,6 +142,59 @@ export default class PendingController extends Controller {
         } else {
           this.notify.error(charge.data.attributes.message);
         }
+      })
+      .catch(e => {
+        console.warn(e);
+        if ('errors' in e) {
+          this.notify.error(this.l10n.tVar(e.errors[0].detail),
+            {
+              id: 'unexpected_error_occur'
+            });
+        } else {
+          this.notify.error(this.l10n.tVar(e),
+            {
+              id: 'unexpected_error_occur'
+            });
+        }
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+  }
+
+  @action
+  async StripePay() {
+    this.set('isLoading', true);
+    const { order } = this.model;
+    let chargePayload = {
+      'data': {
+        'attributes': {
+          'stripe'            : null,
+          'stripe_version'    : 'new',
+          'paypal_payer_id'   : null,
+          'paypal_payment_id' : null
+        },
+        'type': 'charge'
+      }
+    };
+    const config = {
+      skipDataTransform: true
+    };
+    chargePayload = JSON.stringify(chargePayload);
+    this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
+      .then(async(charge) => {
+        const stripe = await loadStripe(order.event.get('stripeAuthorization').get('stripePublishableKey'));
+        stripe.redirectToCheckout({
+          // Make the id field from the Checkout Session creation API response
+          // available to this file, so you can provide it as argument here
+          // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+          sessionId: charge.data.attributes.message
+        }).then(function (result) {
+          // If `redirectToCheckout` fails due to a browser or network
+          // error, display the localized error message to your customer
+          // using `result.error.message`.
+          console.log(result);
+        });
       })
       .catch(e => {
         console.warn(e);

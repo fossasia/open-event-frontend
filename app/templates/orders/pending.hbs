@@ -52,6 +52,11 @@
               {{t 'Pay Now'}}
               <i class="credit card icon"></i>
             </StripeCheckout>
+
+            <button class="ui button labeled icon green" {{action 'StripePay'}} >
+              {{t 'Pay Now'}}
+            </button>
+
           {{/if}}
           {{#if this.isPaypal}}
             <div class='paypal-button ui fluid button'>
