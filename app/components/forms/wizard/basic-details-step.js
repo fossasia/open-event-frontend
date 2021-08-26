@@ -109,7 +109,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   hasPaidTickets: computed('data.event.tickets.@each.type', function() {
-    return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
+    return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation' || ticket.type === 'paidRegistration' || ticket.type === 'donationRegistration').length > 0;
   }),
 
   ticketCount: computed('data.event.tickets.[]', 'deletedTickets.[]', function() {
