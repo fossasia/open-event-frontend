@@ -9,11 +9,11 @@
     <h2>{{t 'Registration'}}</h2>
     <table class="ui single line table stackable" style="margin-bottom: 0;width:50%">
     {{#each this.model.tickets as |ticket| }}
-      <tbody>
+      <tbody onclick={{action "selectTicket" ticket}} style="pointer:cursor">
       {{#if (includes ticket.type 'Registration')}}
         <tr>
           <td>
-            <i role="button" {{action "selectTicket" ticket}} class="circle {{if (eq this.selectedRegistration ticket) 'blue' 'outline'}} large icon"></i>
+            <i role="button" class="circle {{if (eq this.selectedRegistration ticket) 'blue' 'outline'}} large icon"></i>
           </td>
           <td>{{ticket.name}}
           <br/>
