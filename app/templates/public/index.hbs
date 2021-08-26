@@ -9,6 +9,7 @@
     <h2>{{t 'Registration'}}</h2>
     <table class="ui single line table stackable" style="margin-bottom: 0;width:50%">
     {{#each this.model.tickets as |ticket| }}
+      {{!-- template-lint-disable no-invalid-interactive --}}
       <tbody onclick={{action "selectTicket" ticket}} style="pointer:cursor">
       {{#if (includes ticket.type 'Registration')}}
         <tr>
