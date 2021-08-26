@@ -1,27 +1,46 @@
 <GroupNav @team={{true}} @group={{this.model.group}} />
-<div class="ui sixteen wide column container">
+<div class="ui sixteen wide column container ">
 <div class="content d-flex" style="align-items: center;">
   <h2 class="header">{{t 'Team Members'}}</h2>
   <button class="ui blue button ml-auto" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
 </div>
-
+<div class="content">
+  <button class="ui {{if (eq this.roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
+  <button class="ui {{if (eq this.roleType 'pending') 'active'}} button" {{action 'filter' 'pending'}}>{{t 'Invited'}}</button>
+</div>
 <table class="ui left aligned stackable table">
   <thead>
     <tr>
       <th>{{t 'User (Email)'}}</th>
       <th>{{t 'Role'}}</th>
-      <th>{{t 'Status'}}</th>
+      <th>{{t 'Options'}}</th>
     </tr>
   </thead>
   <tbody>
-    {{#each this.model.group.roles as |roleDetail|}}
+    {{#each this.roleInvites as |roleDetail|}}
       <tr>
         <td>{{roleDetail.email}}</td>
         <td>{{roleDetail.role.titleName}}</td>
         {{#if roleDetail.accepted}}
           <td>{{t 'Accepted'}}</td>
         {{else}}
-          <td>{{t 'Pending'}}</td>
+        <td>
+          <div class="ui horizontal compact basic buttons">
+            <UiPopup
+              @content={{t "Delete"}}
+              @class="ui icon button"
+              @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleDetail))}}>
+              <i class="trash icon"></i>
+            </UiPopup>
+            <UiPopup
+              @content={{t "Resend invite"}}
+              @click={{action "resendInvite" roleDetail}}
+              @class="ui icon button"
+              @position="top center">
+              <i class="mail outline icon"></i>
+            </UiPopup>
+          </div>
+        </td>
         {{/if}}
       </tr>
     {{/each}}

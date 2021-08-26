@@ -1,9 +1,18 @@
+import { tracked } from '@glimmer/tracking';
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 export default class extends Controller {
 
   @service errorHandler;
+
+  @tracked roleType = true;
+
+  @computed('model.group.roles.@each', 'roleType')
+  get roleInvites() {
+    console.log(this.model.group.roles.filterBy('accepted', this.roleType));
+    return this.model.group.roles.filterBy('accepted', this.roleType);
+  }
 
   @action
   openAddUserRoleModal() {
@@ -29,5 +38,52 @@ export default class extends Controller {
       .finally(() => {
         this.set('isLoading', false);
       });
+  }
+
+  @action
+  async resendInvite(invite) {
+    this.set('isLoading', true);
+    try {
+      const res = await this.loader.post('/group-role-invites/' + invite.id + '/resend-invite');
+      if (res.success) {
+        this.notify.success(this.l10n.t('Invite resent successfully'),
+          {
+            id: 'resend_invite_succ'
+          });
+      } else {
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+      }
+    } catch (error) {
+      console.error('Error while resending invite', error);
+      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+    } finally {
+      this.set('isLoading', false);
+    }
+  }
+
+  @action
+  deleteUserRole(groupRole) {
+    this.set('isLoading', true);
+    groupRole.destroyRecord()
+      .then(() => {
+        this.notify.success(this.l10n.t('Role deleted successfully'), {
+          id: 'del_role_succ'
+        });
+        this.model.group.roles.removeObject(groupRole);
+      })
+      .catch(e => {
+        console.error('Error while deleting role', e);
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
+          id: 'err_man_role'
+        });
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+  }
+
+  @action
+  filter(type) {
+    this.set('roleType', type === 'accepted'? true : false);
   }
 }
