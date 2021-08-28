@@ -125,7 +125,7 @@
   {{else}}
     <div class="ui disabled header">{{t 'No Sessions exist for this time period'}}</div>
   {{/if}}    
-  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{1000}} @eventDebounce={{50}}>
+  <InfinityLoader @infinityModel={{this.model.session}} @triggerOffset={{100}} @eventDebounce={{200}}>
     <div class="center aligned five wide column">
       <div class="ui loading very padded basic segment">
       </div>
