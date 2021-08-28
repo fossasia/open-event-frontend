@@ -9,9 +9,9 @@
     <h2>{{t 'Registration'}}</h2>
     {{!-- template-lint-disable style-concatenation --}}
     <table class="ui single line table stackable" style="width:{{if device.isMobile '100%' '50%'}}">
-    {{#each this.model.tickets as |ticket| }}
+    {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
       {{!-- template-lint-disable no-invalid-interactive --}}
-      <tbody onclick={{action "selectTicket" ticket}} style="pointer:cursor">
+      <tbody onclick={{action "selectTicket" ticket}} style="cursor:pointer">
       {{#if (includes ticket.type 'Registration')}}
         <tr>
           <td>
