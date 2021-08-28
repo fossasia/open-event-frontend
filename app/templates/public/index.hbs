@@ -7,7 +7,8 @@
   {{/if}}
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
     <h2>{{t 'Registration'}}</h2>
-    <table class="ui single line table stackable" style="margin-bottom: 0;width:50%">
+    {{!-- template-lint-disable style-concatenation --}}
+    <table class="ui single line table stackable" style="width:{{if device.isMobile '100%' '50%'}}">
     {{#each this.model.tickets as |ticket| }}
       {{!-- template-lint-disable no-invalid-interactive --}}
       <tbody onclick={{action "selectTicket" ticket}} style="pointer:cursor">
@@ -19,6 +20,23 @@
           <td>{{ticket.name}}
           <br/>
           ({{ticket.description}})
+          <br>
+          {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
+            <p>
+              {{#if this.model.tax.isTaxIncludedInPrice}}
+                <small class="ui gray-text small">
+                  {{t 'includes'}} <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{ticket.includedTaxAmount}}/>
+                </small>
+              {{else}}
+                <small class="ui gray-text small">
+                  + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                </small>
+              {{/if}}
+              <span>
+                <small class="ui gray-text tiny aligned right">({{this.model.tax.name}})</small>
+              </span>
+            </p>
+          {{/if}}
           </td>
           <td>
             {{#if (includes ticket.type 'free')}}
@@ -35,7 +53,7 @@
     {{/each}}
     </table>
     <br/>
-    <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:50%" {{action "oneClickSignup" this.selectedRegistration}}> Register Now </button>
+    <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
   {{else}}
     {{#if (or this.model.event.ticketUrl this.model.tickets)}}
       <div class="tickets mt-16" id="tickets">
@@ -124,3 +142,11 @@
     </div>
   {{/if}}
 </div>
+
+<Modals::LoginSignupModal
+  @isOpen={{this.isLoginModalOpen}}
+  @isLoading={{this.isLoading}}
+  @createNewUserViaEmail={{this.createNewUserViaEmail}}
+  @loginExistingUser={{this.loginExistingUser}}
+  @userExists={{this.userExists}}
+  @errorMessage={{this.errorMessage}} />
