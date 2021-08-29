@@ -10,12 +10,6 @@
           </div>
         </div>
         <div class="d-flex ml-auto" style="height: fit-content;">
-          {{#if @session.slidesUrl}}
-            <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToSlides}}>
-              <i class="icon {{if this.slidesUploaded 'download' 'linkify'}}"></i>
-              {{if this.slidesUploaded (t 'Download Slides') (t 'Link to Slides')}}
-            </button>
-          {{/if}}
           {{#if this.sessionEnded}}
             {{#if @session.videoUrl}}
               <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToVideo}}>
@@ -32,7 +26,7 @@
             {{/if}}
           {{/if}}
           {{#if @showFavButton}}
-            <div class="self-center" role="button" style="width: 25px;" onclick={{prevent-bubbling (action this.favourite)}}>
+            <div class="self-center" role="button" style="width: 25px;" onclick={{prevent-bubbling (action this.favourite)}} data-tooltip="{{t "Add to My Schedule"}}">
               <i class="ui {{if @session.favourite 'check' 'outline'}} circle icon"></i>
             </div>
           {{/if}}
@@ -40,7 +34,7 @@
             <div class="ui black circular label">{{@session.favouriteCount}}</div>
           </div>
           {{#unless @hideSessionLink}}
-            <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="share icon"></i></a>
+            <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="external alternate icon"></i></a>
           {{/unless}}
         </div>
       </h3>
@@ -150,20 +144,9 @@
         {{/if}}
          </div>
     </div>
-    {{#if (and @expanded (or @session.slidesUrl @session.videoUrl))}}
+    {{#if (and @expanded @session.videoUrl)}}
       <div class="row p-4">
-        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>
-          {{#if (or this.pdfLink this.pptLink)}}
-            <iframe title="session-slides" class="slide-iframe mb-2" width="100%" frameborder="0" src="https://docs.google.com/gview?url={{ @session.slidesUrl }}&embedded=true"></iframe>
-          {{else if @session.slidesUrl}}
-            <a class="mb-2" href={{ @session.slidesUrl }} target="_blank" rel="noopener noreferrer">
-              <button class="ui labeled icon button">
-                <i class="file powerpoint icon"></i>
-                {{t 'Slides'}}
-              </button>
-            </a>
-          {{/if}}
-          
+        <div class="column" style={{css display='flex' align-items='center' flex-direction='column'}}>        
           {{#if this.youtubeLink}}
             <iframe title="youtube-session-video" class="video-iframe" width="100%" src="https://www.youtube.com/embed/{{ this.youtubeLink }}?enablejsapi=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
           {{else if @session.videoUrl}}

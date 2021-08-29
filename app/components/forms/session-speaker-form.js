@@ -106,31 +106,6 @@ export default Component.extend(FormMixin, {
             }
           ]
         },
-        slidesUrlRequired: {
-          identifier : 'session_slidesUrl_required',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter a url')
-            },
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
-        slidesUrl: {
-          identifier : 'session_slidesUrl',
-          optional   : true,
-          rules      : [
-            {
-              type   : 'regExp',
-              value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
-            }
-          ]
-        },
         videoUrlRequired: {
           identifier : 'session_videoUrl_required',
           rules      : [
@@ -461,7 +436,6 @@ export default Component.extend(FormMixin, {
               }
               return speakerInvite.save();
             });
-            this.deletedSpeakerInvites.filter(speakerInvite => (speakerInvite.id === null));
             const deleteSpeakerInvites = this.deletedSpeakerInvites.map(speakerInvite => {
               return speakerInvite.destroyRecord();
             });
@@ -494,12 +468,18 @@ export default Component.extend(FormMixin, {
         const existingEmails = this.data.session.speakerInvites.filter(speakerInvite => speakerInvite.status === 'pending');
         existingEmails.map(speakerInvite => speakerInvite.email);
         if (!existingEmails.includes(this.speakerInviteEmail)) {
-          const speakerInvite = this.store.createRecord('speaker-invite', {
-            email   : this.speakerInviteEmail,
-            session : this.data.session,
-            event   : this.data.event
-          });
-          this.data.session.speakerInvites.pushObject(speakerInvite);
+          const existingSpeakerInvite = this.deletedSpeakerInvites.filter(speakerInvite => speakerInvite.email === this.speakerInviteEmail);
+          if (existingSpeakerInvite.length === 0) {
+            const newSpeakerInvite = this.store.createRecord('speaker-invite', {
+              email   : this.speakerInviteEmail,
+              session : this.data.session,
+              event   : this.data.event
+            });
+            this.data.session.speakerInvites.pushObject(newSpeakerInvite);
+          } else {
+            const speakerInvite = this.store.peekRecord('speaker-invite', existingSpeakerInvite[0].id);
+            this.data.session.speakerInvites.pushObject(speakerInvite);
+          }
         }
         this.deletedSpeakerInvites = this.deletedSpeakerInvites.filter(speakerInvite => speakerInvite.email !== this.speakerInviteEmail);
         this.speakerInviteEmail = '';

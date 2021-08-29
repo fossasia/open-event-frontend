@@ -183,8 +183,8 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     return this.data.sessionTypes.filterBy('isDeleted', false);
   }),
 
-  hasCallForSpeaker: computed('data.speakersCall.announcement', function() {
-    return !!this.data.speakersCall.announcement;
+  hasCallForSpeaker: computed('data.event.isCfsEnabled', function() {
+    return !!this.data.event.isCfsEnabled;
   }),
 
   hasSoftClosing: computed('data.speakersCall.softendsAt', function() {
@@ -257,6 +257,18 @@ export default Component.extend(EventWizardMixin, FormMixin, {
         isComplex : true
       }));
     },
+    async toggle(microlocation) {
+      try {
+        if (!microlocation.hiddenInScheduler) {
+          await this.confirm.prompt(this.l10n.t('If you hide this microlocation you will not be able to schedule sessions in it. The location will still be available for online events without scheduled sessions, e.g. break-out or discussion rooms. '));
+          microlocation.hiddenInScheduler = true;
+        } else {
+          microlocation.hiddenInScheduler = false;
+        }
+      } catch {
+        microlocation.hiddenInScheduler = false;
+      }
+    },
     removeField(field) {
       this.data.customForms.removeObject(field);
     },
@@ -282,7 +294,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
       item.set('position', otherIdx);
     },
     resetCFS() {
-      this.set('data.speakersCall.announcement', null);
+      this.set('data.event.isCfsEnabled', !this.data.event.isCfsEnabled);
     },
     resetSoftClosing() {
       this.set('data.speakersCall.softEndsAt', null);

@@ -43,8 +43,10 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   iconImageUrl      : attr('string', { readOnly: true }),
 
   isMapShown                : attr('boolean', { defaultValue: true }),
+  isOneclickSignupEnabled   : attr('boolean', { defaultValue: false }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketFormEnabled       : attr('boolean', { defaultValue: false }),
+  isCfsEnabled              : attr('boolean', { defaultValue: false }),
   isVideoroomEnabled        : attr('boolean', { defaultValue: false }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
   isFeatured                : attr('boolean', { defaultValue: false }),
@@ -53,6 +55,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isChatEnabled             : attr('boolean', { defaultValue: false }),
   isBillingInfoMandatory    : attr('boolean', { defaultValue: false }),
   isDocumentEnabled         : attr('boolean', { defaultValue: false }),
+  isAnnounced               : attr('boolean', { defaultValue: false }),
 
   isTaxEnabled    : attr('boolean', { defaultValue: false }),
   canPayByPaypal  : attr('boolean', { defaultValue: false }),

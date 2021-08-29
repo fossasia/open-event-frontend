@@ -197,72 +197,136 @@
     </div>
   {{/if}}
   <div class="ui section divider"></div>
-    <div class="field">
-      <label class="required">{{t 'Ticketing System'}}</label>
-      <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
-        {{#if this.data.event.tickets}}
-          <div class="ui stackable celled five column grid ticket-header">
-            <div class="row weight-600">
-              <div class="five wide column">
-                <label class="required">{{t 'Ticket Name'}}</label>
-              </div>
-              <div class="three wide column">
-                <label class="required">{{t 'Price'}}</label>
-              </div>
-              <div class="four wide column">
-                <label class="required">{{t 'Quantity'}}</label>
-              </div>
-              <div class="column">
-                <label>{{t 'Options'}}</label>
+    <label>{{t 'Ticketed Event'}}</label>
+    <UiCheckbox
+        @class="toggle"
+        @checked={{this.data.event.isOneclickSignupEnabled}}
+        @onChange={{action (mut this.data.event.isOneclickSignupEnabled) }}
+        @label={{t 'Registration'}} />
+    <br><br>
+    {{#if (not this.data.event.isOneclickSignupEnabled)}}
+      <div class="field">
+        <label class="required">{{t 'Ticketing System'}}</label>
+        <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
+          {{#if this.data.event.tickets}}
+            <div class="ui stackable celled five column grid ticket-header">
+              <div class="row weight-600">
+                <div class="five wide column">
+                  <label class="required">{{t 'Ticket Name'}}</label>
+                </div>
+                <div class="three wide column">
+                  <label class="required">{{t 'Price'}}</label>
+                </div>
+                <div class="four wide column">
+                  <label class="required">{{t 'Quantity'}}</label>
+                </div>
+                <div class="column">
+                  <label>{{t 'Options'}}</label>
+                </div>
               </div>
             </div>
-          </div>
-          {{#each this.tickets as |ticket index|}}
-            <Widgets::Forms::TicketInput
-              @ticket={{ticket}}
-              @isExpanded={{if this.data.event.id false true}}
-              @timezone={{this.data.event.timezone}}
-              @canMoveUp={{not-eq index 0}}
-              @canMoveDown={{not-eq index (dec this.ticketCount)}}
-              @moveTicketUp={{action "moveTicket" ticket index "up"}}
-              @moveTicketDown={{action "moveTicket" ticket index "down"}}
-              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
-          {{/each}}
-        {{else}}
-          <h3 class="text muted weight-500">
-            {{t 'You don\'t have any tickets added. Please add atleast one ticket to publish your event.'}}
-          </h3>
-        {{/if}}
-      </div>
-      <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'free' this.data.event.tickets.length}}>
-        <i class="large icons basic-details">
-          <i class="smile icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Free Ticket'}}
-      </button>
-      <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'paid' this.data.event.tickets.length}}>
-        <i class="large icons basic-details">
-          <i class="dollar icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Paid Ticket'}}
-      </button>
-      {{!-- {{else}}
-        <div class="field">
-          <label for="ticket_url">{{t 'Ticket URL'}}</label>
-          {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
+            {{#each this.tickets as |ticket index|}}
+              <Widgets::Forms::TicketInput
+                @ticket={{ticket}}
+                @isExpanded={{if this.data.event.id false true}}
+                @timezone={{this.data.event.timezone}}
+                @canMoveUp={{not-eq index 0}}
+                @canMoveDown={{not-eq index (dec this.ticketCount)}}
+                @moveTicketUp={{action "moveTicket" ticket index "up"}}
+                @moveTicketDown={{action "moveTicket" ticket index "down"}}
+                @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
+            {{/each}}
+          {{else}}
+            <h3 class="text muted weight-500">
+              {{t 'You don\'t have any tickets added. Please add at least one ticket to publish your event.'}}
+            </h3>
+          {{/if}}
         </div>
-      {{/if}} --}}
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'free' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="smile icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Free Ticket'}}
+        </button>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'paid' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="dollar icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Paid Ticket'}}
+        </button>
 
-      <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donation' this.data.event.tickets.length}}>
-        <i class="large icons basic-details">
-          <i class="heart icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Donation Ticket'}}
-      </button>
-    </div>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donation' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="heart icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Donation Ticket'}}
+        </button>
+      </div>
+    {{else}}
+      <div class="field">
+        <label class="required">{{t 'Registration System'}}</label>
+        <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
+          {{#if this.data.event.tickets}}
+            <div class="ui stackable celled five column grid ticket-header">
+              <div class="row weight-600">
+                <div class="five wide column">
+                  <label class="required">{{t 'Registration Name'}}</label>
+                </div>
+                <div class="three wide column">
+                  <label class="required">{{t 'Price'}}</label>
+                </div>
+                <div class="four wide column">
+                  <label class="required">{{t 'Quantity'}}</label>
+                </div>
+                <div class="column">
+                  <label>{{t 'Options'}}</label>
+                </div>
+              </div>
+            </div>
+            {{#each this.tickets as |ticket index|}}
+              <Widgets::Forms::TicketInput
+                @ticket={{ticket}}
+                @isExpanded={{if this.data.event.id false true}}
+                @timezone={{this.data.event.timezone}}
+                @canMoveUp={{not-eq index 0}}
+                @registration={{true}}
+                @canMoveDown={{not-eq index (dec this.ticketCount)}}
+                @moveTicketUp={{action "moveTicket" ticket index "up"}}
+                @moveTicketDown={{action "moveTicket" ticket index "down"}}
+                @removeTicket={{confirm "Are you sure you wish to delete this registration ?" (action "removeTicket" ticket)}}/>
+            {{/each}}
+          {{else}}
+            <h3 class="text muted weight-500">
+              {{t 'You don\'t have any registrations added. Please add at least one registration to publish your event.'}}
+            </h3>
+          {{/if}}
+        </div>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'freeRegistration' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="smile icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Free Registration'}}
+        </button>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'paidRegistration' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="dollar icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Paid Registration'}}
+        </button>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donationRegistration' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="heart icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Donation Registration'}}
+        </button>
+      </div>
+    {{/if}}
   {{#if this.hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>

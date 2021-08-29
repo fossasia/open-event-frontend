@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="sixteen wide column">
+    <div class="ui grid space-between items-center mt-4 mb-4">
+      <h2>
+        {{this.model.group.name}}
+      </h2>
+      <a 
+        href="/groups/{{this.model.group.id}}" 
+        target="_blank" rel="noopener" 
+        class="ui button labeled icon small mr-4 green" >
+        <i class="unhide icon"></i>
+          {{t 'View'}}
+      </a>
+    </div>
+    <TabbedNavigation>
+      <LinkTo @route="groups.edit.events" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
+        {{t 'Events'}}
+      </LinkTo>
+      <LinkTo @route="groups.edit.followers" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
+        {{t 'Followers'}}
+      </LinkTo>
+      <LinkTo @route="groups.edit.settings" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
+        {{t 'Settings'}}
+      </LinkTo>
+      <LinkTo @route="groups.team" @invokeAction={{action 'refreshRoute'}} @model={{this.model.group.id}} class="item">
+        {{t 'Team'}}
+      </LinkTo>
+    </TabbedNavigation>
+  </div>
+</div>
+<div class="sixteen wide column">
+  <div class="mb-4 d-flex items-center space-between">
+    <h2 class="header">{{t 'Followers'}}</h2>
+    <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export' this.router.currentRoute.params.group_id}} >{{t 'Export as CSV'}}</button>
+ </div>
+    <Tables::Default
+      @columns={{this.followersColumn}}
+      @rows={{this.model.followers.data}}
+      @currentPage={{this.page}}
+      @searchQuery={{this.search}}
+      @pageSize={{this.per_page}}
+      @metaData={{this.model.followers.meta}}
+      @filterOptions={{this.filterOptions}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column" />
+</div>
