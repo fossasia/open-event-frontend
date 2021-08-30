@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import { htmlSafe } from '@ember/string';
+import ENV from 'open-event-frontend/config/environment';
 
 @classic
 export default class IndexController extends Controller {
@@ -26,6 +27,7 @@ export default class IndexController extends Controller {
     });
     newUser.save()
       .then(() => {
+        ENV['ember-simple-auth-token'].refreshAccessTokens = false;
         const credentials = newUser.getProperties('email', 'password');
         const authenticator = 'authenticator:jwt';
         credentials.username = newUser.email;
@@ -69,6 +71,7 @@ export default class IndexController extends Controller {
       username,
       password
     };
+    ENV['ember-simple-auth-token'].refreshAccessTokens = false;
     const authenticator = 'authenticator:jwt';
     this.session
       .authenticate(authenticator, credentials)
