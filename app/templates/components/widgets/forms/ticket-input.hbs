@@ -208,7 +208,7 @@
         <Input
           @type="text"
           @name="ticket_name"
-          placeholder={{t "Ticket Name"}}
+          placeholder={{t "Registration Name"}}
           @value={{this.ticket.name}} />
       </div>
     </div>
@@ -244,7 +244,7 @@
       {{else if (eq this.ticket.type 'freeRegistration')}}
         <div class="four wide column">
           <span class="text muted ticket-input">
-            {{t 'This is a free Ticket'}}
+            {{t 'This is a free Registration'}}
           </span>
         </div>
       {{/if}}
@@ -288,12 +288,12 @@
     <div class="one column row">
       <div class="column">
         <div class="field">
-          <label for="ticket_description">{{t 'Ticket Description'}}</label>
+          <label for="ticket_description">{{t 'Registration Description'}}</label>
           <Textarea
             @rows={{3}}
             @name="ticket_description"
             @value={{this.ticket.description}}
-            placeholder={{t "This description would be available to the attendees when ordering tickets."}}
+            placeholder={{t "This description would be available to the attendees when Registering."}}
             @maxlength={{160}} />        </div>
         <div class="field">
           <div class="ui checkbox">
@@ -301,7 +301,7 @@
   @type="checkbox"
   @checked={{this.ticket.isDescriptionVisible}}
   @name="description_visible" />
-            <label for="description_visible">{{t 'Display Ticket description on Public Events page'}}</label>
+            <label for="description_visible">{{t 'Display Registration description on Public Events page'}}</label>
           </div>
         </div>
         <div class="field">
@@ -311,8 +311,8 @@
   @checked={{this.ticket.isHidden}}
   @name="ticket_hidden"/>
             <label for="description_visible">
-              {{t 'Hide Ticket from the Public Events page'}}<br>
-              <span class="text muted">{{t 'To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.'}}</span>
+              {{t 'Hide Registration from the Public Events page'}}<br>
+              <span class="text muted">{{t 'To sell hidden registrations you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.'}}</span>
             </label>
           </div>
         </div>
@@ -324,8 +324,8 @@
   @checked="true"
   @name="absorb_fees" />
               <label class="required" for="absorb_fees">
-                {{t 'Tickets Absorb Fees'}} <br>
-                <span class="text muted">{{t 'Platform fees will always be included in your ticket price. You will receive an invoice each month.'}}</span>
+                {{t 'Registrations Absorb Fees'}} <br>
+                <span class="text muted">{{t 'Platform fees will always be included in your registration price. You will receive an invoice each month.'}}</span>
               </label>
             </div>
           </div>
@@ -378,7 +378,7 @@
         </div>
 
         <div class="field">
-          <label class="required">{{t 'Number of tickets allowed per order'}}</label>
+          <label class="required">{{t 'Number of registrations allowed per order'}}</label>
           <div class="fields">
             <div class="three wide field">
               <label class="required text muted" for="ticket_min_order">{{t 'Minimum Order'}}</label>
