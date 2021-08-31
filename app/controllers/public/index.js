@@ -2,7 +2,9 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import { htmlSafe } from '@ember/string';
+import { tracked } from '@glimmer/tracking';
 import ENV from 'open-event-frontend/config/environment';
+
 
 @classic
 export default class IndexController extends Controller {
@@ -11,6 +13,8 @@ export default class IndexController extends Controller {
   isLoginModalOpen = false;
   isContactOrganizerModalOpen = false;
   userExists = false;
+
+  @tracked selectedRegistration = null;
 
   @computed('model.event.description')
   get htmlSafeDescription() {
@@ -123,6 +127,11 @@ export default class IndexController extends Controller {
   @action
   openContactOrganizerModal() {
     this.set('isContactOrganizerModalOpen', true);
+  }
+
+  @action
+  selectTicket(ticket) {
+    this.selectedRegistration = ticket;
   }
 
   @action
