@@ -19,7 +19,11 @@
     <div class="ui padded segment">
       <h4 class="ui horizontal divider header">
         <i class="dollar icon"></i>
-        {{t 'Ticket Buyer'}}
+        {{#if this.event.isOneclickSignupEnabled}}
+          {{t 'Registrant'}}
+        {{else}}
+          {{t 'Ticket Buyer'}}
+        {{/if}}
       </h4>
       <div class="field {{if this.buyerHasFirstName 'disabled'}}">
         <label class="required" for="firstname">{{t 'First Name'}}</label>
@@ -46,7 +50,11 @@
       </div>
       <h4 class="ui horizontal divider header">
         <i class="ticket icon"></i>
-        {{t 'Ticket Holder\'s Information'}}
+        {{#if this.event.isOneclickSignupEnabled}}
+          {{t 'Registration Holder\'s Information'}}
+        {{else}}
+          {{t 'Ticket Holder\'s Information'}}
+        {{/if}}
       </h4>
       {{#each this.holders as |holder index|}}
         {{#if (eq index 0)}}
@@ -59,7 +67,14 @@
         {{/if}}
         <div class="inline field">
           <i class="user icon"></i>
-          <label>{{t 'Ticket Holder'}} {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}</label>
+          <label>
+            {{#if this.event.isOneclickSignupEnabled}}
+              {{t 'Registration Holder'}}
+            {{else}}
+              {{t 'Ticket Holder'}}
+            {{/if}}
+            {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}
+          </label>
         </div>
         {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded}}
@@ -313,7 +328,11 @@
         </GetText>
       </p>
       <div class="center aligned">
-        <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
+        {{#if this.data.event.isOneclickSignupEnabled}}
+          <button type="submit" class="ui violet submit button">{{t 'One Click Signup'}}</button>
+        {{else}}
+          <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
+        {{/if}}
       </div>
      </div>
   </div>
