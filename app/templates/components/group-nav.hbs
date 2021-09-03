@@ -4,13 +4,15 @@
       <h2>
         {{@group.name}}
       </h2>
-      <a
-        href="/g/{{@group.id}}"
-        target="_blank" rel="noopener"
-        class="ui button labeled icon small mr-4 green" >
-        <i class="unhide icon"></i>
-          {{t 'View'}}
-      </a>
+      {{#if (not @createPage)}}
+        <a
+          href="/g/{{@group.id}}"
+          target="_blank" rel="noopener"
+          class="ui button labeled icon small mr-4 green" >
+          <i class="unhide icon"></i>
+            {{t 'View'}}
+        </a>
+      {{/if}}
     </div>
     <TabbedNavigation>
       {{#if @team}}
