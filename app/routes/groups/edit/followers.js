@@ -53,7 +53,14 @@ export default class FollowersRoute extends Route.extend(EmberTableRouteMixin, A
   }
 
   afterModel(model) {
-    if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
+    function isUserOwnerOrOrganizer(roles, userEmail, ownerEmail) {
+      if (userEmail === ownerEmail) {return true} else {
+        return roles.toArray().some(role => {
+          if (userEmail === role.email && role.accepted) {return true}
+        });
+      }
+    }
+    if (!isUserOwnerOrOrganizer(model.group.roles, this.authManager.currentUser.email, model.group.user.get('email')) && !this.authManager.currentUser.isAdmin) {
       this.transitionTo('index');
     }
   }
