@@ -8,17 +8,21 @@
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
     <h2>{{t 'Registration'}}</h2>
     {{!-- template-lint-disable style-concatenation --}}
-    <table class="ui table stackable" style="max-width:{{if device.isMobile '100%' '50%'}}">
     {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
+    <table class="ui table stackable {{if (eq this.selectedRegistration ticket) 'select-ticket'}}" style="max-width:{{if device.isMobile '100%' '50%'}}">
       {{!-- template-lint-disable no-invalid-interactive --}}
       <tbody onclick={{action "selectTicket" ticket}} style="cursor:pointer">
       {{#if (includes ticket.type 'Registration')}}
         <tr>
           <td>
-            <i role="button" class="circle {{if (eq this.selectedRegistration ticket) 'blue' 'outline'}} large icon"></i>
+            <div class="custom-checkbox pb-4">
+              <span class="custom-bullet {{if (eq this.selectedRegistration ticket) 'select-checkbox'}}"></span>
+            </div>
+          </td>
+          <td>
             {{ticket.name}}
             <br/>
-            <small class="ui gray-text tiny">({{ticket.description}})</small>
+            <small class="ui gray-text tiny">{{if ticket.description ticket.description}}</small>
             <br>
             {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
               <p>
@@ -37,7 +41,7 @@
               </p>
             {{/if}}
           </td>
-          <td>
+          <td class='bold-text'>
             {{#if (includes ticket.type 'free')}}
               {{t 'Free'}}
             {{else if (includes ticket.type 'paid')}}
@@ -49,8 +53,8 @@
         </tr>
       {{/if}}
       </tbody>
-    {{/each}}
     </table>
+    {{/each}}
     <br/>
     <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
   {{else}}
