@@ -181,7 +181,9 @@ Router.map(function() {
   });
   this.route('groups', function() {
     this.route('create');
-    this.route('team', { path: '/:group_id/team' });
+    this.route('team', { path: '/:group_id/team' }, function() {
+      this.route('permissions');
+    });
     this.route('edit', { path: '/edit' }, function() {
       this.route('events', { path: '/:group_id/events' });
       this.route('settings', { path: '/:group_id/settings' });
