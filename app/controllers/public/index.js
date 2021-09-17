@@ -153,11 +153,7 @@ export default class IndexController extends Controller {
       }
     }
     try {
-      const order = await this.loader.post('/orders/create-order', myinput);
-      this.notify.success(this.l10n.t('Order details saved. Please fill further details within {{time}} minutes.', {
-        time: this.settings.orderExpiryTime
-      }));
-      this.transitionToRoute('orders.new', order.data.attributes.identifier);
+      this.set('orderInput', myinput);
     } catch (e) {
       console.error(e);
     }
