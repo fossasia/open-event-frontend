@@ -33,7 +33,7 @@
                             </small>
                           {{else}}
                             <small class="ui gray-text small">
-                              + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                              + <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
                             </small>
                           {{/if}}
                           <span>
