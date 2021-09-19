@@ -8,49 +8,56 @@
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
     <h2>{{t 'Registration'}}</h2>
     {{!-- template-lint-disable style-concatenation --}}
-    <table class="ui table stackable" style="max-width:{{if device.isMobile '100%' '50%'}}">
     {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
-      {{!-- template-lint-disable no-invalid-interactive --}}
-      <tbody onclick={{action "selectTicket" ticket}} style="cursor:pointer">
-      {{#if (includes ticket.type 'Registration')}}
-        <tr>
-          <td>
-            <i role="button" class="circle {{if (eq this.selectedRegistration ticket) 'blue' 'outline'}} large icon"></i>
-            {{ticket.name}}
-            <br/>
-            <small class="ui gray-text tiny">({{ticket.description}})</small>
-            <br>
-            {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
-              <p>
-                {{#if this.model.tax.isTaxIncludedInPrice}}
-                  <small class="ui gray-text small">
-                    {{t 'includes'}} <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{ticket.includedTaxAmount}}/>
-                  </small>
-                {{else}}
-                  <small class="ui gray-text small">
-                    + <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
-                  </small>
-                {{/if}}
-                <span>
-                  <small class="ui gray-text tiny aligned right">({{this.model.tax.name}})</small>
-                </span>
-              </p>
-            {{/if}}
-          </td>
-          <td>
-            {{#if (includes ticket.type 'free')}}
-              {{t 'Free'}}
-            {{else if (includes ticket.type 'paid')}}
-              <CurrencyAmount @amount={{ticket.price}} @currency={{this.model.event.paymentCurrency}} />
-            {{else}}
-              {{t 'Donation'}}
-            {{/if}}
-          </td>       
-        </tr>
-      {{/if}}
-      </tbody>
+    <div role='button' onclick={{action "selectTicket" ticket}} class="ui segment {{if (eq this.selectedRegistration ticket) 'select-ticket'}}" style="cursor:pointer; max-width:{{if device.isMobile '100%' '50%'}}">
+        {{!-- template-lint-disable no-invalid-interactive --}}
+        {{#if (includes ticket.type 'Registration')}}
+          <div class="ui two column grid"  style="align-items: center;">
+              <div class="two wide column">
+                <div class="custom-registration-checkbox pb-4">
+                  <span class="custom-registration-bullet {{if (eq this.selectedRegistration ticket) 'select-custom-registration-checkbox'}}"></span>
+                </div>
+              </div>
+              <div class="fourteen wide column">
+                <div class="ui stackable two column grid">
+                  <div class="twelve wide column">
+                    <div class="row">{{ticket.name}}</div>
+                    <div class="row">
+                      <small class="ui gray-text tiny">{{if ticket.description ticket.description}}</small>
+                      <br>
+                      {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
+                        <p>
+                          {{#if this.model.tax.isTaxIncludedInPrice}}
+                            <small class="ui gray-text small">
+                              {{t 'includes'}} <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{ticket.includedTaxAmount}}/>
+                            </small>
+                          {{else}}
+                            <small class="ui gray-text small">
+                              + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                            </small>
+                          {{/if}}
+                          <span>
+                            <small class="ui gray-text tiny aligned right">({{this.model.tax.name}})</small>
+                          </span>
+                        </p>
+                      {{/if}}
+                    </div>
+                  </div>
+                  <div class="four wide column bold-text">
+                    {{#if (includes ticket.type 'free')}}
+                      {{t 'Free'}}
+                    {{else if (includes ticket.type 'paid')}}
+                      <CurrencyAmount @amount={{ticket.price}} @currency={{this.model.event.paymentCurrency}} />
+                    {{else}}
+                      {{t 'Donation'}}
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+          </div>
+        {{/if}}
+    </div>
     {{/each}}
-    </table>
     <br/>
     <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
   {{else}}
