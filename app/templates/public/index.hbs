@@ -24,6 +24,19 @@
                     <div class="row">{{ticket.name}}</div>
                     <div class="row">
                       <small class="ui gray-text tiny">{{if ticket.description ticket.description}}</small>
+                       {{#if (includes ticket.type 'donation')}}
+                        <div class="ui labeled fluid input">
+                          <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.model.event.paymentCurrency}}</label>
+                          <Input
+                            id="i_{{ticket.id}}_price"
+                            @type="number"
+                            @name={{ticket.id}} placeholder={{t "Enter Donation"}}
+                            @min={{ticket.minPrice}}
+                            @max={{ticket.maxPrice}}
+                            @value={{ticket.price}}
+                            />
+                        </div>
+                      {{/if}}
                     </div>
                   </div>
                   <div class="four wide column">
