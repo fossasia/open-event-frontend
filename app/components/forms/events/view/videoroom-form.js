@@ -256,7 +256,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.onValid(async() => {
       try {
         this.set('isLoading', true);
-        this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
+        if (this.data.stream.extra.bbb_options) {
+          this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
+        }
         await this.data.stream.save();
         const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
           if (moderator.id) {
