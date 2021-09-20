@@ -234,7 +234,7 @@
                 @canMoveDown={{not-eq index (dec this.ticketCount)}}
                 @moveTicketUp={{action "moveTicket" ticket index "up"}}
                 @moveTicketDown={{action "moveTicket" ticket index "down"}}
-                @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
+                @removeTicket={{confirm (if ticket.orderStatistics.tickets.completed "This ticket or registration type already has orders. Therefore it cannot be deleted. Please hide this type instead by using the hide option under the settings symbol." "Are you sure you wish to delete this ticket ?") (if (not ticket.orderStatistics.tickets.completed) (action "removeTicket" ticket))}}/>
             {{/each}}
           {{else}}
             <h3 class="text muted weight-500">
@@ -296,7 +296,7 @@
                 @canMoveDown={{not-eq index (dec this.ticketCount)}}
                 @moveTicketUp={{action "moveTicket" ticket index "up"}}
                 @moveTicketDown={{action "moveTicket" ticket index "down"}}
-                @removeTicket={{confirm "Are you sure you wish to delete this registration ?" (action "removeTicket" ticket)}}/>
+                @removeTicket={{confirm (if ticket.orderStatistics.tickets.completed "This ticket or registration type already has orders. Therefore it cannot be deleted. Please hide this type instead by using the hide option under the settings symbol." "Are you sure you wish to delete this ticket ?") (action "removeTicket" ticket)}}/>
             {{/each}}
           {{else}}
             <h3 class="text muted weight-500">
