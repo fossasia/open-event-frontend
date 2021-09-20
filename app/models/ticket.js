@@ -65,7 +65,7 @@ export default ModelBase.extend({
    * when tax amount is included in ticket price, otherwise return
    * 0
    */
-  includedTaxAmount: computed('event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
+  includedTaxAmount: computed('price', 'event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
     const taxType = this.event.get('tax.isTaxIncludedInPrice');
     if (taxType) {
       const taxRate = this.event.get('tax.rate');
