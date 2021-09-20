@@ -12,8 +12,7 @@ export default class IndexController extends Controller {
   code = null;
   isLoginModalOpen = false;
   isContactOrganizerModalOpen = false;
-  userExists = false;
-
+  userExists = false;  
   @tracked selectedRegistration = null;
 
   @computed('model.event.description')
@@ -140,7 +139,7 @@ export default class IndexController extends Controller {
       tickets: [{
         id       : ticket.id,
         quantity : 1,
-        price    : 0
+        price    : ticket.price
       }]
     };
 
@@ -176,7 +175,7 @@ export default class IndexController extends Controller {
         } else {
           console.error('Error while saving order', e);
         }
-        this.notify.error(e.response.errors[0].detail);
+        this.notify.error(e.response?.errors[0]?.detail);
       } finally {
         this.set('isLoading', false);
       }
