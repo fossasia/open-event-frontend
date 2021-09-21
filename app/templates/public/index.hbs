@@ -24,24 +24,7 @@
                     <div class="row">{{ticket.name}}</div>
                     <div class="row">
                       <small class="ui gray-text tiny">{{if ticket.description ticket.description}}</small>
-                      <br>
-                      {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
-                        <p>
-                          {{#if this.model.tax.isTaxIncludedInPrice}}
-                            <small class="ui gray-text small">
-                              {{t 'includes'}} <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{ticket.includedTaxAmount}}/>
-                            </small>
-                          {{else}}
-                            <small class="ui gray-text small">
-                              + <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
-                            </small>
-                          {{/if}}
-                          <span>
-                            <small class="ui gray-text tiny aligned right">({{this.model.tax.name}})</small>
-                          </span>
-                        </p>
-                      {{/if}}
-                      {{#if (includes ticket.type 'donation')}}
+                       {{#if (includes ticket.type 'donation')}}
                         <div class="ui labeled fluid input">
                           <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.model.event.paymentCurrency}}</label>
                           <Input
@@ -56,13 +39,31 @@
                       {{/if}}
                     </div>
                   </div>
-                  <div class="four wide column bold-text">
-                    {{#if (includes ticket.type 'free')}}
-                      {{t 'Free'}}
-                    {{else if (includes ticket.type 'paid')}}
-                      <CurrencyAmount @amount={{ticket.price}} @currency={{this.model.event.paymentCurrency}} />
-                    {{else}}
-                      {{t 'Donation'}}
+                  <div class="four wide column">
+                    <div class="bold-text">
+                      {{#if (includes ticket.type 'free')}}
+                        {{t 'Free'}}
+                      {{else if (includes ticket.type 'paid')}}
+                        <CurrencyAmount @amount={{ticket.price}} @currency={{this.model.event.paymentCurrency}} />
+                      {{else}}
+                        {{t 'Donation'}}
+                      {{/if}}
+                    </div>
+                    {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
+                      <p>
+                        {{#if this.model.tax.isTaxIncludedInPrice}}
+                          <small class="ui gray-text small">
+                            {{t 'includes'}} <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{ticket.includedTaxAmount}}/>
+                          </small>
+                        {{else}}
+                          <small class="ui gray-text small">
+                            + <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                          </small>
+                        {{/if}}
+                        <span>
+                          <small class="ui gray-text tiny aligned right">({{this.model.tax.name}})</small>
+                        </span>
+                      </p>
                     {{/if}}
                   </div>
                 </div>
