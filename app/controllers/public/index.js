@@ -13,7 +13,6 @@ export default class IndexController extends Controller {
   isLoginModalOpen = false;
   isContactOrganizerModalOpen = false;
   userExists = false;
-
   @tracked selectedRegistration = null;
 
   @computed('model.event.description')
@@ -140,7 +139,7 @@ export default class IndexController extends Controller {
       tickets: [{
         id       : ticket.id,
         quantity : 1,
-        price    : 0
+        price    : ticket.price
       }]
     };
 
@@ -153,11 +152,7 @@ export default class IndexController extends Controller {
       }
     }
     try {
-      const order = await this.loader.post('/orders/create-order', myinput);
-      this.notify.success(this.l10n.t('Order details saved. Please fill further details within {{time}} minutes.', {
-        time: this.settings.orderExpiryTime
-      }));
-      this.transitionToRoute('orders.new', order.data.attributes.identifier);
+      this.set('orderInput', myinput);
     } catch (e) {
       console.error(e);
     }
@@ -180,7 +175,7 @@ export default class IndexController extends Controller {
         } else {
           console.error('Error while saving order', e);
         }
-        this.notify.error(e.response.errors[0].detail);
+        this.notify.error(e.response?.errors[0]?.detail);
       } finally {
         this.set('isLoading', false);
       }
