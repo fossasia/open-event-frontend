@@ -12,7 +12,7 @@ export default class IndexController extends Controller {
   code = null;
   isLoginModalOpen = false;
   isContactOrganizerModalOpen = false;
-  userExists = false;  
+  userExists = false;
   @tracked selectedRegistration = null;
 
   @computed('model.event.description')
