@@ -129,18 +129,18 @@
             <table class="ui small" style="float: right;">
               <tbody>
                 {{#if orderAmount.tax}}
-                  <tr><td>{{t 'Sub-Total'}}</td><td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.sub_total}}/></td></tr>
+                  <tr><td>{{t 'Total'}}</td><td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.sub_total}}/></td></tr>
                   <tr>
                     <td>
                       <div>{{t 'Tax'}} ({{this.orderAmount.tax.percent}}% {{this.orderAmount.tax.name}})</div>
                       {{#if orderAmount.tax.included}}
-                        <small class="ui gray-text small">{{t 'Included in Total' }}</small>
+                        <small class="ui gray-text small">{{t 'Included in Grand Total' }}</small>
                       {{/if}}
                     </td>
                     <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.tax.amount}}/></td>
                   </tr>
                 {{/if}}
-                <tr><td>{{t 'Total'}}</td>
+                <tr><td>{{t 'Grand Total'}}</td>
                   {{#if this.amountEditable}}
                     <td>{{#if this.overridenAmount}}{{currency-symbol this.eventCurrency}}{{/if}}</td><td><Input @value={{this.overridenAmount}} placeholder={{t "Total"}} /></td>
                   {{else}}
