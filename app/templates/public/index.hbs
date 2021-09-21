@@ -8,11 +8,11 @@
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
     <h2>{{t 'Registration'}}</h2>
     {{!-- template-lint-disable style-concatenation --}}
-    {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
-    <div role='button' onclick={{action "selectTicket" ticket}} class="ui segment {{if (eq this.selectedRegistration ticket) 'select-ticket'}}" style="cursor:pointer; max-width:{{if device.isMobile '100%' '50%'}}">
-        {{!-- template-lint-disable no-invalid-interactive --}}
-        {{#if (includes ticket.type 'Registration')}}
-          <div class="ui two column grid"  style="align-items: center;">
+     {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
+       {{#if (includes ticket.type 'Registration')}}
+         <div role='button' onclick={{action "selectTicket" ticket}} class="ui segment {{if (eq this.selectedRegistration ticket) 'select-ticket'}}" style="cursor:pointer; max-width:{{if device.isMobile '100%' '50%'}}">
+            {{!-- template-lint-disable no-invalid-interactive --}}
+           <div class="ui two column grid"  style="align-items: center;">
               <div class="two wide column">
                 <div class="custom-registration-checkbox pb-4">
                   <span class="custom-registration-bullet {{if (eq this.selectedRegistration ticket) 'select-custom-registration-checkbox'}}"></span>
@@ -67,10 +67,10 @@
                   </div>
                 </div>
               </div>
-          </div>
-        {{/if}}
-    </div>
-    {{/each}}
+           </div>
+         </div>
+       {{/if}}
+     {{/each}}
     <br/>
     <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
   {{else}}
