@@ -2,6 +2,9 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import { htmlSafe } from '@ember/string';
+import { tracked } from '@glimmer/tracking';
+import ENV from 'open-event-frontend/config/environment';
+
 
 @classic
 export default class IndexController extends Controller {
@@ -10,6 +13,7 @@ export default class IndexController extends Controller {
   isLoginModalOpen = false;
   isContactOrganizerModalOpen = false;
   userExists = false;
+  @tracked selectedRegistration = null;
 
   @computed('model.event.description')
   get htmlSafeDescription() {
@@ -26,6 +30,7 @@ export default class IndexController extends Controller {
     });
     newUser.save()
       .then(() => {
+        ENV['ember-simple-auth-token'].refreshAccessTokens = false;
         const credentials = newUser.getProperties('email', 'password');
         const authenticator = 'authenticator:jwt';
         credentials.username = newUser.email;
@@ -69,6 +74,7 @@ export default class IndexController extends Controller {
       username,
       password
     };
+    ENV['ember-simple-auth-token'].refreshAccessTokens = false;
     const authenticator = 'authenticator:jwt';
     this.session
       .authenticate(authenticator, credentials)
@@ -123,12 +129,17 @@ export default class IndexController extends Controller {
   }
 
   @action
+  selectTicket(ticket) {
+    this.selectedRegistration = ticket;
+  }
+
+  @action
   async oneClickSignup(ticket) {
     const input = {
       tickets: [{
         id       : ticket.id,
         quantity : 1,
-        price    : 0
+        price    : ticket.price
       }]
     };
 
@@ -141,11 +152,7 @@ export default class IndexController extends Controller {
       }
     }
     try {
-      const order = await this.loader.post('/orders/create-order', myinput);
-      this.notify.success(this.l10n.t('Order details saved. Please fill further details within {{time}} minutes.', {
-        time: this.settings.orderExpiryTime
-      }));
-      this.transitionToRoute('orders.new', order.data.attributes.identifier);
+      this.set('orderInput', myinput);
     } catch (e) {
       console.error(e);
     }
@@ -168,7 +175,7 @@ export default class IndexController extends Controller {
         } else {
           console.error('Error while saving order', e);
         }
-        this.notify.error(e.response.errors[0].detail);
+        this.notify.error(e.response?.errors[0]?.detail);
       } finally {
         this.set('isLoading', false);
       }
