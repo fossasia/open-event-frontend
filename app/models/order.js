@@ -40,13 +40,13 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   tickets          : hasMany('ticket', { readOnly: true }),
   attendees        : hasMany('attendee'),
 
-  taxAmount: computed('amount', 'event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
-    const taxType = this.event.get('tax.isTaxIncludedInPrice');
+  taxAmount: computed('amount', 'event.isTaxEnabled', 'event.tax.rate', function() {
+    const isTaxEnabled = this.event.get('tax.isTaxEnabled');
     const taxRate = this.event.get('tax.rate');
-    if (taxType) {
+    if (isTaxEnabled) {
       return ((taxRate * this.amount) / (100 + taxRate)).toFixed(2);
     } else {
-      return ((this.amount) / (1 + taxRate / 100) * (taxRate / 100)).toFixed(2);
+      return 0;
     }
   })
 });
