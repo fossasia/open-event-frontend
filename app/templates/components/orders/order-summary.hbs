@@ -162,7 +162,7 @@
                           <small class="ui gray-text small">{{t 'Included in Total' }}</small>
                         {{/if}}
                       </td>
-                      <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.data.taxAmount}}/></td>
+                      <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.data.includedTaxAmount}}/></td>
                     </tr>
                   {{/if}}
                   <tr><td>{{t 'Grand Total'}}</td>
