@@ -182,13 +182,22 @@
               </div>
           {{/if}}
           {{#if (and (not this.device.isMobile) this.model.group (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
-            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
-              {{#if this.model.group.follower}}
-                {{t 'Unfollow Group'}}            
-              {{else}}
-                {{t 'Follow Group'}}           
-              {{/if}}
-              {{this.model.group.name}} ({{this.model.group.followerCount}} {{t 'followers'}})
+            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui labeled fluid button"  tabindex="0" {{action this.follow}}>
+              <div class="ui {{if this.model.group.follower 'red' 'blue'}} fluid button">
+                <i class="large icons basic-details">
+                <i class="users icon"></i>
+                <i class="inverted corner add icon"></i>
+                </i>
+                {{#if this.model.group.follower}}
+                  {{t 'Unfollow Group'}}            
+                {{else}}
+                  {{t 'Follow Group'}}           
+                {{/if}}
+                {{this.model.group.name}}
+                <div class="ui basic left pointing {{if this.model.group.follower 'red' 'blue'}} label">
+                  {{this.model.group.followerCount}} 
+                </div>
+              </div>              
             </button>
           {{/if}}
         {{/if}}
