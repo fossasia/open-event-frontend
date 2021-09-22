@@ -40,7 +40,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   tickets          : hasMany('ticket', { readOnly: true }),
   attendees        : hasMany('attendee'),
 
-  taxAmount: computed('amount', 'event.isTaxEnabled', 'event.tax.rate', function() {
+  includedTaxAmount: computed('amount', 'event.isTaxEnabled', 'event.tax.rate', function() {
     const isTaxEnabled = this.event.get('tax.isTaxEnabled');
     const taxRate = this.event.get('tax.rate');
     if (isTaxEnabled) {
