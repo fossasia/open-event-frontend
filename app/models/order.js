@@ -40,24 +40,13 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   tickets          : hasMany('ticket', { readOnly: true }),
   attendees        : hasMany('attendee'),
 
-  ticketPriceWithTax: computed('amount', 'event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
+  taxAmount: computed('amount', 'event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
     const taxType = this.event.get('tax.isTaxIncludedInPrice');
-    if (!taxType) {
-      return ((this.event.get('tax.rate') / 100) * this.amount).toFixed(2);
-    }
-    return this.price;
-  }),
-
-  /**
-   * This attribute computes value added tax amount in the cases
-   * when tax amount is included in ticket price, otherwise return
-   * 0
-   */
-  includedTaxAmount: computed('amount', 'event.tax.isTaxIncludedInPrice', 'event.tax.rate', function() {
-    const taxType = this.event.get('tax.isTaxIncludedInPrice');
+    const taxRate = this.event.get('tax.rate');
     if (taxType) {
-      return ((this.event.get('tax.rate') / 100) * this.amount).toFixed(2);
+      return ((taxRate * this.amount) / (100 + taxRate)).toFixed(2);
+    } else {
+      return ((this.amount) / (1 + taxRate / 100) * (taxRate / 100)).toFixed(2);
     }
-    return 0;
   })
 });
