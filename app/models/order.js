@@ -41,7 +41,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
   attendees        : hasMany('attendee'),
 
   includedTaxAmount: computed('amount', 'event.isTaxEnabled', 'event.tax.rate', function() {
-    const isTaxEnabled = this.event.get('tax.isTaxEnabled');
+    const isTaxEnabled = this.event.get('isTaxEnabled');
     const taxRate = this.event.get('tax.rate');
     if (isTaxEnabled) {
       return ((taxRate * this.amount) / (100 + taxRate)).toFixed(2);
