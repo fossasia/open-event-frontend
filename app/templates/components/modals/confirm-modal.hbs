@@ -7,12 +7,18 @@
   </div>
 {{/if}}
 <div class="actions">
-  {{#unless this.confirm.options.hideDeny}}
-    <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
-      {{if this.confirm.options.denyText this.confirm.options.denyText (t 'No')}}
+  {{#if this.confirm.options.infoModal}}
+    <button type="button" class="ui blue button" {{action 'deny'}}>
+      {{t 'Ok'}}
     </button>
-  {{/unless}}
-  <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.approveColor 'green'}} button" {{action 'confirm'}}>
-    {{if this.confirm.options.approveText this.confirm.options.approveText (t 'Yes')}}
-  </button>
+  {{else}}
+    {{#unless this.confirm.options.hideDeny}}
+      <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
+        {{if this.confirm.options.denyText this.confirm.options.denyText (t 'No')}}
+      </button>
+    {{/unless}}
+    <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.approveColor 'green'}} button" {{action 'confirm'}}>
+      {{if this.confirm.options.approveText this.confirm.options.approveText (t 'Yes')}}
+    </button>
+  {{/if}}
 </div>
