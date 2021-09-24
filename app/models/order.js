@@ -44,7 +44,7 @@ export default ModelBase.extend(CustomPrimaryKeyMixin, {
     const isTaxEnabled = this.event.get('isTaxEnabled');
     const taxRate = this.event.get('tax.rate');
     if (isTaxEnabled) {
-      return ((taxRate * this.amount) / (100 + taxRate)).toFixed(2);
+      return ((taxRate * this.amount) / (100 + taxRate));
     } else {
       return 0;
     }
