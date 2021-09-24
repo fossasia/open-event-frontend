@@ -11,6 +11,6 @@ export default class GroupPublicController extends Controller {
 
   @computed('model.group.followers')
   get followers() {
-    return  this.model.group.followers.toArray();
+    return  this.model.group.followers ? this.model.group.followers.toArray() : [];
   }
 }

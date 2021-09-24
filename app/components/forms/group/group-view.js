@@ -4,9 +4,12 @@ import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
 import moment from 'moment';
 import { sortBy } from 'lodash-es';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class GroupView extends Component.extend(FormMixin) {
+
+  @service errorHandler;
 
   @computed('events.[]', 'group.events.[]')
   get pastEvents() {
