@@ -182,8 +182,12 @@
               </div>
           {{/if}}
           {{#if (and (not this.device.isMobile) this.model.group (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
-            <img class="ui middle aligned tiny right spaced image" src={{this.model.group.logoUrl}}>
-            <span style="font-weight: 700;font-size:20px">{{this.model.group.name}}</span>
+            <div class="mt-4">
+              <a href={{href-to 'group-public' this.model.group.id}} class="header black-text" target="_blank" rel="noopener">
+                <img class="ui middle aligned tiny right spaced image" src={{this.model.group.logoUrl}}>
+                <span style="font-weight: 700;font-size:20px">{{this.model.group.name}}</span>
+              </a>
+            </div>
             <button class="blue mt-2 ui labeled fluid button"  tabindex="0" {{action this.follow}}>
               <div class="ui blue fluid button">
                 <i class="large icons basic-details">
