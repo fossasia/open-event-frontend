@@ -30,7 +30,7 @@ export default class Group extends ModelBase.extend({
 
   url: computed('identifier', function() {
     const origin = this.fastboot.isFastBoot ? `${this.fastboot.request.protocol}//${this.fastboot.request.host}` : location.origin;
-    return origin + this.router.urlFor('groups.edit.events', this.id);
+    return origin + `/g/${this.id}`;
   })
 }) {}
 
