@@ -2,7 +2,9 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import { htmlSafe } from '@ember/string';
+import { tracked } from '@glimmer/tracking';
 import ENV from 'open-event-frontend/config/environment';
+
 
 @classic
 export default class IndexController extends Controller {
@@ -11,6 +13,8 @@ export default class IndexController extends Controller {
   isLoginModalOpen = false;
   isContactOrganizerModalOpen = false;
   userExists = false;
+
+  @tracked selectedRegistration = null;
 
   @computed('model.event.description')
   get htmlSafeDescription() {
@@ -126,6 +130,11 @@ export default class IndexController extends Controller {
   }
 
   @action
+  selectTicket(ticket) {
+    this.selectedRegistration = ticket;
+  }
+
+  @action
   async oneClickSignup(ticket) {
     const input = {
       tickets: [{
@@ -144,11 +153,7 @@ export default class IndexController extends Controller {
       }
     }
     try {
-      const order = await this.loader.post('/orders/create-order', myinput);
-      this.notify.success(this.l10n.t('Order details saved. Please fill further details within {{time}} minutes.', {
-        time: this.settings.orderExpiryTime
-      }));
-      this.transitionToRoute('orders.new', order.data.attributes.identifier);
+      this.set('orderInput', myinput);
     } catch (e) {
       console.error(e);
     }
