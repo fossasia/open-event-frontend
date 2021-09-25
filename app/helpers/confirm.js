@@ -10,7 +10,12 @@ export default Helper.extend({
   compute(params) {
     const { confirm } = this;
     return function() {
-      if (params.length >= 6) {
+      if (params[1] === 'info') {
+        confirm.prompt(params[0], { 'infoModal': true })
+          .then(() => {
+            params[1](...arguments);
+          });
+      } else if (params.length >= 6) {
         confirm.prompt('Are You Sure?', { 'denyText': params[2], 'approveText': params[3], 'denyColor': params[4], 'approveColor': params[5], 'extra': params[0] })
           .then(() => {
             params[1](...arguments);
