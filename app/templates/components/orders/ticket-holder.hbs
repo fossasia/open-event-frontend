@@ -109,6 +109,14 @@
           <span>
             {{this.data.event.bankDetails}}
           </span>
+        {{else if (eq this.data.paymentMode 'invoice')}}
+          <div class="ui divider"></div>
+          <h2 class="weight-300">
+            {{t 'Invoice Details'}}
+          </h2>
+          <span>
+            {{this.data.event.invoiceDetails}}
+          </span>
 				
         {{/if}}
       {{/if}}

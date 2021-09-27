@@ -396,6 +396,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             }
           ]
         },
+        invoiceDetails: {
+          identifier : 'invoice_details',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please fill the invoice details for payment of tickets.')
+            }
+          ]
+        },
         externalEventIdentifier: {
           identifier : 'external_event_url',
           optional   : true,
