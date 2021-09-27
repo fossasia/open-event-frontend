@@ -43,7 +43,7 @@
           @hint={{t "Select an image"}}
           @maxSizeInKb={{this.settings.logoSize}} />
       {{/if}}
-      {{#if (and (eq field.type 'file') (eq field.fieldIdentifier 'slides'))}}
+      {{#if (and (eq field.type 'file') (or (eq field.fieldIdentifier 'slides') (eq field.fieldIdentifier 'slidesUrl')))}}
           <div class="flex flex-column">
             <UiPopup @content={{t "Add Session document"}} @class="ui compact icon blue circular button" @click={{action 'addSessionDocument'}}>
               <i class="plus icon"></i>

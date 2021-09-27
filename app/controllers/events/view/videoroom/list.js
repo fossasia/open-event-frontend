@@ -24,7 +24,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name            : this.l10n.t('Microlocation'),
         valuePath       : 'name',
-        helperInfo      : 'You need to add rooms into the wizard first before they show up here.',
+        helperInfo      : this.l10n.t('You need to add rooms into the wizard first before they show up here.'),
         extraValuePaths : ['id', 'videoStream', 'constructor'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-title',
         width           : 70,
@@ -41,7 +41,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : this.l10n.t('Video Source URL'),
         valuePath     : 'videoStream',
-        helperInfo    : this.l10n.t('This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into') + this.settings.appName + '.com.',
+        helperInfo    : this.l10n.t('This column shows the original link of the video. We do not recommend to share this link as users can access it without logging into') + this.settings.appName + '.com.',
         cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url',
         width         : 60
       },

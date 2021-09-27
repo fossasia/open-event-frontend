@@ -70,21 +70,21 @@
     </div>
     <div class="three wide column">
       {{#if this.session.isAuthenticated}}
-        <button class="{{if @group.follower 'red' 'blue'}} mt-4 ui fluid button" {{action 'follow'}}>
-          {{#if @group.follower}}
-            {{t 'Unfollow Group'}}            
+        <button class="{{if this.isFollowed 'red' 'blue'}} mt-4 ui fluid button" {{action 'toggleFollow'}}>
+          {{#if this.isFollowed}}
+            {{t 'Unfollow Group'}}      
           {{else}}
-            {{t 'Follow Group'}}            
-          {{/if}}                   
+            {{t 'Follow Group'}}         
+          {{/if}}                 
         </button>
       {{/if}}
         <div class="ui blue horizontal basic label fluid text center aligned mt-2 p-2">
           <i class="users icon"></i>
           ({{@group.followerCount}} {{t 'followers'}})
         </div>
-        {{#if @group.followers}}
+        {{#if this.followers}}
           <div class="d-flex content-center items-center wrap mt-4">
-            {{#each @group.followers as |follower index|}}
+            {{#each this.followers as |follower index|}}
               {{#if (lt index 6)}}
                 <a href={{if follower.user.isProfilePublic (href-to 'public.sessions.user.view' follower.user.id) '#'}}
                 class="pointer"
