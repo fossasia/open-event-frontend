@@ -1,4 +1,4 @@
-<div class="ui fluid public-event ui relaxed grid mt-0 pt-0">
+<div class="public-event ui relaxed grid mt-0 pt-0">
   <div class="sixteen wide column lead">
     <Widgets::SafeImage class="background" @src={{if @group.bannerUrl @group.bannerUrl "/images/group.png"}} />
     <div class="content">
@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-  <div class="ui grid w-full">
+  <div class="ui grid stackable w-full {{if this.device.isMobile 'group-event'}}">
     <div class="three wide column"></div>
     <div style="margin: auto;" class="mb-4 ten wide column container">
       {{#if @group.events}}
@@ -70,27 +70,30 @@
     </div>
     <div class="three wide column">
       {{#if this.session.isAuthenticated}}
-        <button class="{{if @group.follower 'red' 'blue'}} mt-4 ui fluid button" {{action 'follow'}}>
-          {{#if @group.follower}}
-            {{t 'Unfollow Group'}}            
+        <button class="blue {{if this.device.isMobile 'mt-2' 'mt-4'}} ui fluid button" {{action 'toggleFollow'}}>
+          <i class="large icons basic-details">
+            <i class="users icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{#if this.isFollowed}}
+            {{t 'Following'}}
           {{else}}
-            {{t 'Follow Group'}}            
-          {{/if}}                   
+            {{t 'Follow Group'}}         
+          {{/if}}
+          <div class="ui blue basic left pointing label">
+            {{@group.followerCount}}
+          </div>
         </button>
       {{/if}}
-        <div class="ui blue horizontal basic label fluid text center aligned mt-2 p-2">
-          <i class="users icon"></i>
-          ({{@group.followerCount}} {{t 'followers'}})
-        </div>
-        {{#if @group.followers}}
+        {{#if this.followers}}
           <div class="d-flex content-center items-center wrap mt-4">
-            {{#each @group.followers as |follower index|}}
+            {{#each this.followers as |follower index|}}
               {{#if (lt index 6)}}
                 <a href={{if follower.user.isProfilePublic (href-to 'public.sessions.user.view' follower.user.id) '#'}}
                 class="pointer"
                 data-tooltip={{follower.user.resolvedName}}>
                 <img
-                class="ui tiny avatar image mb-2"
+                class="ui {{if this.device.isMobile 'mini' 'tiny'}} avatar image mb-2"
                 src={{or follower.user.thumbnailImageUrl follower.user.avatarUrl '/images/placeholders/avatar.png'}} />
                 </a>
               {{else}}

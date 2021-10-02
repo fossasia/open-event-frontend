@@ -290,6 +290,16 @@
                   @onChange={{action (mut this.data.paymentMode)}} />
               </div>
             {{/if}}
+            {{#if this.data.event.canPayByInvoice}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Invoice"}}
+                  @value="invoice"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.data.paymentMode)}} />
+              </div>
+            {{/if}}
             {{#if this.data.event.canPayByBank}}
               <div class="field">
                 <UiRadio
@@ -342,7 +352,7 @@
       </p>
       <div class="center aligned">
         {{#if this.data.event.isOneclickSignupEnabled}}
-          <button type="submit" class="ui violet submit button">{{t 'One Click Signup'}}</button>
+          <button type="submit" class="ui blue submit button">{{t 'One Click Signup'}}</button>
         {{else}}
           <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
         {{/if}}

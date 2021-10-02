@@ -234,7 +234,7 @@
                 @canMoveDown={{not-eq index (dec this.ticketCount)}}
                 @moveTicketUp={{action "moveTicket" ticket index "up"}}
                 @moveTicketDown={{action "moveTicket" ticket index "down"}}
-                @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
+                @removeTicket={{confirm (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) "This ticket or registration type already has orders. Therefore it cannot be deleted. Please hide this type instead by using the hide option under the settings symbol." "Are you sure you wish to delete this ticket ?") (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) 'info' (action "removeTicket" ticket))}}/>
             {{/each}}
           {{else}}
             <h3 class="text muted weight-500">
@@ -296,7 +296,7 @@
                 @canMoveDown={{not-eq index (dec this.ticketCount)}}
                 @moveTicketUp={{action "moveTicket" ticket index "up"}}
                 @moveTicketDown={{action "moveTicket" ticket index "down"}}
-                @removeTicket={{confirm "Are you sure you wish to delete this registration ?" (action "removeTicket" ticket)}}/>
+                @removeTicket={{confirm (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) "This ticket or registration type already has orders. Therefore it cannot be deleted. Please hide this type instead by using the hide option under the settings symbol." "Are you sure you wish to delete this ticket ?") (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) 'info' (action "removeTicket" ticket))}}/>
             {{/each}}
           {{else}}
             <h3 class="text muted weight-500">
@@ -414,7 +414,7 @@
               <span>{{t 'YES, accept payment through PayPal'}}</span>
               <br>
               <span class="text muted">
-                {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works '}}
+                {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works'}}
                 <a href="https://www.paypal.com/us/webapps/mpp/popup/about-payment-methods" target="_blank"
                   rel="noopener noreferrer">
                   {{t 'click here'}}
@@ -460,7 +460,7 @@
               {{t 'Yes, accept payment through AliPay Gateway'}}
               <div class="ui hidden divider"></div>
               <span class="text muted">
-                {{t 'AliPay can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details '}}
+                {{t 'AliPay can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details'}}
                 <a href="https://stripe.com/docs/sources/alipay" target="_blank"
                   rel="noopener noreferrer">{{t 'here'}}</a>.
               </span>
@@ -483,7 +483,7 @@
               {{t 'Yes, accept payment through Omise Gateway'}}
               <div class="ui hidden divider"></div>
               <span class="text muted">
-                {{t 'Omise can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details '}}
+                {{t 'Omise can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details'}}
                 <a href="https://www.omise.co/payment-methods" target="_blank"
                   rel="noopener noreferrer">{{t 'here'}}</a>.
               </span>
@@ -579,11 +579,34 @@
         <div class="ui checkbox">
           <Input
             @type="checkbox"
+            @id="payment_by_invoice"
+            @checked={{this.data.event.canPayByInvoice}} />
+          <label for="payment_by_invoice">
+            {{t 'YES, accept payment by Purchase on invoice'}}
+          </label>
+        </div>
+      </div>
+      {{#if this.data.event.canPayByInvoice}}
+        <div class="field payments">
+          <label class="required">
+            {{t 'Enter the required details/instructions to ticket buyers'}}
+          </label>
+          <Textarea
+            @id="invoice_details"
+            @value={{this.data.event.invoiceDetails}}
+          />
+        </div>
+      {{/if}}
+
+      <div class="field payments">
+        <div class="ui checkbox">
+          <Input
+            @type="checkbox"
             @id="payment_by_bank"
             @checked={{this.data.event.canPayByBank}}
           />
           <label for="payment_by_bank">
-            {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer '}}
+            {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer'}}
           </label>
         </div>
       </div>
@@ -607,7 +630,7 @@
             @id="payment_onsite"
             @checked={{this.data.event.canPayOnsite}} />
           <label for="payment_onsite">
-            {{t 'YES, accept payment at the event (on site) '}}
+            {{t 'YES, accept payment at the event (on site)'}}
           </label>
         </div>
       </div>
