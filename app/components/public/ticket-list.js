@@ -154,6 +154,12 @@ export default Component.extend(FormMixin, {
       try {
         const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode, include: 'event,tickets' });
         const discountCodeEvent = await discountCode.event;
+        if (discountCode.ticketsNumber < this.order.tickets.toArray().length) {
+          this.notify.error(this.l10n.t('Number of tickets is more than total promotional code.'), {
+            id: 'prom_inval'
+          });
+          return;
+        }
         if (this.currentEventIdentifier === discountCodeEvent.identifier) {
           this.order.set('discountCode', discountCode);
           const tickets = await discountCode.tickets;
