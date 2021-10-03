@@ -61,6 +61,7 @@ export default Component.extend(FormMixin, {
       if (ticketExtra) {
         ticket.set('subTotal', ticketExtra.sub_total);
         ticket.set('discountInfo', ticketExtra.discount);
+        // ticket.set('discountedTax', ticketExtra.discounted_tax)
       }
 
       return ticket;
@@ -163,9 +164,21 @@ export default Component.extend(FormMixin, {
         if (this.currentEventIdentifier === discountCodeEvent.identifier) {
           this.order.set('discountCode', discountCode);
           const tickets = await discountCode.tickets;
+          const ticketInput = {
+            'discount-code' : discountCode.id,
+            'tickets'       : tickets.toArray().map(ticket => ({
+              id       : ticket.id,
+              quantity : 1,
+              price    : ticket.price
+            }))
+          };
+          const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
           tickets.forEach(ticket => {
-            const discount = discountCode.type === 'amount' ? Math.min(ticket.price, discountCode.value) : ticket.price * (discountCode.value / 100);
-            ticket.set('discount', discount);
+            const discountedTicket = ticketAmount.tickets.find(o => {
+              return ticket.id === o.id.toString();
+            });
+            ticket.set('discountedTicketTax', discountedTicket.discounted_tax);
+            ticket.set('discount', discountedTicket.discount.amount);
             this.discountedTickets.addObject(ticket);
             this.set('invalidPromotionalCode', false);
           });
