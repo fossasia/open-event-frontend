@@ -47,15 +47,11 @@ brew link --force gettext
 - `yarn start`
 - Visit your app at [http://localhost:4200](http://localhost:4200).
 
-## <center>**OR**</center>
-
 ## Using [**gitpod**](https://gitpod.io)
 
-1.  Fork the repo and clone it on your system.
-2.  Create a new branch & push it to your remote repository.
-3.  Prefix the new branch remote url with _`gitpod.io/#`_
-
-    Like this: **`https://gitpod.io/#github.com/progmatic-99/open-event-frontend`**
+- Fork the repo and clone it on your system.
+- Create a new branch & push it to your remote repository.
+- Prefix the new branch remote url with _`gitpod.io/#`_  Like this: **`https://gitpod.io/#github.com/progmatic-99/open-event-frontend`**
 
     **`OR`**
 
