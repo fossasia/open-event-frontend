@@ -529,28 +529,6 @@
         {{/if}}
       {{/if}}
       <label>{{t 'Offline Payments'}}</label>
-      <div class="field payments">
-        <div class="ui checkbox">
-          <Input
-            @type="checkbox"
-            @id="payment_by_cheque"
-            @checked={{this.data.event.canPayByCheque}} />
-          <label for="payment_by_cheque">
-            {{t 'YES, accept payment by Cheque'}}
-          </label>
-        </div>
-      </div>
-      {{#if this.data.event.canPayByCheque}}
-        <div class="field payments">
-          <label class="required">
-            {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
-          </label>
-          <Textarea
-            @id="cheque_details"
-            @value={{this.data.event.chequeDetails}}
-          />
-        </div>
-      {{/if}}
 
       <div class="field payments">
         <div class="ui checkbox">
@@ -571,6 +549,29 @@
           <Textarea
             @id="invoice_details"
             @value={{this.data.event.invoiceDetails}}
+          />
+        </div>
+      {{/if}}
+
+      <div class="field payments">
+        <div class="ui checkbox">
+          <Input
+            @type="checkbox"
+            @id="payment_by_cheque"
+            @checked={{this.data.event.canPayByCheque}} />
+          <label for="payment_by_cheque">
+            {{t 'YES, accept payment by Cheque'}}
+          </label>
+        </div>
+      </div>
+      {{#if this.data.event.canPayByCheque}}
+        <div class="field payments">
+          <label class="required">
+            {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
+          </label>
+          <Textarea
+            @id="cheque_details"
+            @value={{this.data.event.chequeDetails}}
           />
         </div>
       {{/if}}

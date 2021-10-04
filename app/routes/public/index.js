@@ -78,6 +78,13 @@ export default class IndexRoute extends Route {
     set(this, 'headData.description', model.event.description);
   }
 
+  setupController(controller, model) {
+    controller.set('model', model);
+    if (model.tickets.length === 1) {
+      controller.set('selectedRegistration', model.tickets.toArray()[0]);
+    }
+  }
+
   resetController(controller) {
     super.resetController(...arguments);
     const model = controller.model.order;
