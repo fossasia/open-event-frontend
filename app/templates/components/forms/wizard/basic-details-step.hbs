@@ -529,6 +529,30 @@
         {{/if}}
       {{/if}}
       <label>{{t 'Offline Payments'}}</label>
+
+      <div class="field payments">
+        <div class="ui checkbox">
+          <Input
+            @type="checkbox"
+            @id="payment_by_invoice"
+            @checked={{this.data.event.canPayByInvoice}} />
+          <label for="payment_by_invoice">
+            {{t 'YES, accept payment by Purchase on invoice'}}
+          </label>
+        </div>
+      </div>
+      {{#if this.data.event.canPayByInvoice}}
+        <div class="field payments">
+          <label class="required">
+            {{t 'Enter the required details/instructions to ticket buyers'}}
+          </label>
+          <Textarea
+            @id="invoice_details"
+            @value={{this.data.event.invoiceDetails}}
+          />
+        </div>
+      {{/if}}
+
       <div class="field payments">
         <div class="ui checkbox">
           <Input
