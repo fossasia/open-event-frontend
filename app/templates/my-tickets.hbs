@@ -8,7 +8,7 @@
         <LinkTo @route="my-tickets.upcoming" class="item">
           {{t 'Upcoming Events'}}
         </LinkTo>
-        <LinkTo @route="my-tickets.past" class="item">
+        <LinkTo @route="my-tickets.past" @model="completed" class="item">
           {{t 'Past Events'}}
         </LinkTo>
       </TabbedNavigation>
