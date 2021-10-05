@@ -9,13 +9,13 @@
   <div class="ui padded segment">
     <table class="ui very basic compact unstackable table company-info">
       <tbody>
-        {{#if @tax.organization}}
+        {{#if @tax.registeredCompany}}
           <tr>
             <td>
-              <strong>{{t 'Name'}}:</strong>
+              <strong>{{t 'Organization'}}:</strong>
             </td>
             <td>
-              {{@tax.organization}}
+              {{@tax.registeredCompany}}
             </td>
           </tr>
         {{/if}}
