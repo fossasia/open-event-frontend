@@ -53,6 +53,27 @@ export default class ListRoute extends Route {
           ]
         }
       );
+    } else if (params.ticket_status === 'cancelled') {
+      filterOptions.push(
+        {
+          and: [
+            {
+              name : 'event',
+              op   : 'has',
+              val  : {
+                name : 'starts-at',
+                op   : 'ge',
+                val  : moment().toISOString()
+              }
+            },
+            {
+              name : 'status',
+              op   : 'eq',
+              val  : 'cancelled'
+            }
+          ]
+        }
+      );
     } else if (params.ticket_status === 'open') {
       filterOptions.push(
         {
