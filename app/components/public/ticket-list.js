@@ -61,7 +61,6 @@ export default Component.extend(FormMixin, {
       if (ticketExtra) {
         ticket.set('subTotal', ticketExtra.sub_total);
         ticket.set('discountInfo', ticketExtra.discount);
-        // ticket.set('discountedTax', ticketExtra.discounted_tax)
       }
 
       return ticket;

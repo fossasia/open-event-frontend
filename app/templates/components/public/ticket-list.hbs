@@ -76,11 +76,11 @@
                   {{#if ticket.discountedTicketTax}}
                     {{#if this.taxInfo.isTaxIncludedInPrice}}
                       <small class="ui gray-text small">
-                        {{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                        <br>{{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
                       </small>
                     {{else}}
                       <small class="ui gray-text small">
-                        + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                        <br>+ <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
                       </small>
                     {{/if}}
                   {{/if}}

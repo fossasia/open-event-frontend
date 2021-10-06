@@ -21,21 +21,23 @@ export default class OrderSummary extends Component.extend(FormMixin) {
   async didInsertElement() {
     const discountCode = await this.data.discountCode;
     const tickets = await this.data.tickets;
-    tickets.forEach(ticket => {
-      ticket.set('discount', 0);
-    });
+    const ticketInput = {
+      'discount-code' : discountCode?.id,
+      'tickets'       : tickets.toArray().map(ticket => ({
+        id       : ticket.id,
+        quantity : 1,
+        price    : ticket.price
+      }))
+    };
+    const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
     if (discountCode) {
-      const discountCodeTickets = await discountCode.get('tickets');
-      const discountType = discountCode.get('type');
-      const discountValue = discountCode.get('value');
       tickets.forEach(ticket => {
-        if (discountCodeTickets.includes(ticket)) {
-          const ticketPrice = ticket.get('price');
-          if (discountType === 'amount') {
-            ticket.set('discount', Math.min(ticketPrice, discountValue));
-          } else {
-            ticket.set('discount', ticketPrice * (discountValue / 100));
-          }
+        const discountedTicket = ticketAmount.tickets.find(o => {
+          return ticket.id === o.id.toString();
+        });
+        if (discountedTicket.discount) {
+          ticket.set('discountedTicketTax', discountedTicket.discounted_tax);
+          ticket.set('discountedTicketPrice', discountedTicket.price - discountedTicket.discount.amount);
         }
       });
     }
