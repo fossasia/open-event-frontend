@@ -15,7 +15,7 @@ export default Helper.extend({
           .then(() => {
             params[1](...arguments);
           });
-      }else if (params[1] === 'publicName') {
+      } else if (params[1] === 'publicName') {
         confirm.prompt(params[0], { 'publicName': true })
           .then(() => {
             params[1](...arguments);

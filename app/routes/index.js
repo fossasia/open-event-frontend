@@ -9,12 +9,12 @@ export default class IndexRoute extends Route {
 
 
   beforeModel() {
-    
+
     super.beforeModel(...arguments);
   }
 
 
-    /**
+  /**
    * Load filtered events based on the given params
    *
    * @param params
@@ -178,19 +178,19 @@ export default class IndexRoute extends Route {
         }
       }
     ];
-      
+
     if (this.session.isAuthenticated && this.session.currentRouteName === 'login' && !this.authManager.currentUser.publicName) {
-      try{
+      try {
         await this.confirm.prompt(this.l10n.t('You have not set a Public Profile Name yet. A public name is displayed on user profiles and video sessions instead of a fantasy name. You can change it later on your account page. Set your public name now'), { 'publicName': true });
         // this.transitionTo('account.profile');
         this.notify.success(this.l10n.t('Public Profile Name set successfully'), {
           id: 'pulic_name_succ'
         });
       } catch {
-        console.warn("User public profile name not set.");
+        console.warn('User public profile name not set.');
       }
     }
-    
+
     return hash({
       filteredEvents: this.store.query('event', {
         upcoming     : true,
@@ -216,7 +216,7 @@ export default class IndexRoute extends Route {
         'page[size]' : 6
       })
     });
-    
+
   }
 
   setupController(controller, model) {
