@@ -6,14 +6,6 @@ import { hash } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
-
-
-  beforeModel() {
-
-    super.beforeModel(...arguments);
-  }
-
-
   /**
    * Load filtered events based on the given params
    *
