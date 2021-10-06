@@ -1,5 +1,11 @@
 <div class="row">
   <div class="sixteen wide column">
+    <TabbedNavigation @isNonPointing={{true}}>
+      <LinkTo @route="my-tickets.past" @model="completed" class="item">
+        {{t 'Completed Orders'}}
+      </LinkTo>
+    </TabbedNavigation>
+    <br>
     {{#each this.model as |order|}}
       <OrderCard @order={{order}} @restrictTicketCancellation={{true}}>
       </OrderCard>
