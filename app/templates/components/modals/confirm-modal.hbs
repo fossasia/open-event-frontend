@@ -7,8 +7,10 @@
   </div>
 {{/if}}
 {{#if this.confirm.options.publicName}}
-  <div class="field ui fluid input">
-    <Input type="text" @id="public_name" placeholder={{t "Public Profile Name"}}  @value={{this.authManager.currentUser.publicName}}/>
+  <div class="content">
+    <div class="field ui fluid input">
+      <Input type="text" @id="public_name" placeholder={{t "Public Profile Name"}}  @value={{this.authManager.currentUser.publicName}}/>
+    </div>
   </div>
   <div class="actions">
     <button type="button" class="ui green button" {{action 'savePublicName'}}>
