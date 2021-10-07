@@ -20,13 +20,13 @@ export default class OrderSummary extends Component.extend(FormMixin) {
 
   @computed('data.tickets', 'data.tickets.@each.attendees', 'data.discountCode')
   get orderAmountInput() {
-    const discountCode = this.data.discountCode;
+    const { discountCode } = this.data;
     const input = {
-      'discount-code': discountCode.get('id'),
-      'tickets': this.data.tickets.toArray().map(ticket => ({
-        id: ticket.id,
-        quantity: ticket.get('attendees.length'),
-        price: ticket.price
+      'discount-code' : discountCode.get('id'),
+      'tickets'       : this.data.tickets.toArray().map(ticket => ({
+        id       : ticket.id,
+        quantity : ticket.get('attendees.length'),
+        price    : ticket.price
       }))
     };
     return input;
@@ -52,7 +52,7 @@ export default class OrderSummary extends Component.extend(FormMixin) {
         const mappedTicket = ticketAmount.tickets.find(o => {
           return ticket.id === o.id.toString();
         });
-        ticket.set('subTotal', mappedTicket.sub_total)
+        ticket.set('subTotal', mappedTicket.sub_total);
         if (mappedTicket.discount) {
           ticket.set('discountedTicketTax', mappedTicket.discounted_tax);
           ticket.set('discountedTicketPrice', mappedTicket.price - mappedTicket.discount.amount);
