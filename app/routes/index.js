@@ -210,7 +210,7 @@ export default class IndexRoute extends Route {
           console.warn('User public profile name not set.');
         }
       }
-    }, 4000);
+    }, 2000);
   }
 
   setupController(controller, model) {
