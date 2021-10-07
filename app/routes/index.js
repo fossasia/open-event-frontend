@@ -171,7 +171,7 @@ export default class IndexRoute extends Route {
       }
     ];
 
-    
+
     return hash({
       filteredEvents: this.store.query('event', {
         upcoming     : true,
