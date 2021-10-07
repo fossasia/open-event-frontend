@@ -18,26 +18,44 @@ export default class OrderSummary extends Component.extend(FormMixin) {
     );
   }
 
+  @computed('data.tickets', 'data.tickets.@each.attendees', 'data.discountCode')
+  get orderAmountInput() {
+    const discountCode = this.data.discountCode;
+    const input = {
+      'discount-code': discountCode.get('id'),
+      'tickets': this.data.tickets.toArray().map(ticket => ({
+        id: ticket.id,
+        quantity: ticket.get('attendees.length'),
+        price: ticket.price
+      }))
+    };
+    return input;
+  }
+
   async didInsertElement() {
     const discountCode = await this.data.discountCode;
     const tickets = await this.data.tickets;
-    const ticketInput = {
-      'discount-code' : discountCode?.id,
-      'tickets'       : tickets.toArray().map(ticket => ({
-        id       : ticket.id,
-        quantity : 1,
-        price    : ticket.price
-      }))
-    };
+    // const ticketInput = {
+    //   'discount-code' : discountCode?.id,
+    //   'tickets'       : tickets.toArray().map(ticket => ({
+    //     id       : ticket.id,
+    //     quantity : 1,
+    //     price    : ticket.price
+    //   }))
+    // };
+    const ticketInput = this.orderAmountInput;
     const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
+    this.set('total', ticketAmount.sub_total);
+    this.set('grandTotal', ticketAmount.total);
     if (discountCode) {
       tickets.forEach(ticket => {
-        const discountedTicket = ticketAmount.tickets.find(o => {
+        const mappedTicket = ticketAmount.tickets.find(o => {
           return ticket.id === o.id.toString();
         });
-        if (discountedTicket.discount) {
-          ticket.set('discountedTicketTax', discountedTicket.discounted_tax);
-          ticket.set('discountedTicketPrice', discountedTicket.price - discountedTicket.discount.amount);
+        ticket.set('subTotal', mappedTicket.sub_total)
+        if (mappedTicket.discount) {
+          ticket.set('discountedTicketTax', mappedTicket.discounted_tax);
+          ticket.set('discountedTicketPrice', mappedTicket.price - mappedTicket.discount.amount);
         }
       });
     }
