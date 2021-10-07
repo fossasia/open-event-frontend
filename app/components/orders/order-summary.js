@@ -20,9 +20,9 @@ export default class OrderSummary extends Component.extend(FormMixin) {
 
   @computed('data.tickets', 'data.tickets.@each.attendees', 'data.discountCode')
   get orderAmountInput() {
-    const { discountCode } = this.data;
+    const discountCodeId = this.data.discountCode?.get('id');
     const input = {
-      'discount-code' : discountCode.get('id'),
+      'discount-code' : discountCodeId,
       'tickets'       : this.data.tickets.toArray().map(ticket => ({
         id       : ticket.id,
         quantity : ticket.get('attendees.length'),
@@ -35,14 +35,6 @@ export default class OrderSummary extends Component.extend(FormMixin) {
   async didInsertElement() {
     const discountCode = await this.data.discountCode;
     const tickets = await this.data.tickets;
-    // const ticketInput = {
-    //   'discount-code' : discountCode?.id,
-    //   'tickets'       : tickets.toArray().map(ticket => ({
-    //     id       : ticket.id,
-    //     quantity : 1,
-    //     price    : ticket.price
-    //   }))
-    // };
     const ticketInput = this.orderAmountInput;
     const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
     this.set('total', ticketAmount.sub_total);
