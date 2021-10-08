@@ -27,7 +27,7 @@ module('Acceptance | my-tickets', function(hooks) {
   });
 
   test('visiting /my-tickets/past without login', async function(assert) {
-    await visit('/my-tickets/past');
+    await visit('/my-tickets/past/completed');
     assert.equal(currentURL(), '/login');
   });
 
@@ -55,9 +55,9 @@ module('Acceptance | my-tickets', function(hooks) {
     assert.equal(currentURL(), '/my-tickets/upcoming/open');
   });
 
-  test('visiting /my-tickets/past with login', async function(assert) {
+  test('visiting /my-tickets/past/completed with login', async function(assert) {
     await login(assert);
-    await visit('/my-tickets/past');
-    assert.equal(currentURL(), '/my-tickets/past');
+    await visit('/my-tickets/past/completed');
+    assert.equal(currentURL(), '/my-tickets/past/completed');
   });
 });
