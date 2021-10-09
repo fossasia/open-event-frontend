@@ -18,26 +18,46 @@ export default class OrderSummary extends Component.extend(FormMixin) {
     );
   }
 
+  @computed('data.tickets', 'data.tickets.@each.attendees', 'data.discountCode')
+  get orderAmountInput() {
+    const discountCodeId = this.data.discountCode?.get('id');
+    const input = {
+      'discount-code' : discountCodeId,
+      'tickets'       : this.data.tickets.toArray().map(ticket => ({
+        id       : ticket.id,
+        quantity : ticket.get('attendees.length'),
+        price    : ticket.price
+      }))
+    };
+    return input;
+  }
+
   async didInsertElement() {
-    const discountCode = await this.data.discountCode;
-    const tickets = await this.data.tickets;
-    tickets.forEach(ticket => {
-      ticket.set('discount', 0);
-    });
-    if (discountCode) {
-      const discountCodeTickets = await discountCode.get('tickets');
-      const discountType = discountCode.get('type');
-      const discountValue = discountCode.get('value');
-      tickets.forEach(ticket => {
-        if (discountCodeTickets.includes(ticket)) {
-          const ticketPrice = ticket.get('price');
-          if (discountType === 'amount') {
-            ticket.set('discount', Math.min(ticketPrice, discountValue));
-          } else {
-            ticket.set('discount', ticketPrice * (discountValue / 100));
+    try {
+      const discountCode = await this.data.discountCode;
+      const tickets = await this.data.tickets;
+      const ticketInput = this.orderAmountInput;
+      const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
+      this.set('total', ticketAmount.sub_total);
+      this.set('grandTotal', ticketAmount.total);
+      if (discountCode) {
+        tickets.forEach(ticket => {
+          const mappedTicket = ticketAmount.tickets.find(o => {
+            return ticket.id === o.id.toString();
+          });
+          ticket.set('subTotal', mappedTicket.sub_total);
+          if (mappedTicket.discount) {
+            ticket.set('discountedTicketTax', mappedTicket.discounted_tax);
+            ticket.set('discountedTicketPrice', mappedTicket.price - mappedTicket.discount.amount);
           }
-        }
-      });
+        });
+      }
+    } catch (e) {
+      console.error('Error while setting order amount', e);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'orde_sum_err'
+        });
     }
   }
 }
