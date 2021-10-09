@@ -10,15 +10,16 @@ export default class Group extends ModelBase.extend({
   fastboot : service(),
 
 
-  name          : attr('string'),
-  about         : attr('string'),
-  logoUrl       : attr('string'),
-  bannerUrl     : attr('string'),
-  createdAt     : attr('moment', { readOnly: true }),
-  modifiedAt    : attr('moment'),
-  deletedAt     : attr('moment'),
-  followerCount : attr('number'),
-  socialLinks   : attr(),
+  name              : attr('string'),
+  about             : attr('string'),
+  logoUrl           : attr('string'),
+  bannerUrl         : attr('string'),
+  thumbnailImageUrl : attr('string', { readOnly: true }),
+  createdAt         : attr('moment', { readOnly: true }),
+  modifiedAt        : attr('moment'),
+  deletedAt         : attr('moment'),
+  followerCount     : attr('number'),
+  socialLinks       : attr(),
   /**
    * Relationships
    */
