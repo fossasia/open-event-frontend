@@ -521,17 +521,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
 
-    openTaxModal(isNewTax) {
-      if (!this.isCreate && isNewTax) {
-        const tax = this.store.createRecord('tax', {
-          'isTaxIncludedInPrice': true
-        });
-        // Note(Areeb): Workaround for issue #4385, ember data always fetches
-        // event.tax from network if it is not already created for some reason
-        this.set('data.tax', tax);
-        this.set('data.event.tax', tax);
+    async openTaxModal() {
+      const tax = await this.getOrCreate(this.data.event, 'tax', 'tax');
+      if (!tax.get('name')) {
+        tax.isTaxIncludedInPrice = true;
+        tax.save();
       }
-
+      // Note(Areeb): Workaround for issue #4385, ember data always fetches
+      // event.tax from network if it is not already created for some reason
+      this.set('data.tax', tax);
+      this.set('data.event.tax', tax);
       this.set('taxModalIsOpen', true);
     },
 
