@@ -109,7 +109,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   hasPaidTickets: computed('data.event.tickets.@each.type', function() {
-    return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation').length > 0;
+    return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation' || ticket.type === 'paidRegistration' || ticket.type === 'donationRegistration').length > 0;
   }),
 
   ticketCount: computed('data.event.tickets.[]', 'deletedTickets.[]', function() {
@@ -396,6 +396,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             }
           ]
         },
+        invoiceDetails: {
+          identifier : 'invoice_details',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please fill the invoice details for payment of tickets.')
+            }
+          ]
+        },
         externalEventIdentifier: {
           identifier : 'external_event_url',
           optional   : true,
@@ -448,18 +457,41 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         });
 
     },
-    addTicket(type, position) {
+
+    async addTicket(type, position) {
       const { event } = this.data;
       const salesStartDateTime = moment();
-      const salesEndDateTime = this.data.event.startsAt;
+      const salesEndDateTime = this.data.event.endsAt;
+      if (type === 'registration') {
+        if (this.data.event.isOneclickSignupEnabled) {
+          this.data.event.isOneclickSignupEnabled = false;
+          return;
+        }
+        try {
+          await this.confirm.prompt(this.l10n.t('If you choose this option other ticket options will not be available. Do you want to proceed? '));
+          this.data.event.isOneclickSignupEnabled = true;
+          let countRegistration = 0;
+          this.data.event.tickets?.toArray().filter(x => {
+            if (x.type === 'registration') {
+              countRegistration += 1;
+            }
+          });
+          if (countRegistration > 0) {
+            return;
+          }
+        } catch (e) {
+          this.data.event.isOneclickSignupEnabled = false;
+        }
+      }
       this.data.event.tickets.pushObject(this.store.createRecord('ticket', {
+        name          : type === 'registration' ? 'registration' : '',
         event,
         type,
         position,
         quantity      : 100,
         maxPrice      : type === 'donation' ? 10000 : null,
         salesStartsAt : salesStartDateTime,
-        salesEndsAt   : salesEndDateTime
+        salesEndsAt   : type === 'registration' ? this.data.event.endsAt : salesEndDateTime
       }));
     },
 
@@ -489,15 +521,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       ticket.set('position', direction === 'up' ? (index - 1) : (index + 1));
     },
 
-    openTaxModal(isNewTax) {
-      if (!this.isCreate && isNewTax) {
-        const tax = this.store.createRecord('tax');
-        // Note(Areeb): Workaround for issue #4385, ember data always fetches
-        // event.tax from network if it is not already created for some reason
-        this.set('data.tax', tax);
-        this.set('data.event.tax', tax);
+    async openTaxModal() {
+      const tax = await this.getOrCreate(this.data.event, 'tax', 'tax');
+      if (!tax.get('name')) {
+        tax.isTaxIncludedInPrice = true;
+        tax.save();
       }
-
+      // Note(Areeb): Workaround for issue #4385, ember data always fetches
+      // event.tax from network if it is not already created for some reason
+      this.set('data.tax', tax);
+      this.set('data.event.tax', tax);
       this.set('taxModalIsOpen', true);
     },
 

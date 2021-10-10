@@ -6,6 +6,14 @@ import { hash } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
+
+  beforeModel(transition) {
+    super.beforeModel(transition);
+    if (this.authManager.currentUser?.languagePrefrence && this.session.currentRouteName === 'login') {
+      this.l10n.switchLanguage(this.authManager.currentUser.languagePrefrence);
+    }
+  }
+
   /**
    * Load filtered events based on the given params
    *
@@ -171,6 +179,7 @@ export default class IndexRoute extends Route {
       }
     ];
 
+
     return hash({
       filteredEvents: this.store.query('event', {
         upcoming     : true,
@@ -196,6 +205,20 @@ export default class IndexRoute extends Route {
         'page[size]' : 6
       })
     });
+
+  }
+
+  async afterModel() {
+    const prevRoute = this.session.currentRouteName;
+    setTimeout(() => {
+      if (this.session.isAuthenticated && this.session.currentRouteName === 'index' && prevRoute === 'login' && !this.authManager.currentUser.publicName) {
+        try {
+          this.confirm.prompt(this.l10n.t('You have not set a Public Profile Name yet. A public name is displayed on user profiles and video sessions instead of a fantasy name. You can change it later on your account page. Please set your public name now.'), { 'publicName': true });
+        } catch {
+          console.warn('User public profile name not set.');
+        }
+      }
+    }, 2000);
   }
 
   setupController(controller, model) {

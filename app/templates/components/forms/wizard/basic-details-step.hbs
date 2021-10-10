@@ -197,72 +197,136 @@
     </div>
   {{/if}}
   <div class="ui section divider"></div>
-    <div class="field">
-      <label class="required">{{t 'Ticketing System'}}</label>
-      <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
-        {{#if this.data.event.tickets}}
-          <div class="ui stackable celled five column grid ticket-header">
-            <div class="row weight-600">
-              <div class="five wide column">
-                <label class="required">{{t 'Ticket Name'}}</label>
-              </div>
-              <div class="three wide column">
-                <label class="required">{{t 'Price'}}</label>
-              </div>
-              <div class="four wide column">
-                <label class="required">{{t 'Quantity'}}</label>
-              </div>
-              <div class="column">
-                <label>{{t 'Options'}}</label>
+    <label>{{t 'Ticketed Event'}}</label>
+    <UiCheckbox
+        @class="toggle"
+        @checked={{this.data.event.isOneclickSignupEnabled}}
+        @onChange={{action (mut this.data.event.isOneclickSignupEnabled) }}
+        @label={{t 'Registration'}} />
+    <br><br>
+    {{#if (not this.data.event.isOneclickSignupEnabled)}}
+      <div class="field">
+        <label class="required">{{t 'Ticketing System'}}</label>
+        <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
+          {{#if this.data.event.tickets}}
+            <div class="ui stackable celled five column grid ticket-header">
+              <div class="row weight-600">
+                <div class="five wide column">
+                  <label class="required">{{t 'Ticket Name'}}</label>
+                </div>
+                <div class="three wide column">
+                  <label class="required">{{t 'Price'}}</label>
+                </div>
+                <div class="four wide column">
+                  <label class="required">{{t 'Quantity'}}</label>
+                </div>
+                <div class="column">
+                  <label>{{t 'Options'}}</label>
+                </div>
               </div>
             </div>
-          </div>
-          {{#each this.tickets as |ticket index|}}
-            <Widgets::Forms::TicketInput
-              @ticket={{ticket}}
-              @isExpanded={{if this.data.event.id false true}}
-              @timezone={{this.data.event.timezone}}
-              @canMoveUp={{not-eq index 0}}
-              @canMoveDown={{not-eq index (dec this.ticketCount)}}
-              @moveTicketUp={{action "moveTicket" ticket index "up"}}
-              @moveTicketDown={{action "moveTicket" ticket index "down"}}
-              @removeTicket={{confirm "Are you sure you wish to delete this ticket ?" (action "removeTicket" ticket)}}/>
-          {{/each}}
-        {{else}}
-          <h3 class="text muted weight-500">
-            {{t 'You don\'t have any tickets added. Please add atleast one ticket to publish your event.'}}
-          </h3>
-        {{/if}}
-      </div>
-      <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'free' this.data.event.tickets.length}}>
-        <i class="large icons basic-details">
-          <i class="smile icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Free Ticket'}}
-      </button>
-      <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'paid' this.data.event.tickets.length}}>
-        <i class="large icons basic-details">
-          <i class="dollar icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Paid Ticket'}}
-      </button>
-      {{!-- {{else}}
-        <div class="field">
-          <label for="ticket_url">{{t 'Ticket URL'}}</label>
-          {{widgets/forms/link-input inputId='ticket_url' segmentedLink=data.event.segmentedTicketUrl}}
+            {{#each this.tickets as |ticket index|}}
+              <Widgets::Forms::TicketInput
+                @ticket={{ticket}}
+                @isExpanded={{if this.data.event.id false true}}
+                @timezone={{this.data.event.timezone}}
+                @canMoveUp={{not-eq index 0}}
+                @canMoveDown={{not-eq index (dec this.ticketCount)}}
+                @moveTicketUp={{action "moveTicket" ticket index "up"}}
+                @moveTicketDown={{action "moveTicket" ticket index "down"}}
+                @removeTicket={{confirm (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) "This ticket or registration type already has orders. Therefore it cannot be deleted. Please hide this type instead by using the hide option under the settings symbol." "Are you sure you wish to delete this ticket ?") (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) 'info' (action "removeTicket" ticket))}}/>
+            {{/each}}
+          {{else}}
+            <h3 class="text muted weight-500">
+              {{t 'You don\'t have any tickets added. Please add at least one ticket to publish your event.'}}
+            </h3>
+          {{/if}}
         </div>
-      {{/if}} --}}
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'free' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="smile icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Free Ticket'}}
+        </button>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'paid' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="dollar icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Paid Ticket'}}
+        </button>
 
-      <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donation' this.data.event.tickets.length}}>
-        <i class="large icons basic-details">
-          <i class="heart icon"></i>
-          <i class="inverted corner add icon"></i>
-        </i>
-        {{t 'Donation Ticket'}}
-      </button>
-    </div>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donation' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="heart icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Donation Ticket'}}
+        </button>
+      </div>
+    {{else}}
+      <div class="field">
+        <label class="required">{{t 'Registration System'}}</label>
+        <div class="ui attached segment {{unless this.data.event.tickets 'center aligned'}} mb-4">
+          {{#if this.data.event.tickets}}
+            <div class="ui stackable celled five column grid ticket-header">
+              <div class="row weight-600">
+                <div class="five wide column">
+                  <label class="required">{{t 'Registration Name'}}</label>
+                </div>
+                <div class="three wide column">
+                  <label class="required">{{t 'Price'}}</label>
+                </div>
+                <div class="four wide column">
+                  <label class="required">{{t 'Quantity'}}</label>
+                </div>
+                <div class="column">
+                  <label>{{t 'Options'}}</label>
+                </div>
+              </div>
+            </div>
+            {{#each this.tickets as |ticket index|}}
+              <Widgets::Forms::TicketInput
+                @ticket={{ticket}}
+                @isExpanded={{if this.data.event.id false true}}
+                @timezone={{this.data.event.timezone}}
+                @canMoveUp={{not-eq index 0}}
+                @registration={{true}}
+                @canMoveDown={{not-eq index (dec this.ticketCount)}}
+                @moveTicketUp={{action "moveTicket" ticket index "up"}}
+                @moveTicketDown={{action "moveTicket" ticket index "down"}}
+                @removeTicket={{confirm (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) "This ticket or registration type already has orders. Therefore it cannot be deleted. Please hide this type instead by using the hide option under the settings symbol." "Are you sure you wish to delete this ticket ?") (if (or ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed) 'info' (action "removeTicket" ticket))}}/>
+            {{/each}}
+          {{else}}
+            <h3 class="text muted weight-500">
+              {{t 'You don\'t have any registrations added. Please add at least one registration to publish your event.'}}
+            </h3>
+          {{/if}}
+        </div>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'freeRegistration' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="smile icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Free Registration'}}
+        </button>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'paidRegistration' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="dollar icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Paid Registration'}}
+        </button>
+        <button type="button" class="ui blue small button {{if this.device.isMobile 'field fluid'}}" {{action 'addTicket' 'donationRegistration' this.data.event.tickets.length}}>
+          <i class="large icons basic-details">
+            <i class="heart icon"></i>
+            <i class="inverted corner add icon"></i>
+          </i>
+          {{t 'Donation Registration'}}
+        </button>
+      </div>
+    {{/if}}
   {{#if this.hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>
@@ -350,7 +414,7 @@
               <span>{{t 'YES, accept payment through PayPal'}}</span>
               <br>
               <span class="text muted">
-                {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works '}}
+                {{t 'Paypal accepts credit card, debit card and PayPal payments. To learn how it works'}}
                 <a href="https://www.paypal.com/us/webapps/mpp/popup/about-payment-methods" target="_blank"
                   rel="noopener noreferrer">
                   {{t 'click here'}}
@@ -396,7 +460,7 @@
               {{t 'Yes, accept payment through AliPay Gateway'}}
               <div class="ui hidden divider"></div>
               <span class="text muted">
-                {{t 'AliPay can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details '}}
+                {{t 'AliPay can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details'}}
                 <a href="https://stripe.com/docs/sources/alipay" target="_blank"
                   rel="noopener noreferrer">{{t 'here'}}</a>.
               </span>
@@ -419,7 +483,7 @@
               {{t 'Yes, accept payment through Omise Gateway'}}
               <div class="ui hidden divider"></div>
               <span class="text muted">
-                {{t 'Omise can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details '}}
+                {{t 'Omise can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details'}}
                 <a href="https://www.omise.co/payment-methods" target="_blank"
                   rel="noopener noreferrer">{{t 'here'}}</a>.
               </span>
@@ -465,6 +529,30 @@
         {{/if}}
       {{/if}}
       <label>{{t 'Offline Payments'}}</label>
+
+      <div class="field payments">
+        <div class="ui checkbox">
+          <Input
+            @type="checkbox"
+            @id="payment_by_invoice"
+            @checked={{this.data.event.canPayByInvoice}} />
+          <label for="payment_by_invoice">
+            {{t 'YES, accept payment by Purchase on invoice'}}
+          </label>
+        </div>
+      </div>
+      {{#if this.data.event.canPayByInvoice}}
+        <div class="field payments">
+          <label class="required">
+            {{t 'Enter the required details/instructions to ticket buyers'}}
+          </label>
+          <Textarea
+            @id="invoice_details"
+            @value={{this.data.event.invoiceDetails}}
+          />
+        </div>
+      {{/if}}
+
       <div class="field payments">
         <div class="ui checkbox">
           <Input
@@ -496,7 +584,7 @@
             @checked={{this.data.event.canPayByBank}}
           />
           <label for="payment_by_bank">
-            {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer '}}
+            {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer'}}
           </label>
         </div>
       </div>
@@ -520,7 +608,7 @@
             @id="payment_onsite"
             @checked={{this.data.event.canPayOnsite}} />
           <label for="payment_onsite">
-            {{t 'YES, accept payment at the event (on site) '}}
+            {{t 'YES, accept payment at the event (on site)'}}
           </label>
         </div>
       </div>
@@ -547,18 +635,35 @@
             </div>
             <div class="content">
               <div class="header">{{this.data.event.tax.name}}</div>
-              {{#if this.data.event.tax.shouldSendInvoice}}
+              {{#if this.data.event.tax.country}}
                 <div class="description">
-                  {{t 'Organisation Name '}}{{this.data.event.tax.registeredCompany}}
+                  <br/>{{this.data.event.tax.country}}
                 </div>
               {{/if}}
               <div class="description">
+                {{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
                 {{this.data.event.tax.taxId}}<br>
-                {{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Included in ticket price' 'Extra fee on ticket price'}}
               </div>
+              {{#if this.data.event.tax.shouldSendInvoice}}
+                <div class="description">
+                  {{this.data.event.tax.registeredCompany}}
+                  {{#if this.data.event.tax.address}}
+                    <br/>{{this.data.event.tax.address}}
+                  {{/if}}
+                  {{#if this.data.event.tax.city}}
+                    <br/>{{this.data.event.tax.city}}
+                  {{/if}}
+                  {{#if this.data.event.tax.state}}
+                    <br/>{{this.data.event.tax.state}}
+                  {{/if}}
+                  {{#if this.data.event.tax.zip}}
+                    <br/>{{this.data.event.tax.zip}}
+                  {{/if}}
+                </div>
+              {{/if}}
             </div>
             <div class="ui bottom attached small buttons">
-              <button class="ui button" type="button" {{action 'openTaxModal' false}}>
+              <button class="ui button" type="button" {{action 'openTaxModal'}}>
                 <i class="pencil icon"></i>
                 {{t 'Edit'}}
               </button>
@@ -570,7 +675,7 @@
             </div>
           </div>
         {{else}}
-          <button type="button" class="ui right labeled icon button" {{action 'openTaxModal' true}}>
+          <button type="button" class="ui right labeled icon button" {{action 'openTaxModal'}}>
             <i class="percent icon"></i>
             {{t 'Add Tax Information'}}
           </button>

@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
 import AdminSalesMixin from 'open-event-frontend/mixins/admin-sales';
 import { or } from '@ember/object/computed';
+import { action } from '@ember/object';
+import { run } from '@ember/runloop';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 
 export default class IndexController extends Controller.extend(AdminSalesMixin, EmberTableControllerMixin) {
@@ -8,6 +10,7 @@ export default class IndexController extends Controller.extend(AdminSalesMixin, 
 @or('authManager.currentUser.isSuperAdmin', 'authManager.currentUser.isAdmin') hasRestorePrivileges;
 sort_by = 'starts-at';
 sort_dir = 'DSC';
+per_page = 10;
 get columns() {
   return [
     {
@@ -44,14 +47,18 @@ get columns() {
       color           : 'green',
       subcolumns      : [
         {
-          name      : this.l10n.t('Tickets'),
-          valuePath : 'sales.completed.ticket_count',
-          width     : 30
+          name            : this.l10n.t('Tickets'),
+          valuePath       : 'completedOrderTickets',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
+          width           : 30
         },
         {
           name            : this.l10n.t('Sales'),
-          valuePath       : 'sales.completed.sales_total',
+          valuePath       : 'completedOrderSales',
           extraValuePaths : ['paymentCurrency'],
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
         }
       ]
@@ -62,13 +69,17 @@ get columns() {
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : this.l10n.t('Tickets'),
-          valuePath : 'sales.placed.ticket_count',
-          width     : 30
+          name            : this.l10n.t('Tickets'),
+          valuePath       : 'placedOrderTickets',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
+          width           : 30
         },
         {
           name            : this.l10n.t('Sales'),
-          valuePath       : 'sales.placed.sales_total',
+          valuePath       : 'placedOrderSales',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
         }
@@ -80,13 +91,17 @@ get columns() {
       headerComponent : 'tables/headers/sort',
       subcolumns      : [
         {
-          name      : this.l10n.t('Tickets'),
-          valuePath : 'sales.pending.ticket_count',
-          width     : 30
+          name            : this.l10n.t('Tickets'),
+          valuePath       : 'pendingOrderTickets',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
+          width           : 30
         },
         {
           name            : this.l10n.t('Sales'),
-          valuePath       : 'sales.pending.sales_total',
+          valuePath       : 'pendingOrderSales',
+          headerComponent : 'tables/headers/sort',
+          isSortable      : true,
           extraValuePaths : ['paymentCurrency'],
           cellComponent   : 'ui-table/cell/admin/sales/cell-amount'
         }
@@ -94,4 +109,62 @@ get columns() {
     }
   ];
 }
+
+@action
+export(status) {
+  this.set('isLoading', true);
+  const payload = {
+    status
+  };
+  this.loader
+    .post('/admin/export/sales/csv', payload)
+    .then(exportJobInfo => {
+      this.requestLoop(exportJobInfo);
+    })
+    .catch(e => {
+      console.error('Error while exporting', e);
+      this.set('isLoading', false);
+      this.notify.error(this.l10n.t('An unexpected error has occurred.'),
+        {
+          id: 'sales_unexp_error'
+        });
+    });
+}
+
+requestLoop(exportJobInfo) {
+  run.later(() => {
+    this.loader
+      .load(exportJobInfo.task_url, { withoutPrefix: true })
+      .then(exportJobStatus => {
+        if (exportJobStatus.state === 'SUCCESS') {
+          window.location = exportJobStatus.result.download_url;
+          this.notify.success(this.l10n.t('Download Ready'),
+            {
+              id: 'download_ready'
+            });
+        } else if (exportJobStatus.state === 'WAITING') {
+          this.requestLoop(exportJobInfo);
+          this.notify.alert(this.l10n.t('Task is going on.'),
+            {
+              id: 'task_going'
+            });
+        } else {
+          this.notify.error(this.l10n.t('CSV Export has failed.'),
+            {
+              id: 'csv_fail'
+            });
+        }
+      })
+      .catch(() => {
+        this.notify.error(this.l10n.t('CSV Export has failed.'),
+          {
+            id: 'csv_export_fail'
+          });
+      })
+      .finally(() => {
+        this.set('isLoading', false);
+      });
+  }, 3000);
+}
+
 }

@@ -48,7 +48,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{'This column shows the original link of the video. We do not recommend to share this link as users can access it without loggin into ' this.settings.appName '.com.'}} />
+          @content={{t 'This column shows the original link of the video. We do not recommend to share this link as users can access it without logging into ' this.settings.appName '.com.'}} />
       </label>
       {{#if (eq this.data.stream.videoChannel.provider 'youtube')}}
         <Widgets::Forms::SocialLinkField
@@ -75,7 +75,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in ' this.settings.appName '.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'}} />
+          @content={{t 'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in ' this.settings.appName '.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'}} />
         </label>
       <Input
         @value={{this.data.stream.password}} />
@@ -87,7 +87,7 @@
       <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{'Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.'}} />
+          @content={{t 'Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.'}} />
     </label>
     <Textarea
       @value={{this.data.stream.additionalInformation}} />

@@ -256,9 +256,14 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.onValid(async() => {
       try {
         this.set('isLoading', true);
-        this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
+        if (this.data.stream.extra?.bbb_options) {
+          this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
+        }
         await this.data.stream.save();
         const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
+          if (moderator.id) {
+            return moderator;
+          }
           return moderator.save();
         });
         const deleteModerators = this.deletedModerators.map(moderator => {
@@ -291,20 +296,29 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.onValid(() => {
       const existingEmails = this.data.stream.moderators.map(moderator => moderator.email);
       if (!existingEmails.includes(this.moderatorEmail)) {
-        const moderator = this.store.createRecord('video-stream-moderator', {
-          email       : this.moderatorEmail,
-          videoStream : this.data.stream
-        });
-        this.data.stream.moderators.pushObject(moderator);
+        const existingModerator = this.deletedModerators.filter(moderator => moderator.email === this.moderatorEmail);
+        if (existingModerator.length === 0) {
+          const newModerator = this.store.createRecord('video-stream-moderator', {
+            email       : this.moderatorEmail,
+            videoStream : this.data.stream
+          });
+          this.data.stream.moderators.pushObject(newModerator);
+        } else {
+          const moderator = this.store.peekRecord('video-stream-moderator', existingModerator[0].id);
+          this.data.stream.moderators.pushObject(moderator);
+        }
       }
+      this.deletedModerators = this.deletedModerators.filter(moderator => moderator.email !== this.moderatorEmail);
       this.moderatorEmail = '';
     });
   }
 
   @action
   deleteModerator(moderator) {
-    this.deletedModerators.push(moderator);
     this.data.stream.moderators.removeObject(moderator);
+    if (moderator.id) {
+      this.deletedModerators.push(moderator);
+    }
   }
 
   async loadRecordings() {

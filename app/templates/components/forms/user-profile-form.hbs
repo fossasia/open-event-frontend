@@ -48,7 +48,7 @@
           <UiPopup
             @tagName="i"
             @class="info circle icon"
-            @content={{'Public profile name, if set, is displayed to other users on profiles and video sessions instead of real name.'}} />
+            @content={{'Public profile name, if set, is displayed to other users on profiles and video sessions instead of a fantasy name.'}} />
         </label>
         <Input
           @type="text"
@@ -74,6 +74,20 @@
           @type="text"
           @name="phone"
           @value={{this.user.contact}} />
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Language Preference'}}
+        </label>
+        <UiDropdown @class="fluid search selection" @selected={{this.user.languagePrefrence}} @forceSelection={{false}} @onChange={{action (mut this.user.languagePrefrence)}}>
+          <i class="dropdown icon"></i>
+          <span class="text">{{this.user.languagePrefrence}}</span>
+          <div class="ui language menu">
+            {{#each-in this.l10n.availableLocales as |key value|}}
+              <div class="item" data-value="{{key}}">{{value}}</div>
+            {{/each-in}}
+          </div>
+        </UiDropdown>
       </div>
       <div class="field d-flex">
         <label for="public_name">

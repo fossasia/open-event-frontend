@@ -43,14 +43,33 @@
           @hint={{t "Select an image"}}
           @maxSizeInKb={{this.settings.logoSize}} />
       {{/if}}
-      {{#if (eq field.type 'file')}}
-        <Widgets::Forms::FileUpload
-          @fileUrl={{mut (get this.data.session field.fieldIdentifier)}}
-          @label={{t "File"}}
-          @id={{if field.isRequired (concat "session_" field.fieldIdentifier "_required") (concat "session_" field.fieldIdentifier)}}
-          @icon="file"
-          @hint={{t "Select a file"}}
-          @maxSizeInKb={{this.settings.slideSize}} />
+      {{#if (and (eq field.type 'file') (or (eq field.fieldIdentifier 'slides') (eq field.fieldIdentifier 'slidesUrl')))}}
+          <div class="flex flex-column">
+            <UiPopup @content={{t "Add Session document"}} @class="ui compact icon blue circular button" @click={{action 'addSessionDocument'}}>
+              <i class="plus icon"></i>
+            </UiPopup>
+            {{#if this.data.session.slides}}
+              {{#each this.data.session.slides as |slide| }}
+                <div class="ui d-flex items-center mt-2 mb-2">
+                  <div class="field ui m-0 input mr-2 w-30">
+                    <Input type="text" placeholder={{t "Document Name"}}  @value={{slide.name}}/>
+                  </div>
+                  <Widgets::Forms::FileUpload
+                    @fileUrl={{slide.link}}
+                    @label={{t "slide"}}
+                    @id={{slide.name}}
+                    @icon="file"
+                    @hint={{t "Select a file"}}
+                    @maxSizeInKb={{this.settings.slideSize}} />
+                  <div class="ui icon buttons ml-2">
+                    <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action 'removeDocument' slide}} @position="top center">
+                      <i class="minus icon"></i>
+                    </UiPopup>
+                  </div>
+                </div>
+              {{/each}}
+            {{/if}}
+          </div>
       {{/if}}
       {{#if (eq field.type 'select')}}
         {{#if (eq field.fieldIdentifier 'language')}}

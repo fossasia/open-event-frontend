@@ -1,0 +1,15 @@
+<UiAccordion class="segment p-0">
+  <div class="title ui header m-2">
+    {{t 'Session Documents'}}
+  </div>
+  <div class="content m-2">
+    <div class="d-flex flex-row mb-2 mr-2">
+      {{#each @session.slides as |slide|}}
+        <button class="ui button fluid {{if (eq this.currDoc slide.link) 'grey' 'white'}}" style="width:auto;" {{action 'selectedDocument' slide.link}}>
+          {{slide.name}}
+        </button>
+      {{/each}} 
+    </div>
+    <iframe title="session-slides" id="googleFrame" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.currDoc }}&embedded=true"></iframe>
+  </div>
+</UiAccordion>

@@ -5,38 +5,109 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
-  {{#if (or this.model.event.ticketUrl this.model.tickets)}}
-    <div class="tickets mt-16" id="tickets">
-      <div class="ui segments ticket-list">
-        <div class="ui segment">
-          <h2 class="ui header">{{t 'Tickets'}}</h2>
+  {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
+    <h2>{{t 'Registration'}}</h2>
+    {{!-- template-lint-disable style-concatenation --}}
+     {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
+       {{#if (includes ticket.type 'Registration')}}
+         <div role='button' onclick={{action "selectTicket" ticket}} class="ui segment {{if (eq this.selectedRegistration ticket) 'select-ticket'}}" style="cursor:pointer; max-width:{{if device.isMobile '100%' '50%'}}">
+            {{!-- template-lint-disable no-invalid-interactive --}}
+           <div class="ui two column grid"  style="align-items: center;">
+              <div class="two wide column">
+                <div class="custom-registration-checkbox pb-4">
+                  <span class="custom-registration-bullet {{if (eq this.selectedRegistration ticket) 'select-custom-registration-checkbox'}}"></span>
+                </div>
+              </div>
+              <div class="fourteen wide column">
+                <div class="ui stackable two column grid">
+                  <div class="twelve wide column">
+                    <div class="row">{{ticket.name}}</div>
+                    <div class="row">
+                      <small class="ui gray-text tiny">{{if ticket.description ticket.description}}</small>
+                       {{#if (includes ticket.type 'donation')}}
+                        <div class="ui labeled fluid input">
+                          <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.model.event.paymentCurrency}}</label>
+                          <Input
+                            id="i_{{ticket.id}}_price"
+                            @type="number"
+                            @name={{ticket.id}} placeholder={{t "Enter Donation"}}
+                            @min={{ticket.minPrice}}
+                            @max={{ticket.maxPrice}}
+                            @value={{ticket.price}}
+                            />
+                        </div>
+                      {{/if}}
+                    </div>
+                  </div>
+                  <div class="four wide column">
+                    <div class="bold-text">
+                      {{#if (includes ticket.type 'free')}}
+                        {{t 'Free'}}
+                      {{else if (includes ticket.type 'paid')}}
+                        <CurrencyAmount @amount={{ticket.price}} @currency={{this.model.event.paymentCurrency}} />
+                      {{else}}
+                        {{t 'Donation'}}
+                      {{/if}}
+                    </div>
+                    {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
+                      <p>
+                        {{#if this.model.tax.isTaxIncludedInPrice}}
+                          <small class="ui gray-text small">
+                            {{t 'includes'}} <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{ticket.includedTaxAmount}}/>
+                          </small>
+                        {{else}}
+                          <small class="ui gray-text small">
+                            + <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                          </small>
+                        {{/if}}
+                        <span>
+                          <small class="ui gray-text tiny aligned right">({{this.model.tax.name}})</small>
+                        </span>
+                      </p>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+           </div>
+         </div>
+       {{/if}}
+     {{/each}}
+    <br/>
+    <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
+  {{else}}
+    {{#if (or this.model.event.ticketUrl this.model.tickets)}}
+      <div class="tickets mt-16" id="tickets">
+        <div class="ui segments ticket-list">
+          <div class="ui segment">
+            <h2 class="ui header">{{t 'Tickets'}}</h2>
+          </div>
+          <div class="ui segment">
+            <Public::TicketList
+              @eventCurrency={{this.model.event.paymentCurrency}}
+              @ticketUrl={{this.model.event.ticketUrl}}
+              @data={{this.model.tickets}}
+              @order={{this.model.order}}
+              @event={{this.model.event}}
+              @attendees={{this.model.attendees}}
+              @code={{code}}
+              @taxInfo={{this.model.tax}}
+              @currentEventIdentifier={{this.model.event.identifier}}
+              @createNewUserViaEmail={{action "createNewUserViaEmail"}}
+              @loginExistingUser={{action "loginExistingUser"}}
+              @openContactOrganizerModal={{action "openContactOrganizerModal"}}
+              @isLoginModalOpen={{this.isLoginModalOpen}}
+              @isContactOrganizerModalOpen={{this.isContactOrganizerModalOpen}}
+              @placeOrder={{action "placeOrder"}}
+              @isLoading={{this.isLoading}}
+              @userExists={{this.userExists}}
+              @errorMessage={{this.errorMessage}}
+              @save="save" />
+          </div>
+          <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />
         </div>
-        <div class="ui segment">
-          <Public::TicketList
-            @eventCurrency={{this.model.event.paymentCurrency}}
-            @ticketUrl={{this.model.event.ticketUrl}}
-            @data={{this.model.tickets}}
-            @order={{this.model.order}}
-            @event={{this.model.event}}
-            @attendees={{this.model.attendees}}
-            @code={{code}}
-            @taxInfo={{this.model.tax}}
-            @currentEventIdentifier={{this.model.event.identifier}}
-            @createNewUserViaEmail={{action "createNewUserViaEmail"}}
-            @loginExistingUser={{action "loginExistingUser"}}
-            @openContactOrganizerModal={{action "openContactOrganizerModal"}}
-            @isLoginModalOpen={{this.isLoginModalOpen}}
-            @isContactOrganizerModalOpen={{this.isContactOrganizerModalOpen}}
-            @placeOrder={{action "placeOrder"}}
-            @isLoading={{this.isLoading}}
-            @userExists={{this.userExists}}
-            @errorMessage={{this.errorMessage}}
-            @save="save" />
-        </div>
-        <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />
       </div>
-    </div>
-    <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+    {{/if}}
   {{/if}}
   {{#if this.model.featuredSpeakers}}
     <div class="featured-speakers" id="speakers">
@@ -91,3 +162,11 @@
     </div>
   {{/if}}
 </div>
+
+<Modals::LoginSignupModal
+  @isOpen={{this.isLoginModalOpen}}
+  @isLoading={{this.isLoading}}
+  @createNewUserViaEmail={{this.createNewUserViaEmail}}
+  @loginExistingUser={{this.loginExistingUser}}
+  @userExists={{this.userExists}}
+  @errorMessage={{this.errorMessage}} />

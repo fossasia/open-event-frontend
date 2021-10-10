@@ -23,8 +23,10 @@ export default class NewController extends Controller {
       await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
       if (paymentMode === 'free') {
         order.set('status', 'completed');
-      } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite') {
+      } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite' || paymentMode === 'invoice') {
         order.set('status', 'placed');
+      } else if (data.event.get('isOneclickSignupEnabled')) {
+        order.set('status', 'completed');
       } else {
         order.set('status', 'pending');
       }

@@ -79,11 +79,11 @@
           {{#if (and this.device.isMobile this.model.group)}}
             <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
               {{#if this.model.group.follower}}
-                {{t 'Unfollow Group'}}            
+                {{t 'Unfollow Group'}}
               {{else}}
                 {{t 'Follow Group'}}            
               {{/if}}
-              {{this.model.group.name}}
+              {{this.model.group.name}} ({{this.model.group.followerCount}} {{t 'followers'}})
             </button>
           {{/if}}
           {{#if (eq this.session.currentRouteName 'public.sessions.index')}}
@@ -182,13 +182,27 @@
               </div>
           {{/if}}
           {{#if (and (not this.device.isMobile) this.model.group (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
-            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
-              {{#if this.model.group.follower}}
-                {{t 'Unfollow Group'}}            
-              {{else}}
-                {{t 'Follow Group'}}            
-              {{/if}}
-              {{this.model.group.name}}
+            <div class="mt-4">
+              <a href={{href-to 'group-public' this.model.group.id}} class="header black-text" target="_blank" rel="noopener">
+                <img class="ui middle aligned tiny right spaced image" src={{this.model.group.logoUrl}}>
+                <span style="font-weight: 700;font-size:20px">{{this.model.group.name}}</span>
+              </a>
+            </div>
+            <button class="blue mt-2 ui labeled fluid button"  tabindex="0" {{action this.follow}}>
+              <div class="ui blue fluid button">
+                <i class="large icons basic-details">
+                <i class="users icon"></i>
+                <i class="inverted corner add icon"></i>
+                </i>
+                {{#if this.model.group.follower}}
+                  <span class="mr-4 ml-4">{{t 'Following'}} </span>            
+                {{else}}
+                  <span class="mr-4 ml-4">{{t 'Follow Group'}}</span>           
+                {{/if}}
+                <div class="ui basic left pointing blue label">
+                  {{this.model.group.followerCount}} 
+                </div>
+              </div>              
             </button>
           {{/if}}
         {{/if}}

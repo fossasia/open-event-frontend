@@ -1,0 +1,30 @@
+{{outlet}}<table class="ui center aligned stackable celled structured table">
+  <thead>
+    <tr>
+      <th class="center aligned">{{t 'Permissions'}}</th>
+      <th class="center aligned">{{t 'Owner'}}</th>
+      <th class="center aligned">{{t 'Organizer'}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model.permissions as |permission|}}
+      <tr>
+        {{#if permission.header}}
+          <td colspan="3" class="left aligned" style="background-color: rgba(0, 0, 0, 0.05);">{{t-var permission.title}}</td>
+        {{else}}
+          <td class="left aligned">{{t-var permission.title}}</td>
+          <td>
+            {{#if permission.owner}}
+              <i class="check icon"></i>
+            {{/if}}
+          </td>
+          <td>
+            {{#if permission.organizer}}
+              <i class="check icon"></i>
+            {{/if}}
+          </td>
+        {{/if}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

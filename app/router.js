@@ -175,27 +175,35 @@ Router.map(function() {
       });
     });
   });
-  this.route('explore');
+  this.route('explore', function() {
+    this.route('events');
+    this.route('groups');
+  });
   this.route('groups', function() {
-    this.route('list');
     this.route('create');
-    this.route('following');
-    this.route('team', { path: '/team/:group_id' });
-    this.route('view', { path: '/:group_id' });
+    this.route('team', { path: '/:group_id/team' }, function() {
+      this.route('permissions');
+    });
     this.route('edit', { path: '/edit' }, function() {
       this.route('events', { path: '/:group_id/events' });
       this.route('settings', { path: '/:group_id/settings' });
+      this.route('followers', { path: '/:group_id/followers' });
     });
   });
   this.route('my-tickets', function() {
     this.route('upcoming', function() {
       this.route('list', { path: '/:ticket_status' });
     });
-    this.route('past');
+    this.route('past', { path: '/past/:ticket_status' });
   });
   this.route('my-sessions', function() {
     this.route('list', { path: '/:session_status' });
   });
+  this.route('my-groups', function() {
+    this.route('list');
+    this.route('following');
+  });
+  this.route('group-public', { path: '/g/:group_id' });
   // this.route('notifications', function() {
   //   this.route('all', { path: '/:notification_state' });
   // });

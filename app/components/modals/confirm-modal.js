@@ -7,6 +7,12 @@ export default ModalBase.extend({
   },
 
   actions: {
+    savePublicName() {
+      this.authManager.currentUser.save();
+      this.confirm.pendingPromise?.resolve();
+      this.set('isOpen', false);
+    },
+
     deny() {
       if (this.confirm.pendingPromise.reject) {
         this.confirm.pendingPromise.reject();
