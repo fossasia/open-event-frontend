@@ -76,6 +76,8 @@ export default Component.extend(FormMixin, {
           })
           .finally(() => {
             this.set('isLoading', false);
+            this.l10n.switchLanguage(this.user.languagePrefrence);
+            this.cookies.write('current_locale', this.user.languagePrefrence, { path: '/' });
           });
       });
     }

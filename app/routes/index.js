@@ -6,6 +6,14 @@ import { hash } from 'rsvp';
 
 @classic
 export default class IndexRoute extends Route {
+
+  beforeModel(transition) {
+    super.beforeModel(transition);
+    if (this.authManager.currentUser?.languagePrefrence && this.session.currentRouteName === 'login') {
+      this.l10n.switchLanguage(this.authManager.currentUser.languagePrefrence);
+    }
+  }
+
   /**
    * Load filtered events based on the given params
    *
