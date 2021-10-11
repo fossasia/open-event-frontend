@@ -20,7 +20,7 @@ export default class OrderSummary extends Component.extend(FormMixin) {
 
   @computed('data.tickets', 'data.tickets.@each.attendees', 'data.discountCode')
   get orderAmountInput() {
-    const discountCodeId = this.data.discountCode?.get('id');
+    const discountCodeId = this.data.discountCodeId || undefined;
     const input = {
       'discount-code' : discountCodeId,
       'tickets'       : this.data.tickets.toArray().map(ticket => ({
