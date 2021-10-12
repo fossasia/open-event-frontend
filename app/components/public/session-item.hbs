@@ -165,7 +165,7 @@
       <Public::Stream::StreamInfo @event={{or @event @session.event}} @videoStream={{@session.microlocation.videoStream}} />
     {{/if}}
     
-    {{#each @session.speakers as |speaker|}}
+    {{#each (sort-by 'position' @session.speakers) as |speaker|}}
       <img alt="speaker" class="ui tiny avatar image mt-8" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <p>
         <br>
