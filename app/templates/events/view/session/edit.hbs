@@ -14,6 +14,7 @@
         @save={{action "save"}}
         @isSession={{true}}
         @speakersDetails={{this.model.session.speakers}}
+        @viewSpeakerOrder={{sort-by 'position' this.model.session.speakers}}
         @includeSession={{true}}
         @isSessionSpeaker={{true}}
         @isLoading={{this.isLoading}}

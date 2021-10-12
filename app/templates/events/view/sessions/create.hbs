@@ -10,6 +10,7 @@
       @speakers={{this.model.speakers}}
       @event={{this.model.event}}
       @speakersDetails={{this.model.session.speakers}}
+      @viewSpeakerOrder={{sort-by 'position' this.model.session.speakers}}
       @save={{action "save"}}
       @includeSession={{true}}
       @isSessionSpeaker={{true}}
