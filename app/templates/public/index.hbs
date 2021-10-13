@@ -6,7 +6,7 @@
     <div class="ui hidden divider"></div>
   {{/if}}
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
-    <h2>{{t 'Registration'}}</h2>
+    <h2 id="tickets">{{t 'Registration'}}</h2>
     {{!-- template-lint-disable style-concatenation --}}
      {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
        {{#if (includes ticket.type 'Registration')}}
