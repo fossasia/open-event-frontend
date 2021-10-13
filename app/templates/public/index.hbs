@@ -74,6 +74,13 @@
      {{/each}}
     <br/>
     <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
+    <Modals::LoginSignupModal
+      @isOpen={{this.isLoginModalOpen}}
+      @isLoading={{this.isLoading}}
+      @createNewUserViaEmail={{this.createNewUserViaEmail}}
+      @loginExistingUser={{this.loginExistingUser}}
+      @userExists={{this.userExists}}
+      @errorMessage={{this.errorMessage}} />
   {{else}}
     {{#if (or this.model.event.ticketUrl this.model.tickets)}}
       <div class="tickets mt-16" id="tickets">
@@ -162,11 +169,3 @@
     </div>
   {{/if}}
 </div>
-
-<Modals::LoginSignupModal
-  @isOpen={{this.isLoginModalOpen}}
-  @isLoading={{this.isLoading}}
-  @createNewUserViaEmail={{this.createNewUserViaEmail}}
-  @loginExistingUser={{this.loginExistingUser}}
-  @userExists={{this.userExists}}
-  @errorMessage={{this.errorMessage}} />
