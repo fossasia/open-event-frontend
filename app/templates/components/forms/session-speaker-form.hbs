@@ -17,7 +17,23 @@
     <h4>
       {{t 'Choose from existing speaker(s)'}}
     </h4>
-
+    {{#if this.speakersDetails}}
+    <h3>{{t 'Re-Order Speaker'}}</h3>
+    <SortableObjects
+      @sortableObjectList={{this.speakersDetails}}
+      @sortEndAction={{action "sortEndAction"}}
+      @overrideClass="ui stackable grid container ten column"
+      @enableSort={{true}}
+      @useSwap={{true}}>
+      {{#each this.speakersDetails as |speaker|}}
+        <DraggableObject @content={{speaker}} @overrideClass="column" @isSortable={{true}}>
+          <div class="content">
+            <span>{{speaker.name}}</span>
+          </div>
+        </DraggableObject>
+      {{/each}}
+    </SortableObjects>
+    {{/if}}
     <UiDropdown
       @class="fluid multiple selection"
       @selected={{this.speakersDetails}}
@@ -27,7 +43,7 @@
         {{t 'Select Speakers'}}
       </div>
       <div class="menu">
-        {{#each this.speakers as |speaker|}}
+        {{#each (sort-by 'position' this.speakers) as |speaker|}}
           {{#if speaker.name}}
             <div data-value="{{map-value mapper speaker}}" class="item">
               {{speaker.name}}
@@ -36,39 +52,6 @@
         {{/each}}
       </div>
     </UiDropdown>
-    {{#if this.viewSpeakerOrder}}
-      <h3>{{t 'Re-Order Speaker'}}</h3>
-      <SortableObjects
-        @sortableObjectList={{this.speakersDetails}}
-        @sortEndAction={{action "sortEndAction"}}
-        @overrideClass="ui stackable grid container four column"
-        @enableSort={{true}}
-        @useSwap={{true}}>
-        {{#each this.speakersDetails as |speaker|}}
-          <DraggableObject @content={{speaker}} @overrideClass="column" @isSortable={{true}}>
-            <div class="ui card pointer">
-              <div class="content">
-                <div class="header">
-                  <span>{{speaker.name}}</span>
-                </div>
-              </div>
-            </div>
-          </DraggableObject>
-        {{/each}}
-      </SortableObjects>
-
-      <h3>{{t 'Speaker Order'}}</h3>
-      <div class="ui grid three wide column">
-      {{#each this.viewSpeakerOrder as |speaker|}}
-        <div class="four wide column">
-          <div class="ui segment">
-            <span>{{speaker.name}}</span>
-          </div>
-        </div>
-      {{/each}}
-      </div>
-      <br>
-    {{/if}}
     {{#if this.noSpeakerExists}}
       <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
     {{/if}}
