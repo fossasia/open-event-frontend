@@ -208,7 +208,7 @@ export default class IndexRoute extends Route {
         include      : 'user,follower',
         'page[size]' : 12,
         public       : true,
-        cache: true,
+        cache        : true
       })
     });
 
