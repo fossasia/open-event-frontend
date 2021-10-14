@@ -32,7 +32,6 @@ async follow() {
       this.set('follower', null);
       this.set('isFollowed', false);
       this.group.followerCount--;
-    //   this.set('followers', this.followers.filter(follower => follower.user.get('id') !== this.authManager.currentUser.id));
       this.notify.info(
         this.l10n.t('You have successfully unfollowed this group.')
       );
