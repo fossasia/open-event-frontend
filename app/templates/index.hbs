@@ -36,6 +36,9 @@
       </div>
     {{/if}}
   {{/if}}
+  {{#each this.model.filteredGroup as |group|}}
+    {{group.name}} <br/>
+  {{/each}}
 
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
 </div>

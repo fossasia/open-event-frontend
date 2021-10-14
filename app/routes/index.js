@@ -203,6 +203,12 @@ export default class IndexRoute extends Route {
         cache        : true,
         public       : true,
         'page[size]' : 6
+      }),
+      filteredGroup: this.store.query('group', {
+        include      : 'user,follower',
+        'page[size]' : 12,
+        public       : true,
+        cache: true,
       })
     });
 
