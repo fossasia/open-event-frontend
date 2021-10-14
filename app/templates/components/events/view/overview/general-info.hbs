@@ -27,10 +27,16 @@
       <tr>
         <td><strong>{{t 'Location'}}</strong></td>
         <td>
-          {{#if this.data.event.locationName}}
-            {{this.data.event.locationName}}
+          {{#if this.data.event.online}}
+            {{#if this.data.event.locationName}}
+              {{t 'Online and in-person event at'}} {{this.data.event.locationName}}
+            {{else}}
+              {{t 'Online event'}}
+            {{/if}}
+          {{else if this.data.event.locationName}}
+            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location'}}.</a>
           {{else}}
-            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
+            {{t 'To be announced'}}.
           {{/if}}
         </td>
       </tr>
