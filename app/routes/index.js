@@ -219,9 +219,9 @@ export default class IndexRoute extends Route {
         public       : true,
         cache        : true
       }),
-      followedGroups: this.authManager.currentUser.query('followedGroups', {
+      followedGroups: this.authManager.currentUser?.email ? this.authManager.currentUser.query('followedGroups', {
         include: 'group,user'
-      })
+      }) : []
     });
 
   }

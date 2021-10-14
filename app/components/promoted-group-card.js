@@ -7,6 +7,7 @@ import classic from 'ember-classic-decorator';
 export default class PromotedGroupCard extends Component {
 @service event;
 @service errorHandler;
+
 @computed
 get follower() {
   return this.followedGroups.toArray().filter(userFollowGroup => userFollowGroup.group.get('id') === this.group.id)[0];
@@ -31,7 +32,7 @@ async follow() {
       this.set('follower', null);
       this.set('isFollowed', false);
       this.group.followerCount--;
-      this.set('followers', this.followers.filter(follower => follower.user.get('id') !== this.authManager.currentUser.id));
+    //   this.set('followers', this.followers.filter(follower => follower.user.get('id') !== this.authManager.currentUser.id));
       this.notify.info(
         this.l10n.t('You have successfully unfollowed this group.')
       );
