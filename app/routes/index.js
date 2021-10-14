@@ -81,6 +81,14 @@ export default class IndexRoute extends Route {
       val  : true
     });
 
+    const promotedGroupFilter = [
+      {
+        name : 'is-promoted',
+        op   : 'eq',
+        val  : true
+      }
+    ];
+
     const upcomingEventsFilter = [
       {
         or: [
@@ -204,11 +212,15 @@ export default class IndexRoute extends Route {
         public       : true,
         'page[size]' : 6
       }),
-      filteredGroup: this.store.query('group', {
+      promotedGroup: this.store.query('group', {
         include      : 'user,follower',
         'page[size]' : 12,
+        filter       : promotedGroupFilter,
         public       : true,
         cache        : true
+      }),
+      followedGroups: this.authManager.currentUser.query('followedGroups', {
+        include: 'group,user'
       })
     });
 
