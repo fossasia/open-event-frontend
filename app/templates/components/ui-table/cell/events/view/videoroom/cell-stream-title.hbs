@@ -1,6 +1,6 @@
 <div class="d-flex wrap">
   {{@record}}
-  <div class="pl-2 ml-auto">
+  <div>
     {{#if (not @extraRecords.videoStream.id)}}
       <LinkTo @route="events.view.videoroom.create" @query={{if (eq @extraRecords.constructor.modelName 'event') (hash event=true) (hash room=@extraRecords.id)}} class="ml-2">
         <UiPopup @content={{t "Add Video Channel"}} @class="ui circular icon button compact blue" @position="left center">
