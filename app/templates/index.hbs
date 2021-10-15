@@ -37,10 +37,12 @@
     {{/if}}
   {{/if}}
   {{#if this.model.promotedGroup}}
-    <h2 class="main-heading mb-4">{{t 'Popular Groups'}}</h2>  
+    <h2 class="main-heading mb-4">{{t 'Popular Groups'}}</h2>
     <div class="ui stackable three column grid">
       {{#each this.model.promotedGroup as |group|}}
-        <PromotedGroupCard @group={{group}} @followedGroups={{this.model.followedGroups}} />
+        {{#if (and group.isPromoted (not group.deletedAt))}}
+          <PromotedGroupCard @group={{group}} @followedGroups={{this.model.followedGroups}} />
+        {{/if}}
       {{/each}}
     </div>
     <div class="ui centered grid">
