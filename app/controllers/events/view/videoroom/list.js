@@ -27,7 +27,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         helperInfo      : this.l10n.t('You need to add rooms into the wizard first before they show up here.'),
         extraValuePaths : ['id', 'videoStream', 'constructor'],
         cellComponent   : 'ui-table/cell/events/view/videoroom/cell-stream-title',
-        width           : 70,
+        width           : 55,
         actions         : {
           delete: this.delete.bind(this)
         }
@@ -61,6 +61,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       },
       {
         name          : this.l10n.t('Moderators'),
+        width         : 100,
         valuePath     : 'videoStream.moderators',
         cellComponent : 'ui-table/cell/events/view/videoroom/cell-email'
       },
@@ -68,6 +69,16 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         name       : this.l10n.t('Additional information'),
         helperInfo : this.l10n.t('Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.'),
         valuePath  : 'videoStream.additionalInformation'
+      },
+      {
+        name          : this.l10n.t('Recordings'),
+        width         : 130,
+        valuePath     : 'videoStream.videoRecordings',
+        cellComponent : 'ui-table/cell/events/view/videoroom/cell-recording',
+        options       : {
+          timezone   : 'UTC',
+          dateFormat : 'dddd, D MMMM, YYYY h:mm A'
+        }
       }
     ];
   }
