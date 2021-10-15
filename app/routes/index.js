@@ -79,7 +79,7 @@ export default class IndexRoute extends Route {
     try {
       popularGroup = this.store.query('group', {
         include      : 'user,follower',
-        'page[size]' : 6,
+        'page[size]' : 12,
         filter       : promotedGroupFilter,
         public       : true,
         cache        : true
