@@ -41,7 +41,11 @@
                       {{t-var field.name}}
                     </h4>
                     {{#if (is-input-field field.type) }}
-                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
+                      {{#if this.ticketDowloaded}} 
+                        <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}} readonly/>
+                      {{else}}
+                        <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}} onchange={{action "saveHolder" holder}}/>
+                      {{/if}}
                     {{else if (eq field.type 'select')}}
                       <span class="word-break">{{get holder field.fieldIdentifier}}</span>
                     {{else if (eq field.type 'checkbox')}}
