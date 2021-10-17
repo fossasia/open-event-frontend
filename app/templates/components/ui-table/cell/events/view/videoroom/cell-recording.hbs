@@ -1,0 +1,9 @@
+{{#each @record as |recording|}}
+  <div class="d-flex-wrap">
+    {{t 'Number of Participants'}}: {{recording.participants}}<br/>
+    {{t 'Start time'}}: <UiTable::Cell::CellDate @record={{recording}}/>
+    {{t 'End time'}}: <UiTable::Cell::CellDate @record={{recording}}/>
+    {{t 'Duration'}}: {{this.duration}}<br/>
+    {{t 'URL'}}: <UiTable::Cell::Events::View::Videoroom::CellVideoRecording @record={{recording.url}}/>
+  </div>
+{{/each}}
