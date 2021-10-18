@@ -1,13 +1,13 @@
 import ApplicationSerializer from 'open-event-frontend/serializers/application';
 import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key';
 
- export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
+export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
 
   primaryKey : 'attributes.identifier',
-  attrs: {
-    followers : 'user-follow-group',
-    follower  : 'user-follow-group',
-    socialLinks: 'social-links'
+  attrs      : {
+    followers   : 'user-follow-group',
+    follower    : 'user-follow-group',
+    socialLinks : 'social-links'
   },
 
   serialize() {
@@ -15,15 +15,15 @@ import CustomPrimaryKeyMixin from 'open-event-frontend/mixins/custom-primary-key
 
     const { relationships } = json.data;
     try {
-      delete relationships['follower'];
+      delete relationships.follower;
     } catch {} // eslint-disable-line no-empty
-  
+
     try {
       delete relationships['social-links'];
     } catch {} // eslint-disable-line no-empty
-  
+
 
     return json;
 
   }
- });
+});
