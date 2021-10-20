@@ -582,14 +582,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.onValid(() => {});
     }
   },
-  
+
   async getOrCreateTax(event) {
     try {
       return await event.get('tax');
     } catch {
       return this.store.createRecord('tax', {
         event,
-        isTaxIncludedInPrice:true
+        isTaxIncludedInPrice: true
       });
     }
   }
