@@ -522,10 +522,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
 
     async openTaxModal() {
-      const tax = await this.getOrCreate(this.data.event, 'tax', 'tax');
-      if (!tax.get('name')) {
+      let tax = await this.getOrCreateTax(this.data.event, 'tax', 'tax');
+      if (tax && !tax.get('name')) {
         tax.isTaxIncludedInPrice = true;
         tax.save();
+      } else {
+        tax = this.store.createRecord('tax');
       }
       // Note(Areeb): Workaround for issue #4385, ember data always fetches
       // event.tax from network if it is not already created for some reason
@@ -579,5 +581,17 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     onChange() {
       this.onValid(() => {});
     }
+  },
+  
+  async getOrCreateTax(event) {
+    try {
+      return await event.get('tax');
+    } catch {
+      return this.store.createRecord('tax', {
+        event,
+        isTaxIncludedInPrice:true
+      });
+    }
   }
+
 });
