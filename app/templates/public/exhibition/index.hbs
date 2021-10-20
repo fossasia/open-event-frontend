@@ -1,3 +1,8 @@
+<Tables::Utilities::SearchBox
+  class="mb-2 mr-2"
+  @searchQuery={{this.search}}
+  @size="large"
+/>
 <div class="ui grid container {{if this.device.isMobile 'one' 'three'}} column">
   {{#each this.model.exhibitors as |exhibitor|}}
     <div class="column speaker-column">
