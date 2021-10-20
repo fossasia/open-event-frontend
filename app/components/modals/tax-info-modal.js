@@ -59,7 +59,7 @@ export default ModalBase.extend(FormMixin, {
             }
           ]
         },
-        taxInvoiceCompany: {
+        taxInvoicePhone: {
           identifier : 'tax_invoice_phone',
           optional   : true,
           depends    : 'send_tax_invoices',
@@ -70,7 +70,7 @@ export default ModalBase.extend(FormMixin, {
             }
           ]
         },
-        taxInvoiceCompany: {
+        taxInvoiceEmail: {
           identifier : 'tax_invoice_email',
           optional   : true,
           depends    : 'send_tax_invoices',
