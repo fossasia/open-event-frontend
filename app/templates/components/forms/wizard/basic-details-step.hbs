@@ -690,8 +690,8 @@
           </div>
         {{else}}
         {{/if}}
-        <div class="ui hidden divider"></div>
         <div class="field">
+          <h4>{{t 'Billing Info'}}</h4>
           <div class="ui checkbox">
             <Input
               @type="checkbox"
@@ -699,7 +699,6 @@
               @checked={{this.data.event.isBillingInfoMandatory}}
             />
             <label for="billing_info">
-              <strong>{{t 'Billing Info'}}:</strong>
               {{t 'Require Billing Information from Ticket Buyer'}}
             </label>
           </div>
