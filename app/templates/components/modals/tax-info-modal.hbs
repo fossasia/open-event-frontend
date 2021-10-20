@@ -39,6 +39,14 @@
       <Input @type="text" @id="tax_invoice_company" @value={{this.tax.registeredCompany}} />
     </div>
     <div class="field">
+      <label>{{t 'Email'}}</label>
+      <Input @type="text" @id="tax_invoice_email" @value={{this.tax.email}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Phone'}}</label>
+      <Input @type="text" @id="tax_invoice_phone" @value={{this.tax.phone}} />
+    </div>
+    <div class="field">
       <label>{{t 'Business Address'}}</label>
       <Textarea @rows={{3}} @id="tax_invoice_address" @value={{this.tax.address}} />    </div>
     <div class="field">

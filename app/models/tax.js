@@ -9,6 +9,8 @@ export default ModelBase.extend({
   shouldSendInvoice    : attr('boolean'),
   country              : attr('string'),
   registeredCompany    : attr('string'),
+  email                : attr('string'),
+  phone                : attr('string'),
   address              : attr('string'),
   city                 : attr('string'),
   state                : attr('string'),

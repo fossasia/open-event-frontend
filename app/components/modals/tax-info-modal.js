@@ -59,6 +59,28 @@ export default ModalBase.extend(FormMixin, {
             }
           ]
         },
+        taxInvoiceCompany: {
+          identifier : 'tax_invoice_phone',
+          optional   : true,
+          depends    : 'send_tax_invoices',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give us your phone number')
+            }
+          ]
+        },
+        taxInvoiceCompany: {
+          identifier : 'tax_invoice_email',
+          optional   : true,
+          depends    : 'send_tax_invoices',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please give us your email')
+            }
+          ]
+        },
         taxInvoiceAddress: {
           identifier : 'tax_invoice_address',
           optional   : true,
