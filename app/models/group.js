@@ -18,6 +18,7 @@ export default class Group extends ModelBase.extend({
   createdAt         : attr('moment', { readOnly: true }),
   modifiedAt        : attr('moment'),
   deletedAt         : attr('moment'),
+  isPromoted        : attr('boolean', { defaultValue: false }),
   followerCount     : attr('number'),
   socialLinks       : attr(),
   /**
