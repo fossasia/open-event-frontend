@@ -41,7 +41,9 @@
     <div class="ui stackable three column grid">
       {{#each this.model.promotedGroup as |group|}}
         {{#if (and group.isPromoted (not group.deletedAt))}}
-          <PromotedGroupCard @group={{group}} @followedGroups={{this.model.followedGroups}} />
+          <div class="column">
+            <PromotedGroupCard @group={{group}} @followedGroups={{this.model.followedGroups}} />
+          </div>
         {{/if}}
       {{/each}}
     </div>
