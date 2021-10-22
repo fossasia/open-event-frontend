@@ -71,6 +71,11 @@ async follow() {
   }
 }
 
+@computed
+get groupClass() {
+  return this.isWide ? 'thirteen wide computer ten wide tablet sixteen wide mobile column ' + (!this.device.isMobile && 'rounded-l-none') : 'event fluid';
+}
+
 @computed('group')
 get about() {
   if (this.group.about?.length > 100) {
