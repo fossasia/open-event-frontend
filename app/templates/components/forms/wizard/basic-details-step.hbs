@@ -654,31 +654,29 @@
               {{/if}}
               <div class="description">
                 {{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
-                {{this.data.event.tax.taxId}}<br>
+                {{this.data.event.tax.taxId}}
+                {{#if this.data.event.tax.registeredCompany}}
+                  <br/>{{this.data.event.tax.registeredCompany}}
+                {{/if}}
+                {{#if this.data.event.tax.email}}
+                  <br/>{{this.data.event.tax.email}}
+                {{/if}}
+                {{#if this.data.event.tax.phone}}
+                  <br/>{{this.data.event.tax.phone}}
+                {{/if}}
+                {{#if this.data.event.tax.address}}
+                  <br/>{{this.data.event.tax.address}}
+                {{/if}}
+                {{#if this.data.event.tax.city}}
+                  <br/>{{this.data.event.tax.city}}
+                {{/if}}
+                {{#if this.data.event.tax.state}}
+                  <br/>{{this.data.event.tax.state}}
+                {{/if}}
+                {{#if this.data.event.tax.zip}}
+                  <br/>{{this.data.event.tax.zip}}
+                {{/if}}
               </div>
-              {{#if this.data.event.tax.shouldSendInvoice}}
-                <div class="description">
-                  {{this.data.event.tax.registeredCompany}}
-                  {{#if this.data.event.tax.address}}
-                    <br/>{{this.data.event.tax.address}}
-                  {{/if}}
-                  {{#if this.data.event.tax.city}}
-                    <br/>{{this.data.event.tax.city}}
-                  {{/if}}
-                  {{#if this.data.event.tax.email}}
-                    <br/>{{this.data.event.tax.email}}
-                  {{/if}}
-                  {{#if this.data.event.tax.phone}}
-                    <br/>{{this.data.event.tax.phone}}
-                  {{/if}}
-                  {{#if this.data.event.tax.state}}
-                    <br/>{{this.data.event.tax.state}}
-                  {{/if}}
-                  {{#if this.data.event.tax.zip}}
-                    <br/>{{this.data.event.tax.zip}}
-                  {{/if}}
-                </div>
-              {{/if}}
             </div>
             <div class="ui bottom attached small buttons">
               <button class="ui button" type="button" {{action 'openTaxModal'}}>
@@ -694,6 +692,7 @@
           </div>
         {{else}}
         {{/if}}
+        <div class="ui hidden divider"></div>
         <div class="field">
           <h4>{{t 'Billing Info'}}</h4>
           <div class="ui checkbox">
