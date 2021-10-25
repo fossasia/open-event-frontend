@@ -87,7 +87,25 @@
            </div>
          </div>
        {{/if}}
-     {{/each}}
+      {{/each}}
+      <div class="ui action fluid input" style="max-width:{{if device.isMobile '100%' '50%'}}" {{did-insert this.applyPromotionalCode}}>
+        <Input 
+        @type="text" 
+        @name="promotional_code"
+        @value={{this.promotionalCode}}
+        placeholder={{t "Promotional Code"}}
+        @readonly={{this.promotionalCodeApplied}}
+        @key-up={{action handleKeyPress}}
+        @id="promotionalCode" />
+        {{#unless this.promotionalCodeApplied}}
+          <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
+          {{t 'Apply code'}}
+          </div>
+        {{/unless}}
+        <div role="button" class="ui black icon button p-4" {{action 'removePromotionalCode'}}>
+          <i class="remove icon"></i>
+        </div>
+      </div>
     <br/>
     <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
     <Modals::LoginSignupModal
@@ -97,24 +115,7 @@
       @loginExistingUser={{this.loginExistingUser}}
       @userExists={{this.userExists}}
       @errorMessage={{this.errorMessage}} />
-    {{!-- {{#if this.enterPromotionalCode}} --}}
-    <Input 
-      @type="text" 
-      @name="promotional_code"
-      @value={{this.promotionalCode}}
-      placeholder={{t "Promotional Code"}}
-      @readonly={{this.promotionalCodeApplied}}
-      @key-up={{action handleKeyPress}}
-      @id="promotionalCode" />
-    {{#unless this.promotionalCodeApplied}}
-      <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
-      {{t 'Apply code'}}
-      </div>
-    {{/unless}}
-    <div role="button" class="ui black icon button p-4" {{action 'togglePromotionalCode'}}>
-      <i class="remove icon"></i>
-    </div>
-    {{!-- {{/if}} --}}
+    
   {{else}}
     {{#if (or this.model.event.ticketUrl this.model.tickets)}}
       <div class="tickets mt-16" id="tickets">

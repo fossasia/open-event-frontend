@@ -163,32 +163,23 @@ export default class IndexController extends Controller {
   }
 
   @action
-  async togglePromotionalCode(queryParam) {
-    this.toggleProperty('enterPromotionalCode');
-    if (this.enterPromotionalCode && !queryParam) {
-      this.set('promotionalCode', '');
-    } else {
-      if (queryParam) {
-        this.set('promotionalCode', queryParam);
-        this.send('applyPromotionalCode');
-      } else {
-        this.set('promotionalCodeApplied', false);
-        this.set('code', null);
-        this.tickets.forEach(ticket => {
-          ticket.set('discount', null);
-          ticket.set('discountedTicketTax', null);
-        });
-      }
-    }
+  async removePromotionalCode() {
+    this.set('promotionalCodeApplied', false);
+    this.set('code', null);
+    this.set('promotionalCode', '');
+    this.model.tickets.forEach(ticket => {
+      ticket.set('discount', null);
+      ticket.set('discountedTicketTax', null);
+    });
   }
 
   @action
   async applyPromotionalCode() {
-    if(!this.code) {
+    if (!this.code) {
       this.set('code', this.promotionalCode);
     }
     try {
-      const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.model.event.identifier, code: this.promotionalCode, include: 'event,tickets' });
+      const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.model.event.identifier, code: this.code, include: 'event,tickets' });
       const discountCodeEvent = await discountCode.event;
       if (this.model.event.identifier === discountCodeEvent.identifier) {
         this.set('discountCode', discountCode);
@@ -215,7 +206,7 @@ export default class IndexController extends Controller {
       }
     } catch (e) {
       console.error('Error while applying discount code as promotional code', e);
-      if(this.invalidPromotionalCode) {
+      if (!this.invalidPromotionalCode) {
         this.set('invalidPromotionalCode', true);
       }
     }
@@ -226,7 +217,7 @@ export default class IndexController extends Controller {
       });
     } else {
       this.set('promotionalCodeApplied', true);
-      this.set('promotionalCode', 'Promotional code applied sccessfully');
+      this.set('promotionalCode', 'Promotional code applied successfully');
     }
   }
 
