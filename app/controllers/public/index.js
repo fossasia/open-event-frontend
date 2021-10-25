@@ -184,7 +184,7 @@ export default class IndexController extends Controller {
 
   @action
   async applyPromotionalCode() {
-    if (!this.code) {
+    if(!this.code) {
       this.set('code', this.promotionalCode);
     }
     try {
@@ -215,7 +215,7 @@ export default class IndexController extends Controller {
       }
     } catch (e) {
       console.error('Error while applying discount code as promotional code', e);
-      if (this.invalidPromotionalCode) {
+      if(this.invalidPromotionalCode) {
         this.set('invalidPromotionalCode', true);
       }
     }
