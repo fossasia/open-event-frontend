@@ -74,12 +74,35 @@ export default class IndexRoute extends Route {
   }
 
   async model() {
+
+    let popularGroup = [];
+    try {
+      popularGroup = this.store.query('group', {
+        include      : 'user,follower',
+        'page[size]' : 12,
+        filter       : promotedGroupFilter,
+        public       : true,
+        cache        : true
+      });
+    } catch (error) {
+      popularGroup = [];
+      console.warn(error);
+    }
+
     const featuredOptions =  this._loadEvents('filterOptions', true);
     featuredOptions[0].and.push({
       name : 'is-featured',
       op   : 'eq',
       val  : true
     });
+
+    const promotedGroupFilter = [
+      {
+        name : 'is-promoted',
+        op   : 'eq',
+        val  : true
+      }
+    ];
 
     const upcomingEventsFilter = [
       {
@@ -203,7 +226,11 @@ export default class IndexRoute extends Route {
         cache        : true,
         public       : true,
         'page[size]' : 6
-      })
+      }),
+      promotedGroup  : popularGroup,
+      followedGroups : this.authManager.currentUser?.email ? this.authManager.currentUser.query('followedGroups', {
+        include: 'group,user'
+      }) : []
     });
 
   }

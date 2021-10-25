@@ -4,6 +4,16 @@ import { hasExhibitors } from 'open-event-frontend/utils/event';
 
 @classic
 export default class ExhibitionRoute extends Route {
+  queryParams = {
+    search: {
+      refreshModel: true
+    }
+  }
+
+  titleToken() {
+    return this.l10n.t('Exhibition');
+  }
+
   async beforeModel() {
     const eventDetails = this.modelFor('public');
     if (!(await hasExhibitors(this.loader, eventDetails))) {
@@ -11,7 +21,7 @@ export default class ExhibitionRoute extends Route {
     }
   }
 
-  async model() {
+  async model(params) {
     const eventDetails = this.modelFor('public');
     const filterOptions = [
       {
@@ -20,6 +30,19 @@ export default class ExhibitionRoute extends Route {
         val  : 'accepted'
       }
     ];
+
+    if (params.search) {
+      filterOptions.push({
+        or: [
+          {
+            name : 'name',
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          }
+        ]
+      });
+    }
+
     return {
       event      : eventDetails,
       exhibitors : await this.infinity.model('exhibitors', {

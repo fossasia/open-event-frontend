@@ -32,7 +32,6 @@ export default class CreateRoute extends Route.extend(AuthenticatedRouteMixin, E
     return hash({
       event: this.store.createRecord('event', {
         socialLinks         : [],
-        tax                 : this.store.createRecord('tax'),
         copyright           : this.store.createRecord('event-copyright'),
         stripeAuthorization : this.store.createRecord('stripe-authorization')
       }),
