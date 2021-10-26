@@ -14,8 +14,13 @@ export default ApplicationSerializer.extend(CustomPrimaryKeyMixin, {
     const json = this._super(...arguments);
 
     const { relationships } = json.data;
+
     try {
       delete relationships.follower;
+    } catch {} // eslint-disable-line no-empty
+
+    try {
+      delete relationships.followers;
     } catch {} // eslint-disable-line no-empty
 
     try {

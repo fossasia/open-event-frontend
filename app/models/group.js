@@ -27,7 +27,7 @@ export default class Group extends ModelBase.extend({
   user              : belongsTo('user'),
   events            : hasMany('event'),
   roles             : hasMany('users-groups-role'),
-  follower          : belongsTo('user-follow-group', { inverse: 'group' }),
+  // follower          : belongsTo('user-follow-group', { inverse: 'group' }),
   followers         : hasMany('user-follow-group'),
 
   url: computed('identifier', function() {
