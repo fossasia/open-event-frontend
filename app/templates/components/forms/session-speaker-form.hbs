@@ -26,7 +26,7 @@
         {{t 'Select Speakers'}}
       </div>
       <div class="menu">
-        {{#each this.speakers as |speaker|}}
+        {{#each (sort-by 'position' this.speakers) as |speaker|}}
           {{#if speaker.name}}
             <div data-value="{{map-value mapper speaker}}" class="item">
               {{speaker.name}}
@@ -35,7 +35,24 @@
         {{/each}}
       </div>
     </UiDropdown>
-
+    {{#if this.speakersDetails}}
+      <h4>{{t 'Drag speakers to reorder'}}</h4>
+      <SortableObjects
+        @sortableObjectList={{this.speakersDetails}}
+        @sortEndAction={{action "sortEndAction"}}
+        @overrideClass="ui stackable grid container ten column"
+        @enableSort={{true}}
+        @useSwap={{true}}>
+        {{#each this.speakersDetails as |speaker|}}
+          <DraggableObject @content={{speaker}} @overrideClass="column" @isSortable={{true}}>
+            <div class="ui grey label">
+              <span>{{speaker.name}}</span>
+            </div>
+          </DraggableObject>
+        {{/each}}
+      </SortableObjects>
+    {{/if}}
+    
     {{#if this.noSpeakerExists}}
       <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
     {{/if}}
@@ -145,4 +162,6 @@
   <button type="submit" class="ui teal submit button update-changes mt-4">
     {{t 'Submit'}}
   </button>
+  <br>
+  <p>{{t 'You need to hit "Submit" to save your changes.'}}</p>
 </form>

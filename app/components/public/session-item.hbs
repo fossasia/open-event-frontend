@@ -73,7 +73,7 @@
       {{else}}
         <div class="left floated eleven wide column" style="padding-bottom: 0 !important;">
           <div class="d-flex wrap">
-            {{#each @session.speakers as |speaker|}}
+            {{#each (sort-by 'position' @session.speakers) as |speaker|}}
               <div class="d-flex items-center speaker-card pr-2 pb-4">
                 <img alt="speaker" class="ui mini avatar image" src="{{if speaker.iconImageUrl speaker.iconImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
                 <div class="ml-2">
@@ -165,7 +165,7 @@
       <Public::Stream::StreamInfo @event={{or @event @session.event}} @videoStream={{@session.microlocation.videoStream}} />
     {{/if}}
     
-    {{#each @session.speakers as |speaker|}}
+    {{#each (sort-by 'position' @session.speakers) as |speaker|}}
       <img alt="speaker" class="ui tiny avatar image mt-8" src="{{if speaker.thumbnailImageUrl speaker.thumbnailImageUrl (if speaker.photoUrl speaker.photoUrl '/images/placeholders/avatar.png')}}">
       <p>
         <br>
