@@ -176,7 +176,7 @@ export default class IndexController extends Controller {
 
   @action
   async applyPromotionalCode() {
-    if (!this.code && !this.promotionalCode) return;
+    if (!this.code && !this.promotionalCode) {return}
     if (!this.code) {
       this.set('code', this.promotionalCode);
     }
