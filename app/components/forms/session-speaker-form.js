@@ -450,6 +450,13 @@ export default Component.extend(FormMixin, {
       });
     },
 
+    sortEndAction() {
+      this.speakersDetails.forEach((speaker, index) => {
+        speaker.position = index;
+        speaker.save();
+      });
+    },
+
     toggleNewSessionSelected(value) {
       this.set('sessionDetails', null);
       this.set('newSessionSelected', !value);

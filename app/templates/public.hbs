@@ -11,14 +11,14 @@
             </LinkTo>
           {{/if}}
           <div>
-            <h4 class="event time">{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
+            <h4 class="event time" style={{this.vietnameseFontFamily}}>{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
             {{#if this.displayEndDate}}
-              <h5 class="event time ends">{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
+              <h5 class="event time ends" style={{this.vietnameseFontFamily}}>{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
             {{/if}}
             <LinkTo @route="public">
               <h1 class="event name text-white">{{this.model.name}}</h1>
             </LinkTo>
-            <h4 class="event location"><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
+            <h4 class="event location" style={{this.vietnameseFontFamily}}><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
           </div>
         </div>
       </div>
