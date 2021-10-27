@@ -19,6 +19,16 @@
             </td>
           </tr>
         {{/if}}
+        {{#if @tax.contactName}}
+          <tr>
+            <td>
+              <strong>{{t 'Contact Name'}}:</strong>
+            </td>
+            <td>
+              {{@tax.contactName}}
+            </td>
+          </tr>
+        {{/if}}
         {{#if @tax.email}}
           <tr>
             <td>
