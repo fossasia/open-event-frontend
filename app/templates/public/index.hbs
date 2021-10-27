@@ -88,24 +88,30 @@
          </div>
        {{/if}}
       {{/each}}
-      <div class="ui action fluid input" style="max-width:{{if device.isMobile '100%' '50%'}}" {{did-insert this.applyPromotionalCode}}>
-        <Input 
-        @type="text" 
-        @name="promotional_code"
-        @value={{this.promotionalCode}}
-        placeholder={{t "Promotional Code"}}
-        @readonly={{this.promotionalCodeApplied}}
-        @key-up={{action handleKeyPress}}
-        @id="promotionalCode" />
-        {{#unless this.promotionalCodeApplied}}
-          <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
-          {{t 'Apply code'}}
+      {{#if this.enterPromotionalCode}}
+        <div class="ui action fluid input" style="max-width:{{if device.isMobile '100%' '50%'}}" {{did-insert this.applyPromotionalCode}}>
+          <Input 
+          @type="text" 
+          @name="promotional_code"
+          @value={{this.promotionalCode}}
+          placeholder={{t "Promotional Code"}}
+          @readonly={{this.promotionalCodeApplied}}
+          @key-up={{action handleKeyPress}}
+          @id="promotionalCode" />
+          {{#unless this.promotionalCodeApplied}}
+            <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
+            {{t 'Apply code'}}
+            </div>
+          {{/unless}}
+          <div role="button" class="ui black icon button p-4" {{action 'removePromotionalCode'}}>
+            <i class="remove icon"></i>
           </div>
-        {{/unless}}
-        <div role="button" class="ui black icon button p-4" {{action 'removePromotionalCode'}}>
-          <i class="remove icon"></i>
         </div>
-      </div>
+      {{else}}
+        <div class="ui action fluid" style="max-width:{{if device.isMobile '100%' '50%'}}">
+          <a href="#" {{action 'removePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+        </div>
+      {{/if}}
     <br/>
     <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
     <Modals::LoginSignupModal

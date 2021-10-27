@@ -164,6 +164,7 @@ export default class IndexController extends Controller {
 
   @action
   async removePromotionalCode() {
+    this.toggleProperty('enterPromotionalCode');
     this.set('promotionalCodeApplied', false);
     this.set('code', null);
     this.set('promotionalCode', '');
@@ -175,6 +176,7 @@ export default class IndexController extends Controller {
 
   @action
   async applyPromotionalCode() {
+    if (!this.code && !this.promotionalCode) return;
     if (!this.code) {
       this.set('code', this.promotionalCode);
     }
