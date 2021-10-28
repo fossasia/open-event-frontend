@@ -11,7 +11,11 @@
       <div class="inline field">
         <div class="mb-1">
           <a href={{href-to 'group-public' @group.id}} class="header black-text">{{@group.name}}</a>
-          <span class="ml-2 ui basic count text blue label w-content-button">{{@group.followerCount}} {{t 'followers'}}</span>
+          {{#if (not this.explorePage)}}
+            <div class="ui blue basic label">
+              {{@group.followerCount}} {{t 'followers'}}
+            </div>
+          {{/if}}
         </div>
         <div class="meta mb-2 mt-4 word-break">
           {{sanitize this.about}}
@@ -46,11 +50,22 @@
         {{/if}}
       </div>
     </div>
-    {{#if (and @group.follower @followedGroups)}}
+    {{#if explorePage}}
       <div class="absolute mr-4 mt-2" style="right: 0; top: 0;">
-        <button class="{{if @group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action 'follow'}}>
-          {{t 'Unfollow Group'}}
-        </button>
+          <button class="blue {{if (not this.authManager.currentUser.email) 'disabled'}} mr-auto ui tiny button" {{action "follow"}}>
+            <i class="large icons basic-details">
+            <i class="users icon"></i>
+            <i class="inverted corner add icon"></i>
+            </i>
+            {{#if this.isFollowed}}
+                {{t 'Following'}}
+            {{else}}
+                {{t 'Follow Group'}}         
+            {{/if}}
+            <div class="ui blue basic left pointing label">
+                {{@group.followerCount}}
+            </div>
+          </button>
       </div>
     {{/if}}
   </div>
