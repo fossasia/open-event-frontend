@@ -41,7 +41,7 @@
                       {{t-var field.name}}
                     </h4>
                     {{#if (is-input-field field.type) }}
-                      {{#if this.ticketDowloaded}} 
+                      {{#if (and this.ticketDowloaded (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email'))))}} 
                         <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}} readonly/>
                       {{else}}
                         <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}} onchange={{action "saveHolder" holder}}/>

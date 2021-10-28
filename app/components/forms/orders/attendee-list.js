@@ -38,7 +38,7 @@ export default class AttendeeList extends Component {
   async downloadTicketForAttendee(eventName, orderId, attendeeId) {
     try {
       if (!this.ticketDowloaded) {
-        await this.confirm.prompt(this.l10n.t('Please check the filled detail carefully. Once you Download ticket, the information can\'t be changed on it.'));
+        await this.confirm.prompt(this.l10n.t('Please check the filled detail carefully. Once you Download ticket, the name and email can\'t be changed on it.'));
       }
       this.loader.downloadFile(`/orders/attendees/${attendeeId}.pdf`)
         .then(res => {
