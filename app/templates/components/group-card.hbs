@@ -52,7 +52,7 @@
     </div>
     {{#if explorePage}}
       <div class="absolute mr-4 mt-2" style="right: 0; top: 0;">
-          <button class="blue {{if (not this.authManager.currentUser.email) 'disabled'}} mr-auto ui tiny button" {{action "follow"}}>
+          <button class="blue {{if (not this.authManager.currentUser.email) 'disabled'}} mr-auto ui tiny button" {{on "click" this.follow}}>
             <i class="large icons basic-details">
             <i class="users icon"></i>
             <i class="inverted corner add icon"></i>
