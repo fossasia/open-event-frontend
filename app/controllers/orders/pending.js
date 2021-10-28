@@ -194,7 +194,7 @@ export default class PendingController extends Controller {
     this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
       .then(async charge => {
         const stripe = await loadStripe('pk_test_51JkNFWSEz988J3ILEozhgIfYuNMxOZy25QyxzmfpBhKWdPzweMJIlH9ogMvxLuMPHAs3bsybgSVZvNKU3ZBvGx9o003Gc94lPt');
-        const checkoutSession = JSON.parse(charge.data.attributes.message)
+        const checkoutSession = JSON.parse(charge.data.attributes.message);
         stripe.redirectToCheckout({
           // Make the id field from the Checkout Session creation API response
           // available to this file, so you can provide it as argument here
@@ -204,8 +204,7 @@ export default class PendingController extends Controller {
           // If `redirectToCheckout` fails due to a browser or network
           // error, display the localized error message to your customer
           // using `result.error.message`.
-          console.log(result);
-          console.error(result.error);
+          console.error(result.error.message);
         });
       })
       .catch(e => {
@@ -225,43 +224,5 @@ export default class PendingController extends Controller {
       .finally(() => {
         this.set('isLoading', false);
       });
-  }
-
-  @action
-  async checkSessionID() {
-    try {
-      const sessionId = 'cs_test_a1JyW2RB4ehr56pFCFfvLDNRzqTfXyO33XLhMuCatx5D5IP0k51xZURw3R';
-      this.loader.post('/v1/users/check_email', { 'email': 'impavanesh@gmail.com' }).then(async e => {
-        const stripe = await loadStripe(order.event.get('stripeAuthorization').get('stripePublishableKey'));
-        stripe.redirectToCheckout({
-          // Make the id field from the Checkout Session creation API response
-          // available to this file, so you can provide it as argument here
-          // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-          sessionId
-        }).then(function(result) {
-          // If `redirectToCheckout` fails due to a browser or network
-          // error, display the localized error message to your customer
-          // using `result.error.message`.
-          console.log(result);
-          console.error(result.error);
-        });
-      }).catch(e => {
-        console.warn(e);
-        if ('errors' in e) {
-          this.notify.error(this.l10n.tVar(e.errors[0].detail),
-            {
-              id: 'unexpected_error_occur'
-            });
-        } else {
-          this.notify.error(this.l10n.tVar(e),
-            {
-              id: 'unexpected_error_occur'
-            });
-        }
-      });
-    } catch (e) {
-      console.error(e);
-    }
-
   }
 }
