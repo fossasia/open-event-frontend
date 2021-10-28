@@ -191,14 +191,15 @@ export default class PendingController extends Controller {
     };
     chargePayload = JSON.stringify(chargePayload);
     // fake request for action to work for now to be replaced with actual api
-    this.loader.post('users/check_email', { 'email': 'impavanesh@gmail.com' })
+    this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
       .then(async charge => {
         const stripe = await loadStripe('pk_test_51JkNFWSEz988J3ILEozhgIfYuNMxOZy25QyxzmfpBhKWdPzweMJIlH9ogMvxLuMPHAs3bsybgSVZvNKU3ZBvGx9o003Gc94lPt');
+        const checkoutSession = JSON.parse(charge.data.attributes.message)
         stripe.redirectToCheckout({
           // Make the id field from the Checkout Session creation API response
           // available to this file, so you can provide it as argument here
           // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-          sessionId: 'cs_test_a1YkMW99SoK0LsAQhtEeG6ElTnsUVQO3U0QqWpJLMb321Test2T0L10mdp'
+          sessionId: checkoutSession.id
         }).then(function(result) {
           // If `redirectToCheckout` fails due to a browser or network
           // error, display the localized error message to your customer
