@@ -13,6 +13,7 @@ export default class IndexController extends Controller {
   isLoginModalOpen = false;
   isContactOrganizerModalOpen = false;
   userExists = false;
+  promotionalCodeApplied = false;
   @tracked selectedRegistration = null;
 
   @computed('model.event.description')
@@ -151,10 +152,82 @@ export default class IndexController extends Controller {
         };
       }
     }
+    if (this.promotionalCodeApplied) {
+      myinput['discount-code'] = this.discountCode.id;
+    }
     try {
       this.set('orderInput', myinput);
     } catch (e) {
       console.error(e);
+    }
+  }
+
+  @action
+  async removePromotionalCode() {
+    this.toggleProperty('enterPromotionalCode');
+    this.set('promotionalCodeApplied', false);
+    this.set('code', null);
+    this.set('promotionalCode', '');
+    this.model.tickets.forEach(ticket => {
+      ticket.set('discount', null);
+      ticket.set('discountedTicketTax', null);
+    });
+  }
+
+  @action
+  async applyPromotionalCode() {
+    if (!this.code && !this.promotionalCode) {return}
+    if (!this.code) {
+      this.set('code', this.promotionalCode);
+    }
+    try {
+      const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.model.event.identifier, code: this.code, include: 'event,tickets' });
+      const discountCodeEvent = await discountCode.event;
+      if (this.model.event.identifier === discountCodeEvent.identifier) {
+        this.set('discountCode', discountCode);
+        const tickets = await discountCode.tickets;
+        const ticketInput = {
+          'discount-code' : discountCode.id,
+          'tickets'       : tickets.toArray().map(ticket => ({
+            id       : ticket.id,
+            quantity : 1,
+            price    : ticket.price
+          }))
+        };
+        const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
+        tickets.forEach(ticket => {
+          const discountedTicket = ticketAmount.tickets.find(o => {
+            return ticket.id === o.id.toString();
+          });
+          ticket.set('discountedTicketTax', discountedTicket.discounted_tax);
+          ticket.set('discount', discountedTicket.discount.amount);
+          this.set('invalidPromotionalCode', false);
+        });
+      } else {
+        this.set('invalidPromotionalCode', true);
+      }
+    } catch (e) {
+      console.error('Error while applying discount code as promotional code', e);
+      if (!this.invalidPromotionalCode) {
+        this.set('invalidPromotionalCode', true);
+      }
+    }
+    if (this.invalidPromotionalCode) {
+      this.set('promotionalCodeApplied', false);
+      this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
+        id: 'prom_inval'
+      });
+    } else {
+      this.set('promotionalCodeApplied', true);
+      this.set('promotionalCode', 'Promotional code applied successfully');
+    }
+  }
+
+  @action
+  handleKeyPress() {
+    if (event.code === 'Enter') {
+      this.send('applyPromotionalCode');
+      this.set('code', this.promotionalCode);
     }
   }
 
