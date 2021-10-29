@@ -328,10 +328,10 @@
       </div>
     {{/if}}
     {{#if this.data.event.isTaxEnabled}}
-      <div class="ui card">
+      <div class="ui card" style="width:450px;">
         <div class="content tax-info">
           <div class="meta">
-            {{t 'Tax Information'}}
+            {{t 'Invoice and Tax Information'}}
           </div>
         </div>
         <div class="content">
@@ -340,39 +340,39 @@
           {{/if}}
           {{#if this.data.event.tax.country}}
             <div class="description">
-              <br/>{{this.data.event.tax.country}}
+              <br/><span>Country</span>{{this.data.event.tax.country}}
             </div>
           {{/if}}
           <div class="description">
             {{#if this.data.event.tax.rate}}
-              {{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
+              <span>Rate</span>{{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
             {{/if}}
             {{#if this.data.event.tax.taxId}}
-              <br/>{{this.data.event.tax.taxId}}
+              <br/><span>Tax ID</span>{{this.data.event.tax.taxId}}
             {{/if}}  
             {{#if this.data.event.tax.registeredCompany}}
-              <br/>{{this.data.event.tax.registeredCompany}}
+              <br/><span>Organisation</span>{{this.data.event.tax.registeredCompany}}
             {{/if}}
             {{#if this.data.event.tax.contactName}}
-              <br/>{{this.data.event.tax.contactName}}
+              <br/><span>Contact Name</span>{{this.data.event.tax.contactName}}
             {{/if}}
             {{#if this.data.event.tax.email}}
-              <br/>{{this.data.event.tax.email}}
+              <br/><span>Email</span>{{this.data.event.tax.email}}
             {{/if}}
             {{#if this.data.event.tax.phone}}
-              <br/>{{this.data.event.tax.phone}}
+              <br/><span>Phone</span>{{this.data.event.tax.phone}}
             {{/if}}
             {{#if this.data.event.tax.address}}
-              <br/>{{this.data.event.tax.address}}
+              <br/><span>Address</span>{{this.data.event.tax.address}}
             {{/if}}
             {{#if this.data.event.tax.city}}
-              <br/>{{this.data.event.tax.city}}
+              <br/><span>City</span>{{this.data.event.tax.city}}
             {{/if}}
             {{#if this.data.event.tax.state}}
-              <br/>{{this.data.event.tax.state}}
+              <br/><span>State</span>{{this.data.event.tax.state}}
             {{/if}}
             {{#if this.data.event.tax.zip}}
-              <br/>{{this.data.event.tax.zip}}
+              <br/><span>ZIP</span>{{this.data.event.tax.zip}}
             {{/if}}
           </div>
         </div>
