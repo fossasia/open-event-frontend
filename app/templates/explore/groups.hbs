@@ -21,7 +21,7 @@
     </TabbedNavigation>
     <h1 class="ui header">{{t 'Groups'}}</h1>
     {{#each this.filteredGroups as |group|}}
-      <GroupCard @group={{group}} @followedGroups={{true}} />
+      <GroupCard @group={{group}} @explorePage={{true}} @followedGroups={{this.model.followedGroups}} />
       <div class="ui hidden divider"></div>
     {{else}}
       <div class="ui disabled header">{{t 'No groups found for selected filters'}}</div>
