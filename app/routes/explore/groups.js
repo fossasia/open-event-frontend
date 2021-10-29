@@ -44,7 +44,10 @@ export default class GroupsRoute extends Route {
   async model(params) {
 
     return hash({
-      filteredGroups: this._loadGroups(params)
+      filteredGroups : this._loadGroups(params),
+      followedGroups : this.authManager.currentUser?.email ? this.authManager.currentUser.query('followedGroups', {
+        include: 'group,user'
+      }) : []
     });
   }
 

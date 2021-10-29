@@ -35,6 +35,11 @@ export default class PublicController extends Controller {
     return this.model.socialLinks.findBy('isTwitter', true);
   }
 
+  @computed
+  get vietnameseFontFamily() {
+    return this.l10n.getLocale() === 'vi' ? 'font-family:Robota' : '';
+  }
+
   @computed('model.customForms')
   get hasSessionLevel() {
     let hasLevel = false;
