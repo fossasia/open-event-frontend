@@ -14,9 +14,9 @@ export default class IndexRoute extends Route {
       group: this.store.findRecord('group', params.group_id, {
         include: 'events,followers,user'
       }),
-      followedGroups: this.authManager.currentUser.query('followedGroups', {
+      followedGroups : this.authManager.currentUser?.email ? this.authManager.currentUser.query('followedGroups', {
         include: 'group,user'
-      })
+      }) : []
     });
   }
 }
