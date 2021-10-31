@@ -1,7 +1,7 @@
-<div class="{{if this.isWide 'event wide ui grid row'}}" style="height: 100%;">
+<div class="{{if this.isWide 'event wide ui grid row'}}" style="height: 400px;">
   <div class="ui card {{this.groupClass}} {{if this.isWide 'h-auto' 'h-full'}}">
     <a class="image" href={{href-to 'group-public' @group.id}}>
-      <Widgets::SafeImage @src={{if @group.thumbnailImageUrl  @group.thumbnailImageUrl "/images/group.png"}} />
+      <Widgets::SafeImage @src={{if @group.thumbnailImageUrl  @group.thumbnailImageUrl (if @group.bannerUrl @group.bannerUrl "/images/group.png")}} />
     </a>
     <span class="main content">
       <SmartOverflow @class="header">
