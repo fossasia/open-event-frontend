@@ -80,7 +80,7 @@ export default class IndexRoute extends Route {
 
   setupController(controller, model) {
     controller.set('model', model);
-    if (model.tickets.length === 1) {
+    if (model.tickets?.length === 1) {
       controller.set('selectedRegistration', model.tickets.toArray()[0]);
     }
   }

@@ -124,7 +124,9 @@ export default Component.extend(FormMixin, {
     return `Amount (${currencySymbol([this.event.paymentCurrency])})`;
   }),
 
-  eventTickets: computed.filterBy('tickets', 'type', 'paid'),
+  eventTickets: computed('tickets', function() {
+    return this.tickets.filter(ticket => ticket.type === 'paidRegistration' || ticket.type === 'paid');
+  }),
 
   allTicketTypesChecked: computed('tickets', function() {
     if (this.eventTickets.length && this.data.tickets.length === this.eventTickets.length) {
