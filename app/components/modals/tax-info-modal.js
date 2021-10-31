@@ -19,7 +19,6 @@ export default ModalBase.extend(FormMixin, {
       fields : {
         taxName: {
           identifier : 'tax_name',
-          optional   : true,
           rules      : [
             {
               type   : 'empty',
@@ -29,7 +28,6 @@ export default ModalBase.extend(FormMixin, {
         },
         taxRate: {
           identifier : 'tax_rate',
-          optional   : true,
           rules      : [
             {
               type   : 'empty',
@@ -43,7 +41,6 @@ export default ModalBase.extend(FormMixin, {
         },
         taxId: {
           identifier : 'tax_id',
-          optional   : true,
           rules      : [
             {
               type   : 'empty',
@@ -59,39 +56,6 @@ export default ModalBase.extend(FormMixin, {
             {
               type   : 'empty',
               prompt : this.l10n.t('Please give us your organisation name')
-            }
-          ]
-        },
-        taxInvoiceContact: {
-          identifier : 'tax_invoice_contact',
-          optional   : true,
-          depends    : 'send_tax_invoices',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give us your contact name')
-            }
-          ]
-        },
-        taxInvoicePhone: {
-          identifier : 'tax_invoice_phone',
-          optional   : true,
-          depends    : 'send_tax_invoices',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give us your phone number')
-            }
-          ]
-        },
-        taxInvoiceEmail: {
-          identifier : 'tax_invoice_email',
-          optional   : true,
-          depends    : 'send_tax_invoices',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please give us your email')
             }
           ]
         },
@@ -141,7 +105,6 @@ export default ModalBase.extend(FormMixin, {
         },
         taxCountry: {
           identifier : 'tax_country',
-          optional   : true,
           rules      : [
             {
               type   : 'empty',

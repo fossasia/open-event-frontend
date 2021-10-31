@@ -327,73 +327,6 @@
         </button>
       </div>
     {{/if}}
-    {{#if this.data.event.isTaxEnabled}}
-      <div class="ui card" style="width:450px;">
-        <div class="content tax-info">
-          <div class="meta">
-            {{t 'Invoice and Tax Information'}}
-          </div>
-        </div>
-        <div class="content">
-          {{#if this.data.event.tax.name}}
-            <div class="header">{{this.data.event.tax.name}}</div>
-          {{/if}}
-          {{#if this.data.event.tax.country}}
-            <div class="description">
-              <br/><span>Country</span>{{this.data.event.tax.country}}
-            </div>
-          {{/if}}
-          <div class="description">
-            {{#if this.data.event.tax.rate}}
-              <span>Rate</span>{{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
-            {{/if}}
-            {{#if this.data.event.tax.taxId}}
-              <br/><span>Tax ID</span>{{this.data.event.tax.taxId}}
-            {{/if}}  
-            {{#if this.data.event.tax.registeredCompany}}
-              <br/><span>Organisation</span>{{this.data.event.tax.registeredCompany}}
-            {{/if}}
-            {{#if this.data.event.tax.contactName}}
-              <br/><span>Contact Name</span>{{this.data.event.tax.contactName}}
-            {{/if}}
-            {{#if this.data.event.tax.email}}
-              <br/><span>Email</span>{{this.data.event.tax.email}}
-            {{/if}}
-            {{#if this.data.event.tax.phone}}
-              <br/><span>Phone</span>{{this.data.event.tax.phone}}
-            {{/if}}
-            {{#if this.data.event.tax.address}}
-              <br/><span>Address</span>{{this.data.event.tax.address}}
-            {{/if}}
-            {{#if this.data.event.tax.city}}
-              <br/><span>City</span>{{this.data.event.tax.city}}
-            {{/if}}
-            {{#if this.data.event.tax.state}}
-              <br/><span>State</span>{{this.data.event.tax.state}}
-            {{/if}}
-            {{#if this.data.event.tax.zip}}
-              <br/><span>ZIP</span>{{this.data.event.tax.zip}}
-            {{/if}}
-          </div>
-        </div>
-        <div class="ui bottom attached small buttons">
-          <button class="ui button" type="button" {{action 'openTaxModal'}}>
-            <i class="pencil icon"></i>
-            {{t 'Edit'}}
-          </button>
-
-          <button class="ui red button" type="button" {{action 'deleteTaxInformation'}}>
-            <i class="trash icon"></i>
-            {{t 'Remove'}}
-          </button>
-        </div>
-      </div>
-    {{else}}
-      <button type="button" class="ui right labeled icon button mb-4" {{action 'openTaxModal'}}>
-        <i class="percent icon"></i>
-        {{t 'Add invoice and tax information'}}
-      </button>
-    {{/if}}
   {{#if this.hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
     <div class="ui section divider"></div>
@@ -693,9 +626,60 @@
       {{/if}}
       <br>
       <div class="field">
+        {{#if this.data.event.isTaxEnabled}}
+          <div class="ui card">
+            <div class="content tax-info">
+              <div class="meta">
+                {{t 'Tax Information'}}
+              </div>
+            </div>
+            <div class="content">
+              <div class="header">{{this.data.event.tax.name}}</div>
+              {{#if this.data.event.tax.country}}
+                <div class="description">
+                  <br/>{{this.data.event.tax.country}}
+                </div>
+              {{/if}}
+              <div class="description">
+                {{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
+                {{this.data.event.tax.taxId}}
+                {{#if this.data.event.tax.registeredCompany}}
+                  <br/>{{this.data.event.tax.registeredCompany}}
+                {{/if}}
+                {{#if this.data.event.tax.address}}
+                  <br/>{{this.data.event.tax.address}}
+                {{/if}}
+                {{#if this.data.event.tax.city}}
+                  <br/>{{this.data.event.tax.city}}
+                {{/if}}
+                {{#if this.data.event.tax.state}}
+                  <br/>{{this.data.event.tax.state}}
+                {{/if}}
+                {{#if this.data.event.tax.zip}}
+                  <br/>{{this.data.event.tax.zip}}
+                {{/if}}
+              </div>
+            </div>
+            <div class="ui bottom attached small buttons">
+              <button class="ui button" type="button" {{action 'openTaxModal'}}>
+                <i class="pencil icon"></i>
+                {{t 'Edit'}}
+              </button>
+
+              <button class="ui red button" type="button" {{action 'deleteTaxInformation'}}>
+                <i class="trash icon"></i>
+                {{t 'Remove'}}
+              </button>
+            </div>
+          </div>
+        {{else}}
+          <button type="button" class="ui right labeled icon button" {{action 'openTaxModal'}}>
+            <i class="percent icon"></i>
+            {{t 'Add Tax Information'}}
+          </button>
+        {{/if}}
         <div class="ui hidden divider"></div>
         <div class="field">
-          <h4>{{t 'Billing Info'}}</h4>
           <div class="ui checkbox">
             <Input
               @type="checkbox"
@@ -703,11 +687,12 @@
               @checked={{this.data.event.isBillingInfoMandatory}}
             />
             <label for="billing_info">
+              <strong>{{t 'Billing Info'}}:</strong>
               {{t 'Require Billing Information from Ticket Buyer'}}
             </label>
           </div>
         </div>
-        <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
       </div>
     </div>
   {{/if}}
