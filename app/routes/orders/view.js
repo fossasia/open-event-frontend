@@ -18,7 +18,6 @@ export default class ViewRoute extends Route {
     try {
       // making the api call to update the order status if its been completed
       const orderStatus = await this.loader.post(`orders/${params.order_id}/verify`);
-      console.log(this);
     } catch (e) {
       console.error(e);
     }
