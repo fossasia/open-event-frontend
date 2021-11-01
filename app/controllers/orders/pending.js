@@ -190,10 +190,9 @@ export default class PendingController extends Controller {
       skipDataTransform: true
     };
     chargePayload = JSON.stringify(chargePayload);
-    // fake request for action to work for now to be replaced with actual api
     this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
       .then(async charge => {
-        const stripe = await loadStripe('pk_test_51JkNFWSEz988J3ILEozhgIfYuNMxOZy25QyxzmfpBhKWdPzweMJIlH9ogMvxLuMPHAs3bsybgSVZvNKU3ZBvGx9o003Gc94lPt');
+        const stripe = await loadStripe(order.event.get('stripeAuthorization').get('stripePublishableKey'));
         const checkoutSession = JSON.parse(charge.data.attributes.message);
         stripe.redirectToCheckout({
           // Make the id field from the Checkout Session creation API response
