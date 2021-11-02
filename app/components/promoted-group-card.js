@@ -78,9 +78,9 @@ get groupClass() {
 
 @computed('group')
 get about() {
-  if (this.group.about?.length > 100) {
-    return this.group.about.slice(0, 100) + '...';
+  if (this.group.about?.length > 50) {
+    return this.group.about.slice(0, 50) + '...';
   }
-  return this.group.about;
+  return this.group.about ? this.group.about : 'No information given about group.';
 }
 }
