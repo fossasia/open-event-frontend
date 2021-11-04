@@ -794,7 +794,6 @@ msgid "Select Banner"
 msgstr ""
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:48:22
-#: app/templates/components/forms/group/group-settings-form.hbs:41:20
 #: app/templates/components/forms/wizard/basic-details-step.hbs:158:18
 msgid "We recommend using at least a 2160x1080px (2:1 ratio) image"
 msgstr ""
@@ -1491,7 +1490,6 @@ msgid "Hybrid"
 msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:25:69
-#: app/templates/components/events/view/overview/general-info.hbs:39:12
 msgid "To be announced"
 msgstr ""
 
@@ -2190,7 +2188,6 @@ msgstr ""
 #: app/templates/components/events/view/export/download-zip.hbs:16:39
 #: app/templates/components/public/exhibition-view.hbs:100:32
 #: app/templates/events/view.hbs:41:10
-#: app/templates/events/view/videoroom/list.hbs:17:10
 msgid "Video"
 msgstr ""
 
@@ -2374,6 +2371,46 @@ msgstr ""
 
 #: app/components/widgets/time-zone-picker.hbs:19:6
 msgid "Other Timezones"
+msgstr ""
+
+#: app/controllers/account/billing/invoices/list.js:10:26
+msgid "Invoice ID"
+msgstr ""
+
+#: app/controllers/account/billing/invoices/list.js:18:26
+#: app/controllers/admin/sessions/list.js:16:20
+#: app/controllers/admin/video/recordings.js:15:22
+#: app/templates/components/event-invoice/invoice-summary.hbs:20:30
+#: app/templates/components/forms/wizard/basic-details-step.hbs:3:39
+#: app/templates/event-invoice/review.hbs:15:24
+msgid "Event Name"
+msgstr ""
+
+#: app/controllers/account/billing/invoices/list.js:24:26
+#: app/controllers/admin/sales/invoices.js:27:26
+msgid "Invoice Date"
+msgstr ""
+
+#: app/controllers/account/billing/invoices/list.js:35:24
+#: app/controllers/admin/sales/invoices.js:38:24
+#: app/templates/event-invoice/review.hbs:21:24
+msgid "Due Date"
+msgstr ""
+
+#: app/controllers/account/billing/invoices/list.js:44:26
+#: app/controllers/admin/sales/invoices.js:47:26
+msgid "Amount"
+msgstr ""
+
+#: app/controllers/account/billing/invoices/list.js:52:26
+#: app/controllers/admin/sales/invoices.js:60:26
+#: app/controllers/admin/users/list.js:44:24
+msgid "Status"
+msgstr ""
+
+#: app/controllers/account/billing/invoices/list.js:58:26
+#: app/controllers/admin/sales/invoices.js:74:26
+msgid "Action"
 msgstr ""
 
 #: app/controllers/account/password.js:18:28
@@ -2745,42 +2782,12 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#: app/controllers/admin/sales/invoices.js:27:26
-msgid "Invoice Date"
-msgstr ""
-
-#: app/controllers/admin/sales/invoices.js:38:24
-#: app/templates/event-invoice/review.hbs:21:24
-msgid "Due Date"
-msgstr ""
-
-#: app/controllers/admin/sales/invoices.js:47:26
-msgid "Amount"
-msgstr ""
-
 #: app/controllers/admin/sales/invoices.js:55:24
 msgid "Sent To"
 msgstr ""
 
-#: app/controllers/admin/sales/invoices.js:60:26
-#: app/controllers/admin/users/list.js:44:24
-msgid "Status"
-msgstr ""
-
-#: app/controllers/admin/sales/invoices.js:74:26
-msgid "Action"
-msgstr ""
-
 #: app/controllers/admin/sales/invoices.js:91:26
 msgid "Invoice state has been changed to {{action}} successfully."
-msgstr ""
-
-#: app/controllers/admin/sessions/list.js:16:20
-#: app/controllers/admin/video/recordings.js:15:22
-#: app/templates/components/event-invoice/invoice-summary.hbs:20:30
-#: app/templates/components/forms/wizard/basic-details-step.hbs:3:39
-#: app/templates/event-invoice/review.hbs:15:24
-msgid "Event Name"
 msgstr ""
 
 #: app/controllers/admin/sessions/list.js:20:26
@@ -2868,7 +2875,7 @@ msgstr ""
 #: app/templates/components/event-invoice/billing-info.hbs:36:16
 #: app/templates/components/event-invoice/payee-info.hbs:16:8
 #: app/templates/components/forms/admin/settings/billing.hbs:41:52
-#: app/templates/components/forms/orders/order-form.hbs:43:44
+#: app/templates/components/forms/orders/order-form.hbs:42:44
 #: app/templates/components/forms/register-form.hbs:15:57
 #: app/templates/components/forms/user-profile-form.hbs:65:32
 #: app/templates/components/orders/ticket-holder.hbs:20:8
@@ -3522,12 +3529,12 @@ msgid "Comments"
 msgstr ""
 
 #: app/models/custom-form.js:82:27
-#: app/templates/components/forms/orders/order-form.hbs:29:48
+#: app/templates/components/forms/orders/order-form.hbs:28:48
 msgid "First Name"
 msgstr ""
 
 #: app/models/custom-form.js:83:27
-#: app/templates/components/forms/orders/order-form.hbs:36:47
+#: app/templates/components/forms/orders/order-form.hbs:35:47
 msgid "Last Name"
 msgstr ""
 
@@ -5570,11 +5577,11 @@ msgid "Your event is live at"
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.hbs:19:6
-msgid "Your event is not live yet. Make it live now"
+msgid "Your event is not live yet. Make it live now."
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.hbs:32:14
-msgid "Online and in-person event at"
+msgid "Online and in-person event at {{location}}."
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.hbs:34:14
@@ -5582,7 +5589,11 @@ msgid "Online event"
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.hbs:37:67
-msgid "Click to add location"
+msgid "Click to add location."
+msgstr ""
+
+#: app/templates/components/events/view/overview/general-info.hbs:39:12
+msgid "To be announced."
 msgstr ""
 
 #: app/templates/components/events/view/overview/general-info.hbs:52:20
@@ -6882,6 +6893,10 @@ msgstr ""
 msgid "Header Image"
 msgstr ""
 
+#: app/templates/components/forms/group/group-settings-form.hbs:41:20
+msgid "We recommend using at least a 2160x1080px (2:1 ratio) image."
+msgstr ""
+
 #: app/templates/components/forms/group/group-view.hbs:48:16
 #: app/templates/components/public/ticket-list.hbs:238:12
 msgid "Contact Organizer"
@@ -6930,27 +6945,27 @@ msgid "Attendee Information"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:10:10
-#: app/templates/components/forms/orders/order-form.hbs:54:10
+#: app/templates/components/forms/orders/order-form.hbs:53:10
 msgid "Registration Holder's Information"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:12:10
-#: app/templates/components/forms/orders/order-form.hbs:56:10
+#: app/templates/components/forms/orders/order-form.hbs:55:10
 msgid "Ticket Holder's Information"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:21:16
-#: app/templates/components/forms/orders/order-form.hbs:72:14
+#: app/templates/components/forms/orders/order-form.hbs:71:14
 msgid "Registration Holder"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:23:16
-#: app/templates/components/forms/orders/order-form.hbs:74:14
+#: app/templates/components/forms/orders/order-form.hbs:73:14
 msgid "Ticket Holder"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:25:14
-#: app/templates/components/forms/orders/order-form.hbs:76:25
+#: app/templates/components/forms/orders/order-form.hbs:75:25
 msgid "-for-"
 msgstr ""
 
@@ -6974,7 +6989,7 @@ msgid "No"
 msgstr ""
 
 #: app/templates/components/forms/orders/attendee-list.hbs:72:12
-#: app/templates/components/forms/orders/order-form.hbs:192:10
+#: app/templates/components/forms/orders/order-form.hbs:191:10
 msgid "Billing Information"
 msgstr ""
 
@@ -7036,135 +7051,127 @@ msgid "Registration Information"
 msgstr ""
 
 #: app/templates/components/forms/orders/order-form.hbs:12:10
-msgid "Please complete registration within"
-msgstr ""
-
-#: app/templates/components/forms/orders/order-form.hbs:12:89
-msgid "minutes."
+msgid "Please complete registration within {{time}} minutes."
 msgstr ""
 
 #: app/templates/components/forms/orders/order-form.hbs:14:10
-msgid "After"
+msgid "After {{time}} minutes, the reservation we're holding will be released to others."
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:15:10
-msgid "minutes, the reservation we're holding will be released to others."
-msgstr ""
-
-#: app/templates/components/forms/orders/order-form.hbs:23:10
+#: app/templates/components/forms/orders/order-form.hbs:22:10
 msgid "Registrant"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:25:10
+#: app/templates/components/forms/orders/order-form.hbs:24:10
 #: app/templates/components/orders/ticket-holder.hbs:9:8
 msgid "Ticket Buyer"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:63:21
+#: app/templates/components/forms/orders/order-form.hbs:62:21
 msgid "Ticket holder is the same person as ticket buyer"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:117:46
+#: app/templates/components/forms/orders/order-form.hbs:116:46
 #: app/templates/components/forms/speaker-section.hbs:91:38
 msgid "Select your gender"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:136:46
+#: app/templates/components/forms/orders/order-form.hbs:135:46
 msgid "Select your country"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:155:46
+#: app/templates/components/forms/orders/order-form.hbs:154:46
 msgid "Select your age group"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:166:27
+#: app/templates/components/forms/orders/order-form.hbs:165:27
 msgid "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:172:27
+#: app/templates/components/forms/orders/order-form.hbs:171:27
 msgid "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:178:27
+#: app/templates/components/forms/orders/order-form.hbs:177:27
 msgid "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:197:21
+#: app/templates/components/forms/orders/order-form.hbs:196:21
 msgid "Enable Billing Information"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:209:10
+#: app/templates/components/forms/orders/order-form.hbs:208:10
 msgid "Payment Method"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:212:53
+#: app/templates/components/forms/orders/order-form.hbs:211:53
 msgid "Please choose your payment method"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:218:25
+#: app/templates/components/forms/orders/order-form.hbs:217:25
 msgid "Credit Card"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:231:25
+#: app/templates/components/forms/orders/order-form.hbs:230:25
 msgid "Paypal"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:242:25
+#: app/templates/components/forms/orders/order-form.hbs:241:25
 msgid "Paytm"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:253:25
+#: app/templates/components/forms/orders/order-form.hbs:252:25
 msgid "Omise"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:265:25
+#: app/templates/components/forms/orders/order-form.hbs:264:25
 msgid "AliPay"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:277:25
+#: app/templates/components/forms/orders/order-form.hbs:276:25
 msgid "Pay on Invoice"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:287:25
+#: app/templates/components/forms/orders/order-form.hbs:286:25
 msgid "Cheque"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:297:25
+#: app/templates/components/forms/orders/order-form.hbs:296:25
 msgid "Bank"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:307:25
+#: app/templates/components/forms/orders/order-form.hbs:306:25
 msgid "Onsite"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:333:8
+#: app/templates/components/forms/orders/order-form.hbs:332:8
 msgid "Acknowledgement"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:337:21
+#: app/templates/components/forms/orders/order-form.hbs:336:21
 msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:338:42
-#: app/templates/components/forms/orders/order-form.hbs:347:84
+#: app/templates/components/forms/orders/order-form.hbs:337:42
+#: app/templates/components/forms/orders/order-form.hbs:346:84
 msgid "Proceed to Checkout"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:338:68
-#: app/templates/components/forms/orders/order-form.hbs:347:110
+#: app/templates/components/forms/orders/order-form.hbs:337:68
+#: app/templates/components/forms/orders/order-form.hbs:346:110
 #: app/templates/components/public/ticket-list.hbs:223:10
 msgid "Order Now"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:339:60
+#: app/templates/components/forms/orders/order-form.hbs:338:60
 msgid "terms of services"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:340:64
+#: app/templates/components/forms/orders/order-form.hbs:339:64
 msgid "privacy policy"
 msgstr ""
 
-#: app/templates/components/forms/orders/order-form.hbs:345:62
+#: app/templates/components/forms/orders/order-form.hbs:344:62
 msgid "One Click Signup"
 msgstr ""
 
@@ -7317,16 +7324,12 @@ msgstr ""
 #: app/templates/components/forms/wizard/attendee-step.hbs:13:57
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:11:63
 #: app/templates/components/forms/wizard/sponsors-step.hbs:14:47
-#: app/templates/events/view/chat.hbs:13:46
-#: app/templates/events/view/videoroom/list.hbs:16:51
 msgid "Turn off"
 msgstr ""
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:13:72
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:11:78
 #: app/templates/components/forms/wizard/sponsors-step.hbs:14:62
-#: app/templates/events/view/chat.hbs:13:61
-#: app/templates/events/view/videoroom/list.hbs:16:66
 msgid "Turn on"
 msgstr ""
 
@@ -7745,7 +7748,6 @@ msgstr ""
 
 #: app/templates/components/group-header.hbs:5:8
 #: app/templates/events/view/settings/export.hbs:3:4
-#: app/templates/events/view/videoroom/list.hbs:3:4
 msgid "This feature is still in alpha stage"
 msgstr ""
 
@@ -8940,28 +8942,28 @@ msgstr ""
 msgid "Documents"
 msgstr ""
 
-#: app/templates/events/view/chat.hbs:14:16
-msgid "Event Chat"
+#: app/templates/events/view/chat.hbs:13:46
+msgid "Turn off Event Chat"
 msgstr ""
 
-#: app/templates/events/view/chat.hbs:22:36
+#: app/templates/events/view/chat.hbs:13:72
+msgid "Turn on Event Chat"
+msgstr ""
+
+#: app/templates/events/view/chat.hbs:21:36
 msgid "Chat is currently enabled for this event. Users can access a chat channel for this event."
 msgstr ""
 
-#: app/templates/events/view/chat.hbs:24:36
+#: app/templates/events/view/chat.hbs:23:36
 msgid "Chat is currently not enabled for this event. Users cannot access chat for this event."
 msgstr ""
 
 #: app/templates/events/view/documents.hbs:13:50
-msgid "Disable"
+msgid "Disable Add Event Documents"
 msgstr ""
 
-#: app/templates/events/view/documents.hbs:13:64
-msgid "Enable"
-msgstr ""
-
-#: app/templates/events/view/documents.hbs:14:16
-msgid "Add Event Documents"
+#: app/templates/events/view/documents.hbs:13:84
+msgid "Enable Add Event Documents"
 msgstr ""
 
 #: app/templates/events/view/edit.hbs:2:25
@@ -9199,23 +9201,35 @@ msgstr ""
 msgid "View Orders"
 msgstr ""
 
-#: app/templates/events/view/videoroom/list.hbs:26:33
+#: app/templates/events/view/videoroom/list.hbs:3:4
+msgid "This feature is still in alpha stage."
+msgstr ""
+
+#: app/templates/events/view/videoroom/list.hbs:16:51
+msgid "Turn off Video"
+msgstr ""
+
+#: app/templates/events/view/videoroom/list.hbs:16:72
+msgid "Turn on Video"
+msgstr ""
+
+#: app/templates/events/view/videoroom/list.hbs:25:33
 msgid "Virtual Event Room"
 msgstr ""
 
-#: app/templates/events/view/videoroom/list.hbs:28:7
+#: app/templates/events/view/videoroom/list.hbs:27:7
 msgid "This category is especially suitable for welcome, support, discussion or social video rooms. Virtual event video rooms do not require dedicated sessions and do not need a schedule setup."
 msgstr ""
 
-#: app/templates/events/view/videoroom/list.hbs:41:29
+#: app/templates/events/view/videoroom/list.hbs:40:29
 msgid "Microlocation Video Rooms"
 msgstr ""
 
-#: app/templates/events/view/videoroom/list.hbs:45:12
+#: app/templates/events/view/videoroom/list.hbs:44:12
 msgid "Add Microlocation"
 msgstr ""
 
-#: app/templates/events/view/videoroom/list.hbs:48:11
+#: app/templates/events/view/videoroom/list.hbs:47:11
 msgid "Microlocation video rooms are suitable for events with different tracks, rooms and sessions that are listed in a schedule. All microlocations are listed on the event schedule. Note: Microlocation rooms require a session in order to be visible to attendees.They are only listed on the video channel list on side panels of online events, if sessions have been added into the location in the schedule."
 msgstr ""
 

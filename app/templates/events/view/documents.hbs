@@ -10,8 +10,7 @@
                 @checked={{if this.model.isDocumentEnabled 'active'}}
                 @onChange={{action 'toggleDocument'}} />
               <label class="weight-300" style="font-size: large">
-                {{if this.model.isDocumentEnabled (t 'Disable') (t 'Enable')}}
-                {{t 'Add Event Documents'}}
+                {{if this.model.isDocumentEnabled (t 'Disable Add Event Documents') (t 'Enable Add Event Documents')}}
               </label>
             </div>
           </div>

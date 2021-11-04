@@ -10,8 +10,7 @@
                 @checked={{if this.model.isChatEnabled 'active'}}
                 @onChange={{action 'toggleChat'}} />
               <label class="weight-300" style="font-size: large">
-                {{if this.model.isChatEnabled (t 'Turn off') (t 'Turn on')}}
-                {{t 'Event Chat'}}
+                {{if this.model.isChatEnabled (t 'Turn off Event Chat') (t 'Turn on Event Chat')}}
               </label>
             </div>
           </div>

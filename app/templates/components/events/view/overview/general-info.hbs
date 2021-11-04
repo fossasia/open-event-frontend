@@ -16,7 +16,7 @@
   {{else}}
   <div class="content">
     <div class="ui {{if this.device.isMobile 'small' 'medium'}} header">
-      {{t 'Your event is not live yet. Make it live now'}}
+      {{t 'Your event is not live yet. Make it live now.'}}
     </div>
   </div>
 {{/if}}
@@ -29,14 +29,14 @@
         <td>
           {{#if this.data.event.online}}
             {{#if this.data.event.locationName}}
-              {{t 'Online and in-person event at'}} {{this.data.event.locationName}}
+              {{t 'Online and in-person event at {{location}}.' location=this.data.event.locationName}}
             {{else}}
               {{t 'Online event'}}
             {{/if}}
           {{else if this.data.event.locationName}}
-            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location'}}.</a>
+            <a href="{{href-to 'events.view.edit.basic-details'}}">{{t 'Click to add location.'}}</a>
           {{else}}
-            {{t 'To be announced'}}.
+            {{t 'To be announced.'}}
           {{/if}}
         </td>
       </tr>
