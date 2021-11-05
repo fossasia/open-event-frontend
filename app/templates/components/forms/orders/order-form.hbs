@@ -9,10 +9,9 @@
           {{this.getRemainingTime}}
         </div>
         <div class="label">
-          {{t 'Please complete registration within '}} {{this.settings.orderExpiryTime}} {{t 'minutes.'}}
+          {{t 'Please complete registration within {{time}} minutes.' time=this.settings.orderExpiryTime}}
           <br>
-          {{t 'After '}} {{this.settings.orderExpiryTime}}
-          {{t 'minutes, the reservation we\'re holding will be released to others.'}}
+          {{t 'After {{time}} minutes, the reservation we\'re holding will be released to others.' time=this.settings.orderExpiryTime}}
         </div>
       </div>
     </div>

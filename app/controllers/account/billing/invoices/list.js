@@ -7,7 +7,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name            : 'Invoice ID',
+        name            : this.l10n.t('Invoice ID'),
         headerComponent : 'tables/headers/sort',
         isSortable      : true,
         valuePath       : 'identifier',
@@ -15,13 +15,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/cell-download-invoice'
       },
       {
-        name            : 'Event Name',
+        name            : this.l10n.t('Event Name'),
         valuePath       : 'event.name',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name            : 'Invoice Date',
+        name            : this.l10n.t('Invoice Date'),
         valuePath       : 'issuedAt',
         isSortable      : true,
         headerComponent : 'tables/headers/sort',
@@ -32,7 +32,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name          : 'Due Date',
+        name          : this.l10n.t('Due Date'),
         valuePath     : 'dueAt',
         cellComponent : 'ui-table/cell/cell-date',
         options       : {
@@ -41,7 +41,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       },
       {
-        name            : 'Amount',
+        name            : this.l10n.t('Amount'),
         valuePath       : 'amount',
         extraValuePaths : ['event'],
         cellComponent   : 'ui-table/cell/events/cell-amount',
@@ -49,13 +49,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         headerComponent : 'tables/headers/sort'
       },
       {
-        name            : 'Status',
+        name            : this.l10n.t('Status'),
         valuePath       : 'status',
         isSortable      : true,
         headerComponent : 'tables/headers/sort'
       },
       {
-        name            : 'Action',
+        name            : this.l10n.t('Action'),
         valuePath       : 'identifier',
         extraValuePaths : ['status'],
         cellComponent   : 'ui-table/cell/events/cell-action'
