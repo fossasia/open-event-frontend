@@ -17,7 +17,7 @@ export default class ViewRoute extends Route {
   async model(params) {
     try {
       // making the api call to update the order status if its been completed
-      const orderStatus = await this.loader.post(`orders/${params.order_id}/verify`);
+      await this.loader.post(`orders/${params.order_id}/verify`);
     } catch (e) {
       console.error(e);
     }

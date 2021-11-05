@@ -115,113 +115,46 @@ export default class PendingController extends Controller {
   }
 
   @action
-  processStripeToken(token) {
-    // Send this token to server to process payment
-    this.set('isLoading', true);
-    const { order } = this.model;
-    let chargePayload = {
-      'data': {
-        'attributes': {
-          'stripe'            : token.id,
-          'paypal_payer_id'   : null,
-          'paypal_payment_id' : null
-        },
-        'type': 'charge'
-      }
-    };
-    const config = {
-      skipDataTransform: true
-    };
-    chargePayload = JSON.stringify(chargePayload);
-    return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
-      .then(charge => {
-        if (charge.data.attributes.status) {
-          this.notify.success(charge.data.attributes.message);
-          this.transitionToRoute('orders.view', order.identifier);
-        } else {
-          this.notify.error(charge.data.attributes.message);
-        }
-      })
-      .catch(e => {
-        console.warn(e);
-        if ('errors' in e) {
-          this.notify.error(this.l10n.tVar(e.errors[0].detail),
-            {
-              id: 'unexpected_error_occur'
-            });
-        } else {
-          this.notify.error(this.l10n.tVar(e),
-            {
-              id: 'unexpected_error_occur'
-            });
-        }
-      })
-      .finally(() => {
-        this.set('isLoading', false);
-      });
-  }
-
-  @action
-  checkoutClosed() {
-    // The callback invoked when stripe Checkout is closed.
-  }
-
-  @action
-  checkoutOpened() {
-    // The callback invoked when stripe Checkout is opened.
-  }
-
-  @action
   async stripePay() {
     this.set('isLoading', true);
     const { order } = this.model;
-    let chargePayload = {
-      'data': {
-        'attributes': {
-          'stripe'            : null,
-          'stripe_version'    : 'new',
-          'paypal_payer_id'   : null,
-          'paypal_payment_id' : null
-        },
-        'type': 'charge'
-      }
-    };
-    const config = {
-      skipDataTransform: true
-    };
-    chargePayload = JSON.stringify(chargePayload);
-    this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
-      .then(async charge => {
-        const stripe = await loadStripe(order.event.get('stripeAuthorization').get('stripePublishableKey'));
-        const checkoutSession = JSON.parse(charge.data.attributes.message);
-        stripe.redirectToCheckout({
-          // Make the id field from the Checkout Session creation API response
-          // available to this file, so you can provide it as argument here
-          // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-          sessionId: checkoutSession.id
-        }).then(function(result) {
-          // If `redirectToCheckout` fails due to a browser or network
-          // error, display the localized error message to your customer
-          // using `result.error.message`.
-          console.error(result.error.message);
-        });
-      })
-      .catch(e => {
-        console.warn(e);
-        if ('errors' in e) {
-          this.notify.error(this.l10n.tVar(e.errors[0].detail),
-            {
-              id: 'unexpected_error_occur'
-            });
-        } else {
-          this.notify.error(this.l10n.tVar(e),
-            {
-              id: 'unexpected_error_occur'
-            });
+
+    try {
+      let chargePayload = {
+        'data': {
+          'type': 'charge'
         }
-      })
-      .finally(() => {
-        this.set('isLoading', false);
+      };
+      const config = {
+        skipDataTransform: true
+      };
+      chargePayload = JSON.stringify(chargePayload);
+      const stripeAuthorization = await order.event.get('stripeAuthorization');
+      const response = await this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config);
+      const stripe = await loadStripe(stripeAuthorization.stripePublishableKey);
+      const checkoutSession = JSON.parse(response.data.attributes.message);
+      stripe.redirectToCheckout({
+        sessionId: checkoutSession.id
+      }).then(function(result) {
+        if (result.error.message) {
+          console.error(result.error.message);
+        }
       });
+    } catch (e) {
+      console.error(e);
+      if ('errors' in e) {
+        this.notify.error(this.l10n.tVar(e.errors[0].detail),
+          {
+            id: 'unexpected_error_occur'
+          });
+      } else {
+        this.notify.error(this.l10n.tVar(e),
+          {
+            id: 'unexpected_error_occur'
+          });
+      }
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 }

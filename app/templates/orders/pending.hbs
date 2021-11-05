@@ -37,25 +37,9 @@
         <br/>
         <div>
           {{#if this.isStripe}}
-            <StripeCheckout
-              @image="https://stripe.com/img/documentation/checkout/marketplace.png"
-              @currency={{this.model.order.event.paymentCurrency}}
-              @locale="auto"
-              @name="Open Event"
-              @class="ui right labeled icon blue button weight-400 width-full"
-              @description={{this.paymentDescription}}
-              @amount={{this.paymentAmount}}
-              @key={{this.model.order.event.stripeAuthorization.stripePublishableKey}}
-              @onToken={{action "processStripeToken"}}
-              @onClosed={{action "checkoutClosed"}}
-              @onOpened={{action "checkoutOpened"}}>
+            <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.stripePay}}>
               {{t 'Pay Now'}}
               <i class="credit card icon"></i>
-            </StripeCheckout>
-          {{/if}}
-          {{#if this.isStripe}}
-            <button {{action "stripePay"}}>
-              {{t 'Pay Now'}}
             </button>
           {{/if}}
           {{#if this.isPaypal}}
