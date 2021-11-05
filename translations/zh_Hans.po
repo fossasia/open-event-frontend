@@ -922,7 +922,6 @@ msgid "Video Source URL"
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:51:19
-#: app/controllers/events/view/videoroom/list.js:44:24
 msgid ""
 "This column shows the original link of the video. We do not recommend to "
 "share this link as users can access it without logging into"
@@ -935,12 +934,16 @@ msgid "Room Password"
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:78:19
+#: app/controllers/events/view/videoroom/list.js:59:21
 msgid ""
 "The room password field can be used to communicate a password which is "
 "necessary to access online video rooms for example for external video "
 "services such a Zoom, Teams and Webex. The need for a password entry depends "
 "on the configuration of your video channel. The integrated Big Blue Button "
-"video solution in"
+"video solution in {{appName}}.com does not need a password as only ticket "
+"holders are able to access it. The difference between the password and PIN "
+"is that the password option is used for online access while PINs are used to "
+"access video rooms through the telephone."
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:86:6
@@ -1128,11 +1131,9 @@ msgid "Your stream has been saved"
 msgstr ""
 
 #: app/components/forms/group/group-events-form.js:47:22
-msgid "Do you want to announce the event"
-msgstr ""
-
-#: app/components/forms/group/group-events-form.js:47:100
-msgid "to all group members now"
+msgid ""
+"Do you want to announce the event \"{{eventName}}\" to all group members "
+"now ?"
 msgstr ""
 
 #: app/components/forms/group/group-events-form.js:62:28
@@ -2314,9 +2315,11 @@ msgid "You need to minimize the side panel to access it."
 msgstr ""
 
 #: app/components/public/stream/chat-panel.ts:46:10
+#: app/routes/public/chat.ts:34:10
 msgid ""
 "The feature integration is still in Alpha stage and currently your profile "
-"on the"
+"on the {{appName}} account page and on the chat are not linked and can be "
+"independently edited."
 msgstr ""
 
 #: app/components/public/stream/chat-panel.ts:47:10
@@ -3278,24 +3281,18 @@ msgid ""
 "the event page."
 msgstr ""
 
+#: app/controllers/events/view/videoroom/list.js:44:24
+msgid ""
+"This column shows the original link of the video. We do not recommend to "
+"share this link as users can access it without logging into {{appName}}.com."
+msgstr ""
+
 #: app/controllers/events/view/videoroom/list.js:51:26
 msgid ""
 "You can share the links in this columns with attendees of an event. On event "
 "or schedule schedule pages attendees of your event will see a Join Video "
 "button. These buttons will direct to the links shown here. Only organizers "
 "and registered ticket holders will be able to access these links."
-msgstr ""
-
-#: app/controllers/events/view/videoroom/list.js:59:21
-msgid ""
-"The room password field can be used to communicate a password which is "
-"necessary to access online video rooms for example for external video "
-"services such a Zoom, Teams and Webex. The need for a password entry depends "
-"on the configuration of your video channel. The integrated Big Blue Button "
-"video solution in eventyay.com does not need a password as only ticket "
-"holders are able to access it. The difference between the password and PIN "
-"is that the password option is used for online access while PINs are used to "
-"access video rooms through the telephone."
 msgstr ""
 
 #: app/controllers/events/view/videoroom/list.js:69:21
@@ -4534,13 +4531,6 @@ msgstr ""
 #: app/templates/events/view/speaker/view.hbs:4:6
 #: app/templates/public/cfs/view-speaker.hbs:16:6
 msgid "View Speaker"
-msgstr ""
-
-#: app/routes/public/chat.ts:34:10
-msgid ""
-"The feature integration is still in Alpha stage and currently your profile "
-"on the + this.settings.appName + account page and on the chat are not linked "
-"and can be independently edited."
 msgstr ""
 
 #: app/routes/public/speaker-invite/index.js:7:11

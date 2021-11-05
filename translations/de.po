@@ -936,7 +936,6 @@ msgid "Video Source URL"
 msgstr "Videoquellen-URL"
 
 #: app/components/forms/events/view/videoroom-form.hbs:51:19
-#: app/controllers/events/view/videoroom/list.js:44:24
 msgid ""
 "This column shows the original link of the video. We do not recommend to "
 "share this link as users can access it without logging into"
@@ -951,12 +950,16 @@ msgid "Room Password"
 msgstr "Raumkennwort"
 
 #: app/components/forms/events/view/videoroom-form.hbs:78:19
+#: app/controllers/events/view/videoroom/list.js:59:21
 msgid ""
 "The room password field can be used to communicate a password which is "
 "necessary to access online video rooms for example for external video "
 "services such a Zoom, Teams and Webex. The need for a password entry depends "
 "on the configuration of your video channel. The integrated Big Blue Button "
-"video solution in"
+"video solution in {{appName}}.com does not need a password as only ticket "
+"holders are able to access it. The difference between the password and PIN "
+"is that the password option is used for online access while PINs are used to "
+"access video rooms through the telephone."
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:86:6
@@ -1153,11 +1156,9 @@ msgid "Your stream has been saved"
 msgstr "Stream gespeichert"
 
 #: app/components/forms/group/group-events-form.js:47:22
-msgid "Do you want to announce the event"
-msgstr "Möchten Sie die Veranstaltung ankündigen"
-
-#: app/components/forms/group/group-events-form.js:47:100
-msgid "to all group members now"
+msgid ""
+"Do you want to announce the event \"{{eventName}}\" to all group members "
+"now ?"
 msgstr ""
 
 #: app/components/forms/group/group-events-form.js:62:28
@@ -1192,7 +1193,8 @@ msgstr "Indem Sie dieser Gruppe folgen, akzeptieren Sie Folgendes:"
 #: app/components/group-card.js:41:26
 #: app/components/promoted-group-card.js:41:24 app/controllers/public.js:105:27
 msgid "1. You will receive announcement emails for events of this group."
-msgstr "1. Sie erhalten Ankündigungs-E-Mails für Veranstaltungen dieser Gruppe."
+msgstr ""
+"1. Sie erhalten Ankündigungs-E-Mails für Veranstaltungen dieser Gruppe."
 
 #: app/components/forms/group/group-view.js:46:14
 #: app/components/group-card.js:42:4 app/components/promoted-group-card.js:42:2
@@ -2397,9 +2399,11 @@ msgid "You need to minimize the side panel to access it."
 msgstr "Die Seitenleiste muss minimiert werden, um darauf zugreifen zu können."
 
 #: app/components/public/stream/chat-panel.ts:46:10
+#: app/routes/public/chat.ts:34:10
 msgid ""
 "The feature integration is still in Alpha stage and currently your profile "
-"on the"
+"on the {{appName}} account page and on the chat are not linked and can be "
+"independently edited."
 msgstr ""
 
 #: app/components/public/stream/chat-panel.ts:47:10
@@ -3398,6 +3402,12 @@ msgstr ""
 "In dieser Spalte wird der Name des Videoraums angezeigt, der für die "
 "Benutzer auf der Veranstaltungsseite sichtbar sein wird."
 
+#: app/controllers/events/view/videoroom/list.js:44:24
+msgid ""
+"This column shows the original link of the video. We do not recommend to "
+"share this link as users can access it without logging into {{appName}}.com."
+msgstr ""
+
 #: app/controllers/events/view/videoroom/list.js:51:26
 msgid ""
 "You can share the links in this columns with attendees of an event. On event "
@@ -3411,27 +3421,6 @@ msgstr ""
 "Schaltfläche Video beitreten. Diese Schaltflächen führen zu den hier "
 "gezeigten Links. Nur Organisatoren und registrierte Ticketinhaber können auf "
 "diese Links zugreifen."
-
-#: app/controllers/events/view/videoroom/list.js:59:21
-msgid ""
-"The room password field can be used to communicate a password which is "
-"necessary to access online video rooms for example for external video "
-"services such a Zoom, Teams and Webex. The need for a password entry depends "
-"on the configuration of your video channel. The integrated Big Blue Button "
-"video solution in eventyay.com does not need a password as only ticket "
-"holders are able to access it. The difference between the password and PIN "
-"is that the password option is used for online access while PINs are used to "
-"access video rooms through the telephone."
-msgstr ""
-"Das Raumpasswortfeld kann verwendet werden, um ein Passwort zu übermitteln, "
-"das für den Zugang zu Online-Videoräumen, z. B. für externe Videodienste wie "
-"Zoom, Teams und Webex, erforderlich ist. Die Notwendigkeit einer "
-"Passworteingabe hängt von der Konfiguration Ihres Videokanals ab. Die "
-"integrierte Big Blue Button Videolösung in eventyay.com benötigt kein "
-"Passwort, da nur Ticketinhaber darauf zugreifen können. Der Unterschied "
-"zwischen Passwort und PIN besteht darin, dass die Passwort-Option für den "
-"Online-Zugang verwendet wird, während die PINs für den Zugang zu den "
-"Videoräumen über das Telefon verwendet werden."
 
 #: app/controllers/events/view/videoroom/list.js:69:21
 msgid "Additional information"
@@ -4681,18 +4670,6 @@ msgstr "Sitzung anzeigen"
 #: app/templates/public/cfs/view-speaker.hbs:16:6
 msgid "View Speaker"
 msgstr "Referent anzeigen"
-
-#: app/routes/public/chat.ts:34:10
-#, fuzzy
-msgid ""
-"The feature integration is still in Alpha stage and currently your profile "
-"on the + this.settings.appName + account page and on the chat are not linked "
-"and can be independently edited."
-msgstr ""
-"Die Funktionsintegration befindet sich noch in der Alpha-Phase und derzeit "
-"sind Ihr Profil auf der Seite + this.settings.appName + account und im Chat "
-"nicht miteinander verknüpft und können unabhängig voneinander bearbeitet "
-"werden."
 
 #: app/routes/public/speaker-invite/index.js:7:11
 #: app/templates/components/forms/session-speaker-form.hbs:139:27
