@@ -452,7 +452,8 @@ export default Component.extend(FormMixin, {
 
     sortEndAction() {
       this.speakersDetails.forEach((speaker, index) => {
-        speaker.position = index;
+        const x = this.data.session.id;
+        speaker.speakerPositions[x] = index;
         speaker.save();
       });
     },
