@@ -30,10 +30,10 @@ export default class SessionItem extends Component {
     const sortedSpeakers = {};
     const sessionId = this.args.session.id;
     speakers.forEach(speaker => {
-      sortedSpeakers[speaker.speakerPositions[sessionId]] = speaker;
+      sortedSpeakers[speaker?.speakerPositions?.[sessionId]] = speaker;
     });
     Object.fromEntries(Object.entries(sortedSpeakers).sort());
-    return Object.values(sortedSpeakers);
+    return sortedSpeakers !== {} ? Object.values(sortedSpeakers): speakers;
   }
 
   get sessionEnded() {
