@@ -25,6 +25,17 @@ export default class SessionItem extends Component {
     return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
   }
 
+  get sortedSpeakers() {
+    const { speakers } = this.args.session;
+    const sortedSpeakers = {};
+    const sessionId = this.args.session.id;
+    speakers.forEach(speaker => {
+      sortedSpeakers[speaker?.speakerPositions?.[sessionId]] = speaker;
+    });
+    Object.fromEntries(Object.entries(sortedSpeakers).sort());
+    return sortedSpeakers !== {} ? Object.values(sortedSpeakers) : speakers;
+  }
+
   get sessionEnded() {
     const sessionEndDate =  moment.tz(this.args.session.endsAt, this.args.timezone);
     const now = moment.tz(this.args.timezone);

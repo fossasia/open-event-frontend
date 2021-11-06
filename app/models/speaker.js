@@ -37,6 +37,8 @@ export default class Speaker extends ModelBase.extend({
   heardFrom          : attr('string'),
   order              : attr('number'),
   complexFieldValues : attr(),
+  speakerPositions   : attr(),
+
 
   /**
    * Relationships
@@ -53,6 +55,9 @@ export default class Speaker extends ModelBase.extend({
   ready() {
     if (!this.complexFieldValues) {
       this.complexFieldValues = {};
+    }
+    if (!this.speakerPositions) {
+      this.speakerPositions = {};
     }
   }
 
