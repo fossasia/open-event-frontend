@@ -33,7 +33,7 @@ export default class SessionItem extends Component {
       sortedSpeakers[speaker?.speakerPositions?.[sessionId]] = speaker;
     });
     Object.fromEntries(Object.entries(sortedSpeakers).sort());
-    return sortedSpeakers !== {} ? Object.values(sortedSpeakers): speakers;
+    return sortedSpeakers !== {} ? Object.values(sortedSpeakers) : speakers;
   }
 
   get sessionEnded() {
