@@ -48,7 +48,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{t 'This column shows the original link of the video. We do not recommend to share this link as users can access it without logging into ' this.settings.appName '.com.'}} />
+          @content={{t 'This column shows the original link of the video. We do not recommend to share this link as users can access it without logging into {{appName}}' appName=this.settings.appName }} />
       </label>
       {{#if (eq this.data.stream.videoChannel.provider 'youtube')}}
         <Widgets::Forms::SocialLinkField
@@ -75,7 +75,7 @@
         <UiPopup
           @tagName="i"
           @class="info circle icon"
-          @content={{t 'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in  {{appName}}.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.' appName=this.settings.appName }} />
+          @content={{t 'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such as Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in  {{appName}} does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.' appName=this.settings.appName }} />
         </label>
       <Input
         @value={{this.data.stream.password}} />

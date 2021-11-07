@@ -938,10 +938,8 @@ msgstr "Videoquellen-URL"
 #: app/components/forms/events/view/videoroom-form.hbs:51:19
 msgid ""
 "This column shows the original link of the video. We do not recommend to "
-"share this link as users can access it without logging into"
+"share this link as users can access it without logging into {{appName}}"
 msgstr ""
-"Diese Spalte zeigt den Original-Link des Videos. Wir empfehlen, diesen Link "
-"nicht zu teilen, da Benutzer darauf zugreifen können, ohne sich bei"
 
 #: app/components/forms/events/view/videoroom-form.hbs:74:8
 #: app/components/public/stream/stream-info.hbs:14:12
@@ -954,9 +952,9 @@ msgstr "Raumkennwort"
 msgid ""
 "The room password field can be used to communicate a password which is "
 "necessary to access online video rooms for example for external video "
-"services such a Zoom, Teams and Webex. The need for a password entry depends "
-"on the configuration of your video channel. The integrated Big Blue Button "
-"video solution in {{appName}}.com does not need a password as only ticket "
+"services such as Zoom, Teams and Webex. The need for a password entry "
+"depends on the configuration of your video channel. The integrated Big Blue "
+"Button video solution in {{appName}} does not need a password as only ticket "
 "holders are able to access it. The difference between the password and PIN "
 "is that the password option is used for online access while PINs are used to "
 "access video rooms through the telephone."
@@ -1157,8 +1155,7 @@ msgstr "Stream gespeichert"
 
 #: app/components/forms/group/group-events-form.js:47:22
 msgid ""
-"Do you want to announce the event \"{{eventName}}\" to all group members "
-"now ?"
+"Do you want to announce the event \"{{eventName}}\" to all group members now?"
 msgstr ""
 
 #: app/components/forms/group/group-events-form.js:62:28
@@ -1508,7 +1505,7 @@ msgstr "Bitte ausgewähltes Sponsoring eingeben"
 msgid "Please enter where you heard about the event"
 msgstr "Bitte geben Sie an, wo Sie von der Veranstaltung erfahren haben"
 
-#: app/components/forms/session-speaker-form.js:471:28
+#: app/components/forms/session-speaker-form.js:472:28
 msgid "User is already a speaker of this session."
 msgstr "Der Benutzer ist bereits ein Referent dieser Sitzung."
 
@@ -2318,7 +2315,7 @@ msgstr "Video"
 msgid "Linkedin"
 msgstr "Linkedin"
 
-#: app/components/public/session-item.js:67:34
+#: app/components/public/session-item.js:78:34
 msgid "Please login to add a session to your personal schedule."
 msgstr ""
 "Bitte anmelden, um eine Sitzung zum persönlichen Zeitplan hinzuzufügen."
@@ -3405,7 +3402,7 @@ msgstr ""
 #: app/controllers/events/view/videoroom/list.js:44:24
 msgid ""
 "This column shows the original link of the video. We do not recommend to "
-"share this link as users can access it without logging into {{appName}}.com."
+"share this link as users can access it without logging into {{appName}}."
 msgstr ""
 
 #: app/controllers/events/view/videoroom/list.js:51:26
@@ -7243,8 +7240,8 @@ msgstr "Titelbild"
 #: app/templates/components/forms/group/group-settings-form.hbs:41:20
 msgid "We recommend using at least a 2160x1080px (2:1 ratio) image."
 msgstr ""
-"Wir empfehlen, mindestens ein Bild mit einer Größe von 2160x1080 Pixel ("
-"Verhältnis 2:1) zu verwenden."
+"Wir empfehlen, mindestens ein Bild mit einer Größe von 2160x1080 Pixel "
+"(Verhältnis 2:1) zu verwenden."
 
 #: app/templates/components/forms/group/group-view.hbs:48:16
 #: app/templates/components/public/ticket-list.hbs:238:12
@@ -8375,7 +8372,8 @@ msgstr ""
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:4:4
 msgid "All the event rights will be transferred to another user."
-msgstr "Alle Veranstaltungsrechte werden auf einen anderen Benutzer übertragen."
+msgstr ""
+"Alle Veranstaltungsrechte werden auf einen anderen Benutzer übertragen."
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:7:4
 msgid "Transfering event to another user will void all previous owner invites."
@@ -9826,9 +9824,9 @@ msgid ""
 "social video rooms. Virtual event video rooms do not require dedicated "
 "sessions and do not need a schedule setup."
 msgstr ""
-"Diese Kategorie eignet sich besonders für Begrüßungs-, Support-, Diskussions-"
-" oder soziale Videoräume. Virtuelle Veranstaltungs-Videoräume benötigen "
-"keine speziellen Sitzungen und keinen Zeitplan."
+"Diese Kategorie eignet sich besonders für Begrüßungs-, Support-, "
+"Diskussions- oder soziale Videoräume. Virtuelle Veranstaltungs-Videoräume "
+"benötigen keine speziellen Sitzungen und keinen Zeitplan."
 
 #: app/templates/events/view/videoroom/list.hbs:40:29
 msgid "Microlocation Video Rooms"

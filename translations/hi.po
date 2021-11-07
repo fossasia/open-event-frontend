@@ -924,7 +924,7 @@ msgstr "वीडियो स्रोत यूआरएल"
 #: app/components/forms/events/view/videoroom-form.hbs:51:19
 msgid ""
 "This column shows the original link of the video. We do not recommend to "
-"share this link as users can access it without logging into"
+"share this link as users can access it without logging into {{appName}}"
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:74:8
@@ -938,9 +938,9 @@ msgstr "कमरे का पासवर्ड"
 msgid ""
 "The room password field can be used to communicate a password which is "
 "necessary to access online video rooms for example for external video "
-"services such a Zoom, Teams and Webex. The need for a password entry depends "
-"on the configuration of your video channel. The integrated Big Blue Button "
-"video solution in {{appName}}.com does not need a password as only ticket "
+"services such as Zoom, Teams and Webex. The need for a password entry "
+"depends on the configuration of your video channel. The integrated Big Blue "
+"Button video solution in {{appName}} does not need a password as only ticket "
 "holders are able to access it. The difference between the password and PIN "
 "is that the password option is used for online access while PINs are used to "
 "access video rooms through the telephone."
@@ -1134,8 +1134,7 @@ msgstr "आपकी स्ट्रीम सहेज ली गई है"
 
 #: app/components/forms/group/group-events-form.js:47:22
 msgid ""
-"Do you want to announce the event \"{{eventName}}\" to all group members "
-"now ?"
+"Do you want to announce the event \"{{eventName}}\" to all group members now?"
 msgstr ""
 
 #: app/components/forms/group/group-events-form.js:62:28
@@ -1476,7 +1475,7 @@ msgstr "कृपया चुनिंदा प्रायोजन दर्
 msgid "Please enter where you heard about the event"
 msgstr "कृपया दर्ज करें जहां आपने घटना के बारे में सुना है"
 
-#: app/components/forms/session-speaker-form.js:471:28
+#: app/components/forms/session-speaker-form.js:472:28
 msgid "User is already a speaker of this session."
 msgstr ""
 
@@ -2259,7 +2258,7 @@ msgstr "वीडियो"
 msgid "Linkedin"
 msgstr "लिंक्डइन"
 
-#: app/components/public/session-item.js:67:34
+#: app/components/public/session-item.js:78:34
 msgid "Please login to add a session to your personal schedule."
 msgstr "अपने व्यक्तिगत कार्यक्रम में सत्र जोड़ने के लिए कृपया लॉगिन करें।"
 
@@ -3307,7 +3306,7 @@ msgstr ""
 #: app/controllers/events/view/videoroom/list.js:44:24
 msgid ""
 "This column shows the original link of the video. We do not recommend to "
-"share this link as users can access it without logging into {{appName}}.com."
+"share this link as users can access it without logging into {{appName}}."
 msgstr ""
 
 #: app/controllers/events/view/videoroom/list.js:51:26
