@@ -1,4 +1,4 @@
-FROM node:14-alpine as builder
+FROM node:14-alpine3.11 as builder
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ RUN yarn l10n:generate && \
 ##
 ##
 
-FROM node:14-alpine
+FROM node:14-alpine3.11
 
 WORKDIR /fastboot
 
