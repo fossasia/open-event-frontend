@@ -29,11 +29,15 @@ export default class SessionItem extends Component {
     const { speakers } = this.args.session;
     const sortedSpeakers = {};
     const sessionId = this.args.session.id;
+    let count = 0;
     speakers.forEach(speaker => {
-      sortedSpeakers[speaker?.speakerPositions?.[sessionId]] = speaker;
+      if (sessionId in speaker.speakerPositions) {
+        sortedSpeakers[speaker?.speakerPositions?.[sessionId]] = speaker;
+        count++;
+      }
     });
     Object.fromEntries(Object.entries(sortedSpeakers).sort());
-    return sortedSpeakers !== {} ? Object.values(sortedSpeakers) : speakers;
+    return count === speakers.length ? Object.values(sortedSpeakers) : speakers;
   }
 
   get sessionEnded() {
