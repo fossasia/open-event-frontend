@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-11-04 19:16+0000\n"
+"PO-Revision-Date: 2021-11-06 21:42+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
@@ -7027,12 +7027,12 @@ msgstr ""
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:8:18
 msgid "Use default start page"
-msgstr ""
+msgstr "Standard-Startseite verwenden"
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:11:18
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:16:6
 msgid "Use event as start page with ID (Enter event ID here)"
-msgstr ""
+msgstr "Event als Startseite mit ID verwenden (hier Event-ID eingeben)"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:2:2
 msgid "Storage"
@@ -7224,7 +7224,7 @@ msgstr "Name der Gruppe"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:24:13
 msgid "About"
-msgstr ""
+msgstr "Über Uns"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:34:17
 #: app/templates/components/forms/wizard/basic-details-step.hbs:151:15
@@ -7233,7 +7233,7 @@ msgstr "Veranstaltungsbilder"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:37:16
 msgid "Select Group Banner Image"
-msgstr ""
+msgstr "Gruppenbannerbild auswählen"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:38:21
 #: app/templates/components/forms/wizard/basic-details-step.hbs:155:19
@@ -7243,6 +7243,8 @@ msgstr "Titelbild"
 #: app/templates/components/forms/group/group-settings-form.hbs:41:20
 msgid "We recommend using at least a 2160x1080px (2:1 ratio) image."
 msgstr ""
+"Wir empfehlen, mindestens ein Bild mit einer Größe von 2160x1080 Pixel ("
+"Verhältnis 2:1) zu verwenden."
 
 #: app/templates/components/forms/group/group-view.hbs:48:16
 #: app/templates/components/public/ticket-list.hbs:238:12
@@ -7254,7 +7256,7 @@ msgstr "Veranstalter kontaktieren"
 #: app/templates/components/promoted-group-card.hbs:24:12
 #: app/templates/public.hbs:84:16 app/templates/public.hbs:200:42
 msgid "Follow Group"
-msgstr ""
+msgstr "Gruppe folgen"
 
 #: app/templates/components/forms/group/group-view.hbs:101:24
 msgid "and"
@@ -7275,7 +7277,7 @@ msgstr "E-Mail-ID"
 
 #: app/templates/components/forms/login-form.hbs:51:23
 msgid "Remember me"
-msgstr ""
+msgstr "Angemeldet bleiben"
 
 #: app/templates/components/forms/login-form.hbs:62:75
 #: app/templates/components/forms/orders/guest-order-form.hbs:24:107
@@ -7293,8 +7295,9 @@ msgstr "Teilnehmerinformationen"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:10:10
 #: app/templates/components/forms/orders/order-form.hbs:53:10
+#, fuzzy
 msgid "Registration Holder's Information"
-msgstr ""
+msgstr "Informationen über den Registrierungsinhaber"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:12:10
 #: app/templates/components/forms/orders/order-form.hbs:55:10
@@ -7303,8 +7306,9 @@ msgstr "Informationen für Ticketinhaber"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:21:16
 #: app/templates/components/forms/orders/order-form.hbs:71:14
+#, fuzzy
 msgid "Registration Holder"
-msgstr ""
+msgstr "Registrierungsinhaber"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:23:16
 #: app/templates/components/forms/orders/order-form.hbs:73:14
@@ -7404,16 +7408,18 @@ msgstr "Anmeldeinformationen"
 #: app/templates/components/forms/orders/order-form.hbs:12:10
 msgid "Please complete registration within {{time}} minutes."
 msgstr ""
+"Bitte schließen Sie die Registrierung innerhalb von {{time}} Minuten ab."
 
 #: app/templates/components/forms/orders/order-form.hbs:14:10
 msgid ""
 "After {{time}} minutes, the reservation we're holding will be released to "
 "others."
 msgstr ""
+"Nach {{time}} Minuten wird die Reservierung, wieder für andere freigegeben."
 
 #: app/templates/components/forms/orders/order-form.hbs:22:10
 msgid "Registrant"
-msgstr ""
+msgstr "Anmelder"
 
 #: app/templates/components/forms/orders/order-form.hbs:24:10
 #: app/templates/components/orders/ticket-holder.hbs:9:8
@@ -7512,7 +7518,7 @@ msgstr "AliPay"
 
 #: app/templates/components/forms/orders/order-form.hbs:276:25
 msgid "Pay on Invoice"
-msgstr ""
+msgstr "Auf Rechnung bezahlen"
 
 #: app/templates/components/forms/orders/order-form.hbs:286:25
 msgid "Cheque"
@@ -7560,7 +7566,7 @@ msgstr "Datenschutz"
 
 #: app/templates/components/forms/orders/order-form.hbs:344:62
 msgid "One Click Signup"
-msgstr ""
+msgstr "Ein-Klick-Anmeldung"
 
 #: app/templates/components/forms/register-form.hbs:32:135
 msgid "Re-enter Password"
@@ -7581,11 +7587,11 @@ msgstr "Wählen Sie ein Bild aus"
 
 #: app/templates/components/forms/session-section.hbs:48:30
 msgid "Add Session document"
-msgstr ""
+msgstr "Sitzungsdokument hinzufügen"
 
 #: app/templates/components/forms/session-section.hbs:59:27
 msgid "slide"
-msgstr ""
+msgstr "Folien"
 
 #: app/templates/components/forms/session-section.hbs:86:38
 msgid "Select"
@@ -7593,7 +7599,7 @@ msgstr "Auswählen"
 
 #: app/templates/components/forms/session-section.hbs:104:38
 msgid "Select your level"
-msgstr ""
+msgstr "Level wählen"
 
 #: app/templates/components/forms/session-section.hbs:138:30
 #: app/templates/components/forms/speaker-section.hbs:120:30
@@ -7627,7 +7633,7 @@ msgstr "Referenten auswählen"
 
 #: app/templates/components/forms/session-speaker-form.hbs:39:10
 msgid "Drag speakers to reorder"
-msgstr ""
+msgstr "Ziehen Sie die Referenten, um sie neu anzuordnen"
 
 #: app/templates/components/forms/session-speaker-form.hbs:57:44
 msgid "No speaker exists. Add a new speaker."
@@ -7657,16 +7663,16 @@ msgstr "Fügen Sie einen neuen Vorschlag hinzu"
 
 #: app/templates/components/forms/session-speaker-form.hbs:145:20
 msgid "Add Email of Speakers"
-msgstr ""
+msgstr "E-Mail der Referenten hinzufügen"
 
 #: app/templates/components/forms/session-speaker-form.hbs:163:4
 #: app/templates/components/forms/user-payment-info-form.hbs:77:4
 msgid "Submit"
-msgstr "Absenden"
+msgstr "Speichern"
 
 #: app/templates/components/forms/session-speaker-form.hbs:166:5
 msgid "You need to hit \"Submit\" to save your changes."
-msgstr ""
+msgstr "Sie müssen auf \"Speichern\" klicken, um Ihre Änderungen zu speichern."
 
 #: app/templates/components/forms/speaker-section.hbs:20:21
 msgid "Do not require email for this speaker."
@@ -7711,7 +7717,7 @@ msgstr "Biographie"
 
 #: app/templates/components/forms/user-profile-form.hbs:80:10
 msgid "Language Preference"
-msgstr ""
+msgstr "Spracheinstellung"
 
 #: app/templates/components/forms/user-profile-form.hbs:94:11
 msgid "Make Profile Public"
@@ -7780,6 +7786,8 @@ msgid ""
 "You can add video meeting rooms or streams after you created a draft of the "
 "event."
 msgstr ""
+"Sie können Videokonferenzräume oder Streams hinzufügen, nachdem Sie einen "
+"Entwurf der Veranstaltung erstellt haben."
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:118:45
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:166:49
@@ -7806,12 +7814,12 @@ msgstr "Über den Organisator oder die Gruppe"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:200:11
 msgid "Ticketed Event"
-msgstr ""
+msgstr "Veranstaltung mit Ticket"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:205:15
 #: app/templates/public/index.hbs:9:21
 msgid "Registration"
-msgstr ""
+msgstr "Registrierung"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:209:32
 msgid "Ticketing System"
@@ -7849,6 +7857,8 @@ msgid ""
 "You don't have any tickets added. Please add at least one ticket to publish "
 "your event."
 msgstr ""
+"Sie haben noch keine Tickets hinzugefügt. Bitte fügen Sie mindestens ein "
+"Ticket hinzu, um Ihre Veranstaltung zu veröffentlichen."
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:250:10
 msgid "Free Ticket"
@@ -7864,30 +7874,33 @@ msgstr "Spendenticket"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:270:32
 msgid "Registration System"
-msgstr ""
+msgstr "Registrierungssystem"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:276:42
 #: app/templates/components/widgets/forms/ticket-input.hbs:211:22
 msgid "Registration Name"
-msgstr ""
+msgstr "Registrierungsname"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:303:14
 msgid ""
 "You don't have any registrations added. Please add at least one registration "
 "to publish your event."
 msgstr ""
+"Sie haben keine Registrierungsoptionen hinzugefügt. Bitte fügen Sie "
+"mindestens eine Registrierung hinzu, um Ihre Veranstaltung zu "
+"veröffentlichen."
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:312:10
 msgid "Free Registration"
-msgstr ""
+msgstr "Kostenlose Registrierung"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:319:10
 msgid "Paid Registration"
-msgstr ""
+msgstr "Kostenpflichtige Registrierung"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:326:10
 msgid "Donation Registration"
-msgstr ""
+msgstr "Registrierung mit Spende"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:368:10
 msgid "Add Payment Details"
@@ -8003,11 +8016,11 @@ msgstr "Offline-Zahlungen"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:540:12
 msgid "YES, accept payment by Purchase on invoice"
-msgstr ""
+msgstr "JA, Zahlung per Kauf auf Rechnung akzeptieren"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:547:12
 msgid "Enter the required details/instructions to ticket buyers"
-msgstr ""
+msgstr "Geben Sie die erforderlichen Angaben/Hinweise für Ticketkäufer ein"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:563:12
 msgid "YES, accept payment by Cheque"
@@ -8071,16 +8084,23 @@ msgid ""
 "Refunds to be processed by the organizer through payment provider. Refund "
 "payments to attendees cannot be made on the"
 msgstr ""
+"Rückerstattungen müssen direkt vom Veranstalter über den Zahlungsanbieter "
+"abgewickelt werden. Rückerstattungszahlungen an Teilnehmer können nicht auf "
+"der"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:57:160
+#, fuzzy
 msgid ""
 "platform. Please go to your payment provider, make a refund and mark the "
 "ticket as refunded in the"
 msgstr ""
+"Plattform. Bitte gehen Sie zu Ihrem Zahlungsanbieter, nehmen Sie eine "
+"Erstattung vor und markieren Sie das Ticket als erstattet in der"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:57:293
+#, fuzzy
 msgid "platform."
-msgstr ""
+msgstr "Plattform."
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:68:25
 msgid "Listing Privacy"
@@ -8145,11 +8165,11 @@ msgstr "Ankündigung"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:178:38
 msgid "Enable Soft Closing"
-msgstr ""
+msgstr "Vorläufige Einreichungsoption aktivieren"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:184:37
 msgid "Soft Ends"
-msgstr ""
+msgstr "Vorläufiges Einreichungsende"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:194:15
 msgid "Private Link"
@@ -8206,7 +8226,7 @@ msgstr "Unterstützer hinzufügen"
 
 #: app/templates/components/group-card.hbs:16:39 app/templates/public.hbs:86:76
 msgid "followers"
-msgstr ""
+msgstr "Follower"
 
 #: app/templates/components/group-header.hbs:5:8
 #: app/templates/events/view/settings/export.hbs:3:4
@@ -8355,11 +8375,13 @@ msgstr ""
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:4:4
 msgid "All the event rights will be transferred to another user."
-msgstr ""
+msgstr "Alle Veranstaltungsrechte werden auf einen anderen Benutzer übertragen."
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:7:4
 msgid "Transfering event to another user will void all previous owner invites."
 msgstr ""
+"Wenn Sie eine Veranstaltung auf einen anderen Benutzer übertragen, werden "
+"alle Einladungen des vorherigen Besitzers ungültig."
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:19:25
 msgid "Please tick the box to agree and press TRANSFER"
@@ -8377,7 +8399,7 @@ msgstr "Sind Sie sicher?"
 
 #: app/templates/components/modals/confirm-modal.hbs:27:8
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:2:2
 msgid "You are deleting this account. This action cannot be undone."
@@ -8399,7 +8421,7 @@ msgstr "Veranstalter kontaktieren"
 
 #: app/templates/components/modals/contact-organizer.hbs:8:12
 msgid "Your message was sent to the organizers of this"
-msgstr ""
+msgstr "Ihre Nachricht wurde an die Organisatoren dieser"
 
 #: app/templates/components/modals/contact-organizer.hbs:9:12
 msgid "You should receive a copy of the message to your email inbox."
@@ -8418,7 +8440,7 @@ msgstr "Schließen"
 
 #: app/templates/components/modals/contact-organizer.hbs:30:38
 msgid "Group Organizer"
-msgstr ""
+msgstr "Gruppenorganisator"
 
 #: app/templates/components/modals/contact-organizer.hbs:30:60
 msgid "Event Organizer"
@@ -8514,6 +8536,8 @@ msgstr ""
 #: app/templates/components/modals/event-transfer-modal.hbs:7:4
 msgid "On successful transfer of event you will be downgraded to Organizer."
 msgstr ""
+"Nach erfolgreicher Übertragung der Veranstaltung werden Sie zum Organisator "
+"heruntergestuft."
 
 #: app/templates/components/modals/event-transfer-modal.hbs:14:8
 msgid ""
@@ -8758,6 +8782,11 @@ msgid ""
 "would like to cancel this order now? Yes, cancel order now. / No, do not "
 "cancel the order."
 msgstr ""
+"Mit dieser Aktion wird die gesamte Bestellung storniert. Wenn diese "
+"Bestellung mehr als ein Ticket enthält, werden auch die anderen Tickets "
+"storniert. Sind Sie sicher, dass Sie diese Bestellung jetzt stornieren "
+"möchten? Ja, Bestellung jetzt stornieren. / Nein, stornieren Sie die "
+"Bestellung nicht."
 
 #: app/templates/components/order-card.hbs:41:10
 msgid "order"
@@ -8832,7 +8861,7 @@ msgstr "Bestellübersicht"
 #: app/templates/components/orders/order-summary.hbs:48:16
 #: app/templates/components/orders/order-summary.hbs:62:16
 msgid "Registration Type"
-msgstr ""
+msgstr "Art der Registrierung"
 
 #: app/templates/components/orders/order-summary.hbs:55:36
 msgid "Discount"
@@ -8906,15 +8935,15 @@ msgstr "Bankdaten"
 
 #: app/templates/components/public/call-for-speakers.hbs:8:8
 msgid "Call for Speakers will softly closed on"
-msgstr ""
+msgstr "Call for Speakers mit vorläufigen Einreichungsende"
 
 #: app/templates/components/public/call-for-speakers.hbs:9:8
 msgid "and finally closed on"
-msgstr ""
+msgstr "und endgültig geschlossen am"
 
 #: app/templates/components/public/call-for-speakers.hbs:11:8
 msgid "Call for Speakers will close on"
-msgstr ""
+msgstr "Der Aufruf zur Einreichung von Beiträgen endet am"
 
 #: app/templates/components/public/call-for-speakers.hbs:18:8
 msgid "Call for Speakers will open at"
@@ -8926,31 +8955,32 @@ msgstr "Call for Speakers wurde um geschlossen"
 
 #: app/templates/components/public/call-for-speakers.hbs:31:9
 msgid "You have not submitted any session."
-msgstr ""
+msgstr "Sie haben noch keine Sitzung eingereicht."
 
 #: app/templates/components/public/call-for-speakers.hbs:33:9
 msgid "You need to login to view and submit session(s)."
 msgstr ""
+"Sie müssen sich anmelden, um die Sitzung(en) anzuzeigen und einzureichen."
 
 #: app/templates/components/public/call-for-speakers.hbs:36:7
 msgid "You have submitted the following session(s)."
-msgstr ""
+msgstr "Sie haben die folgende(n) Sitzung(en) eingereicht."
 
 #: app/templates/components/public/call-for-speakers.hbs:54:22
 msgid "Invitation for Sessions"
-msgstr ""
+msgstr "Einladung zu Sitzungen"
 
 #: app/templates/components/public/call-for-speakers.hbs:57:9
 msgid "You have not been invited for any session."
-msgstr ""
+msgstr "Sie wurden zu keiner Sitzung eingeladen."
 
 #: app/templates/components/public/call-for-speakers.hbs:59:9
 msgid "You need to login to view and accept invite(s)."
-msgstr ""
+msgstr "Sie müssen sich anmelden, um Einladungen zu sehen und anzunehmen."
 
 #: app/templates/components/public/call-for-speakers.hbs:62:7
 msgid "You have been invited for the following session(s)."
-msgstr ""
+msgstr "Sie wurden zu den folgenden Sitzungen eingeladen."
 
 #: app/templates/components/public/call-for-speakers.hbs:82:4
 msgid "Add Speaker Details"
@@ -9032,7 +9062,7 @@ msgstr "Zwischensumme:"
 
 #: app/templates/components/public/ticket-list.hbs:148:58
 msgid "Included in Grand Total"
-msgstr ""
+msgstr "In der Gesamtsumme enthalten"
 
 #: app/templates/components/public/ticket-list.hbs:178:28
 #: app/templates/public/index.hbs:97:22
@@ -9042,7 +9072,7 @@ msgstr "Rabattcode"
 #: app/templates/components/public/ticket-list.hbs:184:16
 #: app/templates/public/index.hbs:103:12
 msgid "Apply code"
-msgstr ""
+msgstr "Code anwenden"
 
 #: app/templates/components/public/ticket-list.hbs:201:59
 #: app/templates/public/index.hbs:112:57
@@ -9075,7 +9105,7 @@ msgstr "Einträge"
 
 #: app/templates/components/ui-table/cell/admin/cell-recording-action.hbs:2:61
 msgid "Are you sure you would like to delete this video recording?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie diese Videoaufzeichnung löschen möchten?"
 
 #: app/templates/components/ui-table/cell/admin/groups/cell-group-name.hbs:15:22
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:12:24
@@ -9132,7 +9162,7 @@ msgstr "Benutzerkonten"
 
 #: app/templates/components/ui-table/cell/cell-channel-action.hbs:5:61
 msgid "Are you sure you would like to delete this video channel?"
-msgstr ""
+msgstr "Möchten Sie diesen Videokanal wirklich löschen?"
 
 #: app/templates/components/ui-table/cell/cell-code-buttons.hbs:5:20
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:7:24
@@ -9219,7 +9249,7 @@ msgstr "Diesen Zugangscode wirklich löschen?"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/attendees/cell-action.hbs:4:6
 msgid "Checkin"
-msgstr ""
+msgstr "Check-In"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/attendees/cell-order.hbs:9:8
 #: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:11:8
@@ -9425,43 +9455,50 @@ msgstr "Maximale Bestellmenge"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:247:12
 msgid "This is a free Registration"
-msgstr ""
+msgstr "Dies ist eine kostenlose Registrierung"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:291:42
 msgid "Registration Description"
-msgstr ""
+msgstr "Beschreibung der Registrierung"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:296:24
 msgid "This description would be available to the attendees when Registering."
 msgstr ""
+"Diese Beschreibung steht den Teilnehmern bei der Registrierung zur Verfügung."
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:304:45
 msgid "Display Registration description on Public Events page"
 msgstr ""
+"Registrierungsbeschreibung anzeigen auf der öffentlichen Veranstaltungsseite"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:314:14
 msgid "Hide Registration from the Public Events page"
-msgstr ""
+msgstr "Ausblenden der Registrierung auf der öffentlichen Veranstaltungsseite"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:315:39
 msgid ""
 "To sell hidden registrations you need to set up an access code under Event "
 "Dashboard > Tickets Tab > Access Code."
 msgstr ""
+"Um versteckte Registrierungen zu verkaufen, müssen Sie einen Zugangscode "
+"unter Event Dashboard > Registerkarte Tickets > Promotionscode einrichten."
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:327:16
 msgid "Registrations Absorb Fees"
-msgstr ""
+msgstr "Registrierungen absorbieren Gebühren"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:328:41
 msgid ""
 "Platform fees will always be included in your registration price. You will "
 "receive an invoice each month."
 msgstr ""
+"Die Plattformgebühren sind immer im Preis Ihrer Anmeldung enthalten. Sie "
+"erhalten jeden Monat eine Rechnung."
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:381:34
+#, fuzzy
 msgid "Number of registrations allowed per order"
-msgstr ""
+msgstr "Anzahl der erlaubten Registrierungen pro Bestellung"
 
 #: app/templates/components/widgets/twitter-timeline.hbs:4:4
 msgid "Tweets by"
@@ -9487,35 +9524,39 @@ msgstr "Totaler Rechnungsbetrag"
 
 #: app/templates/events/view.hbs:44:10
 msgid "Documents"
-msgstr ""
+msgstr "Dokumente"
 
 #: app/templates/events/view/chat.hbs:13:46
 msgid "Turn off Event Chat"
-msgstr ""
+msgstr "Event-Chat deaktivieren"
 
 #: app/templates/events/view/chat.hbs:13:72
 msgid "Turn on Event Chat"
-msgstr ""
+msgstr "Event-Chat aktivieren"
 
 #: app/templates/events/view/chat.hbs:21:36
 msgid ""
 "Chat is currently enabled for this event. Users can access a chat channel "
 "for this event."
 msgstr ""
+"Der Chat ist derzeit für diese Veranstaltung aktiviert. Benutzer können auf "
+"einen Chat-Kanal für diese Veranstaltung zugreifen."
 
 #: app/templates/events/view/chat.hbs:23:36
 msgid ""
 "Chat is currently not enabled for this event. Users cannot access chat for "
 "this event."
 msgstr ""
+"Der Chat ist für diese Veranstaltung derzeit nicht aktiviert. Benutzer "
+"können für diese Veranstaltung nicht auf den Chat zugreifen."
 
 #: app/templates/events/view/documents.hbs:13:50
 msgid "Disable Add Event Documents"
-msgstr ""
+msgstr "Veranstaltungsdokumente deaktivieren"
 
 #: app/templates/events/view/documents.hbs:13:84
 msgid "Enable Add Event Documents"
-msgstr ""
+msgstr "Veranstaltungsdokumente aktivieren"
 
 #: app/templates/events/view/edit.hbs:2:25
 msgid "Editing"
@@ -9565,7 +9606,7 @@ msgstr "Noch nicht geplant"
 #: app/templates/events/view/session/view.hbs:52:45
 #: app/templates/public/cfs/view-session.hbs:92:43
 msgid "Speakers Invited"
-msgstr ""
+msgstr "Referenten eingeladen"
 
 #: app/templates/events/view/sessions.hbs:21:14
 #: app/templates/events/view/sessions/create.hbs:3:4
@@ -9765,19 +9806,19 @@ msgstr "Bestellungen anzeigen"
 
 #: app/templates/events/view/videoroom/list.hbs:3:4
 msgid "This feature is still in alpha stage."
-msgstr ""
+msgstr "Diese Funktion befindet sich noch im Alpha-Stadium."
 
 #: app/templates/events/view/videoroom/list.hbs:16:51
 msgid "Turn off Video"
-msgstr ""
+msgstr "Video deaktivieren"
 
 #: app/templates/events/view/videoroom/list.hbs:16:72
 msgid "Turn on Video"
-msgstr ""
+msgstr "Video einschalten"
 
 #: app/templates/events/view/videoroom/list.hbs:25:33
 msgid "Virtual Event Room"
-msgstr ""
+msgstr "Virtueller Veranstaltungsraum"
 
 #: app/templates/events/view/videoroom/list.hbs:27:7
 msgid ""
@@ -9785,6 +9826,9 @@ msgid ""
 "social video rooms. Virtual event video rooms do not require dedicated "
 "sessions and do not need a schedule setup."
 msgstr ""
+"Diese Kategorie eignet sich besonders für Begrüßungs-, Support-, Diskussions-"
+" oder soziale Videoräume. Virtuelle Veranstaltungs-Videoräume benötigen "
+"keine speziellen Sitzungen und keinen Zeitplan."
 
 #: app/templates/events/view/videoroom/list.hbs:40:29
 msgid "Microlocation Video Rooms"
@@ -9792,7 +9836,7 @@ msgstr "Microlokation der Video-Räume"
 
 #: app/templates/events/view/videoroom/list.hbs:44:12
 msgid "Add Microlocation"
-msgstr ""
+msgstr "Mikrostandort hinzufügen"
 
 #: app/templates/events/view/videoroom/list.hbs:47:11
 msgid ""
@@ -9803,6 +9847,11 @@ msgid ""
 "list on side panels of online events, if sessions have been added into the "
 "location in the schedule."
 msgstr ""
+"Microlocation-Videoräume eignen sich für Veranstaltungen mit verschiedenen "
+"Tracks, Räumen und Sitzungen, die in einem Zeitplan aufgeführt sind. Alle "
+"Mikrostandorte sind im Veranstaltungsplan aufgeführt. Sie werden nur dann in "
+"der Liste der Videokanäle auf den Seitenpanels von Online-Veranstaltungen "
+"aufgeführt, wenn dem Ort im Zeitplan Sitzungen hinzugefügt wurden."
 
 #: app/templates/explore/events.hbs:12:25
 msgid "Enter Event Name"
@@ -9814,11 +9863,11 @@ msgstr "Für ausgewählte Filter wurden keine Veranstaltungen gefunden"
 
 #: app/templates/explore/groups.hbs:10:25
 msgid "Enter Group Name"
-msgstr ""
+msgstr "Gruppenname eingeben"
 
 #: app/templates/explore/groups.hbs:27:38
 msgid "No groups found for selected filters"
-msgstr ""
+msgstr "Keine Gruppen für ausgewählte Filter gefunden"
 
 #: app/templates/groups/list.hbs:8:38 app/templates/my-groups/list.hbs:8:38
 msgid "No groups found for the events"
@@ -9838,15 +9887,15 @@ msgstr "Weitere Call for Speakers anzeigen"
 
 #: app/templates/index.hbs:40:34
 msgid "Popular Groups"
-msgstr ""
+msgstr "Beliebte Gruppen"
 
 #: app/templates/index.hbs:52:63
 msgid "Show more groups"
-msgstr ""
+msgstr "Mehr Gruppen anzeigen"
 
 #: app/templates/my-groups/following.hbs:8:38
 msgid "No groups followed."
-msgstr ""
+msgstr "Keinen Gruppen gefolgt."
 
 #: app/templates/my-tickets.hbs:5:8
 msgid "My tickets"
@@ -9859,7 +9908,7 @@ msgstr "Keine Tickets gefunden"
 
 #: app/templates/my-tickets/upcoming.hbs:8:8
 msgid "Cancelled Orders"
-msgstr ""
+msgstr "Stornierte Bestellungen"
 
 #: app/templates/my-tickets/upcoming.hbs:11:8
 msgid "Open Orders"
@@ -10142,7 +10191,7 @@ msgstr "Rabatt- und Zugangscodes"
 
 #: app/templates/public.hbs:82:16
 msgid "Unfollow Group"
-msgstr ""
+msgstr "Gruppe nicht mehr folgen"
 
 #: app/templates/public.hbs:94:122
 msgid "Clear Track Filter"
@@ -10166,15 +10215,15 @@ msgstr "Sitzungstyp auswählen"
 
 #: app/templates/public.hbs:148:18
 msgid "Session Levels"
-msgstr ""
+msgstr "Sitzungslevels"
 
 #: app/templates/public.hbs:149:165
 msgid "Clear Session Level Filter"
-msgstr ""
+msgstr "Filter Sitzungslevel löschen"
 
 #: app/templates/public.hbs:160:20
 msgid "Select Session level"
-msgstr ""
+msgstr "Sitzungslevel auswählen"
 
 #: app/templates/public.hbs:228:12
 msgid "Login or Buy Tickets"
@@ -10201,11 +10250,11 @@ msgstr "Zurückziehen"
 
 #: app/templates/public/index.hbs:54:24
 msgid "Donation"
-msgstr ""
+msgstr "Spende"
 
 #: app/templates/public/index.hbs:116:251
 msgid "Register Now"
-msgstr ""
+msgstr "Jetzt registrieren"
 
 #: app/templates/public/index.hbs:154:77
 msgid "To place a ticket order:"
@@ -10270,11 +10319,11 @@ msgstr "Für diesen Zeitraum sind keine Sitzungen vorhanden"
 
 #: app/templates/public/speaker-invite/view-session.hbs:35:30
 msgid "Accept"
-msgstr ""
+msgstr "Akzeptieren"
 
 #: app/templates/public/speaker-invite/view-session.hbs:40:30
 msgid "Reject"
-msgstr ""
+msgstr "Ablehnen"
 
 #: app/templates/verify.hbs:3:7
 msgid ""
