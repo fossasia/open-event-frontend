@@ -31,7 +31,7 @@ export default class SessionItem extends Component {
     const sessionId = this.args.session.id;
     let count = 0;
     speakers.forEach(speaker => {
-      if (sessionId in speaker.speakerPositions) {
+      if (speaker.speakerPositions && sessionId in speaker.speakerPositions) {
         sortedSpeakers[speaker?.speakerPositions?.[sessionId]] = speaker;
         count++;
       }
