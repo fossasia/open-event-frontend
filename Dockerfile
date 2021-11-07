@@ -2,7 +2,7 @@ FROM node:14-alpine as builder
 
 WORKDIR /app
 
-RUN apk add git python-dev make g++ gettext
+RUN apk add git python2-dev make g++ gettext
 
 COPY package.json yarn.lock ./
 
