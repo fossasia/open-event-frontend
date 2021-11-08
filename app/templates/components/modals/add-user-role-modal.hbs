@@ -23,7 +23,7 @@
           {{#each this.data.roles as |role|}}
             {{#if (eq role.name 'organizer')}}
               <div class="item" data-value="{{map-value mapper role}}">
-                {{t-var role.name}}
+                {{t-var (capitalize role.name)}}
               </div>
             {{/if}}
           {{/each}}
