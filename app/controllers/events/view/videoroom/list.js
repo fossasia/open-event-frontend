@@ -41,7 +41,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name          : this.l10n.t('Video Source URL'),
         valuePath     : 'videoStream',
-        helperInfo    : this.l10n.t('This column shows the original link of the video. We do not recommend to share this link as users can access it without logging into') + this.settings.appName + '.com.',
+        helperInfo    : this.l10n.t('This column shows the original link of the video. We do not recommend to share this link as users can access it without logging into {{appName}}.', { appName: this.settings.appName }),
         cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-url',
         width         : 60
       },
@@ -56,7 +56,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
       {
         name       : this.l10n.t('Room Password'),
         width      : 70,
-        helperInfo : this.l10n.t('The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such a Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in eventyay.com does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.'),
+        helperInfo : this.l10n.t('The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such as Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in {{appName}} does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.', { appName: this.settings.appName }),
         valuePath  : 'videoStream.password'
       },
       {
