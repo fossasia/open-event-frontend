@@ -1,6 +1,6 @@
 <div class="ui warning message mt-4 mb-8 ml--4 mr--4">
   <div class="header">
-    {{t 'This feature is still in alpha stage'}}
+    {{t 'This feature is still in alpha stage.'}}
   </div>
   {{t 'Please use with care.'}} {{t 'Thank You.'}}
 </div>
@@ -13,8 +13,7 @@
           @checked={{if this.model.event.isVideoroomEnabled 'active'}}
           @onChange={{action 'toggleVideoRoom'}} />
         <label class="weight-300" style="font-size: large">
-          {{if this.model.event.isVideoroomEnabled (t 'Turn off') (t 'Turn on')}}
-          {{t 'Video'}}
+          {{if this.model.event.isVideoroomEnabled (t 'Turn off Video') (t 'Turn on Video')}}
         </label>
       </div>
     </div>
