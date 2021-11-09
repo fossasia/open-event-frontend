@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-11-06 21:42+0000\n"
+"PO-Revision-Date: 2021-11-07 16:50+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
@@ -959,6 +959,11 @@ msgid ""
 "is that the password option is used for online access while PINs are used to "
 "access video rooms through the telephone."
 msgstr ""
+"Das Raumpasswortfeld kann verwendet werden, um ein Passwort zu übermitteln, "
+"das für den Zugang zu Online-Videoräumen, z. B. für externe Videodienste wie "
+"Zoom, Teams und Webex, erforderlich ist. Die Notwendigkeit einer "
+"Passworteingabe hängt von der Konfiguration Ihres Videokanals ab. Die "
+"integrierte Big Blue Button Videolösung in"
 
 #: app/components/forms/events/view/videoroom-form.hbs:86:6
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:28:12
@@ -2402,6 +2407,8 @@ msgid ""
 "on the {{appName}} account page and on the chat are not linked and can be "
 "independently edited."
 msgstr ""
+"Die Funktionsintegration befindet sich noch in der Alpha-Phase und derzeit "
+"ist Ihr Profil auf der"
 
 #: app/components/public/stream/chat-panel.ts:47:10
 #: app/routes/public/chat.ts:35:10
@@ -2713,7 +2720,6 @@ msgid "Event unpromoted successfully"
 msgstr "Veranstaltung erfolgreich in den Draft-Modus gesetzt"
 
 #: app/controllers/admin/groups/list.js:13:26
-#, fuzzy
 msgid "Group Name"
 msgstr "Name der Gruppe"
 
@@ -4733,9 +4739,8 @@ msgid "Failed"
 msgstr "Gescheitert"
 
 #: app/templates/account/billing/invoices.hbs:24:10
-#, fuzzy
 msgid "Resolved"
-msgstr "Aufgelöst"
+msgstr "Gelöst"
 
 #: app/templates/admin.hbs:5:8
 #: app/templates/admin/permissions/system-roles.hbs:27:10
@@ -6212,7 +6217,7 @@ msgstr "Weblate"
 
 #: app/templates/components/footer-main.hbs:108:29
 msgid "Maintained by"
-msgstr ""
+msgstr "Entwickelt von"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:4:75
 msgid "Page Name"
@@ -7020,7 +7025,7 @@ msgstr "Startseite"
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:4:4
 msgid "To customize the default start page"
-msgstr ""
+msgstr "Um die Standardstartseite anzupassen"
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:8:18
 msgid "Use default start page"
@@ -7256,12 +7261,14 @@ msgid "Follow Group"
 msgstr "Gruppe folgen"
 
 #: app/templates/components/forms/group/group-view.hbs:101:24
+#, fuzzy
 msgid "and"
-msgstr ""
+msgstr "und"
 
 #: app/templates/components/forms/group/group-view.hbs:101:71
+#, fuzzy
 msgid "others"
-msgstr ""
+msgstr "andere"
 
 #: app/templates/components/forms/login-form.hbs:25:17
 msgid "You have been registered successfully. Please login to continue."
@@ -7303,9 +7310,8 @@ msgstr "Informationen für Ticketinhaber"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:21:16
 #: app/templates/components/forms/orders/order-form.hbs:71:14
-#, fuzzy
 msgid "Registration Holder"
-msgstr "Registrierungsinhaber"
+msgstr "Inhaber der Registrierung"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:23:16
 #: app/templates/components/forms/orders/order-form.hbs:73:14
