@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-11-10 09:29+0000\n"
+"PO-Revision-Date: 2021-11-10 10:08+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/open-event/"
 "frontend/de/>\n"
@@ -962,11 +962,15 @@ msgid ""
 "is that the password option is used for online access while PINs are used to "
 "access video rooms through the telephone."
 msgstr ""
-"Das Feld Raumpasswort kann verwendet werden, um ein Passwort zu übermitteln, "
-"das für den Zugang zu Online-Videoräumen, z. B. für externe Videodienste wie "
-"Zoom, Teams und Webex, erforderlich ist. Die Notwendigkeit einer "
+"Das Feld Raumpasswort kann verwendet werden, um ein Passwort mitzuteilen, "
+"das für den Zugriff auf Online-Videoräume erforderlich ist, beispielsweise "
+"für externe Videodienste wie Zoom, Teams und Webex. Die Notwendigkeit einer "
 "Passworteingabe hängt von der Konfiguration Ihres Videokanals ab. Die "
-"integrierte Big Blue Button Videolösung in"
+"integrierte Big Blue Button Videolösung in {{appName}} benötigt kein "
+"Passwort, da nur Ticketinhaber darauf zugreifen können. Der Unterschied "
+"zwischen Passwort und PIN besteht darin, dass die Passwort-Option für den "
+"Online-Zugang verwendet wird, während PINs für den Zugang zu Videoräumen "
+"über das Telefon verwendet werden."
 
 #: app/components/forms/events/view/videoroom-form.hbs:86:6
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:28:12
@@ -2413,7 +2417,8 @@ msgid ""
 "independently edited."
 msgstr ""
 "Die Funktionsintegration befindet sich noch in der Alpha-Phase und derzeit "
-"ist Ihr Profil auf der"
+"sind Ihr Profil auf der {{appName}} Kontoseite und im Chat nicht miteinander "
+"verknüpft und können unabhängig voneinander bearbeitet werden."
 
 #: app/components/public/stream/chat-panel.ts:47:10
 #: app/routes/public/chat.ts:35:10
@@ -8814,7 +8819,7 @@ msgstr "Nachricht des Veranstalters"
 
 #: app/templates/components/orders/company-info.hbs:5:8
 msgid "Company Information"
-msgstr "Unternehmensinformationen"
+msgstr "Unternehmensinfo"
 
 #: app/templates/components/orders/company-info.hbs:65:22
 msgid "ZIP Code"
