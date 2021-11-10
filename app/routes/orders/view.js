@@ -15,6 +15,12 @@ export default class ViewRoute extends Route {
   }
 
   async model(params) {
+    try {
+      // making the api call to update the order status if its been completed
+      await this.loader.post(`orders/${params.order_id}/verify`);
+    } catch (e) {
+      console.error(e);
+    }
 
     const order = await this.store.findRecord('order', params.order_id, {
       include : 'attendees,tickets,event',
