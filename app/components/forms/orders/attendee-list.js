@@ -3,13 +3,9 @@ import Component from '@ember/component';
 import { action, computed } from '@ember/object';
 import { groupBy } from 'lodash-es';
 import { or } from '@ember/object/computed';
-import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class AttendeeList extends Component {
-
-  @tracked ticketDowloaded=false;
-
   @computed('data.user')
   get buyer() {
     return this.data.user;
@@ -29,39 +25,25 @@ export default class AttendeeList extends Component {
   }
 
   @action
-  saveHolder(holder) {
-    holder.save();
-    this.data.save();
-  }
-
-  @action
-  async downloadTicketForAttendee(eventName, orderId, attendeeId) {
-    try {
-      if (!this.ticketDowloaded) {
-        await this.confirm.prompt(this.l10n.t('Please check the filled detail carefully. Once you Download ticket, the name and email can\'t be changed on it.'));
-      }
-      this.loader.downloadFile(`/orders/attendees/${attendeeId}.pdf`)
-        .then(res => {
-          const anchor = document.createElement('a');
-          anchor.style.display = 'none';
-          anchor.href = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
-          anchor.download = `${eventName}-Ticket-${orderId}-${attendeeId}.pdf`;
-          document.body.appendChild(anchor);
-          anchor.click();
-          this.notify.success(this.l10n.t('Here is your ticket'),
-            {
-              id: 'tick_pdf'
-            });
-          document.body.removeChild(anchor);
-        })
-        .catch(e => {
-          console.error('Error while downloading tickets', e);
-        })
-        .finally(() => {
-          this.ticketDowloaded = true;
-        });
-    } catch (error) {
-      console.warn(error);
-    }
+  downloadTicketForAttendee(eventName, orderId, attendeeId) {
+    this.loader.downloadFile(`/orders/attendees/${attendeeId}.pdf`)
+      .then(res => {
+        const anchor = document.createElement('a');
+        anchor.style.display = 'none';
+        anchor.href = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
+        anchor.download = `${eventName}-Ticket-${orderId}-${attendeeId}.pdf`;
+        document.body.appendChild(anchor);
+        anchor.click();
+        this.notify.success(this.l10n.t('Here is your ticket'),
+          {
+            id: 'tick_pdf'
+          });
+        document.body.removeChild(anchor);
+      })
+      .catch(e => {
+        console.error('Error while downloading tickets', e);
+      })
+      .finally(() => {
+      });
   }
 }
