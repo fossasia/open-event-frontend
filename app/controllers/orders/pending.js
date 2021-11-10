@@ -2,6 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import ENV from 'open-event-frontend/config/environment';
+import { loadStripe } from '@stripe/stripe-js';
 
 @classic
 export default class PendingController extends Controller {
@@ -114,59 +115,46 @@ export default class PendingController extends Controller {
   }
 
   @action
-  processStripeToken(token) {
-    // Send this token to server to process payment
+  async stripePay() {
     this.set('isLoading', true);
     const { order } = this.model;
-    let chargePayload = {
-      'data': {
-        'attributes': {
-          'stripe'            : token.id,
-          'paypal_payer_id'   : null,
-          'paypal_payment_id' : null
-        },
-        'type': 'charge'
-      }
-    };
-    const config = {
-      skipDataTransform: true
-    };
-    chargePayload = JSON.stringify(chargePayload);
-    return this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config)
-      .then(charge => {
-        if (charge.data.attributes.status) {
-          this.notify.success(charge.data.attributes.message);
-          this.transitionToRoute('orders.view', order.identifier);
-        } else {
-          this.notify.error(charge.data.attributes.message);
+
+    try {
+      let chargePayload = {
+        'data': {
+          'type': 'charge'
         }
-      })
-      .catch(e => {
-        console.warn(e);
-        if ('errors' in e) {
-          this.notify.error(this.l10n.tVar(e.errors[0].detail),
-            {
-              id: 'unexpected_error_occur'
-            });
-        } else {
-          this.notify.error(this.l10n.tVar(e),
-            {
-              id: 'unexpected_error_occur'
-            });
+      };
+      const config = {
+        skipDataTransform: true
+      };
+      chargePayload = JSON.stringify(chargePayload);
+      const stripeAuthorization = await order.event.get('stripeAuthorization');
+      const response = await this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config);
+      const stripe = await loadStripe(stripeAuthorization.stripePublishableKey);
+      const checkoutSession = JSON.parse(response.data.attributes.message);
+      stripe.redirectToCheckout({
+        sessionId: checkoutSession.id
+      }).then(function(result) {
+        if (result.error.message) {
+          console.error(result.error.message);
         }
-      })
-      .finally(() => {
-        this.set('isLoading', false);
       });
-  }
-
-  @action
-  checkoutClosed() {
-    // The callback invoked when stripe Checkout is closed.
-  }
-
-  @action
-  checkoutOpened() {
-    // The callback invoked when stripe Checkout is opened.
+    } catch (e) {
+      console.error(e);
+      if ('errors' in e) {
+        this.notify.error(this.l10n.tVar(e.errors[0].detail),
+          {
+            id: 'unexpected_error_occur'
+          });
+      } else {
+        this.notify.error(this.l10n.tVar(e),
+          {
+            id: 'unexpected_error_occur'
+          });
+      }
+    } finally {
+      this.set('isLoading', false);
+    }
   }
 }
