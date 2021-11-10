@@ -44,7 +44,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
   async announceEvent(event) {
     this.set('isLoading', true);
     try {
-      const heading = this.l10n.t('Do you want to announce the event') + ' "' + event.name + '" ' + this.l10n.t('to all group members now') + '?';
+      const heading = this.l10n.t('Do you want to announce the event "{{eventName}}" to all group members now?', { eventName: event.name });
       const options = {
         denyText     : 'Cancel',
         denyColor    : 'red',

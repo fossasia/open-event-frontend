@@ -87,33 +87,33 @@
         {{/if}}
         {{#if (eq this.data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
-          <h2 class="weight-300">
+          <h4 class="weight-300">
             {{t 'Cheque Details '}}
-          </h2>
+          </h4>
           <span>
             {{this.data.event.chequeDetails}}
           </span>
         {{else if (eq this.data.paymentMode 'onsite')}}
           <div class="ui divider"></div>
-          <h2 class="weight-300">
+          <h4 class="weight-300">
             {{t 'Onsite Instructions'}}
-          </h2>
+          </h4>
           <span>
             {{this.data.event.onsiteDetails}}
           </span>
         {{else if (eq this.data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
-          <h2 class="weight-300">
+          <h4 class="weight-300">
             {{t 'Bank Details'}}
-          </h2>
+          </h4>
           <span>
             {{this.data.event.bankDetails}}
           </span>
         {{else if (eq this.data.paymentMode 'invoice')}}
           <div class="ui divider"></div>
-          <h2 class="weight-300">
+          <h4 class="weight-300">
             {{t 'Invoice Details'}}
-          </h2>
+          </h4>
           <span>
             {{this.data.event.invoiceDetails}}
           </span>
