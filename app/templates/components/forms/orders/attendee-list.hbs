@@ -18,11 +18,10 @@
             <i class="user icon"></i>
             <label>
               {{#if @event.isOneclickSignupEnabled}}
-                {{t 'Registration Holder'}}
+                {{t 'Registration Holder -for- {{ticketName}}' ticketName=holder.ticket.name}}
               {{else}}
-                {{t 'Ticket Holder'}}
+                {{t 'Ticket Holder -for- {{ticketName}}' ticketName=holder.ticket.name}}
               {{/if}}
-              {{t ' -for- '}}{{holder.ticket.name}}
             </label>
             {{#if (eq this.data.status 'completed')}}
              <button class="ui right floated button {{if this.device.isMobile 'fluid'}} button"

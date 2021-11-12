@@ -10,7 +10,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
   get columns() {
     return [
       {
-        name            : this.l10n.t('State'),
+        name            : this.l10n.t('Status'),
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         width           : 60,

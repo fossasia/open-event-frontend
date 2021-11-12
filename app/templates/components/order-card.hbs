@@ -48,7 +48,7 @@
       <div class="extra content small text">
       {{#if (not-eq order.status "completed")}}
           <a class="ui {{order-color this.order.status}} large label" href="{{href-to 'orders.view' this.order.identifier}}">
-            {{this.order.status}}
+            {{t-var this.order.status}}
           </a>
         {{/if}}
         {{#if this.isUserCheckedIn}}
