@@ -20,7 +20,7 @@
         <div class="meta mb-2 mt-4 word-break">
           {{sanitize this.about}}
         </div>
-        {{#if (not @followedGroups)}}
+        {{#if (and (not @followedGroups) (not explorePage))}}
           <LinkTo @route="group-public" @model={{@group.id}}>
             <UiPopup @content={{t "View"}} @class="ml-2 ui circular icon button compact white" @position="left center">
                 <i class="eye icon"></i>
