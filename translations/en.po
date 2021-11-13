@@ -2191,7 +2191,7 @@ msgstr "Video"
 msgid "Linkedin"
 msgstr "Linkedin"
 
-#: app/components/public/session-item.js:78:34
+#: app/components/public/session-item.js:82:34
 msgid "Please login to add a session to your personal schedule."
 msgstr "Please login to add a session to your personal schedule."
 
@@ -2401,6 +2401,8 @@ msgstr "Amount"
 #: app/controllers/account/billing/invoices/list.js:52:26
 #: app/controllers/admin/sales/invoices.js:60:26
 #: app/controllers/admin/users/list.js:44:24
+#: app/controllers/events/view/exhibitors/list.js:13:26
+#: app/controllers/events/view/sessions/list.js:17:26
 msgid "Status"
 msgstr "Status"
 
@@ -2473,10 +2475,7 @@ msgid "Ends At"
 msgstr "Ends At"
 
 #: app/controllers/admin/events/list.js:50:27
-#: app/controllers/admin/sessions/list.js:26:26
-#: app/controllers/events/view/exhibitors/list.js:13:26
-#: app/controllers/events/view/sessions/list.js:17:26
-#: app/models/custom-form.js:87:27
+#: app/controllers/admin/sessions/list.js:26:26 app/models/custom-form.js:87:27
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
 #: app/templates/components/forms/user-payment-info-form.hbs:51:23
 #: app/templates/components/modals/tax-info-modal.hbs:49:13
@@ -3268,7 +3267,7 @@ msgstr "Order details saved. Please fill the payment details"
 msgid "Order details saved. Your order is successful"
 msgstr "Order details saved. Your order is successful"
 
-#: app/controllers/orders/pending.js:56:26
+#: app/controllers/orders/pending.js:57:26
 msgid "Payment has succeeded"
 msgstr "Payment has succeeded"
 
@@ -3410,7 +3409,7 @@ msgstr "Marked all as Read successfully"
 #: app/models/custom-form.js:11:24 app/models/custom-form.js:92:27
 #: app/templates/components/event-invoice/billing-info.hbs:11:16
 #: app/templates/components/forms/admin/settings/billing.hbs:58:47
-#: app/templates/components/forms/orders/attendee-list.hbs:78:18
+#: app/templates/components/forms/orders/attendee-list.hbs:77:18
 #: app/templates/components/forms/user-payment-info-form.hbs:9:25
 #: app/templates/components/widgets/forms/billing-info.hbs:2:40
 msgid "Organisation"
@@ -3418,7 +3417,7 @@ msgstr "Organisation"
 
 #: app/models/custom-form.js:12:24
 #: app/templates/components/forms/admin/settings/billing.hbs:62:54
-#: app/templates/components/forms/orders/attendee-list.hbs:89:18
+#: app/templates/components/forms/orders/attendee-list.hbs:88:18
 #: app/templates/components/forms/user-payment-info-form.hbs:30:25
 #: app/templates/components/orders/company-info.hbs:25:22
 #: app/templates/components/public/event-map.hbs:21:8
@@ -4489,7 +4488,9 @@ msgid "Email-Preferences"
 msgstr "Email-Preferences"
 
 #: app/templates/account/billing.hbs:9:10
+#: app/templates/components/event-invoice/payee-info.hbs:4:29
 #: app/templates/components/forms/user-payment-info-form.hbs:3:4
+#: app/templates/components/orders/ticket-holder.hbs:4:29
 msgid "Payment Information"
 msgstr "Payment Information"
 
@@ -5333,11 +5334,6 @@ msgstr "Date Completed"
 msgid "Amount Payable"
 msgstr "Amount Payable"
 
-#: app/templates/components/event-invoice/payee-info.hbs:4:29
-#: app/templates/components/orders/ticket-holder.hbs:4:29
-msgid "Payee Information"
-msgstr "Payee Information"
-
 #: app/templates/components/event-invoice/payee-info.hbs:26:14
 #: app/templates/components/event-invoice/payee-info.hbs:46:33
 #: app/templates/components/orders/ticket-holder.hbs:30:14
@@ -5351,10 +5347,12 @@ msgid "Transaction ID"
 msgstr "Transaction ID"
 
 #: app/templates/components/event-invoice/payee-info.hbs:54:38
+#: app/templates/components/orders/ticket-holder.hbs:58:38
 msgid "Card Type"
 msgstr "Card Type"
 
 #: app/templates/components/event-invoice/payee-info.hbs:66:38
+#: app/templates/components/orders/ticket-holder.hbs:70:38
 msgid "Card Number"
 msgstr "Card Number"
 
@@ -6953,25 +6951,18 @@ msgid "Ticket Holder's Information"
 msgstr "Ticket Holder's Information"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:21:16
-#: app/templates/components/forms/orders/order-form.hbs:71:14
-msgid "Registration Holder"
-msgstr "Registration Holder"
+msgid "Registration Holder -for- {{ticketName}}"
+msgstr "Registration Holder -for- {{ticketName}}"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:23:16
-#: app/templates/components/forms/orders/order-form.hbs:73:14
-msgid "Ticket Holder"
-msgstr "Ticket Holder"
+msgid "Ticket Holder -for- {{ticketName}}"
+msgstr "Ticket Holder -for- {{ticketName}}"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:25:14
-#: app/templates/components/forms/orders/order-form.hbs:75:25
-msgid "-for-"
-msgstr "-for-"
-
-#: app/templates/components/forms/orders/attendee-list.hbs:31:16
+#: app/templates/components/forms/orders/attendee-list.hbs:30:16
 msgid "Download Ticket"
 msgstr "Download Ticket"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:50:26
+#: app/templates/components/forms/orders/attendee-list.hbs:49:26
 #: app/templates/components/modals/confirm-modal.hbs:36:79
 #: app/templates/components/modals/edit-user-modal.hbs:11:40
 #: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
@@ -6979,19 +6970,19 @@ msgstr "Download Ticket"
 msgid "Yes"
 msgstr "Yes"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:52:26
+#: app/templates/components/forms/orders/attendee-list.hbs:51:26
 #: app/templates/components/modals/confirm-modal.hbs:32:75
 #: app/templates/components/modals/edit-user-modal.hbs:10:40
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
 msgid "No"
 msgstr "No"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:72:12
+#: app/templates/components/forms/orders/attendee-list.hbs:71:12
 #: app/templates/components/forms/orders/order-form.hbs:191:10
 msgid "Billing Information"
 msgstr "Billing Information"
 
-#: app/templates/components/forms/orders/attendee-list.hbs:82:18
+#: app/templates/components/forms/orders/attendee-list.hbs:81:18
 #: app/templates/components/forms/user-payment-info-form.hbs:62:23
 #: app/templates/components/widgets/forms/billing-info.hbs:9:48
 msgid "Tax ID or Business ID"
@@ -7068,6 +7059,18 @@ msgstr "Ticket Buyer"
 #: app/templates/components/forms/orders/order-form.hbs:62:21
 msgid "Ticket holder is the same person as ticket buyer"
 msgstr "Ticket holder is the same person as ticket buyer"
+
+#: app/templates/components/forms/orders/order-form.hbs:71:14
+msgid "Registration Holder"
+msgstr "Registration Holder"
+
+#: app/templates/components/forms/orders/order-form.hbs:73:14
+msgid "Ticket Holder"
+msgstr "Ticket Holder"
+
+#: app/templates/components/forms/orders/order-form.hbs:75:25
+msgid "-for-"
+msgstr "-for-"
 
 #: app/templates/components/forms/orders/order-form.hbs:116:46
 #: app/templates/components/forms/speaker-section.hbs:91:38
@@ -8365,6 +8368,10 @@ msgstr "Your order has been cancelled due to some unavoidable circumstances."
 msgid "Please contact the event organizer for further details."
 msgstr "Please contact the event organizer for further details."
 
+#: app/templates/components/orders/ticket-holder.hbs:76:38
+msgid "Expiry Date"
+msgstr "Expiry Date"
+
 #: app/templates/components/orders/ticket-holder.hbs:84:12
 msgid "Paid via"
 msgstr "Paid via"
@@ -9312,15 +9319,15 @@ msgstr "No Unread Notifications"
 msgid "No Notifications"
 msgstr "No Notifications"
 
-#: app/templates/orders/pending.hbs:52:14
+#: app/templates/orders/pending.hbs:41:14
 msgid "Pay Now"
 msgstr "Pay Now"
 
-#: app/templates/orders/pending.hbs:72:80
+#: app/templates/orders/pending.hbs:61:80
 msgid "Pay with PayTM"
 msgstr "Pay with PayTM"
 
-#: app/templates/orders/pending.hbs:76:70
+#: app/templates/orders/pending.hbs:65:70
 msgid "Pay with AliPay"
 msgstr "Pay with AliPay"
 
