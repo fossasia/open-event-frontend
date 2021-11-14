@@ -49,7 +49,7 @@
           <r.cell as |cell column row|>
             {{#if column.cellComponent}}
               {{#component column.cellComponent
-                           record=(get row column.valuePath)
+                           record=(get row (t-var column.valuePath))
                            extraRecords=(get-properties row column.extraValuePaths)
                            props=(hash options=column.options actions=column.actions)
               }}
