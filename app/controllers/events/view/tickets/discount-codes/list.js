@@ -7,38 +7,38 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name      : 'Discount code',
+        name      : this.l10n.t('Discount code'),
         width     : 100,
         valuePath : 'code'
       },
       {
-        name          : 'Discount code URL',
+        name          : this.l10n.t('Discount code URL'),
         valuePath     : 'discountUrl',
         width         : 220,
         cellComponent : 'ui-table/cell/events/view/tickets/discount-codes/cell-url'
       },
       {
-        name            : 'Discount Per Ticket',
+        name            : this.l10n.t('Discount Per Ticket'),
         valuePath       : 'value',
         width           : 90,
         extraValuePaths : ['type', 'event'],
         cellComponent   : 'ui-table/cell/events/view/tickets/discount-codes/cell-value'
       },
       {
-        name          : 'Validity',
+        name          : this.l10n.t('Validity'),
         valuePath     : 'validTill',
         width         : 120,
         cellComponent : 'ui-table/cell/events/view/tickets/discount-codes/cell-validity'
       },
       {
-        name            : 'Status',
+        name            : this.l10n.t('Status'),
         valuePath       : 'isActive',
         width           : 100,
         extraValuePaths : ['isExpired'],
         cellComponent   : 'ui-table/cell/events/view/tickets/discount-codes/cell-status'
       },
       {
-        name            : 'Actions',
+        name            : this.l10n.t('Actions'),
         valuePath       : 'id',
         width           : 170,
         extraValuePaths : ['isActive', 'isExpired'],

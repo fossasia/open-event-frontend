@@ -696,7 +696,7 @@ msgstr ""
 #: app/templates/components/forms/group/group-settings-form.hbs:70:32
 #: app/templates/components/forms/group/group-settings-form.hbs:92:32
 #: app/templates/components/forms/session-section.hbs:65:38
-#: app/templates/components/forms/wizard/basic-details-step.hbs:671:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:387:12
 #: app/templates/components/forms/wizard/other-details-step.hbs:22:28
 #: app/templates/components/forms/wizard/other-details-step.hbs:44:28
 #: app/templates/components/forms/wizard/sponsors-step.hbs:31:12
@@ -1061,7 +1061,7 @@ msgstr ""
 #: app/templates/components/modals/proposal-withdraw-modal.hbs:16:4
 #: app/templates/components/modals/publish-unpublish-modal.hbs:26:3
 #: app/templates/components/modals/room-info-modal.hbs:15:57
-#: app/templates/components/modals/tax-info-modal.hbs:78:4
+#: app/templates/components/modals/tax-info-modal.hbs:89:4
 #: app/templates/components/modals/user-delete-modal.hbs:19:4
 msgid "Cancel"
 msgstr ""
@@ -1228,7 +1228,7 @@ msgstr ""
 #: app/components/forms/orders/order-form.js:191:19
 #: app/components/forms/orders/order-form.js:490:23
 #: app/components/forms/wizard/basic-details-step.js:424:23
-#: app/components/modals/tax-info-modal.js:111:23
+#: app/components/modals/tax-info-modal.js:148:23
 msgid "Please select your country"
 msgstr ""
 
@@ -1716,6 +1716,8 @@ msgstr ""
 #: app/controllers/admin/users/list.js:107:26
 #: app/controllers/admin/video/channels/index.js:37:26
 #: app/controllers/admin/video/recordings.js:61:26
+#: app/controllers/events/view/tickets/access-codes/list.js:34:26
+#: app/controllers/events/view/tickets/discount-codes/list.js:41:26
 #: app/templates/admin/permissions/system-roles.hbs:21:12
 msgid "Actions"
 msgstr ""
@@ -1738,7 +1740,7 @@ msgstr ""
 #: app/templates/admin/permissions/system-roles.hbs:55:32
 #: app/templates/components/events/view/overview/event-sponsors.hbs:6:4
 #: app/templates/components/events/view/overview/manage-roles.hbs:8:37
-#: app/templates/components/forms/wizard/basic-details-step.hbs:666:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:382:12
 #: app/templates/components/ui-table/cell/admin/groups/cell-group-name.hbs:5:22
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:7:24
 #: app/templates/components/ui-table/cell/admin/users/cell-first-name.hbs:9:24
@@ -2023,39 +2025,51 @@ msgstr ""
 msgid "Email scheduled to be sent successfully"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:25:23
+#: app/components/modals/tax-info-modal.js:26:23
 msgid "Please give a name"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:34:23
+#: app/components/modals/tax-info-modal.js:36:23
 msgid "Please tell us your tax rate (in %)"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:38:23
+#: app/components/modals/tax-info-modal.js:40:23
 msgid "Please give a valid tax rate"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:47:23
+#: app/components/modals/tax-info-modal.js:50:23
 msgid "Please give us your tax ID"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:58:23
+#: app/components/modals/tax-info-modal.js:61:23
 msgid "Please give us your organisation name"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:69:23
+#: app/components/modals/tax-info-modal.js:72:23
+msgid "Please give us your contact name"
+msgstr ""
+
+#: app/components/modals/tax-info-modal.js:83:23
+msgid "Please give us your phone number"
+msgstr ""
+
+#: app/components/modals/tax-info-modal.js:94:23
+msgid "Please give us your email"
+msgstr ""
+
+#: app/components/modals/tax-info-modal.js:105:23
 msgid "Please give us your address"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:80:23
+#: app/components/modals/tax-info-modal.js:116:23
 msgid "Please give a city"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:91:23
+#: app/components/modals/tax-info-modal.js:127:23
 msgid "Please give a state"
 msgstr ""
 
-#: app/components/modals/tax-info-modal.js:102:23
+#: app/components/modals/tax-info-modal.js:138:23
 msgid "Please provide a zip code"
 msgstr ""
 
@@ -2404,6 +2418,8 @@ msgstr ""
 #: app/controllers/admin/users/list.js:44:24
 #: app/controllers/events/view/exhibitors/list.js:13:26
 #: app/controllers/events/view/sessions/list.js:17:26
+#: app/controllers/events/view/tickets/access-codes/list.js:28:26
+#: app/controllers/events/view/tickets/discount-codes/list.js:34:26
 msgid "Status"
 msgstr ""
 
@@ -2479,8 +2495,8 @@ msgstr ""
 #: app/controllers/admin/sessions/list.js:26:26 app/models/custom-form.js:87:27
 #: app/templates/components/forms/admin/settings/billing.hbs:69:35
 #: app/templates/components/forms/user-payment-info-form.hbs:51:23
-#: app/templates/components/modals/tax-info-modal.hbs:49:13
-#: app/templates/components/orders/company-info.hbs:45:22
+#: app/templates/components/modals/tax-info-modal.hbs:60:13
+#: app/templates/components/orders/company-info.hbs:75:22
 #: app/templates/components/widgets/forms/location-input.hbs:30:22
 msgid "State"
 msgstr ""
@@ -2874,6 +2890,8 @@ msgstr ""
 #: app/templates/components/forms/orders/order-form.hbs:42:44
 #: app/templates/components/forms/register-form.hbs:15:57
 #: app/templates/components/forms/user-profile-form.hbs:65:32
+#: app/templates/components/modals/tax-info-modal.hbs:45:13
+#: app/templates/components/orders/company-info.hbs:35:22
 #: app/templates/components/orders/ticket-holder.hbs:20:8
 #: app/templates/components/public/exhibition-view.hbs:65:132
 #: app/templates/components/public/exhibition-view.hbs:68:136
@@ -3085,6 +3103,8 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/billing.hbs:37:35
 #: app/templates/components/forms/user-payment-info-form.hbs:23:23
 #: app/templates/components/forms/user-profile-form.hbs:72:31
+#: app/templates/components/modals/tax-info-modal.hbs:49:13
+#: app/templates/components/orders/company-info.hbs:45:22
 msgid "Phone"
 msgstr ""
 
@@ -3124,6 +3144,20 @@ msgstr ""
 
 #: app/controllers/events/view/tickets/access-codes/edit.js:11:28
 msgid "Access code has been successfully updated."
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/list.js:10:20
+#: app/templates/components/forms/events/view/create-access-code.hbs:3:28
+msgid "Access Code"
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/list.js:14:25
+msgid "Access Code URL"
+msgstr ""
+
+#: app/controllers/events/view/tickets/access-codes/list.js:21:26
+#: app/controllers/events/view/tickets/discount-codes/list.js:28:24
+msgid "Validity"
 msgstr ""
 
 #: app/controllers/events/view/tickets/access-codes/list.js:54:28
@@ -3168,6 +3202,18 @@ msgstr ""
 
 #: app/controllers/events/view/tickets/discount-codes/edit.js:16:26
 msgid "An unexpected error has occurred. Discount code cannot be updated."
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/list.js:10:20
+msgid "Discount code"
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/list.js:15:24
+msgid "Discount code URL"
+msgstr ""
+
+#: app/controllers/events/view/tickets/discount-codes/list.js:21:26
+msgid "Discount Per Ticket"
 msgstr ""
 
 #: app/controllers/events/view/tickets/discount-codes/list.js:62:28
@@ -3420,7 +3466,7 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/billing.hbs:62:54
 #: app/templates/components/forms/orders/attendee-list.hbs:88:18
 #: app/templates/components/forms/user-payment-info-form.hbs:30:25
-#: app/templates/components/orders/company-info.hbs:25:22
+#: app/templates/components/orders/company-info.hbs:55:22
 #: app/templates/components/public/event-map.hbs:21:8
 #: app/templates/components/widgets/forms/billing-info.hbs:16:40
 msgid "Address"
@@ -3429,8 +3475,8 @@ msgstr ""
 #: app/models/custom-form.js:13:24 app/models/custom-form.js:86:27
 #: app/templates/components/forms/admin/settings/billing.hbs:65:51
 #: app/templates/components/forms/user-payment-info-form.hbs:44:22
-#: app/templates/components/modals/tax-info-modal.hbs:45:13
-#: app/templates/components/orders/company-info.hbs:55:22
+#: app/templates/components/modals/tax-info-modal.hbs:56:13
+#: app/templates/components/orders/company-info.hbs:85:22
 #: app/templates/components/widgets/forms/billing-info.hbs:22:37
 #: app/templates/components/widgets/forms/location-input.hbs:23:22
 msgid "City"
@@ -3441,7 +3487,7 @@ msgstr ""
 #: app/templates/components/event-invoice/billing-info.hbs:45:16
 #: app/templates/components/forms/admin/settings/billing.hbs:50:17
 #: app/templates/components/forms/user-payment-info-form.hbs:58:17
-#: app/templates/components/orders/company-info.hbs:35:22
+#: app/templates/components/orders/company-info.hbs:65:22
 #: app/templates/components/widgets/forms/location-input.hbs:44:22
 msgid "Country"
 msgstr ""
@@ -3595,7 +3641,7 @@ msgstr ""
 
 #: app/routes/account/billing.js:8:11 app/routes/account/billing/index.js:6:11
 #: app/templates/components/event-invoice/billing-info.hbs:3:27
-#: app/templates/components/forms/wizard/basic-details-step.hbs:690:22
+#: app/templates/components/forms/wizard/basic-details-step.hbs:698:14
 msgid "Billing Info"
 msgstr ""
 
@@ -5148,7 +5194,7 @@ msgstr ""
 
 #: app/templates/components/country-dropdown.hbs:15:30
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:58:23
-#: app/templates/components/forms/wizard/basic-details-step.hbs:373:21
+#: app/templates/components/forms/wizard/basic-details-step.hbs:440:21
 #: app/templates/components/widgets/forms/billing-info.hbs:43:26
 #: app/templates/components/widgets/forms/billing-info.hbs:53:30
 msgid "Select country"
@@ -5957,9 +6003,9 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:81:6
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:18:6
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:49:6
-#: app/templates/components/forms/wizard/basic-details-step.hbs:465:44
-#: app/templates/components/forms/wizard/basic-details-step.hbs:488:44
-#: app/templates/components/forms/wizard/basic-details-step.hbs:510:92
+#: app/templates/components/forms/wizard/basic-details-step.hbs:532:44
+#: app/templates/components/forms/wizard/basic-details-step.hbs:555:44
+#: app/templates/components/forms/wizard/basic-details-step.hbs:577:92
 #: app/templates/events/view/sessions.hbs:34:110
 #: app/templates/events/view/speakers.hbs:53:110
 msgid "here"
@@ -6004,6 +6050,8 @@ msgstr ""
 
 #: app/templates/components/forms/admin/settings/billing.hbs:33:41
 #: app/templates/components/forms/user-payment-info-form.hbs:16:29
+#: app/templates/components/modals/tax-info-modal.hbs:41:13
+#: app/templates/components/orders/company-info.hbs:25:22
 msgid "Contact Name"
 msgstr ""
 
@@ -6012,8 +6060,8 @@ msgid "Paypal Email"
 msgstr ""
 
 #: app/templates/components/forms/admin/settings/billing.hbs:54:37
-#: app/templates/components/modals/tax-info-modal.hbs:21:30
-#: app/templates/components/orders/company-info.hbs:85:22
+#: app/templates/components/modals/tax-info-modal.hbs:20:13
+#: app/templates/components/orders/company-info.hbs:115:22
 msgid "Tax ID"
 msgstr ""
 
@@ -6760,8 +6808,8 @@ msgstr ""
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:62:32
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:72:36
-#: app/templates/components/forms/wizard/basic-details-step.hbs:377:34
-#: app/templates/components/forms/wizard/basic-details-step.hbs:388:38
+#: app/templates/components/forms/wizard/basic-details-step.hbs:444:34
+#: app/templates/components/forms/wizard/basic-details-step.hbs:455:38
 msgid "Select currency"
 msgstr ""
 
@@ -6775,10 +6823,6 @@ msgstr ""
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:141:4
 msgid "Add New"
-msgstr ""
-
-#: app/templates/components/forms/events/view/create-access-code.hbs:3:28
-msgid "Access Code"
 msgstr ""
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:10:28
@@ -7469,147 +7513,147 @@ msgstr ""
 msgid "Donation Registration"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:368:10
+#: app/templates/components/forms/wizard/basic-details-step.hbs:334:12
+msgid "Invoice and Tax Information"
+msgstr ""
+
+#: app/templates/components/forms/wizard/basic-details-step.hbs:394:8
+msgid "Add invoice and tax information"
+msgstr ""
+
+#: app/templates/components/forms/wizard/basic-details-step.hbs:435:10
 msgid "Add Payment Details"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:404:10
+#: app/templates/components/forms/wizard/basic-details-step.hbs:471:10
 msgid "Choose payment methods"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:406:15
+#: app/templates/components/forms/wizard/basic-details-step.hbs:473:15
 msgid "Payment by PayPal"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:414:20
+#: app/templates/components/forms/wizard/basic-details-step.hbs:481:20
 msgid "YES, accept payment through PayPal"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:417:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:484:16
 msgid "Paypal accepts credit card, debit card and PayPal payments. To learn how it works"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:420:18
+#: app/templates/components/forms/wizard/basic-details-step.hbs:487:18
 msgid "click here"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:437:15
+#: app/templates/components/forms/wizard/basic-details-step.hbs:504:15
 msgid "Payment by Paytm"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:445:20
+#: app/templates/components/forms/wizard/basic-details-step.hbs:512:20
 msgid "YES, accept payment through Paytm"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:452:15
+#: app/templates/components/forms/wizard/basic-details-step.hbs:519:15
 msgid "Payment with AliPay"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:460:14
+#: app/templates/components/forms/wizard/basic-details-step.hbs:527:14
 msgid "Yes, accept payment through AliPay Gateway"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:463:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:530:16
 msgid "AliPay can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:471:17
+#: app/templates/components/forms/wizard/basic-details-step.hbs:538:17
 msgid "AliPay Gateway has been successfully activated"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:475:15
+#: app/templates/components/forms/wizard/basic-details-step.hbs:542:15
 msgid "Payment with Omise"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:483:14
+#: app/templates/components/forms/wizard/basic-details-step.hbs:550:14
 msgid "Yes, accept payment through Omise Gateway"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:486:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:553:16
 msgid "Omise can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:494:17
+#: app/templates/components/forms/wizard/basic-details-step.hbs:561:17
 msgid "Omise Gateway has been successfully activated"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:498:15
+#: app/templates/components/forms/wizard/basic-details-step.hbs:565:15
 msgid "Payment by Stripe"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:506:20
+#: app/templates/components/forms/wizard/basic-details-step.hbs:573:20
 msgid "YES, accept payment through Stripe"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:509:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:576:16
 msgid "Stripe accepts Visa, Master and Amex. Find out more about Stripe"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:519:16
+#: app/templates/components/forms/wizard/basic-details-step.hbs:586:16
 msgid "You have linked your Stripe account successfully. Click here to disconnect your account."
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:522:52
+#: app/templates/components/forms/wizard/basic-details-step.hbs:589:52
 msgid "Disconnect Stripe Account"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:524:38
+#: app/templates/components/forms/wizard/basic-details-step.hbs:591:38
 msgid "Connect to your Stripe account"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:526:49
+#: app/templates/components/forms/wizard/basic-details-step.hbs:593:49
 msgid "Connect with Stripe"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:531:13
+#: app/templates/components/forms/wizard/basic-details-step.hbs:598:13
 msgid "Offline Payments"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:540:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:607:12
 msgid "YES, accept payment by Purchase on invoice"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:547:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:614:12
 msgid "Enter the required details/instructions to ticket buyers"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:563:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:630:12
 msgid "YES, accept payment by Cheque"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:570:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:637:12
 msgid "Enter you account name and other required details/instructions to ticket buyers"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:587:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:654:12
 msgid "YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:595:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:662:12
 msgid "Enter your bank details and other required details/instructions to ticket buyers"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:611:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:678:12
 msgid "YES, accept payment at the event (on site)"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:619:12
+#: app/templates/components/forms/wizard/basic-details-step.hbs:686:12
 msgid "Enter your payment instructions and other required details/instructions to ticket buyers"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:633:16
-msgid "Tax Information"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.hbs:678:12
-msgid "Add Tax Information"
-msgstr ""
-
-#: app/templates/components/forms/wizard/basic-details-step.hbs:691:14
+#: app/templates/components/forms/wizard/basic-details-step.hbs:706:14
 msgid "Require Billing Information from Ticket Buyer"
 msgstr ""
 
-#: app/templates/components/forms/wizard/basic-details-step.hbs:700:29
+#: app/templates/components/forms/wizard/basic-details-step.hbs:715:29
 msgid "After Order Message"
 msgstr ""
 
@@ -8126,61 +8170,61 @@ msgstr ""
 msgid "Add tax information"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:9:19
+#: app/templates/components/modals/tax-info-modal.hbs:8:19
 msgid "Choose country"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:13:30
+#: app/templates/components/modals/tax-info-modal.hbs:12:13
 msgid "Tax name"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:17:30
+#: app/templates/components/modals/tax-info-modal.hbs:16:13
 msgid "Tax rate"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:25:13
+#: app/templates/components/modals/tax-info-modal.hbs:24:13
 msgid "Tax Invoices"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:29:18
+#: app/templates/components/modals/tax-info-modal.hbs:28:18
 msgid "Send tax invoice to attendees"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:31:12
+#: app/templates/components/modals/tax-info-modal.hbs:30:12
 msgid ""
 "Tax Invoices are sent to your attendees when you select this feature.\n"
 "Enter your registered business organisation name and address to be included on the tax invoice."
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:38:13
+#: app/templates/components/modals/tax-info-modal.hbs:37:13
 msgid "Registered Organisation"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:42:13
+#: app/templates/components/modals/tax-info-modal.hbs:53:13
 msgid "Business Address"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:53:13
+#: app/templates/components/modals/tax-info-modal.hbs:64:13
 msgid "Zipcode"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:57:13
+#: app/templates/components/modals/tax-info-modal.hbs:68:13
 msgid "Text for invoice footer (optional)"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:60:27
+#: app/templates/components/modals/tax-info-modal.hbs:71:27
 msgid "Add or Include Tax Fee"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:64:31
+#: app/templates/components/modals/tax-info-modal.hbs:75:31
 msgid "Add tax as separate fee on top of the price"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:70:35
+#: app/templates/components/modals/tax-info-modal.hbs:81:35
 msgid "Include tax in ticket price"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:81:4
+#: app/templates/components/modals/tax-info-modal.hbs:92:4
 msgid "Update tax information"
 msgstr ""
 
@@ -8253,15 +8297,15 @@ msgstr ""
 msgid "Company Information"
 msgstr ""
 
-#: app/templates/components/orders/company-info.hbs:65:22
+#: app/templates/components/orders/company-info.hbs:95:22
 msgid "ZIP Code"
 msgstr ""
 
-#: app/templates/components/orders/company-info.hbs:75:22
+#: app/templates/components/orders/company-info.hbs:105:22
 msgid "Tax Name"
 msgstr ""
 
-#: app/templates/components/orders/company-info.hbs:95:22
+#: app/templates/components/orders/company-info.hbs:125:22
 msgid "Tax Rate"
 msgstr ""
 

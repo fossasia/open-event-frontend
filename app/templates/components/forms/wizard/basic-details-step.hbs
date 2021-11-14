@@ -129,7 +129,7 @@
         <div class="default text">{{t 'Select timezone'}}</div>
         <div class="menu">
           {{#each this.timezones as |timezone|}}
-            <div class="item" data-value="{{timezone}}">{{timezone}}</div>
+            <div class="item" data-value="{{timezone}}">{{t-var timezone}}</div>
           {{/each}}
         </div>
       </UiDropdown>
