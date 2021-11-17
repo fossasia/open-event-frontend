@@ -6281,12 +6281,13 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
-ember-ajax@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ember-ajax/-/ember-ajax-5.0.0.tgz#404b17c93194ab37aff86b7b8607d8edab93c9ec"
+ember-ajax@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/ember-ajax/-/ember-ajax-5.1.1.tgz#9407417664d3c5cf089a7832a930d0850dd1cc21"
+  integrity sha512-CqGkiww9X1LfUyD4E9M18Yi8R4QumD7Ix3Cj2A+cf9QWAJ3uB9IquB4FFK5lW0hKbutsvOFxPd3PL+UO8M/1sQ==
   dependencies:
     ember-cli-babel "^7.5.0"
-    najax "^1.0.3"
+    najax "^1.0.7"
 
 ember-app-scheduler@^5.1.1:
   version "5.1.1"
@@ -11865,7 +11866,7 @@ lodash@^3.2.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@~4.17.10:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -12495,12 +12496,13 @@ mute-stream@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
 
-najax@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/najax/-/najax-1.0.4.tgz#63fd8dbf15d18f24dc895b3a16fec66c136b8084"
+najax@^1.0.3, najax@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/najax/-/najax-1.0.7.tgz#706dce52d4b738dce01aee97f392ccdb79d51eef"
+  integrity sha512-JqBMguf2plv1IDqhOE6eebnTivjS/ej0C/Sw831jVc+dRQIMK37oyktdQCGAQtwpl5DikOWI2xGfIlBPSSLgXg==
   dependencies:
     jquery-deferred "^0.3.0"
-    lodash.defaultsdeep "^4.6.0"
+    lodash "^4.17.21"
     qs "^6.2.0"
 
 nan@^2.12.1, nan@^2.13.2, nan@^2.3.0:
