@@ -5,19 +5,27 @@
     <a href="#" class="ui basic green label">{{t 'Open'}}</a>
     <div class="sub header">
       {{#if this.data.speakersCall.softEndsAt}}
-        {{t 'Call for Speakers will softly closed on'}} {{general-date this.data.speakersCall.softEndsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
-        {{t 'and finally closed on'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+        {{t 'Call for Speakers will softly close on {{softCloseDate}} and will be finally closed on {{closeDate}}.'
+          softCloseDate=(general-date this.data.speakersCall.softEndsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+          closeDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
       {{else}}
-        {{t 'Call for Speakers will close on'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}.
+        {{t 'Call for Speakers will close on {{closeDate}}.'
+          closeDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
       {{/if}}
     </div>
   {{else}}
     <a href="#" class="ui basic red label">{{t 'Closed'}}</a>
     <div class="sub header">
       {{#if this.data.speakersCall.isInFuture}}
-        {{t 'Call for Speakers will open at'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+        {{t 'Call for Speakers will open at {{openDate}}.'
+          openDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
       {{else}}
-        {{t 'Call for Speakers was closed at'}} {{general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone}}
+        {{t 'Call for Speakers was closed at {{closeDate}}.'
+          closeDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
       {{/if}}
     </div>
   {{/if}}

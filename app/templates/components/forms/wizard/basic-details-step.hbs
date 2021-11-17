@@ -604,14 +604,14 @@
             @id="payment_by_invoice"
             @checked={{this.data.event.canPayByInvoice}} />
           <label for="payment_by_invoice">
-            {{t 'YES, accept payment by Purchase on invoice'}}
+            {{t 'YES, accept payment by Purchase on invoice.'}}
           </label>
         </div>
       </div>
       {{#if this.data.event.canPayByInvoice}}
         <div class="field payments">
           <label class="required">
-            {{t 'Enter the required details/instructions to ticket buyers'}}
+            {{t 'Enter the required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="invoice_details"
@@ -627,14 +627,14 @@
             @id="payment_by_cheque"
             @checked={{this.data.event.canPayByCheque}} />
           <label for="payment_by_cheque">
-            {{t 'YES, accept payment by Cheque'}}
+            {{t 'YES, accept payment by Cheque.'}}
           </label>
         </div>
       </div>
       {{#if this.data.event.canPayByCheque}}
         <div class="field payments">
           <label class="required">
-            {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
+            {{t 'Enter you account name and other required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="cheque_details"
@@ -651,7 +651,7 @@
             @checked={{this.data.event.canPayByBank}}
           />
           <label for="payment_by_bank">
-            {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer'}}
+            {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer.'}}
           </label>
         </div>
       </div>
@@ -659,7 +659,7 @@
       {{#if this.data.event.canPayByBank}}
         <div class="field">
           <label class="required">
-            {{t 'Enter your bank details and other required details/instructions to ticket buyers'}}
+            {{t 'Enter your bank details and other required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="bank_details"
@@ -675,7 +675,7 @@
             @id="payment_onsite"
             @checked={{this.data.event.canPayOnsite}} />
           <label for="payment_onsite">
-            {{t 'YES, accept payment at the event (on site)'}}
+            {{t 'YES, accept payment at the event (on site).'}}
           </label>
         </div>
       </div>
@@ -683,7 +683,7 @@
       {{#if this.data.event.canPayOnsite}}
         <div class="field">
           <label class="required">
-            {{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}
+            {{t 'Enter your payment instructions and other required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="on_site_details"
@@ -703,7 +703,7 @@
               @checked={{this.data.event.isBillingInfoMandatory}}
             />
             <label for="billing_info">
-              {{t 'Require Billing Information from Ticket Buyer'}}
+              {{t 'Require Billing Information from Ticket Buyer.'}}
             </label>
           </div>
         </div>

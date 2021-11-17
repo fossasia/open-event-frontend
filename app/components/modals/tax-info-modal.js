@@ -23,7 +23,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a name')
+              prompt : this.l10n.t('Please give a name.')
             }
           ]
         },
@@ -33,11 +33,11 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us your tax rate (in %)')
+              prompt : this.l10n.t('Please tell us your tax rate (in %).')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please give a valid tax rate')
+              prompt : this.l10n.t('Please give a valid tax rate.')
             }
           ]
         },
@@ -47,7 +47,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your tax ID')
+              prompt : this.l10n.t('Please give us your tax ID.')
             }
           ]
         },
@@ -58,7 +58,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your organisation name')
+              prompt : this.l10n.t('Please give us your organisation name.')
             }
           ]
         },
@@ -69,7 +69,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your contact name')
+              prompt : this.l10n.t('Please give us your contact name.')
             }
           ]
         },
@@ -80,7 +80,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your phone number')
+              prompt : this.l10n.t('Please enter your phone number.')
             }
           ]
         },
@@ -91,7 +91,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your email')
+              prompt : this.l10n.t('Please enter your email.')
             }
           ]
         },
@@ -102,7 +102,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your address')
+              prompt : this.l10n.t('Please enter your address.')
             }
           ]
         },
@@ -113,7 +113,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a city')
+              prompt : this.l10n.t('Please give a city.')
             }
           ]
         },
@@ -124,7 +124,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a state')
+              prompt : this.l10n.t('Please give a state.')
             }
           ]
         },
@@ -135,7 +135,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please provide a zip code')
+              prompt : this.l10n.t('Please provide a zip code.')
             }
           ]
         },
@@ -145,7 +145,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select your country')
+              prompt : this.l10n.t('Please select your country.')
             }
           ]
         }

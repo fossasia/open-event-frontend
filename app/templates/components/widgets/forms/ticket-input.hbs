@@ -293,7 +293,7 @@
             @rows={{3}}
             @name="ticket_description"
             @value={{this.ticket.description}}
-            placeholder={{t "This description would be available to the attendees when Registering."}}
+            placeholder={{t "This description would be available to the attendees when registering."}}
             @maxlength={{160}} />        </div>
         <div class="field">
           <div class="ui checkbox">
@@ -301,7 +301,7 @@
   @type="checkbox"
   @checked={{this.ticket.isDescriptionVisible}}
   @name="description_visible" />
-            <label for="description_visible">{{t 'Display Registration description on Public Events page'}}</label>
+            <label for="description_visible">{{t 'Display registration description on public events page.'}}</label>
           </div>
         </div>
         <div class="field">
@@ -311,7 +311,7 @@
   @checked={{this.ticket.isHidden}}
   @name="ticket_hidden"/>
             <label for="description_visible">
-              {{t 'Hide Registration from the Public Events page'}}<br>
+              {{t 'Hide registration from the public events page.'}}<br>
               <span class="text muted">{{t 'To sell hidden registrations you need to set up an access code under Event Dashboard > Tickets Tab > Access Code.'}}</span>
             </label>
           </div>

@@ -27,7 +27,7 @@ export default class extends Controller {
       }
 
       await this.model.speaker.save();
-      this.notify.success(this.l10n.t('Your speaker has been saved'));
+      this.notify.success(this.l10n.t('Your speaker has been saved.'));
       this.transitionToRoute('events.view.speakers', this.model.event.id);
     } catch (e) {
       console.error('Error while saving session', e);

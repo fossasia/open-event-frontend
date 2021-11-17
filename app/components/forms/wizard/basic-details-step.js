@@ -217,7 +217,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             },
             {
               type   : 'checkValidTimeDifference',
-              prompt : this.l10n.t('Starting time should be lesser than the ending time')
+              prompt : this.l10n.t('Starting time should be lesser than the ending time!')
             }
           ]
         },
@@ -231,7 +231,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             },
             {
               type   : 'checkValidTimeDifference',
-              prompt : this.l10n.t('Ending time should be greater than the starting time')
+              prompt : this.l10n.t('Ending time should be greater than the starting time!')
             }
           ]
         },
