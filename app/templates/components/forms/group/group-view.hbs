@@ -98,7 +98,7 @@
                 </a>
               {{else}}
                 {{#if (eq index 6)}}
-                  <span>{{t 'and'}} {{sub @group.followerCount index}} {{t 'others'}}</span>
+                  <span>{{t '{{userThumbnailImg}}and {{followerCount}} others' userThumbnailImg='' followerCount=(sub @group.followerCount index) }}</span>
                 {{/if}}
               {{/if}}
             {{/each}}
