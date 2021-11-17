@@ -18,7 +18,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent : 'ui-table/cell/events/view/tickets/discount-codes/cell-url'
       },
       {
-        name            : this.l10n.t('Discount Per Ticket'),
+        name            : this.l10n.t('Discount per Ticket'),
         valuePath       : 'value',
         width           : 90,
         extraValuePaths : ['type', 'event'],

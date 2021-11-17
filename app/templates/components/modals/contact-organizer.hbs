@@ -5,7 +5,11 @@
 <div class="ui content">
     {{#if this.mailSent}}
         <h4>
-            {{t 'Your message was sent to the organizers of this'}} {{if @group 'group' 'event'}}.  
+            {{#if @group}}
+                {{t 'Your message was sent to the organizers of this group.' }}
+            {{else}}
+                {{t 'Your message was sent to the organizers of this event.' }}
+            {{/if}}
             {{t 'You should receive a copy of the message to your email inbox.'}} 
             {{t 'The organizers will contact you by email.'}}
         </h4>

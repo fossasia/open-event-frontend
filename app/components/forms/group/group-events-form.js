@@ -110,7 +110,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
           return event.save();
         });
         await all([...updatedEvents]);
-        this.notify.success(this.l10n.t('Your group has been saved'),
+        this.notify.success(this.l10n.t('Your group has been saved.'),
           {
             id: 'group_save'
           });

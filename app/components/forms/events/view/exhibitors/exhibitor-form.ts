@@ -31,7 +31,7 @@ export default class ExhibitorForm extends Component<Args> {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a name')
+              prompt : this.l10n.t('Please enter a name.')
             }
           ]
         },
@@ -39,12 +39,12 @@ export default class ExhibitorForm extends Component<Args> {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a url')
+              prompt : this.l10n.t('Please enter a URL.')
             },
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid URL.')
             }
           ]
         },
@@ -54,7 +54,7 @@ export default class ExhibitorForm extends Component<Args> {
             {
               type   : 'regExp',
               value  : validEmail,
-              prompt : this.l10n.t('Please enter a valid email address')
+              prompt : this.l10n.t('Please enter a valid email address.')
             }
           ]
         },
@@ -64,7 +64,7 @@ export default class ExhibitorForm extends Component<Args> {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid contact link')
+              prompt : this.l10n.t('Please enter a valid contact link.')
             }
           ]
         },
@@ -82,7 +82,7 @@ export default class ExhibitorForm extends Component<Args> {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid URL.')
             }
           ]
         },
@@ -92,7 +92,7 @@ export default class ExhibitorForm extends Component<Args> {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid URL.')
             }
           ]
         }
@@ -122,7 +122,7 @@ export default class ExhibitorForm extends Component<Args> {
       this.loading = true;
       await this.args.exhibitor.save();
       this.router.transitionTo('events.view.exhibitors', this.args.event.id);
-      this.notify.success(this.l10n.t('Your exhibitor has been saved'),
+      this.notify.success(this.l10n.t('Your exhibitor has been saved.'),
         {
           id: 'stream_save'
         });
