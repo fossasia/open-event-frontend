@@ -1411,7 +1411,7 @@
     ember-cli-babel "^6.16.0"
     ember-compatibility-helpers "^1.1.1"
 
-"@ember/render-modifiers@^1.0.1", "@ember/render-modifiers@^1.0.2":
+"@ember/render-modifiers@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@ember/render-modifiers/-/render-modifiers-1.0.2.tgz#2e87c48db49d922ce4850d707215caaac60d8444"
   integrity sha512-6tEnHl5+62NTSAG2mwhGMFPhUrJQjoVqV+slsn+rlTknm2Zik+iwxBQEbwaiQOU1FUYxkS8RWcieovRNMR8inQ==
@@ -2023,13 +2023,22 @@
     "@sentry/utils" "6.14.3"
     tslib "^1.9.3"
 
-"@sentry/integrations@^6.14.3":
-  version "6.14.3"
-  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.14.3.tgz#4b32ce1e52d0abff94befe5e52d3ee4327211322"
-  integrity sha512-TGdf0l6GzPCEUxkIgU3bgG9DfFni3L97r/BPzwhc0izvkZ+O+3UWu6nCVHp1yWEZrskIxLszDhRz2N5D1zldPQ==
+"@sentry/hub@6.15.0":
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.15.0.tgz#fb8a91d12fdd2726a884374ea7242f6bbd081d69"
+  integrity sha512-cUbHPeG6kKpGBaEMgbTWeU03Y1Up5T3urGF+cgtrn80PmPYYSUPvVvWlZQWPb8CJZ1yQ0gySWo5RUTatBFrEHA==
   dependencies:
-    "@sentry/types" "6.14.3"
-    "@sentry/utils" "6.14.3"
+    "@sentry/types" "6.15.0"
+    "@sentry/utils" "6.15.0"
+    tslib "^1.9.3"
+
+"@sentry/integrations@^6.15.0":
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.15.0.tgz#3c83617c301b5f77a57514ad7812aedc03613a31"
+  integrity sha512-fSBAipas6zwyYo4U91pyQOnaTcRCfwvH6ZFwu0Fqmkm64nU9rYpbTNiKkwOWbbiXXT6+LEF6RzBpsyhm4QvgmQ==
+  dependencies:
+    "@sentry/types" "6.15.0"
+    "@sentry/utils" "6.15.0"
     localforage "^1.8.1"
     tslib "^1.9.3"
 
@@ -2042,15 +2051,24 @@
     "@sentry/types" "6.14.3"
     tslib "^1.9.3"
 
-"@sentry/tracing@^6.14.3":
-  version "6.14.3"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.14.3.tgz#0223d365ea0c7d3f7c90cb17ea84c4874bc9ef52"
-  integrity sha512-laFayAxpO/dQL3K3ZcSjtaqJkSf70DH1hHJ8Oiiic0c/xBxh38WSx8yu3TMrbfka5MVIuMNlkq1Gi+SC+moe4w==
+"@sentry/minimal@6.15.0":
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-6.15.0.tgz#fcc083ba901cfe57d25303d0b5fa8cd13e164466"
+  integrity sha512-7RJIvZsjBa1qFUfMrAzQsWdfZT6Gm4t6ZTYfkpsXPBA35hkzglKbBrhhsUvkxGIhUGw/PiCUqxBUjcmzQP0vfg==
   dependencies:
-    "@sentry/hub" "6.14.3"
-    "@sentry/minimal" "6.14.3"
-    "@sentry/types" "6.14.3"
-    "@sentry/utils" "6.14.3"
+    "@sentry/hub" "6.15.0"
+    "@sentry/types" "6.15.0"
+    tslib "^1.9.3"
+
+"@sentry/tracing@^6.15.0":
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.15.0.tgz#5a5f08ee6b9cc1189227536fca053cd23488600d"
+  integrity sha512-V5unvX8qNEfdawX+m2n0jKgmH/YR2ItWZLH+3UevBTptO+xyfvRtpgGXYWUCo3iGvFgWb1C+iIC7LViR9rTvBg==
+  dependencies:
+    "@sentry/hub" "6.15.0"
+    "@sentry/minimal" "6.15.0"
+    "@sentry/types" "6.15.0"
+    "@sentry/utils" "6.15.0"
     tslib "^1.9.3"
 
 "@sentry/types@6.14.3":
@@ -2058,12 +2076,25 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.14.3.tgz#4af799df7ddfa2702a46bffabc3f1b6eb195de23"
   integrity sha512-GuyqvjQ/N0hIgAjGD1Rn0aQ8kpLBBsImk+Aoh7YFhnvXRhCNkp9N8BuXTfC/uMdMshcWa1OFik/udyjdQM3EJA==
 
+"@sentry/types@6.15.0":
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.15.0.tgz#a2917f8aed91471bdfd6651384ffcd47b95c43ad"
+  integrity sha512-zBw5gPUsofXUSpS3ZAXqRNedLRBvirl3sqkj2Lez7X2EkKRgn5D8m9fQIrig/X3TsKcXUpijDW5Buk5zeCVzJA==
+
 "@sentry/utils@6.14.3":
   version "6.14.3"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.14.3.tgz#4ae907054152882fbd376906695ac326934669d1"
   integrity sha512-jsCnclEsR2sV9aHMuaLA5gvxSa0xV4Sc6IJCJ81NTTdb/A5fFbteFBbhuISGF9YoFW1pwbpjuTA6+efXwvLwNQ==
   dependencies:
     "@sentry/types" "6.14.3"
+    tslib "^1.9.3"
+
+"@sentry/utils@6.15.0":
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.15.0.tgz#0c247cb092b1796d39c3d16d8e6977b9cdab9ca2"
+  integrity sha512-gnhKKyFtnNmKWjDizo7VKD0/Vx8cgW1lCusM6WI7jy2jlO3bQA0+Dzgmr4mIReZ74mq4VpOd2Vfrx7ZldW1DMw==
+  dependencies:
+    "@sentry/types" "6.15.0"
     tslib "^1.9.3"
 
 "@simple-dom/document@^1.4.0":
@@ -6325,7 +6356,7 @@ ember-assign-polyfill@~2.4.0:
     ember-cli-babel "^6.6.0"
     ember-cli-version-checker "^2.0.0"
 
-ember-auto-import@^1.10.1, ember-auto-import@^1.11.2, ember-auto-import@^1.11.3, ember-auto-import@^1.5.3:
+ember-auto-import@^1.10.1, ember-auto-import@^1.11.2, ember-auto-import@^1.11.3:
   version "1.11.3"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-1.11.3.tgz#6e3384a7fbb163384a34546f2e902cd297b0e683"
   integrity sha512-ekq/XCvsonESobFU30zjZ0I4XMy2E/2ZILCYWuQ1JdhcCSTYhnXDZcqRW8itUG7kbsPqAHT/XZ1LEZYm3seVwQ==
@@ -6495,7 +6526,7 @@ ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.10.0, 
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-"ember-cli-babel@^6.6.0 || ^7.0.0", ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.1.3, ember-cli-babel@^7.10.0, ember-cli-babel@^7.11.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.12.0, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.17.2, ember-cli-babel@^7.18.0, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.2, ember-cli-babel@^7.20.5, ember-cli-babel@^7.21.0, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.3, ember-cli-babel@^7.26.6, ember-cli-babel@^7.4.0, ember-cli-babel@^7.5.0, ember-cli-babel@^7.7.3:
+"ember-cli-babel@^6.6.0 || ^7.0.0", ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.1.3, ember-cli-babel@^7.10.0, ember-cli-babel@^7.11.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.12.0, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.17.2, ember-cli-babel@^7.18.0, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.5, ember-cli-babel@^7.21.0, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.3, ember-cli-babel@^7.26.6, ember-cli-babel@^7.4.0, ember-cli-babel@^7.5.0, ember-cli-babel@^7.7.3:
   version "7.26.6"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.26.6.tgz#322fbbd3baad9dd99e3276ff05bc6faef5e54b39"
   integrity sha512-040svtfj2RC35j/WMwdWJFusZaXmNoytLAMyBDGLMSlRvznudTxZjGlPV6UupmtTBApy58cEF8Fq4a+COWoEmQ==
@@ -6578,16 +6609,16 @@ ember-cli-cjs-transform@^2.0.0:
     sync-disk-cache "^1.3.3"
     username "^4.0.0"
 
-ember-cli-clipboard@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-clipboard/-/ember-cli-clipboard-0.15.0.tgz#3704baaeab1f0a2df13b3d77632dea7266aabe54"
-  integrity sha512-gcjm2ofr3NOGH6/MFp+2AVqEKTYkdRUvRsVovTg45Iy414jKyWwxu9l3jWM0ZZkRc2IqjE0V2ta9JJe2/HRPUA==
+ember-cli-clipboard@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-clipboard/-/ember-cli-clipboard-0.16.0.tgz#f4878cbbfbc56e0bc6d2a65ccf5a334c47b0f614"
+  integrity sha512-l9iDVjcJLkbgpdbJe+bN29q2ibZmEpEV6bXstIG9q4HPvaqbXw0PbSFhaNeQWpJKNkd5dFKSNdgEfli6heJSFw==
   dependencies:
-    "@ember/render-modifiers" "^1.0.1"
+    "@ember/render-modifiers" "^1.0.2 || ^2.0.0"
     clipboard "^2.0.6"
-    ember-auto-import "^1.5.3"
-    ember-cli-babel "^7.20.2"
-    ember-cli-htmlbars "^4.2.3"
+    ember-auto-import "^1.11.3"
+    ember-cli-babel "^7.26.6"
+    ember-cli-htmlbars "^5.7.1"
 
 ember-cli-code-coverage@^1.0.3:
   version "1.0.3"
