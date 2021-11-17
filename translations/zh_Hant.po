@@ -97,7 +97,6 @@ msgstr ""
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:57:23
 #: app/components/forms/login-form.js:38:23
 #: app/components/forms/orders/guest-order-form.js:28:23
-#: app/components/forms/orders/order-form.js:107:19
 #: app/components/forms/orders/order-form.js:481:23
 #: app/components/forms/register-form.js:25:23
 #: app/components/forms/reset-password-form.js:31:23
@@ -229,7 +228,6 @@ msgstr ""
 #: app/controllers/public/cfs/edit-session.js:20:26
 #: app/controllers/public/cfs/new-session.js:20:24
 #: app/controllers/public/cfs/new-speaker.js:20:26
-#: app/controllers/public/speaker-invite/view-session.js:37:26
 #: app/controllers/public/speaker-invite/view-session.js:63:26
 msgid "Oops something went wrong. Please try again"
 msgstr ""
@@ -333,10 +331,6 @@ msgstr ""
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:85:23
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:95:23
 #: app/components/forms/events/view/videoroom-form.js:104:23
-#: app/components/forms/orders/order-form.js:283:19
-#: app/components/forms/orders/order-form.js:297:19
-#: app/components/forms/orders/order-form.js:308:19
-#: app/components/forms/orders/order-form.js:322:19
 #: app/components/forms/session-speaker-form.js:119:23
 #: app/components/forms/session-speaker-form.js:130:23
 #: app/components/forms/session-speaker-form.js:144:23
@@ -594,6 +588,7 @@ msgstr ""
 #: app/components/modals/add-room-modal.hbs:8:8
 #: app/controllers/admin/events/list.js:16:27
 #: app/controllers/admin/users/list.js:19:26
+#: app/controllers/admin/users/view/events/list.js:13:26
 #: app/controllers/admin/video/channels/index.js:15:22
 #: app/controllers/events/list.js:11:26
 #: app/controllers/events/view/exhibitors/list.js:39:26
@@ -772,7 +767,7 @@ msgid "Please enter a valid integer"
 msgstr ""
 
 #: app/components/forms/events/view/create-discount-code.js:108:23
-msgid "Please select atleast 1 ticket."
+msgid "Please select at least 1 ticket."
 msgstr ""
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.hbs:12:15
@@ -921,9 +916,10 @@ msgid "Video Source URL"
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:51:19
+#: app/controllers/events/view/videoroom/list.js:44:24
 msgid ""
 "This column shows the original link of the video. We do not recommend to "
-"share this link as users can access it without logging into {{appName}}"
+"share this link as users can access it without logging into {{appName}}."
 msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:74:8
@@ -1007,6 +1003,7 @@ msgstr ""
 #: app/components/public/stream/side-panel.hbs:30:10
 #: app/controllers/admin/events/list.js:70:25
 #: app/controllers/admin/sessions/list.js:33:24
+#: app/controllers/admin/users/view/events/list.js:47:24
 #: app/controllers/events/list.js:51:24
 #: app/controllers/events/view/sessions/list.js:46:24
 #: app/routes/events/view/speakers.js:7:11 app/routes/public/speakers.js:40:11
@@ -1139,6 +1136,7 @@ msgid "Event has been announced."
 msgstr ""
 
 #: app/components/forms/group/group-events-form.js:67:26
+#: app/controllers/public/speaker-invite/view-session.js:37:26
 msgid "Oops something went wrong. Please try again."
 msgstr ""
 
@@ -1203,26 +1201,27 @@ msgid "Here is your ticket"
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:86:19
-#: app/components/forms/orders/order-form.js:462:23
-msgid "Please enter your first name"
+msgid "Please enter your first name."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:94:19
-#: app/components/forms/orders/order-form.js:471:23
-msgid "Please enter your last name"
+msgid "Please enter your last name."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:102:19
-msgid "Please enter your email"
+msgid "Please enter your email."
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:107:19
+msgid "Please enter a valid email address."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:116:19
-#: app/components/forms/session-speaker-form.js:297:23
-msgid "Please select a gender"
+msgid "Please select a gender."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:125:19
-msgid "Please select your age group"
+msgid "Please select your age group."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:135:19
@@ -1245,101 +1244,99 @@ msgid ""
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:164:19
-#: app/components/forms/orders/order-form.js:508:23
-msgid "Please enter your address"
+msgid "Please enter your address."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:173:19
-#: app/components/forms/orders/order-form.js:517:23
-msgid "Please enter your city"
+msgid "Please enter your city."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:182:19
-msgid "Please enter your state"
+msgid "Please enter your state."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:191:19
-#: app/components/forms/orders/order-form.js:490:23
-#: app/components/forms/wizard/basic-details-step.js:424:23
-#: app/components/modals/tax-info-modal.js:148:23
-msgid "Please select your country"
+msgid "Please select your country."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:200:19
-msgid "Please enter your job title"
+msgid "Please enter your job title."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:209:19
-#: app/components/forms/session-speaker-form.js:326:23
-msgid "Please enter a mobile number"
+msgid "Please enter a mobile number."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:218:19
-msgid "Please enter your tax business info"
+msgid "Please enter your tax business info."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:227:19
-#: app/components/forms/user-payment-info-form.js:55:23
-msgid "Please enter your billing address"
+msgid "Please enter your billing address."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:236:19
-msgid "Please enter your home address"
+msgid "Please enter your home address."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:245:19
-msgid "Please enter your shipping address"
+msgid "Please enter your shipping address."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:254:19
-#: app/components/forms/user-payment-info-form.js:37:23
-msgid "Please enter your organisation"
+msgid "Please enter your organisation."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:263:19
-msgid "Please enter your work address"
+msgid "Please enter your work address."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:272:19
-msgid "Please enter your work phone"
+msgid "Please enter your work phone."
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:283:19
+#: app/components/forms/orders/order-form.js:297:19
+#: app/components/forms/orders/order-form.js:308:19
+#: app/components/forms/orders/order-form.js:322:19
+msgid "Please enter a valid url."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:292:19
 #: app/components/forms/orders/order-form.js:317:19
-#: app/components/forms/session-speaker-form.js:340:23
-msgid "Please enter url of website"
+msgid "Please enter url of website."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:333:19
 #: app/components/forms/orders/order-form.js:347:19
-msgid "Please enter a valid twitter profile url"
+msgid "Please enter a valid twitter profile url."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:342:19
-msgid "Please enter twitter link"
+msgid "Please enter twitter link."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:358:19
 #: app/components/forms/orders/order-form.js:372:19
-msgid "Please enter a valid facebook account url"
+msgid "Please enter a valid facebook account url."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:367:19
-msgid "Please enter facebook link"
+msgid "Please enter facebook link."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:383:19
 #: app/components/forms/orders/order-form.js:397:19
-msgid "Please enter a valid GitHub profile url"
+msgid "Please enter a valid GitHub profile url."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:392:19
-msgid "Please enter GitHub link"
+msgid "Please enter GitHub link."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:408:19
 #: app/components/forms/orders/order-form.js:422:19
-msgid "Please enter a valid instagram account url"
+msgid "Please enter a valid instagram account url."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:417:19
@@ -1355,8 +1352,30 @@ msgstr ""
 msgid "Please enter linkedin link"
 msgstr ""
 
+#: app/components/forms/orders/order-form.js:462:23
+msgid "Please enter your first name"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:471:23
+msgid "Please enter your last name"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:490:23
+#: app/components/forms/wizard/basic-details-step.js:424:23
+#: app/components/modals/tax-info-modal.js:148:23
+msgid "Please select your country"
+msgstr ""
+
 #: app/components/forms/orders/order-form.js:499:23
 msgid "Please enter your Tax ID or Business ID"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:508:23
+msgid "Please enter your address"
+msgstr ""
+
+#: app/components/forms/orders/order-form.js:517:23
+msgid "Please enter your city"
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:526:23
@@ -1461,8 +1480,20 @@ msgstr ""
 msgid "Please enter select sponsorship"
 msgstr ""
 
+#: app/components/forms/session-speaker-form.js:297:23
+msgid "Please select a gender"
+msgstr ""
+
 #: app/components/forms/session-speaker-form.js:306:23
 msgid "Please enter where you heard about the event"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:326:23
+msgid "Please enter a mobile number"
+msgstr ""
+
+#: app/components/forms/session-speaker-form.js:340:23
+msgid "Please enter url of website"
 msgstr ""
 
 #: app/components/forms/session-speaker-form.js:472:28
@@ -1474,8 +1505,16 @@ msgstr ""
 msgid "Please enter your name"
 msgstr ""
 
+#: app/components/forms/user-payment-info-form.js:37:23
+msgid "Please enter your organisation"
+msgstr ""
+
 #: app/components/forms/user-payment-info-form.js:46:23
 msgid "Please enter your country"
+msgstr ""
+
+#: app/components/forms/user-payment-info-form.js:55:23
+msgid "Please enter your billing address"
 msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:64:23
@@ -2571,6 +2610,7 @@ msgid "Roles"
 msgstr ""
 
 #: app/controllers/admin/events/list.js:63:25
+#: app/controllers/admin/users/view/events/list.js:40:24
 #: app/controllers/events/list.js:46:24 app/routes/admin/sessions.js:8:11
 #: app/routes/events/view/sessions.js:7:11 app/routes/public/sessions.js:40:11
 #: app/templates/admin.hbs:14:8 app/templates/admin/index.hbs:6:10
@@ -2586,6 +2626,7 @@ msgstr "議程"
 
 #: app/controllers/admin/events/list.js:76:25
 #: app/controllers/admin/groups/list.js:47:24
+#: app/controllers/admin/users/view/events/list.js:53:24
 #: app/controllers/admin/video/recordings.js:19:26
 #: app/controllers/events/list.js:56:24
 msgid "Public URL"
@@ -3020,6 +3061,12 @@ msgstr ""
 msgid "Password Reset Email is successfully sent."
 msgstr ""
 
+#: app/controllers/admin/users/view/events/list.js:30:26
+#: app/controllers/events/list.js:23:26
+#: app/templates/components/explore/side-bar.hbs:70:8
+msgid "Date"
+msgstr "日期"
+
 #: app/controllers/admin/video/channels/index.js:55:28
 msgid "Video channel has been deleted successfully."
 msgstr ""
@@ -3035,11 +3082,6 @@ msgstr ""
 #: app/controllers/event-invoice/paid.js:16:26
 msgid "Here is your Event Invoice"
 msgstr ""
-
-#: app/controllers/events/list.js:23:26
-#: app/templates/components/explore/side-bar.hbs:70:8
-msgid "Date"
-msgstr "日期"
 
 #: app/controllers/events/view.js:12:28
 msgid "Event copied successfully"
@@ -3325,12 +3367,6 @@ msgid ""
 "the event page."
 msgstr ""
 
-#: app/controllers/events/view/videoroom/list.js:44:24
-msgid ""
-"This column shows the original link of the video. We do not recommend to "
-"share this link as users can access it without logging into {{appName}}."
-msgstr ""
-
 #: app/controllers/events/view/videoroom/list.js:51:26
 msgid ""
 "You can share the links in this columns with attendees of an event. On event "
@@ -3424,19 +3460,19 @@ msgid "Proposal has been withdrawn successfully."
 msgstr ""
 
 #: app/controllers/public/speaker-invite/view-session.js:21:21
-msgid "Do you want to accept the invite"
+msgid "Do you want to accept the invite?"
 msgstr ""
 
 #: app/controllers/public/speaker-invite/view-session.js:29:28
-msgid "Speaker invite has been accepted"
+msgid "Speaker invite has been accepted."
 msgstr ""
 
 #: app/controllers/public/speaker-invite/view-session.js:47:21
-msgid "Do you want to reject the invite"
+msgid "Do you want to reject the invite?"
 msgstr ""
 
 #: app/controllers/public/speaker-invite/view-session.js:55:28
-msgid "Speaker invite has been rejected"
+msgid "Speaker invite has been rejected."
 msgstr ""
 
 #: app/controllers/register.js:27:34
@@ -7844,17 +7880,9 @@ msgstr ""
 #: app/templates/components/forms/wizard/other-details-step.hbs:57:8
 msgid ""
 "Refunds to be processed by the organizer through payment provider. Refund "
-"payments to attendees cannot be made on the"
-msgstr ""
-
-#: app/templates/components/forms/wizard/other-details-step.hbs:57:160
-msgid ""
-"platform. Please go to your payment provider, make a refund and mark the "
-"ticket as refunded in the"
-msgstr ""
-
-#: app/templates/components/forms/wizard/other-details-step.hbs:57:293
-msgid "platform."
+"payments to attendees cannot be made on the {{appName}} platform. Please go "
+"to your payment provider, make a refund and mark the ticket as refunded in "
+"the {{appName}} platform."
 msgstr ""
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:68:25
@@ -7978,7 +8006,8 @@ msgstr ""
 
 #: app/templates/components/group-header.hbs:5:8
 #: app/templates/events/view/settings/export.hbs:3:4
-msgid "This feature is still in alpha stage"
+#: app/templates/events/view/videoroom/list.hbs:3:4
+msgid "This feature is still in alpha stage."
 msgstr ""
 
 #: app/templates/components/group-header.hbs:7:6
@@ -8269,7 +8298,7 @@ msgstr ""
 
 #: app/templates/components/modals/event-transfer-modal.hbs:14:8
 msgid ""
-"Please enter the event-name to confirm that you want to transfer the event"
+"Please enter the event-name to confirm that you want to transfer the event."
 msgstr ""
 
 #: app/templates/components/modals/event-transfer-modal.hbs:25:4
@@ -8441,7 +8470,7 @@ msgstr ""
 
 #: app/templates/components/modals/user-delete-modal.hbs:11:8
 msgid ""
-"Please enter your Email ID to confirm that you want to delete the account"
+"Please enter your Email ID to confirm that you want to delete the account."
 msgstr ""
 
 #: app/templates/components/nav-bar.hbs:17:112
@@ -9475,10 +9504,6 @@ msgstr "票券容量設定"
 msgid "View Orders"
 msgstr "檢視訂單"
 
-#: app/templates/events/view/videoroom/list.hbs:3:4
-msgid "This feature is still in alpha stage."
-msgstr ""
-
 #: app/templates/events/view/videoroom/list.hbs:16:51
 msgid "Turn off Video"
 msgstr ""
@@ -9533,7 +9558,7 @@ msgid "No groups found for selected filters"
 msgstr ""
 
 #: app/templates/groups/list.hbs:8:38 app/templates/my-groups/list.hbs:8:38
-msgid "No groups found for the events"
+msgid "No groups found for the events."
 msgstr ""
 
 #: app/templates/index.hbs:3:34
