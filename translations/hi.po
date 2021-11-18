@@ -100,7 +100,6 @@ msgstr "कृपया अपना ईमेल आईडी दर्ज क�
 #: app/components/forms/session-speaker-form.js:177:23
 #: app/components/forms/session-speaker-form.js:191:23
 #: app/components/forms/user-profile-form.js:41:23
-#: app/components/forms/wizard/basic-details-step.js:364:23
 msgid "Please enter a valid email address"
 msgstr "कृपया एक वैध ई -मेल एड्रेस डालें"
 
@@ -323,7 +322,6 @@ msgstr "कृपया एक भाषा दर्ज करें"
 #: app/components/forms/session-speaker-form.js:216:23
 #: app/components/forms/session-speaker-form.js:345:23
 #: app/components/forms/session-speaker-form.js:356:23
-#: app/components/forms/wizard/basic-details-step.js:415:23
 #: app/components/forms/wizard/other-details-step.js:65:23
 msgid "Please enter a valid url"
 msgstr "कृपया एक मान्य यूआरएल दर्ज कीजिए"
@@ -364,8 +362,8 @@ msgid "Please enter the city"
 msgstr "कृपया शहर दर्ज करें"
 
 #: app/components/forms/admin/settings/billing.js:94:23
-msgid "Please enter the zip code"
-msgstr "कृपया ज़िप कोड दर्ज करें"
+msgid "Please enter the ZIP code"
+msgstr ""
 
 #: app/components/forms/admin/settings/images-form.js:17:23
 #: app/components/forms/admin/settings/images-form.js:44:23
@@ -869,6 +867,7 @@ msgstr "कस्टम लिंक जोड़ें"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:34:23
 #: app/components/forms/group/group-settings-form.js:24:23
+#: app/components/modals/tax-info-modal.js:26:23
 msgid "Please enter a name."
 msgstr ""
 
@@ -883,12 +882,14 @@ msgstr ""
 #: app/components/forms/orders/order-form.js:297:19
 #: app/components/forms/orders/order-form.js:308:19
 #: app/components/forms/orders/order-form.js:322:19
+#: app/components/forms/wizard/basic-details-step.js:415:23
 msgid "Please enter a valid URL."
 msgstr ""
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:57:23
 #: app/components/forms/orders/order-form.js:107:19
 #: app/components/forms/orders/order-form.js:481:23
+#: app/components/forms/wizard/basic-details-step.js:364:23
 msgid "Please enter a valid email address."
 msgstr ""
 
@@ -1284,6 +1285,7 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:191:19
 #: app/components/forms/orders/order-form.js:490:23
+#: app/components/forms/wizard/basic-details-step.js:424:23
 #: app/components/modals/tax-info-modal.js:148:23
 msgid "Please select your country."
 msgstr ""
@@ -1381,7 +1383,7 @@ msgid "Please enter your Tax ID or Business ID."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:526:23
-msgid "Please enter your zip code."
+msgid "Please enter your ZIP code."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:535:23
@@ -1519,15 +1521,18 @@ msgid "Please enter your billing city."
 msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:73:23
-msgid "Please enter the zip code."
+msgid "Please enter the ZIP code."
 msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:107:28
-msgid "Your billing details has been updated."
+msgid "Your billing details have been updated."
 msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:113:26
-msgid "An unexpected error occurred."
+#: app/components/forms/user-profile-form.js:73:30
+#: app/controllers/admin/users/view/account/contact-info.js:15:26
+#: app/controllers/orders/view.js:90:26
+msgid "Sorry, an unexpected error has occurred. Our developers will fix this."
 msgstr ""
 
 #: app/components/forms/user-profile-form.js:19:23
@@ -1545,11 +1550,6 @@ msgstr "कृपया एक मान्य फोन नंबर दर्�
 #: app/components/forms/user-profile-form.js:66:32
 msgid "Your profile has been updated"
 msgstr "आपकी प्रोफ़ाइल अद्यतित कर दी गई है"
-
-#: app/components/forms/user-profile-form.js:73:30
-#: app/controllers/admin/users/view/account/contact-info.js:15:26
-msgid "An unexpected error occurred"
-msgstr "एक अप्रत्याशित त्रुटि हुई"
 
 #: app/components/forms/wizard/basic-details-step.js:25:22
 msgid "Venue"
@@ -1574,121 +1574,125 @@ msgid "Please give your event a name"
 msgstr "कृपया अपने ईवेंट को नाम दें"
 
 #: app/components/forms/wizard/basic-details-step.js:176:23
-msgid "Choose a timezone for your event"
-msgstr "अपनी घटना के लिए एक समयक्षेत्र चुनें"
+msgid "Choose a timezone for your event."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:185:23
-msgid "Please tell us when your event starts"
-msgstr "कृपया हमें बताएं कि आपकी घटना कब शुरू होगी"
+#: app/components/forms/wizard/sessions-speakers-step.js:70:23
+msgid "When does your event start?"
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:189:23
-msgid "Please give a valid start date"
-msgstr "कृपया एक मान्य प्रारंभ तिथि दें"
+msgid "Please give a valid start date."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:198:23
-msgid "Please tell us when your event ends"
-msgstr "कृपया हमें बताएं कि आपकी घटना कब समाप्त होगी"
+#: app/components/forms/wizard/sessions-speakers-step.js:100:23
+msgid "When does your event end?"
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:202:23
 msgid "Please give a valid end date"
 msgstr "कृपया एक मान्य अंतिम तिथि दें"
 
 #: app/components/forms/wizard/basic-details-step.js:206:23
-msgid "Event duration can not be more than 20 days"
-msgstr "कार्यक्रम की अवधि 20 दिनों से अधिक नहीं हो सकती"
+msgid "Event duration can not be more than 20 days."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:216:23
-msgid "Please give a start time"
-msgstr "कृपया शुरुआत का समय दें"
+#: app/components/forms/wizard/sessions-speakers-step.js:114:23
+msgid "Please enter a start time."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:220:23
-msgid "Starting time should be lesser than the ending time!"
+msgid "The start time should be before the end time!"
 msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:230:23
-msgid "Please give an end time"
-msgstr "कृपया अंतिम समय दें"
+#: app/components/forms/wizard/sessions-speakers-step.js:143:23
+msgid "Please enter an end time."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:234:23
-msgid "Ending time should be greater than the starting time!"
+msgid "The end time should be after the start time!"
 msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:243:23
-msgid "Please give your ticket a name"
-msgstr "कृपया अपने टिकट को एक नाम दें"
+msgid "Please give your ticket a name."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:253:23
-msgid "Ticket description shouldn't contain more than {ruleValue} characters"
-msgstr "टिकट विवरण में {ruleValue} वर्णों से अधिक नहीं होना चाहिए"
+msgid "Ticket description shouldn't contain more than {ruleValue} characters."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:262:23
-msgid "Please give your ticket a price"
-msgstr "कृपया अपने टिकट का मूल्य दें"
+msgid "Please give your ticket a price."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:266:23
-msgid "Please give a proper price for you ticket"
-msgstr "कृपया आप टिकट का उचित मूल्य दें"
+msgid "Please give a proper price for you ticket."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:270:23
-msgid "Ticket price should be greater than 0"
-msgstr "टिकट की कीमत 0 से अधिक होनी चाहिए"
+msgid "Ticket price should be greater than 0."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:279:23
-msgid "Please specify how many tickets of this type are available"
-msgstr "कृपया निर्दिष्ट करें कि इस प्रकार के कितने टिकट उपलब्ध हैं"
+msgid "Please specify how many tickets of this type are available."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:283:23
-msgid "Please give a proper quantity for you ticket"
-msgstr "कृपया आप टिकट के लिए उचित मात्रा दें"
+msgid "Please give a proper quantity for you ticket."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:292:23
-msgid "Minimum tickets per order required"
-msgstr "आवश्यक आदेश प्रति न्यूनतम टिकट"
+msgid "Minimum tickets per order required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:296:23
 #: app/components/forms/wizard/basic-details-step.js:313:23
-msgid "Invalid number"
-msgstr "अमान्य संख्या"
+msgid "Invalid number!"
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:300:23
-msgid "Minimum order should not be greater than maximum"
-msgstr "न्यूनतम आदेश अधिकतम से अधिक नहीं होना चाहिए"
+msgid "Minimum order should not be greater than maximum."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:309:23
-msgid "Maximum tickets per order required"
-msgstr "प्रति आदेश अधिकतम टिकट आवश्यक है"
+msgid "Maximum tickets per order required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:317:23
-msgid "Maximum tickets per order should be greater than 0"
-msgstr "प्रति आदेश अधिकतम टिकट 0 से अधिक होना चाहिए"
+msgid "Maximum tickets per order should be greater than 0."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:321:23
-msgid "Maximum order should not be less than minimum"
-msgstr "अधिकतम आदेश न्यूनतम से कम नहीं होना चाहिए"
+msgid "Maximum order should not be less than minimum."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:330:23
-msgid "Minimum price for donation tickets required"
-msgstr "दान टिकटों के लिए न्यूनतम मूल्य आवश्यक है"
+msgid "Minimum price for donation tickets required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:334:23
-msgid "Minimum price needs to be greater than zero"
-msgstr "न्यूनतम मूल्य शून्य से अधिक होना चाहिए"
+msgid "Minimum price needs to be greater than zero."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:338:23
-msgid "Minimum price should not be greater than maximum"
-msgstr "न्यूनतम मूल्य अधिकतम से अधिक नहीं होना चाहिए"
+msgid "Minimum price should not be greater than maximum."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:347:23
-msgid "Maximum price for donation tickets required"
-msgstr "दान टिकट के लिए अधिकतम मूल्य आवश्यक है"
+msgid "Maximum price for donation tickets required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:351:23
-msgid "Maximum price needs to be greater than zero"
-msgstr "अधिकतम मूल्य शून्य से अधिक होना चाहिए"
+msgid "Maximum price needs to be greater than zero."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:355:23
-msgid "Maximum price should not be less than minimum"
-msgstr "अधिकतम मूल्य न्यूनतम से कम नहीं होना चाहिए"
+msgid "Maximum price should not be less than minimum."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:368:23
 msgid "Please fill your paypal email for payment of tickets."
@@ -1710,17 +1714,13 @@ msgstr "कृपया टिकटों के भुगतान के ल�
 msgid "Please fill the invoice details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:424:23
-msgid "Please select your country"
-msgstr "कृपया अपना देश चुनें"
-
 #: app/components/forms/wizard/basic-details-step.js:445:51
-msgid "Please try again"
-msgstr "कृपया पुन: प्रयास करें"
+msgid "Please try again."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:454:30
-msgid "Stripe disconnected successfully"
-msgstr "Stripe connection सफलतापूर्वक काट दिया गया"
+msgid "Stripe disconnected successfully."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:471:36
 msgid ""
@@ -1873,19 +1873,15 @@ msgid "Please enter name for session-type."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:52:23
-msgid "Please enter name for track."
+msgid "Please enter a name for the track."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:61:23
-msgid "Please enter a Private link."
-msgstr ""
-
-#: app/components/forms/wizard/sessions-speakers-step.js:70:23
-msgid "Please tell us when your event starts."
+msgid "Please enter a private link."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:74:23
-msgid "CFS start time should be before than event start time."
+msgid "CFS start time should be before event start time."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:83:23
@@ -1900,16 +1896,8 @@ msgstr ""
 msgid "Soft closing date should be before CFS end date!"
 msgstr ""
 
-#: app/components/forms/wizard/sessions-speakers-step.js:100:23
-msgid "Please tell us when your event ends."
-msgstr ""
-
 #: app/components/forms/wizard/sessions-speakers-step.js:104:23
-msgid "CFS end time should be before than event start time!"
-msgstr ""
-
-#: app/components/forms/wizard/sessions-speakers-step.js:114:23
-msgid "Please give a start time."
+msgid "CFS end time should be before event start time!"
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:125:23
@@ -1924,12 +1912,8 @@ msgstr ""
 msgid "Soft closing time should be before CFS end time!"
 msgstr ""
 
-#: app/components/forms/wizard/sessions-speakers-step.js:143:23
-msgid "Please give an end time."
-msgstr ""
-
 #: app/components/forms/wizard/sessions-speakers-step.js:152:23
-msgid "Please enter name for microlocation."
+msgid "Please enter a name for a microlocation."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:161:23
@@ -1937,7 +1921,7 @@ msgid "Please enter floor for microlocation."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:170:23
-msgid "Please add an announcement to enable call for speakers."
+msgid "Please add an announcement to enable the call for speakers."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:263:36
@@ -2139,10 +2123,6 @@ msgstr "सूचित करें"
 msgid "Email scheduled to be sent successfully"
 msgstr "ईमेल को सफलतापूर्वक भेजा जाना है"
 
-#: app/components/modals/tax-info-modal.js:26:23
-msgid "Please give a name."
-msgstr ""
-
 #: app/components/modals/tax-info-modal.js:36:23
 msgid "Please tell us your tax rate (in %)."
 msgstr ""
@@ -2152,15 +2132,15 @@ msgid "Please give a valid tax rate."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:50:23
-msgid "Please give us your tax ID."
+msgid "Please enter your tax ID."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:61:23
-msgid "Please give us your organisation name."
+msgid "Please enter the name of your organisation."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:72:23
-msgid "Please give us your contact name."
+msgid "Please enter a contact name."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:83:23
@@ -2168,15 +2148,15 @@ msgid "Please enter your phone number."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:116:23
-msgid "Please give a city."
+msgid "Please enter a city."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:127:23
-msgid "Please give a state."
+msgid "Please enter a state."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:138:23
-msgid "Please provide a zip code."
+msgid "Please provide a ZIP code."
 msgstr ""
 
 #: app/components/notification-dropdown.js:49:28
@@ -3218,7 +3198,7 @@ msgid "Speaker details have been saved"
 msgstr "स्पीकर का विवरण सहेज लिया गया है"
 
 #: app/controllers/events/view/speakers/create.js:30:26
-msgid "Your speaker has been saved."
+msgid "The speaker has been saved."
 msgstr ""
 
 #: app/controllers/events/view/speakers/list.js:34:26
@@ -3466,10 +3446,6 @@ msgstr "यहां आपका ऑर्डर चालान है"
 #: app/controllers/orders/view.js:82:28
 msgid "Here are your tickets"
 msgstr "यहाँ आपके टिकट हैं"
-
-#: app/controllers/orders/view.js:90:26
-msgid "An unexpected Error occurred"
-msgstr "एक अप्रत्याशित त्रुटि हुई"
 
 #: app/controllers/public.js:73:13
 msgid "Online and In-Person Event at"
@@ -5484,7 +5460,7 @@ msgid "Cannot announce unpublished event!"
 msgstr ""
 
 #: app/templates/components/event-card.hbs:83:88
-msgid "Announce event!!"
+msgid "Announce event"
 msgstr ""
 
 #: app/templates/components/event-card.hbs:86:83
@@ -5495,9 +5471,11 @@ msgstr ""
 #: app/templates/components/event-invoice/billing-info.hbs:42:16
 #: app/templates/components/forms/admin/settings/billing.hbs:73:50
 #: app/templates/components/forms/user-payment-info-form.hbs:37:21
+#: app/templates/components/modals/tax-info-modal.hbs:64:13
+#: app/templates/components/orders/company-info.hbs:95:22
 #: app/templates/components/widgets/forms/billing-info.hbs:36:40
 #: app/templates/components/widgets/forms/location-input.hbs:37:22
-msgid "Zip Code"
+msgid "ZIP Code"
 msgstr ""
 
 #: app/templates/components/event-invoice/billing-info.hbs:39:16
@@ -5656,7 +5634,7 @@ msgid "Export and Download Event as Zip"
 msgstr ""
 
 #: app/templates/components/events/view/export/download-zip.hbs:5:6
-msgid "Select the media files you want in the zip"
+msgid "Select the media files you want in the Zip file."
 msgstr ""
 
 #: app/templates/components/events/view/export/download-zip.hbs:13:39
@@ -5690,7 +5668,7 @@ msgstr ""
 
 #: app/templates/components/events/view/overview/event-apps.hbs:9:4
 msgid ""
-"You can download the entire site as a zip file and upload it to your own web "
+"You can download the entire site as a Zip file and upload it to your own web "
 "hosting service."
 msgstr ""
 
@@ -7856,7 +7834,7 @@ msgid "Offline Payments"
 msgstr "ऑफलाइन भुगतान"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:607:12
-msgid "YES, accept payment by Purchase on invoice."
+msgid "YES, accept payment by purchase on invoice."
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:614:12
@@ -7874,7 +7852,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:654:12
-msgid "YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer."
+msgid "YES, accept payment by telegraphic transfer (TT) / bank transfer."
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:662:12
@@ -7894,7 +7872,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:706:14
-msgid "Require Billing Information from Ticket Buyer."
+msgid "Require billing information from ticket buyer."
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:715:29
@@ -8468,10 +8446,6 @@ msgstr ""
 msgid "Business Address"
 msgstr ""
 
-#: app/templates/components/modals/tax-info-modal.hbs:64:13
-msgid "Zipcode"
-msgstr ""
-
 #: app/templates/components/modals/tax-info-modal.hbs:68:13
 msgid "Text for invoice footer (optional)"
 msgstr ""
@@ -8564,10 +8538,6 @@ msgstr ""
 
 #: app/templates/components/orders/company-info.hbs:5:8
 msgid "Company Information"
-msgstr ""
-
-#: app/templates/components/orders/company-info.hbs:95:22
-msgid "ZIP Code"
 msgstr ""
 
 #: app/templates/components/orders/company-info.hbs:105:22
