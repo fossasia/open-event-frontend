@@ -80,6 +80,21 @@ export default class PublicController extends Controller {
     }
   }
 
+  @computed
+  get follower() {
+    return this.followers.filter(userFollowGroup => userFollowGroup?.user.get('id') === this.authManager.currentUser.get('id'))[0];
+  }
+
+  @computed
+  get followers() {
+    return this.model.group.get('followers') ? this.model.group.get('followers').toArray() : [];
+  }
+
+  @computed
+  get isFollowed() {
+    return !!this.follower;
+  }
+
   @action
   async follow() {
     if (!this.session.isAuthenticated) {
@@ -94,10 +109,11 @@ export default class PublicController extends Controller {
       return;
     }
     const group = await this.model.group;
-    const follower = group.belongsTo('follower').value();
     try {
-      if (follower) {
-        await follower.destroyRecord();
+      if (this.isFollowed) {
+        await this.follower.destroyRecord();
+        this.set('follower', null);
+        this.set('isFollowed', false);
         this.notify.info(this.l10n.t('You have successfully unfollowed this group.'));
       } else {
         try {
@@ -122,6 +138,8 @@ export default class PublicController extends Controller {
           group
         });
         await followGroup.save();
+        this.set('isFollowed', true);
+        this.set('follower', followGroup);
         this.notify.success(this.l10n.t('You have successfully followed this group.'));
       }
     } catch (e) {
