@@ -69,13 +69,12 @@
       {{/if}}
     </div>
     <div class="three wide column">
-      {{#if this.session.isAuthenticated}}
-        <button class="blue {{if this.device.isMobile 'mt-2' 'mt-4'}} ui fluid button" {{action 'toggleFollow'}}>
+        <button class="blue {{if (not this.authManager.currentUser.email) 'blur-blue-btn'}} {{if this.device.isMobile 'mt-2' 'mt-4'}} ui fluid button" {{action 'toggleFollow'}}>
           <i class="large icons basic-details">
             <i class="users icon"></i>
             <i class="inverted corner add icon"></i>
           </i>
-          {{#if this.isFollowed}}
+          {{#if (and this.session.isAuthenticated this.isFollowed)}}
             {{t 'Following'}}
           {{else}}
             {{t 'Follow Group'}}         
@@ -84,7 +83,6 @@
             {{@group.followerCount}}
           </div>
         </button>
-      {{/if}}
         {{#if this.followers}}
           <div class="d-flex content-center items-center wrap mt-4">
             {{#each this.followers as |follower index|}}
