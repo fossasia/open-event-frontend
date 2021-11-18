@@ -82,7 +82,7 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/cell-simple-date'
       },
       {
-        name            : this.l10n.t('Mark Spam'),
+        name            : this.l10n.t('Mark as Spam'),
         valuePath       : 'id',
         extraValuePaths : ['isBlocked'],
         isSortable      : true,

@@ -21,7 +21,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter message')
+              prompt : this.l10n.t('Please enter a message.')
             }
           ]
         }
@@ -38,13 +38,13 @@ export default ModalBase.extend(FormMixin, {
           if (this.group) {
             const response = await this.loader.post(`/groups/${this.event.id}/contact-organizer`, payload);
             if (!response?.success) {throw response}
-            this.notify.success(this.l10n.t('Organizer contacted successfully'), {
+            this.notify.success(this.l10n.t('Organizer contacted successfully.'), {
               id: 'contact_organizer_succ'
             });
           } else {
             const response = await this.loader.post(`/events/${this.event.id}/contact-organizer`, payload);
             if (!response?.success) {throw response}
-            this.notify.success(this.l10n.t('Organizer contacted successfully'), {
+            this.notify.success(this.l10n.t('Organizer contacted successfully.'), {
               id: 'contact_organizer_succ'
             });
           }
