@@ -70,7 +70,7 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter the zip code.')
+              prompt : this.l10n.t('Please enter the ZIP code.')
             }
           ]
         },
@@ -104,13 +104,13 @@ export default class UserPaymentInfoForm extends Component.extend(FormMixin) {
       try {
         this.authManager.currentUser.setProperties(this.userBillingInfo);
         await this.authManager.currentUser.save();
-        this.notify.success(this.l10n.t('Your billing details has been updated.'), {
+        this.notify.success(this.l10n.t('Your billing details have been updated.'), {
           id: 'bill_det_updated'
         });
       } catch (error) {
         console.error('Error while updating billing details', error);
         this.authManager.currentUser.rollbackAttributes();
-        this.notify.error(this.l10n.t('An unexpected error occurred.'), {
+        this.notify.error(this.l10n.t('Sorry, an unexpected error has occurred. Our developers will fix this.'), {
           id: 'bill_det_unexpect'
         });
       }

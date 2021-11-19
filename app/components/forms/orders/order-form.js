@@ -523,7 +523,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter your zip code.')
+              prompt : this.l10n.t('Please enter your ZIP code.')
             }
           ]
         },

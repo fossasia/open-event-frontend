@@ -49,7 +49,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for track.')
+              prompt : this.l10n.t('Please enter a name for the track.')
             }
           ]
         },
@@ -58,7 +58,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a Private link.')
+              prompt : this.l10n.t('Please enter a private link.')
             }
           ]
         },
@@ -67,11 +67,11 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event starts.')
+              prompt : this.l10n.t('When does your event start?')
             },
             {
               type   : 'checkStartDateCFS',
-              prompt : this.l10n.t('CFS start time should be before than event start time.')
+              prompt : this.l10n.t('CFS start time should be before event start time.')
             }
           ]
         },
@@ -97,11 +97,11 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event ends.')
+              prompt : this.l10n.t('When does your event end?')
             },
             {
               type   : 'checkEndDateCFS',
-              prompt : this.l10n.t('CFS end time should be before than event start time!')
+              prompt : this.l10n.t('CFS end time should be before event start time!')
             }
           ]
         },
@@ -111,7 +111,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a start time.')
+              prompt : this.l10n.t('Please enter a start time.')
             }
           ]
         },
@@ -140,7 +140,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give an end time.')
+              prompt : this.l10n.t('Please enter an end time.')
             }
           ]
         },
@@ -149,7 +149,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for microlocation.')
+              prompt : this.l10n.t('Please enter a name for a microlocation.')
             }
           ]
         },
@@ -167,7 +167,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please add an announcement to enable call for speakers.')
+              prompt : this.l10n.t('Please add an announcement to enable the call for speakers.')
             }
           ]
         }

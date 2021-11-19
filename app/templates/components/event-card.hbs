@@ -80,7 +80,7 @@
         {{else if this.event.isAnnounced}}
           <button class="fluid ui green disabled button">{{t 'Event has been announced.'}}</button>
         {{else}}
-          <button class="fluid ui teal button" {{action this.announceEvent this.event}}>{{t 'Announce event!!'}}</button>
+          <button class="fluid ui teal button" {{action this.announceEvent this.event}}>{{t 'Announce event'}}</button>
         {{/if}}
         <div class="ui hidden divider m-0" style="height: .4rem !important;"></div>
         <button class="fluid ui red button" {{action this.removeEvent this.event}}>{{t 'Remove event from group.'}}</button>
