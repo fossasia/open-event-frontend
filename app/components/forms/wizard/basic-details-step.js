@@ -186,7 +186,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please give a valid start date.')
+              prompt : this.l10n.t('Please enter a valid start date.')
             }
           ]
         },
@@ -199,7 +199,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please give a valid end date')
+              prompt : this.l10n.t('Please enter a valid end date.')
             },
             {
               type   : 'checkDateDifference',
@@ -280,7 +280,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please give a proper quantity for you ticket.')
+              prompt : this.l10n.t('Please give a proper quantity for your ticket.')
             }
           ]
         },
