@@ -173,7 +173,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Choose a timezone for your event')
+              prompt : this.l10n.t('Choose a timezone for your event.')
             }
           ]
         },
@@ -182,11 +182,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event starts')
+              prompt : this.l10n.t('When does your event start?')
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please give a valid start date')
+              prompt : this.l10n.t('Please enter a valid start date.')
             }
           ]
         },
@@ -195,15 +195,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event ends')
+              prompt : this.l10n.t('When does your event end?')
             },
             {
               type   : 'date',
-              prompt : this.l10n.t('Please give a valid end date')
+              prompt : this.l10n.t('Please enter a valid end date.')
             },
             {
               type   : 'checkDateDifference',
-              prompt : this.l10n.t('Event duration can not be more than 20 days')
+              prompt : this.l10n.t('Event duration can not be more than 20 days.')
             }
           ]
         },
@@ -213,11 +213,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a start time')
+              prompt : this.l10n.t('Please enter a start time.')
             },
             {
               type   : 'checkValidTimeDifference',
-              prompt : this.l10n.t('Starting time should be lesser than the ending time!')
+              prompt : this.l10n.t('The start time should be before the end time!')
             }
           ]
         },
@@ -227,11 +227,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give an end time')
+              prompt : this.l10n.t('Please enter an end time.')
             },
             {
               type   : 'checkValidTimeDifference',
-              prompt : this.l10n.t('Ending time should be greater than the starting time!')
+              prompt : this.l10n.t('The end time should be after the start time!')
             }
           ]
         },
@@ -240,7 +240,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a name')
+              prompt : this.l10n.t('Please give your ticket a name.')
             }
           ]
         },
@@ -250,7 +250,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'maxLength[160]',
-              prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters')
+              prompt : this.l10n.t('Ticket description shouldn\'t contain more than {ruleValue} characters.')
             }
           ]
         },
@@ -259,15 +259,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give your ticket a price')
+              prompt : this.l10n.t('Please give your ticket a price.')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please give a proper price for you ticket')
+              prompt : this.l10n.t('Please give a proper price for you ticket.')
             },
             {
               type   : 'decimal[0..]',
-              prompt : this.l10n.t('Ticket price should be greater than 0')
+              prompt : this.l10n.t('Ticket price should be greater than 0.')
             }
           ]
         },
@@ -276,11 +276,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please specify how many tickets of this type are available')
+              prompt : this.l10n.t('Please specify how many tickets of this type are available.')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please give a proper quantity for you ticket')
+              prompt : this.l10n.t('Please give a proper quantity for your ticket.')
             }
           ]
         },
@@ -289,15 +289,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Minimum tickets per order required')
+              prompt : this.l10n.t('Minimum tickets per order required.')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Invalid number')
+              prompt : this.l10n.t('Invalid number!')
             },
             {
               type   : 'checkMaxMinOrder',
-              prompt : this.l10n.t('Minimum order should not be greater than maximum')
+              prompt : this.l10n.t('Minimum order should not be greater than maximum.')
             }
           ]
         },
@@ -306,19 +306,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Maximum tickets per order required')
+              prompt : this.l10n.t('Maximum tickets per order required.')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Invalid number')
+              prompt : this.l10n.t('Invalid number!')
             },
             {
               type   : 'integer[1..]',
-              prompt : this.l10n.t('Maximum tickets per order should be greater than 0')
+              prompt : this.l10n.t('Maximum tickets per order should be greater than 0.')
             },
             {
               type   : 'checkMaxMinOrder',
-              prompt : this.l10n.t('Maximum order should not be less than minimum')
+              prompt : this.l10n.t('Maximum order should not be less than minimum.')
             }
           ]
         },
@@ -327,15 +327,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Minimum price for donation tickets required')
+              prompt : this.l10n.t('Minimum price for donation tickets required.')
             },
             {
               type   : 'integer[1..]',
-              prompt : this.l10n.t('Minimum price needs to be greater than zero')
+              prompt : this.l10n.t('Minimum price needs to be greater than zero.')
             },
             {
               type   : 'checkMaxMinPrice',
-              prompt : this.l10n.t('Minimum price should not be greater than maximum')
+              prompt : this.l10n.t('Minimum price should not be greater than maximum.')
             }
           ]
         },
@@ -344,15 +344,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Maximum price for donation tickets required')
+              prompt : this.l10n.t('Maximum price for donation tickets required.')
             },
             {
               type   : 'integer[1..]',
-              prompt : this.l10n.t('Maximum price needs to be greater than zero')
+              prompt : this.l10n.t('Maximum price needs to be greater than zero.')
             },
             {
               type   : 'checkMaxMinPrice',
-              prompt : this.l10n.t('Maximum price should not be less than minimum')
+              prompt : this.l10n.t('Maximum price should not be less than minimum.')
             }
           ]
         },
@@ -361,7 +361,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'email',
-              prompt : this.l10n.t('Please enter a valid email address')
+              prompt : this.l10n.t('Please enter a valid email address.')
             },
             {
               type   : 'empty',
@@ -412,7 +412,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             {
               type   : 'regExp',
               value  : protocolLessValidUrlPattern,
-              prompt : this.l10n.t('Please enter a valid url')
+              prompt : this.l10n.t('Please enter a valid URL.')
             }
           ]
         },
@@ -421,7 +421,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select your country')
+              prompt : this.l10n.t('Please select your country.')
             }
           ]
         }
@@ -442,7 +442,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         })
         .catch(error => {
           console.error('Error while setting stripe authorization in event', error);
-          this.notify.error(error.message + '. ' + this.l10n.t('Please try again'), {
+          this.notify.error(error.message + '. ' + this.l10n.t('Please try again.'), {
             id: 'basic_detail_err'
           });
         });
@@ -451,7 +451,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       const stripeAuthorization = await this.data.event.stripeAuthorization;
       stripeAuthorization.destroyRecord()
         .then(() => {
-          this.notify.success(this.l10n.t('Stripe disconnected successfully'), {
+          this.notify.success(this.l10n.t('Stripe disconnected successfully.'), {
             id: 'stripe_disconn'
           });
         });
@@ -468,7 +468,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           return;
         }
         try {
-          await this.confirm.prompt(this.l10n.t('If you choose this option other ticket options will not be available. Do you want to proceed? '));
+          await this.confirm.prompt(this.l10n.t('If you choose this option other ticket options will not be available. Do you want to proceed?'));
           this.data.event.isOneclickSignupEnabled = true;
           let countRegistration = 0;
           this.data.event.tickets?.toArray().filter(x => {

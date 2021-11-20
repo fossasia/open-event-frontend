@@ -23,7 +23,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a name.')
+              prompt : this.l10n.t('Please enter a name.')
             }
           ]
         },
@@ -47,7 +47,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your tax ID.')
+              prompt : this.l10n.t('Please enter your tax ID.')
             }
           ]
         },
@@ -58,7 +58,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your organisation name.')
+              prompt : this.l10n.t('Please enter the name of your organisation.')
             }
           ]
         },
@@ -69,7 +69,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your contact name.')
+              prompt : this.l10n.t('Please enter a contact name.')
             }
           ]
         },
@@ -113,7 +113,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a city.')
+              prompt : this.l10n.t('Please enter a city.')
             }
           ]
         },
@@ -124,7 +124,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a state.')
+              prompt : this.l10n.t('Please enter a state.')
             }
           ]
         },
@@ -135,7 +135,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please provide a zip code.')
+              prompt : this.l10n.t('Please provide a ZIP code.')
             }
           ]
         },

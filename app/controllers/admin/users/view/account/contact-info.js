@@ -12,7 +12,7 @@ export default class extends Controller {
       })
       .catch(e => {
         console.error('Error while updating contact info', e);
-        this.notify.error(this.l10n.t('An unexpected error occurred'));
+        this.notify.error(this.l10n.t('Sorry, an unexpected error has occurred. Our developers will fix this.'));
       })
       .finally(() => {
         this.set('isLoading', false);

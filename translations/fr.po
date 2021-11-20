@@ -102,7 +102,6 @@ msgstr "Merci de saisir votre ID de courriel"
 #: app/components/forms/session-speaker-form.js:177:23
 #: app/components/forms/session-speaker-form.js:191:23
 #: app/components/forms/user-profile-form.js:41:23
-#: app/components/forms/wizard/basic-details-step.js:364:23
 msgid "Please enter a valid email address"
 msgstr "Merci de renseigner une adresse courriel valide"
 
@@ -327,7 +326,6 @@ msgstr "Merci de saisir une langue"
 #: app/components/forms/session-speaker-form.js:216:23
 #: app/components/forms/session-speaker-form.js:345:23
 #: app/components/forms/session-speaker-form.js:356:23
-#: app/components/forms/wizard/basic-details-step.js:415:23
 #: app/components/forms/wizard/other-details-step.js:65:23
 msgid "Please enter a valid url"
 msgstr "Merci de saisir une url valide"
@@ -374,9 +372,8 @@ msgid "Please enter the city"
 msgstr "Veuillez entrer la ville"
 
 #: app/components/forms/admin/settings/billing.js:94:23
-#, fuzzy
-msgid "Please enter the zip code"
-msgstr "Veuillez entrer le code postal"
+msgid "Please enter the ZIP code"
+msgstr ""
 
 #: app/components/forms/admin/settings/images-form.js:17:23
 #: app/components/forms/admin/settings/images-form.js:44:23
@@ -898,6 +895,7 @@ msgstr "Ajouter un lien personnalisé"
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:34:23
 #: app/components/forms/group/group-settings-form.js:24:23
+#: app/components/modals/tax-info-modal.js:26:23
 msgid "Please enter a name."
 msgstr ""
 
@@ -912,12 +910,14 @@ msgstr ""
 #: app/components/forms/orders/order-form.js:297:19
 #: app/components/forms/orders/order-form.js:308:19
 #: app/components/forms/orders/order-form.js:322:19
+#: app/components/forms/wizard/basic-details-step.js:415:23
 msgid "Please enter a valid URL."
 msgstr ""
 
 #: app/components/forms/events/view/exhibitors/exhibitor-form.ts:57:23
 #: app/components/forms/orders/order-form.js:107:19
 #: app/components/forms/orders/order-form.js:481:23
+#: app/components/forms/wizard/basic-details-step.js:364:23
 msgid "Please enter a valid email address."
 msgstr ""
 
@@ -1307,6 +1307,7 @@ msgstr ""
 
 #: app/components/forms/orders/order-form.js:191:19
 #: app/components/forms/orders/order-form.js:490:23
+#: app/components/forms/wizard/basic-details-step.js:424:23
 #: app/components/modals/tax-info-modal.js:148:23
 msgid "Please select your country."
 msgstr ""
@@ -1404,7 +1405,7 @@ msgid "Please enter your Tax ID or Business ID."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:526:23
-msgid "Please enter your zip code."
+msgid "Please enter your ZIP code."
 msgstr ""
 
 #: app/components/forms/orders/order-form.js:535:23
@@ -1546,15 +1547,18 @@ msgid "Please enter your billing city."
 msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:73:23
-msgid "Please enter the zip code."
+msgid "Please enter the ZIP code."
 msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:107:28
-msgid "Your billing details has been updated."
+msgid "Your billing details have been updated."
 msgstr ""
 
 #: app/components/forms/user-payment-info-form.js:113:26
-msgid "An unexpected error occurred."
+#: app/components/forms/user-profile-form.js:73:30
+#: app/controllers/admin/users/view/account/contact-info.js:15:26
+#: app/controllers/orders/view.js:90:26
+msgid "Sorry, an unexpected error has occurred. Our developers will fix this."
 msgstr ""
 
 #: app/components/forms/user-profile-form.js:19:23
@@ -1573,11 +1577,6 @@ msgstr "Veuillez entrer un numéro de téléphone valide"
 #: app/components/forms/user-profile-form.js:66:32
 msgid "Your profile has been updated"
 msgstr "Votre profil a été mis à jour"
-
-#: app/components/forms/user-profile-form.js:73:30
-#: app/controllers/admin/users/view/account/contact-info.js:15:26
-msgid "An unexpected error occurred"
-msgstr "Une erreur inattendue s'est produite"
 
 #: app/components/forms/wizard/basic-details-step.js:25:22
 msgid "Venue"
@@ -1602,133 +1601,125 @@ msgid "Please give your event a name"
 msgstr "Donner un nom à votre évènement"
 
 #: app/components/forms/wizard/basic-details-step.js:176:23
-msgid "Choose a timezone for your event"
-msgstr "Sélectionner le fuseau horaire de votre évènement"
+msgid "Choose a timezone for your event."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:185:23
-msgid "Please tell us when your event starts"
-msgstr "Merci de renseigner quand votre évènement débute"
+#: app/components/forms/wizard/sessions-speakers-step.js:70:23
+msgid "When does your event start?"
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:189:23
-msgid "Please give a valid start date"
-msgstr "Merci de saisir une date valide"
+msgid "Please enter a valid start date."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:198:23
-msgid "Please tell us when your event ends"
-msgstr "Merci de renseigner quand votre évènement se termine"
+#: app/components/forms/wizard/sessions-speakers-step.js:100:23
+msgid "When does your event end?"
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:202:23
-msgid "Please give a valid end date"
-msgstr "Merci de saisir une date valide"
+msgid "Please enter a valid end date."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:206:23
-msgid "Event duration can not be more than 20 days"
+msgid "Event duration can not be more than 20 days."
 msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:216:23
-msgid "Please give a start time"
-msgstr "Merci de saisir une heure de démarrage"
+#: app/components/forms/wizard/sessions-speakers-step.js:114:23
+msgid "Please enter a start time."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:220:23
-msgid "Starting time should be lesser than the ending time!"
+msgid "The start time should be before the end time!"
 msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:230:23
-msgid "Please give an end time"
-msgstr "Merci de saisir une heure de fin"
+#: app/components/forms/wizard/sessions-speakers-step.js:143:23
+msgid "Please enter an end time."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:234:23
-msgid "Ending time should be greater than the starting time!"
+msgid "The end time should be after the start time!"
 msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:243:23
-msgid "Please give your ticket a name"
-msgstr "Merci de donner un nom à votre billet"
+msgid "Please give your ticket a name."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:253:23
-msgid "Ticket description shouldn't contain more than {ruleValue} characters"
+msgid "Ticket description shouldn't contain more than {ruleValue} characters."
 msgstr ""
-"La description du billet ne doit pas contenir plus de {ruleValue} caractères"
 
 #: app/components/forms/wizard/basic-details-step.js:262:23
-msgid "Please give your ticket a price"
-msgstr "Merci de donner un prix à votre billet"
+msgid "Please give your ticket a price."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:266:23
-msgid "Please give a proper price for you ticket"
-msgstr "Merci de saisir un prix valide"
+msgid "Please give a proper price for you ticket."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:270:23
-msgid "Ticket price should be greater than 0"
-msgstr "Le prix d'un ticket doit être positif"
+msgid "Ticket price should be greater than 0."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:279:23
-msgid "Please specify how many tickets of this type are available"
-msgstr "Merci de définir combien de billets de ce type sont disponible"
+msgid "Please specify how many tickets of this type are available."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:283:23
-msgid "Please give a proper quantity for you ticket"
-msgstr "Merci de saisir une quantité valide"
+msgid "Please give a proper quantity for your ticket."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:292:23
-msgid "Minimum tickets per order required"
-msgstr "Un mimimum de billets par commande est requis"
+msgid "Minimum tickets per order required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:296:23
 #: app/components/forms/wizard/basic-details-step.js:313:23
-msgid "Invalid number"
-msgstr "Nombre incorrect"
+msgid "Invalid number!"
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:300:23
-#, fuzzy
-msgid "Minimum order should not be greater than maximum"
+msgid "Minimum order should not be greater than maximum."
 msgstr ""
-"La commande minimale ne doit pas être supérieure à la commande maximale"
 
 #: app/components/forms/wizard/basic-details-step.js:309:23
-msgid "Maximum tickets per order required"
-msgstr "Un nombre maximum de billets par commande est requis"
+msgid "Maximum tickets per order required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:317:23
-#, fuzzy
-msgid "Maximum tickets per order should be greater than 0"
-msgstr "Le nombre maximum de billets par commande doit être supérieur à 0"
+msgid "Maximum tickets per order should be greater than 0."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:321:23
-#, fuzzy
-msgid "Maximum order should not be less than minimum"
+msgid "Maximum order should not be less than minimum."
 msgstr ""
-"La commande maximale ne doit pas être inférieure à la commande minimale"
 
 #: app/components/forms/wizard/basic-details-step.js:330:23
-#, fuzzy
-msgid "Minimum price for donation tickets required"
-msgstr "Prix minimum requis pour les billets de don"
+msgid "Minimum price for donation tickets required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:334:23
-#, fuzzy
-msgid "Minimum price needs to be greater than zero"
-msgstr "Le prix minimum doit être supérieur à zéro"
+msgid "Minimum price needs to be greater than zero."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:338:23
-#, fuzzy
-msgid "Minimum price should not be greater than maximum"
-msgstr "La valeur minimale ne peut être supérieure à la maximale"
+msgid "Minimum price should not be greater than maximum."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:347:23
-#, fuzzy
-msgid "Maximum price for donation tickets required"
-msgstr "Prix maximum pour les billets de don requis"
+msgid "Maximum price for donation tickets required."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:351:23
-#, fuzzy
-msgid "Maximum price needs to be greater than zero"
-msgstr "Le prix maximum doit être supérieur à zéro"
+msgid "Maximum price needs to be greater than zero."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:355:23
-#, fuzzy
-msgid "Maximum price should not be less than minimum"
-msgstr "La valeur maximale ne peut être inférieure à la minimale"
+msgid "Maximum price should not be less than minimum."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:368:23
 msgid "Please fill your paypal email for payment of tickets."
@@ -1750,19 +1741,13 @@ msgstr "Merci de saisir le chèque pour le paiement de vos billets."
 msgid "Please fill the invoice details for payment of tickets."
 msgstr ""
 
-#: app/components/forms/wizard/basic-details-step.js:424:23
-#, fuzzy
-msgid "Please select your country"
-msgstr "Veuillez sélectionner votre pays"
-
 #: app/components/forms/wizard/basic-details-step.js:445:51
-msgid "Please try again"
-msgstr "Veuillez réessayer"
+msgid "Please try again."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:454:30
-#, fuzzy
-msgid "Stripe disconnected successfully"
-msgstr "Une bande déconnectée avec succès"
+msgid "Stripe disconnected successfully."
+msgstr ""
 
 #: app/components/forms/wizard/basic-details-step.js:471:36
 msgid ""
@@ -1916,19 +1901,15 @@ msgid "Please enter name for session-type."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:52:23
-msgid "Please enter name for track."
+msgid "Please enter a name for the track."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:61:23
-msgid "Please enter a Private link."
-msgstr ""
-
-#: app/components/forms/wizard/sessions-speakers-step.js:70:23
-msgid "Please tell us when your event starts."
+msgid "Please enter a private link."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:74:23
-msgid "CFS start time should be before than event start time."
+msgid "CFS start time should be before event start time."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:83:23
@@ -1943,16 +1924,8 @@ msgstr ""
 msgid "Soft closing date should be before CFS end date!"
 msgstr ""
 
-#: app/components/forms/wizard/sessions-speakers-step.js:100:23
-msgid "Please tell us when your event ends."
-msgstr ""
-
 #: app/components/forms/wizard/sessions-speakers-step.js:104:23
-msgid "CFS end time should be before than event start time!"
-msgstr ""
-
-#: app/components/forms/wizard/sessions-speakers-step.js:114:23
-msgid "Please give a start time."
+msgid "CFS end time should be before event start time!"
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:125:23
@@ -1967,12 +1940,8 @@ msgstr ""
 msgid "Soft closing time should be before CFS end time!"
 msgstr ""
 
-#: app/components/forms/wizard/sessions-speakers-step.js:143:23
-msgid "Please give an end time."
-msgstr ""
-
 #: app/components/forms/wizard/sessions-speakers-step.js:152:23
-msgid "Please enter name for microlocation."
+msgid "Please enter a name for a microlocation."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:161:23
@@ -1980,7 +1949,7 @@ msgid "Please enter floor for microlocation."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:170:23
-msgid "Please add an announcement to enable call for speakers."
+msgid "Please add an announcement to enable the call for speakers."
 msgstr ""
 
 #: app/components/forms/wizard/sessions-speakers-step.js:263:36
@@ -2188,10 +2157,6 @@ msgstr "Annoncer"
 msgid "Email scheduled to be sent successfully"
 msgstr "Envoi du courriel planifié avec succès"
 
-#: app/components/modals/tax-info-modal.js:26:23
-msgid "Please give a name."
-msgstr ""
-
 #: app/components/modals/tax-info-modal.js:36:23
 msgid "Please tell us your tax rate (in %)."
 msgstr ""
@@ -2201,15 +2166,15 @@ msgid "Please give a valid tax rate."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:50:23
-msgid "Please give us your tax ID."
+msgid "Please enter your tax ID."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:61:23
-msgid "Please give us your organisation name."
+msgid "Please enter the name of your organisation."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:72:23
-msgid "Please give us your contact name."
+msgid "Please enter a contact name."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:83:23
@@ -2217,15 +2182,15 @@ msgid "Please enter your phone number."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:116:23
-msgid "Please give a city."
+msgid "Please enter a city."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:127:23
-msgid "Please give a state."
+msgid "Please enter a state."
 msgstr ""
 
 #: app/components/modals/tax-info-modal.js:138:23
-msgid "Please provide a zip code."
+msgid "Please provide a ZIP code."
 msgstr ""
 
 #: app/components/notification-dropdown.js:49:28
@@ -3303,7 +3268,7 @@ msgid "Speaker details have been saved"
 msgstr "Les informations concernant l'orateur sont enregistrées"
 
 #: app/controllers/events/view/speakers/create.js:30:26
-msgid "Your speaker has been saved."
+msgid "The speaker has been saved."
 msgstr ""
 
 # Quel contexte ?
@@ -3571,11 +3536,6 @@ msgstr "Voici votre facture de commande"
 #, fuzzy
 msgid "Here are your tickets"
 msgstr "Voici vos billets"
-
-#: app/controllers/orders/view.js:90:26
-#, fuzzy
-msgid "An unexpected Error occurred"
-msgstr "Une erreur inattendue s'est produite"
 
 #: app/controllers/public.js:73:13
 msgid "Online and In-Person Event at"
@@ -5672,7 +5632,7 @@ msgid "Cannot announce unpublished event!"
 msgstr ""
 
 #: app/templates/components/event-card.hbs:83:88
-msgid "Announce event!!"
+msgid "Announce event"
 msgstr ""
 
 #: app/templates/components/event-card.hbs:86:83
@@ -5683,10 +5643,12 @@ msgstr ""
 #: app/templates/components/event-invoice/billing-info.hbs:42:16
 #: app/templates/components/forms/admin/settings/billing.hbs:73:50
 #: app/templates/components/forms/user-payment-info-form.hbs:37:21
+#: app/templates/components/modals/tax-info-modal.hbs:64:13
+#: app/templates/components/orders/company-info.hbs:95:22
 #: app/templates/components/widgets/forms/billing-info.hbs:36:40
 #: app/templates/components/widgets/forms/location-input.hbs:37:22
-msgid "Zip Code"
-msgstr "Code postal"
+msgid "ZIP Code"
+msgstr ""
 
 #: app/templates/components/event-invoice/billing-info.hbs:39:16
 #, fuzzy
@@ -5864,8 +5826,8 @@ msgid "Export and Download Event as Zip"
 msgstr "Exporter et télécharger l'évènement au format Zip"
 
 #: app/templates/components/events/view/export/download-zip.hbs:5:6
-msgid "Select the media files you want in the zip"
-msgstr "Sélectionner les fichiers media que vous souhaitez intégrer au zip"
+msgid "Select the media files you want in the Zip file."
+msgstr ""
 
 #: app/templates/components/events/view/export/download-zip.hbs:13:39
 #: app/templates/components/explore/side-bar.hbs:249:23
@@ -5898,7 +5860,7 @@ msgstr ""
 
 #: app/templates/components/events/view/overview/event-apps.hbs:9:4
 msgid ""
-"You can download the entire site as a zip file and upload it to your own web "
+"You can download the entire site as a Zip file and upload it to your own web "
 "hosting service."
 msgstr ""
 
@@ -8213,7 +8175,7 @@ msgid "Offline Payments"
 msgstr "Paiements hors ligne"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:607:12
-msgid "YES, accept payment by Purchase on invoice."
+msgid "YES, accept payment by purchase on invoice."
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:614:12
@@ -8231,7 +8193,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:654:12
-msgid "YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer."
+msgid "YES, accept payment by telegraphic transfer (TT) / bank transfer."
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:662:12
@@ -8251,7 +8213,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:706:14
-msgid "Require Billing Information from Ticket Buyer."
+msgid "Require billing information from ticket buyer."
 msgstr ""
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:715:29
@@ -8879,10 +8841,6 @@ msgstr ""
 msgid "Business Address"
 msgstr "Adresse de la société"
 
-#: app/templates/components/modals/tax-info-modal.hbs:64:13
-msgid "Zipcode"
-msgstr "Code postal"
-
 #: app/templates/components/modals/tax-info-modal.hbs:68:13
 msgid "Text for invoice footer (optional)"
 msgstr "Texte du bas de page de la facture (optionel)"
@@ -8979,10 +8937,6 @@ msgstr ""
 
 #: app/templates/components/orders/company-info.hbs:5:8
 msgid "Company Information"
-msgstr ""
-
-#: app/templates/components/orders/company-info.hbs:95:22
-msgid "ZIP Code"
 msgstr ""
 
 #: app/templates/components/orders/company-info.hbs:105:22
