@@ -21,7 +21,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a name')
+              prompt : this.l10n.t('Please enter a name.')
             }
           ]
         }
@@ -60,7 +60,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
           this.group.socialLinks = [];
         }
         await this.group.save();
-        this.notify.success(this.l10n.t('Your group settings have been saved'),
+        this.notify.success(this.l10n.t('Your group settings have been saved.'),
           {
             id: 'group_save'
           });

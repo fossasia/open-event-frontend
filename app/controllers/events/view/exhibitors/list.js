@@ -91,7 +91,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
 
   @action async delete(id) {
     try {
-      await this.confirm.prompt(this.l10n.t('Are you sure you would like to delete this Exhibitor?'));
+      await this.confirm.prompt(this.l10n.t('Are you sure you would like to delete this exhibitor?'));
     } catch {
       return;
     }

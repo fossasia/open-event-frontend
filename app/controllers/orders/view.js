@@ -87,7 +87,7 @@ export default class ViewController extends Controller {
       })
       .catch(e => {
         console.error('Error while downloading tickets', e);
-        this.notify.error(this.l10n.t('An unexpected Error occurred'),
+        this.notify.error(this.l10n.t('Sorry, an unexpected error has occurred. Our developers will fix this.'),
           {
             id: 'unexpected_occur'
           });

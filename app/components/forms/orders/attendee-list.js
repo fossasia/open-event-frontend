@@ -34,7 +34,7 @@ export default class AttendeeList extends Component {
         anchor.download = `${eventName}-Ticket-${orderId}-${attendeeId}.pdf`;
         document.body.appendChild(anchor);
         anchor.click();
-        this.notify.success(this.l10n.t('Here is your ticket'),
+        this.notify.success(this.l10n.t('Here is your ticket.'),
           {
             id: 'tick_pdf'
           });

@@ -5,7 +5,7 @@
       <GroupCard @group={{group}} @deleteGroup={{action 'deleteGroup'}} />
       <div class="ui hidden divider"></div>      
     {{else}}
-      <div class="ui disabled header">{{t 'No groups found for the events'}}</div>
+      <div class="ui disabled header">{{t 'No groups found for the events.'}}</div>
     {{/each}}
     <InfinityLoader @infinityModel={{this.model}}>
       <div class="ui loading very padded basic segment">

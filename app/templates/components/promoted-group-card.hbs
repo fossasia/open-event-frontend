@@ -13,7 +13,7 @@
         </span>
       </div>
     </span>
-    <button class="blue {{if (not this.authManager.currentUser.email) 'disabled'}} {{if this.device.isMobile 'mt-2' 'mt-4'}} ui fluid button" {{action 'follow'}}>
+    <button class="blue {{if (not this.authManager.currentUser.email) 'blur-blue-btn'}} {{if this.device.isMobile 'mt-2' 'mt-4'}} ui fluid button" {{action 'follow'}}>
         <i class="large icons basic-details">
         <i class="users icon"></i>
         <i class="inverted corner add icon"></i>

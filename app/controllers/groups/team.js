@@ -26,7 +26,7 @@ export default class extends Controller {
     this.currentInvite.save()
       .then(() => {
         this.set('isAddUserRoleModalOpen', false);
-        this.notify.success(this.isNewInvite ? this.l10n.t('Role Invite sent successfully') : this.l10n.t('Role Invite updated successfully'), {
+        this.notify.success(this.isNewInvite ? this.l10n.t('Role Invite sent successfully.') : this.l10n.t('Role Invite updated successfully.'), {
           id: 'man_role'
         });
       })
@@ -45,16 +45,16 @@ export default class extends Controller {
     try {
       const res = await this.loader.post('/group-role-invites/' + invite.id + '/resend-invite');
       if (res.success) {
-        this.notify.success(this.l10n.t('Invite resent successfully'),
+        this.notify.success(this.l10n.t('Invite resent successfully.'),
           {
             id: 'resend_invite_succ'
           });
       } else {
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again.'));
       }
     } catch (error) {
       console.error('Error while resending invite', error);
-      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+      this.notify.error(this.l10n.t('Oops something went wrong. Please try again.'));
     } finally {
       this.set('isLoading', false);
     }
@@ -65,14 +65,14 @@ export default class extends Controller {
     this.set('isLoading', true);
     groupRole.destroyRecord()
       .then(() => {
-        this.notify.success(this.l10n.t('Role deleted successfully'), {
+        this.notify.success(this.l10n.t('Role deleted successfully.'), {
           id: 'del_role_succ'
         });
         this.model.group.roles.removeObject(groupRole);
       })
       .catch(e => {
         console.error('Error while deleting role', e);
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'), {
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again.'), {
           id: 'err_man_role'
         });
       })
