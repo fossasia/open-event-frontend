@@ -7,7 +7,8 @@
   <div class="row print">
     <div class="column">
       <div class="ui small gray-text">
-        {{general-date this.model.order.event.startsAt 'date-time-long'}} - {{general-date this.model.order.event.endsAt 'date-time-long'}}
+        {{general-date this.model.order.event.startsAt 'date-time-long'}} {{general-date this.model.order.event.startsAt 'tz'}} - 
+        {{general-date this.model.order.event.endsAt 'date-time-long'}} {{general-date this.model.order.event.endsAt 'tz'}}
         <br>
         {{this.model.order.event.locationName}}
       </div>
