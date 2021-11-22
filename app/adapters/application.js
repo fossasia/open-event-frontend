@@ -29,7 +29,8 @@ export default JSONAPIAdapter.extend(HasManyQueryAdapterMixin, FastbootAdapter, 
 
   headers: computed('session.data.authenticated', function() {
     const headers = {
-      'Content-Type': 'application/vnd.api+json'
+      'Content-Type'                : 'application/vnd.api+json',
+      'Access-Control-Allow-Origin' : '*'
     };
     const { access_token } = this.session.data.authenticated;
     if (access_token) {
