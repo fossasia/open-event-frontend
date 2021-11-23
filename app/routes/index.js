@@ -75,6 +75,14 @@ export default class IndexRoute extends Route {
 
   async model() {
 
+    const promotedGroupFilter = [
+      {
+        name : 'is-promoted',
+        op   : 'eq',
+        val  : true
+      }
+    ];
+
     let popularGroup = [];
     try {
       popularGroup = this.store.query('group', {
@@ -95,14 +103,6 @@ export default class IndexRoute extends Route {
       op   : 'eq',
       val  : true
     });
-
-    const promotedGroupFilter = [
-      {
-        name : 'is-promoted',
-        op   : 'eq',
-        val  : true
-      }
-    ];
 
     const upcomingEventsFilter = [
       {
