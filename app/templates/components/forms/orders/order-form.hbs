@@ -203,11 +203,7 @@
             @data={{this.data}}
             @event={{this.event}} />
         {{/if}}
-        <h4 class="ui horizontal divider header">
-          <i class="dollar sign icon"></i>
-          {{t 'Payment Method'}}
-        </h4>
-        <div class="field">
+        {{!-- <div class="field">
           <label class="required" for="payment_mode">{{t 'Please choose your payment method'}}</label>
           <div class="grouped inline fields">
             {{#if this.data.event.isStripeLinked}}
@@ -325,7 +321,7 @@
               @readonly="" />          {{else if (eq this.data.paymentMode 'invoice')}}            <Textarea
               @name="payment_details"
               @value={{this.data.event.invoiceDetails}}
-              @readonly="" />          {{/if}}        </div>
+              @readonly="" />          {{/if}}        </div> --}}
       {{/if}}
       <h4 class="ui horizontal divider header">
         <i class="tasks icon"></i>
