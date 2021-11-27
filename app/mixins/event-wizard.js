@@ -241,7 +241,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
       this.onValid(() => {
         const allTicketsDeleted = this.allTicketsDeleted(this.data.event.tickets, this.deletedTickets);
         if (allTicketsDeleted) {
-          this.notify.error(this.l10n.t('Tickets are required for publishing/published event'));
+          this.notify.error(this.l10n.t('Tickets are required for publishing an event.'));
         }
         callback(!allTicketsDeleted);
       });

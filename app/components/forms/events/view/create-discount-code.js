@@ -105,7 +105,7 @@ export default Component.extend(FormMixin, {
           rules      : [
             {
               type   : 'checkTicketSelected',
-              prompt : this.l10n.t('Please select atleast 1 ticket.')
+              prompt : this.l10n.t('Please select at least 1 ticket.')
             }
           ]
         }

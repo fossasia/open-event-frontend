@@ -7,31 +7,31 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
   get columns() {
     return [
       {
-        name      : 'Access Code',
+        name      : this.l10n.t('Access Code'),
         valuePath : 'code'
       },
       {
-        name           : 'Access Code URL',
+        name           : this.l10n.t('Access Code URL'),
         valuePath      : 'accessUrl',
         cellComponent  : 'ui-table/cell/events/view/tickets/access-codes/cell-url',
         disableSorting : true,
         width          : 250
       },
       {
-        name            : 'Validity',
+        name            : this.l10n.t('Validity'),
         valuePath       : 'validFrom',
         extraValuePaths : ['validTill'],
         cellComponent   : 'ui-table/cell/cell-validity',
         width           : 150
       },
       {
-        name            : 'Status',
+        name            : this.l10n.t('Status'),
         valuePath       : 'isActive',
         extraValuePaths : ['isExpired'],
         cellComponent   : 'ui-table/cell/cell-label'
       },
       {
-        name            : 'Actions',
+        name            : this.l10n.t('Actions'),
         cellComponent   : 'ui-table/cell/events/view/tickets/access-codes/cell-actions',
         valuePath       : 'id',
         extraValuePaths : ['isActive', 'isExpired'],
