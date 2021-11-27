@@ -28,9 +28,19 @@
           {{t 'Pending'}}
         </div>
         <div class="label">
-          {{t 'Your order has been placed.'}}
-          <br>
-          {{t 'Please pay for your tickets to complete the order now.'}}
+            {{#if (eq this.data.paymentMode 'free')}}
+              {{#if (eq this.isVerifiedUser false)}}
+                {{t 'You need to complete your order by clicking the verification link in the email that was sent to you.'}}
+              {{else}}
+                {{t 'Your order placed successfully.'}}
+                <br>
+                {{t 'Find all the details related to your order below.'}}
+              {{/if}}
+            {{else}}
+              {{t 'Your order has been placed.'}}
+              <br>
+              {{t 'Please pay for your tickets to complete the order now.'}}
+            {{/if}}
         </div>
       </div>
     </div>
@@ -215,5 +225,5 @@
         {{t 'Please contact the event organizer for further details.'}}
       </div>
     </div>
-  </div>
+</div>
 {{/if}}

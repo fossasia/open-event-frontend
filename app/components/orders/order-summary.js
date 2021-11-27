@@ -18,6 +18,7 @@ export default class OrderSummary extends Component.extend(FormMixin) {
     );
   }
 
+
   @computed('data.tickets', 'data.tickets.@each.attendees', 'data.discountCode')
   get orderAmountInput() {
     const discountCodeId = this.data.discountCodeId || undefined;
@@ -37,7 +38,11 @@ export default class OrderSummary extends Component.extend(FormMixin) {
       const tickets = await this.data.tickets;
       const ticketInput = this.orderAmountInput;
       const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
+      const isVerifiedUser = await this.authManager.currentUser.isVerified;
+      this.set('isVerifiedUser', isVerifiedUser);
       this.set('total', ticketAmount.sub_total);
+      this.data.set('status', !isVerifiedUser && this.data.paymentMode === 'free' ? 'pending' : this.data.status);
+      this.session.set('currentRouteName', !isVerifiedUser && this.data.paymentMode === 'free' ? 'orders.pending' : this.session.currentRouteName);
       this.set('grandTotal', ticketAmount.total);
       tickets.forEach(ticket => {
         const mappedTicket = ticketAmount.tickets.find(o => {
