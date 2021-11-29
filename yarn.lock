@@ -1379,6 +1379,16 @@
     jquery "^3.5.0"
     resolve "^1.15.1"
 
+"@ember/legacy-built-in-components@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@ember/legacy-built-in-components/-/legacy-built-in-components-0.4.0.tgz#23d61c9220c04d3590644ffe427cc987db4880a7"
+  integrity sha512-nm0tTe9d7aYpPa8sk85M4AZ3iDfuVQ4/7M4D4IdI7frkAOGpy6gAKS9nR/UR8mJDW06CLz9NYEKWIlLopEu/Og==
+  dependencies:
+    "@embroider/macros" "^0.47.1"
+    ember-cli-babel "^7.26.6"
+    ember-cli-htmlbars "^5.7.1"
+    ember-cli-typescript "^4.1.0"
+
 "@ember/optional-features@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-1.3.0.tgz#d7da860417b85a56cec88419f30da5ee1dde2756"
@@ -1631,7 +1641,7 @@
     resolve "^1.8.1"
     semver "^7.3.2"
 
-"@embroider/macros@0.47.2", "@embroider/macros@^0.47.0":
+"@embroider/macros@0.47.2", "@embroider/macros@^0.47.0", "@embroider/macros@^0.47.1":
   version "0.47.2"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.47.2.tgz#23cbe92cac3c24747f054e1eea2a22538bf7ebd0"
   integrity sha512-ViNWluJCeM5OPlM3rs8kdOz3RV5rpfXX5D2rDnc/q86xRS0xf4NFEjYRV7W6fBcD0b3v5jSHDTwrjq9Kee4rHg==
@@ -7562,11 +7572,12 @@ ember-h-captcha@^2.2.4:
     ember-cli-babel "^7.26.6"
     ember-cli-htmlbars "^6.0.0"
 
-ember-href-to@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ember-href-to/-/ember-href-to-4.1.0.tgz#daa8b398bc5a51ba3ba5ff736e099f0a0d010b7b"
-  integrity sha512-h8xSzt9lQAUzk4JvXNnZjRj29hOWKo92VIHzH68io13UurDBaMmJ4WtXa0iy/awlSFs6h8BwpEWQeaCYIZDRuQ==
+ember-href-to@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ember-href-to/-/ember-href-to-5.0.0.tgz#e70da7f056f341126481d5c2f4b7c6ddc6ecebed"
+  integrity sha512-IkcgPir4x4x6HvwPqHwIY3DQqreyMtCK/yXacAuQdeYCm/6lNzYMazSBZfkNRRahHXfAiPAXIw1DZK39UlovCw==
   dependencies:
+    "@ember/legacy-built-in-components" "^0.4.0"
     ember-cli-babel "^7.13.2"
 
 ember-in-element-polyfill@^1.0.0, ember-in-element-polyfill@^1.0.1:
@@ -7766,10 +7777,10 @@ ember-notify@^6.0.2:
     ember-cli-babel "^7.23.1"
     ember-cli-htmlbars "^5.3.2"
 
-ember-power-select@^4.1.7:
-  version "4.1.7"
-  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-4.1.7.tgz#eb547dd37448357d8f3fa789db18ddbba43fb8ca"
-  integrity sha512-Q4cjUudWb7JA6q7qe0jhcpLsipuFUHMwkYC05HxST5qm3MRMEzs6KfZ3Xd/TcrjBLSoWniw3Q61Quwcb41w5Jw==
+ember-power-select@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-5.0.0.tgz#0f374dcba7dc39e1f4744b5f04659e9214be3859"
+  integrity sha512-KMy6jGLrCQ3BL7mOqGQEdBoi8pKptsmByfqy42ivo3RfF0FEkSTzs1QZDd3EGagevkKIKS9NqgvNn+nqeoBDog==
   dependencies:
     "@glimmer/component" "^1.0.4"
     "@glimmer/tracking" "^1.0.4"
@@ -12896,10 +12907,10 @@ object-keys@^1.0.12:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.1.0.tgz#11bd22348dd2e096a045ab06f6c85bcc340fa032"
 
-object-to-formdata@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/object-to-formdata/-/object-to-formdata-4.1.1.tgz#97589e892c01d7a7eca4789d7e222890592284ac"
-  integrity sha512-3INz16y9H1K3hKzuH0ZDAtKBVmLHgIGDUmz6mrgq3OndZQDM3r5HLejM2KXmiKI2x0bA8cmfSromVEPvd3T87A==
+object-to-formdata@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/object-to-formdata/-/object-to-formdata-4.2.0.tgz#3299ab8f82944a1330e87035c0ff43fb1db5f239"
+  integrity sha512-qUUAl8RSurv9XppU1XBrACpmLVcJCn0yg2gZ/10tMKTPXgwkJouvGi9yUvQsTAEZvVvAUyrFqGt0MVuNzKFt1A==
 
 object-visit@^1.0.0:
   version "1.0.1"
@@ -14722,10 +14733,10 @@ sass-lint@^1.12.1:
     path-is-absolute "^1.0.0"
     util "^0.10.3"
 
-sass@^1.43.4:
-  version "1.43.4"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.43.4.tgz#68c7d6a1b004bef49af0d9caf750e9b252105d1f"
-  integrity sha512-/ptG7KE9lxpGSYiXn7Ar+lKOv37xfWsZRtFYal2QHNigyVQDx685VFT/h7ejVr+R8w7H4tmUgtulsKl5YpveOg==
+sass@^1.43.5:
+  version "1.43.5"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.43.5.tgz#25a9d91dd098793ef7229d7b04dd3daae2fc4a65"
+  integrity sha512-WuNm+eAryMgQluL7Mbq9M4EruyGGMyal7Lu58FfnRMVWxgUzIvI7aSn60iNt3kn5yZBMR7G84fAGDcwqOF5JOg==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
