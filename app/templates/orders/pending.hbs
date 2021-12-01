@@ -172,8 +172,8 @@
               {{t 'Pay Now'}}
               <i class="cart plus icon"></i>
             </button>     
-              {{/if}}        
-         </div>
+          {{/if}}        
+        </div>
         <div>
           {{#if (eq this.model.order.paymentMode 'stripe')}}
             <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.stripePay}}>
