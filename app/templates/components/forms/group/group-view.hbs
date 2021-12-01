@@ -83,7 +83,7 @@
             {{@group.followerCount}}
           </div>
         </button>
-        {{#if (and this.followers this.session.isAuthenticated)}}
+        {{#if (and this.session.isAuthenticated this.followers)}}
           <div class="d-flex content-center items-center wrap mt-4">
             {{#each this.followers as |follower index|}}
               {{#if (lt index 6)}}
