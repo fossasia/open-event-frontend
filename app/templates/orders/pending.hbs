@@ -35,7 +35,9 @@
         <Orders::EventInfo
           @data={{this.model.order}} />
         <br/>
-        <h4 class="ui horizontal divider header">
+        <div class="ui padded segment">
+          
+          <h4 class="ui horizontal divider header">
           <i class="dollar sign icon"></i>
           {{t 'Payment Method'}}
         </h4>
@@ -204,6 +206,9 @@
               {{action "alipayCheckout" this.model.order.identifier}}>{{t 'Pay with AliPay'}}</button>
           {{/if}}
         </div>
+
+        </div>
+        
         <br/>
         <Orders::TicketHolder
           @data={{this.model.order}} />
