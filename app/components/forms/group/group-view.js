@@ -63,7 +63,8 @@ export default class GroupView extends Component.extend(FormMixin) {
             approveColor : 'green',
             extra        : content
           };
-          await this.confirm.prompt(heading, options);
+
+          this.confirm.prompt(heading, options);
         } catch {
           return;
         }

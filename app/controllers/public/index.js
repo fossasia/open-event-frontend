@@ -21,6 +21,11 @@ export default class IndexController extends Controller {
     return htmlSafe(this.model.event.description);
   }
 
+  @computed
+  get hasOnlyFreeTickets() {
+    return !this.model.tickets.toArray().filter(ticket => ticket.type !== 'freeRegistration' && ticket.type !== 'free').length > 0;
+  }
+
   @action
   async createNewUserViaEmail(email, password) {
     this.set('isLoading', true);
