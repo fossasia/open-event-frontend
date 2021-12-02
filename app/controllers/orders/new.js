@@ -26,7 +26,7 @@ export default class NewController extends Controller {
       if (data.event.get('isBillingInfoMandatory')) {
         order.set('isBillingEnabled', true);
       }
-      if(paymentMode === 'free') {
+      if (paymentMode === 'free') {
         order.set('status', 'completed');
       }
       await order.save()
