@@ -48,7 +48,7 @@
               <div class="field">
                 <UiRadio
                   @name="payment_mode"
-                  @label={{t "Credit Card"}}
+                  @label={{t "Stripe"}}
                   @value="stripe"
                   @current={{this.model.order.paymentMode}}
                   @onChange={{action (mut this.model.order.paymentMode)}} />
@@ -111,6 +111,12 @@
                   @value="invoice"
                   @current={{this.model.order.paymentMode}}
                   @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'invoice')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.invoiceDetails}}
+                  @readonly="" />
+                {{/if}}
               </div>
             {{/if}}
             {{#if this.model.order.event.canPayByCheque}}
@@ -121,6 +127,12 @@
                   @value="cheque"
                   @current={{this.model.order.paymentMode}}
                   @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'cheque')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.chequeDetails}}
+                  @readonly="" />
+                {{/if}}
               </div>
             {{/if}}
             {{#if this.model.order.event.canPayByBank}}
@@ -131,6 +143,12 @@
                   @value="bank"
                   @current={{this.model.order.paymentMode}}
                   @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'bank')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.bankDetails}}
+                  @readonly="" />
+                {{/if}}
               </div>
             {{/if}}
             {{#if this.model.order.event.canPayOnsite}}
@@ -141,42 +159,23 @@
                   @value="onsite"
                   @current={{this.model.order.paymentMode}}
                   @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'onsite')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.onsiteDetails}}
+                  @readonly="" />
+                {{/if}}
               </div>
             {{/if}}
           </div>
         </div>
-        <br/>
-        <div class="field">
-          {{#if (eq this.model.order.paymentMode 'bank')}}
-            <Textarea
-              @name="payment_details"
-              @value={{this.model.order.event.bankDetails}}
-              @readonly="" />
-              <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.completeOrder}}>
-              {{t 'Pay Now'}}
-              <i class="cart plus icon"></i></button> {{else if (eq this.model.order.paymentMode 'cheque')}}            <Textarea
-              @name="payment_details"
-              @value={{this.model.order.event.chequeDetails}}
-              @readonly="" />
-              <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.completeOrder}}>
-              {{t 'Pay Now'}}
-              <i class="cart plus icon"></i></button> {{else if (eq this.model.order.paymentMode 'onsite')}}            <Textarea
-              @name="payment_details"
-              @value={{this.model.order.event.onsiteDetails}}
-              @readonly="" />
-              <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.completeOrder}}>
-              {{t 'Pay Now'}}
-              <i class="cart plus icon"></i></button>  {{else if (eq this.model.order.paymentMode 'invoice')}}            <Textarea
-              @name="payment_details"
-              @value={{this.model.order.event.invoiceDetails}}
-              @readonly="" />     
-              <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.completeOrder}}>
-              {{t 'Pay Now'}}
-              <i class="cart plus icon"></i>
-            </button>     
-          {{/if}}        
-        </div>
+        <br/>      
         <div>
+          {{#if (or (or (or (eq this.model.order.paymentMode 'invoice') (eq this.model.order.paymentMode 'bank')) (eq this.model.order.paymentMode 'onsite')) (eq this.model.order.paymentMode 'cheque'))}}
+            <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.completeOrder}}>
+            {{t 'Pay Now'}}
+            <i class="cart plus icon"></i></button> 
+          {{/if}}
           {{#if (eq this.model.order.paymentMode 'stripe')}}
             <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.stripePay}}>
               {{t 'Pay Now'}}
