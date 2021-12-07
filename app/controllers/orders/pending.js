@@ -95,6 +95,7 @@ export default class PendingController extends Controller {
     const { order } = this.model;
 
     try {
+      await order.save();
       let chargePayload = {
         'data': {
           'type': 'charge'
