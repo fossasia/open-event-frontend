@@ -9,31 +9,6 @@ export default class PendingController extends Controller {
   isLoading = false;
   paymentDescription = 'Please fill your card details to proceed';
 
-  @computed('model.order.paymentMode')
-  get isStripe() {
-    return this.model.order.paymentMode === 'stripe';
-  }
-
-  @computed('model.order.paymentMode')
-  get isPaypal() {
-    return this.model.order.paymentMode === 'paypal';
-  }
-
-  @computed('model.order.paymentMode')
-  get isPaytm() {
-    return this.model.order.paymentMode === 'paytm';
-  }
-
-  @computed('model.order.paymentMode')
-  get isOmise() {
-    return this.model.order.paymentMode === 'omise';
-  }
-
-  @computed('model.order')
-  get isAliPay() {
-    return this.model.order.paymentMode === 'alipay';
-  }
-
   @computed('model.order')
   get paymentAmount() {
     return this.model.order.amount * 100;
@@ -155,6 +130,46 @@ export default class PendingController extends Controller {
       }
     } finally {
       this.set('isLoading', false);
+    }
+  }
+
+  @action
+  async completeOrder() {
+    try {
+      this.set('isLoading', true);
+      const { order } = this.model;
+      const { paymentMode } = this.model.order;
+      if (paymentMode === 'free') {
+        order.set('status', 'completed');
+      } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite' || paymentMode === 'invoice') {
+        order.set('status', 'placed');
+      } else if (order.event.get('isOneclickSignupEnabled')) {
+        order.set('status', 'completed');
+      } else {
+        order.set('status', 'pending');
+      }
+      await order.save()
+        .then(order => {
+          if (order.status === 'completed' || order.status === 'placed') {
+            this.notify.success(this.l10n.t('Order details saved. Your order is successful'),
+              {
+                id: 'order_succ'
+              });
+            this.transitionToRoute('orders.view', order.identifier);
+          }
+        })
+        .catch(e => {
+          console.error('Error while saving new order', e);
+          order.set('status', 'initializing');
+          this.errorHandler.handle(e);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    } catch (e) {
+      this.set('isLoading', false);
+      console.error('Error while in saving new order', e);
+      this.errorHandler.handle(e);
     }
   }
 }

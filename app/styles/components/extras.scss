@@ -42,3 +42,28 @@ p.link-item {
     padding-top: 2px !important;
   }
 }
+
+.field {
+  textarea {
+    width: 100%;
+    margin: 0;
+    appearance: none;
+    padding: .6em .8em;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(34, 36, 38, .15);
+    outline: 0;
+    color: rgba(0, 0, 0, .87);
+    border-radius: .28rem;
+    box-shadow: transparent 0 0 0 0 inset;
+    transition: color .1s ease 0, border-color .1s ease 0;
+    font-size: 1em;
+    line-height: 1.2857;
+    resize: vertical;
+    height: 165px;
+  }
+
+  .radio {
+    padding-bottom: .5em;
+    padding-top: .5em;
+  }
+}
