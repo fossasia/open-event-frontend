@@ -45,7 +45,7 @@
           <label class="required" for="payment_mode">{{t 'Please choose your payment method'}}</label>
           <div class="grouped inline fields">
             {{#if this.model.order.event.isStripeLinked}}
-              <div class="field">
+              <div class="field" {{on "click" this.getPaymentElement}}>
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Stripe"}}
@@ -205,7 +205,7 @@
               {{action "alipayCheckout" this.model.order.identifier}}>{{t 'Pay with AliPay'}}</button>
           {{/if}}
         </div>
-
+        <div id="payment-element"></div>
         </div>
         
         <br/>
