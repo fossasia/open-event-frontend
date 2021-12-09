@@ -15,7 +15,7 @@ export default class PendingRoute extends Route {
     } catch (e) {
       console.error(e);
     }
-    
+
     const order = await this.store.findRecord('order', params.order_id, {
       include : 'attendees,tickets,event',
       reload  : true

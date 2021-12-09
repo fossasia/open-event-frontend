@@ -159,7 +159,7 @@ export default class PendingController extends Controller {
         elements,
         confirmParams: {
           return_url: `${this.settings.frontendUrl}/orders/${order.identifier}/view`
-        },
+        }
       });
 
       if (error) {
