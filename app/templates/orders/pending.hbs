@@ -45,13 +45,14 @@
           <label class="required" for="payment_mode">{{t 'Please choose your payment method'}}</label>
           <div class="grouped inline fields">
             {{#if this.model.order.event.isStripeLinked}}
-              <div class="field" {{on "click" this.getPaymentElement}}>
+              <div class="field">
                 <UiRadio
                   @name="payment_mode"
                   @label={{t "Stripe"}}
                   @value="stripe"
                   @current={{this.model.order.paymentMode}}
-                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                  @onChange={{action (mut this.model.order.paymentMode)}}
+                  onclick={{action "getPaymentElement"}} />
                 <label for="payment_mode">
                   <img class="d-inline-block ui small image"src="/images/payment-logos/stripe.png" alt="stripe">
                 </label>
@@ -177,6 +178,7 @@
             <i class="cart plus icon"></i></button> 
           {{/if}}
           {{#if (eq this.model.order.paymentMode 'stripe')}}
+            <div id="payment-element" class="mb-4"></div>
             <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.stripePay}}>
               {{t 'Pay Now'}}
               <i class="credit card icon"></i>
@@ -205,7 +207,7 @@
               {{action "alipayCheckout" this.model.order.identifier}}>{{t 'Pay with AliPay'}}</button>
           {{/if}}
         </div>
-        <div id="payment-element"></div>
+
         </div>
         
         <br/>
