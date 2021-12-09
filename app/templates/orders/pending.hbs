@@ -56,6 +56,9 @@
                 <label for="payment_mode">
                   <img class="d-inline-block ui small image"src="/images/payment-logos/stripe.png" alt="stripe">
                 </label>
+                {{#if (eq this.model.order.paymentMode 'stripe')}}
+                  <div id="payment-element" class="mb-4 mt-4"></div>
+                {{/if}}
               </div>
             {{/if}}
             {{#if this.model.order.event.canPayByPaypal}}
@@ -178,7 +181,6 @@
             <i class="cart plus icon"></i></button> 
           {{/if}}
           {{#if (eq this.model.order.paymentMode 'stripe')}}
-            <div id="payment-element" class="mb-4"></div>
             <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.stripePay}}>
               {{t 'Pay Now'}}
               <i class="credit card icon"></i>

@@ -159,12 +159,12 @@ export default class PendingController extends Controller {
         elements,
         confirmParams: {
           return_url: `${this.settings.frontendUrl}/orders/${order.identifier}/view`
-        }
-        // Uncomment below if you only want redirect for redirect-based payments
-        // redirect: 'if_required',
+        },
       });
 
-      console.error(error);
+      if (error) {
+        console.error(error);
+      }
     } catch (e) {
       console.error(e);
       if ('errors' in e) {
