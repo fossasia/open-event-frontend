@@ -27,14 +27,12 @@ export default class AddToCalender extends Component<Args> {
 
   get description(): string {
     const { event } = this.args;
-    let desc = `Join the event at ${event.url} `;
+    let desc = `Join the event at <a href = "${event.url}">${event.url}</a>\n `;
     if (event.description) {
-      const text = event.description.replace(/<[^>]+>/g, '');
-      desc = desc + `Event Description: ${text}`;
+      desc = desc + `<section><h3>Event Description </h3>\n${event.description}\n</section>`;
     }
     if (event.ownerDescription) {
-      const text = event.ownerDescription.replace(/<[^>]+>/g, '');
-      desc = desc +  `Organizer Message: ${text}`;
+      desc = desc +  `<section><h3>Organizer Message </h3>\n${event.ownerDescription}\n</section>`;
     }
     return desc;
   }
@@ -79,7 +77,7 @@ export default class AddToCalender extends Component<Args> {
     const { event } = this.args;
     const startTime = this.startsAt.format('YYYYMMDD[T]HHmmSS');
     const endTime = this.endsAt.format('YYYYMMDD[T]HHmmSS');
-    return `https://calendar.yahoo.com/?v=60&title=${event.name}&st=${startTime}&et=${endTime}&desc=${this.description}&in_loc=${this.calendarLocation}`;
+    return `https://calendar.yahoo.com/?v=60&title=${event.name}&st=${startTime}&et=${endTime}&desc=${this.description.replace(/<[^>]+>/g, '')}&in_loc=${this.calendarLocation}`;
   }
 
   get outlookUrl(): string {
