@@ -90,9 +90,10 @@ export default class PendingController extends Controller {
   }
 
   @action
-  async stripePay() {
+  async getPaymentElement() {
     this.set('isLoading', true);
     const { order } = this.model;
+    await order.save();
 
     try {
       await order.save();
@@ -108,14 +109,62 @@ export default class PendingController extends Controller {
       const stripeAuthorization = await order.event.get('stripeAuthorization');
       const response = await this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config);
       const stripe = await loadStripe(stripeAuthorization.stripePublishableKey);
-      const checkoutSession = JSON.parse(response.data.attributes.message);
-      stripe.redirectToCheckout({
-        sessionId: checkoutSession.id
-      }).then(function(result) {
-        if (result.error.message) {
-          console.error(result.error.message);
+      const paymentIntent = JSON.parse(response.data.attributes.message);
+      const appearance = {
+        theme     : 'stripe',
+        variables : {
+          colorText  : '#32325d',
+          fontFamily : '"Helvetica Neue", Helvetica, sans-serif'
+        }
+      };
+      const options = {
+        clientSecret: paymentIntent.client_secret,
+        appearance
+      };
+      const elements = stripe.elements(options);
+      this.set('elements', elements);
+      this.set('stripe', stripe);
+      const paymentElement = elements.create('payment');
+      paymentElement.mount('#payment-element');
+
+    } catch (e) {
+      console.error(e);
+      if ('errors' in e) {
+        this.notify.error(this.l10n.tVar(e.errors[0].detail),
+          {
+            id: 'unexpected_error_occur'
+          });
+      } else {
+        this.notify.error(this.l10n.tVar(e),
+          {
+            id: 'unexpected_error_occur'
+          });
+      }
+    } finally {
+      this.set('isLoading', false);
+    }
+
+  }
+
+  @action
+  async stripePay() {
+    this.set('isLoading', true);
+    const { order } = this.model;
+
+    try {
+      const stripe = await this.stripe;
+      const elements = await this.elements;
+
+      const { error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${this.settings.frontendUrl}/orders/${order.identifier}/view`
         }
       });
+
+      if (error) {
+        console.error(error);
+      }
     } catch (e) {
       console.error(e);
       if ('errors' in e) {
