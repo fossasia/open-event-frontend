@@ -1438,6 +1438,15 @@
     ember-compatibility-helpers "^1.2.5"
     ember-modifier-manager-polyfill "^1.2.0"
 
+"@ember/render-modifiers@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@ember/render-modifiers/-/render-modifiers-2.0.2.tgz#a5a84c7d1481ac4936ba03695ba98776f1274afd"
+  integrity sha512-TURKkO+ihsgVAw1gql/76DILs2VbJZGWeB4pUsGFxFEeC8SFRD9N58Wlh+uJS3Q8vg6oZZa16dw1rFiTv0q43Q==
+  dependencies:
+    "@embroider/macros" ">= 0.48.1 < 2.0.0-alpha.1"
+    ember-cli-babel "^7.26.6"
+    ember-modifier-manager-polyfill "^1.2.0"
+
 "@ember/test-helpers@^0.7.26":
   version "0.7.27"
   resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-0.7.27.tgz#c622cabd0cbb95b34efc1e1b6274ab5a14edc138"
@@ -1654,6 +1663,19 @@
     resolve "^1.20.0"
     semver "^7.3.2"
 
+"@embroider/macros@>= 0.48.1 < 2.0.0-alpha.1":
+  version "0.48.1"
+  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.48.1.tgz#fc1fd10857d40e80a20c0d366a1a8007aa424e83"
+  integrity sha512-JtcOL3pSxI8prstQomzNNHPBqG1K5JwrIuZwH+Q9TK4nONIH2F4z0Z0pd0SZmTEjF17E4gZN3g1J3vSX4zKuww==
+  dependencies:
+    "@embroider/shared-internals" "0.48.1"
+    assert-never "^1.2.1"
+    ember-cli-babel "^7.26.6"
+    find-up "^5.0.0"
+    lodash "^4.17.21"
+    resolve "^1.20.0"
+    semver "^7.3.2"
+
 "@embroider/shared-internals@0.41.0":
   version "0.41.0"
   resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-0.41.0.tgz#2553f026d4f48ea1fd11235501feb63bf49fa306"
@@ -1671,6 +1693,19 @@
   version "0.47.2"
   resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-0.47.2.tgz#24e9fa0dd9c529d5c996ee1325729ea08d1fa19f"
   integrity sha512-SxdZYjAE0fiM5zGDz+12euWIsQZ1tsfR1k+NKmiWMyLhA5T3pNgbR2/Djvx/cVIxOtEavGGSllYbzRKBtV4xMg==
+  dependencies:
+    babel-import-util "^0.2.0"
+    ember-rfc176-data "^0.3.17"
+    fs-extra "^9.1.0"
+    lodash "^4.17.21"
+    resolve-package-path "^4.0.1"
+    semver "^7.3.5"
+    typescript-memoize "^1.0.1"
+
+"@embroider/shared-internals@0.48.1":
+  version "0.48.1"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-0.48.1.tgz#4f0dcde8dba2fa47c862746898a1846a31e27f80"
+  integrity sha512-6Q73QXGUQianIb3xRpMNl8VMECSatA1NhjXxeIyYzwKraWhhMBpXvysLpbJ8ib1rQe1ajmkoDdXgT5pAnVMXrg==
   dependencies:
     babel-import-util "^0.2.0"
     ember-rfc176-data "^0.3.17"
@@ -6383,12 +6418,12 @@ ember-auto-import@^1.10.1, ember-auto-import@^1.11.2, ember-auto-import@^1.11.3:
     walk-sync "^0.3.3"
     webpack "^4.43.0"
 
-"ember-basic-dropdown@^3.1.0 || ^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/ember-basic-dropdown/-/ember-basic-dropdown-4.0.0.tgz#ad04cff6b4db04069456ce55c19e1155f2ae9e75"
-  integrity sha512-V7G2fhIiIPAcU6JFm8qzz4OoIE+9cO/Hkh8KlcRyenP9lEa+PHiWSwGmX5gtSFi6PYjdr58/oJMEKSbWFj/Iiw==
+"ember-basic-dropdown@^3.1.0 || ^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ember-basic-dropdown/-/ember-basic-dropdown-4.0.2.tgz#7d633cecc0118e4814a98d727adf7dfaafe847e7"
+  integrity sha512-iBFmD2xoQUYSAN1BYKFY2fkCu2RhXO66kZsduUcA+UBcq/8sys4VvOTMJrJNuMDpFfLAE+3FO98xFSC3M4UV2Q==
   dependencies:
-    "@ember/render-modifiers" "^2.0.0"
+    "@ember/render-modifiers" "^2.0.2"
     "@embroider/macros" "^0.47.2"
     "@embroider/util" "^0.47.2"
     "@glimmer/component" "^1.0.4"
@@ -7756,16 +7791,16 @@ ember-notify@^6.0.2:
     ember-cli-babel "^7.23.1"
     ember-cli-htmlbars "^5.3.2"
 
-ember-power-select@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-5.0.2.tgz#6d9b277f5d263d12cabb0aa2d44faf572f3f3285"
-  integrity sha512-/o5SIlQumeAaqGT3Y3mw97EqlQ0RTQM4GC+soIjeB5d0AcTvHppoF06gsCdeXEN5FA/S4iGseAg86Op61zfpKQ==
+ember-power-select@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-5.0.3.tgz#615da0742a222a8c090590dd2cbb2db3a6147ac5"
+  integrity sha512-V72DxohhuPdsF6Rcxu1cVL2faHSk83RdTCkxeDT71NeQQNpHKbslhc0c+MMU52wm0mzch+oWmti/2McpL/vIvQ==
   dependencies:
     "@embroider/util" "^0.47.2"
     "@glimmer/component" "^1.0.4"
     "@glimmer/tracking" "^1.0.4"
     ember-assign-helper "^0.4.0"
-    ember-basic-dropdown "^3.1.0 || ^4.0.0"
+    ember-basic-dropdown "^3.1.0 || ^4.0.2"
     ember-cli-babel "^7.26.0"
     ember-cli-htmlbars "^6.0.0"
     ember-cli-typescript "^4.2.0"
