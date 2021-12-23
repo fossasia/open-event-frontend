@@ -172,7 +172,7 @@ export default Mixin.create(MutableArray, {
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'videoUrl',
         form            : 'session',
-        type            : 'file',
+        type            : 'text',
         isRequired      : false,
         isPublic        : true,
         isIncluded      : false,
@@ -181,7 +181,7 @@ export default Mixin.create(MutableArray, {
       this.store.createRecord('custom-form', {
         fieldIdentifier : 'audioUrl',
         form            : 'session',
-        type            : 'file',
+        type            : 'text',
         isRequired      : false,
         isPublic        : true,
         isIncluded      : false,
