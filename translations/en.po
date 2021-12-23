@@ -70,7 +70,7 @@ msgstr ""
 #: app/controllers/notifications.js:23:26
 #: app/controllers/oauth/callback.js:31:41 app/controllers/orders/view.js:30:24
 #: app/controllers/public/cfs/view-session.js:38:24
-#: app/controllers/public/index.js:96:37 app/controllers/register.js:36:35
+#: app/controllers/public/index.js:101:37 app/controllers/register.js:36:35
 #: app/controllers/register.js:73:37 app/mixins/event-wizard.js:173:28
 #: app/mixins/notifications.js:12:28 app/mixins/notifications.js:30:28
 #: app/templates/components/errors/generic-error.hbs:2:51
@@ -797,6 +797,7 @@ msgstr "We recommend using at least a 2160x1080px (2:1 ratio) image"
 #: app/templates/components/forms/wizard/basic-details-step.hbs:164:15
 #: app/templates/components/forms/wizard/basic-details-step.hbs:168:19
 #: app/templates/components/forms/wizard/sponsors-step.hbs:75:19
+#: app/utils/dictionary/event.ts:74:48
 msgid "Logo"
 msgstr "Logo"
 
@@ -836,6 +837,7 @@ msgstr "Enable Video Room"
 #: app/templates/admin/settings.hbs:9:10
 #: app/templates/components/forms/group/group-settings-form.hbs:57:8
 #: app/templates/components/forms/wizard/other-details-step.hbs:9:6
+#: app/utils/dictionary/event.ts:85:21
 msgid "Social Media"
 msgstr "Social Media"
 
@@ -1141,43 +1143,48 @@ msgstr "Your group settings have been saved."
 
 #: app/components/forms/group/group-view.js:40:10
 #: app/components/group-card.js:36:10
-#: app/components/promoted-group-card.js:36:8 app/controllers/public.js:101:25
+#: app/components/promoted-group-card.js:36:8 app/controllers/public.js:117:25
 msgid "You have successfully unfollowed this group."
 msgstr "You have successfully unfollowed this group."
 
-#: app/components/forms/group/group-view.js:44:26
+#: app/components/forms/group/group-view.js:48:22
+#: app/components/promoted-group-card.js:44:20
+msgid "You need to be logged in to follow this group."
+msgstr "You need to be logged in to follow this group."
+
+#: app/components/forms/group/group-view.js:51:22
 #: app/components/group-card.js:40:26
-#: app/components/promoted-group-card.js:40:24 app/controllers/public.js:104:26
+#: app/components/promoted-group-card.js:47:20 app/controllers/public.js:120:26
 msgid "By following this group you accept that:"
 msgstr "By following this group you accept that:"
 
-#: app/components/forms/group/group-view.js:45:27
+#: app/components/forms/group/group-view.js:52:23
 #: app/components/group-card.js:41:26
-#: app/components/promoted-group-card.js:41:24 app/controllers/public.js:105:27
+#: app/components/promoted-group-card.js:48:20 app/controllers/public.js:121:27
 msgid "1. You will receive announcement emails for events of this group."
 msgstr "1. You will receive announcement emails for events of this group."
 
-#: app/components/forms/group/group-view.js:46:14
-#: app/components/group-card.js:42:4 app/components/promoted-group-card.js:42:2
-#: app/controllers/public.js:106:14
+#: app/components/forms/group/group-view.js:53:14
+#: app/components/group-card.js:42:4 app/components/promoted-group-card.js:49:4
+#: app/controllers/public.js:122:14
 msgid "2. You share your email with the group owners and organizers."
 msgstr "2. You share your email with the group owners and organizers."
 
-#: app/components/forms/group/group-view.js:47:14
-#: app/components/group-card.js:43:4 app/components/promoted-group-card.js:43:2
-#: app/controllers/public.js:107:14
+#: app/components/forms/group/group-view.js:54:14
+#: app/components/group-card.js:43:4 app/components/promoted-group-card.js:50:4
+#: app/controllers/public.js:123:14
 msgid "3. All group members will be able to see your public profile image and name."
 msgstr "3. All group members will be able to see your public profile image and name."
 
-#: app/components/forms/group/group-view.js:48:14
-#: app/components/group-card.js:44:4 app/components/promoted-group-card.js:44:2
-#: app/controllers/public.js:108:14
+#: app/components/forms/group/group-view.js:55:14
+#: app/components/group-card.js:44:4 app/components/promoted-group-card.js:51:4
+#: app/controllers/public.js:124:14
 msgid "Do you want to proceed?"
 msgstr "Do you want to proceed?"
 
-#: app/components/forms/group/group-view.js:70:28
+#: app/components/forms/group/group-view.js:83:30
 #: app/components/group-card.js:66:28
-#: app/components/promoted-group-card.js:66:26 app/controllers/public.js:125:28
+#: app/components/promoted-group-card.js:77:28 app/controllers/public.js:143:28
 msgid "You have successfully followed this group."
 msgstr "You have successfully followed this group."
 
@@ -2144,7 +2151,7 @@ msgstr "to"
 
 #: app/components/public/event-venue.hbs:4:4 app/controllers/public.js:75:13
 #: app/templates/components/orders/event-info.hbs:19:16
-#: app/templates/public/index.hbs:195:24
+#: app/templates/public/index.hbs:198:24
 msgid "Online Event"
 msgstr "Online Event"
 
@@ -2342,20 +2349,20 @@ msgstr "Join Video Channel"
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
 
-#: app/components/public/ticket-list.js:158:28
+#: app/components/public/ticket-list.js:154:28
 msgid "Number of tickets is more than total promotional code."
 msgstr "Number of tickets is more than total promotional code."
 
-#: app/components/public/ticket-list.js:195:26
-#: app/controllers/public/index.js:217:24
+#: app/components/public/ticket-list.js:191:26
+#: app/controllers/public/index.js:222:24
 msgid "This Promotional Code is not valid"
 msgstr "This Promotional Code is not valid"
 
-#: app/components/public/ticket-list.js:302:21
+#: app/components/public/ticket-list.js:298:21
 msgid "Please enter a donation amount between {{minPrice}} and {{maxPrice}}"
 msgstr "Please enter a donation amount between {{minPrice}} and {{maxPrice}}"
 
-#: app/components/public/ticket-list.js:323:23
+#: app/components/public/ticket-list.js:319:23
 msgid "Please enter the promotional Code"
 msgstr "Please enter the promotional Code"
 
@@ -2523,6 +2530,7 @@ msgstr "Ends At"
 #: app/templates/components/modals/tax-info-modal.hbs:60:13
 #: app/templates/components/orders/company-info.hbs:75:22
 #: app/templates/components/widgets/forms/location-input.hbs:30:22
+#: app/utils/dictionary/event.ts:42:79
 msgid "State"
 msgstr "State"
 
@@ -2759,7 +2767,7 @@ msgstr "Completed Orders"
 #: app/templates/events/view/tickets/index.hbs:130:36
 #: app/templates/events/view/tickets/index.hbs:132:36
 #: app/templates/events/view/tickets/index.hbs:134:36
-#: app/templates/public/index.hbs:130:34
+#: app/templates/public/index.hbs:132:34
 msgid "Tickets"
 msgstr "Tickets"
 
@@ -3201,7 +3209,7 @@ msgid "Access Code has been updated successfully."
 msgstr "Access Code has been updated successfully."
 
 #: app/controllers/events/view/tickets/add-order.js:23:28
-#: app/controllers/public/index.js:241:28
+#: app/controllers/public/index.js:246:28
 msgid "Order details saved. Please fill further details within {{time}} minutes."
 msgstr "Order details saved. Please fill further details within {{time}} minutes."
 
@@ -3330,19 +3338,19 @@ msgid "All notifications marked read successfully"
 msgstr "All notifications marked read successfully"
 
 #: app/controllers/oauth/callback.js:29:41
-#: app/controllers/public/index.js:94:37 app/controllers/register.js:71:37
+#: app/controllers/public/index.js:99:37 app/controllers/register.js:71:37
 msgid "Your credentials were incorrect."
 msgstr "Your credentials were incorrect."
 
-#: app/controllers/orders/new.js:39:32
+#: app/controllers/orders/new.js:35:32
 msgid "Order details saved. Please fill the payment details"
 msgstr "Order details saved. Please fill the payment details"
 
-#: app/controllers/orders/new.js:45:32
+#: app/controllers/orders/new.js:41:32 app/controllers/orders/pending.js:204:32
 msgid "Order details saved. Your order is successful"
 msgstr "Order details saved. Your order is successful"
 
-#: app/controllers/orders/pending.js:57:26
+#: app/controllers/orders/pending.js:32:26
 msgid "Payment has succeeded"
 msgstr "Payment has succeeded"
 
@@ -3358,11 +3366,11 @@ msgstr "Here are your tickets"
 msgid "Online and In-Person Event at"
 msgstr "Online and In-Person Event at"
 
-#: app/controllers/public.js:79:13 app/templates/public/index.hbs:202:24
+#: app/controllers/public.js:79:13 app/templates/public/index.hbs:205:24
 msgid "Location to be announced"
 msgstr "Location to be announced"
 
-#: app/controllers/public.js:87:34
+#: app/controllers/public.js:102:34
 msgid "Please login to follow a group."
 msgstr "Please login to follow a group."
 
@@ -3513,10 +3521,11 @@ msgstr "City"
 #: app/templates/components/forms/user-payment-info-form.hbs:58:17
 #: app/templates/components/orders/company-info.hbs:65:22
 #: app/templates/components/widgets/forms/location-input.hbs:44:22
+#: app/utils/dictionary/event.ts:69:66
 msgid "Country"
 msgstr "Country"
 
-#: app/models/custom-form.js:15:24
+#: app/models/custom-form.js:15:24 app/utils/dictionary/event.ts:84:58
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -3576,6 +3585,7 @@ msgstr "Long Abstract"
 #: app/templates/admin/content/translations.hbs:7:34
 #: app/templates/components/forms/admin/content/pages-form.hbs:35:28
 #: app/templates/components/forms/admin/content/translation-form.hbs:8:32
+#: app/utils/dictionary/event.ts:41:71
 msgid "Language"
 msgstr "Language"
 
@@ -4395,7 +4405,7 @@ msgid "My Groups"
 msgstr "My Groups"
 
 #: app/routes/my-groups/following.js:7:11
-#: app/templates/components/forms/group/group-view.hbs:79:12
+#: app/templates/components/forms/group/group-view.hbs:78:12
 #: app/templates/components/group-card.hbs:61:16
 #: app/templates/components/group-header.hbs:28:8
 #: app/templates/components/promoted-group-card.hbs:22:12
@@ -6965,14 +6975,14 @@ msgstr "We recommend using at least a 2160x1080px (2:1 ratio) image."
 msgid "Contact Organizer"
 msgstr "Contact Organizer"
 
-#: app/templates/components/forms/group/group-view.hbs:81:12
+#: app/templates/components/forms/group/group-view.hbs:80:12
 #: app/templates/components/group-card.hbs:63:16
 #: app/templates/components/promoted-group-card.hbs:24:12
 #: app/templates/public.hbs:84:16 app/templates/public.hbs:200:42
 msgid "Follow Group"
 msgstr "Follow Group"
 
-#: app/templates/components/forms/group/group-view.hbs:101:24
+#: app/templates/components/forms/group/group-view.hbs:99:24
 msgid "{{userThumbnailImg}}and {{followerCount}} others"
 msgstr "{{userThumbnailImg}}and {{followerCount}} others"
 
@@ -7164,78 +7174,34 @@ msgstr "I agree that the event organizer is allowed to take photo, video and/or 
 msgid "Enable Billing Information"
 msgstr "Enable Billing Information"
 
-#: app/templates/components/forms/orders/order-form.hbs:208:10
-msgid "Payment Method"
-msgstr "Payment Method"
-
-#: app/templates/components/forms/orders/order-form.hbs:211:53
-msgid "Please choose your payment method"
-msgstr "Please choose your payment method"
-
-#: app/templates/components/forms/orders/order-form.hbs:217:25
-msgid "Credit Card"
-msgstr "Credit Card"
-
-#: app/templates/components/forms/orders/order-form.hbs:230:25
-msgid "Paypal"
-msgstr "Paypal"
-
-#: app/templates/components/forms/orders/order-form.hbs:241:25
-msgid "Paytm"
-msgstr "Paytm"
-
-#: app/templates/components/forms/orders/order-form.hbs:252:25
-msgid "Omise"
-msgstr "Omise"
-
-#: app/templates/components/forms/orders/order-form.hbs:264:25
-msgid "AliPay"
-msgstr "AliPay"
-
-#: app/templates/components/forms/orders/order-form.hbs:276:25
-msgid "Pay on Invoice"
-msgstr "Pay on Invoice"
-
-#: app/templates/components/forms/orders/order-form.hbs:286:25
-msgid "Cheque"
-msgstr "Cheque"
-
-#: app/templates/components/forms/orders/order-form.hbs:296:25
-msgid "Bank"
-msgstr "Bank"
-
-#: app/templates/components/forms/orders/order-form.hbs:306:25
-msgid "Onsite"
-msgstr "Onsite"
-
-#: app/templates/components/forms/orders/order-form.hbs:332:8
+#: app/templates/components/forms/orders/order-form.hbs:209:8
 msgid "Acknowledgement"
 msgstr "Acknowledgement"
 
-#: app/templates/components/forms/orders/order-form.hbs:336:21
+#: app/templates/components/forms/orders/order-form.hbs:213:21
 msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
 msgstr "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
 
-#: app/templates/components/forms/orders/order-form.hbs:337:42
-#: app/templates/components/forms/orders/order-form.hbs:346:84
+#: app/templates/components/forms/orders/order-form.hbs:214:42
+#: app/templates/components/forms/orders/order-form.hbs:223:84
 msgid "Proceed to Checkout"
 msgstr "Proceed to Checkout"
 
-#: app/templates/components/forms/orders/order-form.hbs:337:68
-#: app/templates/components/forms/orders/order-form.hbs:346:110
+#: app/templates/components/forms/orders/order-form.hbs:214:68
+#: app/templates/components/forms/orders/order-form.hbs:223:110
 #: app/templates/components/public/ticket-list.hbs:223:10
 msgid "Order Now"
 msgstr "Order Now"
 
-#: app/templates/components/forms/orders/order-form.hbs:338:60
+#: app/templates/components/forms/orders/order-form.hbs:215:60
 msgid "terms of services"
 msgstr "terms of services"
 
-#: app/templates/components/forms/orders/order-form.hbs:339:64
+#: app/templates/components/forms/orders/order-form.hbs:216:64
 msgid "privacy policy"
 msgstr "privacy policy"
 
-#: app/templates/components/forms/orders/order-form.hbs:344:62
+#: app/templates/components/forms/orders/order-form.hbs:221:62
 msgid "One Click Signup"
 msgstr "One Click Signup"
 
@@ -8577,7 +8543,7 @@ msgid "Apply code"
 msgstr "Apply code"
 
 #: app/templates/components/public/ticket-list.hbs:201:59
-#: app/templates/public/index.hbs:112:57
+#: app/templates/public/index.hbs:113:59
 msgid "Enter promotional code"
 msgstr "Enter promotional code"
 
@@ -8988,7 +8954,7 @@ msgstr "Creating"
 
 #: app/templates/event-invoice/paid.hbs:24:8
 #: app/templates/event-invoice/review.hbs:30:18
-#: app/templates/orders/view.hbs:53:10
+#: app/templates/orders/view.hbs:54:10
 msgid "Download Invoice"
 msgstr "Download Invoice"
 
@@ -9358,19 +9324,64 @@ msgstr "No Unread Notifications"
 msgid "No Notifications"
 msgstr "No Notifications"
 
-#: app/templates/orders/pending.hbs:41:14
+#: app/templates/orders/pending.hbs:42:10
+msgid "Payment Method"
+msgstr "Payment Method"
+
+#: app/templates/orders/pending.hbs:45:53
+msgid "Please choose your payment method"
+msgstr "Please choose your payment method"
+
+#: app/templates/orders/pending.hbs:51:25
+msgid "Stripe"
+msgstr "Stripe"
+
+#: app/templates/orders/pending.hbs:68:25
+msgid "Paypal"
+msgstr "Paypal"
+
+#: app/templates/orders/pending.hbs:79:25
+msgid "Paytm"
+msgstr "Paytm"
+
+#: app/templates/orders/pending.hbs:90:25
+msgid "Omise"
+msgstr "Omise"
+
+#: app/templates/orders/pending.hbs:102:25
+msgid "AliPay"
+msgstr "AliPay"
+
+#: app/templates/orders/pending.hbs:114:25
+msgid "Pay on Invoice"
+msgstr "Pay on Invoice"
+
+#: app/templates/orders/pending.hbs:130:25
+msgid "Cheque"
+msgstr "Cheque"
+
+#: app/templates/orders/pending.hbs:146:25
+msgid "Bank"
+msgstr "Bank"
+
+#: app/templates/orders/pending.hbs:162:25
+msgid "Onsite"
+msgstr "Onsite"
+
+#: app/templates/orders/pending.hbs:180:12
+#: app/templates/orders/pending.hbs:185:14
 msgid "Pay Now"
 msgstr "Pay Now"
 
-#: app/templates/orders/pending.hbs:61:80
+#: app/templates/orders/pending.hbs:205:80
 msgid "Pay with PayTM"
 msgstr "Pay with PayTM"
 
-#: app/templates/orders/pending.hbs:65:70
+#: app/templates/orders/pending.hbs:209:70
 msgid "Pay with AliPay"
 msgstr "Pay with AliPay"
 
-#: app/templates/orders/view.hbs:47:12
+#: app/templates/orders/view.hbs:48:12
 msgid "All Tickets"
 msgstr "All Tickets"
 
@@ -9666,19 +9677,19 @@ msgstr "Withdraw"
 msgid "Donation"
 msgstr "Donation"
 
-#: app/templates/public/index.hbs:116:251
+#: app/templates/public/index.hbs:118:251
 msgid "Register Now"
 msgstr "Register Now"
 
-#: app/templates/public/index.hbs:154:77
+#: app/templates/public/index.hbs:157:77
 msgid "To place a ticket order:"
 msgstr "To place a ticket order:"
 
-#: app/templates/public/index.hbs:171:6
+#: app/templates/public/index.hbs:174:6
 msgid "Supported By"
 msgstr "Supported By"
 
-#: app/templates/public/index.hbs:183:6
+#: app/templates/public/index.hbs:186:6
 msgid "Organized by"
 msgstr "Organized by"
 
@@ -10500,6 +10511,7 @@ msgid "Qatar"
 msgstr "Qatar"
 
 #: app/utils/dictionary/demography.ts:762:11
+#: app/utils/dictionary/event.ts:46:52
 msgid "Reunion"
 msgstr "Reunion"
 
@@ -10750,6 +10762,671 @@ msgstr "Zambia"
 #: app/utils/dictionary/demography.ts:1010:11
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
+
+#: app/utils/dictionary/event.ts:4:2
+msgid "Appearance or Signing"
+msgstr "Appearance or Signing"
+
+#: app/utils/dictionary/event.ts:5:2
+msgid "Attraction"
+msgstr "Attraction"
+
+#: app/utils/dictionary/event.ts:6:2
+msgid "Camp, Trip, or Retreat"
+msgstr "Camp, Trip, or Retreat"
+
+#: app/utils/dictionary/event.ts:7:2
+msgid "Class, Training, or Workshop"
+msgstr "Class, Training, or Workshop"
+
+#: app/utils/dictionary/event.ts:8:2
+msgid "Concert or Performance"
+msgstr "Concert or Performance"
+
+#: app/utils/dictionary/event.ts:9:2
+msgid "Conference"
+msgstr "Conference"
+
+#: app/utils/dictionary/event.ts:10:2
+msgid "Convention"
+msgstr "Convention"
+
+#: app/utils/dictionary/event.ts:11:2
+msgid "Dinner or Gala"
+msgstr "Dinner or Gala"
+
+#: app/utils/dictionary/event.ts:12:2
+msgid "Festival or Fair"
+msgstr "Festival or Fair"
+
+#: app/utils/dictionary/event.ts:13:2
+msgid "Game or Competition"
+msgstr "Game or Competition"
+
+#: app/utils/dictionary/event.ts:14:2
+msgid "Meeting or Networking Event"
+msgstr "Meeting or Networking Event"
+
+#: app/utils/dictionary/event.ts:15:2 app/utils/dictionary/event.ts:28:69
+#: app/utils/dictionary/event.ts:32:63 app/utils/dictionary/event.ts:38:31
+#: app/utils/dictionary/event.ts:42:43 app/utils/dictionary/event.ts:45:79
+#: app/utils/dictionary/event.ts:49:74 app/utils/dictionary/event.ts:52:96
+#: app/utils/dictionary/event.ts:54:57 app/utils/dictionary/event.ts:57:26
+#: app/utils/dictionary/event.ts:61:44 app/utils/dictionary/event.ts:65:22
+#: app/utils/dictionary/event.ts:67:63 app/utils/dictionary/event.ts:71:19
+#: app/utils/dictionary/event.ts:77:55 app/utils/dictionary/event.ts:81:70
+#: app/utils/dictionary/event.ts:84:74 app/utils/dictionary/event.ts:89:53
+#: app/utils/dictionary/event.ts:95:23 app/utils/dictionary/event.ts:99:74
+msgid "Other"
+msgstr "Other"
+
+#: app/utils/dictionary/event.ts:16:2
+msgid "Party or Social Gathering"
+msgstr "Party or Social Gathering"
+
+#: app/utils/dictionary/event.ts:17:2
+msgid "Race or Endurance Event"
+msgstr "Race or Endurance Event"
+
+#: app/utils/dictionary/event.ts:18:2
+msgid "Rally"
+msgstr "Rally"
+
+#: app/utils/dictionary/event.ts:19:2
+msgid "Screening"
+msgstr "Screening"
+
+#: app/utils/dictionary/event.ts:20:2
+msgid "Seminar or Talk"
+msgstr "Seminar or Talk"
+
+#: app/utils/dictionary/event.ts:21:2
+msgid "Tour"
+msgstr "Tour"
+
+#: app/utils/dictionary/event.ts:22:2
+msgid "Tournament"
+msgstr "Tournament"
+
+#: app/utils/dictionary/event.ts:23:2
+msgid "Tradeshow, Consumer Show, or Expo"
+msgstr "Tradeshow, Consumer Show, or Expo"
+
+#: app/utils/dictionary/event.ts:28:4
+msgid "Air"
+msgstr "Air"
+
+#: app/utils/dictionary/event.ts:28:17
+msgid "Auto"
+msgstr "Auto"
+
+#: app/utils/dictionary/event.ts:28:31
+msgid "Boat"
+msgstr "Boat"
+
+#: app/utils/dictionary/event.ts:28:45
+msgid "Motorcycle/ATV"
+msgstr "Motorcycle/ATV"
+
+#: app/utils/dictionary/event.ts:31:4
+msgid "Career"
+msgstr "Career"
+
+#: app/utils/dictionary/event.ts:31:20
+msgid "Design"
+msgstr "Design"
+
+#: app/utils/dictionary/event.ts:31:36
+msgid "Educators"
+msgstr "Educators"
+
+#: app/utils/dictionary/event.ts:31:55
+msgid "Environment & Sustainability"
+msgstr "Environment & Sustainability"
+
+#: app/utils/dictionary/event.ts:32:4
+msgid "Finance"
+msgstr "Finance"
+
+#: app/utils/dictionary/event.ts:32:21
+msgid "Media"
+msgstr "Media"
+
+#: app/utils/dictionary/event.ts:32:36
+msgid "Non Profit & NGOs"
+msgstr "Non Profit & NGOs"
+
+#: app/utils/dictionary/event.ts:32:78
+msgid "Real Estate"
+msgstr "Real Estate"
+
+#: app/utils/dictionary/event.ts:33:4
+msgid "Sales & Marketing"
+msgstr "Sales & Marketing"
+
+#: app/utils/dictionary/event.ts:33:31
+msgid "Startups & Small Business"
+msgstr "Startups & Small Business"
+
+#: app/utils/dictionary/event.ts:36:4
+msgid "Animal Welfare"
+msgstr "Animal Welfare"
+
+#: app/utils/dictionary/event.ts:36:28
+msgid "Disaster Relief"
+msgstr "Disaster Relief"
+
+#: app/utils/dictionary/event.ts:36:53 app/utils/dictionary/event.ts:45:60
+msgid "Education"
+msgstr "Education"
+
+#: app/utils/dictionary/event.ts:37:4
+msgid "Environment"
+msgstr "Environment"
+
+#: app/utils/dictionary/event.ts:37:25
+msgid "Healthcare"
+msgstr "Healthcare"
+
+#: app/utils/dictionary/event.ts:37:45
+msgid "Human Rights"
+msgstr "Human Rights"
+
+#: app/utils/dictionary/event.ts:38:4
+msgid "International Aid"
+msgstr "International Aid"
+
+#: app/utils/dictionary/event.ts:38:46
+msgid "Poverty"
+msgstr "Poverty"
+
+#: app/utils/dictionary/event.ts:41:4
+msgid "City/Town"
+msgstr "City/Town"
+
+#: app/utils/dictionary/event.ts:41:23
+msgid "County"
+msgstr "County"
+
+#: app/utils/dictionary/event.ts:41:39
+msgid "Heritage"
+msgstr "Heritage"
+
+#: app/utils/dictionary/event.ts:41:57
+msgid "LGBT"
+msgstr "LGBT"
+
+#: app/utils/dictionary/event.ts:42:4
+msgid "Medieval"
+msgstr "Medieval"
+
+#: app/utils/dictionary/event.ts:42:22
+msgid "Nationality"
+msgstr "Nationality"
+
+#: app/utils/dictionary/event.ts:42:58
+msgid "Renaissance"
+msgstr "Renaissance"
+
+#: app/utils/dictionary/event.ts:45:4
+msgid "Alumni"
+msgstr "Alumni"
+
+#: app/utils/dictionary/event.ts:45:20
+msgid "Baby"
+msgstr "Baby"
+
+#: app/utils/dictionary/event.ts:45:34
+msgid "Children & Youth"
+msgstr "Children & Youth"
+
+#: app/utils/dictionary/event.ts:46:4
+msgid "Parenting"
+msgstr "Parenting"
+
+#: app/utils/dictionary/event.ts:46:23
+msgid "Parents Association"
+msgstr "Parents Association"
+
+#: app/utils/dictionary/event.ts:49:4
+msgid "Accessories"
+msgstr "Accessories"
+
+#: app/utils/dictionary/event.ts:49:25
+msgid "Beauty"
+msgstr "Beauty"
+
+#: app/utils/dictionary/event.ts:49:41
+msgid "Bridal"
+msgstr "Bridal"
+
+#: app/utils/dictionary/event.ts:49:57
+msgid "Fashion"
+msgstr "Fashion"
+
+#: app/utils/dictionary/event.ts:52:4 app/utils/dictionary/event.ts:64:4
+msgid "Adult"
+msgstr "Adult"
+
+#: app/utils/dictionary/event.ts:52:19
+msgid "Anime"
+msgstr "Anime"
+
+#: app/utils/dictionary/event.ts:52:34 app/utils/dictionary/event.ts:76:20
+msgid "Comedy"
+msgstr "Comedy"
+
+#: app/utils/dictionary/event.ts:52:50
+msgid "Comics"
+msgstr "Comics"
+
+#: app/utils/dictionary/event.ts:52:66
+msgid "Film"
+msgstr "Film"
+
+#: app/utils/dictionary/event.ts:52:80 app/utils/dictionary/event.ts:64:97
+msgid "Gaming"
+msgstr "Gaming"
+
+#: app/utils/dictionary/event.ts:52:111
+msgid "TV"
+msgstr "TV"
+
+#: app/utils/dictionary/event.ts:54:29
+msgid "Beer"
+msgstr "Beer"
+
+#: app/utils/dictionary/event.ts:54:43
+msgid "Food"
+msgstr "Food"
+
+#: app/utils/dictionary/event.ts:54:72
+msgid "Spirits"
+msgstr "Spirits"
+
+#: app/utils/dictionary/event.ts:54:89
+msgid "Wine"
+msgstr "Wine"
+
+#: app/utils/dictionary/event.ts:56:4
+msgid "County/Municipal Government"
+msgstr "County/Municipal Government"
+
+#: app/utils/dictionary/event.ts:56:41
+msgid "Democratic Party"
+msgstr "Democratic Party"
+
+#: app/utils/dictionary/event.ts:56:67
+msgid "Federal Government"
+msgstr "Federal Government"
+
+#: app/utils/dictionary/event.ts:57:4
+msgid "Non-partisan"
+msgstr "Non-partisan"
+
+#: app/utils/dictionary/event.ts:57:41
+msgid "Other Party"
+msgstr "Other Party"
+
+#: app/utils/dictionary/event.ts:57:62
+msgid "Republican Party"
+msgstr "Republican Party"
+
+#: app/utils/dictionary/event.ts:58:4
+msgid "State Government"
+msgstr "State Government"
+
+#: app/utils/dictionary/event.ts:61:4
+msgid "Medical"
+msgstr "Medical"
+
+#: app/utils/dictionary/event.ts:61:21
+msgid "Mental health"
+msgstr "Mental health"
+
+#: app/utils/dictionary/event.ts:61:59
+msgid "Personal health"
+msgstr "Personal health"
+
+#: app/utils/dictionary/event.ts:61:84
+msgid "Spa"
+msgstr "Spa"
+
+#: app/utils/dictionary/event.ts:61:97 app/utils/dictionary/event.ts:96:90
+msgid "Yoga"
+msgstr "Yoga"
+
+#: app/utils/dictionary/event.ts:64:19
+msgid "Anime/Comics"
+msgstr "Anime/Comics"
+
+#: app/utils/dictionary/event.ts:64:41
+msgid "Books"
+msgstr "Books"
+
+#: app/utils/dictionary/event.ts:64:56
+msgid "DIY"
+msgstr "DIY"
+
+#: app/utils/dictionary/event.ts:64:69
+msgid "Drawing & Painting"
+msgstr "Drawing & Painting"
+
+#: app/utils/dictionary/event.ts:65:4
+msgid "Knitting"
+msgstr "Knitting"
+
+#: app/utils/dictionary/event.ts:65:37
+msgid "Photography"
+msgstr "Photography"
+
+#: app/utils/dictionary/event.ts:67:24
+msgid "Dating"
+msgstr "Dating"
+
+#: app/utils/dictionary/event.ts:67:40
+msgid "Home & Garden"
+msgstr "Home & Garden"
+
+#: app/utils/dictionary/event.ts:67:78
+msgid "Pets & Animals"
+msgstr "Pets & Animals"
+
+#: app/utils/dictionary/event.ts:69:4
+msgid "Alternative"
+msgstr "Alternative"
+
+#: app/utils/dictionary/event.ts:69:25
+msgid "Blues & Jazz"
+msgstr "Blues & Jazz"
+
+#: app/utils/dictionary/event.ts:69:47
+msgid "Classical"
+msgstr "Classical"
+
+#: app/utils/dictionary/event.ts:69:83
+msgid "Cultural"
+msgstr "Cultural"
+
+#: app/utils/dictionary/event.ts:70:4
+msgid "EDM / Electronic"
+msgstr "EDM / Electronic"
+
+#: app/utils/dictionary/event.ts:70:30
+msgid "Folk"
+msgstr "Folk"
+
+#: app/utils/dictionary/event.ts:70:44
+msgid "Hip Hop / Rap"
+msgstr "Hip Hop / Rap"
+
+#: app/utils/dictionary/event.ts:70:67
+msgid "Indie"
+msgstr "Indie"
+
+#: app/utils/dictionary/event.ts:70:82
+msgid "Latin"
+msgstr "Latin"
+
+#: app/utils/dictionary/event.ts:70:97
+msgid "Metal"
+msgstr "Metal"
+
+#: app/utils/dictionary/event.ts:71:4 app/utils/dictionary/event.ts:77:21
+msgid "Opera"
+msgstr "Opera"
+
+#: app/utils/dictionary/event.ts:71:34
+msgid "Pop"
+msgstr "Pop"
+
+#: app/utils/dictionary/event.ts:71:47
+msgid "R&B"
+msgstr "R&B"
+
+#: app/utils/dictionary/event.ts:71:60
+msgid "Reggae"
+msgstr "Reggae"
+
+#: app/utils/dictionary/event.ts:71:76
+msgid "Religious/Spiritual"
+msgstr "Religious/Spiritual"
+
+#: app/utils/dictionary/event.ts:71:105
+msgid "Rock"
+msgstr "Rock"
+
+#: app/utils/dictionary/event.ts:72:4
+msgid "Top 40"
+msgstr "Top 40"
+
+#: app/utils/dictionary/event.ts:74:32
+msgid "Avatar"
+msgstr "Avatar"
+
+#: app/utils/dictionary/event.ts:76:4
+msgid "Ballet"
+msgstr "Ballet"
+
+#: app/utils/dictionary/event.ts:76:36
+msgid "Craft"
+msgstr "Craft"
+
+#: app/utils/dictionary/event.ts:76:51
+msgid "Dance"
+msgstr "Dance"
+
+#: app/utils/dictionary/event.ts:76:66
+msgid "Fine Art"
+msgstr "Fine Art"
+
+#: app/utils/dictionary/event.ts:76:84
+msgid "Literary Arts"
+msgstr "Literary Arts"
+
+#: app/utils/dictionary/event.ts:77:4
+msgid "Musical"
+msgstr "Musical"
+
+#: app/utils/dictionary/event.ts:77:36
+msgid "Orchestra"
+msgstr "Orchestra"
+
+#: app/utils/dictionary/event.ts:77:70
+msgid "Theatre"
+msgstr "Theatre"
+
+#: app/utils/dictionary/event.ts:80:4
+msgid "Buddhism"
+msgstr "Buddhism"
+
+#: app/utils/dictionary/event.ts:80:22
+msgid "Christianity"
+msgstr "Christianity"
+
+#: app/utils/dictionary/event.ts:80:44
+msgid "Eastern Religion"
+msgstr "Eastern Religion"
+
+#: app/utils/dictionary/event.ts:80:70
+msgid "Islam"
+msgstr "Islam"
+
+#: app/utils/dictionary/event.ts:80:85
+msgid "Judaism"
+msgstr "Judaism"
+
+#: app/utils/dictionary/event.ts:81:4
+msgid "Mormonism"
+msgstr "Mormonism"
+
+#: app/utils/dictionary/event.ts:81:23
+msgid "Mysticism and Occult"
+msgstr "Mysticism and Occult"
+
+#: app/utils/dictionary/event.ts:81:53
+msgid "New Age"
+msgstr "New Age"
+
+#: app/utils/dictionary/event.ts:81:85
+msgid "Sikhism"
+msgstr "Sikhism"
+
+#: app/utils/dictionary/event.ts:84:4
+msgid "Biotech"
+msgstr "Biotech"
+
+#: app/utils/dictionary/event.ts:84:21
+msgid "High Tech"
+msgstr "High Tech"
+
+#: app/utils/dictionary/event.ts:84:40
+msgid "Medicine"
+msgstr "Medicine"
+
+#: app/utils/dictionary/event.ts:84:89
+msgid "Robotics"
+msgstr "Robotics"
+
+#: app/utils/dictionary/event.ts:85:4
+msgid "Science"
+msgstr "Science"
+
+#: app/utils/dictionary/event.ts:88:4
+msgid "Channukah"
+msgstr "Channukah"
+
+#: app/utils/dictionary/event.ts:88:23
+msgid "Christmas"
+msgstr "Christmas"
+
+#: app/utils/dictionary/event.ts:88:42
+msgid "Easter"
+msgstr "Easter"
+
+#: app/utils/dictionary/event.ts:88:58
+msgid "Fall events"
+msgstr "Fall events"
+
+#: app/utils/dictionary/event.ts:88:79
+msgid "Halloween/Haunt"
+msgstr "Halloween/Haunt"
+
+#: app/utils/dictionary/event.ts:89:4
+msgid "Independence Day"
+msgstr "Independence Day"
+
+#: app/utils/dictionary/event.ts:89:30
+msgid "New Years Eve"
+msgstr "New Years Eve"
+
+#: app/utils/dictionary/event.ts:89:68
+msgid "St Patricks Day"
+msgstr "St Patricks Day"
+
+#: app/utils/dictionary/event.ts:90:4
+msgid "Thanksgiving"
+msgstr "Thanksgiving"
+
+#: app/utils/dictionary/event.ts:93:4
+msgid "Baseball"
+msgstr "Baseball"
+
+#: app/utils/dictionary/event.ts:93:22
+msgid "Basketball"
+msgstr "Basketball"
+
+#: app/utils/dictionary/event.ts:93:42
+msgid "Cycling"
+msgstr "Cycling"
+
+#: app/utils/dictionary/event.ts:93:59
+msgid "Exercise"
+msgstr "Exercise"
+
+#: app/utils/dictionary/event.ts:93:77
+msgid "Fighting & Martial Arts"
+msgstr "Fighting & Martial Arts"
+
+#: app/utils/dictionary/event.ts:94:4
+msgid "Football"
+msgstr "Football"
+
+#: app/utils/dictionary/event.ts:94:22
+msgid "Golf"
+msgstr "Golf"
+
+#: app/utils/dictionary/event.ts:94:36
+msgid "Hockey"
+msgstr "Hockey"
+
+#: app/utils/dictionary/event.ts:94:52
+msgid "Motorsports"
+msgstr "Motorsports"
+
+#: app/utils/dictionary/event.ts:94:73
+msgid "Mountain Biking"
+msgstr "Mountain Biking"
+
+#: app/utils/dictionary/event.ts:95:4
+msgid "Obstacles"
+msgstr "Obstacles"
+
+#: app/utils/dictionary/event.ts:95:38
+msgid "Rugby"
+msgstr "Rugby"
+
+#: app/utils/dictionary/event.ts:95:53
+msgid "Running"
+msgstr "Running"
+
+#: app/utils/dictionary/event.ts:95:70
+msgid "Snow Sports"
+msgstr "Snow Sports"
+
+#: app/utils/dictionary/event.ts:95:91
+msgid "Soccer"
+msgstr "Soccer"
+
+#: app/utils/dictionary/event.ts:96:4
+msgid "Swimming & Water Sports"
+msgstr "Swimming & Water Sports"
+
+#: app/utils/dictionary/event.ts:96:37
+msgid "Tennis"
+msgstr "Tennis"
+
+#: app/utils/dictionary/event.ts:96:53
+msgid "Volleyball"
+msgstr "Volleyball"
+
+#: app/utils/dictionary/event.ts:96:73
+msgid "Walking"
+msgstr "Walking"
+
+#: app/utils/dictionary/event.ts:99:4
+msgid "Canoeing"
+msgstr "Canoeing"
+
+#: app/utils/dictionary/event.ts:99:22
+msgid "Climbing"
+msgstr "Climbing"
+
+#: app/utils/dictionary/event.ts:99:40
+msgid "Hiking"
+msgstr "Hiking"
+
+#: app/utils/dictionary/event.ts:99:56
+msgid "Kayaking"
+msgstr "Kayaking"
+
+#: app/utils/dictionary/event.ts:99:89
+msgid "Rafting"
+msgstr "Rafting"
+
+#: app/utils/dictionary/event.ts:99:106
+msgid "Travel"
+msgstr "Travel"
 
 #: app/utils/dictionary/filters.js:4:13
 msgid "All Dates"
