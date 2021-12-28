@@ -9,31 +9,6 @@ export default class PendingController extends Controller {
   isLoading = false;
   paymentDescription = 'Please fill your card details to proceed';
 
-  @computed('model.order.paymentMode')
-  get isStripe() {
-    return this.model.order.paymentMode === 'stripe';
-  }
-
-  @computed('model.order.paymentMode')
-  get isPaypal() {
-    return this.model.order.paymentMode === 'paypal';
-  }
-
-  @computed('model.order.paymentMode')
-  get isPaytm() {
-    return this.model.order.paymentMode === 'paytm';
-  }
-
-  @computed('model.order.paymentMode')
-  get isOmise() {
-    return this.model.order.paymentMode === 'omise';
-  }
-
-  @computed('model.order')
-  get isAliPay() {
-    return this.model.order.paymentMode === 'alipay';
-  }
-
   @computed('model.order')
   get paymentAmount() {
     return this.model.order.amount * 100;
@@ -115,11 +90,13 @@ export default class PendingController extends Controller {
   }
 
   @action
-  async stripePay() {
+  async getPaymentElement() {
     this.set('isLoading', true);
     const { order } = this.model;
+    await order.save();
 
     try {
+      await order.save();
       let chargePayload = {
         'data': {
           'type': 'charge'
@@ -132,14 +109,24 @@ export default class PendingController extends Controller {
       const stripeAuthorization = await order.event.get('stripeAuthorization');
       const response = await this.loader.post(`orders/${order.identifier}/charge`, chargePayload, config);
       const stripe = await loadStripe(stripeAuthorization.stripePublishableKey);
-      const checkoutSession = JSON.parse(response.data.attributes.message);
-      stripe.redirectToCheckout({
-        sessionId: checkoutSession.id
-      }).then(function(result) {
-        if (result.error.message) {
-          console.error(result.error.message);
+      const paymentIntent = JSON.parse(response.data.attributes.message);
+      const appearance = {
+        theme     : 'stripe',
+        variables : {
+          colorText  : '#32325d',
+          fontFamily : '"Helvetica Neue", Helvetica, sans-serif'
         }
-      });
+      };
+      const options = {
+        clientSecret: paymentIntent.client_secret,
+        appearance
+      };
+      const elements = stripe.elements(options);
+      this.set('elements', elements);
+      this.set('stripe', stripe);
+      const paymentElement = elements.create('payment');
+      paymentElement.mount('#payment-element');
+
     } catch (e) {
       console.error(e);
       if ('errors' in e) {
@@ -155,6 +142,84 @@ export default class PendingController extends Controller {
       }
     } finally {
       this.set('isLoading', false);
+    }
+
+  }
+
+  @action
+  async stripePay() {
+    this.set('isLoading', true);
+    const { order } = this.model;
+
+    try {
+      const stripe = await this.stripe;
+      const elements = await this.elements;
+
+      const { error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${this.settings.frontendUrl}/orders/${order.identifier}/view`
+        }
+      });
+
+      if (error) {
+        console.error(error);
+      }
+    } catch (e) {
+      console.error(e);
+      if ('errors' in e) {
+        this.notify.error(this.l10n.tVar(e.errors[0].detail),
+          {
+            id: 'unexpected_error_occur'
+          });
+      } else {
+        this.notify.error(this.l10n.tVar(e),
+          {
+            id: 'unexpected_error_occur'
+          });
+      }
+    } finally {
+      this.set('isLoading', false);
+    }
+  }
+
+  @action
+  async completeOrder() {
+    try {
+      this.set('isLoading', true);
+      const { order } = this.model;
+      const { paymentMode } = this.model.order;
+      if (paymentMode === 'free') {
+        order.set('status', 'completed');
+      } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite' || paymentMode === 'invoice') {
+        order.set('status', 'placed');
+      } else if (order.event.get('isOneclickSignupEnabled')) {
+        order.set('status', 'completed');
+      } else {
+        order.set('status', 'pending');
+      }
+      await order.save()
+        .then(order => {
+          if (order.status === 'completed' || order.status === 'placed') {
+            this.notify.success(this.l10n.t('Order details saved. Your order is successful'),
+              {
+                id: 'order_succ'
+              });
+            this.transitionToRoute('orders.view', order.identifier);
+          }
+        })
+        .catch(e => {
+          console.error('Error while saving new order', e);
+          order.set('status', 'initializing');
+          this.errorHandler.handle(e);
+        })
+        .finally(() => {
+          this.set('isLoading', false);
+        });
+    } catch (e) {
+      this.set('isLoading', false);
+      console.error('Error while in saving new order', e);
+      this.errorHandler.handle(e);
     }
   }
 }
