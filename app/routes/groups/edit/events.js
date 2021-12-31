@@ -26,7 +26,7 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
     return hash({
       filteredEvents: this.infinity.model('events', {
         filter       : filterOptions,
-        perPage      : 25,
+        perPage      : 35,
         startingPage : 1,
         perPageParam : 'page[size]',
         pageParam    : 'page[number]',
