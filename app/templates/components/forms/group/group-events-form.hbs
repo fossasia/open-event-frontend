@@ -28,27 +28,39 @@
         </div>
       </div>
     {{/if}}
-    {{#if this.remainingEvents}}
-      <div class="mb-4">
-        {{#if this.upcomingEvents}}
-          <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
-          <div class="ui stackable three column grid">
-            {{#each this.upcomingEvents as |event|}}
-              <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
-            {{/each}}
-          </div>
-        {{/if}}
-        {{#if this.pastEvents}}
-          <div class="ui hidden divider"></div>
-          <h2 class="main-heading">{{t 'Past Events'}}</h2>
-          <div class="ui stackable three column grid">
-            {{#each this.pastEvents as |event|}}
-              <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
-            {{/each}}
-          </div>
-        {{/if}}
-      </div>
-    {{/if}}
+    <div class="mb-4">
+      {{#if this.upcomingEvents}}
+        <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
+        <div class="ui stackable three column grid">
+          {{#each this.upcomingEvents as |event|}}
+            <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
+          {{/each}}
+        </div>
+        <div class="sixteen wide column">
+          <InfinityLoader @infinityModel={{this.upcomingEvents}} @triggerOffset={{1000}} @eventDebounce={{50}}>
+            <div class="ui loading very padded basic segment">
+            </div>
+            {{this.infintyModel.reachedInfinity}}
+          </InfinityLoader>
+        </div>
+      {{/if}}
+      {{#if this.pastEvents}}
+        <div class="ui hidden divider"></div>
+        <h2 class="main-heading">{{t 'Past Events'}}</h2>
+        <div class="ui stackable three column grid">
+          {{#each this.pastEvents as |event|}}
+            <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
+          {{/each}}
+        </div>
+        <div class="sixteen wide column">
+          <InfinityLoader @infinityModel={{this.pastEvents}} @triggerOffset={{1000}} @eventDebounce={{50}}>
+            <div class="ui loading very padded basic segment">
+            </div>
+            {{this.infintyModel.reachedInfinity}}
+          </InfinityLoader>
+        </div>
+      {{/if}}
+    </div>
   </form>
   <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
 </div>
