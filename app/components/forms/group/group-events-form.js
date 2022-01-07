@@ -5,7 +5,6 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
-import moment from 'moment';
 import { sortBy } from 'lodash-es';
 import { all } from 'rsvp';
 
@@ -73,19 +72,14 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
       });
   }
 
-  @computed('events.[]', 'groupEvents.[]')
-  get remainingEvents() {
-    return sortBy(this.events.toArray().filter(event => !this.groupEvents.toArray().includes(event)), ['startsAt']).reverse();
-  }
-
-  @computed('events.[]', 'groupEvents.[]')
+  @computed('pastEvents.[]', 'groupEvents.[]')
   get pastEvents() {
-    return sortBy(this.remainingEvents.toArray().filter(event => { return moment(event.endsAt) < moment()}), ['startsAt']).reverse();
+    return sortBy(this.pastEvents.toArray().filter(event => !this.groupEvents.toArray().includes(event)), ['startsAt']).reverse();
   }
 
-  @computed('events.[]', 'groupEvents.[]')
+  @computed('upcomingEvents.[]', 'groupEvents.[]')
   get upcomingEvents() {
-    return sortBy(this.remainingEvents.toArray().filter(event => { return moment(event.endsAt) > moment()}), ['startsAt']).reverse();
+    return sortBy(this.upcomingEvents.toArray().filter(event => !this.groupEvents.toArray().includes(event)), ['startsAt']).reverse();
   }
 
   @action
