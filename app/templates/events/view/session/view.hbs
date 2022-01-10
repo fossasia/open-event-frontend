@@ -39,7 +39,7 @@
     <div class="column eleven wide">
       {{#each this.model.session.speakers as |speaker|}}
         <LinkTo
-          @route="public.cfs.view-speaker"
+          @route="events.view.speaker.view"
           @models={{array this.model.session.event.id speaker.id}}>
           <div>{{speaker.name}}</div>
         </LinkTo>
