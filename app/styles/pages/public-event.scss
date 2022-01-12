@@ -60,7 +60,6 @@
         .info {
           align-items: center;
           bottom: 20%;
-          flex-wrap: wrap;
           position: absolute;
 
           .logo {
@@ -70,6 +69,10 @@
 
           .event {
             font-weight: 300;
+          }
+
+          .event.info {
+            width: 80%;
           }
 
           .event.name {
@@ -86,7 +89,6 @@
             font-size: 1.25rem;
             margin: 0;
           }
-
 
           .event.location {
             font-size: 1.5rem;
@@ -120,16 +122,20 @@
           .logo {
             height: 50px;
             padding-bottom: 4px;
-            }
+          }
         }
         @media (max-width: 470px) {
           .info {
-            bottom: 0;
+            bottom: 0 !important;
             padding: 1rem;
 
             .logo {
-              height: 30px;
+              height: 40px;
               padding-bottom: 4px;
+            }
+
+            .event-info {
+              width: 60%;
             }
 
             .event.name {
@@ -137,15 +143,15 @@
             }
 
             .event.time {
-              font-size: 1rem;
+              font-size: .85rem;
             }
 
             .event.time.ends {
-              font-size: 1rem;
+              font-size: .85rem;
             }
 
             .event.location {
-              font-size: .95rem;
+              font-size: .75rem;
             }
           }
         }
@@ -179,8 +185,9 @@
       }
     }
 
-    > div {
+    > .info > .event-info {
       min-height: 400px;
+      width: 80%;
     }
   }
 
