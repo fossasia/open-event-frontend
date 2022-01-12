@@ -6,11 +6,13 @@
       <div class="ui container">
         <div class="ui info d-flex">
           {{#if this.model.logoUrl}}
+          <div>
             <LinkTo @route="public">
               <img src="{{this.model.logoUrl}}" class="logo mr-8" />
             </LinkTo>
+          </div>
           {{/if}}
-          <div>
+          <div class="event-info">
             <h4 class="event time" style={{this.vietnameseFontFamily}}>{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
             {{#if this.displayEndDate}}
               <h5 class="event time ends" style={{this.vietnameseFontFamily}}>{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
