@@ -1,15 +1,15 @@
 <form class="ui form">
   <div class="ui segments">
     <div class="ui aligned secondary segment">
-      <h3 class="weight-400">{{t 'Attendee Information'}}</h3>
+      <h3 class="weight-400">{{t "Attendee Information"}}</h3>
     </div>
     <div class="ui padded segment">
       <h4 class="ui horizontal divider header">
         <i class="ticket icon"></i>
         {{#if @event.isOneclickSignupEnabled}}
-          {{t 'Registration Holder\'s Information'}}
+          {{t "Registration Holder's Information"}}
         {{else}}
-          {{t 'Ticket Holder\'s Information'}}
+          {{t "Ticket Holder's Information"}}
         {{/if}}
       </h4>
       {{#each this.holders as |holder|}}
@@ -18,45 +18,76 @@
             <i class="user icon"></i>
             <label>
               {{#if @event.isOneclickSignupEnabled}}
-                {{t 'Registration Holder -for- {{ticketName}}' ticketName=holder.ticket.name}}
+                {{t
+                  "Registration Holder -for- {{ticketName}}"
+                  ticketName=holder.ticket.name
+                }}
               {{else}}
-                {{t 'Ticket Holder -for- {{ticketName}}' ticketName=holder.ticket.name}}
+                {{t
+                  "Ticket Holder -for- {{ticketName}}"
+                  ticketName=holder.ticket.name
+                }}
               {{/if}}
             </label>
-            {{#if (eq this.data.status 'completed')}}
-             <button class="ui right floated button {{if this.device.isMobile 'fluid'}} button"
-                {{action this.downloadTicketForAttendee @event.name holder.order.id holder.id }}>
+            {{#if (eq this.data.status "completed")}}
+              <button
+                class="ui right floated button
+                  {{if this.device.isMobile 'fluid'}}
+                  button"
+                {{action
+                  this.downloadTicketForAttendee
+                  @event.name
+                  holder.order.id
+                  holder.id
+                }}
+              >
                 <i class="ticket icon"></i>
-                {{t 'Download Ticket'}}
-            </button>
+                {{t "Download Ticket"}}
+              </button>
             {{/if}}
           </div>
-         
-          {{# each this.allFields.attendee as |field|}}
-            {{#if field.isIncluded}}
-              {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
+
+          {{#each this.allFields.attendee as |field|}}
+            {{#if field.isLoaded}}
+              {{#if
+                (or
+                  (get holder field.fieldIdentifier)
+                  this.event.isTicketFormEnabled
+                )
+              }}
                 <div class="field">
-                    <h4 class="weight-300">
-                      {{t-var field.name}}
-                    </h4>
-                    {{#if (is-input-field field.type) }}
-                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
-                    {{else if (eq field.type 'select')}}
-                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
-                    {{else if (eq field.type 'checkbox')}}
-                      <span class="word-break">
-                        {{#if (get holder field.fieldIdentifier)}}
-                          {{t 'Yes'}}
-                        {{else}}
-                          {{t 'No'}}
-                        {{/if}}
-                      </span>
-                    {{else}}
-                      <span class="word-break">{{sanitize (get holder field.fieldIdentifier)}}</span>
-                    {{/if}}
-                    {{#if field.isComplex}}
-                      <span class="word-break">{{get holder.complexFieldValues field.fieldIdentifier}}</span>
-                    {{/if}}
+                  <h4 class="weight-300">
+                    {{t-var field.name}}
+                  </h4>
+                  {{#if (is-input-field field.type)}}
+                    <span class="word-break">{{get
+                        holder
+                        field.fieldIdentifier
+                      }}</span>
+                  {{else if (eq field.type "select")}}
+                    <span class="word-break">{{get
+                        holder
+                        field.fieldIdentifier
+                      }}</span>
+                  {{else if (eq field.type "checkbox")}}
+                    <span class="word-break">
+                      {{#if (get holder field.fieldIdentifier)}}
+                        {{t "Yes"}}
+                      {{else}}
+                        {{t "No"}}
+                      {{/if}}
+                    </span>
+                  {{else}}
+                    <span class="word-break">{{sanitize
+                        (get holder field.fieldIdentifier)
+                      }}</span>
+                  {{/if}}
+                  {{#if field.isComplex}}
+                    <span class="word-break">{{get
+                        holder.complexFieldValues
+                        field.fieldIdentifier
+                      }}</span>
+                  {{/if}}
                 </div>
               {{/if}}
             {{/if}}
@@ -67,25 +98,25 @@
       {{#if this.showBillingInfo}}
         <div class="print">
           <h4 class="ui horizontal divider header">
-            <i class='address card icon'></i>
-            {{t 'Billing Information'}}
+            <i class="address card icon"></i>
+            {{t "Billing Information"}}
           </h4>
-          <div class="ui two column divided relaxed stackable grid ">
+          <div class="ui two column divided relaxed stackable grid">
             <div class="row">
               <div class="column">
                 <h4 class="weight-300">
-                  {{t 'Organisation'}}
+                  {{t "Organisation"}}
                 </h4>
                 <p>{{this.data.company}}</p>
                 <h4 class="weight-300">
-                  {{t 'Tax ID or Business ID'}}
+                  {{t "Tax ID or Business ID"}}
                 </h4>
                 <p> {{this.data.taxBusinessInfo}}</p>
               </div>
 
               <div class="column">
                 <h4 class="weight-300">
-                  {{t 'Address'}}
+                  {{t "Address"}}
                 </h4>
                 <div class="ui list">
                   <div class="item word-break">
