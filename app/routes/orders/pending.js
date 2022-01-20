@@ -23,8 +23,9 @@ export default class PendingRoute extends Route {
     const eventDetails = await order.query('event', { include: 'tax' });
     return {
       order,
+      event: eventDetails,
       form: await eventDetails.query('customForms', {
-        'page[size]' : 50,
+        'page[size]' : 70,
         sort         : 'id'
       })
     };
