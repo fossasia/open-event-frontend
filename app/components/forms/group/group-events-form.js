@@ -1,11 +1,10 @@
 
 import Component from '@ember/component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
-import { sortBy } from 'lodash-es';
 import { all } from 'rsvp';
 
 @classic
@@ -70,16 +69,6 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
       .finally(() => {
         this.set('isLoading', false);
       });
-  }
-
-  @computed('pastEvents.[]', 'groupEvents.[]')
-  get pastEvents() {
-    return sortBy(this.pastEvents.toArray().filter(event => !this.groupEvents.toArray().includes(event)), ['startsAt']).reverse();
-  }
-
-  @computed('upcomingEvents.[]', 'groupEvents.[]')
-  get upcomingEvents() {
-    return sortBy(this.upcomingEvents.toArray().filter(event => !this.groupEvents.toArray().includes(event)), ['startsAt']).reverse();
   }
 
   @action
