@@ -206,7 +206,7 @@ export default Component.extend(FormMixin, {
   }),
 
   stripeMode: computed(function() {
-    return ENV.environment === 'development' || ENV.environment === 'test' ? 'debug' : 'production';
+    return ENV.environment === 'production' ? 'production' : 'debug';
   }),
 
   isCheckedPaypal: computed(function() {
