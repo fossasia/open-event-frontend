@@ -129,7 +129,7 @@
         <div class="default text">{{t 'Select timezone'}}</div>
         <div class="menu">
           {{#each this.timezones as |timezone|}}
-            <div class="item" data-value="{{timezone}}">{{timezone}}</div>
+            <div class="item" data-value="{{timezone}}">{{t-var timezone}}</div>
           {{/each}}
         </div>
       </UiDropdown>
@@ -326,6 +326,73 @@
           {{t 'Donation Registration'}}
         </button>
       </div>
+    {{/if}}
+    {{#if this.data.event.isTaxEnabled}}
+      <div class="ui card" style="width:450px;">
+        <div class="content tax-info">
+          <div class="meta">
+            {{t 'Invoice and Tax Information'}}
+          </div>
+        </div>
+        <div class="content">
+          {{#if this.data.event.tax.name}}
+            <div class="header">{{this.data.event.tax.name}}</div>
+          {{/if}}
+          {{#if this.data.event.tax.country}}
+            <div class="description">
+              <br/><span class="d-inline-block">Country</span>{{this.data.event.tax.country}}
+            </div>
+          {{/if}}
+          <div class="description">
+            {{#if this.data.event.tax.rate}}
+              <span class="d-inline-block">Rate</span>{{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
+            {{/if}}
+            {{#if this.data.event.tax.taxId}}
+              <br/><span class="d-inline-block">Tax ID</span>{{this.data.event.tax.taxId}}
+            {{/if}}  
+            {{#if this.data.event.tax.registeredCompany}}
+              <br/><span class="d-inline-block">Organisation</span>{{this.data.event.tax.registeredCompany}}
+            {{/if}}
+            {{#if this.data.event.tax.contactName}}
+              <br/><span class="d-inline-block">Contact Name</span>{{this.data.event.tax.contactName}}
+            {{/if}}
+            {{#if this.data.event.tax.email}}
+              <br/><span class="d-inline-block">Email</span>{{this.data.event.tax.email}}
+            {{/if}}
+            {{#if this.data.event.tax.phone}}
+              <br/><span class="d-inline-block">Phone</span>{{this.data.event.tax.phone}}
+            {{/if}}
+            {{#if this.data.event.tax.address}}
+              <br/><span class="d-inline-block">Address</span>{{this.data.event.tax.address}}
+            {{/if}}
+            {{#if this.data.event.tax.city}}
+              <br/><span class="d-inline-block">City</span>{{this.data.event.tax.city}}
+            {{/if}}
+            {{#if this.data.event.tax.state}}
+              <br/><span class="d-inline-block">State</span>{{this.data.event.tax.state}}
+            {{/if}}
+            {{#if this.data.event.tax.zip}}
+              <br/><span class="d-inline-block">ZIP</span>{{this.data.event.tax.zip}}
+            {{/if}}
+          </div>
+        </div>
+        <div class="ui bottom attached small buttons">
+          <button class="ui button" type="button" {{action 'openTaxModal'}}>
+            <i class="pencil icon"></i>
+            {{t 'Edit'}}
+          </button>
+
+          <button class="ui red button" type="button" {{action 'deleteTaxInformation'}}>
+            <i class="trash icon"></i>
+            {{t 'Remove'}}
+          </button>
+        </div>
+      </div>
+    {{else}}
+      <button type="button" class="ui right labeled icon button mb-4" {{action 'openTaxModal'}}>
+        <i class="percent icon"></i>
+        {{t 'Add invoice and tax information'}}
+      </button>
     {{/if}}
   {{#if this.hasPaidTickets}}
     {{!-- Hiding discount code temporarily, till we get this feature ready to apply discount codes for events.
@@ -537,14 +604,14 @@
             @id="payment_by_invoice"
             @checked={{this.data.event.canPayByInvoice}} />
           <label for="payment_by_invoice">
-            {{t 'YES, accept payment by Purchase on invoice'}}
+            {{t 'YES, accept payment by purchase on invoice.'}}
           </label>
         </div>
       </div>
       {{#if this.data.event.canPayByInvoice}}
         <div class="field payments">
           <label class="required">
-            {{t 'Enter the required details/instructions to ticket buyers'}}
+            {{t 'Enter the required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="invoice_details"
@@ -560,14 +627,14 @@
             @id="payment_by_cheque"
             @checked={{this.data.event.canPayByCheque}} />
           <label for="payment_by_cheque">
-            {{t 'YES, accept payment by Cheque'}}
+            {{t 'YES, accept payment by Cheque.'}}
           </label>
         </div>
       </div>
       {{#if this.data.event.canPayByCheque}}
         <div class="field payments">
           <label class="required">
-            {{t 'Enter you account name and other required details/instructions to ticket buyers'}}
+            {{t 'Enter you account name and other required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="cheque_details"
@@ -584,7 +651,7 @@
             @checked={{this.data.event.canPayByBank}}
           />
           <label for="payment_by_bank">
-            {{t 'YES, accept payment by Telegraphic Transfer (TT) / Bank Transfer'}}
+            {{t 'YES, accept payment by telegraphic transfer (TT) / bank transfer.'}}
           </label>
         </div>
       </div>
@@ -592,7 +659,7 @@
       {{#if this.data.event.canPayByBank}}
         <div class="field">
           <label class="required">
-            {{t 'Enter your bank details and other required details/instructions to ticket buyers'}}
+            {{t 'Enter your bank details and other required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="bank_details"
@@ -608,7 +675,7 @@
             @id="payment_onsite"
             @checked={{this.data.event.canPayOnsite}} />
           <label for="payment_onsite">
-            {{t 'YES, accept payment at the event (on site)'}}
+            {{t 'YES, accept payment at the event (on site).'}}
           </label>
         </div>
       </div>
@@ -616,7 +683,7 @@
       {{#if this.data.event.canPayOnsite}}
         <div class="field">
           <label class="required">
-            {{t 'Enter your payment instructions and other required details/instructions to ticket buyers'}}
+            {{t 'Enter your payment instructions and other required details/instructions to ticket buyers.'}}
           </label>
           <Textarea
             @id="on_site_details"
@@ -626,60 +693,9 @@
       {{/if}}
       <br>
       <div class="field">
-        {{#if this.data.event.isTaxEnabled}}
-          <div class="ui card">
-            <div class="content tax-info">
-              <div class="meta">
-                {{t 'Tax Information'}}
-              </div>
-            </div>
-            <div class="content">
-              <div class="header">{{this.data.event.tax.name}}</div>
-              {{#if this.data.event.tax.country}}
-                <div class="description">
-                  <br/>{{this.data.event.tax.country}}
-                </div>
-              {{/if}}
-              <div class="description">
-                {{this.data.event.tax.rate}}% - {{if this.data.event.tax.isTaxIncludedInPrice 'Tax included in ticket price' 'Tax on top of ticket price'}}
-                {{this.data.event.tax.taxId}}
-                {{#if this.data.event.tax.registeredCompany}}
-                  <br/>{{this.data.event.tax.registeredCompany}}
-                {{/if}}
-                {{#if this.data.event.tax.address}}
-                  <br/>{{this.data.event.tax.address}}
-                {{/if}}
-                {{#if this.data.event.tax.city}}
-                  <br/>{{this.data.event.tax.city}}
-                {{/if}}
-                {{#if this.data.event.tax.state}}
-                  <br/>{{this.data.event.tax.state}}
-                {{/if}}
-                {{#if this.data.event.tax.zip}}
-                  <br/>{{this.data.event.tax.zip}}
-                {{/if}}
-              </div>
-            </div>
-            <div class="ui bottom attached small buttons">
-              <button class="ui button" type="button" {{action 'openTaxModal'}}>
-                <i class="pencil icon"></i>
-                {{t 'Edit'}}
-              </button>
-
-              <button class="ui red button" type="button" {{action 'deleteTaxInformation'}}>
-                <i class="trash icon"></i>
-                {{t 'Remove'}}
-              </button>
-            </div>
-          </div>
-        {{else}}
-          <button type="button" class="ui right labeled icon button" {{action 'openTaxModal'}}>
-            <i class="percent icon"></i>
-            {{t 'Add Tax Information'}}
-          </button>
-        {{/if}}
         <div class="ui hidden divider"></div>
         <div class="field">
+          <h4>{{t 'Billing Info'}}</h4>
           <div class="ui checkbox">
             <Input
               @type="checkbox"
@@ -687,12 +703,11 @@
               @checked={{this.data.event.isBillingInfoMandatory}}
             />
             <label for="billing_info">
-              <strong>{{t 'Billing Info'}}:</strong>
-              {{t 'Require Billing Information from Ticket Buyer'}}
+              {{t 'Require billing information from ticket buyer.'}}
             </label>
           </div>
         </div>
-      <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
       </div>
     </div>
   {{/if}}

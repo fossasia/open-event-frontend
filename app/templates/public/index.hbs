@@ -108,9 +108,11 @@
           </div>
         </div>
       {{else}}
-        <div class="ui action fluid" style="max-width:{{if device.isMobile '100%' '50%'}}">
-          <a href="#" {{action 'removePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
-        </div>
+        {{#unless this.hasOnlyFreeTickets}}
+          <div class="ui action fluid" style="max-width:{{if device.isMobile '100%' '50%'}}">
+            <a href="#" {{action 'removePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+          </div>
+        {{/unless}}
       {{/if}}
     <br/>
     <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
@@ -149,6 +151,7 @@
               @isLoading={{this.isLoading}}
               @userExists={{this.userExists}}
               @errorMessage={{this.errorMessage}}
+              @hasOnlyFreeTickets={{this.hasOnlyFreeTickets}}
               @save="save" />
           </div>
           <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />

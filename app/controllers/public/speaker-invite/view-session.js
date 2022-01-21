@@ -18,7 +18,7 @@ export default class extends Controller.extend(FormMixin) {
   @action
   async accept() {
     try {
-      const header = this.l10n.t('Do you want to accept the invite');
+      const header = this.l10n.t('Do you want to accept the invite?');
       await this.confirm.prompt(header + '?');
     } catch {
       return;
@@ -26,7 +26,7 @@ export default class extends Controller.extend(FormMixin) {
     this.set('isLoading', true);
     this.loader.load(`/speaker-invites/${this.model.speakerInvite.id}/accept-invite`)
       .then(() => {
-        this.notify.success(this.l10n.t('Speaker invite has been accepted'),
+        this.notify.success(this.l10n.t('Speaker invite has been accepted.'),
           {
             id: 'speaker_det_save'
           });
@@ -34,7 +34,7 @@ export default class extends Controller.extend(FormMixin) {
       })
       .catch(e => {
         console.error('Error while accepting speaker invite', e);
-        this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+        this.notify.error(this.l10n.t('Oops something went wrong. Please try again.'));
       })
       .finally(() => {
         this.set('isLoading', false);
@@ -44,7 +44,7 @@ export default class extends Controller.extend(FormMixin) {
   @action
   async reject() {
     try {
-      const header = this.l10n.t('Do you want to reject the invite');
+      const header = this.l10n.t('Do you want to reject the invite?');
       await this.confirm.prompt(header + '?');
     } catch {
       return;
@@ -52,7 +52,7 @@ export default class extends Controller.extend(FormMixin) {
     this.set('isLoading', true);
     this.loader.load(`/speaker-invites/${this.model.speakerInvite.id}/reject-invite`)
       .then(() => {
-        this.notify.success(this.l10n.t('Speaker invite has been rejected'),
+        this.notify.success(this.l10n.t('Speaker invite has been rejected.'),
           {
             id: 'speaker_det_save'
           });

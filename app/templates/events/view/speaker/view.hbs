@@ -21,6 +21,16 @@
   <Events::View::Overview::SpeakerView
     @fields={{this.allFields}}
     @speaker={{this.model.speaker}} />
-  <div class="weight-600 column three wide">{{t 'Sessions'}}</div>
-  <div class="column thirteen wide">{{this.allSessions}}</div>
+  <div class="ui grid container">
+    <div class="weight-600 column four wide">
+        {{t 'Sessions'}}
+    </div>
+    <div class="column twelve wide">
+      {{#each this.allSessions as |session|}}
+        <LinkTo @route="events.view.session.view" @model={{session.id}}>
+          <div>{{session.title}}</div>
+        </LinkTo>
+      {{/each}}
+    </div>
+  </div>
 </div>

@@ -40,7 +40,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for session-type')
+              prompt : this.l10n.t('Please enter name for session-type.')
             }
           ]
         },
@@ -49,7 +49,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for track')
+              prompt : this.l10n.t('Please enter a name for the track.')
             }
           ]
         },
@@ -58,7 +58,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter a Private link')
+              prompt : this.l10n.t('Please enter a private link.')
             }
           ]
         },
@@ -67,11 +67,11 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event starts')
+              prompt : this.l10n.t('When does your event start?')
             },
             {
               type   : 'checkStartDateCFS',
-              prompt : this.l10n.t('CFS start time should be before than event start time')
+              prompt : this.l10n.t('CFS start time should be before event start time.')
             }
           ]
         },
@@ -80,15 +80,15 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a soft end date')
+              prompt : this.l10n.t('Please add a soft end date.')
             },
             {
               type   : 'checkSoftEndDateAfterCfsStart',
-              prompt : this.l10n.t('Soft closing date should be after CFS start date')
+              prompt : this.l10n.t('Soft closing date should be after CFS start date!')
             },
             {
               type   : 'checkSoftEndDateBeforeCfsEnd',
-              prompt : this.l10n.t('Soft closing date should be before CFS end date')
+              prompt : this.l10n.t('Soft closing date should be before CFS end date!')
             }
           ]
         },
@@ -97,11 +97,11 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us when your event ends')
+              prompt : this.l10n.t('When does your event end?')
             },
             {
               type   : 'checkEndDateCFS',
-              prompt : this.l10n.t('CFS end time should be before than event start time')
+              prompt : this.l10n.t('CFS end time should be before event start time!')
             }
           ]
         },
@@ -111,7 +111,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a start time')
+              prompt : this.l10n.t('Please enter a start time.')
             }
           ]
         },
@@ -122,15 +122,15 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a soft end time')
+              prompt : this.l10n.t('Please add a soft end time.')
             },
             {
               type   : 'checkSoftEndTimeAfterCfsStart',
-              prompt : this.l10n.t('Soft closing time should be after CFS start time')
+              prompt : this.l10n.t('Soft closing time should be after CFS start time!')
             },
             {
               type   : 'checkSoftEndTimeBeforeCfsEnd',
-              prompt : this.l10n.t('Soft closing time should be before CFS end time')
+              prompt : this.l10n.t('Soft closing time should be before CFS end time!')
             }
           ]
         },
@@ -140,7 +140,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give an end time')
+              prompt : this.l10n.t('Please enter an end time.')
             }
           ]
         },
@@ -149,7 +149,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter name for microlocation')
+              prompt : this.l10n.t('Please enter a name for a microlocation.')
             }
           ]
         },
@@ -158,7 +158,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please enter floor for microlocation')
+              prompt : this.l10n.t('Please enter floor for microlocation.')
             }
           ]
         },
@@ -167,7 +167,7 @@ export default Component.extend(EventWizardMixin, FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please add announcement to enable call for speakers')
+              prompt : this.l10n.t('Please add an announcement to enable the call for speakers.')
             }
           ]
         }

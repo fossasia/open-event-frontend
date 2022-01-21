@@ -12,7 +12,7 @@ export default class IndexRoute extends Route {
   model(params) {
     return hash({
       group: this.store.findRecord('group', params.group_id, {
-        include: 'events,followers,user'
+        include: 'followers,user'
       }),
       followedGroups: this.authManager.currentUser?.email ? this.authManager.currentUser.query('followedGroups', {
         include: 'group,user'

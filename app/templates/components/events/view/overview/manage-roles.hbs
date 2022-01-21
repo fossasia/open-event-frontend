@@ -59,7 +59,7 @@
         {{#each this.data.usersEventsRoles as |eventRole|}}
           <tr>
             <td>{{eventRole.user.email}}</td>
-            <td>{{eventRole.role.titleName}}</td>
+            <td>{{t-var eventRole.role.titleName}}</td>
             {{#if (and @editable  (not-eq eventRole.role.name 'owner'))}}
               <td>
                 <div class="ui horizontal compact basic buttons">

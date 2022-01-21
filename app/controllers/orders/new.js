@@ -14,24 +14,20 @@ export default class NewController extends Controller {
     try {
       this.set('isLoading', true);
       const order = data;
+      const { paymentMode } = data;
       const current_user = this.authManager.currentUser;
       const userChanges = current_user.changedAttributes();
       if (userChanges.firstName || userChanges.lastName) {
         await current_user.save();
       }
-      const { attendees, paymentMode } = data;
+      const { attendees } = data;
       await Promise.all((attendees ? attendees.toArray() : []).map(attendee => attendee.save()));
-      if (paymentMode === 'free') {
-        order.set('status', 'completed');
-      } else if (paymentMode === 'bank' || paymentMode === 'cheque' || paymentMode === 'onsite' || paymentMode === 'invoice') {
-        order.set('status', 'placed');
-      } else if (data.event.get('isOneclickSignupEnabled')) {
-        order.set('status', 'completed');
-      } else {
-        order.set('status', 'pending');
-      }
+      order.set('status', 'pending');
       if (data.event.get('isBillingInfoMandatory')) {
         order.set('isBillingEnabled', true);
+      }
+      if (paymentMode === 'free') {
+        order.set('status', 'completed');
       }
       await order.save()
         .then(order => {

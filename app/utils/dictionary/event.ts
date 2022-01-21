@@ -1,99 +1,101 @@
+import { tn } from '../text';
+
 export const eventTypes = [
-  'Appearance or Signing',
-  'Attraction',
-  'Camp, Trip, or Retreat',
-  'Class, Training, or Workshop',
-  'Concert or Performance',
-  'Conference',
-  'Convention',
-  'Dinner or Gala',
-  'Festival or Fair',
-  'Game or Competition',
-  'Meeting or Networking Event',
-  'Other',
-  'Party or Social Gathering',
-  'Race or Endurance Event',
-  'Rally',
-  'Screening',
-  'Seminar or Talk',
-  'Tour',
-  'Tournament',
-  'Tradeshow, Consumer Show, or Expo'
+  tn.t('Appearance or Signing'),
+  tn.t('Attraction'),
+  tn.t('Camp, Trip, or Retreat'),
+  tn.t('Class, Training, or Workshop'),
+  tn.t('Concert or Performance'),
+  tn.t('Conference'),
+  tn.t('Convention'),
+  tn.t('Dinner or Gala'),
+  tn.t('Festival or Fair'),
+  tn.t('Game or Competition'),
+  tn.t('Meeting or Networking Event'),
+  tn.t('Other'),
+  tn.t('Party or Social Gathering'),
+  tn.t('Race or Endurance Event'),
+  tn.t('Rally'),
+  tn.t('Screening'),
+  tn.t('Seminar or Talk'),
+  tn.t('Tour'),
+  tn.t('Tournament'),
+  tn.t('Tradeshow, Consumer Show, or Expo')
 ];
 
 export const eventTopics = {
   'Auto, Boat & Air': [
-    'Air', 'Auto', 'Boat', 'Motorcycle/ATV', 'Other'
+    tn.t('Air'), tn.t('Auto'), tn.t('Boat'), tn.t('Motorcycle/ATV'), tn.t('Other')
   ],
   'Business & Professional': [
-    'Career', 'Design', 'Educators', 'Environment & Sustainability',
-    'Finance', 'Media', 'Non Profit & NGOs', 'Other', 'Real Estate',
-    'Sales & Marketing', 'Startups & Small Business'
+    tn.t('Career'), tn.t('Design'), tn.t('Educators'), tn.t('Environment & Sustainability'),
+    tn.t('Finance'), tn.t('Media'), tn.t('Non Profit & NGOs'), tn.t('Other'), tn.t('Real Estate'),
+    tn.t('Sales & Marketing'), tn.t('Startups & Small Business')
   ],
   'Charity & Causes': [
-    'Animal Welfare', 'Disaster Relief', 'Education',
-    'Environment', 'Healthcare', 'Human Rights',
-    'International Aid', 'Other', 'Poverty'
+    tn.t('Animal Welfare'), tn.t('Disaster Relief'), tn.t('Education'),
+    tn.t('Environment'), tn.t('Healthcare'), tn.t('Human Rights'),
+    tn.t('International Aid'), tn.t('Other'), tn.t('Poverty')
   ],
   'Community & Culture': [
-    'City/Town', 'County', 'Heritage', 'LGBT', 'Language',
-    'Medieval', 'Nationality', 'Other', 'Renaissance', 'State'
+    tn.t('City/Town'), tn.t('County'), tn.t('Heritage'), tn.t('LGBT'), tn.t('Language'),
+    tn.t('Medieval'), tn.t('Nationality'), tn.t('Other'), tn.t('Renaissance'), tn.t('State')
   ],
   'Family & Education': [
-    'Alumni', 'Baby', 'Children & Youth', 'Education', 'Other',
-    'Parenting', 'Parents Association', 'Reunion'
+    tn.t('Alumni'), tn.t('Baby'), tn.t('Children & Youth'), tn.t('Education'), tn.t('Other'),
+    tn.t('Parenting'), tn.t('Parents Association'), tn.t('Reunion')
   ],
   'Fashion & Beauty': [
-    'Accessories', 'Beauty', 'Bridal', 'Fashion', 'Other'
+    tn.t('Accessories'), tn.t('Beauty'), tn.t('Bridal'), tn.t('Fashion'), tn.t('Other')
   ],
   'Film, Media & Entertainment': [
-    'Adult', 'Anime', 'Comedy', 'Comics', 'Film', 'Gaming', 'Other', 'TV'
+    tn.t('Adult'), tn.t('Anime'), tn.t('Comedy'), tn.t('Comics'), tn.t('Film'), tn.t('Gaming'), tn.t('Other'), tn.t('TV')
   ],
-  'Food & Drink'          : ['Beer', 'Food', 'Other', 'Spirits', 'Wine'],
+  'Food & Drink'          : [tn.t('Beer'), tn.t('Food'), tn.t('Other'), tn.t('Spirits'), tn.t('Wine')],
   'Government & Politics' : [
-    'County/Municipal Government', 'Democratic Party', 'Federal Government',
-    'Non-partisan', 'Other', 'Other Party', 'Republican Party',
-    'State Government'
+    tn.t('County/Municipal Government'), tn.t('Democratic Party'), tn.t('Federal Government'),
+    tn.t('Non-partisan'), tn.t('Other'), tn.t('Other Party'), tn.t('Republican Party'),
+    tn.t('State Government')
   ],
   'Health & Wellness': [
-    'Medical', 'Mental health', 'Other', 'Personal health', 'Spa', 'Yoga'
+    tn.t('Medical'), tn.t('Mental health'), tn.t('Other'), tn.t('Personal health'), tn.t('Spa'), tn.t('Yoga')
   ],
   'Hobbies & Special Interest': [
-    'Adult', 'Anime/Comics', 'Books', 'DIY', 'Drawing & Painting', 'Gaming',
-    'Knitting', 'Other', 'Photography'
+    tn.t('Adult'), tn.t('Anime/Comics'), tn.t('Books'), tn.t('DIY'), tn.t('Drawing & Painting'), tn.t('Gaming'),
+    tn.t('Knitting'), tn.t('Other'), tn.t('Photography')
   ],
-  'Home & Lifestyle' : ['Dating', 'Home & Garden', 'Other', 'Pets & Animals'],
+  'Home & Lifestyle' : [tn.t('Dating'), tn.t('Home & Garden'), tn.t('Other'), tn.t('Pets & Animals')],
   'Music'            : [
-    'Alternative', 'Blues & Jazz', 'Classical', 'Country', 'Cultural',
-    'EDM / Electronic', 'Folk', 'Hip Hop / Rap', 'Indie', 'Latin', 'Metal',
-    'Opera', 'Other', 'Pop', 'R&B', 'Reggae', 'Religious/Spiritual', 'Rock',
-    'Top 40'
+    tn.t('Alternative'), tn.t('Blues & Jazz'), tn.t('Classical'), tn.t('Country'), tn.t('Cultural'),
+    tn.t('EDM / Electronic'), tn.t('Folk'), tn.t('Hip Hop / Rap'), tn.t('Indie'), tn.t('Latin'), tn.t('Metal'),
+    tn.t('Opera'), tn.t('Other'), tn.t('Pop'), tn.t('R&B'), tn.t('Reggae'), tn.t('Religious/Spiritual'), tn.t('Rock'),
+    tn.t('Top 40')
   ],
-  'Other'                    : ['Avatar', 'Logo'],
+  'Other'                    : [tn.t('Avatar'), tn.t('Logo')],
   'Performing & Visual Arts' : [
-    'Ballet', 'Comedy', 'Craft', 'Dance', 'Fine Art', 'Literary Arts',
-    'Musical', 'Opera', 'Orchestra', 'Other', 'Theatre'
+    tn.t('Ballet'), tn.t('Comedy'), tn.t('Craft'), tn.t('Dance'), tn.t('Fine Art'), tn.t('Literary Arts'),
+    tn.t('Musical'), tn.t('Opera'), tn.t('Orchestra'), tn.t('Other'), tn.t('Theatre')
   ],
   'Religion & Spirituality': [
-    'Buddhism', 'Christianity', 'Eastern Religion', 'Islam', 'Judaism',
-    'Mormonism', 'Mysticism and Occult', 'New Age', 'Other', 'Sikhism'
+    tn.t('Buddhism'), tn.t('Christianity'), tn.t('Eastern Religion'), tn.t('Islam'), tn.t('Judaism'),
+    tn.t('Mormonism'), tn.t('Mysticism and Occult'), tn.t('New Age'), tn.t('Other'), tn.t('Sikhism')
   ],
   'Science & Technology': [
-    'Biotech', 'High Tech', 'Medicine', 'Mobile', 'Other', 'Robotics',
-    'Science', 'Social Media'
+    tn.t('Biotech'), tn.t('High Tech'), tn.t('Medicine'), tn.t('Mobile'), tn.t('Other'), tn.t('Robotics'),
+    tn.t('Science'), tn.t('Social Media')
   ],
   'Seasonal & Holiday': [
-    'Channukah', 'Christmas', 'Easter', 'Fall events', 'Halloween/Haunt',
-    'Independence Day', 'New Years Eve', 'Other', 'St Patricks Day',
-    'Thanksgiving'
+    tn.t('Channukah'), tn.t('Christmas'), tn.t('Easter'), tn.t('Fall events'), tn.t('Halloween/Haunt'),
+    tn.t('Independence Day'), tn.t('New Years Eve'), tn.t('Other'), tn.t('St Patricks Day'),
+    tn.t('Thanksgiving')
   ],
   'Sports & Fitness': [
-    'Baseball', 'Basketball', 'Cycling', 'Exercise', 'Fighting & Martial Arts',
-    'Football', 'Golf', 'Hockey', 'Motorsports', 'Mountain Biking',
-    'Obstacles', 'Other', 'Rugby', 'Running', 'Snow Sports', 'Soccer',
-    'Swimming & Water Sports', 'Tennis', 'Volleyball', 'Walking', 'Yoga'
+    tn.t('Baseball'), tn.t('Basketball'), tn.t('Cycling'), tn.t('Exercise'), tn.t('Fighting & Martial Arts'),
+    tn.t('Football'), tn.t('Golf'), tn.t('Hockey'), tn.t('Motorsports'), tn.t('Mountain Biking'),
+    tn.t('Obstacles'), tn.t('Other'), tn.t('Rugby'), tn.t('Running'), tn.t('Snow Sports'), tn.t('Soccer'),
+    tn.t('Swimming & Water Sports'), tn.t('Tennis'), tn.t('Volleyball'), tn.t('Walking'), tn.t('Yoga')
   ],
   'Travel & Outdoor': [
-    'Canoeing', 'Climbing', 'Hiking', 'Kayaking', 'Other', 'Rafting', 'Travel'
+    tn.t('Canoeing'), tn.t('Climbing'), tn.t('Hiking'), tn.t('Kayaking'), tn.t('Other'), tn.t('Rafting'), tn.t('Travel')
   ]
 };

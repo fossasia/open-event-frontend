@@ -10,7 +10,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
   get columns() {
     return [
       {
-        name            : this.l10n.t('State'),
+        name            : this.l10n.t('Status'),
         headerComponent : 'tables/headers/sort',
         cellComponent   : 'ui-table/cell/events/view/sessions/cell-buttons',
         width           : 60,
@@ -91,7 +91,7 @@ export default class ExhibitorsListController extends Controller.extend(EmberTab
 
   @action async delete(id) {
     try {
-      await this.confirm.prompt(this.l10n.t('Are you sure you would like to delete this Exhibitor?'));
+      await this.confirm.prompt(this.l10n.t('Are you sure you would like to delete this exhibitor?'));
     } catch {
       return;
     }

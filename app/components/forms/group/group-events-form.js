@@ -1,12 +1,10 @@
 
 import Component from '@ember/component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import classic from 'ember-classic-decorator';
 import FormMixin from 'open-event-frontend/mixins/form';
-import moment from 'moment';
-import { sortBy } from 'lodash-es';
 import { all } from 'rsvp';
 
 @classic
@@ -44,7 +42,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
   async announceEvent(event) {
     this.set('isLoading', true);
     try {
-      const heading = this.l10n.t('Do you want to announce the event') + ' "' + event.name + '" ' + this.l10n.t('to all group members now') + '?';
+      const heading = this.l10n.t('Do you want to announce the event "{{eventName}}" to all group members now?', { eventName: event.name });
       const options = {
         denyText     : 'Cancel',
         denyColor    : 'red',
@@ -73,21 +71,6 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
       });
   }
 
-  @computed('events.[]', 'groupEvents.[]')
-  get remainingEvents() {
-    return sortBy(this.events.toArray().filter(event => !this.groupEvents.toArray().includes(event)), ['startsAt']).reverse();
-  }
-
-  @computed('events.[]', 'groupEvents.[]')
-  get pastEvents() {
-    return sortBy(this.remainingEvents.toArray().filter(event => { return moment(event.endsAt) < moment()}), ['startsAt']).reverse();
-  }
-
-  @computed('events.[]', 'groupEvents.[]')
-  get upcomingEvents() {
-    return sortBy(this.remainingEvents.toArray().filter(event => { return moment(event.endsAt) > moment()}), ['startsAt']).reverse();
-  }
-
   @action
   shareEvent(event) {
     this.set('eventToShare', event);
@@ -110,7 +93,7 @@ export default class GroupEventsForm extends Component.extend(FormMixin) {
           return event.save();
         });
         await all([...updatedEvents]);
-        this.notify.success(this.l10n.t('Your group has been saved'),
+        this.notify.success(this.l10n.t('Your group has been saved.'),
           {
             id: 'group_save'
           });

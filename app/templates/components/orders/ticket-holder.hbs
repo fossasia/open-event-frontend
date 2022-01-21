@@ -1,7 +1,7 @@
 <form class="ui form">
   <div class="ui segments">
     <div class="ui aligned secondary segment">
-      <h3 class="weight-400">{{t 'Payee Information'}}</h3>
+      <h3 class="weight-400">{{t 'Payment Information'}}</h3>
     </div>
     <div class="ui padded segment">
       <h4 class="ui horizontal divider header">
@@ -55,7 +55,7 @@
             <div class="ui very relaxed divided list">
               <div class="item">
                 <div class="content">
-                  <div class="header">Card Type</div>
+                  <div class="header">{{t 'Card Type'}}</div>
                   <div class="description">
                     {{#if (payment-icon this.data.brand)}}
                       <i class="{{payment-icon this.data.brand}}"></i>
@@ -67,13 +67,13 @@
               </div>
               <div class="item">
                 <div class="content">
-                  <div class="header">Card Number</div>
+                  <div class="header">{{t 'Card Number'}}</div>
                   <div class="description">**** {{this.data.last4}}</div>
                 </div>
               </div>
               <div class="item">
                 <div class="content">
-                  <div class="header">Exp Date</div>
+                  <div class="header">{{t 'Expiry Date'}}</div>
                   <div class="description">{{this.data.expMonth}}/{{this.data.expYear}}</div>
                 </div>
               </div>
@@ -83,7 +83,7 @@
           <h4 class="weight-300">
             {{t 'Paid via'}}
           </h4>
-          {{capitalize this.data.paymentMode}}
+          {{t-var (capitalize this.data.paymentMode)}}
         {{/if}}
         {{#if (eq this.data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
@@ -91,7 +91,7 @@
             {{t 'Cheque Details '}}
           </h4>
           <span>
-            {{this.data.event.chequeDetails}}
+            {{t-var this.data.event.chequeDetails}}
           </span>
         {{else if (eq this.data.paymentMode 'onsite')}}
           <div class="ui divider"></div>
@@ -99,7 +99,7 @@
             {{t 'Onsite Instructions'}}
           </h4>
           <span>
-            {{this.data.event.onsiteDetails}}
+            {{t-var this.data.event.onsiteDetails}}
           </span>
         {{else if (eq this.data.paymentMode 'cheque')}}
           <div class="ui divider"></div>
@@ -107,7 +107,7 @@
             {{t 'Bank Details'}}
           </h4>
           <span>
-            {{this.data.event.bankDetails}}
+            {{t-var this.data.event.bankDetails}}
           </span>
         {{else if (eq this.data.paymentMode 'invoice')}}
           <div class="ui divider"></div>
@@ -115,7 +115,7 @@
             {{t 'Invoice Details'}}
           </h4>
           <span>
-            {{this.data.event.invoiceDetails}}
+            {{t-var this.data.event.invoiceDetails}}
           </span>
 				
         {{/if}}

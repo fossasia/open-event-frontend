@@ -13,6 +13,7 @@ export default class PaypalButton extends Component {
 
     if (this.paymentFor === 'order') {
       const order = this.data;
+      await order.save();
       const createPayload = {
         'data': {
           'attributes': {

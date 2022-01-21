@@ -11,7 +11,7 @@
   <div class="column nine wide">
     <div class="ui {{ this.model.session.color }} large label">
       {{#if this.model.session.startsAt}}
-        {{t 'Timing:'}} {{general-date this.model.session.startsAt 'date-time-tz-short' tz=this.model.session.event.timezone}} {{t ' - '}} {{general-date this.model.session.endsAt 'date-time-tz-short' tz=this.model.session.event.timezone}}
+        {{t 'Timing:'}} {{general-date this.model.session.startsAt 'date-time-tz-short' tz=this.model.session.event.timezone}} - {{general-date this.model.session.endsAt 'date-time-tz-short' tz=this.model.session.event.timezone}}
       {{else}}
         {{t 'Not yet scheduled'}}
       {{/if}}
@@ -39,7 +39,7 @@
     <div class="column eleven wide">
       {{#each this.model.session.speakers as |speaker|}}
         <LinkTo
-          @route="public.cfs.view-speaker"
+          @route="events.view.speaker.view"
           @models={{array this.model.session.event.id speaker.id}}>
           <div>{{speaker.name}}</div>
         </LinkTo>

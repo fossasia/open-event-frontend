@@ -5,20 +5,19 @@
 <div class="y-scrollable scrollable-modal content">
   <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
     <CountryDropdown
-      @required={{true}}
       @placeholder={{t 'Choose country'}}
       @val={{this.tax.country}}
       @id="tax_country" />
     <div class="field">
-      <label class="required">{{t 'Tax name'}}</label>
+      <label>{{t 'Tax name'}}</label>
       <Input @type="text" @id="tax_name" @value={{this.tax.name}} />
     </div>
     <div class="field">
-      <label class="required">{{t 'Tax rate'}}</label>
+      <label>{{t 'Tax rate'}}</label>
       <Input @type="number" @id="tax_rate" @min={{0}} @max={{100}} @value={{this.tax.rate}} />
     </div>
     <div class="field">
-      <label class="required">{{t 'Tax ID'}}</label>
+      <label>{{t 'Tax ID'}}</label>
       <Input @type="text" @id="tax_id" @value={{this.tax.taxId}} />
     </div>
     <div class="field">
@@ -39,6 +38,18 @@
       <Input @type="text" @id="tax_invoice_company" @value={{this.tax.registeredCompany}} />
     </div>
     <div class="field">
+      <label>{{t 'Contact Name'}}</label>
+      <Input @type="text" @id="tax_invoice_contact" @value={{this.tax.contactName}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Email'}}</label>
+      <Input @type="text" @id="tax_invoice_email" @value={{this.tax.email}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Phone'}}</label>
+      <Input @type="text" @id="tax_invoice_phone" @value={{this.tax.phone}} />
+    </div>
+    <div class="field">
       <label>{{t 'Business Address'}}</label>
       <Textarea @rows={{3}} @id="tax_invoice_address" @value={{this.tax.address}} />    </div>
     <div class="field">
@@ -50,7 +61,7 @@
       <Input @type="text" @id="tax_invoice_state" @value={{this.tax.state}} />
     </div>
     <div class="field">
-      <label>{{t 'Zipcode'}}</label>
+      <label>{{t 'ZIP Code'}}</label>
       <Input @type="text" @id="tax_invoice_zipcode" @value={{this.tax.zip}} />
     </div>
     <div class="field">

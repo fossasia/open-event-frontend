@@ -2,7 +2,7 @@
   <div class="ui {{if (eq @data.status 'paid') 'green' 'violet'}} inverted segment center aligned">
     <div class="ui inverted mini statistic horizontal">
       <div class="value">
-        {{@data.status}}
+        {{t-var @data.status}}
       </div>
       <div class="label">
         {{t 'Your invoice payment completed successfully.'}}

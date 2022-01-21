@@ -22,11 +22,11 @@ export default class SpeakersReorderController extends Controller {
   @action async reset(): Promise<void> {
     const res = await this.loader.post(`/events/${this.model.event.id}/reorder-speakers?reset`);
     if (res.success) {
-      this.notify.success(this.l10n.t('Speaker order reset successfully'));
+      this.notify.success(this.l10n.t('Speaker order reset successfully.'));
       getOwner(this).lookup(`route:${this.router.currentRoute.name}`).refresh();
     } else {
       console.error('Error while resetting speaker order', res);
-      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+      this.notify.error(this.l10n.t('Oops something went wrong. Please try again.'));
     }
   }
 
@@ -34,10 +34,10 @@ export default class SpeakersReorderController extends Controller {
     const data = this.model.speakers.map((speaker: Speaker) => ({ speaker: speaker.id, order: speaker.order }));
     const res = await this.loader.post(`/events/${this.model.event.id}/reorder-speakers`, data);
     if (res.success) {
-      this.notify.success(this.l10n.t('Speaker order set successfully'));
+      this.notify.success(this.l10n.t('Speaker order set successfully.'));
     } else {
       console.error('Error while setting speaker order', res);
-      this.notify.error(this.l10n.t('Oops something went wrong. Please try again'));
+      this.notify.error(this.l10n.t('Oops something went wrong. Please try again.'));
     }
   }
 }

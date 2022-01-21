@@ -34,8 +34,8 @@
     @fields={{this.allFields}}
     @speaker={{this.model.speaker}} />
   <div class="ui grid container mb-4">
-  <div class="weight-600 column five wide">{{t 'Sessions'}}</div>
-  <div class="column eleven wide">
+  <div class="weight-600 column four wide">{{t 'Sessions'}}</div>
+  <div class="column twelve wide">
     {{#each this.model.speaker.sessions as |session|}}
       <LinkTo
         @route="public.cfs.view-session"

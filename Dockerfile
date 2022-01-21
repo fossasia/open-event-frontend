@@ -1,8 +1,8 @@
-FROM node:14-alpine as builder
+FROM node:14-alpine3.11 as builder
 
 WORKDIR /app
 
-RUN apk add git python-dev make g++ gettext
+RUN apk add git python2-dev make g++ gettext
 
 COPY package.json yarn.lock ./
 
@@ -20,7 +20,7 @@ RUN yarn l10n:generate && \
 ##
 ##
 
-FROM node:14-alpine
+FROM node:14-alpine3.11
 
 WORKDIR /fastboot
 
@@ -36,7 +36,7 @@ RUN apk add --no-cache ca-certificates nginx && \
 COPY scripts/* ./scripts/
 COPY config/environment.js ./config/
 
-RUN rm /etc/nginx/conf.d/default.conf
+RUN mkdir -p /etc/nginx/conf.d/
 COPY config/nginx.conf /etc/nginx/conf.d
 RUN mkdir -p /run/nginx
 

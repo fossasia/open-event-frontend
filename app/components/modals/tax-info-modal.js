@@ -19,32 +19,35 @@ export default ModalBase.extend(FormMixin, {
       fields : {
         taxName: {
           identifier : 'tax_name',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a name')
+              prompt : this.l10n.t('Please enter a name.')
             }
           ]
         },
         taxRate: {
           identifier : 'tax_rate',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please tell us your tax rate (in %)')
+              prompt : this.l10n.t('Please tell us your tax rate (in %).')
             },
             {
               type   : 'number',
-              prompt : this.l10n.t('Please give a valid tax rate')
+              prompt : this.l10n.t('Please give a valid tax rate.')
             }
           ]
         },
         taxId: {
           identifier : 'tax_id',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your tax ID')
+              prompt : this.l10n.t('Please enter your tax ID.')
             }
           ]
         },
@@ -55,7 +58,40 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your organisation name')
+              prompt : this.l10n.t('Please enter the name of your organisation.')
+            }
+          ]
+        },
+        taxInvoiceContact: {
+          identifier : 'tax_invoice_contact',
+          optional   : true,
+          depends    : 'send_tax_invoices',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter a contact name.')
+            }
+          ]
+        },
+        taxInvoicePhone: {
+          identifier : 'tax_invoice_phone',
+          optional   : true,
+          depends    : 'send_tax_invoices',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter your phone number.')
+            }
+          ]
+        },
+        taxInvoiceEmail: {
+          identifier : 'tax_invoice_email',
+          optional   : true,
+          depends    : 'send_tax_invoices',
+          rules      : [
+            {
+              type   : 'empty',
+              prompt : this.l10n.t('Please enter your email.')
             }
           ]
         },
@@ -66,7 +102,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give us your address')
+              prompt : this.l10n.t('Please enter your address.')
             }
           ]
         },
@@ -77,7 +113,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a city')
+              prompt : this.l10n.t('Please enter a city.')
             }
           ]
         },
@@ -88,7 +124,7 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give a state')
+              prompt : this.l10n.t('Please enter a state.')
             }
           ]
         },
@@ -99,16 +135,17 @@ export default ModalBase.extend(FormMixin, {
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please provide a zip code')
+              prompt : this.l10n.t('Please provide a ZIP code.')
             }
           ]
         },
         taxCountry: {
           identifier : 'tax_country',
+          optional   : true,
           rules      : [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please select your country')
+              prompt : this.l10n.t('Please select your country.')
             }
           ]
         }
