@@ -40,10 +40,10 @@
                       {{t-var field.name}}
                     </h4>
                     {{#if (is-input-field field.type) }}
-                      {{#if (and this.ticketDowloaded (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email'))))}} 
-                        <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}} readonly/>
+                      {{#if (and (not this.editFields) (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email'))))}} 
+                        <span class="word-break">{{get holder field.fieldIdentifier}}</span>
                       {{else}}
-                        <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}} onchange={{action "saveHolder" holder}}/>
+                        <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}}/>
                       {{/if}}
                     {{else if (eq field.type 'select')}}
                       <span class="word-break">{{get holder field.fieldIdentifier}}</span>
@@ -65,6 +65,18 @@
               {{/if}}
             {{/if}}
           {{/each}}
+          {{#if this.editFields}}
+            <button class="ui floated button"
+              {{action 'saveHolder' holder}}>
+              <i class="ticket icon"></i>
+              {{t 'Save'}}
+            </button>
+          {{else}}
+            <button class="ui floated button"
+              {{action 'toggleEditFields'}}>
+              {{t 'Edit'}}
+            </button>
+          {{/if}}
           <div class="ui divider"></div>
         </div>
       {{/each}}

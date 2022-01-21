@@ -8,7 +8,7 @@ import { tracked } from '@glimmer/tracking';
 @classic
 export default class AttendeeList extends Component {
 
-  @tracked ticketDowloaded=false;
+  @tracked editFields=false;
 
   @computed('data.user')
   get buyer() {
@@ -29,17 +29,25 @@ export default class AttendeeList extends Component {
   }
 
   @action
-  saveHolder(holder) {
-    holder.save();
-    this.data.save();
+  toggleEditFields() {
+    this.editFields = !this.editFields;
+  }
+
+  @action
+  async saveHolder(holder) {
+    try {
+      await holder.save();
+      await this.data.save();
+    } catch (error) {
+      console.warn(error);
+    } finally {
+      this.editFields = !this.editFields;
+    }
   }
 
   @action
   async downloadTicketForAttendee(eventName, orderId, attendeeId) {
     try {
-      if (!this.ticketDowloaded) {
-        await this.confirm.prompt(this.l10n.t('Please check the filled detail carefully. Once you Download ticket, the name and email can\'t be changed on it.'));
-      }
       this.loader.downloadFile(`/orders/attendees/${attendeeId}.pdf`)
         .then(res => {
           const anchor = document.createElement('a');
@@ -57,9 +65,6 @@ export default class AttendeeList extends Component {
         .catch(e => {
           console.error('Error while downloading tickets', e);
         })
-        .finally(() => {
-          this.ticketDowloaded = true;
-        });
     } catch (error) {
       console.warn(error);
     }
