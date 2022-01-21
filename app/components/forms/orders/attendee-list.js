@@ -64,7 +64,7 @@ export default class AttendeeList extends Component {
         })
         .catch(e => {
           console.error('Error while downloading tickets', e);
-        })
+        });
     } catch (error) {
       console.warn(error);
     }
