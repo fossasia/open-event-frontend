@@ -40,7 +40,7 @@
                       {{t-var field.name}}
                     </h4>
                     {{#if (is-input-field field.type) }}
-                      {{#if (and (not this.editFields) (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email'))))}} 
+                      {{#if (and (not this.editFields))}} 
                         <span class="word-break">{{get holder field.fieldIdentifier}}</span>
                       {{else}}
                         <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.fieldIdentifier}}/>
@@ -65,21 +65,20 @@
               {{/if}}
             {{/if}}
           {{/each}}
-          {{#if this.editFields}}
-            <button class="ui floated button"
-              {{action 'saveHolder' holder}}>
-              <i class="ticket icon"></i>
-              {{t 'Save'}}
-            </button>
-          {{else}}
-            <button class="ui floated button"
-              {{action 'toggleEditFields'}}>
-              {{t 'Edit'}}
-            </button>
-          {{/if}}
           <div class="ui divider"></div>
         </div>
       {{/each}}
+      {{#if this.editFields}}
+        <button class="ui floated button"
+          {{action 'saveHolder' holder}}>
+          {{t 'Save'}}
+        </button>
+      {{else}}
+        <button class="ui floated button"
+          {{action 'toggleEditFields'}}>
+          {{t 'Edit'}}
+        </button>
+      {{/if}}
       {{#if this.showBillingInfo}}
         <div class="print">
           <h4 class="ui horizontal divider header">
