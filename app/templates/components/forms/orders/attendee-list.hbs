@@ -32,7 +32,7 @@
             {{/if}}
           </div>
          
-          {{# each this.allFields.attendee as |field|}}
+          {{#each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
               {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
                 <div class="field">

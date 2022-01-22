@@ -29,7 +29,8 @@
         <Forms::Orders::AttendeeList
           @save="save"
           @data={{this.model.order}}
-          @fields={{this.model.form}} />
+          @fields={{this.model.form}}
+          @event={{this.model.event}} />
       </div>
       <div class="seven wide column">
         <Orders::EventInfo
