@@ -33,7 +33,7 @@ export default class ViewRoute extends Route {
       event      : eventDetails,
       taxDetails : eventDetails.isTaxEnabled && eventDetails.get('tax', { cache: true, public: true }),
       form       : eventDetails.query('customForms', {
-        'page[size]' : 50,
+        'page[size]' : 70,
         sort         : 'id'
       })
     });
