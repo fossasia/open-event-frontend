@@ -42,8 +42,8 @@ export default class RoleInvitesRoute extends Route {
   async afterModel() {
     if (this.fastboot.isFastBoot) {return}
     const payload = {
-        email: this.redirectionParams.queryParams.inviteEmail
-    }
+      email: this.redirectionParams.queryParams.inviteEmail
+    };
     const emailExists = await this.loader.post('/users/check_email', payload);
 
     if (emailExists) {
