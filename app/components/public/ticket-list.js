@@ -63,6 +63,10 @@ export default Component.extend(FormMixin, {
         ticket.set('discountInfo', ticketExtra.discount);
       }
 
+      if (ticket.type === 'donation') {
+        ticket.set('price', undefined);
+      }
+
       return ticket;
     });
   }),

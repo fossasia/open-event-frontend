@@ -30,7 +30,8 @@
                           <Input
                             id="i_{{ticket.id}}_price"
                             @type="number"
-                            @name={{ticket.id}} placeholder={{t "Enter Donation"}}
+                            @name={{ticket.id}}
+                            placeholder={{ticket.minPrice}}
                             @min={{ticket.minPrice}}
                             @max={{ticket.maxPrice}}
                             @value={{ticket.price}}
