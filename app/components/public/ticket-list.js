@@ -63,7 +63,7 @@ export default Component.extend(FormMixin, {
         ticket.set('discountInfo', ticketExtra.discount);
       }
 
-      if (ticket.type === 'donation') {
+      if (ticket.type === 'donation' && ticket.price === 0) {
         ticket.set('price', undefined);
       }
 
