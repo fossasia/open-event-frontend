@@ -52,7 +52,7 @@ export default class ExhibitorForm extends Component<Args> {
           optional : true,
           rules    : [
             {
-              type   : 'regExp',
+              type   : 'email',
               value  : validEmail,
               prompt : this.l10n.t('Please enter a valid email address.')
             }
