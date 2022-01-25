@@ -28,7 +28,7 @@
         @name="stripe_integration_mode"
         @value="debug"
         @current={{this.stripeMode}}
-        @onChange={{action (mut this.stripeMode) "debug"}} />
+        @onChange={{set this "stripeMode" "debug"}} />
     </div>
     {{#if (eq this.stripeMode 'debug')}}
       <div class="field">
@@ -78,7 +78,7 @@
         @name="stripe_integration_mode"
         @value="production"
         @current={{this.stripeMode}}
-        @onChange={{action (mut this.stripeMode) "production"}} />
+        @onChange={{set this "stripeMode" "production"}} />
     </div>
     {{#if (eq this.stripeMode 'production')}}
       <div class="field">
