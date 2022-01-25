@@ -48,6 +48,6 @@
 <div class="ui divider"></div>
 <div class="ui grid">
   <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}} {{if this.isUserUnverified 'disabled'}}">
-    <Events::View::PublishBar @event={{@event}} @hideOnInvalid={{true}} @onSaved={{@onSaved}} @onValidate={{@onValidate}} @paidTickets={{this.hasPaidTickets}} @paymentMode={{this.paymentModeExists}} />
+    <Events::View::PublishBar @event={{@event}} @hideOnInvalid={{true}} @onSaved={{@onSaved}} @onValidate={{@onValidate}} @paidTickets={{@paidTickets}} @paymentMode={{@paymentMode}} />
   </div>
 </div>
