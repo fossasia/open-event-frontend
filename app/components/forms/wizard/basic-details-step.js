@@ -79,6 +79,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.settings.isAlipayActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).alipay;
   }),
 
+  paymentModeExists: computed('data.event.paymentMode', function() {
+    return this.data.event.canPayByPaypal || this.data.event.canPayByPaytm || this.data.event.canPayByStripe || this.data.event.canPayByCheque || this.data.event.canPayByInvoice || this.data.event.canPayByBank || this.data.event.canPayByOmise || this.data.event.canPayByAlipay || this.data.event.canPayOnsite;
+  }),
+
   tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
     return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
   }),
@@ -455,7 +459,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
             id: 'stripe_disconn'
           });
         });
-
     },
 
     async addTicket(type, position) {

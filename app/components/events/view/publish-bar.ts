@@ -16,6 +16,8 @@ interface Event extends DS.Model { // eslint-disable-line ember-suave/no-direct-
 interface EventsViewPublishBarArgs {
   event: Event,
   showOnInvalid: boolean,
+  paidTickets: boolean,
+  paymentMode: boolean,
   onSaved: (() => void) | null,
   onValidate: ((cb: (proceed: boolean) => void) => void) | null
 }
@@ -52,6 +54,7 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
   async togglePublishState(): Promise<void> {
     this.isModalOpen = false;
     const { event } = this.args;
+    const { paidTickets } = this.args;
     const { state } = event;
     if (state === 'draft') {
       if (isEmpty(event.tickets)) {
@@ -60,6 +63,15 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
             id: 'event_tickets'
           });
         return;
+      } else if (paidTickets) {
+        const { paymentMode } = this.args;
+        if (!paymentMode) {
+          this.notify.error(this.l10n.t('Event with paid tickets must have a payment method before publishing/saving.'),
+            {
+              id: 'event_tickets'
+            });
+          return;
+        }
       } else if (!event.isStripeConnectionValid) {
         this.notify.error(this.l10n.t('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.'),
           {
