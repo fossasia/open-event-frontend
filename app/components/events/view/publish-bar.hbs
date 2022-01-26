@@ -1,7 +1,7 @@
 {{#unless this.isEventUnsaved}}
-  <a 
-    href="{{@event.url}}" 
-    target="_blank" rel="noopener" 
+  <a
+    href="{{@event.url}}"
+    target="_blank" rel="noopener"
     class="ui button labeled icon small {{if (eq @event.state 'published') 'green'}}" >
     <i class="unhide icon"></i>
     {{#if (eq @event.state 'published')}}
