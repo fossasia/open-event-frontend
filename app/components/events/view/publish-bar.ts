@@ -54,7 +54,7 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
   async togglePublishState(): Promise<void> {
     this.isModalOpen = false;
     const { event } = this.args;
-    const { paidTickets } = this.args;
+    const { paidTickets, paymentMode } = this.args;
     const { state } = event;
     if (state === 'draft') {
       if (isEmpty(event.tickets)) {
@@ -64,7 +64,6 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
           });
         return;
       } else if (paidTickets) {
-        const { paymentMode } = this.args;
         if (!paymentMode) {
           this.notify.error(this.l10n.t('Event with paid tickets must have a payment method before publishing/saving.'),
             {
@@ -72,7 +71,8 @@ export default class EventsViewPublishBar extends Component<EventsViewPublishBar
             });
           return;
         }
-      } else if (!event.isStripeConnectionValid) {
+      } 
+      else if (!event.isStripeConnectionValid) {
         this.notify.error(this.l10n.t('You need to connect to your Stripe account, if you choose Stripe as a payment gateway.'),
           {
             id: 'event_stripe'
