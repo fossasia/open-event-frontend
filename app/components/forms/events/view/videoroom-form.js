@@ -164,6 +164,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.data.stream.set('extra', { bbb_options });
   }
 
+  addChatmosphere(channel) {
+    this.data.stream.set('url', channel.get('url') + '/session/eventyay/' + this.streamIdentifier);
+  }
+
   add3cx() {
     this.data.stream.set('url', '');
   }
@@ -198,6 +202,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       case 'vimeo':
         this.addVimeo();
         break;
+      case 'chatmosphere':
+        this.addChatmosphere();
     }
   }
 
