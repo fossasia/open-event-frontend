@@ -1,13 +1,13 @@
 # Areeb Jamal <jamal.areeb@gmail.com>, 2020, 2021.
-# Reza Almanda <rezaalmanda27@gmail.com>, 2021.
+# Reza Almanda <rezaalmanda27@gmail.com>, 2021, 2022.
 # Meghal Bisht <mailtomeghu25@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2021-08-09 12:23+0000\n"
-"Last-Translator: Areeb Jamal <jamal.areeb@gmail.com>\n"
+"PO-Revision-Date: 2022-01-23 19:52+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/open-event/"
 "frontend/id/>\n"
 "Language: id\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Crowdin-Project: open-event-frontend\n"
 "X-Crowdin-Language: id\n"
 "X-Crowdin-File: /development/translations/en.po\n"
@@ -159,7 +159,7 @@ msgstr "Tak bisa mengambil dari peladen"
 
 #: app/components/events/view/export/download-common.js:28:112
 msgid "Please publish to generate the link"
-msgstr ""
+msgstr "Silakan publikasikan untuk menghasilkan tautan"
 
 #: app/components/events/view/export/download-common.js:39:32
 #: app/controllers/admin/sales/index.js:141:30
@@ -169,7 +169,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders.js:33:32
 #: app/controllers/groups/edit/followers.js:71:34
 msgid "Download Ready"
-msgstr ""
+msgstr "Unduh Siap"
 
 #: app/components/events/view/export/download-common.js:45:30
 #: app/controllers/admin/sales/index.js:147:28
@@ -179,31 +179,31 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders.js:36:30
 #: app/controllers/groups/edit/followers.js:77:32
 msgid "Task is going on."
-msgstr ""
+msgstr "Tugas sedang berlangsung."
 
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
+msgstr "Tugas gagal."
 
 #: app/components/events/view/export/download-zip.js:17:26
 msgid "Exported Event Downloaded successfully."
-msgstr ""
+msgstr "Acara yang Diekspor berhasil Diunduh."
 
 #: app/components/events/view/overview/manage-roles.js:35:47
 #: app/controllers/groups/team.js:29:47
 msgid "Role Invite sent successfully."
-msgstr ""
+msgstr "Undangan Peran berhasil dikirim."
 
 #: app/components/events/view/overview/manage-roles.js:35:95
 #: app/controllers/groups/team.js:29:95
 msgid "Role Invite updated successfully."
-msgstr ""
+msgstr "Undangan Peran berhasil diperbarui."
 
 #: app/components/events/view/overview/manage-roles.js:54:28
 #: app/controllers/groups/team.js:48:28
 msgid "Invite resent successfully."
-msgstr ""
+msgstr "Undangan berhasil dikirim ulang."
 
 #: app/components/events/view/overview/manage-roles.js:59:26
 #: app/components/events/view/overview/manage-roles.js:63:24
@@ -216,16 +216,16 @@ msgstr ""
 #: app/controllers/groups/team.js:75:26
 #: app/controllers/public/speaker-invite/view-session.js:37:26
 msgid "Oops something went wrong. Please try again."
-msgstr ""
+msgstr "Ups! Ada yang tidak beres. Silakan coba lagi."
 
 #: app/components/events/view/overview/manage-roles.js:74:28
 msgid "Role Invite deleted successfully."
-msgstr ""
+msgstr "Undangan Peran berhasil dihapus."
 
 #: app/components/events/view/overview/manage-roles.js:95:28
 #: app/controllers/groups/team.js:68:28
 msgid "Role deleted successfully."
-msgstr ""
+msgstr "Peran berhasil dihapus."
 
 #: app/components/events/view/publish-bar.hbs:8:6
 #: app/components/forms/events/view/videoroom-form.js:59:24
@@ -239,23 +239,23 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-event.hbs:7:22
 #: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:5:22
 msgid "View"
-msgstr ""
+msgstr "Lihat"
 
 #: app/components/events/view/publish-bar.hbs:10:6
 msgid "Preview"
-msgstr ""
+msgstr "Pratinjau"
 
 #: app/components/events/view/publish-bar.hbs:19:6
 msgid "Unpublish"
-msgstr ""
+msgstr "Batalkan publikasi"
 
 #: app/components/events/view/publish-bar.hbs:22:6
 msgid "Publish"
-msgstr ""
+msgstr "Publikasikan"
 
 #: app/components/events/view/publish-bar.ts:58:26
 msgid "Your event must have tickets before it can be published."
-msgstr ""
+msgstr "Acara Anda harus memiliki tiket sebelum dapat dipublikasikan."
 
 #: app/components/events/view/publish-bar.ts:64:26
 #: app/mixins/event-wizard.js:294:22
@@ -263,52 +263,54 @@ msgid ""
 "You need to connect to your Stripe account, if you choose Stripe as a "
 "payment gateway."
 msgstr ""
+"Anda harus terhubung ke akun Stripe Anda, jika Anda memilih Stripe sebagai "
+"gateway pembayaran."
 
 #: app/components/events/view/publish-bar.ts:77:28
 msgid "Your event has been published successfully."
-msgstr ""
+msgstr "Acara Anda telah berhasil dipublikasikan."
 
 #: app/components/events/view/publish-bar.ts:82:28
 msgid "Your event has been unpublished."
-msgstr ""
+msgstr "Acara Anda telah dibatalkan publikasinya."
 
 #: app/components/forms/admin/content/pages-form.js:17:23
 #: app/components/forms/events/view/videoroom-form.js:91:23
 #: app/components/forms/session-speaker-form.js:164:23
 #: app/components/modals/add-room-modal.js:46:23
 msgid "Please enter a name"
-msgstr ""
+msgstr "Silakan masukkan nama"
 
 #: app/components/forms/admin/content/pages-form.js:26:23
 #: app/components/forms/session-speaker-form.js:33:23
 msgid "Please enter a title"
-msgstr ""
+msgstr "Silakan masukkan judul"
 
 #: app/components/forms/admin/content/pages-form.js:35:23
 msgid "Please enter the path"
-msgstr ""
+msgstr "Silakan masukkan jalur"
 
 #: app/components/forms/admin/content/pages-form.js:40:23
 msgid "Path should not contain leading slash."
-msgstr ""
+msgstr "Jalur tidak boleh berisi garis miring terkemuka."
 
 #: app/components/forms/admin/content/pages-form.js:44:23
 msgid "Path should not contain whitespaces."
-msgstr ""
+msgstr "Jalur tidak boleh berisi spasi putih."
 
 #: app/components/forms/admin/content/pages-form.js:53:23
 msgid "Please select a place"
-msgstr ""
+msgstr "Silakan pilih tempat"
 
 #: app/components/forms/admin/content/pages-form.js:62:23
 #: app/components/forms/session-speaker-form.js:234:23
 msgid "Please enter a position"
-msgstr ""
+msgstr "Silakan masukkan posisi"
 
 #: app/components/forms/admin/content/pages-form.js:71:23
 #: app/components/forms/session-speaker-form.js:105:23
 msgid "Please enter a language"
-msgstr ""
+msgstr "Silakan masukkan bahasa"
 
 #: app/components/forms/admin/content/social-links-form.js:20:23
 #: app/components/forms/events/view/videoroom-form.js:104:23
@@ -322,21 +324,21 @@ msgstr ""
 #: app/components/forms/session-speaker-form.js:356:23
 #: app/components/forms/wizard/other-details-step.js:65:23
 msgid "Please enter a valid url"
-msgstr ""
+msgstr "Silakan masukkan URL yang valid"
 
 #: app/components/forms/admin/content/translation-form.js:31:23
 msgid "Please select a language"
-msgstr ""
+msgstr "Silakan pilih bahasa"
 
 #: app/components/forms/admin/settings/billing.js:22:23
 #: app/components/forms/session-speaker-form.js:317:23
 #: app/components/forms/session-speaker-form.js:331:23
 msgid "Please enter a valid mobile number."
-msgstr ""
+msgstr "Masukkan nomor ponsel yang sahih."
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr ""
+msgstr "Silakan masukkan email"
 
 #: app/components/forms/admin/settings/billing.js:44:23
 msgid ""
