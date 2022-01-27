@@ -8,7 +8,12 @@ import { all, allSettled } from 'rsvp';
 import { inject as service } from '@ember/service';
 import _ from 'lodash-es';
 
-const bbb_options = { 'record': false, 'autoStartRecording': false, 'muteOnStart': true, 'endCurrentMeeting': false };
+const bbb_options = {
+  record             : false,
+  autoStartRecording : false,
+  muteOnStart        : true,
+  endCurrentMeeting  : false
+};
 
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
@@ -58,7 +63,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       {
         name          : this.l10n.t('View'),
         valuePath     : 'url',
-        cellComponent : 'ui-table/cell/events/view/videoroom/cell-video-recording'
+        cellComponent :
+          'ui-table/cell/events/view/videoroom/cell-video-recording'
       }
     ];
   }
@@ -122,18 +128,26 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   get randomIdentifier() {
-    return Math.random().toString(36).replace(/[^a-z]+/g, '');
+    return Math.random()
+      .toString(36)
+      .replace(/[^a-z]+/g, '');
   }
 
   generateMeetingInformation(phoneNumbers, pin) {
-    return `To join your meeting, dial one of these numbers and then enter the pin.\n\nTelephone PIN: ${pin}\n\n`
-    + Object.entries(phoneNumbers).map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`).join('');
+    return (
+      `To join your meeting, dial one of these numbers and then enter the pin.\n\nTelephone PIN: ${pin}\n\n`
+      + Object.entries(phoneNumbers)
+        .map(([country, numbers]) => `${country}: ${numbers.join(', ')}\n`)
+        .join('')
+    );
   }
 
   get streamIdentifier() {
     const { event } = this.data;
     const { id } = this.data.stream;
-    return [event.identifier, 'stream', id ?? this.randomIdentifier].filter(Boolean).join('-');
+    return [event.identifier, 'stream', id ?? this.randomIdentifier]
+      .filter(Boolean)
+      .join('-');
   }
 
   @action
@@ -146,12 +160,23 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
     const api = channel.get('apiUrl');
     try {
-      const [phoneNumbers, pin] = (await allSettled([
-        this.loader.load(`${api}/phoneNumberList?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true }),
-        this.loader.load(`${api}/conferenceMapper?conference=${identifier}@conference.eventyay.meet.jit.si`, { isExternal: true })
-      ])).map(promise => promise.value);
+      const [phoneNumbers, pin] = (
+        await allSettled([
+          this.loader.load(
+            `${api}/phoneNumberList?conference=${identifier}@conference.eventyay.meet.jit.si`,
+            { isExternal: true }
+          ),
+          this.loader.load(
+            `${api}/conferenceMapper?conference=${identifier}@conference.eventyay.meet.jit.si`,
+            { isExternal: true }
+          )
+        ])
+      ).map(promise => promise.value);
 
-      this.data.stream.additionalInformation = this.generateMeetingInformation(phoneNumbers.numbers, pin.id);
+      this.data.stream.additionalInformation = this.generateMeetingInformation(
+        phoneNumbers.numbers,
+        pin.id
+      );
     } catch (e) {
       this.notify.error(this.l10n.t('An unexpected error has occurred.'));
     }
@@ -160,12 +185,18 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   addBigBlueButton(channel) {
-    this.data.stream.set('url', channel.get('url') + '/b/' + this.streamIdentifier);
+    this.data.stream.set(
+      'url',
+      channel.get('url') + '/b/' + this.streamIdentifier
+    );
     this.data.stream.set('extra', { bbb_options });
   }
 
   addChatmosphere(channel) {
-    this.data.stream.set('url', channel.get('url') + '/session/eventyay/' + this.streamIdentifier);
+    this.data.stream.set(
+      'url',
+      channel.get('url') + 'session/eventyay/' + this.streamIdentifier
+    );
   }
 
   add3cx() {
@@ -174,13 +205,13 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async addYoutube() {
-    this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    this.data.stream.set('extra', { autoplay: true, loop: false });
     this.data.stream.set('url', 'watch?v=');
   }
 
   @action
   async addVimeo() {
-    this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    this.data.stream.set('extra', { autoplay: true, loop: false });
     this.data.stream.set('url', '');
   }
 
@@ -203,16 +234,23 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.addVimeo();
         break;
       case 'chatmosphere':
-        this.addChatmosphere();
+        this.addChatmosphere(channel);
     }
   }
 
   @action
   async setChannel(channel) {
-    const { url, additionalInformation } = getProperties(this.data.stream, ['url', 'additionalInformation']);
+    const { url, additionalInformation } = getProperties(this.data.stream, [
+      'url',
+      'additionalInformation'
+    ]);
     if (url || additionalInformation) {
       try {
-        await this.confirm.prompt(this.l10n.t('Selecting another video integration will reset the data in the form. Do you want to proceed?'));
+        await this.confirm.prompt(
+          this.l10n.t(
+            'Selecting another video integration will reset the data in the form. Do you want to proceed?'
+          )
+        );
       } catch {
         this.previousVideo = this.selectedVideo;
         return;
@@ -223,13 +261,16 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.data.stream.set('url', null);
     this.data.stream.set('additionalInformation', null);
 
-    if (channel) {await this.addIntegration(channel)}
+    if (channel) {
+      await this.addIntegration(channel);
+    }
   }
 
   @action
   async toggleRecord() {
-    this.data.stream.extra.bbb_options.record = !this.data.stream.extra.bbb_options.record;
-    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+    this.data.stream.extra.bbb_options.record
+      = !this.data.stream.extra.bbb_options.record;
+    if (!_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options)) {
       this.set('showUpdateOptions', true);
     } else {
       this.set('showUpdateOptions', false);
@@ -238,8 +279,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async toggleMuteOnStart() {
-    this.data.stream.extra.bbb_options.muteOnStart = !this.data.stream.extra.bbb_options.muteOnStart;
-    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+    this.data.stream.extra.bbb_options.muteOnStart
+      = !this.data.stream.extra.bbb_options.muteOnStart;
+    if (!_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options)) {
       this.set('showUpdateOptions', true);
     } else {
       this.set('showUpdateOptions', false);
@@ -248,8 +290,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async toggleAutoStartRecording() {
-    this.data.stream.extra.bbb_options.autoStartRecording = !this.data.stream.extra.bbb_options.autoStartRecording;
-    if (!(_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options))) {
+    this.data.stream.extra.bbb_options.autoStartRecording
+      = !this.data.stream.extra.bbb_options.autoStartRecording;
+    if (!_.isEqual(this.actualBBBExtra, this.data.stream.extra?.bbb_options)) {
       this.set('showUpdateOptions', true);
     } else {
       this.set('showUpdateOptions', false);
@@ -263,31 +306,36 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       try {
         this.set('isLoading', true);
         if (this.data.stream.extra?.bbb_options) {
-          this.data.stream.extra.bbb_options.endCurrentMeeting = this.showUpdateOptions ? this.endCurrentMeeting :  false;
+          this.data.stream.extra.bbb_options.endCurrentMeeting = this
+            .showUpdateOptions
+            ? this.endCurrentMeeting
+            : false;
         }
         await this.data.stream.save();
-        const saveModerators = this.data.stream.moderators.toArray().map(moderator => {
-          if (moderator.id) {
-            return moderator;
-          }
-          return moderator.save();
-        });
+        const saveModerators = this.data.stream.moderators
+          .toArray()
+          .map(moderator => {
+            if (moderator.id) {
+              return moderator;
+            }
+            return moderator.save();
+          });
         const deleteModerators = this.deletedModerators.map(moderator => {
           return moderator.destroyRecord();
         });
         await all([...saveModerators, ...deleteModerators]);
-        this.notify.success(this.l10n.t('Your stream has been saved'),
-          {
-            id: 'stream_save'
-          });
+        this.notify.success(this.l10n.t('Your stream has been saved'), {
+          id: 'stream_save'
+        });
         this.router.transitionTo('events.view.videoroom', this.data.event.id);
       } catch (e) {
         console.error('Error while saving session', e);
-        const message = e.errors?.[0]?.detail ?? this.l10n.t('Oops something went wrong. Please try again');
-        this.notify.error(message,
-          {
-            id: 'stream_save_error'
-          });
+        const message
+          = e.errors?.[0]?.detail
+          ?? this.l10n.t('Oops something went wrong. Please try again');
+        this.notify.error(message, {
+          id: 'stream_save_error'
+        });
       } finally {
         this.set('isLoading', false);
       }
@@ -300,21 +348,33 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       return;
     }
     this.onValid(() => {
-      const existingEmails = this.data.stream.moderators.map(moderator => moderator.email);
+      const existingEmails = this.data.stream.moderators.map(
+        moderator => moderator.email
+      );
       if (!existingEmails.includes(this.moderatorEmail)) {
-        const existingModerator = this.deletedModerators.filter(moderator => moderator.email === this.moderatorEmail);
+        const existingModerator = this.deletedModerators.filter(
+          moderator => moderator.email === this.moderatorEmail
+        );
         if (existingModerator.length === 0) {
-          const newModerator = this.store.createRecord('video-stream-moderator', {
-            email       : this.moderatorEmail,
-            videoStream : this.data.stream
-          });
+          const newModerator = this.store.createRecord(
+            'video-stream-moderator',
+            {
+              email       : this.moderatorEmail,
+              videoStream : this.data.stream
+            }
+          );
           this.data.stream.moderators.pushObject(newModerator);
         } else {
-          const moderator = this.store.peekRecord('video-stream-moderator', existingModerator[0].id);
+          const moderator = this.store.peekRecord(
+            'video-stream-moderator',
+            existingModerator[0].id
+          );
           this.data.stream.moderators.pushObject(moderator);
         }
       }
-      this.deletedModerators = this.deletedModerators.filter(moderator => moderator.email !== this.moderatorEmail);
+      this.deletedModerators = this.deletedModerators.filter(
+        moderator => moderator.email !== this.moderatorEmail
+      );
       this.moderatorEmail = '';
     });
   }
@@ -345,10 +405,18 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       }
       this.loadRecordings();
     }
-    if (this.data.stream.extra === null && ['vimeo', 'youtube'].includes(this.data.stream.videoChannel.get('provider'))) {
-      this.data.stream.set('extra', { 'autoplay': true, 'loop': false });
+    if (
+      this.data.stream.extra === null
+      && ['vimeo', 'youtube'].includes(
+        this.data.stream.videoChannel.get('provider')
+      )
+    ) {
+      this.data.stream.set('extra', { autoplay: true, loop: false });
     }
-    if (!this.data.stream.extra?.bbb_options && this.data.stream.videoChannel.get('provider') === 'bbb') {
+    if (
+      !this.data.stream.extra?.bbb_options
+      && this.data.stream.videoChannel.get('provider') === 'bbb'
+    ) {
       this.data.stream.set('extra', { bbb_options });
     }
     this.selectedVideo = this.previousVideo = this.data.stream.videoChannel;
