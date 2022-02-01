@@ -44,9 +44,8 @@ export default class RoleInvitesRoute extends Route {
     const payload = {
       email: this.redirectionParams.queryParams.inviteEmail
     };
-    const emailExists = await this.loader.post('/users/check_email', payload);
-
-    if (emailExists) {
+    const response = await this.loader.post('/users/check_email', payload);
+    if (response.exists) {
       this.transitionTo('login', this.redirectionParams);
     } else {
       this.transitionTo('register', this.redirectionParams);
