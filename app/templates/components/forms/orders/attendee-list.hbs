@@ -40,7 +40,11 @@
                       {{t-var field.name}}
                     </h4>
                     {{#if (is-input-field field.type) }}
-                      <span class="word-break">{{get holder field.fieldIdentifier}}</span>
+                      {{#if (is-url-field field.fieldIdentifier)}}
+                        <a href="{{get holder field.fieldIdentifier}}">{{get holder field.fieldIdentifier}}</a>
+                      {{else}}
+                        <span class="word-break">{{get holder field.fieldIdentifier}}</span>
+                      {{/if}}
                     {{else if (eq field.type 'select')}}
                       <span class="word-break">{{get holder field.fieldIdentifier}}</span>
                     {{else if (eq field.type 'checkbox')}}
