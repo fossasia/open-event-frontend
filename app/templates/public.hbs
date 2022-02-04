@@ -219,10 +219,14 @@
 </div>
 
 {{#if this.side_panel}}
-  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @currentRoute={{this.session.currentRouteName}} />  
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @currentRoute={{this.session.currentRouteName}} />  
 {{/if}}
 {{#if (and this.model.isChatEnabled this.canAccess)}}
-  <Public::Stream::ChatPanel @event={{this.model}} />
+  {{#if this.shown}}
+    <Public::Stream::ChatPanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} />
+  {{else}}
+    <Public::Stream::ChatPanel @event={{this.model}} @shown={{false}} @showChatPanel={{this.showChatPanel}} />
+  {{/if}}
 {{/if}}
 {{#if this.video_dialog}}
   <Modals::SimpleModal
