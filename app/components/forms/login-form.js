@@ -7,6 +7,11 @@ import ENV from 'open-event-frontend/config/environment';
 @classic
 export default class LoginForm extends Component.extend(FormMixin) {
 
+  queryParams = ['inviteToken', 'event', 'inviteEmail'];
+  event = null;
+  inviteEmail = null;
+  inviteToken = null;
+
   identification   = '';
   password         = '';
   isLoading        = false;
@@ -72,6 +77,10 @@ export default class LoginForm extends Component.extend(FormMixin) {
           );
         }
         this.set('setSessionCookie', this.rememberMe);
+
+        if (this.inviteToken) {
+          this.transitionToRoute('public.role-invites', this.event, { queryParams: { token: this.inviteToken } });
+        }
       } catch (e) {
         this.set('counter', this.counter + 1);
         if (e.json && e.json.error) {
