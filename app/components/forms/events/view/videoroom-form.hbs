@@ -112,6 +112,23 @@
         @onChange={{action (mut this.data.stream.extra.loop)}} />
     </div>
   {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'chatmosphere')}}
+    <div class="field">
+      <label>{{t 'Chatmosphere Background Image'}}</label>
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.data.stream.bgImgUrl}}
+        @needsCropper={{false}}
+        @label={{t "Chatmosphere Background Image"}}
+        @id="chatmosphere_image"
+        @icon="camera"
+        @hint={{t "Select Chatmosphere Background Image"}}
+        @imageText={{t "Background Image"}}
+        @isHeaderImage={{false}}
+        @maxSizeInKb={{this.settings.imageSize}}
+        @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image."}}
+        @requiresDivider={{true}} />
+    </div>
+  {{/if}}
   {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label>
