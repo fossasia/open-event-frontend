@@ -2186,13 +2186,13 @@
     "@sentry/utils" "6.17.4"
     tslib "^1.9.3"
 
-"@sentry/integrations@^6.17.4":
-  version "6.17.4"
-  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.17.4.tgz#a894526ce25020aea1dc9b2f2a4aa584c7de9b3a"
-  integrity sha512-NmFbv9w4AK1d4NYi0beTuJgn6t81bdiGZmkNZ9VKVI0mBfoZfwxIo7fGNrla3HMkeTwLHntXuzUu4v+w1EARqA==
+"@sentry/integrations@^6.17.5":
+  version "6.17.5"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.17.5.tgz#74e75e957de8816961e7ac5ce4ab0af2546fd2aa"
+  integrity sha512-TL/D9r01fvSe75OpWXYzF0mINjbrDpHFFryIAxZpg6VFjvffK2f5HXkCXAXdA19TuLbxNYf/4lJjao3A4OhcRg==
   dependencies:
-    "@sentry/types" "6.17.4"
-    "@sentry/utils" "6.17.4"
+    "@sentry/types" "6.17.5"
+    "@sentry/utils" "6.17.5"
     localforage "^1.8.1"
     tslib "^1.9.3"
 
@@ -2221,12 +2221,25 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.17.4.tgz#36b78d7c4a6de19b2bbc631bb34893bcad30c0ba"
   integrity sha512-RUyiXCKf61k2GIMP7FQX0naoSew4zLxe+UrtbjwVcWU4AFPZfH7tLNtTpVE85zAKbxsaiq3OD2FPtTZarHcwxQ==
 
+"@sentry/types@6.17.5":
+  version "6.17.5"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.17.5.tgz#3b6a591c8059d577b51ba2e71f4717aadbea923f"
+  integrity sha512-mn7qKuOvmZRTomJ7BiJEw6DM8femAVQcuHa8hdvK1F6ldMfFVLen5Z2LYGE7iY36GEa1Ba/AGGEKyF8D29y2/Q==
+
 "@sentry/utils@6.17.4":
   version "6.17.4"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.17.4.tgz#4f109629d2e7f16c5595b4367445ef47bfe96b61"
   integrity sha512-+ENzZbrlVL1JJ+FoK2EOS27nbA/yToeaJPFlyVOnbthUxVyN3TTi9Uzn9F05fIE/2BTkOEk89wPtgcHafgrD6A==
   dependencies:
     "@sentry/types" "6.17.4"
+    tslib "^1.9.3"
+
+"@sentry/utils@6.17.5":
+  version "6.17.5"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.17.5.tgz#8034ac309d5f59ec919c748c6f35d6d831546523"
+  integrity sha512-MMCFCNWW73HRnqPVRGGSaMfSxtvvlNDgu1JFAOT2vnNkuf0mXvH301lyrh4pFJfntrtXOOk4bnGMhyWRlPADdA==
+  dependencies:
+    "@sentry/types" "6.17.5"
     tslib "^1.9.3"
 
 "@simple-dom/document@^1.4.0":
