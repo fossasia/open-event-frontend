@@ -12,15 +12,20 @@ import EventService from 'open-event-frontend/services/event';
 interface Args {
   videoStream: VideoStream,
   event: Event,
-  shown: boolean
+  shown: boolean,
+  showChatPanel: any
 }
 
 export default class PublicStreamSidePanel extends Component<Args> {
   @service loader!: Loader;
   @service declare event: EventService;
   @service declare settings: any;
+  @service authManager: any;
+  @service confirm: any;
 
   @tracked shown = false;
+  @tracked token = '';
+  @tracked success = null;
   @tracked loading = true;
   @tracked streams: VideoStream[] = [];
   @tracked showSessions: number | null = null;
@@ -84,6 +89,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
       }
+      const { success, token } = await this.loader.load(`/events/${this.args.event.id}/chat-token`);
+      this.token = token;
+      this.success = success;
+      this.loading = false;
     }
 
     this.loading = false;
