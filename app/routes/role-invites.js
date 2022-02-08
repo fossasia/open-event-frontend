@@ -39,8 +39,16 @@ export default class RoleInvitesRoute extends Route {
 
   }
 
-  afterModel() {
+  async afterModel() {
     if (this.fastboot.isFastBoot) {return}
-    this.transitionTo('register', this.redirectionParams);
+    const payload = {
+      email: this.redirectionParams.queryParams.inviteEmail
+    };
+    const response = await this.loader.post('/users/check_email', payload);
+    if (response.exists) {
+      this.transitionTo('login', this.redirectionParams);
+    } else {
+      this.transitionTo('register', this.redirectionParams);
+    }
   }
 }
