@@ -39,7 +39,7 @@
       {{/if}}
 
       {{#if this.showChat}}
-        <a class="ui labeled icon item {{if (eq @currentRoute 'public.chat') 'video-active'}}" href={{href-to 'public.chat' @event (query-params side_panel='true')}}>
+        <a href="#" class="ui labeled icon item" role="button" {{on "click" @showChatPanel}}>
           <span><i class="comment icon"></i>
           {{t 'Chat'}}</span>
         </a>
@@ -62,6 +62,7 @@
         {{/each}}
       </div>
     {{/if}}
+
     {{#if this.loading}}
       <div class="ui active centered inline loader"></div>
     {{/if}}
