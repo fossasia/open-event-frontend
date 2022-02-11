@@ -112,6 +112,23 @@
         @onChange={{action (mut this.data.stream.extra.loop)}} />
     </div>
   {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'chatmosphere')}}
+    <div class="field">
+      <label>{{t 'Chatmosphere Background Image'}}</label>
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.data.stream.bgImgUrl}}
+        @needsCropper={{false}}
+        @label={{t "Chatmosphere Background Image"}}
+        @id="chatmosphere_image"
+        @icon="camera"
+        @hint={{t "Select Chatmosphere Background Image"}}
+        @imageText={{t "Background Image"}}
+        @isHeaderImage={{false}}
+        @maxSizeInKb={{this.settings.imageSize}}
+        @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image."}}
+        @requiresDivider={{true}} />
+    </div>
+  {{/if}}
   {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label>
@@ -162,47 +179,49 @@
   {{/if}}
 
   <div class="ui divider"></div>
-  <div class="grouped fields">
-    <label>{{t 'Access'}}</label>
-    <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Organization Team'}} /></div>
-    <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Speakers'}} /></div>
-    <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Attendees'}} /></div>
-    <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'All logged in users'}} /></div>
-    <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'Public (no restriction)'}} /></div>
-  </div>
-  <div class="ui divider"></div>
-  <div class="ui header">{{t 'Moderators'}}</div>
-  <div class="ui action input">
-    <Input
-      @type="email"
-      @id="email"
-      @value={{this.moderatorEmail}}
-      placeholder={{t 'Add Email of Moderators'}} />
-    <button class="ui blue right labeled icon button" style="font-size: 1rem;" type="button" {{action this.addModerator}}>
-      <i class="add icon"></i>
-      {{t 'Add'}}
-    </button>
-  </div>
-  <div class="mt-2">
-    {{#each this.data.stream.moderators as |moderator|}}
-      <span class="ui label transition visible" style="display: inline-block !important;">{{moderator.email}}
-        <i role="button" class="delete icon" {{action this.deleteModerator moderator}}></i>
-      </span>
-    {{/each}}
-  </div>
-  <p>{{t 'Please ask moderators to get a ticket for the event. Moderators can access an event only after getting a ticket.'}}</p>
-  {{#if this.videoRecordings}}
-    <div class="ui header">{{t 'BBB Recordings'}}</div>
-    <Tables::Default
-      @color='green'
-      @columns={{this.recordingColumns}}
-      @rows={{this.videoRecordings}}
-      @widthConstraint="eq-container"
-      @resizeMode="fluid"
-      @fillMode="equal-column"
-      @hideSearchBox={{true}}
-      @hidePagination={{true}}
-      @hidePageSize={{true}} />
+  {{#if (not-eq this.data.stream.videoChannel.provider 'chatmosphere')}}
+    <div class="grouped fields">
+      <label>{{t 'Access'}}</label>
+      <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Organization Team'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Speakers'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Attendees'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'All logged in users'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'Public (no restriction)'}} /></div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui header">{{t 'Moderators'}}</div>
+    <div class="ui action input">
+      <Input
+        @type="email"
+        @id="email"
+        @value={{this.moderatorEmail}}
+        placeholder={{t 'Add Email of Moderators'}} />
+      <button class="ui blue right labeled icon button" style="font-size: 1rem;" type="button" {{action this.addModerator}}>
+        <i class="add icon"></i>
+        {{t 'Add'}}
+      </button>
+    </div>
+    <div class="mt-2">
+      {{#each this.data.stream.moderators as |moderator|}}
+        <span class="ui label transition visible" style="display: inline-block !important;">{{moderator.email}}
+          <i role="button" class="delete icon" {{action this.deleteModerator moderator}}></i>
+        </span>
+      {{/each}}
+    </div>
+    <p>{{t 'Please ask moderators to get a ticket for the event. Moderators can access an event only after getting a ticket.'}}</p>
+    {{#if this.videoRecordings}}
+      <div class="ui header">{{t 'BBB Recordings'}}</div>
+      <Tables::Default
+        @color='green'
+        @columns={{this.recordingColumns}}
+        @rows={{this.videoRecordings}}
+        @widthConstraint="eq-container"
+        @resizeMode="fluid"
+        @fillMode="equal-column"
+        @hideSearchBox={{true}}
+        @hidePagination={{true}}
+        @hidePageSize={{true}} />
+    {{/if}}
   {{/if}}
 
   <div class="ui hidden divider"></div>
