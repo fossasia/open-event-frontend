@@ -12,10 +12,12 @@
         {{#each-in (group-by 'name' (map-by 'ticket' this.order.attendees)) as |name tickets|}}
           <div class="ui green large label">{{tickets.length}} x {{name}}</div>
         {{/each-in}}
-        {{#if (not @restrictTicketCancellation)}}
-          <UiPopup @content={{t "Cancel Order"}} @click={{action (confirm (t "This action will cancel the entire order. If there is more than one ticket in this order the other tickets will also be canceled. Are you sure you would like to cancel this order now? Yes, cancel order now. / No, do not cancel the order.") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
-            {{t 'Cancel Order'}}
-          </UiPopup>
+        {{#if (eq this.order.user.email this.authManager.currentUser.email)}}
+          {{#if (not @restrictTicketCancellation)}}
+            <UiPopup @content={{t "Cancel Order"}} @click={{action (confirm (t "This action will cancel the entire order. If there is more than one ticket in this order the other tickets will also be canceled. Are you sure you would like to cancel this order now? Yes, cancel order now. / No, do not cancel the order.") (action 'cancelOrder' this.order.identifier))}} @class="ui gray large label button" @position="top center">
+              {{t 'Cancel Order'}}
+            </UiPopup>
+          {{/if}}
         {{/if}}
       </div>
       <SmartOverflow @class="header">
