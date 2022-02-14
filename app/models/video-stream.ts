@@ -24,6 +24,7 @@ export default class VideoStream extends ModelBase.extend() {
   @attr() name!: string;
   @attr() url!: string;
   @attr() password!: string;
+  @attr() bgImgUrl?: string;
   @attr() additionalInformation!: string;
   @attr() extra!: Extra;
 
