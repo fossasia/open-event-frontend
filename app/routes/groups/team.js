@@ -15,10 +15,4 @@ export default class TeamRoute extends Route.extend(AuthenticatedRouteMixin) {
       roles: await this.store.findAll('role')
     };
   }
-
-  afterModel(model) {
-    if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
-      this.transitionTo('index');
-    }
-  }
 }

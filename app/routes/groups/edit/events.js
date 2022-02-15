@@ -78,10 +78,4 @@ export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {
       groupEvents: group.query('events', {})
     });
   }
-
-  afterModel(model) {
-    if (this.authManager.currentUser.email !== model.group.user.get('email') && !this.authManager.currentUser.isAdmin) {
-      this.transitionTo('index');
-    }
-  }
 }
