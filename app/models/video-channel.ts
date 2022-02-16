@@ -9,7 +9,15 @@ export default class VideoChannel extends ModelBase.extend() {
   @attr() apiKey!: string;
 
   get isInternalStream(): boolean {
-    return (this.provider === 'jitsi' || this.provider === 'bbb' || this.provider === 'youtube' || this.provider === 'vimeo' || this.provider === 'chatmosphere' || this.provider === '3cx');
+    return (
+      this.provider === 'jitsi'
+      || this.provider === 'bbb'
+      || this.provider === 'youtube'
+      || this.provider === 'vimeo'
+      || this.provider === 'chatmosphere'
+      || this.provider === 'libre'
+      || this.provider === '3cx'
+    );
   }
 }
 

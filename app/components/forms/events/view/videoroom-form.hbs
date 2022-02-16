@@ -179,7 +179,7 @@
   {{/if}}
 
   <div class="ui divider"></div>
-  {{#if (not-eq this.data.stream.videoChannel.provider 'chatmosphere')}}
+  {{#if (not-eq (or this.data.stream.videoChannel.provider 'chatmosphere' this.data.stream.videoChannel 'libre'))}}
     <div class="grouped fields">
       <label>{{t 'Access'}}</label>
       <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Organization Team'}} /></div>
