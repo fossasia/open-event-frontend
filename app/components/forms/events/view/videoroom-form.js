@@ -199,6 +199,13 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     );
   }
 
+  addLibre(channel) {
+    this.data.stream.set(
+      'url',
+      channel.get('url')
+    );
+  }
+
   add3cx() {
     this.data.stream.set('url', '');
   }
@@ -235,6 +242,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         break;
       case 'chatmosphere':
         this.addChatmosphere(channel);
+        break;
+      case 'libre':
+        this.addLibre(channel);
+        break;
     }
   }
 

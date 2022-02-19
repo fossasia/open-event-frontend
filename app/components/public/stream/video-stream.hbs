@@ -5,9 +5,6 @@
   {{#if this.iframeUrl}}
     <iframe src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" />
   {{/if}}
-  {{#if (eq @videoStream.videoChannel.provider 'chatmosphere')}}
-    <iframe src="{{@videoStream.url}}" title="Chatmosphere Session" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px; .sc-gsDKAQ, .jhVcPN {display:none;}" />
-  {{/if}}
   {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
   {{/if}}
