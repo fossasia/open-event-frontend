@@ -110,6 +110,15 @@ Docker images hosted on [open-event-frontend repository](https://cloud.docker.co
 
 ## Contributions Best Practices
 
+### Design Principles 
+- Implement only what is necessary in frontend.
+- Add features which are only relevant for web frontend,not for android.
+- Avoid cloud services and do not load resources from external sites if not absolutely necessary, e.g. store fonts on the site itself.
+- Try to match design and color scheme while making changes.
+- Only add Relevant content and data.
+- While making a PR related to UI issues,add relevant screenshots.
+- Take Feedbacks before adding a feature to frontend.
+
 ### Commits
 
 - Write clear meaningful git commit messages (Do read [https://chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/))
