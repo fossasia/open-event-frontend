@@ -1712,6 +1712,20 @@
     resolve "^1.20.0"
     semver "^7.3.2"
 
+"@embroider/macros@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.2.0.tgz#9a2d99225fba6dcb69e795cddad9f4948c2a2b6b"
+  integrity sha512-WD2V3OKXZB73OymI/zC2+MbqIYaAskhjtSOVVY6yG6kWILyVsJ6+fcbNHEnZyGqs4sm0TvHVJfevmA2OXV8Pww==
+  dependencies:
+    "@embroider/shared-internals" "1.2.0"
+    assert-never "^1.2.1"
+    babel-import-util "^1.1.0"
+    ember-cli-babel "^7.26.6"
+    find-up "^5.0.0"
+    lodash "^4.17.21"
+    resolve "^1.20.0"
+    semver "^7.3.2"
+
 "@embroider/macros@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.0.0.tgz#2dfab550ba4e03cbf6e3524759949749ced98cc2"
@@ -1765,6 +1779,19 @@
     semver "^7.3.5"
     typescript-memoize "^1.0.1"
 
+"@embroider/shared-internals@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-1.2.0.tgz#edb3ca7e8528be713dab01818e8caad2dc937fba"
+  integrity sha512-11RfGuXxT+m2xPcpny/ENHjw53CuKPcrx7222LFQ53+I09hLxsvPCsH8be5E99LePDA46YGX41vxOxxfowD4OQ==
+  dependencies:
+    babel-import-util "^1.1.0"
+    ember-rfc176-data "^0.3.17"
+    fs-extra "^9.1.0"
+    lodash "^4.17.21"
+    resolve-package-path "^4.0.1"
+    semver "^7.3.5"
+    typescript-memoize "^1.0.1"
+
 "@embroider/util@^0.39.1 || ^0.40.0 || ^0.41.0":
   version "0.41.0"
   resolved "https://registry.yarnpkg.com/@embroider/util/-/util-0.41.0.tgz#5324cb4742aa4ed8d613c4f88a466f73e4e6acc1"
@@ -1780,6 +1807,15 @@
   integrity sha512-g9OqnFJPktGu9NS0Ug3Pxz1JE3jeDceeVE4IrlxDrVmBXMA/GrBvpwjolWgl6jh97cMJyExdz62jIvPHV4256Q==
   dependencies:
     "@embroider/macros" "0.47.2"
+    broccoli-funnel "^3.0.5"
+    ember-cli-babel "^7.23.1"
+
+"@embroider/util@^1.0.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.2.0.tgz#8aa8413252ca4a566cb482b46be3b41997f36ea2"
+  integrity sha512-uWgEAhMWghljnYxwsSKZkrB3tY9avJlkJoHvjN+ZazwP/5EfsB7Ck++2WEfIOBOOPEoQr1MYHVlvr+hIMwLrVw==
+  dependencies:
+    "@embroider/macros" "1.2.0"
     broccoli-funnel "^3.0.5"
     ember-cli-babel "^7.23.1"
 
@@ -8105,12 +8141,12 @@ ember-notify@^6.0.2:
     ember-cli-babel "^7.23.1"
     ember-cli-htmlbars "^5.3.2"
 
-ember-power-select@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-5.0.3.tgz#615da0742a222a8c090590dd2cbb2db3a6147ac5"
-  integrity sha512-V72DxohhuPdsF6Rcxu1cVL2faHSk83RdTCkxeDT71NeQQNpHKbslhc0c+MMU52wm0mzch+oWmti/2McpL/vIvQ==
+ember-power-select@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-5.0.4.tgz#4af485fb7e1e1eca1bedd523892c82c672935dac"
+  integrity sha512-FLVShZr3cYdLzymP+/0rXkfH5tD/FD958kynY86MWvn7ZyL2tXowlgVKY08n+PJHdo/vCrzqubRYckvXRSH6Bg==
   dependencies:
-    "@embroider/util" "^0.47.2"
+    "@embroider/util" "^1.0.0"
     "@glimmer/component" "^1.0.4"
     "@glimmer/tracking" "^1.0.4"
     ember-assign-helper "^0.4.0"
