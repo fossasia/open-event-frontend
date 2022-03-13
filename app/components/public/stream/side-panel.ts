@@ -89,9 +89,13 @@ export default class PublicStreamSidePanel extends Component<Args> {
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
       }
-      const { success, token } = await this.loader.load(`/events/${this.args.event.id}/chat-token`);
-      this.token = token;
-      this.success = success;
+
+      if (this.args.event.isChatEnabled) {
+        const { success, token } = await this.loader.load(`/events/${this.args.event.id}/chat-token`);
+        this.token = token;
+        this.success = success;
+      }
+      
       this.loading = false;
     }
 
