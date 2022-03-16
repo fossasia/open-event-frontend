@@ -54,7 +54,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
     if (provider === 'jitsi') {
       this.loading = false;
     } else if (provider === 'chatmosphere') {
-      location.href = stream.url
+      this.iframeUrl = stream.url
+      this.iframeTitle = 'Chatmosphere Session'
       this.loading = false
     } else if (provider === 'libre') {
       this.iframeUrl = stream.url
