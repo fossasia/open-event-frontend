@@ -77,7 +77,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     if (this.args.event.isSchedulePublished) {
       try {
-        const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?include=video-stream&fields[microlocation]=id,video_stream&fields[video-stream]=id,name&sort=video-stream.name`);
+        const rooms = await this.loader.load(`/events/${this.args.event.identifier}/microlocations?include=video-stream&fields[microlocation]=id,video_stream,position&fields[video-stream]=id,name&sort=position`);
         rooms.included?.map((stream: any) => ({
           id       : stream.id,
           name     : stream.attributes.name,
