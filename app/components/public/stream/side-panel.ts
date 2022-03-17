@@ -95,7 +95,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
         this.token = token;
         this.success = success;
       }
-      
+
       this.loading = false;
     }
 
