@@ -69,6 +69,11 @@ export default class PublicStreamVideoStream extends Component<Args> {
       this.iframeUrl = stream.url
       this.iframeTitle = 'Chatmosphere Session'
       this.loading = false
+      const iframe = document.getElementById('iframe-root') as HTMLIFrameElement
+      const innerDoc = iframe.contentDocument
+      if (innerDoc) {
+        innerDoc.body.style.background = 'red'
+      }
     } else if (provider === 'libre') {
       this.iframeUrl = stream.url
       this.iframeTitle = 'Libre Work Adventure Session'

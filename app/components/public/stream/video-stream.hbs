@@ -3,7 +3,7 @@
     <div class="ui active centered inline loader"></div>
   {{/if}}
   {{#if this.iframeUrl}}
-    <iframe src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" />
+    <iframe id="iframe-root" src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px; .bXWxoQ {background: saddlebrown none repeat scroll 0% 0%;}" />
   {{/if}}
   {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
