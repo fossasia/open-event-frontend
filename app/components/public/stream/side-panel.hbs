@@ -1,9 +1,11 @@
 <button {{did-insert this.setup}} class="ui icon button stream-side-panel-button" {{action (mut this.shown) true}}>
   <i class="angle right icon"></i>
 </button>
+{{#if this.showChat}}
 <div class="ui chat-stream-side-panel-button right">
   <i class="rocketchat large icon p-4 chat-panel-icon" {{on "click" @showChatPanel}} role="button"></i>
 </div>
+{{/if}}
 {{#if this.shown}}
   <div class="d-flex flex-column stream-side-panel" >
     <div class="ui header inverted ml-4 mt-4">
