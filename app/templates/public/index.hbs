@@ -5,6 +5,11 @@
     </div>
     <div class="ui hidden divider"></div>
   {{/if}}
+  {{#if this.model.event.publicStreamLink}}
+    <div class="container">
+      <iframe class="responsive-iframe" title="{{this.model.event.name}}" src="{{this.model.event.publicStreamLink}}"></iframe>
+    </div>
+  {{/if}}
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
     <h2 id="tickets">{{t 'Registration'}}</h2>
     {{!-- template-lint-disable style-concatenation --}}

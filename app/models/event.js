@@ -33,6 +33,8 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   locationName           : attr('string'),
   searchableLocationName : attr('string'),
 
+  publicStreamLink: attr('string'),
+
   longitude : attr('number', { defaultValue: 0.0 }),
   latitude  : attr('number', { defaultValue: 0.0 }),
 
