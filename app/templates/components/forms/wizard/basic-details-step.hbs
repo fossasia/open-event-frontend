@@ -74,6 +74,13 @@
     <div class="mb-2 mt-2">
       {{t 'You can add video meeting rooms or streams after you created a draft of the event.'}}
     </div>
+    <div class="field mt-6">
+      <label for="stream">{{t 'Public Stream Link'}}</label>
+      <Input
+        @type="text"
+        @id="stream"
+        @value={{this.data.event.publicStreamLink}} />
+    </div>
   {{/if}}
  <br>
   <div class="fields">
