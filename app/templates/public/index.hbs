@@ -1,14 +1,14 @@
 <div class="event">
+  {{#if this.model.event.publicStreamLink}}
+    <div class="iframe-container">
+      <iframe class="responsive-iframe" title="{{this.model.event.name}}" src="{{this.model.event.publicStreamLink}}" allowfullscreen></iframe>
+    </div>
+  {{/if}}
   {{#if this.model.event.description}}
     <div class="description" id="info">
       {{sanitize this.model.event.description}}
     </div>
     <div class="ui hidden divider"></div>
-  {{/if}}
-  {{#if this.model.event.publicStreamLink}}
-    <div class="iframe-container">
-      <iframe class="responsive-iframe" title="{{this.model.event.name}}" src="{{this.model.event.publicStreamLink}}" allowfullscreen></iframe>
-    </div>
   {{/if}}
   {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
     <h2 id="tickets">{{t 'Registration'}}</h2>
