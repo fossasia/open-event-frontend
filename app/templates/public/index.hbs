@@ -1,7 +1,7 @@
 <div class="event">
   {{#if this.model.event.publicStreamLink}}
-    <div class="iframe-container">
-      <iframe class="responsive-iframe" title="{{this.model.event.name}}" src="{{this.model.event.publicStreamLink}}" allowfullscreen></iframe>
+    <div class="iframe-container mb-4">
+      <iframe class="responsive-iframe" title="{{this.model.event.name}}" src="{{this.publicStreamLink}}" allowfullscreen></iframe>
     </div>
   {{/if}}
   {{#if this.model.event.description}}
