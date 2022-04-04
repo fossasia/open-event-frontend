@@ -26,6 +26,14 @@ export default class IndexController extends Controller {
     return !this.model.tickets.toArray().filter(ticket => ticket.type !== 'freeRegistration' && ticket.type !== 'free').length > 0;
   }
 
+  @computed
+  get publicStreamLink() {
+    let publicStreamLink = 'https://www.youtube.com/embed/' + this.model.event.publicStreamLink + '?';
+    publicStreamLink += this.model.event.streamAutoplay ? 'autoplay=1' : 'autoplay=0';
+    publicStreamLink += this.model.event.streamLoop ? '&loop=1' : '&loop=0';
+    return publicStreamLink + '&playlist=' + this.model.event.publicStreamLink;
+  }
+
   @action
   async createNewUserViaEmail(email, password) {
     this.set('isLoading', true);
