@@ -98,12 +98,16 @@ export default class AddToCalender extends Component<Args> {
 
   get sessionGoogleUrl(): string {
     const { event } = this.args;
-    return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + '.ics?include_sessions';
+    let host = this.loader.host();
+    host = host.replace('https://', '')
+    return 'https://calendar.google.com/calendar/render?cid=webcal://' + host + '/v1/events/' + event.identifier + '.ics?include_sessions';
   }
 
   get mySessionGoogleUrl(): string {
     const { event } = this.args;
-    return 'https://calendar.google.com/calendar/render?cid=webcal://api.eventyay.com/v1/events/' + event.identifier + encodeURIComponent('.ics?include_sessions&my_schedule&user_id=') + this.authManager.currentUser.id;
+    let host = this.loader.host();
+    host = host.replace('https://', '');
+    return 'https://calendar.google.com/calendar/render?cid=webcal://' + host + '/v1/events/' + event.identifier + encodeURIComponent('.ics?include_sessions&my_schedule&user_id=') + this.authManager.currentUser.id;
   }
 
   get mySessioniCalUrl(): string {
