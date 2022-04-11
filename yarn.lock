@@ -1723,6 +1723,20 @@
     resolve "^1.20.0"
     semver "^7.3.2"
 
+"@embroider/macros@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.6.0.tgz#2b764f965c645fdcfbf05897c88195368b046ba1"
+  integrity sha512-yUEXJGJGP3rjtxorxrbkdxriBFEwnmzOrNk4zK64IXKBfyRjiDZFUHV9DSTrbaYLS29Mw5yK73ZIwi8L13C4Zw==
+  dependencies:
+    "@embroider/shared-internals" "1.6.0"
+    assert-never "^1.2.1"
+    babel-import-util "^1.1.0"
+    ember-cli-babel "^7.26.6"
+    find-up "^5.0.0"
+    lodash "^4.17.21"
+    resolve "^1.20.0"
+    semver "^7.3.2"
+
 "@embroider/macros@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.0.0.tgz#2dfab550ba4e03cbf6e3524759949749ced98cc2"
@@ -1789,12 +1803,35 @@
     semver "^7.3.5"
     typescript-memoize "^1.0.1"
 
+"@embroider/shared-internals@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-1.6.0.tgz#35ade2ce1202e529107bf6d1fae4ca753f6ebe5a"
+  integrity sha512-es7+pV2S9+tgX5T4losppheXfa+xWtKD6x0gq7mxqA4DIdE14mORNeSWM8/Fu9f/t0tJnPqttddbgnDYw+SvrA==
+  dependencies:
+    babel-import-util "^1.1.0"
+    ember-rfc176-data "^0.3.17"
+    fs-extra "^9.1.0"
+    js-string-escape "^1.0.1"
+    lodash "^4.17.21"
+    resolve-package-path "^4.0.1"
+    semver "^7.3.5"
+    typescript-memoize "^1.0.1"
+
 "@embroider/util@^0.39.1 || ^0.40.0 || ^0.41.0":
   version "0.41.0"
   resolved "https://registry.yarnpkg.com/@embroider/util/-/util-0.41.0.tgz#5324cb4742aa4ed8d613c4f88a466f73e4e6acc1"
   integrity sha512-ytA3J/YfQh7FEUEBwz3ezTqQNm/S5et5rZw3INBIy4Ak4x0NXV/VXLjyL8mv3txL8fGknZTBdXEhDsHUKIq8SQ==
   dependencies:
     "@embroider/macros" "0.41.0"
+    broccoli-funnel "^3.0.5"
+    ember-cli-babel "^7.23.1"
+
+"@embroider/util@^0.39.1 || ^0.40.0 || ^0.41.0 || ^1.0.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.6.0.tgz#6a817dfd5192afaab41e80ebce623d5812b30985"
+  integrity sha512-oUQDAMiAATHsiNwEMH/SzNSQ/Z5wDr9f6NImsDIFLvDT6T34/p7cqR4wyfrfMRtcc1EB6PbwhZ6bXYsJ6QPWRA==
+  dependencies:
+    "@embroider/macros" "1.6.0"
     broccoli-funnel "^3.0.5"
     ember-cli-babel "^7.23.1"
 
@@ -7690,16 +7727,16 @@ ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.1.2, ember-co
     fs-extra "^9.1.0"
     semver "^5.4.1"
 
-ember-composability-tools@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ember-composability-tools/-/ember-composability-tools-1.0.3.tgz#e24683ff0fb9bded5304f34b8a16bd5607271b54"
-  integrity sha512-5jW1xz6woDhoIMCF7FL/OGPCvXxrTP5cPCsn14YKqgi1NiLsBCHTi9hiz0H/KfDZ1z1gZ6sJatUsQKEag00DQw==
+ember-composability-tools@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ember-composability-tools/-/ember-composability-tools-1.1.0.tgz#54c9f45c05f8d0a3b848808e12d5b3a8aaeda313"
+  integrity sha512-ZUkjkY5bO8GWlYiVC7NALTwT7WMQhKySqful/ZMYMokWk/N/0vdGTkkydL2vbC8gBGZrKiuTo27b1QMj9Bar7A==
   dependencies:
     "@ember/render-modifiers" "^1.0.2 || ^2.0.0"
     "@glimmer/component" "^1.0.2"
-    ember-cli-babel "^7.26.6"
-    ember-cli-htmlbars "^5.7.1"
-    ember-element-helper "^0.5.5"
+    ember-cli-babel "^7.26.11"
+    ember-cli-htmlbars "^6.0.1"
+    ember-element-helper "^0.6.0"
 
 ember-composable-helpers@^5.0.0:
   version "5.0.0"
@@ -7818,6 +7855,15 @@ ember-element-helper@^0.5.5:
     "@embroider/util" "^0.39.1 || ^0.40.0 || ^0.41.0"
     ember-cli-babel "^7.17.2"
     ember-cli-htmlbars "^5.1.0"
+
+ember-element-helper@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/ember-element-helper/-/ember-element-helper-0.6.0.tgz#6e6d0e86fadc9c8e5ccad306f498e8ef61b61c4e"
+  integrity sha512-sS3VIGdzF81lQrlMvFC8H71vwGrOl7b3+LK+9GTpLI555YF1b4sLmNylLkhaXv8UVEZUmsPHedVJY00Xarrc3Q==
+  dependencies:
+    "@embroider/util" "^0.39.1 || ^0.40.0 || ^0.41.0 || ^1.0.0"
+    ember-cli-babel "^7.26.11"
+    ember-cli-htmlbars "^6.0.1"
 
 ember-exam@^6.1.0:
   version "6.1.0"
@@ -7978,22 +8024,22 @@ ember-l10n@^4.3.1:
     inquirer "^7.0.4"
     shelljs "^0.8.2"
 
-ember-leaflet@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ember-leaflet/-/ember-leaflet-5.0.0.tgz#b5f2467fd0dbee503412701f6aa4c09a124131ff"
-  integrity sha512-82BvyqqZOzfnJbiitzImeTxsXjVS5PL1eu//3yUYofLFN4SEEjFj5tdJyj1HGejNhMN21UbQeZoMhf7iJqan+g==
+ember-leaflet@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/ember-leaflet/-/ember-leaflet-5.0.1.tgz#1971820318824bc525aa6ad537e853176171196d"
+  integrity sha512-VmRHzAXHb7gBU6VnN1J9mKnUCNaC31YSza6h5qJ+F07TrbKctD5If0PQdxH4bKPEoBOg2BS3bs6NquZa/11khQ==
   dependencies:
     "@glimmer/component" "^1.0.4"
     "@glimmer/tracking" "^1.0.4"
-    broccoli-funnel "^3.0.3"
+    broccoli-funnel "^3.0.8"
     broccoli-merge-trees "^4.2.0"
-    ember-cli-babel "^7.26.6"
-    ember-cli-htmlbars "^5.7.1"
-    ember-composability-tools "^1.0.3"
+    ember-cli-babel "^7.26.11"
+    ember-cli-htmlbars "^6.0.1"
+    ember-composability-tools "^1.1.0"
     ember-in-element-polyfill "^1.0.0"
     ember-render-helpers "^0.2.0"
     fastboot-transform "^0.1.3"
-    resolve "^1.19.0"
+    resolve "^1.21.0"
 
 ember-link-action@2.0.4:
   version "2.0.4"
@@ -14885,7 +14931,7 @@ resolve@1.9.0:
   dependencies:
     path-parse "^1.0.6"
 
-resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.11.1, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.15.1, resolve@^1.17.0, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.22.0, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.7.1, resolve@^1.8.1:
+resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.11.1, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.15.1, resolve@^1.17.0, resolve@^1.20.0, resolve@^1.21.0, resolve@^1.22.0, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.7.1, resolve@^1.8.1:
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.0.tgz#5e0b8c67c15df57a89bdbabe603a002f21731198"
   integrity sha512-Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==
