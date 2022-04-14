@@ -80,16 +80,18 @@
         @type="text"
         @id="stream"
         @value={{this.data.event.publicStreamLink}} />
-      <label class="mt-4">{{t 'Autoplay'}}</label>
-      <UiCheckbox
-          @class="toggle"
-          @checked={{this.data.event.streamAutoplay}}
-          @onChange={{action (mut this.data.event.streamAutoplay) }} />
-      <label class="mt-4">{{t 'Loop'}}</label>
-      <UiCheckbox
-          @class="toggle"
+      <div class="mt-4">
+        <label>{{t 'Autoplay'}}</label>
+        <UiCheckbox
+            @class="toggle"
+            @checked={{this.data.event.streamAutoplay}}
+            @onChange={{action (mut this.data.event.streamAutoplay) }} />
+        <label>{{t 'Loop'}}</label>
+        <UiCheckbox
+            @class="toggle"
             @checked={{this.data.event.streamLoop}}
             @onChange={{action (mut this.data.event.streamLoop) }} />
+      </div>
     </div>
   {{/if}}
  <br>

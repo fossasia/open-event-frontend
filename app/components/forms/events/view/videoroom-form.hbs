@@ -94,22 +94,22 @@
   </div>
   {{#if (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo'))}}
     <div class="field">
-      <label for="public_name">
-          {{t 'Autoplay'}}
-      </label>
-      <UiCheckbox
-        class="toggle"
-        @checked={{this.data.stream.extra.autoplay}}
-        @onChange={{action (mut this.data.stream.extra.autoplay)}} />
-    </div>
-    <div class="field">
-      <label for="public_name">
-          {{t 'Loop'}}
-      </label>
-      <UiCheckbox
-        class="toggle"
-        @checked={{this.data.stream.extra.loop}}
-        @onChange={{action (mut this.data.stream.extra.loop)}} />
+      <div>
+        <label for="public_name">
+            {{t 'Autoplay'}}
+        </label>
+        <UiCheckbox
+          class="toggle"
+          @checked={{this.data.stream.extra.autoplay}}
+          @onChange={{action (mut this.data.stream.extra.autoplay)}} />
+        <label for="public_name">
+            {{t 'Loop'}}
+        </label>
+        <UiCheckbox
+          class="toggle"
+          @checked={{this.data.stream.extra.loop}}
+          @onChange={{action (mut this.data.stream.extra.loop)}} />
+      </div>
     </div>
   {{/if}}
   {{#if (eq this.data.stream.videoChannel.provider 'chatmosphere')}}
