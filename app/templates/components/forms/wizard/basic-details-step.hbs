@@ -75,7 +75,7 @@
       {{t 'You can add video meeting rooms or streams after you created a draft of the event.'}}
     </div>
     <div class="field mt-4 mb-4">
-      <label for="stream">{{t 'Public Stream VideoId'}}</label>
+      <label for="stream">{{t 'Public Stream Video-ID'}}</label>
       <Input
         @type="text"
         @id="stream"
@@ -85,7 +85,6 @@
           @class="toggle"
           @checked={{this.data.event.streamAutoplay}}
           @onChange={{action (mut this.data.event.streamAutoplay) }} />
-      <br>
       <label class="mt-4">{{t 'Loop'}}</label>
       <UiCheckbox
           @class="toggle"
