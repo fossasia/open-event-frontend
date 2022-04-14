@@ -77,8 +77,8 @@ It consumes the API exposed by master branch deployment of open event server, ho
 
 #### Development branch
 
-The **development** branch of open-event-frontend gets deployed at [https://open-event-frontend.now.sh/](https://open-event-frontend.now.sh/)
-It consumes the API exposed by development branch of open event server, hosted at [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)
+The openeventfrontend **development** branch is provided at https://openeventfrontend.now.sh/. Use the API provided by the open event server development branch  hosted at https://openevent.dokku.fossasia.org
+
 
 ### Release Cycle
 
