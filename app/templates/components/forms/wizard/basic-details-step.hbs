@@ -81,17 +81,17 @@
         @id="stream"
         @value={{this.data.event.publicStreamLink}} />
       <div class="mt-4 ui grid" style="align-items: center;">
-        <div class="ui grid">
-        <label>{{t 'Autoplay'}}</label>
+        <div class="ui grid" style="padding-right: 0 !important;">
+        <label style="padding-right: 0 !important;">{{t 'Autoplay'}}</label>
         <UiCheckbox
-            @class="toggle ml-1"
+            @class="toggle"
             @checked={{this.data.event.streamAutoplay}}
             @onChange={{action (mut this.data.event.streamAutoplay) }} />
         </div>
-        <div class="ui grid">
-        <label>{{t 'Loop'}}</label>
+        <div class="ui grid" style="padding-right: 0 !important;">
+        <label style="padding-right: 0 !important;">{{t 'Loop'}}</label>
         <UiCheckbox
-            @class="toggle ml-1"
+            @class="toggle"
             @checked={{this.data.event.streamLoop}}
             @onChange={{action (mut this.data.event.streamLoop) }} />
         </div>
