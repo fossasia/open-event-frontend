@@ -94,7 +94,8 @@
   </div>
   {{#if (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo'))}}
     <div class="field">
-      <div>
+      <div class="ui grid mt-4 mb-4" style="align-items: center;">
+        <div class="ui grid">
         <label for="public_name">
             {{t 'Autoplay'}}
         </label>
@@ -102,6 +103,8 @@
           class="toggle"
           @checked={{this.data.stream.extra.autoplay}}
           @onChange={{action (mut this.data.stream.extra.autoplay)}} />
+        </div>
+        <div class="ui grid">
         <label for="public_name">
             {{t 'Loop'}}
         </label>
@@ -109,6 +112,7 @@
           class="toggle"
           @checked={{this.data.stream.extra.loop}}
           @onChange={{action (mut this.data.stream.extra.loop)}} />
+        </div>  
       </div>
     </div>
   {{/if}}
