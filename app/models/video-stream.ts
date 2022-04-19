@@ -13,10 +13,16 @@ export interface Options {
   muteOnStart: boolean;
   endCurrentMeeting: boolean;
 }
+export interface JitsiOptions {
+  muteOnStart: boolean;
+  muteReactionSounds: boolean;
+  hideCamOnStart: boolean;
+}
 export interface Extra {
   autoplay: boolean;
   loop: boolean;
   bbb_options: Options;
+  jitsi_options?: JitsiOptions;
 }
 
 

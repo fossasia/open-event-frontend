@@ -129,7 +129,7 @@
         @requiresDivider={{true}} />
     </div>
   {{/if}}
-  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+  {{#if (or (eq this.data.stream.videoChannel.provider 'bbb') (eq this.data.stream.videoChannel.provider 'jitsi'))}}
     <div class="field">
       <label>
           {{t 'Enable Recording'}}
