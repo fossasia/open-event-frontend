@@ -15,7 +15,6 @@ export interface Options {
 }
 export interface JitsiOptions {
   muteOnStart: boolean;
-  muteReactionSounds: boolean;
   hideCamOnStart: boolean;
 }
 export interface Extra {

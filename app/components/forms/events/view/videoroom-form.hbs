@@ -129,7 +129,7 @@
         @requiresDivider={{true}} />
     </div>
   {{/if}}
-  {{#if (or (eq this.data.stream.videoChannel.provider 'bbb') (eq this.data.stream.videoChannel.provider 'jitsi'))}}
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label>
           {{t 'Enable Recording'}}
@@ -156,6 +156,27 @@
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
         @onChange={{action this.toggleMuteOnStart}} />
+    </div>
+  {{/if}}
+
+  {{#if (eq this.data.stream.videoChannel.provider 'jitsi')}}
+    <div class="field">
+      <label>
+          {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.jitsi_options.muteOnStart}}
+        @onChange={{action this.toggleJitsiMuteOnStart}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Hide Cam On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.jitsi_options.hideCamOnStart}}
+        @onChange={{action this.toggleHideCamOnStart}} />
     </div>
   {{/if}}
 

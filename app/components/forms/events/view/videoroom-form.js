@@ -289,6 +289,18 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  async toggleJitsiMuteOnStart() {
+    this.data.stream.extra.jitsi_options.muteOnStart
+      = !this.data.stream.extra.jitsi_options.muteOnStart;
+  }
+
+  @action
+  async toggleHideCamOnStart() {
+    this.data.stream.extra.jitsi_options.hideCamOnStart
+      = !this.data.stream.extra.jitsi_options.hideCamOnStart;
+  }
+
+  @action
   async toggleMuteOnStart() {
     this.data.stream.extra.bbb_options.muteOnStart
       = !this.data.stream.extra.bbb_options.muteOnStart;
