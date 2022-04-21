@@ -80,6 +80,10 @@
         @type="text"
         @id="stream"
         @value={{this.data.event.publicStreamLink}} />
+      <button class="ui blue button right-floated" {{action this.previewPublicStreamLink}}>{{t 'Preview'}}</button>
+      <video controls width="250" id="preview-video">
+        <source src="https://vimeo.com/16817564" type="video/mp4">
+      </video>
       <div class="mt-4 ui grid" style="align-items: center;">
         <div class="ui grid" style="padding-right: 0 !important;">
         <label style="padding-right: 0 !important;">{{t 'Autoplay'}}</label>
