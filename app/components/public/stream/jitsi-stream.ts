@@ -48,8 +48,8 @@ export default class PublicStreamJitsiStream extends Component<Args> {
       },
       configOverwrite: {
         prejoinPageEnabled  : false,
-        startWithAudioMuted : true,
-        startWithVideoMuted : true
+        startWithAudioMuted : stream.extra?.jitsi_options?.muteOnStart,
+        startWithVideoMuted : stream.extra?.jitsi_options?.hideCamOnStart
       },
       interfaceConfigOverwrite: {
         HIDE_INVITE_MORE_HEADER : true,
