@@ -460,11 +460,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           });
         });
     },
-    async previewPublicStreamLink() {
-      const videoUrl = document.getElementById("stream").textContent;
-      const videoSrc = document.querySelector("video > source");
-      videoSrc.src = videoUrl;
-    },
 
     async addTicket(type, position) {
       const { event } = this.data;
