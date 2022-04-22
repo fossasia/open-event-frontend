@@ -15,6 +15,11 @@ const bbb_options = {
   endCurrentMeeting  : false
 };
 
+const jitsi_options = {
+  muteOnStart    : false,
+  hideCamOnStart : false
+};
+
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
   @service confirm;
@@ -155,6 +160,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     const identifier = this.streamIdentifier;
 
     this.data.stream.set('url', channel.get('url') + '/eventyay/' + identifier);
+    this.data.stream.set('extra', { jitsi_options });
 
     this.integrationLoading = true;
 
@@ -286,6 +292,18 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     } else {
       this.set('showUpdateOptions', false);
     }
+  }
+
+  @action
+  async toggleJitsiMuteOnStart() {
+    this.data.stream.extra.jitsi_options.muteOnStart
+      = !this.data.stream.extra.jitsi_options.muteOnStart;
+  }
+
+  @action
+  async toggleHideCamOnStart() {
+    this.data.stream.extra.jitsi_options.hideCamOnStart
+      = !this.data.stream.extra.jitsi_options.hideCamOnStart;
   }
 
   @action
