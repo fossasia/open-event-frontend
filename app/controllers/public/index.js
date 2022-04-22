@@ -35,11 +35,11 @@ export default class IndexController extends Controller {
     if (publicStreamLink.includes('vimeo')) {
       const vimeoRegex = /(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
       const parsed = publicStreamLink.match(vimeoRegex);
-      publicStreamLink = `https://player.vimeo.com/video/${parsed[1]}?${autoplay}${loop}`;
+      publicStreamLink = `https://player.vimeo.com/video/${parsed[1]}`;
     } else {
-      publicStreamLink = publicStreamLink.replace("watch?v=", "embed/")
-      publicStreamLink += `?${autoplay}${loop}`;
+      publicStreamLink = publicStreamLink.replace('watch?v=', 'embed/');
     }
+    publicStreamLink += `?${autoplay}${loop}`;
 
     return publicStreamLink;
   }
