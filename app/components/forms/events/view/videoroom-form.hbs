@@ -95,16 +95,14 @@
   {{#if (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo'))}}
     <div class="field">
       <label for="public_name">
-          {{t 'Autoplay'}}
+        {{t 'Autoplay'}}
       </label>
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.autoplay}}
         @onChange={{action (mut this.data.stream.extra.autoplay)}} />
-    </div>
-    <div class="field">
       <label for="public_name">
-          {{t 'Loop'}}
+        {{t 'Loop'}}
       </label>
       <UiCheckbox
         class="toggle"
