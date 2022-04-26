@@ -432,8 +432,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       this.loadRecordings();
     }
     if (this.data.stream.videoChannel.get("provider") === "jitsi") {
-      if (this.data.stream.extra?.jitsi_options) {
-        this.set("extra", this.data.stream.extra.jitsi_options);
+      if (!this.data.stream.extra?.jitsi_options) {
+        this.set("extra", { jitsi_options });
       }
     }
     if (
