@@ -493,12 +493,7 @@ export default Component.extend(FormMixin, {
         },
         taxBusinessInfo: {
           identifier : 'taxBusinessInfo',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your Tax ID or Business ID.')
-            }
-          ]
+          optional: true
         },
         address: {
           identifier : 'address',
