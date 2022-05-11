@@ -1,6 +1,6 @@
 <div class="ui basic {{if this.isLoading 'loading'}} segment">
   <div class="ui one column container stackable doubling left grid">
-    <h1 class="ui header">{{t 'Review Invoice'}}</h1>
+    <h1 class="ui header">{{t 'Review Order Confirmation'}}</h1>
     <div class="row">
       <div class="sixteen wide column">
         <EventInvoice::BillingInfo
@@ -27,7 +27,7 @@
                 <a href="{{ this.model.invoicePdfUrl }}" target="_blank" rel="noopener"
                   class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} button">
                   <i class="download icon"></i>
-                  {{t 'Download Invoice'}}
+                  {{t 'Download Order Confirmation'}}
                 </a>
               </div>
             </div>
