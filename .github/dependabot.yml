@@ -102,3 +102,8 @@ updates:
     versions:
     - 7.13.0
     - 7.13.1
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: 
+      interval: daily
+    open-pull-requests-limit: 10
