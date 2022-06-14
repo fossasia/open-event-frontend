@@ -95,16 +95,14 @@
   {{#if (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo'))}}
     <div class="field">
       <label for="public_name">
-          {{t 'Autoplay'}}
+        {{t 'Autoplay'}}
       </label>
       <UiCheckbox
         class="toggle"
         @checked={{this.data.stream.extra.autoplay}}
         @onChange={{action (mut this.data.stream.extra.autoplay)}} />
-    </div>
-    <div class="field">
       <label for="public_name">
-          {{t 'Loop'}}
+        {{t 'Loop'}}
       </label>
       <UiCheckbox
         class="toggle"
@@ -156,6 +154,27 @@
         class="toggle"
         @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
         @onChange={{action this.toggleMuteOnStart}} />
+    </div>
+  {{/if}}
+
+  {{#if (eq this.data.stream.videoChannel.provider 'jitsi')}}
+    <div class="field">
+      <label>
+          {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.jitsi_options.muteOnStart}}
+        @onChange={{action this.toggleJitsiMuteOnStart}} />
+    </div>
+    <div class="field">
+      <label>
+          {{t 'Hide Cam On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.jitsi_options.hideCamOnStart}}
+        @onChange={{action this.toggleHideCamOnStart}} />
     </div>
   {{/if}}
 
