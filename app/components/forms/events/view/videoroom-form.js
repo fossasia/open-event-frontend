@@ -86,9 +86,8 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   getValidationRules() {
-    window.$.fn.form.settings.rules.checkVideoRoomsLength = () => {
-      return this.data.stream.rooms.length > 0;
-    };
+    window.$.fn.form.settings.rules.checkVideoRoomsLength = () =>  this.data.stream.rooms.length > 0;
+    
     const validationRules = {
       inline : true,
       delay  : false,
@@ -232,7 +231,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         await this.addJitsi(channel);
         break;
       case '3cx':
-        await this.add3cx();
+         this.add3cx();
         break;
       case 'bbb':
         this.addBigBlueButton(channel);

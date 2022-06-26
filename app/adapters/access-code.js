@@ -4,10 +4,8 @@ import ENV from 'open-event-frontend/config/environment';
 export default ApplicationAdapter.extend({
 
   urlForQueryRecord(query) {
-    if (query && query.code && query.eventIdentifier) {
-      return `${ENV.APP.apiHost}/v1/events/${query.eventIdentifier}/access-codes/${query.code}`;
-    } else {
-      return this._super(...arguments);
-    }
+    return (query && query.code && query.eventIdentifier) ? 
+    `${ENV.APP.apiHost}/v1/events/${query.eventIdentifier}/access-codes/${query.code}`
+    : this._super(...arguments);    
   }
 });

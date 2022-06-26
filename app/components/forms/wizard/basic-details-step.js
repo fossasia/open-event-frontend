@@ -47,49 +47,41 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.canPayByPaypal || this.data.event.canPayByPaytm || this.data.event.canPayByStripe || this.data.event.canPayByCheque || this.data.event.canPayByInvoice || this.data.event.canPayByBank || this.data.event.canPayByOmise || this.data.event.canPayByAlipay || this.data.event.canPayOnsite;
   },
 
-  isLocationRequired: computed('selectedLocationType', function() {
-    return ['Venue', 'Hybrid'].includes(this.selectedLocationType);
-  }),
+  isLocationRequired: computed('selectedLocationType', () => ['Venue', 'Hybrid'].includes(this.selectedLocationType)),
 
-  countries: computed(function() {
-    return orderBy(countries, 'name');
-  }),
+  countries: computed(() => orderBy(countries, 'name')),
 
-  paymentCountries: computed(function() {
-    return orderBy(filter(countries, country => paymentCountries.includes(country.code)), 'name');
-  }),
+  paymentCountries: computed(() => orderBy(filter(countries, (country) => paymentCountries.includes(country.code)), 'name')),
 
-  paymentCurrencies: computed(function() {
-    return orderBy(paymentCurrencies, 'name');
-  }),
+  paymentCurrencies: computed(() => orderBy(paymentCurrencies, 'name')),
 
-  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.isPaypalActivated', function() {
-    return this.settings.isPaypalActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paypal;
-  }),
+  canAcceptPayPal: computed('data.event.paymentCurrency', 'settings.isPaypalActivated', () =>
+     this.settings.isPaypalActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paypal
+  ),
 
-  canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated', function() {
-    return this.settings.isPaytmActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paytm;
-  }),
+  canAcceptPaytm: computed('data.event.paymentCurrency', 'settings.isPaytmActivated',  () =>
+     this.settings.isPaytmActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).paytm
+  ),
 
-  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated', function() {
-    return this.settings.isStripeActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).stripe;
-  }),
+  canAcceptStripe: computed('data.event.paymentCurrency', 'settings.isStripeActivated',  () =>
+     this.settings.isStripeActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).stripe
+  ),
 
-  canAcceptOmise: computed('data.event.paymentCurrency', 'settings.isOmiseActivated', function() {
-    return this.settings.isOmiseActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).omise;
-  }),
+  canAcceptOmise: computed('data.event.paymentCurrency', 'settings.isOmiseActivated',  () =>
+     this.settings.isOmiseActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).omise
+  ),
 
-  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAlipayActivated', function() {
-    return this.settings.isAlipayActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).alipay;
-  }),
+  canAcceptAliPay: computed('data.event.paymentCurrency', 'settings.isAlipayActivated',  () =>
+     this.settings.isAlipayActivated && find(paymentCurrencies, ['code', this.data.event.paymentCurrency]).alipay
+  ),
 
-  tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position', function() {
-    return this.data.event.tickets.sortBy('position').filterBy('isDeleted', false);
-  }),
+  tickets: computed('data.event.tickets.@each.isDeleted', 'data.event.tickets.@each.position',  () =>
+     this.data.event.tickets.sortBy('position').filterBy('isDeleted', false)
+  ),
 
-  isUserUnverified: computed('authManager.currentUser.isVerified', function() {
-    return !this.authManager?.currentUser?.isVerified;
-  }),
+  isUserUnverified: computed('authManager.currentUser.isVerified',  () =>
+     !this.authManager?.currentUser?.isVerified
+  ),
 
   subTopics: computed('data.event.topic', function() {
     later(this, () => {
@@ -108,17 +100,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.event.topic.get('subTopics');
   }),
 
-  showDraftButton: computed('data.event.state', function() {
-    return this.data.event.state !== 'published';
-  }),
+  showDraftButton: computed('data.event.state', () => this.data.event.state !== 'published'),
 
-  hasPaidTickets: computed('data.event.tickets.@each.type', function() {
-    return this.data.event.tickets.toArray().filter(ticket => ticket.type === 'paid' || ticket.type === 'donation' || ticket.type === 'paidRegistration' || ticket.type === 'donationRegistration').length > 0;
-  }),
+  hasPaidTickets: computed('data.event.tickets.@each.type', () => 
+  this.data.event.tickets.toArray().filter((ticket) => 
+    ticket.type === 'paid' || ticket.type === 'donation' || 
+    ticket.type === 'paidRegistration' || 
+    ticket.type === 'donationRegistration').length > 0),
 
-  ticketCount: computed('data.event.tickets.[]', 'deletedTickets.[]', function() {
-    return difference(this.data.event.tickets.toArray(), this.deletedTickets).length;
-  }),
+  ticketCount: computed('data.event.tickets.[]', 'deletedTickets.[]', () => 
+      difference(this.data.event.tickets.toArray(), this.deletedTickets).length),
 
   timezoneObserver: observer('data.event.timezone', function() {
     const { event } = this.data;

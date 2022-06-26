@@ -15,33 +15,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   deletedTickets: [],
 
-  licenses: computed(function() {
-    return orderBy(licenses, 'name');
-  }),
+  licenses: computed(() => orderBy(licenses, 'name')),
 
-  socialLinks: computed('data.event.socialLinks.@each.isDeleted', function() {
-    return this.data.event.socialLinks.filterBy('isDeleted', false);
-  }),
+  socialLinks: computed('data.event.socialLinks.@each.isDeleted', () => this.data.event.socialLinks.filterBy('isDeleted', false)),
 
-  socialMediaLinks: computed('socialLinks', function() {
-    return this.socialLinks.filterBy('isSocial', true);
-  }),
+  socialMediaLinks: computed('socialLinks', () => this.socialLinks.filterBy('isSocial', true) ),
 
-  customLinks: computed('socialLinks', function() {
-    return this.socialLinks.filterBy('isCustom', true);
-  }),
+  customLinks: computed('socialLinks', () => this.socialLinks.filterBy('isCustom', true) ),
 
-  isUserUnverified: computed('authManager.currentUser.isVerified', function() {
-    return !this.authManager?.currentUser?.isVerified;
-  }),
+  isUserUnverified: computed('authManager.currentUser.isVerified', () => !this.authManager?.currentUser?.isVerified ),
 
-  showDraftButton: computed('data.event.state', function() {
-    return this.data.event.state !== 'published';
-  }),
+  showDraftButton: computed('data.event.state', () => this.data.event.state !== 'published' ),
 
-  hasCodeOfConduct: computed('data.event.codeOfConduct', function() {
-    return !!this.data.event.codeOfConduct;
-  }),
+  hasCodeOfConduct: computed('data.event.codeOfConduct', () => !!this.data.event.codeOfConduct ),
 
   didInsertElement() {
     if (!this.isCreate && this.data.event.copyright && !this.data.event.copyright.content) {

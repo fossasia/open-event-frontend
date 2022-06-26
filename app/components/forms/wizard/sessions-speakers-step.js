@@ -12,24 +12,18 @@ export default Component.extend(EventWizardMixin, FormMixin, {
 
   // TODO: Removing the Session & Speaker Time Validations due to the weird and buggy behaviour. Will be restored once a perfect solution is found. Please check issue: https://github.com/fossasia/open-event-frontend/issues/3667
   getValidationRules() {
-    $.fn.form.settings.rules.checkStartDateCFS = () => {
-      return !(moment($('.ui.form').form('get value', 'start_date')).isAfter(this.data.event.startsAtDate));
-    };
-    $.fn.form.settings.rules.checkEndDateCFS = () => {
-      return !(moment($('.ui.form').form('get value', 'end_date')).isAfter(this.data.event.startsAtDate));
-    };
-    $.fn.form.settings.rules.checkSoftEndDateAfterCfsStart = () => {
-      return (moment($('.ui.form').form('get value', 'soft_end_date')).isSameOrAfter(this.data.speakersCall.startsAtDate));
-    };
-    $.fn.form.settings.rules.checkSoftEndDateBeforeCfsEnd = () => {
-      return (moment($('.ui.form').form('get value', 'soft_end_date')).isSameOrBefore(this.data.speakersCall.endsAtDate));
-    };
-    $.fn.form.settings.rules.checkSoftEndTimeAfterCfsStart = () => {
-      return (moment($('.ui.form').form('get value', 'soft_end_date') + ' ' + $('.ui.form').form('get value', 'soft_end_time')).isAfter(this.data.speakersCall.startsAt));
-    };
-    $.fn.form.settings.rules.checkSoftEndTimeBeforeCfsEnd = () => {
-      return (moment($('.ui.form').form('get value', 'soft_end_date') + ' ' + $('.ui.form').form('get value', 'soft_end_time')).isBefore(this.data.speakersCall.endsAt));
-    };
+    $.fn.form.settings.rules.checkStartDateCFS = () =>  !(moment($('.ui.form').form('get value', 'start_date')).isAfter(this.data.event.startsAtDate));
+
+    $.fn.form.settings.rules.checkEndDateCFS = () =>  !(moment($('.ui.form').form('get value', 'end_date')).isAfter(this.data.event.startsAtDate));
+
+    $.fn.form.settings.rules.checkSoftEndDateAfterCfsStart = () =>  (moment($('.ui.form').form('get value', 'soft_end_date')).isSameOrAfter(this.data.speakersCall.startsAtDate));
+
+    $.fn.form.settings.rules.checkSoftEndDateBeforeCfsEnd = () =>  (moment($('.ui.form').form('get value', 'soft_end_date')).isSameOrBefore(this.data.speakersCall.endsAtDate));
+
+    $.fn.form.settings.rules.checkSoftEndTimeAfterCfsStart = () =>  (moment($('.ui.form').form('get value', 'soft_end_date') + ' ' + $('.ui.form').form('get value', 'soft_end_time')).isAfter(this.data.speakersCall.startsAt));
+
+    $.fn.form.settings.rules.checkSoftEndTimeBeforeCfsEnd = () =>  (moment($('.ui.form').form('get value', 'soft_end_date') + ' ' + $('.ui.form').form('get value', 'soft_end_time')).isBefore(this.data.speakersCall.endsAt));
+
     return {
       inline : true,
       delay  : false,
@@ -202,16 +196,13 @@ export default Component.extend(EventWizardMixin, FormMixin, {
 
   microlocations: computed('data.microlocations.@each.isDeleted', 'data.microlocations.@each.position', function() {
     const sortedRooms = this.data.event.microlocations.sortBy('position').filterBy('isDeleted', false);
-    sortedRooms.forEach((room, idx) => {
-      room.set('position', idx);
-    });
+    sortedRooms.forEach((room, idx) => room.set('position', idx)
+    );
 
     return sortedRooms;
   }),
 
-  complexCustomForms: computed('data.customForms.@each.isComplex', function() {
-    return this.data.customForms.filterBy('isComplex', true);
-  }),
+  complexCustomForms: computed('data.customForms.@each.isComplex', () => this.data.customForms.filterBy('isComplex', true)),
 
   fieldChanged(field) {
     if (!field.get('isIncluded')) {

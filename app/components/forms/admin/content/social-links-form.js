@@ -26,9 +26,8 @@ export default Component.extend(FormMixin, {
   },
   actions: {
     submit() {
-      this.onValid(() => {
-        this.sendAction('save');
-      });
+      this.onValid(() => this.sendAction('save')
+      );
     }
   }
 

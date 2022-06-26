@@ -120,20 +120,13 @@ export default Component.extend(FormMixin, {
     return link;
   }),
 
-  amountLabel: computed('event.paymentCurrency', function() {
-    return `Amount (${currencySymbol([this.event.paymentCurrency])})`;
-  }),
+  amountLabel: computed('event.paymentCurrency', () => `Amount (${currencySymbol([this.event.paymentCurrency])})`),
 
-  eventTickets: computed('tickets', function() {
-    return this.tickets.filter(ticket => ticket.type === 'paidRegistration' || ticket.type === 'paid');
-  }),
+  eventTickets: computed('tickets', () => this.tickets.filter(ticket => ticket.type === 'paidRegistration' || ticket.type === 'paid')),
 
-  allTicketTypesChecked: computed('tickets', function() {
-    if (this.eventTickets.length && this.data.tickets.length === this.eventTickets.length) {
-      return true;
-    }
-    return false;
-  }),
+  allTicketTypesChecked: computed('tickets', () =>
+     (this.eventTickets.length && this.data.tickets.length === this.eventTickets.length)? true: false
+  ),
 
   isLinkSuccess: false,
 
@@ -164,9 +157,7 @@ export default Component.extend(FormMixin, {
       }
     },
     submit(data) {
-      this.onValid(() => {
-        this.sendAction('save', data);
-      });
+      this.onValid(() => this.sendAction('save', data));
     },
     copiedText() {
       this.set('isLinkSuccess', true);

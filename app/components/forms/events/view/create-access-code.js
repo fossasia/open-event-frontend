@@ -5,12 +5,10 @@ import { later } from '@ember/runloop';
 
 export default Component.extend(FormMixin, {
   getValidationRules() {
-    window.$.fn.form.settings.rules.checkMaxMin = () => {
-      return this.data.minQuantity <= this.data.maxQuantity;
-    };
-    window.$.fn.form.settings.rules.checkMaxTotal = () => {
-      return this.data.maxQuantity <= this.data.ticketsNumber;
-    };
+    window.$.fn.form.settings.rules.checkMaxMin = () =>  this.data.minQuantity <= this.data.maxQuantity;
+    
+    window.$.fn.form.settings.rules.checkMaxTotal = () =>  this.data.maxQuantity <= this.data.ticketsNumber;
+    
     return {
       inline : true,
       delay  : false,
@@ -109,10 +107,7 @@ export default Component.extend(FormMixin, {
   hiddenTickets: computed.filterBy('tickets', 'isHidden', true),
 
   allTicketTypesChecked: computed('tickets', function() {
-    if (this.hiddenTickets.length && this.data.tickets.length === this.hiddenTickets.length) {
-      return true;
-    }
-    return false;
+    return (this.hiddenTickets.length && this.data.tickets.length === this.hiddenTickets.length) 
   }),
 
   isLinkSuccess: false,
@@ -144,9 +139,7 @@ export default Component.extend(FormMixin, {
       }
     },
     submit(data) {
-      this.onValid(() => {
-        this.sendAction('save', data);
-      });
+      this.onValid(() => this.sendAction('save', data) );
     },
     copiedText() {
       this.set('isLinkSuccess', true);
