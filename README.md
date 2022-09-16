@@ -124,4 +124,4 @@ When you file a feature request or when you are submitting a bug report to the [
 
 This project is currently licensed under the [Apache License version 2.0](LICENSE).
 
-To obtain the software under a different license, Please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
+To obtain the software under a different license, please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
