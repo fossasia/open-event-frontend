@@ -4,7 +4,7 @@
 
 [![Build Status](https://github.com/fossasia/open-event-frontend/workflows/CI/badge.svg?branch=development)](https://github.com/fossasia/open-event-frontend/actions?query=workflow%3Aci)
 [![Netlify](https://img.shields.io/netlify/89d57fdc-826c-400b-af13-c542e9513f62)](https://app.netlify.com/sites/open-event/deploys)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/71f37fe496e94175a5735d23e10591e8)](https://www.codacy.com/gh/fossasia/open-event-frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fossasia/open-event-frontend&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/71f37fe496e94175a5735d23e10591e8)](https://www.codacy.com/gh/fossasia/open-event-frontend/dashboard?utm_source=github.com&utm_medium=referral&utm_content=fossasia/open-event-frontend&utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/fossasia/open-event-frontend/branch/development/graph/badge.svg)](https://codecov.io/gh/fossasia/open-event-frontend)
 [![Known Vulnerabilities](https://snyk.io/test/github/fossasia/open-event-frontend/badge.svg)](https://snyk.io/test/github/fossasia/open-event-frontend)
 [![Weblate](https://hosted.weblate.org/widgets/open-event/-/frontend/svg-badge.svg)](https://hosted.weblate.org/projects/open-event/frontend/)
@@ -73,7 +73,7 @@ This project has acceptance, integration and unit tests located inside the `test
 **Master branch**
 
 The master branch of open-event-frontend gets deployed in a production environment at [https://eventyay.com](https://eventyay.com)
-It consumes the API exposed by master branch deployment of open event server, hosted at [https://api.eventyay.com](https://api.eventyay.com)
+It consumes the API exposed by the master branch deployment of the open event server, hosted at [https://api.eventyay.com](https://api.eventyay.com)
 
 #### Development branch
 
@@ -123,11 +123,11 @@ When you file a feature request or when you are submitting a bug report to the [
 
 ### Join the development
 
-- Before you join development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.)
-- If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please feel free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
+- Before you start development, please set up the project on your local machine, run it, and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry... Nothing bad will happen to the app or you as a result of your exploration :wink: The only thing that will happen is that you'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.)
+- If you would like to work on an issue, drop a comment on the issue. If it is already assigned to someone but there is no sign of any work being done, please feel free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
 
 ## License
 
 This project is currently licensed under the [Apache License version 2.0](LICENSE).
 
-To obtain the software under a different license, Please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
+To obtain the software under a different license, please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
