@@ -1,10 +1,13 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-import { requireAuthentication } from 'ember-simple-auth/addon/-internals/routing';
+import { inject as service } from '@ember/service';
+
 
 @classic
 export default class AdminRoute extends Route {
-  beforeModel(transition) {
+  @service session;
+  async beforeModel(transition) {
+    await this.session.setup();
     super.beforeModel(transition);
     if (!this.authManager.currentUser.isAdmin) {
       throw {
@@ -13,7 +16,6 @@ export default class AdminRoute extends Route {
         ]
       };
     }
-    requireAuthentication(transition, '/login');
   }
 
   titleToken() {
