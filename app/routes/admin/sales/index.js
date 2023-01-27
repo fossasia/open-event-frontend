@@ -3,6 +3,7 @@ import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 import moment from 'moment';
+import {inject as service} from '@ember/service';
 
 @classic
 export default class IndexRoute  extends Route.extend(EmberTableRouteMixin) {
@@ -11,6 +12,12 @@ export default class IndexRoute  extends Route.extend(EmberTableRouteMixin) {
     return this.l10n.t('Overview');
   }
 
+  @service session;
+
+  // eslint-disable-next-line no-unused-vars
+  async beforeModel(transition) {
+    await this.session.setup();
+  }
 
   async model(params) {
     this.set('params', params);

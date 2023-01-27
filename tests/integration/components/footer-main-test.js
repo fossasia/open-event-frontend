@@ -7,8 +7,8 @@ module('Integration | Component | footer main', function(hooks) {
   setupIntegrationTest(hooks);
 
 
-  test('it renders', function(assert) {
-    render(hbs`{{footer-main l10n=l10n}}`);
+  test('it renders', async function(assert) {
+    await render(hbs`{{footer-main l10n=l10n}}`);
     assert.ok(this.element.innerHTML.trim().includes('footer'));
   });
 });
