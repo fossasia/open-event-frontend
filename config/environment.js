@@ -79,7 +79,8 @@ module.exports = function(environment) {
   }
 
   ENV['ember-simple-auth'] = {
-    authorizer: 'authorizer:jwt'
+    authorizer            : 'authorizer:jwt',
+    useSessionSetupMethod : true
   };
 
   ENV['ember-h-captcha'] = {

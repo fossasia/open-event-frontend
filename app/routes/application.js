@@ -27,6 +27,7 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
   }
 
   async beforeModel(transition) {
+    await this.session.setup();
     super.beforeModel(...arguments);
     await this.authManager.initialize();
     await this.settings.initialize();

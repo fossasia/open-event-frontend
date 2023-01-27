@@ -1,9 +1,9 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { requireAuthentication } from 'ember-simple-auth/addon/-internals/routing';
 
 @classic
-export default class AdminRoute extends Route.extend(AuthenticatedRouteMixin) {
+export default class AdminRoute extends Route {
   beforeModel(transition) {
     super.beforeModel(transition);
     if (!this.authManager.currentUser.isAdmin) {
@@ -13,6 +13,7 @@ export default class AdminRoute extends Route.extend(AuthenticatedRouteMixin) {
         ]
       };
     }
+    requireAuthentication(transition, '/login');
   }
 
   titleToken() {
