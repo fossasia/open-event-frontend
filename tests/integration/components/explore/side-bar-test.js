@@ -6,8 +6,8 @@ import { render } from '@ember/test-helpers';
 module('Integration | Component | explore side bar', function(hooks) {
   setupIntegrationTest(hooks);
 
-  test('it renders', async function(assert) {
-    await render(hbs`{{explore/side-bar l10n=l10n}}`);
+  test('it renders',  function(assert) {
+    render(hbs`{{explore/side-bar l10n=l10n}}`);
     assert.ok(this.element.innerHTML.trim().includes('Categories'));
   });
 });
