@@ -70,7 +70,7 @@ jobs:
       - run: yarn l10n:generate
       - run: COVERAGE=true yarn test
         env:
-          API_HOST: https://open-event.dokku.fossasia.org
+          API_HOST: https://eventyay.com
       - name: Code Coverage
         uses: codecov/codecov-action@v1
 
