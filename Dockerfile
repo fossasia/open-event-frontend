@@ -1,9 +1,8 @@
-FROM node:14-alpine as builder
+FROM node:14-alpine3.11 as builder
 
 WORKDIR /app
 
-RUN apk update
-RUN apk add git python3-dev make g++ gettext
+RUN apk add git python2-dev make g++ gettext
 
 COPY package.json yarn.lock ./
 
@@ -19,8 +18,9 @@ RUN yarn l10n:generate && \
     JOBS=1 yarn build -prod
 
 ##
+##
 
-FROM builder as nodebuild
+FROM node:14-alpine3.11
 
 WORKDIR /fastboot
 
