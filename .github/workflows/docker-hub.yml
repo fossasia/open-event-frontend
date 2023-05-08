@@ -9,7 +9,7 @@ on:
 
 jobs:
   docker:
-    if: ${{ github.repository_owner == 'kokoye2007' }}
+    if: ${{ github.repository_owner == 'fossasia' }}
     runs-on: ubuntu-latest
     steps:
       -
@@ -27,7 +27,7 @@ jobs:
         uses: docker/metadata-action@v3
         id: meta
         with:
-          images: kokoye2007/open-event-frontend
+          images: fossasia/open-event-frontend
       -
         name: Build
         id: docker_build
