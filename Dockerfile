@@ -36,8 +36,8 @@ RUN apk add --no-cache ca-certificates nginx && \
 COPY scripts/* ./scripts/
 COPY config/environment.js ./config/
 
-RUN mkdir -p /etc/nginx/conf.d/
-COPY config/nginx.conf /etc/nginx/conf.d
+RUN mkdir -p /etc/nginx/http.d/
+COPY config/nginx.conf /etc/nginx/http.d/
 RUN mkdir -p /run/nginx
 
 EXPOSE 4000
