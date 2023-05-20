@@ -70,6 +70,8 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           # no restore-keys here, so we only accept this exact version
+      - run: yarn l10n:extract
+      - run: yarn l10n:update
       - run: yarn l10n:generate
       - run: COVERAGE=true yarn test
         env:
