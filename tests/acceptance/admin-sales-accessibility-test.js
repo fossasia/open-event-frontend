@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { visit, currentURL } from '@ember/test-helpers';
-import { currentSession } from 'ember-simple-auth/test-support';
+import { currentSession, invalidateSession } from 'ember-simple-auth/test-support';
 import { setupApplicationTest } from 'ember-qunit';
 
 module('Acceptance | admin sales', function(hooks) {
