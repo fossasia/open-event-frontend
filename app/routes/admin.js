@@ -1,6 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import { getOwner } from '@ember/application';
+import { requireAuthentication } from 'ember-simple-auth/addon/-internals/routing';
 // import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 @classic
