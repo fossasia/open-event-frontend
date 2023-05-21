@@ -67,6 +67,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           # no restore-keys here, so we only accept this exact version
+      - run: yarn l10n:generate
       - run: COVERAGE=true yarn test
       - name: Code Coverage
         uses: codecov/codecov-action@v1

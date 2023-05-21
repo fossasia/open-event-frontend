@@ -11,7 +11,7 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
 
     await render(hbs`{{events/view/publish-bar event=event}}`);
 
-    assert.dom(this.element).hasText('\nView \nUnpublish');
+    assert.dom(this.element).includesText('View Unpublish');
   });
 
   test('it renders unpublished', async function(assert) {
@@ -19,6 +19,6 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
 
     await render(hbs`{{events/view/publish-bar event=event}}`);
 
-    assert.dom(this.element).hasText('\nPreview \nPublish');
+    assert.dom(this.element).includesText('Preview Publish');
   });
 });
