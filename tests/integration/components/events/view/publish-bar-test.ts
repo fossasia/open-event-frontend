@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | events/view/publish-bar', function(hooks) {
   setupRenderingTest(hooks);
@@ -11,7 +11,7 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
 
     await render(hbs`{{events/view/publish-bar event=event}}`);
 
-    assert.dom(this.element).includesText('View Unpublish');
+    assert.dom(this.element).includesText('View \nUnpublish');
   });
 
   test('it renders unpublished', async function(assert) {
@@ -19,6 +19,6 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
 
     await render(hbs`{{events/view/publish-bar event=event}}`);
 
-    assert.dom(this.element).includesText('Preview Publish');
+    assert.dom(this.element).includesText('Preview \nPublish');
   });
 });
