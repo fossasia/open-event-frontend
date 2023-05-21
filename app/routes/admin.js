@@ -10,13 +10,13 @@ export default class AdminRoute extends Route {
   beforeModel(transition) {
     super.beforeModel(transition);
     this.get('session').requireAuthentication(transition, 'login');
-    if (!this.authManager.currentUser.isAdmin) {
-      throw {
-        errors: [
-          { status: 403 }
-        ]
-      };
-    }
+    // if (!this.authManager.currentUser.isAdmin) {
+    //   throw {
+    //     errors: [
+    //       { status: 403 }
+    //     ]
+    //   };
+    // }
   }
 
   titleToken() {
