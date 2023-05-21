@@ -6,6 +6,13 @@ import hbs from 'htmlbars-inline-precompile';
 module('Integration | Component | events/view/publish-bar', function(hooks) {
   setupRenderingTest(hooks);
 
+  let service;
+
+  hooks.beforeEach(function() {
+     service = this.owner.lookup('service:intl');
+     service.setLocale('en');
+  });
+
   test('it renders published', async function(assert) {
     this.set('event', { name: 'Test Event', state: 'published', identifier: '23dsds', tickets: [1, 2, 3] });
 

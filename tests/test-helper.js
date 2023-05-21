@@ -6,9 +6,8 @@ import { start } from 'ember-qunit';
 import loadEmberExam from 'ember-exam/test-support/load';
 
 QUnit.config.testTimeout = 300000;
-let application;
-application = setApplication(Application.create(config.APP));
-application.__container__.lookup('service:intl').setLocale('en'); // Set the locale to 'en'
+
+setApplication(Application.create(config.APP));
 
 loadEmberExam();
 start();
