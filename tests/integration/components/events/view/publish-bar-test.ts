@@ -11,14 +11,17 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
 
     await render(hbs`{{events/view/publish-bar event=event}}`);
 
-    assert.dom(this.element).includesText('View Unpublish');
+    assert.dom(this.element).hasText('View');
+    assert.dom(this.element).hasText('Unpublish');
+
   });
 
   test('it renders unpublished', async function(assert) {
-    this.set('event', { name: 'Eventyay Test Meeting', state: 'draft', identifier: '10', tickets: [1, 2, 3] });
+    this.set('event', { name: 'Test Event', state: 'draft', identifier: '23dsds', tickets: [1, 2, 3] });
 
     await render(hbs`{{events/view/publish-bar event=event}}`);
 
-    assert.dom(this.element).includesText('Preview Publish');
+    assert.dom(this.element).hasText('Preview');
+    assert.dom(this.element).hasText('Publish');
   });
 });
