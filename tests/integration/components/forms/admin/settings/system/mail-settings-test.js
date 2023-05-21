@@ -9,8 +9,8 @@ module('Integration | Component | forms/admin/settings/system/mail-settings', fu
   test('it renders', async function(assert) {
 
     await render(hbs`{{forms/admin/settings/system/mail-settings}}`);
-
-    assert.ok(this.element.innerHTML.trim().includes('Mail Settings'));
+    // assert.ok(this.element.innerHTML.trim().includes('Mail Settings'));
+    assert.dom(this.element).hasText('Mail Settings');
 
   });
 });
