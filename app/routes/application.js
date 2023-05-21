@@ -2,12 +2,12 @@ import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
-import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+// import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { merge, values, isEmpty } from 'lodash-es';
 import { hash } from 'rsvp';
 
 @classic
-export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin) {
+export default class ApplicationRoute extends Route {
   @service
   session;
 
@@ -28,6 +28,7 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
 
   async beforeModel(transition) {
     super.beforeModel(...arguments);
+    await this.session.setup()
     await this.authManager.initialize();
     await this.settings.initialize();
     if (!transition.intent.url.includes('login') && !transition.intent.url.includes('reset-password')) {
