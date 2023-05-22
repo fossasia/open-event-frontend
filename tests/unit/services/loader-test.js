@@ -10,7 +10,7 @@ module('Unit | Service | loader', function(hooks) {
     assert.ok(service);
 
     let response;
-    response = await service.load('https://httpbin.org/get?test=string&foo=bar', { isExternal: true });
+    response = await service.get('http://httpbin.org/get?test=string&foo=bar', { isExternal: true });
     assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, `Received response: ${JSON.stringify(response)}`);
 
     const testPayload = {
@@ -18,13 +18,13 @@ module('Unit | Service | loader', function(hooks) {
       test : 'payload'
     };
 
-    response = await service.post('https://httpbin.org/post', testPayload, { isExternal: true });
+    response = await service.post('http://httpbin.org/post', testPayload, { isExternal: true });
     assert.deepEqual(response.json, testPayload, `Received response: ${JSON.stringify(response)}`);
 
-    response = await service.put('https://httpbin.org/put', testPayload, { isExternal: true });
+    response = await service.put('http://httpbin.org/put', testPayload, { isExternal: true });
     assert.deepEqual(response.json, testPayload, `Received response: ${JSON.stringify(response)}`);
 
-    await service.delete('https://httpbin.org/delete', { isExternal: true });
+    await service.delete('http://httpbin.org/delete', { isExternal: true });
   });
 });
 
