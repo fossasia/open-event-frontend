@@ -5,13 +5,14 @@
 # fossasia/open-event-orga-server project.
 # FOSSASIA <open-event@googlegroups.com>, 2016.
 # yzqzss <yzqzss@yandex.com>, 2022.
+# MikeyWei <fowse@outlook.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: v1\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2022-01-24 05:55+0000\n"
-"Last-Translator: yzqzss <yzqzss@yandex.com>\n"
+"PO-Revision-Date: 2022-11-18 15:46+0000\n"
+"Last-Translator: MikeyWei <fowse@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "open-event/frontend/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.3.4\n"
 
 #: app/adapters/application.js:44:24
@@ -80,7 +81,7 @@ msgstr ""
 #: app/mixins/notifications.js:12:28 app/mixins/notifications.js:30:28
 #: app/templates/components/errors/generic-error.hbs:2:51
 msgid "An unexpected error has occurred."
-msgstr ""
+msgstr "有一个报错。"
 
 #: app/components/account/contact-info-section.js:22:23
 #: app/components/forms/login-form.js:34:23
@@ -88,7 +89,7 @@ msgstr ""
 #: app/components/forms/reset-password-form.js:27:23
 #: app/components/forms/user-profile-form.js:37:23
 msgid "Please enter your email ID"
-msgstr ""
+msgstr "请输入你的邮箱账号"
 
 #: app/components/account/contact-info-section.js:26:23
 #: app/components/forms/admin/settings/billing.js:35:23
@@ -103,65 +104,65 @@ msgstr ""
 #: app/components/forms/session-speaker-form.js:191:23
 #: app/components/forms/user-profile-form.js:41:23
 msgid "Please enter a valid email address"
-msgstr ""
+msgstr "请输入一个有效的电子邮件地址"
 
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
 msgid "Please enter a phone number."
-msgstr ""
+msgstr "请输入一个电话号码。"
 
 #: app/components/account/contact-info-section.js:40:23
 #: app/components/forms/user-payment-info-form.js:87:23
 msgid "Please enter a valid phone number."
-msgstr ""
+msgstr "请输入一个可用的电话号码。"
 
 #: app/components/account/danger-zone.js:42:28
 msgid "Your account has been deleted successfully."
-msgstr ""
+msgstr "你的账号已删除完毕。"
 
 #: app/components/account/email-preferences-section.js:11:28
 msgid "Email notifications updated successfully"
-msgstr ""
+msgstr "邮件提醒设置已更新"
 
 #: app/components/account/password-section.js:16:23
 msgid "Please enter the current password"
-msgstr ""
+msgstr "请输入正确的密码"
 
 #: app/components/account/password-section.js:25:23
 msgid "Please enter a new password"
-msgstr ""
+msgstr "请输入一个新密码"
 
 #: app/components/account/password-section.js:29:23
 #: app/components/forms/orders/guest-order-form.js:42:23
 #: app/components/forms/register-form.js:38:23
 #: app/components/forms/reset-password-form.js:45:23
 msgid "Your password must have at least {ruleValue} characters"
-msgstr ""
+msgstr "你的密码必须包含 {ruleValue} 所要求的字符"
 
 #: app/components/account/password-section.js:38:23
 #: app/components/forms/orders/guest-order-form.js:52:23
 #: app/components/forms/register-form.js:47:23
 #: app/components/forms/reset-password-form.js:55:23
 msgid "Passwords do not match"
-msgstr ""
+msgstr "密码不对"
 
 #: app/components/events/event-import-section.js:17:23
 #: app/components/forms/admin/content/translation-form.js:17:23
 msgid "Please upload a file"
-msgstr ""
+msgstr "请上传一个文件"
 
 #: app/components/events/event-import-section.js:22:23
 #: app/components/forms/admin/content/translation-form.js:22:23
 msgid "Please upload a file in suggested format"
-msgstr ""
+msgstr "请上传建议格式的文件"
 
 #: app/components/events/view/export/api-response.js:51:26
 msgid "Could not fetch from the server"
-msgstr ""
+msgstr "无法从服务端获取"
 
 #: app/components/events/view/export/download-common.js:28:112
 msgid "Please publish to generate the link"
-msgstr ""
+msgstr "请发布以便生成链接地址"
 
 #: app/components/events/view/export/download-common.js:39:32
 #: app/controllers/admin/sales/index.js:141:30
@@ -171,7 +172,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders.js:33:32
 #: app/controllers/groups/edit/followers.js:71:34
 msgid "Download Ready"
-msgstr ""
+msgstr "准备下载"
 
 #: app/components/events/view/export/download-common.js:45:30
 #: app/controllers/admin/sales/index.js:147:28
@@ -181,21 +182,21 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders.js:36:30
 #: app/controllers/groups/edit/followers.js:77:32
 msgid "Task is going on."
-msgstr ""
+msgstr "任务进行中。"
 
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
+msgstr "任务失败了。"
 
 #: app/components/events/view/export/download-zip.js:17:26
 msgid "Exported Event Downloaded successfully."
-msgstr ""
+msgstr "导出的事件已被成功下载。"
 
 #: app/components/events/view/overview/manage-roles.js:35:47
 #: app/controllers/groups/team.js:29:47
 msgid "Role Invite sent successfully."
-msgstr ""
+msgstr "角色的邀请已送达。"
 
 #: app/components/events/view/overview/manage-roles.js:35:95
 #: app/controllers/groups/team.js:29:95
@@ -205,7 +206,7 @@ msgstr ""
 #: app/components/events/view/overview/manage-roles.js:54:28
 #: app/controllers/groups/team.js:48:28
 msgid "Invite resent successfully."
-msgstr ""
+msgstr "已重新邀请。"
 
 #: app/components/events/view/overview/manage-roles.js:59:26
 #: app/components/events/view/overview/manage-roles.js:63:24
@@ -338,46 +339,46 @@ msgstr ""
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr ""
+msgstr "请输入邮箱"
 
 #: app/components/forms/admin/settings/billing.js:44:23
 msgid ""
 "Please enter the billing paypal email invoice money will be transferred to"
-msgstr ""
+msgstr "请输入转账所需的Paypal邮箱"
 
 #: app/components/forms/admin/settings/billing.js:57:23
 msgid "Please select the country"
-msgstr ""
+msgstr "请选择国家"
 
 #: app/components/forms/admin/settings/billing.js:66:23
 msgid "Please enter the organisation"
-msgstr ""
+msgstr "请输入组织名称"
 
 #: app/components/forms/admin/settings/billing.js:75:23
 msgid "Please enter the Address"
-msgstr ""
+msgstr "请输入地址"
 
 #: app/components/forms/admin/settings/billing.js:84:23
 msgid "Please enter the city"
-msgstr ""
+msgstr "请输入城市"
 
 #: app/components/forms/admin/settings/billing.js:94:23
 msgid "Please enter the ZIP code"
-msgstr ""
+msgstr "请输入邮政编码"
 
 #: app/components/forms/admin/settings/images-form.js:17:23
 #: app/components/forms/admin/settings/images-form.js:44:23
 #: app/components/forms/admin/settings/images-form.js:71:23
 #: app/components/forms/admin/settings/images-form.js:98:23
 msgid "Please enter width"
-msgstr ""
+msgstr "请输入宽度"
 
 #: app/components/forms/admin/settings/images-form.js:26:23
 #: app/components/forms/admin/settings/images-form.js:53:23
 #: app/components/forms/admin/settings/images-form.js:80:23
 #: app/components/forms/admin/settings/images-form.js:107:23
 msgid "Please enter height"
-msgstr ""
+msgstr "请输入高度"
 
 #: app/components/forms/admin/settings/images-form.js:35:23
 #: app/components/forms/admin/settings/images-form.js:62:23
@@ -386,41 +387,41 @@ msgstr ""
 #: app/components/forms/admin/settings/images-form.js:143:23
 #: app/components/forms/admin/settings/images-form.js:161:23
 msgid "Please enter quality"
-msgstr ""
+msgstr "请输入质量"
 
 #: app/components/forms/admin/settings/images-form.js:116:23
 #: app/components/forms/admin/settings/images-form.js:134:23
 #: app/components/forms/admin/settings/images-form.js:152:23
 msgid "Please enter size"
-msgstr ""
+msgstr "请输入尺寸"
 
 #: app/components/forms/admin/settings/microservices-form.js:19:23
 msgid "Please enter a valid URL for Android app"
-msgstr ""
+msgstr "请输入安卓应用可访问的链接地址"
 
 #: app/components/forms/admin/settings/microservices-form.js:31:23
 msgid "Please enter a valid URL for web app"
-msgstr ""
+msgstr "请输入网页应用可访问的链接地址"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:18:23
 msgid "Please enter the client ID"
-msgstr ""
+msgstr "请输入客户编码"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:28:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:66:23
 msgid "Please enter the secret key"
-msgstr ""
+msgstr "请输入密钥"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:38:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:76:23
 msgid "Please enter the publishable key"
-msgstr ""
+msgstr "请输入公钥"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:47:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:136:23
 #: app/components/forms/admin/settings/payment-gateway-form.js:196:23
 msgid "Please enter the secret test key"
-msgstr ""
+msgstr "请输入测试密钥"
 
 #: app/components/forms/admin/settings/payment-gateway-form.js:57:23
 msgid "Please enter the publishable test key"
