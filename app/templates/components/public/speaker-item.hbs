@@ -60,7 +60,7 @@
               <div class="ui fluid rounded-default p-4" style={{css color=(text-color session.track.color) background-color=session.track.color}}>
                 <div style={{css opacity=0.9}}>
                   {{#if (and session.startsAt session.endsAt)}}
-                    <strong>{{general-date session.startsAt 'HH:mm' tz=@timezone}} - {{general-date session.endsAt 'hh:mm' tz=@timezone}}</strong>
+                    <strong>{{general-date session.startsAt 'HH:mm' tz=@timezone}} - {{general-date session.endsAt 'HH:mm' tz=@timezone}}</strong>
                   {{/if}}
                   <h3 class="m-0" style={{css user-select='text'}}>
                     {{session.title}}
