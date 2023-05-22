@@ -8,7 +8,7 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
 
   hooks.beforeEach(function() {
     const service = this.owner.lookup('service:l10n');
-    service.set('locale', 'en');
+    service.setLocale('en');
   });
 
   test('it renders published', async function(assert) {
