@@ -7,7 +7,8 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function() {
-    this.setLocale('en');
+    const service = this.owner.lookup('service:l10n');
+    service.set('locale', 'en');
   });
 
   test('it renders published', async function(assert) {
