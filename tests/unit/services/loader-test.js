@@ -10,7 +10,7 @@ module('Unit | Service | loader', function(hooks) {
     assert.ok(service);
 
     let response;
-    response = await service.load('http://httpbin.org/get?test=string&foo=bar', { isExternal: true });
+    response = await service.get('http://httpbin.org/get?test=string&foo=bar', { isExternal: true });
     assert.deepEqual(response.args, { test: 'string', foo: 'bar' }, `Received response: ${JSON.stringify(response)}`);
 
     const testPayload = {
