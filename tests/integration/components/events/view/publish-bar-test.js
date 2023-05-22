@@ -14,7 +14,7 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
   test('it renders published', async function(assert) {
     this.set('event', { name: 'Test Event', state: 'published', identifier: '23dsds', tickets: [1, 2, 3] });
 
-    await render(hbs`{{events/view/publish-bar event=event l10n=l10n}}`);
+    await render(hbs`{{events/view/publish-bar event=event}}`);
 
     assert.dom(this.element).includesText('View Unpublish');
   });
@@ -22,7 +22,7 @@ module('Integration | Component | events/view/publish-bar', function(hooks) {
   test('it renders unpublished', async function(assert) {
     this.set('event', { name: 'Test Event', state: 'draft', identifier: '23dsds', tickets: [1, 2, 3] });
 
-    await render(hbs`{{events/view/publish-bar event=event l10n=l10n}}`);
+    await render(hbs`{{events/view/publish-bar event=event}}`);
 
     assert.dom(this.element).includesText('Preview Publish');
   });
