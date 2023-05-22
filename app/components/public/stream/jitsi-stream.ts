@@ -10,11 +10,15 @@ interface Args {
   videoStream: VideoStream
 }
 
+interface Query {
+  [key: string]: string | string[] | undefined;
+}
+
 export default class PublicStreamJitsiStream extends Component<Args> {
   @service
   authManager!: AuthManagerService;
 
-  getRoomName(parsedUrl: UrlParser): string {
+  getRoomName(parsedUrl: UrlParser<Query>): string {
     return parsedUrl.pathname.slice(1); // drop leading slash
   }
 
