@@ -134,6 +134,10 @@ module.exports = function(environment) {
     };
 
     ENV['ember-simple-auth-token'].tokenExpirationInvalidateSession = false;
+    ENV['ember-l10n'] = {
+      // This is required to be set
+      locales: ['en']
+    }
   }
 
   if (environment === 'production') {
