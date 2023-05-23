@@ -87,7 +87,7 @@
 {{/if}}
 <div class="mt-8">
   {{#if this.model.session}}
-  {{#each this.groupByDateSessions as |group|}}
+  {{#each this.groupByDateSessions key="date" as |group|}}
     <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">
       {{#if (not-eq group.date "Invalid date")}}
         {{group.date}}
@@ -103,7 +103,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each group.sessions as |session|}}
+        {{#each group.sessions key="createdAt" as |session|}}
           <tr>
             <td class="top aligned {{unless this.device.isMobile 'centered text'}}" style="border-top: none;">
               <h4 class="ui header {{unless this.device.isMobile 'pt-4'}}">
