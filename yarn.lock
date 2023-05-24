@@ -4446,7 +4446,16 @@ beaver-logger@^3.0.17, beaver-logger@^3.0.6:
   dependencies:
     zalgo-promise "^1.0.26"
 
-belter@1.0.173, belter@^1.0.77:
+belter@1.0.123:
+  version "1.0.123"
+  resolved "https://registry.yarnpkg.com/belter/-/belter-1.0.123.tgz#c27c10e7975db8034394b22444a1cdc2f2b426c6"
+  integrity sha512-SV1wtG+HHygUmFOBcPbKBix5aWfxdeUZ/+h2d7yGuIuQTu6x65zzUYGQg9CrUsd63DtzqCj09S1CBSHxDjhYmQ==
+  dependencies:
+    cross-domain-safe-weakmap "^1.0.20"
+    cross-domain-utils "^2.0.10"
+    zalgo-promise "^1.0.28"
+
+belter@1.0.173:
   version "1.0.173"
   resolved "https://registry.yarnpkg.com/belter/-/belter-1.0.173.tgz#e923490adcd21a9435ae8f683acbc9492113973f"
   integrity sha512-wmUVEQR0igzKKO1yHT6ouGLCwzoeXFf1OsHeAk8DcCOgYtdBU8NiUlV94qx8NLFnahuwbpDqLBETfHUGXQOL8Q==
@@ -6316,7 +6325,7 @@ croppie@^2.6.5:
   resolved "https://registry.yarnpkg.com/croppie/-/croppie-2.6.5.tgz#67d76855b2983bdcd8aa348367398b2b8ef277cf"
   integrity sha512-IlChnVUGG5T3w2gRZIaQgBtlvyuYnlUWs2YZIXXR3H9KrlO1PtBT3j+ykxvy9eZIWhk+V5SpBmhCQz5UXKrEKQ==
 
-cross-domain-safe-weakmap@^1:
+cross-domain-safe-weakmap@^1, cross-domain-safe-weakmap@^1.0.20:
   version "1.0.29"
   resolved "https://registry.yarnpkg.com/cross-domain-safe-weakmap/-/cross-domain-safe-weakmap-1.0.29.tgz#0847975c27d9e1cc840f24c1745311958df98022"
   integrity sha512-VLoUgf2SXnf3+na8NfeUFV59TRZkIJqCIATaMdbhccgtnTlSnHXkyTRwokngEGYdQXx8JbHT9GDYitgR2sdjuA==
@@ -14185,10 +14194,10 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-paypal-checkout@^4.0.336:
-  version "4.0.336"
-  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.336.tgz#255065fa32c509904fa4ff0d99f9ddb212899eda"
-  integrity sha512-UIll2A/NhatwIMq3pz4jbEkanjk4ksd/LAo+G2TAfk/hGHlp5ASJXySrJKKuGv2TnXHPp1Elg/O7eOH6EafWwg==
+paypal-checkout@^4.0.338:
+  version "4.0.338"
+  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.338.tgz#e4b926077cedca6fc6a7111d9262e64c4379c28f"
+  integrity sha512-CfR/VTviqRhFae5NEuH0CnWBKZDivVyyQEIqFfJTq6gQEUgrIekJhR+OZ54NYvGP+RyAWA3O2zMIb0lSbW8dwg==
   dependencies:
     "@paypal/sdk-constants" "^1.0.64"
     Base64 "^1.0.0"
@@ -14200,7 +14209,7 @@ paypal-checkout@^4.0.336:
     hi-base32 "^0.5.0"
     post-robot "^8.0.0"
     zalgo-promise "^1.0.10"
-    zoid "^6.0.67"
+    zoid "6.0.82"
 
 pbkdf2@^3.0.3:
   version "3.0.16"
@@ -17858,12 +17867,13 @@ zalgo-promise@^1, zalgo-promise@^1.0.10, zalgo-promise@^1.0.11, zalgo-promise@^1
   resolved "https://registry.yarnpkg.com/zalgo-promise/-/zalgo-promise-1.0.47.tgz#cda98035cc97f053a1ab799277102ccb54897013"
   integrity sha512-n6d/Gdv3Fl8l7h062WpWjpNYdDh5OFAg/e3UUqxdjbdUi4qdFcfYLJvaPIMrofmrgU7vEJ8ApLdg+yUeYCA9WQ==
 
-zoid@^6.0.67:
-  version "6.0.74"
-  resolved "https://registry.yarnpkg.com/zoid/-/zoid-6.0.74.tgz#34b58c77e1e127501d1ceb7643abde8b3c49260f"
+zoid@6.0.82:
+  version "6.0.82"
+  resolved "https://registry.yarnpkg.com/zoid/-/zoid-6.0.82.tgz#eda9a1ea09ca26ae01f90bd7cb658de31f26a919"
+  integrity sha512-xYJqvRTTpKDdTDqY+80OMxNis3mJej469hq9uSvYTmR+IM9yCaDYm2db3zXUrDYCOK4PP1+GXJxiI/cQAX48NA==
   dependencies:
     beaver-logger "^3.0.17"
-    belter "^1.0.77"
+    belter "1.0.123"
     cross-domain-safe-weakmap "^1.0.22"
     cross-domain-utils "^2.0.16"
     hi-base32 "^0.5.0"
