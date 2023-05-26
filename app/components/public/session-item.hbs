@@ -3,7 +3,7 @@
   <div class="title p-4 pr-1" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
     <div class="ui">
       <h3 class="ui header d-flex" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
-        <div>
+        <div style="word-break: break-word;">
           {{@session.title}}
           <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
             {{@session.sessionType.name}}
