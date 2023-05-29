@@ -33,9 +33,10 @@
           <div class="pr-2 self-center">
             <div class="ui black circular label">{{@session.favouriteCount}}</div>
           </div>
-          {{#unless @hideSessionLink}}
+          {{!-- issue-8678 --}}
+          {{!-- {{#unless @hideSessionLink}}
             <a class="self-center" role="button" href="{{href-to 'public.session.view' (or @event.identifier @session.event.identifier) @session.id}}" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}}><i class="external alternate icon"></i></a>
-          {{/unless}}
+          {{/unless}} --}}
         </div>
       </h3>
     </div>
