@@ -1,0 +1,16 @@
+<div
+  ...attributes
+  class="ui icon input transition
+    {{if (eq @size 'large') '' 'small'}}
+    {{if isExpanded 'expanded' 'half-collapsed'}}"
+>
+  <Input
+    @type="text"
+    @value={{readonly this.searchQuery}}
+    @keyUp={{action "setSearchQuery" value="target.value"}}
+    placeholder="{{t 'Search'}} ..."
+    @focusOut={{action "toggleSearch"}}
+    @focusIn={{action "toggleSearch"}}
+  />
+  <i class="search icon"></i>
+</div>
