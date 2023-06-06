@@ -1,5 +1,4 @@
 {{#if (eq this.session.currentRouteName 'public.index')}}
-{{!-- Why use this? it will cause side-effect when the user click "info" and then "schdule", both "info" and "schedule" will be active--}}
   <a href='#info' {{action "scrollToTarget" 'info' }} class='item active scroll'>
     <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} info icon"></i>{{t 'Info'}}</div>
   </a>
