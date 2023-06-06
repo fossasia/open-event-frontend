@@ -72,18 +72,4 @@ export default class SideMenu extends Component {
     });
     document.querySelector(`[href='#${section}']`).classList.add('active');
   }
-
-  /**
-   * Switch to the schedule page. If it is from the info page,
-   * deactivate the active effect of info tab and replace its
-   * href.
-   * @param {"schedule"} evt
-   */
-  @action
-  switchToSchedule(section) {
-    if (section === 'schedule' && this.session.currentRouteName === 'public.index') {
-      document.querySelector('[href=\'#info\']').classList.remove('active');
-      document.querySelector('[href=\'#info\']').setAttribute('href', location.href.replace('/schedule', ''));
-    }
-  }
 }
