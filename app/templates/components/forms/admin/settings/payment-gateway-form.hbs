@@ -22,15 +22,16 @@
     <h5 class="ui header">
       {{t 'Stripe Integration Mode'}}
     </h5>
-    <div class="field">
-      <UiRadio
-        @label={{t "Test mode - Used during development and testing"}}
-        @name="stripe_integration_mode"
-        @value="debug"
-        @current={{this.stripeMode}}
-        @onChange={{action (mut this.stripeMode)}} />
-    </div>
     {{#if (eq this.stripeMode 'debug')}}
+      <div class="field">
+        <UiRadio
+          @label={{t "Test mode - Used during development and testing"}}
+          @name="stripe_integration_mode"
+          @value="debug"
+          @current={{this.stripeMode}}
+          @onChange={{action (mut this.stripeMode)}} />
+      </div>
+    
       <div class="field">
         <label>
           {{t 'Client Test ID'}}
@@ -71,6 +72,7 @@
           @value={{this.settings.stripeTestPublishableKey}} />
       </div>
     {{/if}}
+    {{#if (eq this.stripeMode 'production')}}
     <div class="ui hidden divider"></div>
     <div class="field">
       <UiRadio
@@ -80,7 +82,6 @@
         @current={{this.stripeMode}}
         @onChange={{action (mut this.stripeMode)}} />
     </div>
-    {{#if (eq this.stripeMode 'production')}}
       <div class="field">
         <label>
           {{t 'Client ID'}}
