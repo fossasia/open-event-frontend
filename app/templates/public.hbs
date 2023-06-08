@@ -59,7 +59,9 @@
             class="ui basic segment m-0 p-0" />
           <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
           {{#if (not-eq this.session.currentRouteName 'public.exhibition.view')}}
-            <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
+            {{#if (not-eq this.router.currentRoute.name 'public.sessions.index')}}
+              <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
+            {{/if}}
             {{#if (and this.device.isMobile this.twitterLink)}}
                 <div class="item">
                   <div class="twitter content">
