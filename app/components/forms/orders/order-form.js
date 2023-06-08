@@ -493,7 +493,7 @@ export default Component.extend(FormMixin, {
         },
         taxBusinessInfo: {
           identifier : 'taxBusinessInfo',
-          optional: true
+          optional   : true
         },
         address: {
           identifier : 'address',
