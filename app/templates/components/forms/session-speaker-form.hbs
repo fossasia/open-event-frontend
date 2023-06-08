@@ -18,7 +18,7 @@
       {{t 'Choose from existing speaker(s)'}}
     </h4>
     <UiDropdown
-      @class="fluid multiple selection {{if this.addNewSpeaker "disabled"}}"
+      @class="fluid search selection {{if this.addNewSpeaker "disabled"}}"
       @selected={{this.speakersDetails}}
       @onChange={{action (mut this.speakersDetails)}} as |execute mapper|>
       <i class="dropdown icon"></i>
