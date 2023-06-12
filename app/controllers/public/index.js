@@ -28,10 +28,20 @@ export default class IndexController extends Controller {
 
   @computed
   get publicStreamLink() {
-    let publicStreamLink = 'https://www.youtube.com/embed/' + this.model.event.publicStreamLink + '?';
-    publicStreamLink += this.model.event.streamAutoplay ? '&autoplay=1' : 'autoplay=0';
-    publicStreamLink += this.model.event.streamLoop ? '&loop=1' : '&loop=0';
-    return publicStreamLink + '&playlist=' + this.model.event.publicStreamLink;
+    let { publicStreamLink } = this.model.event;
+    const autoplay = this.model.event.streamAutoplay ? 'autoplay=1' : 'autoplay=0';
+    const loop = this.model.event.streamLoop ? '&loop=1' : '&loop=0';
+
+    if (publicStreamLink.includes('vimeo')) {
+      const vimeoRegex = /(?:vimeo)\.com.*(?:videos|video|channels|)\/([\d]+)/i;
+      const parsed = publicStreamLink.match(vimeoRegex);
+      publicStreamLink = `https://player.vimeo.com/video/${parsed[1]}`;
+    } else {
+      publicStreamLink = publicStreamLink.replace('watch?v=', 'embed/');
+    }
+    publicStreamLink += `?${autoplay}${loop}`;
+
+    return publicStreamLink;
   }
 
   @action

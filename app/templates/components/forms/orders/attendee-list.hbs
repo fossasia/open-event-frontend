@@ -96,10 +96,12 @@
                   {{t 'Organisation'}}
                 </h4>
                 <p>{{this.data.company}}</p>
-                <h4 class="weight-300">
-                  {{t 'Tax ID or Business ID'}}
-                </h4>
-                <p> {{this.data.taxBusinessInfo}}</p>
+                {{#if this.data.taxBusinessInfo}}
+                  <h4 class="weight-300">
+                    {{t 'Tax ID or Business ID'}}
+                  </h4>
+                  <p> {{this.data.taxBusinessInfo}}</p>
+                {{/if}}
               </div>
 
               <div class="column">

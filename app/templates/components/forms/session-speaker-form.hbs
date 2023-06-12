@@ -18,7 +18,7 @@
       {{t 'Choose from existing speaker(s)'}}
     </h4>
     <UiDropdown
-      @class="fluid multiple selection"
+      @class="fluid multiple search selection {{if this.addNewSpeaker "disabled"}}"
       @selected={{this.speakersDetails}}
       @onChange={{action (mut this.speakersDetails)}} as |execute mapper|>
       <i class="dropdown icon"></i>
@@ -26,7 +26,7 @@
         {{t 'Select Speakers'}}
       </div>
       <div class="menu">
-        {{#each (sort-by 'position' this.speakers) as |speaker|}}
+        {{#each (sort-by 'name' this.speakers) as |speaker|}}
           {{#if speaker.name}}
             <div data-value="{{map-value mapper speaker}}" class="item">
               {{speaker.name}}

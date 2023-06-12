@@ -10,11 +10,15 @@ interface Args {
   videoStream: VideoStream
 }
 
+interface Query {
+  [key: string]: string | string[] | undefined;
+}
+
 export default class PublicStreamJitsiStream extends Component<Args> {
   @service
   authManager!: AuthManagerService;
 
-  getRoomName(parsedUrl: UrlParser): string {
+  getRoomName(parsedUrl: UrlParser<Query>): string {
     return parsedUrl.pathname.slice(1); // drop leading slash
   }
 
@@ -48,8 +52,8 @@ export default class PublicStreamJitsiStream extends Component<Args> {
       },
       configOverwrite: {
         prejoinPageEnabled  : false,
-        startWithAudioMuted : true,
-        startWithVideoMuted : true
+        startWithAudioMuted : stream.extra?.jitsi_options?.muteOnStart,
+        startWithVideoMuted : stream.extra?.jitsi_options?.hideCamOnStart
       },
       interfaceConfigOverwrite: {
         HIDE_INVITE_MORE_HEADER : true,
