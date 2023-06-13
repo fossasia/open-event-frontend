@@ -7,7 +7,7 @@
 </div>
 <div {{did-update this.updated @field}} class="ui action input" style="width: inherit;">
   <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}} />
-  <UiDropdown class="ui selection dropdown" @selected={{this.type}} @onChange={{action (mut this.type)}}>
+  <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" @selected={{this.type}} @onChange={{action (mut this.type)}}>
     <div class="default text">
       {{ this.type }}
     </div>
@@ -16,6 +16,7 @@
       <div class="item" data-value="text">{{t "Short Answer"}}</div>
       <div class="item" data-value="paragraph">{{t "Paragraph"}}</div>
       <div class="item" data-value="number">{{t "Number"}}</div>
+      <div class="item" data-value="year">{{t "Years"}}</div>
     </div>
   </UiDropdown>
   <div>
