@@ -13,7 +13,7 @@ import {
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-
+import { years} from 'open-event-frontend/utils/dictionary/year-list';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -593,6 +593,7 @@ export default Component.extend(FormMixin, {
   genders   : orderBy(genders, 'name'),
   ageGroups : orderBy(ageGroups, 'age'),
   countries : orderBy(countries, 'name'),
+  years     : orderBy(years, 'year'),
 
   actions: {
     submit(data) {

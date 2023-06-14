@@ -179,6 +179,25 @@
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
                     @onChange={{action (mut holder.acceptVideoRecording)}}/> 
                 {{/if}}
+                {{#if (eq field.type 'year')}}
+                  <UiDropdown
+                    @class="search selection"
+                    @selected={{get holder field.fieldIdentifier}}
+                    @onChange={{action (mut holder.year)}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your year'}}</div>
+                    <div class="menu">
+                      {{#each this.years as |years|}}
+                        <div class="item" data-value="{{map-value mapper years.year}}">
+                          {{years.year}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                {{/if}}
               </div>
             {{/if}}
           {{/if}}
