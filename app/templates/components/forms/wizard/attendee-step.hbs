@@ -39,27 +39,26 @@
     </div>
   </div>
   {{#if this.data.event.isTicketFormEnabled}}
-    <h3 class="ui dividing header">
-      <i class="checkmark box icon"></i>
-      <div class="content">
-        {{t 'Information to Collect'}}
-      </div>
-    </h3>
-    <div class="ui two column stackable grid">
-      <div class="w-full column">
-        <Forms::Wizard::CustomForms::Table
-          @fields={{this.editableFields}}
-          @removeField={{action "removeField"}}
-          @updateField={{action (mut this.field)}} 
-        />
-      </div>
-    </div>
-    <Forms::Wizard::CustomFormInput
-      @customForms={{this.data.customForms}}
-      @event={{this.data.event}}
-      @form="attendee"
-      @field={{this.field}}
-      @onSave={{action (mut this.field) null}} />
+    <div class="ui hidden divider"></div>
+    {{#each this.data.forms as |_form|}}
+      <Forms::Wizard::CustomFormTicket 
+        @data={{_form}} 
+        @event={{this.data.event}}
+        @move="move" 
+        @save="save" 
+        @tickets={{this.selectableTickets}}
+        
+        @updateField={{action 'updateField'}}
+        @id={{_form.formID}}
+        @removeForm={{action 'removeForm'}}
+        @isLoading={{this.isLoading}} ></Forms::Wizard::CustomFormTicket>
+    
+    {{/each}}
+    {{#if this.selectableTickets.length}}
+      <button class="ui blue button right labeled icon small right aligned" type="button" {{action 'addMoreForm'}} >
+          {{t 'Add Attendee Form'}}
+      </button>
+    {{/if}}
   {{/if}}
   <div class="spacer-50"></div>
 </form>

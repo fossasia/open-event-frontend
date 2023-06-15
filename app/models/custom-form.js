@@ -69,7 +69,7 @@ export default ModelBase.extend({
   position        : attr('number'),
   isComplex       : attr('boolean', { defaultValue: false }),
   description     : attr('string', { defaultValue: 'text' }),
-
+  formID          : attr('string', { defaultValue: '' }),
 
   event             : belongsTo('event'),
   customFormOptions : hasMany('customFormOptions'),

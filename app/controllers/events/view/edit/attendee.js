@@ -7,7 +7,17 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 export default class AttendeeController extends Controller.extend(EventWizardMixin) {
   async saveForms(data) {
     await Promise.all((data?.customForms?.toArray() ?? []).map(customForm => customForm.save()));
+    // await Promise.all((data?.forms ?? []).map(form => form.save()));
+    await Promise.all((data?.tickets ?? []).map(ticket => ticket.save()));
+    // await this.saveCustomFormTickets(data)
     return data;
+  }
+
+  async saveCustomFormTickets(data){
+    
+    
+    await Promise.all((data?.forms ?? []).map(form => form.save()));
+    return data
   }
 
   @action
@@ -30,6 +40,8 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
   @action
   async move(direction, data) {
     try {
+      console.log(data.customForms.toArray())
+      debugger
       await this.saveForms(data);
       this.saveEventDataAndRedirectTo(
         direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.other-details',

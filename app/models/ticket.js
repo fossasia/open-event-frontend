@@ -25,7 +25,7 @@ export default ModelBase.extend({
   maxPrice             : attr('number'),
   isFeeAbsorbed        : attr('boolean', { defaultValue: true }),
   position             : attr('number'),
-
+  formID               : attr('string', { defaultValue: '' }),
   hasOrders: false,
 
   /**
@@ -35,7 +35,7 @@ export default ModelBase.extend({
   orders          : hasMany('order'),
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-ticket'),
-
+  // customFormTickets: belongsTo('custom-form-ticket'),
   /**
    * Computed properties
    */

@@ -122,6 +122,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   microlocations      : hasMany('microlocation'),
   tracks              : hasMany('track'),
   tickets             : hasMany('ticket'),
+  forms               : hasMany('custom-form-tickets'),
   orders              : hasMany('order'),
   socialLinks         : hasMany('social-link'),
   emailNotifications  : hasMany('email-notification'),
