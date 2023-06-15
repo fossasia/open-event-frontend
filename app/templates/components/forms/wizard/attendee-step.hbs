@@ -48,9 +48,9 @@
         @save="save" 
         @tickets={{this.selectableTickets}}
         
-        @updateField={{action 'updateField'}}
+        @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
         @id={{_form.formID}}
-        @removeForm={{action 'removeForm'}}
+        @onRemoveForm={{action 'onRemoveForm'}}
         @isLoading={{this.isLoading}} ></Forms::Wizard::CustomFormTicket>
     
     {{/each}}

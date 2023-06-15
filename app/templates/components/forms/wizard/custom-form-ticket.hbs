@@ -7,7 +7,7 @@
 </h3> 
 <h4>
   {{t 'Choose from existing ticket(s)'}}
-  <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action @removeForm this.id))}}>
+  <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action @onRemoveForm this.id))}}>
     <i class="trash box icon"></i>  
   </button>
 </h4>

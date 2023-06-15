@@ -7,14 +7,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 export default class AttendeeController extends Controller.extend(EventWizardMixin) {
   async saveForms(data) {
     await Promise.all((data?.customForms?.toArray() ?? []).map(customForm => customForm.save()));
-    // await Promise.all((data?.forms ?? []).map(form => form.save()));
     await Promise.all((data?.tickets ?? []).map(ticket => ticket.save()));
-    // await this.saveCustomFormTickets(data)
-    return data;
-  }
-
-  async saveCustomFormTickets(data) {
-    await Promise.all((data?.forms ?? []).map(form => form.save()));
     return data;
   }
 

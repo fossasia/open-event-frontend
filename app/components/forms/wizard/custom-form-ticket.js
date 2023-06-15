@@ -30,7 +30,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       changed = currentSelected.filter(item => !ticketsDetails.includes(item));
     }
     this.currentSelected = ticketsDetails;
-    this.get('updateField')({
+    this.get('onFormUpdateTicket')({
       added,
       changed,
       formID: this.id

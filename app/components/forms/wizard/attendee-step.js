@@ -95,7 +95,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       }));
     },
 
-    updateField(changedData) {
+    onFormUpdateTicket(changedData) {
       const { added, changed, formID } = changedData;
       changed.forEach(ticket => {
         ticket.formID = added ? formID : '';
@@ -118,8 +118,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.prepareCustomFormsForSave();
       this._super(direction);
     },
-    removeForm(_id) {
-
+    onRemoveForm(_id) {
       const deleteForm = this.data.forms.find(_form => _form.formID === _id);
       if (deleteForm) {
 
