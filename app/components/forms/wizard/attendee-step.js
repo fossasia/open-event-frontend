@@ -17,7 +17,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   prepareCustomFormsForShow() {
     const noFormIDExisted = this.data.customForms.filter(_field => _field.formID).length === 0;
     this.set('isOldFormMode', (this.fixedFields.length !== this.data.customForms.length) && noFormIDExisted);
-    if(this.isOldFormMode || this.data?.forms?.length){
+    if (this.isOldFormMode || this.data?.forms?.length) {
       return;
     }
     const _forms = {};
@@ -134,7 +134,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         });
         customForms.forEach(field => {
           field.deleteRecord();
-        })
+        });
         this.excludeTickets.removeObjects(deleteForm.ticketsDetails);
         this.data.forms.removeObject(deleteForm);
       }
