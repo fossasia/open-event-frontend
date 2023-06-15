@@ -26,15 +26,15 @@ export default ModelBase.extend({
   isFeeAbsorbed        : attr('boolean', { defaultValue: true }),
   position             : attr('number'),
   formID               : attr('string', { defaultValue: '' }),
-  hasOrders: false,
+  hasOrders            : false,
 
   /**
    * Relationships
    */
-  event           : belongsTo('event'),
-  orders          : hasMany('order'),
-  attendees       : hasMany('attendee'),
-  orderStatistics : belongsTo('order-statistics-ticket'),
+  event            : belongsTo('event'),
+  orders           : hasMany('order'),
+  attendees        : hasMany('attendee'),
+  orderStatistics  : belongsTo('order-statistics-ticket'),
   // customFormTickets: belongsTo('custom-form-ticket'),
   /**
    * Computed properties

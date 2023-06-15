@@ -13,11 +13,9 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
     return data;
   }
 
-  async saveCustomFormTickets(data){
-    
-    
+  async saveCustomFormTickets(data) {
     await Promise.all((data?.forms ?? []).map(form => form.save()));
-    return data
+    return data;
   }
 
   @action
@@ -40,8 +38,6 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
   @action
   async move(direction, data) {
     try {
-      console.log(data.customForms.toArray())
-      debugger
       await this.saveForms(data);
       this.saveEventDataAndRedirectTo(
         direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.other-details',

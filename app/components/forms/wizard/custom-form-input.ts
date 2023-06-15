@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import { tracked } from '@glimmer/tracking';
 
-interface CustomForm { fieldIdentifier: string, name: string, type: string , formIdentifier: string}
+interface CustomForm { fieldIdentifier: string, name: string, type: string, formIdentifier: string}
 
 function getIdentifier(name: string, fields: CustomForm[]): string {
   const fieldIdentifiers = new Set(fields.map(field => field.fieldIdentifier));
