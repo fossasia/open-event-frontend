@@ -89,12 +89,12 @@
                   <div class="ui radio checkbox">
                     <Widgets::Forms::RadioButton
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                      @value={{true}} @checked={{field.fieldIdentifier}}/>
+                      @value={{true}} @checked={{mut (get holder field.identifierPath)}}/>
                     <label for="yes_include">{{t 'Yes'}}</label>
                   </div>
                   <div class="ui radio checkbox">
                     <Widgets::Forms::RadioButton @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                     @value={{false}} @checked={{field.fieldIdentifier}}/>
+                     @value={{false}} @checked={{mut (get holder field.identifierPath)}}/>
                     <label for="no_include">{{t 'No'}}</label>
                   </div>
                 {{/if}}
