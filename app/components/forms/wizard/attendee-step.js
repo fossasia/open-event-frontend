@@ -9,13 +9,17 @@ import { A } from '@ember/array';
 export default Component.extend(FormMixin, EventWizardMixin, {
   tickets        : [],
   excludeTickets : A(),
+  isOldFormMode  : true,
   init() {
     this._super(...arguments);
-    if (this.data?.forms?.length === 0) {
-      this.prepareCustomFormsForShow();
-    }
+    this.prepareCustomFormsForShow();
   },
   prepareCustomFormsForShow() {
+    const noFormIDExisted = this.data.customForms.filter(_field => _field.formID).length === 0;
+    this.set('isOldFormMode', (this.fixedFields.length !== this.data.customForms.length) && noFormIDExisted);
+    if(this.isOldFormMode || this.data?.forms?.length){
+      return;
+    }
     const _forms = {};
     this.data.tickets.forEach(ticket => {
       const { formID } = ticket;
@@ -87,6 +91,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
 
   actions: {
+    removeField(field) {
+      field.deleteRecord();
+    },
     addMoreForm() {
       this.data.forms.pushObject(this.store.createRecord('custom-form-ticket', {
         formID         : v4(),
@@ -121,12 +128,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     onRemoveForm(_id) {
       const deleteForm = this.data.forms.find(_form => _form.formID === _id);
       if (deleteForm) {
-
-        const { ticketsDetails } = deleteForm;
+        const { ticketsDetails, customForms } = deleteForm;
         ticketsDetails.forEach(ticket => {
           ticket.formID = '';
         });
-
+        customForms.forEach(field => {
+          field.deleteRecord();
+        })
         this.excludeTickets.removeObjects(deleteForm.ticketsDetails);
         this.data.forms.removeObject(deleteForm);
       }

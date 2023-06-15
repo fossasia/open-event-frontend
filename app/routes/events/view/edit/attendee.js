@@ -39,11 +39,11 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
         customForms.pushObject(customForm);
       }
 
-      const createdCustomForms = this.getCustomAttendeeForm(data.event);
+      // const createdCustomForms = this.getCustomAttendeeForm(data.event);
 
-      for (const customForm of createdCustomForms ? createdCustomForms : []) {
-        customForms.pushObject(customForm);
-      }
+      // for (const customForm of createdCustomForms ? createdCustomForms : []) {
+      //   customForms.pushObject(customForm);
+      // }
 
       data.customForms = customForms;
     }

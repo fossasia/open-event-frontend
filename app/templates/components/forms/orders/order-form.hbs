@@ -76,8 +76,8 @@
           </label>
         </div>
         {{#each this.allFields.attendee as |field|}}
-          {{#if field.isIncluded}}
-            {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
+          {{#if field.isIncluded }}
+            {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
                 <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
                 {{#if (eq field.type 'paragraph')}}
