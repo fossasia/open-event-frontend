@@ -75,7 +75,7 @@
             {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}
           </label>
         </div>
-        {{#each this.allFields.attendee as |field index|}}
+        {{#each this.allFields.attendee as |field|}}
           {{#if field.isIncluded }}
             {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
@@ -85,41 +85,8 @@
                     @value={{mut (get holder field.fieldIdentifier)}}
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                 {{/if}}
-                {{#if (eq field.type 'boolean')}}
-                  <div class="ui radio checkbox">
-                    <Widgets::Forms::RadioButton
-                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                      @value={{true}} @checked={{mut (get holder field.identifierPath)}}/>
-                    <label for="yes_include">{{t 'Yes'}}</label>
-                  </div>
-                  <div class="ui radio checkbox">
-                    <Widgets::Forms::RadioButton @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                     @value={{false}} @checked={{mut (get holder field.identifierPath)}}/>
-                    <label for="no_include">{{t 'No'}}</label>
-                  </div>
-                {{/if}}
-                {{#if (eq field.type 'year')}}
-                  <UiDropdown
-                    @class="search selection"
-                    @selected={{mut (get holder field.identifier)}}
-                    @onChange={{action (mut holder.year)}}>
-                    <Input
-                      @type="hidden"
-                      @value={{get holder field.identifierPath}}
-                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-                    <i class="dropdown icon"></i>
-                    <div class="default text">{{t 'Select your year'}}</div>
-                    <div class="menu">
-                      {{#each this.years as |years|}}
-                        <div class="item" data-value="{{@years.year}}">
-                          {{years.year}}
-                        </div>
-                      {{/each}}
-                    </div>
-                  </UiDropdown>
-                {{/if}}
-                {{#if (or (is-input-field field.type) (eq field.type 'richtextlink'))}}
-                  {{#if (or field.isLongText (eq field.type 'richtextlink')) }}
+                {{#if (is-input-field field.type) }}
+                  {{#if field.isLongText}}
                     <Widgets::Forms::RichTextEditor
                       @value={{mut (get holder field.fieldIdentifier)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
