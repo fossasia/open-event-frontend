@@ -7,9 +7,9 @@ import { tracked } from '@glimmer/tracking';
 
 interface CustomForm { fieldIdentifier: string, name: string, type: string, formIdentifier: string}
 
-function getIdentifier(name: string, fields: CustomForm[]): string {
+function getIdentifier(name: string, fields: CustomForm[], formID: string): string {
   const fieldIdentifiers = new Set(fields.map(field => field.fieldIdentifier));
-  let identifier = slugify(name, '_');
+  let identifier = slugify(formID + "_" + name, '_');
   while (fieldIdentifiers.has(identifier)) {
     identifier += '_';
   }
@@ -49,7 +49,7 @@ export default class CustomFormInput extends Component<Args> {
 
   @computed('name')
   get identifier(): string {
-    return getIdentifier(this.name, this.args.customForms);
+    return getIdentifier(this.name, this.args.customForms, this.args.formIdentifier);
   }
 
   @computed('name')

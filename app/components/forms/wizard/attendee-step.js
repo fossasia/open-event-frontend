@@ -5,58 +5,81 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy } from 'lodash-es';
 import { v4 } from 'ember-uuid';
 import { A } from '@ember/array';
+import ticket from 'open-event-frontend/serializers/ticket';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   tickets        : [],
   excludeTickets : A(),
-  isOldFormMode  : true,
+  isOldFormMode  : false,
+  isInit         : false,
+
   init() {
     this._super(...arguments);
     this.prepareCustomFormsForShow();
   },
+
   prepareCustomFormsForShow() {
-    const noFormIDExisted = this.data.customForms.filter(_field => _field.formID).length === 0;
-    this.set('isOldFormMode', (this.fixedFields.length !== this.data.customForms.length) && noFormIDExisted);
-    if (this.isOldFormMode || this.data?.forms?.length) {
-      return;
-    }
-    const _forms = {};
-    this.data.tickets.forEach(ticket => {
-      const { formID } = ticket;
-      if (formID) {
-        if (_forms[formID]) {
-          _forms[formID].ticketsDetails.pushObject(ticket);
-        } else {
-          _forms[formID] = {
-            ticketsDetails: [ticket]
-          };
+    const {tickets, customForms, forms, event} = this.data
+    if(this.isInit || forms.length) return;
+    this.isInit = true
+    const noForm = tickets.filter(_ticket => _ticket.formID).length === 0;
+    if(noForm){
+      const _formID = v4();
+      let _fields = customForms?.filter((field) => {
+        if(!field.isFixed){
+          field.formID = _formID;
+          return true;
         }
-      }
-    });
-
-    Object.keys(_forms).forEach(_id => {
-      const selectedTicket = _forms[_id].ticketsDetails;
-      this.excludeTickets.pushObjects(selectedTicket);
-      this.data.forms.pushObject({
-        formID         : _id,
-        ticketsDetails : selectedTicket,
-        customForms    : this.data.customForms.filter(_field => _field.formID === _id)
+        return false;
       });
-    });
+      if(_fields.length > 0){
+        tickets.forEach(_ticket=> {
+          _ticket.formID = _formID; 
+          this.excludeTickets.pushObject(_ticket)
+        })
+        forms.pushObject(this.store.createRecord('custom-form-ticket', {
+          formID         : _formID,
+          customForms    : _fields,
+          ticketsDetails : tickets
+        }));
+      }
+    } else {
+      const _forms = {};
+      tickets.forEach(ticket => {
+        const { formID } = ticket;
+        if (formID) {
+          if (_forms[formID]) {
+            _forms[formID].ticketsDetails.pushObject(ticket);
+          } else {
+            _forms[formID] = {
+              ticketsDetails: [ticket]
+            };
+          }
+          this.excludeTickets.pushObject(ticket);
+        }
+      });
 
+      Object.keys(_forms).forEach(_id => {
+        const selectedTicket = _forms[_id].ticketsDetails;
+        forms.pushObject({
+          formID         : _id,
+          ticketsDetails : selectedTicket,
+          customForms    : customForms.filter(_field => _field.formID === _id)
+        });
+      });
+    }
   },
+ 
   prepareCustomFormsForSave() {
     this.data.forms.forEach(_form => {
       const { formID, customForms, ticketsDetails } = _form;
       customForms.forEach(field => {
         if (!field.isDeleted) {
           field.formID = formID;
-
         }
         if (!field.id) {
           this.data.customForms.pushObject(field);
         }
-
       });
 
       ticketsDetails.forEach(ticket => {
@@ -64,8 +87,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
     });
   },
-  fixedFields: computed('data.customForms.@each', function() {
 
+  fixedFields: computed('data.customForms.@each', function() {
     return this.data.customForms?.filter(field => field.isFixed);
   }),
 
@@ -94,11 +117,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     removeField(field) {
       field.deleteRecord();
     },
-    addMoreForm() {
+    addMoreForm(customForms = [], ticketsDetails = []) {
+      const _formID =  v4();
       this.data.forms.pushObject(this.store.createRecord('custom-form-ticket', {
-        formID         : v4(),
-        customForms    : [],
-        ticketsDetails : []
+        formID         : _formID,
+        customForms    : this.getCustomAttendeeForm(this.data.event, _formID),
+        ticketsDetails
       }));
     },
 

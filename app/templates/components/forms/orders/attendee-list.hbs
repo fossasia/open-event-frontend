@@ -34,7 +34,7 @@
          
           {{#each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
-              {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
+              {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
                 <div class="field">
                     <h4 class="weight-300">
                       {{t-var field.name}}
