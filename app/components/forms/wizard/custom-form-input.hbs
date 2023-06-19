@@ -13,16 +13,14 @@
           @type="number"
           @name="min_price"
           placeholder={{t "Min"}}
-          @value={{this.min}}
-          @min={{1}} />
+          @value={{this.min}} />
     </div>
     <div class="ui action input input-attendee-custom-form">
       <Input
         @type="number"
         @name="max_price"
         placeholder={{t "Max"}}
-        @value={{this.max}}
-        @min={{1}} />
+        @value={{this.max}} />
     </div>
   {{/if}}
   <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" @selected={{this.type}} @onChange={{action (mut this.type)}}>
