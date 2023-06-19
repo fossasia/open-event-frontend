@@ -109,6 +109,8 @@ export default ModelBase.extend({
   ready() {
     if (!this.name) {
       this.name = this[this.form][this.fieldIdentifier];
+    } else if (this.attendee[this.name] && this.name !== this.attendee[this.name]) {
+      this.name = this.attendee[this.name];
     }
   },
 
