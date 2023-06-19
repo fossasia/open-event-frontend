@@ -6,7 +6,25 @@
   </span>
 </div>
 <div {{did-update this.updated @field}} class="ui action input" style="width: inherit;">
-  <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}} />
+  <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}} style="width: 25%"/>
+  {{#if (eq this.type "number")}}
+    <div class="ui action input input-attendee-custom-form">
+        <Input
+          @type="number"
+          @name="min_price"
+          placeholder={{t "Min"}}
+          @value={{this.min}}
+          @min={{1}} />
+    </div>
+    <div class="ui action input input-attendee-custom-form">
+      <Input
+        @type="number"
+        @name="max_price"
+        placeholder={{t "Max"}}
+        @value={{this.max}}
+        @min={{1}} />
+    </div>
+  {{/if}}
   <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" @selected={{this.type}} @onChange={{action (mut this.type)}}>
     <div class="default text">
       {{ this.type }}

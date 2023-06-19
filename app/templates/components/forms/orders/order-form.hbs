@@ -97,6 +97,12 @@
                         @value={{mut (get holder field.identifierPath)}}
                         @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
                         @readonly="" />
+                    {{else if (eq field.type "number")}}
+                      <Input
+                        @type={{field.type}}
+                        @value={{mut (get holder field.identifierPath)}}
+                        @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} 
+                        @min={{if field.min field.min null}} @max={{if field.max field.max null}}/>
                     {{else}}
                       <Input
                         @type={{field.type}}
