@@ -13,7 +13,7 @@ import {
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { years} from 'open-event-frontend/utils/dictionary/year-list';
+import { years } from 'open-event-frontend/utils/dictionary/year-list';
 
 export default Component.extend(FormMixin, {
   router             : service(),
