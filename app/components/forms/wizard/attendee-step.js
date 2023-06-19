@@ -5,7 +5,6 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy } from 'lodash-es';
 import { v4 } from 'ember-uuid';
 import { A } from '@ember/array';
-import ticket from 'open-event-frontend/serializers/ticket';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   tickets        : [],
@@ -19,24 +18,24 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   prepareCustomFormsForShow() {
-    const {tickets, customForms, forms, event} = this.data
-    if(this.isInit || forms.length) return;
-    this.isInit = true
+    const { tickets, customForms, forms } = this.data;
+    if (this.isInit || forms.length) {return}
+    this.isInit = true;
     const noForm = tickets.filter(_ticket => _ticket.formID).length === 0;
-    if(noForm){
+    if (noForm) {
       const _formID = v4();
-      let _fields = customForms?.filter((field) => {
-        if(!field.isFixed){
+      const _fields = customForms?.filter(field => {
+        if (!field.isFixed) {
           field.formID = _formID;
           return true;
         }
         return false;
       });
-      if(_fields.length > 0){
-        tickets.forEach(_ticket=> {
-          _ticket.formID = _formID; 
-          this.excludeTickets.pushObject(_ticket)
-        })
+      if (_fields.length > 0) {
+        tickets.forEach(_ticket => {
+          _ticket.formID = _formID;
+          this.excludeTickets.pushObject(_ticket);
+        });
         forms.pushObject(this.store.createRecord('custom-form-ticket', {
           formID         : _formID,
           customForms    : _fields,
@@ -69,7 +68,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
     }
   },
- 
+
   prepareCustomFormsForSave() {
     this.data.forms.forEach(_form => {
       const { formID, customForms, ticketsDetails } = _form;
@@ -117,11 +116,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     removeField(field) {
       field.deleteRecord();
     },
-    addMoreForm(customForms = [], ticketsDetails = []) {
+    addMoreForm(ticketsDetails = []) {
       const _formID =  v4();
       this.data.forms.pushObject(this.store.createRecord('custom-form-ticket', {
-        formID         : _formID,
-        customForms    : this.getCustomAttendeeForm(this.data.event, _formID),
+        formID      : _formID,
+        customForms : this.getCustomAttendeeForm(this.data.event, _formID),
         ticketsDetails
       }));
     },
