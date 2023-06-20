@@ -117,7 +117,7 @@ export default ModelBase.extend({
   identifierPath: computed('isComplex', function() {
     let origin = this.fieldIdentifier;
     if (this.form === 'attendee') {
-      origin = this.fieldIdentifier.replace(/^.+_/,'');
+      origin = this.fieldIdentifier.replace(/^.+_/, '');
     }
     return !this.isComplex ? origin : 'complexFieldValues.' + this.fieldIdentifier;
   }),
