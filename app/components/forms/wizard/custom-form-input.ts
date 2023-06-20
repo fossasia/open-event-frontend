@@ -85,7 +85,7 @@ export default class CustomFormInput extends Component<Args> {
       event           : this.args.event,
       formID          : this.args.formIdentifier,
       min             : this.min,
-      max             : this.max,
+      max             : this.max
     });
   }
 
