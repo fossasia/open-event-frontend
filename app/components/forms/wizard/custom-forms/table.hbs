@@ -24,6 +24,11 @@
         <th class="center aligned">
           {{t 'Type'}}
         </th>
+        {{#if this.editColumn}}
+          <th class="center aligned">
+            {{t 'Range'}}
+          </th>
+        {{/if}}
         <th class="center aligned">
           {{t 'Include'}}
         </th>
@@ -58,6 +63,11 @@
           <td class="border center aligned">
             {{t-var field.type}}
           </td>
+          {{#if this.editColumn}}
+            <td class="border center aligned">
+              {{if (eq field.type "number") (concat field.min " - " field.max) "-"}}
+            </td>
+          {{/if}}
           <td class="border center aligned">
             <UiCheckbox
               @class="slider"
