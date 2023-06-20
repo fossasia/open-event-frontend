@@ -10,9 +10,6 @@ interface CustomForm { fieldIdentifier: string, name: string, type: string, min:
 function getIdentifier(name: string, fields: CustomForm[], formID: string): string {
   const fieldIdentifiers = new Set(fields.map(field => field.fieldIdentifier));
   let identifier = slugify(name, '_');
-  if (formID) {
-    identifier = slugify(formID + '_' + name, '_');
-  }
   while (fieldIdentifiers.has(identifier)) {
     identifier += '_';
   }

@@ -25,7 +25,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     if (noForm) {
       const _formID = v4();
       const _fields = customForms?.filter(field => {
-        if (!field.isFixed) {
+        if (!field.isFixed && !field.isDeleted) {
           field.formID = _formID;
           return true;
         }
