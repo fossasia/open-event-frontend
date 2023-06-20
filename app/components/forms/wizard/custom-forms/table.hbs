@@ -22,9 +22,9 @@
           {{t 'Option'}}
         </th>
         <th class="center aligned">
-          {{@form}}
+          {{t 'Type'}}
         </th>
-        {{#if (and this.editColumn (eq @form 'attendee'))}}
+        {{#if (and this.complexColumn (eq @form 'attendee'))}}
           <th class="center aligned">
             {{t 'Range'}}
           </th>
