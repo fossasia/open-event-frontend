@@ -50,6 +50,7 @@
       <div class="w-full column">
         <Forms::Wizard::CustomForms::Table
           @fields={{this.editableFields}}
+          @form={{"attendee"}}
           @removeField={{action "removeField"}}
           @updateField={{action (mut this.field)}} 
         />
