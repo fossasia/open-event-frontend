@@ -76,13 +76,13 @@
           </label>
         </div>
         {{#each this.allFields.attendee as |field index|}}
-          {{#if field.isIncluded}}
-            {{#if (or field.isFixed this.event.isTicketFormEnabled)}}
+          {{#if field.isIncluded }}
+            {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
                 <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
                 {{#if (eq field.type 'paragraph')}}
                   <Widgets::Forms::RichTextEditor
-                    @value={{mut (get holder field.fieldIdentifier)}}
+                    @value={{mut (get holder field.identifierPath)}}
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                 {{/if}}
                 {{#if (eq field.type 'boolean')}}
@@ -101,7 +101,7 @@
                 {{#if (or (is-input-field field.type) (eq field.type 'richtextlink'))}}
                   {{#if (or field.isLongText (eq field.type 'richtextlink')) }}
                     <Widgets::Forms::RichTextEditor
-                      @value={{mut (get holder field.fieldIdentifier)}}
+                      @value={{mut (get holder field.identifierPath)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   {{else}}
                     {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
@@ -126,7 +126,7 @@
                 {{else if (eq field.fieldIdentifier 'gender')}}
                   <UiDropdown
                     @class="search selection"
-                    @selected={{get holder field.fieldIdentifier}}
+                    @selected={{get holder field.identifierPath}}
                     @onChange={{action (mut holder.gender)}} as |execute mapper|>
                     <Input
                       @type="hidden"
@@ -144,7 +144,7 @@
                 {{else if (eq field.fieldIdentifier 'country')}}
                   <UiDropdown
                     @class="search selection"
-                    @selected={{get holder field.fieldIdentifier}}
+                    @selected={{get holder field.identifierPath}}
                     @onChange={{action (mut holder.country)}} as |execute mapper|>
                     <Input
                       @type="hidden"
@@ -164,7 +164,7 @@
                 {{else if (eq field.fieldIdentifier 'ageGroup')}}
                   <UiDropdown
                     @class="search selection"
-                    @selected={{get holder field.fieldIdentifier}}
+                    @selected={{get holder field.identifierPath}}
                     @onChange={{action (mut holder.ageGroup)}} as |execute mapper|>
                     <Input
                       @type="hidden"

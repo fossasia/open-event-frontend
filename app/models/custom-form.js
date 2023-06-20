@@ -69,8 +69,9 @@ export default ModelBase.extend({
   position        : attr('number'),
   isComplex       : attr('boolean', { defaultValue: false }),
   description     : attr('string', { defaultValue: 'text' }),
-  min          : attr('number', { defaultValue: 0 }),
-  max          : attr('number', { defaultValue: 10 }),
+  formID          : attr('string', { defaultValue: '' }),
+  min             : attr('number', { defaultValue: 0 }),
+  max             : attr('number', { defaultValue: 10 }),
 
 
   event             : belongsTo('event'),
@@ -111,11 +112,17 @@ export default ModelBase.extend({
   ready() {
     if (!this.name) {
       this.name = this[this.form][this.fieldIdentifier];
+    } else if (this.attendee[this.name] && this.name !== this.attendee[this.name]) {
+      this.name = this.attendee[this.name];
     }
   },
 
   identifierPath: computed('isComplex', function() {
-    return !this.isComplex ? this.fieldIdentifier : 'complexFieldValues.' + this.fieldIdentifier;
+    let origin = this.fieldIdentifier;
+    if (this.form === 'attendee') {
+      origin = this.fieldIdentifier.replace(/^.+_/, '');
+    }
+    return !this.isComplex ? origin : 'complexFieldValues.' + this.fieldIdentifier;
   }),
 
   isLongText: computed('type', function() {

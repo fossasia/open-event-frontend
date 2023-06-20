@@ -5,11 +5,14 @@ import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import { tracked } from '@glimmer/tracking';
 
-interface CustomForm { fieldIdentifier: string, name: string, type: string, min: number, max: number}
+interface CustomForm { fieldIdentifier: string, name: string, type: string, min: number, max: number, formIdentifier: string}
 
-function getIdentifier(name: string, fields: CustomForm[]): string {
+function getIdentifier(name: string, fields: CustomForm[], formID: string): string {
   const fieldIdentifiers = new Set(fields.map(field => field.fieldIdentifier));
   let identifier = slugify(name, '_');
+  if (formID) {
+    identifier = slugify(formID + '_' + name, '_');
+  }
   while (fieldIdentifiers.has(identifier)) {
     identifier += '_';
   }
@@ -22,6 +25,7 @@ interface Args {
   customForms: CustomForm[],
   form: string,
   event: any,
+  formIdentifier: string | '',
   min: number | 0,
   max: number | 10,
   onSave: (() => void) | null
@@ -60,7 +64,7 @@ export default class CustomFormInput extends Component<Args> {
 
   @computed('name')
   get identifier(): string {
-    return getIdentifier(this.name, this.args.customForms);
+    return getIdentifier(this.name, this.args.customForms, this.args.formIdentifier);
   }
 
   @computed('name')
@@ -79,8 +83,9 @@ export default class CustomFormInput extends Component<Args> {
       isIncluded      : false,
       isComplex       : true,
       event           : this.args.event,
+      formID          : this.args.formIdentifier,
       min             : this.min,
-      max             : this.max,
+      max             : this.max
     });
   }
 
