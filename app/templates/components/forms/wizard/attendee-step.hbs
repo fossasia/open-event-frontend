@@ -39,7 +39,8 @@
     </div>
   </div>
   {{#if this.data.event.isTicketFormEnabled}}
-    <h3 class="ui dividing header">
+    {{#if this.isOldFormMode}}
+      <h3 class="ui dividing header">
       <i class="checkmark box icon"></i>
       <div class="content">
         {{t 'Information to Collect'}}
@@ -49,6 +50,7 @@
       <div class="w-full column">
         <Forms::Wizard::CustomForms::Table
           @fields={{this.editableFields}}
+          @form={{"attendee"}}
           @removeField={{action "removeField"}}
           @updateField={{action (mut this.field)}} 
         />
@@ -60,6 +62,27 @@
       @form="attendee"
       @field={{this.field}}
       @onSave={{action (mut this.field) null}} />
+    {{else}}
+      <div class="ui hidden divider"></div>
+      {{#each this.data.forms as |_form|}}
+        <Forms::Wizard::CustomFormTicket 
+          @data={{_form}} 
+          @event={{this.data.event}}
+          @move="move" 
+          @save="save" 
+          @tickets={{this.selectableTickets}}    
+          @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
+          @id={{_form.formID}}
+          @onRemoveForm={{action 'onRemoveForm'}}
+          @isLoading={{this.isLoading}} ></Forms::Wizard::CustomFormTicket>
+      
+      {{/each}}
+      {{#if this.selectableTickets.length}}
+        <button class="ui blue button icon small right aligned" type="button" {{action 'addMoreForm'}} >
+            {{t 'Add Attendee Form'}}
+        </button>
+      {{/if}}
+    {{/if}}
   {{/if}}
   <div class="spacer-50"></div>
 </form>

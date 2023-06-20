@@ -219,7 +219,7 @@ export default Mixin.create(MutableArray, CustomFormMixin, {
         const valid = preSaveActions.call(this);
         if (valid) {
           this.set('data.event.state', 'draft');
-          this.sendAction('save');
+          this.sendAction('save', this.data);
         }
       });
     },

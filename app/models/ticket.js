@@ -25,17 +25,16 @@ export default ModelBase.extend({
   maxPrice             : attr('number'),
   isFeeAbsorbed        : attr('boolean', { defaultValue: true }),
   position             : attr('number'),
-
-  hasOrders: false,
+  formID               : attr('string', { defaultValue: '' }),
+  hasOrders            : false,
 
   /**
    * Relationships
    */
-  event           : belongsTo('event'),
-  orders          : hasMany('order'),
-  attendees       : hasMany('attendee'),
-  orderStatistics : belongsTo('order-statistics-ticket'),
-
+  event            : belongsTo('event'),
+  orders           : hasMany('order'),
+  attendees        : hasMany('attendee'),
+  orderStatistics  : belongsTo('order-statistics-ticket'),
   /**
    * Computed properties
    */
