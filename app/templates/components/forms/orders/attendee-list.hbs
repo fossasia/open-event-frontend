@@ -39,7 +39,7 @@
                     <h4 class="weight-300">
                       {{t-var field.name}}
                     </h4>
-                    {{#if (is-input-field field.type) }}
+                    {{#if (is-input-field field.type)}}
                       {{#if (or (not this.editFields) (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname')) (eq field.fieldIdentifier 'email')))}} 
                         {{#if (is-url-field field.fieldIdentifier)}}
                           <a href="{{get holder field.identifierPath}}">{{get holder field.identifierPath}}</a>
@@ -60,7 +60,9 @@
                         {{/if}}
                       </span>
                     {{else}}
-                      <span class="word-break">{{sanitize (get holder field.identifierPath)}}</span>
+                      {{#if (not field.isComplex)}}
+                        <span class="word-break">{{sanitize (get holder field.identifierPath)}}</span>
+                      {{/if}}
                     {{/if}}
                     {{#if field.isComplex}}
                       <span class="word-break">{{get holder.complexFieldValues field.fieldIdentifier}}</span>

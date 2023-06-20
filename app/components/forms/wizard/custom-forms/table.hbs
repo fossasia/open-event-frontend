@@ -7,7 +7,7 @@
   <thead>
     {{#if @headerText}}
       <tr>
-        <th colspan="{{if this.editColumn '5' '4'}}" class="text center aligned">
+        <th colspan="{{if this.editColumn (if this.complexColumn '6' '5') '4'}}" class="text center aligned">
           {{@headerText}}
         </th>
       </tr>
@@ -22,9 +22,9 @@
           {{t 'Option'}}
         </th>
         <th class="center aligned">
-          {{t 'Type'}}
+          {{@form}}
         </th>
-        {{#if this.editColumn}}
+        {{#if (and this.editColumn (eq @form 'attendee'))}}
           <th class="center aligned">
             {{t 'Range'}}
           </th>
@@ -38,7 +38,7 @@
         <th class="center aligned">
           {{t 'Show Public'}}
         </th>
-        {{#if this.editColumn}}
+        {{#if this.complexColumn}}
           <th class="center aligned">
             {{t 'Actions'}}
           </th>
@@ -63,7 +63,7 @@
           <td class="border center aligned">
             {{t-var field.type}}
           </td>
-          {{#if this.editColumn}}
+          {{#if (and this.complexColumn (eq @form 'attendee'))}}
             <td class="border center aligned">
               {{if (eq field.type "number") (concat field.min " - " field.max) "-"}}
             </td>
@@ -91,7 +91,7 @@
               @onChange={{action (mut field.isPublic)}}
               @label={{if this.device.isMobile (t "Public")}} />
           </td>
-          {{#if this.editColumn}}
+          {{#if this.complexColumn}}
             <td class="border center aligned">
               {{#if field.isComplex}}
                 <button class="ui compact icon positive circular button" data-tooltip="{{t 'Edit'}}" {{action  @updateField field}}>
