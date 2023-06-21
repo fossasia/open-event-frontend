@@ -172,6 +172,16 @@ export default class PublicController extends Controller {
     this.activeSessionLevel = [];
   }
 
+  @action
+  removeActiveRoom() {
+    this.activeRoom = [];
+  }
+
+  @action
+  removeActiveTrack() {
+    this.activeTrack = [];
+  }
+
   removeActiveClass(name) {
     const activeEls = document.querySelectorAll(`.${name}.link-item.active`);
     activeEls.forEach(el => {
@@ -197,6 +207,26 @@ export default class PublicController extends Controller {
       this.activeSessionLevel = [...this.activeSessionLevel, level];
     }
     this.router.transitionTo('public.sessions', { queryParams: { 'level': this.activeSessionLevel } });
+  }
+
+  @action
+  roomFilter(name) {
+    if (this.activeRoom.includes(name)) {
+      this.activeRoom = this.activeRoom.filter(room => room !== name);
+    } else {
+      this.activeRoom = [...this.activeRoom, name];
+    }
+    this.router.transitionTo('public.sessions', { queryParams: { 'room': this.activeRoom } });
+  }
+
+  @action
+  trackFilter(name) {
+    if (this.activeTrack.includes(name)) {
+      this.activeTrack = this.activeTrack.filter(track => track !== name);
+    } else {
+      this.activeTrack = [...this.activeTrack, name];
+    }
+    this.router.transitionTo('public.sessions', { queryParams: { 'track': this.activeTrack } });
   }
 
   @action
