@@ -629,7 +629,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'What is your home wiki.',
+        name            : 'homeWiki',
         fieldIdentifier : 'home_wiki',
         formID          : _formID,
         form            : 'attendee',

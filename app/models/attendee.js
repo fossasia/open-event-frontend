@@ -41,7 +41,7 @@ export default ModelBase.extend({
   acceptShareDetails   : attr('boolean', { defaultValue: true }),
   birthDate            : attr('moment'),
   complexFieldValues   : attr(),
-  home_wiki             : attr('string'),
+  home_wiki            : attr('string'),
 
   /**
    * Relationships
