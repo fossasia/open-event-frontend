@@ -1,38 +1,40 @@
+import { tn } from 'open-event-frontend/utils/text';
+
 export const homeWikis = [
   {
-    item: 'Wikipedia'
+    item: tn.t('Wikipedia')
   },
   {
-    item: 'Wiktionary'
+    item: tn.t('Wiktionary')
   },
   {
-    item: 'Wikiquote'
+    item: tn.t('Wikiquote')
   },
   {
-    item: 'Wikinews'
+    item: tn.t('Wikinews')
   },
   {
-    item: 'Wikisource'
+    item: tn.t('Wikisource')
   },
   {
-    item: 'Wikibooks'
+    item: tn.t('Wikibooks')
   },
   {
-    item: 'Wikiversity'
+    item: tn.t('Wikiversity')
   },
   {
-    item: 'Wikivoyage'
+    item: tn.t('Wikivoyage')
   },
   {
-    item: 'Wikimedia Commons'
+    item: tn.t('Wikimedia Commons')
   },
   {
-    item: 'Wikidata'
+    item: tn.t('Wikidata')
   },
   {
-    item: 'Wikispecies'
+    item: tn.t('Wikispecies')
   },
   {
-    item: 'Meta-Wiki'
+    item: tn.t('Meta-Wiki')
   }
 ];
