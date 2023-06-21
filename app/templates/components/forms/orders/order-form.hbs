@@ -79,7 +79,7 @@
           {{#if field.isIncluded }}
             {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
+                <label class="{{if field.isRequired 'required'}}" for="name">{{t field.name}}</label>
                 {{#if (eq field.type 'paragraph')}}
                   <Widgets::Forms::RichTextEditor
                     @value={{mut (get holder field.identifierPath)}}
@@ -175,6 +175,24 @@
                       {{#each this.ageGroups as |ageGroup|}}
                         <div class="item" data-value="{{map-value mapper ageGroup.age}}">
                           {{t ageGroup.age}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                {{else if (eq field.fieldIdentifier 'home_wiki')}}
+                  <UiDropdown
+                    @class="search selection"
+                    @selected={{get holder field.identifierPath}}
+                    @onChange={{action (mut holder.home_wiki)}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your home wiki'}}</div>
+                    <div class="menu">
+                      {{#each this.homeWikis as |homeWiki|}}
+                        <div class="item" data-value="{{map-value mapper homeWiki.item}}">
+                          {{t homeWiki.item}}
                         </div>
                       {{/each}}
                     </div>
