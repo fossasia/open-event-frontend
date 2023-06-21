@@ -38,4 +38,3 @@ export const homeWikis = [
     item: tn.t('Meta-Wiki')
   }
 ];
-
