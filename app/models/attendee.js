@@ -43,6 +43,7 @@ export default ModelBase.extend({
   complexFieldValues   : attr(),
   language_form_1      : attr('string'),
   language_form_2      : attr('string'),
+  home_wiki            : attr('string'),
 
   /**
    * Relationships

@@ -629,6 +629,17 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        name            : 'homeWiki',
+        fieldIdentifier : 'home_wiki',
+        formID          : _formID,
+        form            : 'attendee',
+        type            : 'select',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         name            : 'What is your native language, or what language are you most fluent in?',
         fieldIdentifier : 'language_form_1',
         formID          : _formID,

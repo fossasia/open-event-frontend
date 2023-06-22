@@ -15,6 +15,7 @@ import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { years } from 'open-event-frontend/utils/dictionary/year-list';
 import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
+import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -235,6 +236,15 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.l10n.t('Please enter your home address.')
+        }
+      ]
+    };
+
+    const homeWikiValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter your home wiki.')
         }
       ]
     };
@@ -570,6 +580,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`taxBusinessInfo_required_${  index}`] = taxBusinessInfoValidation;
       validationRules.fields[`billingAddress_required_${  index}`] = billingAddressValidation;
       validationRules.fields[`homeAddress_required_${  index}`] = homeAddressValidation;
+      validationRules.fields[`homeWiki_required_${  index}`] = homeWikiValidation;
       validationRules.fields[`shippingAddress_required_${  index}`] = shippingAddressValidation;
       validationRules.fields[`company_required_${  index}`] = companyValidation;
       validationRules.fields[`workAddress_required_${  index}`] = workAddressValidation;
@@ -616,6 +627,7 @@ export default Component.extend(FormMixin, {
   countries     : orderBy(countries, 'name'),
   years         : orderBy(years, 'year'),
   languageForms : orderBy(languageForms, 'item'),
+  homeWikis     : orderBy(homeWikis, 'item'),
 
   actions: {
     submit(data) {
