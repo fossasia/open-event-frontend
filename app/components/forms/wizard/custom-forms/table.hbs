@@ -7,7 +7,7 @@
   <thead>
     {{#if @headerText}}
       <tr>
-        <th colspan="{{if this.editColumn '5' '4'}}" class="text center aligned">
+        <th colspan="{{if this.editColumn (if this.complexColumn '6' '5') '4'}}" class="text center aligned">
           {{@headerText}}
         </th>
       </tr>
@@ -24,6 +24,11 @@
         <th class="center aligned">
           {{t 'Type'}}
         </th>
+        {{#if (and this.complexColumn (eq @form 'attendee'))}}
+          <th class="center aligned">
+            {{t 'Range'}}
+          </th>
+        {{/if}}
         <th class="center aligned">
           {{t 'Include'}}
         </th>
@@ -33,7 +38,7 @@
         <th class="center aligned">
           {{t 'Show Public'}}
         </th>
-        {{#if this.editColumn}}
+        {{#if this.complexColumn}}
           <th class="center aligned">
             {{t 'Actions'}}
           </th>
@@ -43,6 +48,7 @@
   </thead>
   <tbody>
     {{#each @fields as |field|}}
+      {{#unless field.isDeleted}}
       <DraggableObject @overrideClass="{{if field.isIncluded 'positive'}} table-row" @content={{field}} @isSortable={{true}}>
           <td class="{{if this.device.isMobile 'center' 'right'}} border right aligned">
             <label class="{{if field.isFixed 'required'}}">
@@ -57,6 +63,11 @@
           <td class="border center aligned">
             {{t-var field.type}}
           </td>
+          {{#if (and this.complexColumn (eq @form 'attendee'))}}
+            <td class="border center aligned">
+              {{if (eq field.type "number") (concat field.min " - " field.max) "-"}}
+            </td>
+          {{/if}}
           <td class="border center aligned">
             <UiCheckbox
               @class="slider"
@@ -80,7 +91,7 @@
               @onChange={{action (mut field.isPublic)}}
               @label={{if this.device.isMobile (t "Public")}} />
           </td>
-          {{#if this.editColumn}}
+          {{#if this.complexColumn}}
             <td class="border center aligned">
               {{#if field.isComplex}}
                 <button class="ui compact icon positive circular button" data-tooltip="{{t 'Edit'}}" {{action  @updateField field}}>
@@ -93,6 +104,7 @@
             </td>
           {{/if}}
       </DraggableObject>
+      {{/unless}}
     {{/each}}
   </tbody>
 </table>

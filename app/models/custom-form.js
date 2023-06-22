@@ -69,6 +69,9 @@ export default ModelBase.extend({
   position        : attr('number'),
   isComplex       : attr('boolean', { defaultValue: false }),
   description     : attr('string', { defaultValue: 'text' }),
+  formID          : attr('string', { defaultValue: '' }),
+  min             : attr('number', { defaultValue: 0 }),
+  max             : attr('number', { defaultValue: 10 }),
 
 
   event             : belongsTo('event'),
@@ -103,12 +106,17 @@ export default ModelBase.extend({
     acceptReceiveEmails  : tn.t('Email consent'),
     acceptVideoRecording : tn.t('Photo & video & text consent'),
     acceptShareDetails   : tn.t('Partner contact consent'),
-    ageGroup             : tn.t('Age Group')
+    ageGroup             : tn.t('Age Group'),
+    homeWiki             : tn.t('What is your home wiki'),
+    languageForm1        : tn.t('What is your native language, or what language are you most fluent in?'),
+    languageForm2        : tn.t('Are you fluent in any other of the following languages?')
   },
 
   ready() {
     if (!this.name) {
       this.name = this[this.form][this.fieldIdentifier];
+    } else if (this.attendee[this.name] && this.name !== this.attendee[this.name]) {
+      this.name = this.attendee[this.name];
     }
   },
 
