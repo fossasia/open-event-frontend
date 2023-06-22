@@ -1,0 +1,18 @@
+<div class="{{@class}}" ...attributes>
+  {{#if @label}}
+    <label>{{@label}}</label>
+  {{/if}}
+  {{#each this.options as |op|}}
+    <div class="menu">
+    <UiCheckbox
+      @label={{op.item}}
+      @value={{op.value}}
+      @name={{this.name}}
+      @type={{this.type}}
+      @onChange={{action 'childOnChange'}}
+      @checked={{op.checked}}
+    >{{op.label}}</UiCheckbox>
+    </div>
+  {{/each}}
+</div>
+      
