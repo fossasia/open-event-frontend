@@ -605,7 +605,7 @@ export default Component.extend(FormMixin, {
   ageGroups : orderBy(ageGroups, 'position'),
   countries : orderBy(countries, 'name'),
   years     : orderBy(years, 'year'),
-  homeWikis : orderBy(homeWikis, 'age'),
+  homeWikis : orderBy(homeWikis, 'item'),
 
   actions: {
     submit(data) {
