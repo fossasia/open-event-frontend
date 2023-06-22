@@ -41,6 +41,7 @@ export default ModelBase.extend({
   acceptShareDetails   : attr('boolean', { defaultValue: true }),
   birthDate            : attr('moment'),
   complexFieldValues   : attr(),
+  is_consent_of_refund_policy: attr('boolean', { defaultValue: false }),
 
   /**
    * Relationships

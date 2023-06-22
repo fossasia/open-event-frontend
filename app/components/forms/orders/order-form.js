@@ -449,6 +449,17 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const isConsentOfRefundPolicyValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : compulsoryProtocolValidUrlPattern,
+          prompt : this.l10n.t('Please enter a valid URL.')
+        }
+      ]
+    };
+
     const validationRules = {
       inline : true,
       delay  : false,
@@ -569,6 +580,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
+      validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
         validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
           rules: [

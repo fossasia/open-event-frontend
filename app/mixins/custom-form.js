@@ -627,6 +627,17 @@ export default Mixin.create(MutableArray, {
         isIncluded      : false,
         isPublic        : false,
         event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        name            : 'Consent of refund policy',
+        fieldIdentifier : 'is_consent_of_refund_policy',
+        formID          : _formID,
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
       })
     ];
   }
