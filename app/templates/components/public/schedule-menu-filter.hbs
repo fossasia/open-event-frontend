@@ -64,7 +64,7 @@
             </strong>
             <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash track=null}}
                 @invokeAction={{action this.removeActiveTrack}}>
-                <span class="ui button pl-2 pr-2">[Clear Filter]</span>
+                <span class="ui button pl-2 pr-2">{{t '[Clear Filter]'}}</span>
             </LinkTo>
         </div>
         {{/if}}
@@ -78,7 +78,7 @@
             </strong>
             <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash room=null}}
                 @invokeAction={{action this.removeActiveRoom}}>
-                <span class="ui button pl-2 pr-2">[Clear Filter]</span>
+                <span class="ui button pl-2 pr-2">{{t '[Clear Filter]'}}</span>
             </LinkTo>
         </div>
         {{/if}}
@@ -91,8 +91,8 @@
                 {{/each}}
             </strong>
             <LinkTo @route="public.sessions" {{action this.removeActiveSession}} @models={{array this.event.id}}
-                @query={{hash sessionType=null}} data-tooltip="{{t 'Clear Session Type Filter'}}">
-                <Icons::ClearFilter />
+                @query={{hash sessionType=null}}>
+                <span class="ui button pl-2 pr-2">{{t '[Clear Filter]'}}</span>
             </LinkTo>
         </div>
         {{/if}}
@@ -106,7 +106,7 @@
             </strong>
             <LinkTo @route="public.sessions" {{action this.removeActiveSessionLevel}} @models={{array this.event.id}}
                 @query={{hash level=null}}>
-                <span class="ui button pl-2 pr-2">[Clear Filter]</span>
+                <span class="ui button pl-2 pr-2">{{t '[Clear Filter]'}}</span>
             </LinkTo>
         </div>
         {{/if}}
