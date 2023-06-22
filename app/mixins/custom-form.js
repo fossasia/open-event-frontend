@@ -638,6 +638,28 @@ export default Mixin.create(MutableArray, {
         isIncluded      : false,
         isPublic        : false,
         event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        name            : 'languageForm1',
+        fieldIdentifier : 'language_form_1',
+        formID          : _formID,
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        name            : 'languageForm2',
+        fieldIdentifier : 'language_form_2',
+        formID          : _formID,
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
       })
     ];
   }

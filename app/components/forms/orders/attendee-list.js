@@ -4,6 +4,7 @@ import { action, computed } from '@ember/object';
 import { groupBy } from 'lodash-es';
 import { or } from '@ember/object/computed';
 import { tracked } from '@glimmer/tracking';
+import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
 
 @classic
 export default class AttendeeList extends Component {
@@ -17,7 +18,28 @@ export default class AttendeeList extends Component {
 
   @computed('data.attendees')
   get holders() {
+    this.data.attendees.forEach(attendee => {
+      if (attendee.language_form_1) {
+        this.languageFormMapCodeToName(attendee, 'language_form_1');
+      }
+      if (attendee.language_form_2) {
+        this.languageFormMapCodeToName(attendee, 'language_form_2');
+      }
+    });
     return this.data.attendees;
+  }
+
+  languageFormMapCodeToName(attendee, key) {
+    const languageFormMap = [];
+    const languageFormList = attendee[key].split(',');
+    languageForms.forEach(languageForm => {
+      languageFormList.forEach(item => {
+        if (item === languageForm.code) {
+          languageFormMap.push(languageForm.name);
+        }
+      });
+    });
+    return attendee.set(key, languageFormMap.map(select => select).join(', '));
   }
 
   @or('event.isBillingInfoMandatory', 'data.isBillingEnabled')
