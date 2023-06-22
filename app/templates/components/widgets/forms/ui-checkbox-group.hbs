@@ -4,14 +4,13 @@
   {{/if}}
   {{#each this.options as |op|}}
     <div class="menu">
-    <UiCheckbox
-      @label={{op.label}}
-      @value={{op.value}}
-      @name={{this.name}}
-      @type={{this.type}}
-      @onChange={{action 'childOnChange'}}
-      @checked={{op.checked}}
-    ></UiCheckbox>
+      <UiCheckbox
+        @value={{op.value}}
+        @name={{this.name}}
+        @type={{this.type}}
+        @onChange={{action 'childOnChange'}}
+        @checked={{op.checked}}/>
+          {{op.label}}
     </div>
   {{/each}}
 </div>
