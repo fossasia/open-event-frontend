@@ -207,12 +207,6 @@
                     <span> and the </span>
                     <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">Friendly Space Policy</a>
                     <span> .</span>
-                {{else if (eq field.type 'checkbox')}}         
-                  <UiCheckbox
-                    @label={{t field.name}}
-                    @checked={{get holder field.identifierPath}}         
-                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
-                    @onChange={{action (mut (get holder field.identifierPath))}}/>
                 {{/if}}
                 {{#if (eq field.type 'year')}}
                   <UiDropdown
