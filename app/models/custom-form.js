@@ -106,7 +106,9 @@ export default ModelBase.extend({
     acceptReceiveEmails  : tn.t('Email consent'),
     acceptVideoRecording : tn.t('Photo & video & text consent'),
     acceptShareDetails   : tn.t('Partner contact consent'),
-    ageGroup             : tn.t('Age Group')
+    ageGroup             : tn.t('Age Group'),
+    languageForm1        : tn.t('What is your native language, or what language are you most fluent in?'),
+    languageForm2        : tn.t('Are you fluent in any other of the following languages?')
   },
 
   ready() {

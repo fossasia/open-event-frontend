@@ -5,13 +5,13 @@
   {{#each this.options as |op|}}
     <div class="menu">
     <UiCheckbox
-      @label={{op.item}}
+      @label={{op.label}}
       @value={{op.value}}
       @name={{this.name}}
       @type={{this.type}}
       @onChange={{action 'childOnChange'}}
       @checked={{op.checked}}
-    >{{op.label}}</UiCheckbox>
+    ></UiCheckbox>
     </div>
   {{/each}}
 </div>
