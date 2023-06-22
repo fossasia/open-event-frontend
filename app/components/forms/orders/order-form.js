@@ -612,7 +612,7 @@ export default Component.extend(FormMixin, {
   }),
 
   genders       : orderBy(genders, 'name'),
-  ageGroups     : orderBy(ageGroups, 'age'),
+  ageGroups     : orderBy(ageGroups, 'position'),
   countries     : orderBy(countries, 'name'),
   years         : orderBy(years, 'year'),
   languageForms : orderBy(languageForms, 'item'),
