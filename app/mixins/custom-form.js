@@ -629,7 +629,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'What is your native language, or what language are you most fluent in?',
+        name            : 'languageForm1',
         fieldIdentifier : 'language_form_1',
         formID          : _formID,
         form            : 'attendee',
@@ -640,7 +640,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'Are you fluent in any other of the following languages?',
+        name            : 'languageForm2',
         fieldIdentifier : 'language_form_2',
         formID          : _formID,
         form            : 'attendee',
