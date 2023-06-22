@@ -1,0 +1,197 @@
+{{#if this.device.isMobile}}
+<div>
+    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+        <div class="default">
+            {{t 'Tracks List'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each this.event.tracks as |track|}}
+            <UiCheckbox @class="item" @label={{track.name}} @checked={{if (includes this.activeTrack
+                track.name) " active" }} @onChange={{action trackFilter track.name }} />
+            {{/each}}
+        </div>
+    </UiDropdown>
+    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+        <div class="default">
+            {{t 'Rooms List'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each this.event.microlocations as |room|}}
+            {{#if (not room.hiddenInScheduler)}}
+            <UiCheckbox @class="item" @label={{room.name}} @checked={{if (includes this.activeRoom room.name) " active"
+                }} @onChange={{action roomFilter room.name }} />
+            {{/if}}
+            {{/each}}
+        </div>
+    </UiDropdown>
+    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+        <div class="default">
+            {{t 'Session Types List'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each this.event.sessionTypes as |sessionType|}}
+            <UiCheckbox @class="item" @label={{sessionType.name}} @checked={{if (includes this.activeSession
+                sessionType.name) " active" }} @onChange={{action this.sessionFilter sessionType.name}} />
+            {{/each}}
+        </div>
+    </UiDropdown>
+    {{#if this.hasSessionLevel}}
+    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+        <div class="default">
+            {{t 'Session levels List'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each this.levels as |level|}}
+            <UiCheckbox @class="item" @label={{level.name}} @checked={{if (includes this.activeSessionLevel
+                level.name) " active" }} @onChange={{action this.sessionLevelFilter level.name}} />
+            {{/each}}
+        </div>
+    </UiDropdown>
+    {{/if}}
+    <br>
+    <div class="ui mb-2">
+        {{#if this.activeTrack}}
+        <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
+            {{t 'Track'}}:
+            <strong>
+                {{#each this.activeTrack as |track index|}}
+                {{if index ", "}}{{track}}
+                {{/each}}
+            </strong>
+            <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash track=null}}
+                @invokeAction={{action this.removeActiveTrack}}>
+                <span class="ui button pl-2 pr-2">[Clear Filter]</span>
+            </LinkTo>
+        </div>
+        {{/if}}
+        {{#if this.activeRoom}}
+        <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
+            {{t 'Room'}}:
+            <strong>
+                {{#each this.activeRoom as |room index|}}
+                {{if index ", "}}{{room}}
+                {{/each}}
+            </strong>
+            <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash room=null}}
+                @invokeAction={{action this.removeActiveRoom}}>
+                <span class="ui button pl-2 pr-2">[Clear Filter]</span>
+            </LinkTo>
+        </div>
+        {{/if}}
+        {{#if this.activeSession}}
+        <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
+            {{t 'Session Type'}}:
+            <strong>
+                {{#each this.activeSession as |activeSession index|}}
+                {{if index ", "}}{{activeSession}}
+                {{/each}}
+            </strong>
+            <LinkTo @route="public.sessions" {{action this.removeActiveSession}} @models={{array this.event.id}}
+                @query={{hash sessionType=null}} data-tooltip="{{t 'Clear Session Type Filter'}}">
+                <Icons::ClearFilter />
+            </LinkTo>
+        </div>
+        {{/if}}
+        {{#if this.activeSessionLevel}}
+        <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
+            {{t 'Session Level'}}:
+            <strong>
+                {{#each this.activeSessionLevel as |sessionLevel index|}}
+                {{if index ", "}}{{sessionLevel}}
+                {{/each}}
+            </strong>
+            <LinkTo @route="public.sessions" {{action this.removeActiveSessionLevel}} @models={{array this.event.id}}
+                @query={{hash level=null}}>
+                <span class="ui button pl-2 pr-2">[Clear Filter]</span>
+            </LinkTo>
+        </div>
+        {{/if}}
+    </div>
+</div>
+{{else}}
+<div class="mr-8">
+    <h4>
+        {{t 'Tracks'}}
+        <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash track=null}}
+            data-tooltip="{{t 'Clear Track Filter'}}" @invokeAction={{action this.removeActiveClass 'track' }}>
+            <Icons::ClearFilter />
+        </LinkTo>
+    </h4>
+    {{#each this.event.tracks as |track|}}
+    <p role="button" class="track p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) " active"}}"
+        {{action 'applyFilter' track.name 'track' }}>
+        <i class="circle icon" style={{css color=track.color}}></i>
+        {{track.name}}
+    </p>
+    {{/each}}
+    <h4>
+        {{t 'Rooms'}}
+        <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash room=null}}
+            data-tooltip="{{t 'Clear Room Filter'}}" @invokeAction={{action this.removeActiveClass 'room' }}>
+            <Icons::ClearFilter />
+        </LinkTo>
+    </h4>
+    {{#each this.event.microlocations as |room|}}
+    {{#if (not room.hiddenInScheduler)}}
+    <p class="room p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) " active"}}" role="button"
+        {{action 'applyFilter' room.name 'room' }}>
+        {{room.name}}
+    </p>
+    {{/if}}
+    {{/each}}
+    <h4>
+        {{t 'Session Types'}}
+        <LinkTo @route="public.sessions" {{action this.removeActiveSession}} @models={{array this.event.id}}
+            @query={{hash sessionType=null}} data-tooltip="{{t 'Clear Session Type Filter'}}">
+            <Icons::ClearFilter />
+        </LinkTo>
+    </h4>
+    {{#each this.activeSession as |session|}}
+    <span class="p-1 mb-1 rounded-default">
+        {{session}}
+    </span>
+    {{/each}}
+    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+        <div class="default">
+            {{t 'Select Session Type'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each this.event.sessionTypes as |sessionType|}}
+            <UiCheckbox @class="item" @label={{sessionType.name}} @checked={{if (includes this.activeSession
+                sessionType.name) "active" }} @onChange={{action this.sessionFilter sessionType.name}} />
+            {{/each}}
+        </div>
+    </UiDropdown>
+    {{#if this.hasSessionLevel}}
+    <h4>
+        {{t 'Session Levels'}}
+        <LinkTo @route="public.sessions" {{action this.removeActiveSessionLevel}} @models={{array this.event.id}}
+            @query={{hash level=null}} data-tooltip="{{t 'Clear Session Level Filter'}}">
+            <Icons::ClearFilter />
+        </LinkTo>
+    </h4>
+    {{#each this.activeSessionLevel as |level|}}
+    <span class="p-1 mb-1 rounded-default">
+        {{level}}
+    </span>
+    {{/each}}
+    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+        <div class="default">
+            {{t 'Select Session level'}}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each this.levels as |level|}}
+            <UiCheckbox @class="item" @label={{level.name}} @checked={{if (includes this.activeSessionLevel
+                level.name) "active" }} @onChange={{action this.sessionLevelFilter level.name}} />
+            {{/each}}
+        </div>
+    </UiDropdown>
+    {{/if}}
+</div>
+{{/if}}
