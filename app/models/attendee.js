@@ -41,6 +41,7 @@ export default ModelBase.extend({
   acceptShareDetails   : attr('boolean', { defaultValue: true }),
   birthDate            : attr('moment'),
   complexFieldValues   : attr(),
+  is_consent_form_field: attr('boolean', { defaultValue: false }),
 
   /**
    * Relationships
