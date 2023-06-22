@@ -18,12 +18,11 @@ export default class AttendeeList extends Component {
 
   @computed('data.attendees')
   get holders() {
-    console.log(this.data.attendees);
-    this.data.attendees.forEach((attendee, index) => {
-      if (attendee['language_form_1']) {
+    this.data.attendees.forEach(attendee => {
+      if (attendee.language_form_1) {
         this.languageFormMapCodeToName(attendee, 'language_form_1');
       }
-      if (attendee['language_form_2']) {
+      if (attendee.language_form_2) {
         this.languageFormMapCodeToName(attendee, 'language_form_2');
       }
     });
@@ -32,7 +31,7 @@ export default class AttendeeList extends Component {
 
   languageFormMapCodeToName(attendee, key) {
     const languageFormMap = [];
-    const languageFormList = attendee[key].split(",");
+    const languageFormList = attendee[key].split(',');
     languageForms.forEach(languageForm => {
       languageFormList.forEach(item => {
         if (item === languageForm.code) {
@@ -40,7 +39,7 @@ export default class AttendeeList extends Component {
         }
       });
     });
-    return attendee.set(key, languageFormMap.map(select => select).join(', '))
+    return attendee.set(key, languageFormMap.map(select => select).join(', '));
   }
 
   @or('event.isBillingInfoMandatory', 'data.isBillingEnabled')
