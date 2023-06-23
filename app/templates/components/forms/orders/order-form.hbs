@@ -214,7 +214,17 @@
                     @label={{t "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."}}
                     @checked={{holder.acceptVideoRecording}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
-                    @onChange={{action (mut holder.acceptVideoRecording)}}/> 
+                    @onChange={{action (mut holder.acceptVideoRecording)}}/>
+                {{else if (eq field.fieldIdentifier 'is_consent_form_field')}}
+                  <UiCheckbox
+                    @checked={{get holder field.identifierPath}}         
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
+                    @onChange={{action (mut (get holder field.identifierPath))}} />
+                    <span>{{t 'I agree to the terms of the'}} </span>
+                    <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}}</a>
+                    <span> {{t 'and the'}} </span>
+                    <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
+                    <span> .</span>
                 {{/if}}
                 {{#if (eq field.type 'year')}}
                   <UiDropdown

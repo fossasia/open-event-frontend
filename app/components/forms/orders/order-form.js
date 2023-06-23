@@ -460,6 +460,15 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const isConsentFormFieldValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Consent form field.')
+        }
+      ]
+    };
+
     const languageForm1Validation = {
       rules: [
         {
@@ -599,6 +608,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
+      validationRules.fields[`is_consent_form_field_${  index}`] = isConsentFormFieldValidation;
       validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
       validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
