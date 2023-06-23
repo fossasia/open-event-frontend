@@ -214,7 +214,13 @@
                     @label={{t "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."}}
                     @checked={{holder.acceptVideoRecording}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
-                    @onChange={{action (mut holder.acceptVideoRecording)}}/> 
+                    @onChange={{action (mut holder.acceptVideoRecording)}}/>
+                {{else if (eq field.type 'checkbox')}}         
+                  <UiCheckbox
+                    @checked={{get holder field.identifierPath}}         
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
+                    @onChange={{action (mut (get holder field.identifierPath))}}/>
+                    {{t field.nameConvert}}
                 {{/if}}
                 {{#if (eq field.type 'year')}}
                   <UiDropdown

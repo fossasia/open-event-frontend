@@ -460,6 +460,17 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const isConsentOfRefundPolicyValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : compulsoryProtocolValidUrlPattern,
+          prompt : this.l10n.t('Please enter a valid URL.')
+        }
+      ]
+    };
+
     const languageForm1Validation = {
       rules: [
         {
@@ -599,6 +610,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
+      validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
       validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
       validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
@@ -617,8 +629,20 @@ export default Component.extend(FormMixin, {
   },
 
   allFields: computed('fields', function() {
-    const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
-    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['position']);
+    let customFields = [];
+    const requiredFixed = [];
+    this.fields.forEach(field => {
+      if (field.isFixed) {
+        requiredFixed.push(field);
+      } else {
+        customFields.push(field);
+      }
+      field.nameConvert = field.name;
+      if (field.name === 'Consent of refund policy') {
+        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
+      }
+    });
+    customFields =  orderBy(customFields, ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
