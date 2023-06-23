@@ -666,7 +666,7 @@ export default Mixin.create(MutableArray, {
         fieldIdentifier : 'is_consent_of_refund_policy',
         formID          : _formID,
         form            : 'attendee',
-        type            : 'select',
+        type            : 'checkbox',
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,

@@ -217,10 +217,10 @@
                     @onChange={{action (mut holder.acceptVideoRecording)}}/>
                 {{else if (eq field.type 'checkbox')}}         
                   <UiCheckbox
-                    @label={{t field.name}}
                     @checked={{get holder field.identifierPath}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
                     @onChange={{action (mut (get holder field.identifierPath))}}/>
+                    {{t field.nameConvert}}
                 {{/if}}
                 {{#if (eq field.type 'year')}}
                   <UiDropdown

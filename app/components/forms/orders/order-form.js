@@ -629,8 +629,20 @@ export default Component.extend(FormMixin, {
   },
 
   allFields: computed('fields', function() {
-    const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
-    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['position']);
+    let customFields = [];
+    const requiredFixed = [];
+    this.fields.forEach(field => {
+      if (field.isFixed) {
+        requiredFixed.push(field);
+      } else {
+        customFields.push(field);
+      }
+      field.nameConvert = field.name;
+      if (field.name === 'Consent of refund policy') {
+        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
+      }
+    });
+    customFields =  orderBy(customFields, ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
