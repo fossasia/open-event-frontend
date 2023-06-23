@@ -14,6 +14,8 @@ import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { years } from 'open-event-frontend/utils/dictionary/year-list';
+import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
+import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -238,6 +240,15 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const homeWikiValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter your home wiki.')
+        }
+      ]
+    };
+
     const shippingAddressValidation = {
       rules: [
         {
@@ -458,6 +469,24 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const languageForm1Validation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Language Form.')
+        }
+      ]
+    };
+
+    const languageForm2Validation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Language Form.')
+        }
+      ]
+    };
+
     const validationRules = {
       inline : true,
       delay  : false,
@@ -560,6 +589,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`taxBusinessInfo_required_${  index}`] = taxBusinessInfoValidation;
       validationRules.fields[`billingAddress_required_${  index}`] = billingAddressValidation;
       validationRules.fields[`homeAddress_required_${  index}`] = homeAddressValidation;
+      validationRules.fields[`homeWiki_required_${  index}`] = homeWikiValidation;
       validationRules.fields[`shippingAddress_required_${  index}`] = shippingAddressValidation;
       validationRules.fields[`company_required_${  index}`] = companyValidation;
       validationRules.fields[`workAddress_required_${  index}`] = workAddressValidation;
@@ -579,6 +609,8 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
       validationRules.fields[`is_consent_form_field_${  index}`] = isConsentFormFieldValidation;
+      validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
+      validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
         validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
           rules: [
@@ -600,10 +632,12 @@ export default Component.extend(FormMixin, {
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
-  genders   : orderBy(genders, 'name'),
-  ageGroups : orderBy(ageGroups, 'position'),
-  countries : orderBy(countries, 'name'),
-  years     : orderBy(years, 'year'),
+  genders       : orderBy(genders, 'name'),
+  ageGroups     : orderBy(ageGroups, 'position'),
+  countries     : orderBy(countries, 'name'),
+  years         : orderBy(years, 'year'),
+  languageForms : orderBy(languageForms, 'item'),
+  homeWikis     : orderBy(homeWikis, 'item'),
 
   actions: {
     submit(data) {
@@ -624,6 +658,9 @@ export default Component.extend(FormMixin, {
         holder.set('lastname', '');
         holder.set('email', '');
       }
+    },
+    updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
+      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
   }
 });
