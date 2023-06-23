@@ -36,20 +36,20 @@
   {{#each this.allDates as |date|}}
     <LinkTo @route="public.sessions" @models={{array this.model.event.id}} @query={{hash date=(moment-format date "YYYY-MM-DD")}} class="ui button mb-2">{{general-date date 'date-short'}}</LinkTo>
   {{/each}}
-  <div class={{if this.device.isMobile "" "d-flex content-end wrap ml-auto"}}>
+  <div class={{if this.device.isMobile "w-full" "d-flex content-end wrap ml-auto"}}>
     <Widgets::TimeZonePicker
-      class="mb-2 mr-2 {{if this.device.isMobile 'w-140' 'w-90'}}"
+      class="mb-2 mr-2 {{if this.device.isMobile 'w-full' 'w-90'}}"
       @defaultLocal={{this.model.event.online}}
       @eventTimezone={{this.model.event.timezone}}
       @timezone={{this.timezone}} />
 
     <Tables::Utilities::SearchBox
-      class="mb-2 mr-2 {{if this.device.isMobile 'w-140' 'w-90'}}"
+      class="mb-2 mr-2 {{if this.device.isMobile 'w-full' 'w-90'}}"
       @searchQuery={{this.search}}
       @size="large"
     />
     {{#if this.device.isMobile}}
-      <Public::ScheduleMenuFilter @event={{this.model.event}} />
+      <Public::ScheduleMenuFilter @event={{this.model.event}} class="w-full"/>
     {{else}}
       {{outlet}}
     {{/if}}
