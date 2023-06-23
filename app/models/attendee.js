@@ -42,6 +42,9 @@ export default ModelBase.extend({
   birthDate            : attr('moment'),
   complexFieldValues   : attr(),
   is_consent_of_refund_policy: attr('boolean', { defaultValue: false }),
+  language_form_1      : attr('string'),
+  language_form_2      : attr('string'),
+  home_wiki            : attr('string'),
 
   /**
    * Relationships

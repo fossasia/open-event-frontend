@@ -107,7 +107,10 @@ export default ModelBase.extend({
     acceptVideoRecording : tn.t('Photo & video & text consent'),
     acceptShareDetails   : tn.t('Partner contact consent'),
     ageGroup             : tn.t('Age Group'),
-    isConsentOfRefundPolicy: tn.t('Consent of refund policy')
+    isConsentOfRefundPolicy: tn.t('Consent of refund policy'),
+    homeWiki             : tn.t('What is your home wiki'),
+    languageForm1        : tn.t('What is your native language, or what language are you most fluent in?'),
+    languageForm2        : tn.t('Are you fluent in any other of the following languages?')
   },
 
   ready() {
