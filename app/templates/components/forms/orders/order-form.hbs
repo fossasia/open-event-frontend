@@ -220,10 +220,10 @@
                     @checked={{get holder field.identifierPath}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
                     @onChange={{action (mut (get holder field.identifierPath))}} />
-                    <span>I agree to the terms of the </span>
-                    <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">Universal Code of Conduct</a>
-                    <span> and the </span>
-                    <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">Friendly Space Policy</a>
+                    <span>{{t 'I agree to the terms of the'}} </span>
+                    <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}}</a>
+                    <span> {{t 'and the'}} </span>
+                    <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
                     <span> .</span>
                 {{/if}}
                 {{#if (eq field.type 'year')}}
