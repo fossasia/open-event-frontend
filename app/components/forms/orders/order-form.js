@@ -460,6 +460,15 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const isConsentFormFieldValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Consent form field.')
+        }
+      ]
+    };
+
     const isConsentOfRefundPolicyValidation = {
       optional : true,
       rules    : [
@@ -611,6 +620,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
       validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
+      validationRules.fields[`is_consent_form_field_${  index}`] = isConsentFormFieldValidation;
       validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
       validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
@@ -650,7 +660,7 @@ export default Component.extend(FormMixin, {
   ageGroups     : orderBy(ageGroups, 'position'),
   countries     : orderBy(countries, 'name'),
   years         : orderBy(years, 'year'),
-  languageForms : orderBy(languageForms, 'item'),
+  languageForms : orderBy(languageForms, 'name'),
   homeWikis     : orderBy(homeWikis, 'item'),
 
   actions: {
