@@ -475,7 +475,7 @@ export default Component.extend(FormMixin, {
         {
           type   : 'regExp',
           value  : compulsoryProtocolValidUrlPattern,
-          prompt : this.l10n.t('Please enter a valid URL.')
+          prompt : this.l10n.t('Please consent to the Refund Policy.')
         }
       ]
     };
