@@ -41,9 +41,9 @@ export default ModelBase.extend({
   acceptShareDetails    : attr('boolean', { defaultValue: true }),
   birthDate             : attr('moment'),
   complexFieldValues    : attr(),
-  language_form_1      : attr('string'),
-  language_form_2      : attr('string'),
-  home_wiki            : attr('string'),
+  language_form_1       : attr('string'),
+  language_form_2       : attr('string'),
+  home_wiki             : attr('string'),
   is_consent_form_field : attr('boolean', { defaultValue: false }),
 
   /**
