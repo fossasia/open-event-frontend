@@ -1,6 +1,6 @@
 {{#if this.device.isMobile}}
 <div>
-    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">
             {{t 'Tracks List'}}
         </div>
@@ -8,11 +8,11 @@
         <div class="menu">
             {{#each this.event.tracks as |track|}}
             <UiCheckbox @class="item" @label={{track.name}} @checked={{if (includes this.activeTrack
-                track.name) " active" }} @onChange={{action trackFilter track.name }} />
+                track.name) " active"}} @onChange={{action trackFilter track.name }} />
             {{/each}}
         </div>
     </UiDropdown>
-    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">
             {{t 'Rooms List'}}
         </div>
@@ -26,7 +26,7 @@
             {{/each}}
         </div>
     </UiDropdown>
-    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">
             {{t 'Session Types List'}}
         </div>
@@ -39,7 +39,7 @@
         </div>
     </UiDropdown>
     {{#if this.hasSessionLevel}}
-    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">
             {{t 'Session levels List'}}
         </div>
@@ -54,7 +54,7 @@
     {{/if}}
     <br>
     <div class="ui mb-2">
-        {{#if this.activeTrack}}
+        {{#if this.router.currentRoute.queryParams.track}}
         <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
             {{t 'Track'}}:
             <strong>
@@ -68,7 +68,7 @@
             </LinkTo>
         </div>
         {{/if}}
-        {{#if this.activeRoom}}
+        {{#if this.router.currentRoute.queryParams.room}}
         <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
             {{t 'Room'}}:
             <strong>
@@ -82,7 +82,7 @@
             </LinkTo>
         </div>
         {{/if}}
-        {{#if this.activeSession}}
+        {{#if this.router.currentRoute.queryParams.sessionType}}
         <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
             {{t 'Session Type'}}:
             <strong>
@@ -96,7 +96,7 @@
             </LinkTo>
         </div>
         {{/if}}
-        {{#if this.activeSessionLevel}}
+        {{#if this.router.currentRoute.queryParams.level}}
         <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
             {{t 'Session Level'}}:
             <strong>
@@ -155,7 +155,7 @@
         {{session}}
     </span>
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">
             {{t 'Select Session Type'}}
         </div>
@@ -180,7 +180,7 @@
         {{level}}
     </span>
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mt-4 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">
             {{t 'Select Session level'}}
         </div>
