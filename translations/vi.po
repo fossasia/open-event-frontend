@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-06-25 09:39+0000\n"
+"PO-Revision-Date: 2023-06-25 11:17+0000\n"
 "Last-Translator: thegaro0310 <anhkhoi03102000@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/open-event/"
 "frontend/vi/>\n"
@@ -105,7 +105,7 @@ msgstr "Vui lòng nhập một địa chỉ email hợp lệ"
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
 msgid "Please enter a phone number."
-msgstr "Vui lòng nhập một số điện thoại."
+msgstr "Vui lòng nhập số điện thoại."
 
 #: app/components/account/contact-info-section.js:40:23
 #: app/components/forms/user-payment-info-form.js:87:23
@@ -126,7 +126,7 @@ msgstr "Vui lòng nhập mật khẩu hiện tại"
 
 #: app/components/account/password-section.js:25:23
 msgid "Please enter a new password"
-msgstr "Vui lòng nhập một mật khẩu mới"
+msgstr "Vui lòng nhập mật khẩu mới"
 
 #: app/components/account/password-section.js:29:23
 #: app/components/forms/orders/guest-order-form.js:42:23
@@ -150,15 +150,15 @@ msgstr "Vui lòng tải tệp tin lên"
 #: app/components/events/event-import-section.js:22:23
 #: app/components/forms/admin/content/translation-form.js:22:23
 msgid "Please upload a file in suggested format"
-msgstr ""
+msgstr "Vui lòng tải tệp tin lên ở định dạng đề xuất"
 
 #: app/components/events/view/export/api-response.js:51:26
 msgid "Could not fetch from the server"
-msgstr ""
+msgstr "Không thể lấy từ hệ phục vụ"
 
 #: app/components/events/view/export/download-common.js:28:112
 msgid "Please publish to generate the link"
-msgstr ""
+msgstr "Vui lòng xuất bản để tạo liên kết"
 
 #: app/components/events/view/export/download-common.js:39:32
 #: app/controllers/admin/sales/index.js:141:30
@@ -168,7 +168,7 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders.js:33:32
 #: app/controllers/groups/edit/followers.js:71:34
 msgid "Download Ready"
-msgstr ""
+msgstr "Sẵn sàng tải xuống"
 
 #: app/components/events/view/export/download-common.js:45:30
 #: app/controllers/admin/sales/index.js:147:28
@@ -178,12 +178,12 @@ msgstr ""
 #: app/controllers/events/view/tickets/orders.js:36:30
 #: app/controllers/groups/edit/followers.js:77:32
 msgid "Task is going on."
-msgstr ""
+msgstr "Tác vụ đang diễn ra."
 
 #: app/components/events/view/export/download-common.js:51:30
 #: app/components/events/view/export/download-common.js:59:28
 msgid "Task failed."
-msgstr ""
+msgstr "Tác vụ thất bại."
 
 #: app/components/events/view/export/download-zip.js:17:26
 msgid "Exported Event Downloaded successfully."
@@ -202,7 +202,7 @@ msgstr ""
 #: app/components/events/view/overview/manage-roles.js:54:28
 #: app/controllers/groups/team.js:48:28
 msgid "Invite resent successfully."
-msgstr ""
+msgstr "Đã gửi lại lời mời thành công."
 
 #: app/components/events/view/overview/manage-roles.js:59:26
 #: app/components/events/view/overview/manage-roles.js:63:24
@@ -215,16 +215,16 @@ msgstr ""
 #: app/controllers/groups/team.js:75:26
 #: app/controllers/public/speaker-invite/view-session.js:37:26
 msgid "Oops something went wrong. Please try again."
-msgstr ""
+msgstr "Rất tiếc, đã xảy ra lỗi. Vui lòng thử lại."
 
 #: app/components/events/view/overview/manage-roles.js:74:28
 msgid "Role Invite deleted successfully."
-msgstr ""
+msgstr "Đã xóa lời mời vai trò thành công."
 
 #: app/components/events/view/overview/manage-roles.js:95:28
 #: app/controllers/groups/team.js:68:28
 msgid "Role deleted successfully."
-msgstr ""
+msgstr "Đã xóa vai trò thành công."
 
 #: app/components/events/view/publish-bar.hbs:8:6
 #: app/components/forms/events/view/videoroom-form.js:59:24
@@ -238,15 +238,15 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-event.hbs:7:22
 #: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:5:22
 msgid "View"
-msgstr ""
+msgstr "Xem"
 
 #: app/components/events/view/publish-bar.hbs:10:6
 msgid "Preview"
-msgstr ""
+msgstr "Xem trước"
 
 #: app/components/events/view/publish-bar.hbs:19:6
 msgid "Unpublish"
-msgstr ""
+msgstr "Không xuất bản"
 
 #: app/components/events/view/publish-bar.hbs:22:6
 msgid "Publish"
@@ -254,58 +254,60 @@ msgstr "Xuất bản"
 
 #: app/components/events/view/publish-bar.ts:58:26
 msgid "Your event must have tickets before it can be published."
-msgstr ""
+msgstr "Sự kiện của bạn phải có vé trước khi có thể xuất bản."
 
 #: app/components/events/view/publish-bar.ts:64:26
 #: app/mixins/event-wizard.js:294:22
 msgid "You need to connect to your Stripe account, if you choose Stripe as a payment gateway."
 msgstr ""
+"Bạn cần kết nối với tài khoản Stripe của mình, nếu bạn chọn Stripe làm cổng "
+"thanh toán."
 
 #: app/components/events/view/publish-bar.ts:77:28
 msgid "Your event has been published successfully."
-msgstr ""
+msgstr "Sự kiện của bạn đã được xuất bản thành công."
 
 #: app/components/events/view/publish-bar.ts:82:28
 msgid "Your event has been unpublished."
-msgstr ""
+msgstr "Sự kiện của bạn đã bị hủy đăng."
 
 #: app/components/forms/admin/content/pages-form.js:17:23
 #: app/components/forms/events/view/videoroom-form.js:91:23
 #: app/components/forms/session-speaker-form.js:164:23
 #: app/components/modals/add-room-modal.js:46:23
 msgid "Please enter a name"
-msgstr ""
+msgstr "Vui lòng nhập tên"
 
 #: app/components/forms/admin/content/pages-form.js:26:23
 #: app/components/forms/session-speaker-form.js:33:23
 msgid "Please enter a title"
-msgstr ""
+msgstr "Vui lòng nhập tiêu đề"
 
 #: app/components/forms/admin/content/pages-form.js:35:23
 msgid "Please enter the path"
-msgstr ""
+msgstr "Vui lòng nhập đường dẫn"
 
 #: app/components/forms/admin/content/pages-form.js:40:23
 msgid "Path should not contain leading slash."
-msgstr ""
+msgstr "Đường dẫn không nên chứa dấu gạch chéo hàng đầu."
 
 #: app/components/forms/admin/content/pages-form.js:44:23
 msgid "Path should not contain whitespaces."
-msgstr ""
+msgstr "Đường dẫn không nên chứa khoảng trắng."
 
 #: app/components/forms/admin/content/pages-form.js:53:23
 msgid "Please select a place"
-msgstr ""
+msgstr "Vui lòng chọn địa điểm"
 
 #: app/components/forms/admin/content/pages-form.js:62:23
 #: app/components/forms/session-speaker-form.js:234:23
 msgid "Please enter a position"
-msgstr ""
+msgstr "Vui lòng nhập vị trí"
 
 #: app/components/forms/admin/content/pages-form.js:71:23
 #: app/components/forms/session-speaker-form.js:105:23
 msgid "Please enter a language"
-msgstr ""
+msgstr "Vui lòng nhập ngôn ngữ"
 
 #: app/components/forms/admin/content/social-links-form.js:20:23
 #: app/components/forms/events/view/videoroom-form.js:104:23
@@ -319,21 +321,21 @@ msgstr ""
 #: app/components/forms/session-speaker-form.js:356:23
 #: app/components/forms/wizard/other-details-step.js:65:23
 msgid "Please enter a valid url"
-msgstr ""
+msgstr "Vui lòng nhập url hợp lệ"
 
 #: app/components/forms/admin/content/translation-form.js:31:23
 msgid "Please select a language"
-msgstr ""
+msgstr "Vui lòng chọn ngôn ngữ"
 
 #: app/components/forms/admin/settings/billing.js:22:23
 #: app/components/forms/session-speaker-form.js:317:23
 #: app/components/forms/session-speaker-form.js:331:23
 msgid "Please enter a valid mobile number."
-msgstr ""
+msgstr "Vui lòng nhập số điện thoại di động hợp lệ."
 
 #: app/components/forms/admin/settings/billing.js:31:23
 msgid "Please enter the email"
-msgstr ""
+msgstr "Vui lòng nhập email"
 
 #: app/components/forms/admin/settings/billing.js:44:23
 msgid "Please enter the billing paypal email invoice money will be transferred to"
