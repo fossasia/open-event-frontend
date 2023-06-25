@@ -151,9 +151,11 @@
         </LinkTo>
     </h4>
     {{#each this.activeSession as |session|}}
+    {{#if this.router.currentRoute.queryParams.sessionType}}
     <span class="p-1 mb-1 rounded-default">
         {{session}}
     </span>
+    {{/if}}
     {{/each}}
     <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">
@@ -176,9 +178,11 @@
         </LinkTo>
     </h4>
     {{#each this.activeSessionLevel as |level|}}
+    {{#if this.router.currentRoute.queryParams.level}}
     <span class="p-1 mb-1 rounded-default">
         {{level}}
     </span>
+    {{/if}}
     {{/each}}
     <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
         <div class="default">

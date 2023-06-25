@@ -69,6 +69,8 @@ export default class SessionsController extends Controller {
     activeEls.forEach(el => {
       el.classList.remove('active');
     });
+    document.querySelectorAll('input[type="checkbox"]')
+    .forEach(el => el.checked = false);
   }
 
   async loadDates() {
