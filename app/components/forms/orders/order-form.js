@@ -16,6 +16,7 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { years } from 'open-event-frontend/utils/dictionary/year-list';
 import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
 import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
+import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -245,6 +246,14 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.l10n.t('Please enter your home wiki.')
+        }
+      ]
+    };
+    const wikiScholarshipValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter your wiki scholarship.')
         }
       ]
     };
@@ -601,6 +610,7 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`billingAddress_required_${  index}`] = billingAddressValidation;
       validationRules.fields[`homeAddress_required_${  index}`] = homeAddressValidation;
       validationRules.fields[`homeWiki_required_${  index}`] = homeWikiValidation;
+      validationRules.fields[`wikiScholarship_required_${  index}`] = wikiScholarshipValidation;
       validationRules.fields[`shippingAddress_required_${  index}`] = shippingAddressValidation;
       validationRules.fields[`company_required_${  index}`] = companyValidation;
       validationRules.fields[`workAddress_required_${  index}`] = workAddressValidation;
@@ -662,6 +672,7 @@ export default Component.extend(FormMixin, {
   years         : orderBy(years, 'year'),
   languageForms : orderBy(languageForms, 'name'),
   homeWikis     : orderBy(homeWikis, 'item'),
+  wikiScholarship: orderBy(wikiScholarship, 'position' ),
 
   actions: {
     submit(data) {
