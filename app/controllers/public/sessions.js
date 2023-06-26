@@ -70,7 +70,7 @@ export default class SessionsController extends Controller {
       el.classList.remove('active');
     });
     document.querySelectorAll('input[type="checkbox"]')
-    .forEach(el => el.checked = false);
+      .forEach(el => el.checked = false);
   }
 
   async loadDates() {
