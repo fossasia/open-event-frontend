@@ -5,21 +5,21 @@ import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import { tracked } from '@glimmer/tracking';
 import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
-import Ember from 'ember';
+import { A } from '@ember/array';
 
-interface CustomForm { 
-  fieldIdentifier: string, 
-  name: string, 
-  type: string, 
-  min: number, 
-  max: number, 
+interface CustomForm {
+  fieldIdentifier: string,
+  name: string,
+  type: string,
+  min: number,
+  max: number,
   formIdentifier: string,
   translations: Translate[],
   mainLanguage: string
 }
 
-interface SubForm { 
-  ignoreLanguages:string[], 
+interface SubForm {
+  ignoreLanguages:string[],
   name: string,
   languages: object,
   selectedLang: string,
@@ -76,13 +76,13 @@ export default class CustomFormInput extends Component<Args> {
   max = 10;
 
   @tracked
-  mainLanguage:string = 'en-US'
+  mainLanguage = 'en-US'
 
   @tracked
   selectedLanguage:string[] = [this.mainLanguage]
 
   @tracked
-  subForm:SubForm[] = Ember.A([]);
+  subForm:SubForm[] = A([]);
 
   translations:Translate[] = [];
 
@@ -97,14 +97,14 @@ export default class CustomFormInput extends Component<Args> {
       this.mainLanguage = this.args.field.mainLanguage;
       this.translations = this.args.field.translations;
       this.translations?.forEach((trans: Translate) => {
-        const {name, code, language_code, form_id, isDeleted, id} = trans;
+        const { name, code, language_code, form_id, isDeleted, id } = trans;
         this.subForm.pushObject({
           id,
-          form_id: form_id,
+          form_id,
           name,
-          languages: languageForms,
-          ignoreLanguages: this.selectedLanguage,
-          selectedLang: code || language_code,
+          languages       : languageForms,
+          ignoreLanguages : this.selectedLanguage,
+          selectedLang    : code || language_code,
           isDeleted
         })
       })
@@ -127,8 +127,8 @@ export default class CustomFormInput extends Component<Args> {
   }
 
   get languageList(): object[] {
-    return languageForms.filter(language => 
-      language.code == this.mainLanguage || !this.selectedLanguage.includes(language.code)
+    return languageForms.filter(language =>
+      language.code === this.mainLanguage || !this.selectedLanguage.includes(language.code)
     )
   }
 
@@ -136,13 +136,13 @@ export default class CustomFormInput extends Component<Args> {
   get translationsList(): Translate[] {
     const translations: Translate[] = []
     this.subForm.forEach(field => {
-      const {id,form_id, name,isDeleted} = field
+      const { id, form_id, name, isDeleted } = field
       translations.pushObject({
         id,
         form_id,
         name,
-        code: field.selectedLang,
-        language_code:field.selectedLang,
+        code          : field.selectedLang,
+        language_code : field.selectedLang,
         isDeleted
       })
     })
@@ -192,35 +192,34 @@ export default class CustomFormInput extends Component<Args> {
   }
 
   @action
-  addTranslation():void{
+  addTranslation():void {
     const obj: SubForm = {
-      name: '',
-      languages: languageForms,
-      ignoreLanguages: this.selectedLanguage,
-      selectedLang: '',
-      isDeleted: false,
-      form_id: '',
-      id: ''
+      name            : '',
+      languages       : languageForms,
+      ignoreLanguages : this.selectedLanguage,
+      selectedLang    : '',
+      isDeleted       : false,
+      form_id         : '',
+      id              : ''
     }
     this.subForm.pushObject(obj);
   }
 
-  @action 
-  onMainLanguageChange(code:string):void{
+  @action
+  onMainLanguageChange(code:string):void {
     this.onSelectedLanguage(this.mainLanguage, code);
     this.mainLanguage = code;
   }
 
   @action
-  onChildChangeLanguage(form: SubForm, new_code: string){
+  onChildChangeLanguage(form: SubForm, new_code: string) {
     this.onSelectedLanguage(form.selectedLang, new_code)
     form.selectedLang = new_code;
   }
 
 
   @action
-  onSelectedLanguage(old_code:string, new_code: string):void{
-    console.log(old_code);
+  onSelectedLanguage(old_code:string, new_code: string):void {
     if (old_code) {
       this.selectedLanguage.removeObject(old_code)
     }
@@ -228,12 +227,12 @@ export default class CustomFormInput extends Component<Args> {
   }
 
   @computed('subForm.@each.isDeleted')
-  get disableAddTranslation(){
-    return this.subForm.filter(item => !item.isDeleted).length == languageForms.length - 1
+  get disableAddTranslation() {
+    return this.subForm.filter(item => !item.isDeleted).length === languageForms.length - 1;
   }
 
   @computed('subForm.@each.isDeleted')
-  get visibleForm(){
+  get visibleForm() {
     return this.subForm.filter(item => !item.isDeleted);
   }
 }

@@ -621,6 +621,8 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
       validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
       validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
+      validationRules.fields[`is_consent_form_field_required_${  index}`] = isConsentFormFieldValidation;
+      validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
         validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
           rules: [
@@ -639,26 +641,26 @@ export default Component.extend(FormMixin, {
   allFields: computed('fields', function() {
     const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
     const current_locale = this.cookies.read('current_locale');
-    
-    const customFields =  orderBy(this.fields.toArray()?.filter(field => {
-      const {isFixed, main_language, translations} = field
 
-      if((main_language && main_language.split('-')[0] == current_locale) || !field.translations || !field.translations.length){
-        field.transName = field.name
-      } else if (field.translations?.length){
-        
-        const transName = field.translations.filter(trans => trans.language_code.split('-')[0] == current_locale)
-        
-        if(transName.length){
-          field.transName = transName[0].name
-        } else{
-          field.transName = field.name
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => {
+      const { isFixed, main_language } = field;
+
+      if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
+        field.transName = field.name;
+      } else if (field.translations?.length) {
+
+        const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
+
+        if (transName.length) {
+          field.transName = transName[0].name;
+        } else {
+          field.transName = field.name;
         }
       } else {
-        field.transName = field.name
+        field.transName = field.name;
       }
 
-      return !isFixed
+      return !isFixed;
     }), ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
@@ -670,12 +672,12 @@ export default Component.extend(FormMixin, {
   languageForms : orderBy(languageForms, 'item'),
   homeWikis     : orderBy(homeWikis, 'item'),
 
-  currentLocale: computed('cookies.current_locale', function(){
-    return this.cookies.read('current_locale')
+  currentLocale: computed('cookies.current_locale', function() {
+    return this.cookies.read('current_locale');
   }),
 
-  getData: function(){
-    return "hello";
+  getData() {
+    return 'hello';
   },
 
   actions: {
@@ -684,7 +686,7 @@ export default Component.extend(FormMixin, {
         const currentUser = this.data.user;
         currentUser.set('firstName', this.buyerFirstName);
         currentUser.set('lastName', this.buyerLastName);
-      this.sendAction('save', data);
+        this.sendAction('save', data);
       });
     },
     modifyHolder(holder) {

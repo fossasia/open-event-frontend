@@ -16,7 +16,7 @@ export default class CustomFormInputTranslation extends Component<Args> {
   get languageList(): object[] {
     const { languages, ignoreLanguages, selectedLang } = this.args.data;
     return languages.filter((item: SubForm) =>
-      item.code == selectedLang || !ignoreLanguages.includes(item.code)
+      item.code === selectedLang || !ignoreLanguages.includes(item.code)
     )
   }
 
