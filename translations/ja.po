@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: v1\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-06-26 10:41+0000\n"
+"PO-Revision-Date: 2023-06-26 18:38+0000\n"
 "Last-Translator: Hong Phuc Dang <hp@fossasia.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/open-event/"
 "frontend/ja/>\n"
@@ -513,7 +513,7 @@ msgstr "注文の有効期限を入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:141:23
 msgid "Please enter the reCAPTCHA secret key"
-msgstr "reCAPTCHA秘密鍵を入力してください"
+msgstr "reCAPTCHA 秘密キーを入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:151:23
 msgid "Please enter the from email"
@@ -521,23 +521,23 @@ msgstr "メールから入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:165:23
 msgid "Please enter name for from email"
-msgstr "メールからの名前を入力してください"
+msgstr "メールから名前を入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:175:23
 msgid "Please enter the Frontend Url"
-msgstr "フロントエンドURLを入力してください"
+msgstr "フロントエンド URL を入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:180:23
 msgid "Please enter a valid URL for Frontend"
-msgstr "フロントエンドの有効なURLを入力してください"
+msgstr "フロントエンドの有効な URL を入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:190:23
 msgid "Please enter the SMTP host"
-msgstr "SMTPホストを入力してください"
+msgstr "SMTP ホストを入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:200:23
 msgid "Please enter the SMTP port number"
-msgstr "SMTPポート番号を入力してください"
+msgstr "SMTP ポート番号を入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:204:23
 msgid "Please enter a valid port number"
@@ -545,19 +545,19 @@ msgstr "有効なポート番号を入力してください"
 
 #: app/components/forms/admin/settings/system-form.js:214:23
 msgid "Please enter the token for Sendgrid"
-msgstr "Sendgridのトークンを入力してください"
+msgstr "送信グリッドのトークンを入力してください"
 
 #: app/components/forms/admin/settings/system/mail-settings/test-email-form.js:19:23
 msgid "Please enter the recipient E-mail"
-msgstr "受信者のメールアドレスを入力してください"
+msgstr "受信者の電子メールを入力してください"
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:47:24
 msgid "Existing items need to be completed before new items can be added."
-msgstr "新しいアイテムを追加する前に、既存のアイテムを完了する必要があります。"
+msgstr "新しい項目を追加するには、既存の項目を完了する必要があります。"
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:64:28
 msgid "Fee setting deleted successfully"
-msgstr "料金設定が正常に削除されました"
+msgstr "手数料設定が正常に削除されました"
 
 #: app/components/forms/admin/settings/ticket-fees-form.js:70:26
 #: app/components/forms/events/view/videoroom-form.js:280:49
@@ -704,15 +704,15 @@ msgstr "ドキュメントが正常に更新されました"
 
 #: app/components/forms/events/view/create-access-code.js:25:23
 msgid "Please enter access code"
-msgstr "アクセスコードを入力してください"
+msgstr "アクセス コードを入力してください"
 
 #: app/components/forms/events/view/create-access-code.js:38:23
 msgid "Please enter number of tickets"
-msgstr "チケット数を入力してください"
+msgstr "チケットの枚数を入力してください"
 
 #: app/components/forms/events/view/create-access-code.js:42:23
 msgid "Please enter proper number of tickets"
-msgstr "適切な数のチケットを入力してください"
+msgstr "適切な枚数のチケットを入力してください"
 
 #: app/components/forms/events/view/create-access-code.js:52:23
 #: app/components/forms/events/view/create-access-code.js:66:23
@@ -3415,7 +3415,7 @@ msgstr "オンラインおよび対面イベント"
 
 #: app/controllers/public.js:79:13 app/templates/public/index.hbs:205:24
 msgid "Location to be announced"
-msgstr "発表場所"
+msgstr "発表される場所"
 
 #: app/controllers/public.js:102:34
 msgid "Please login to follow a group."
@@ -5325,7 +5325,7 @@ msgstr "閲覧禁止"
 
 #: app/templates/components/errors/forbidden-error.hbs:4:2
 msgid "Oops, you don't have the permission"
-msgstr "おっと、あなたには許可がありません"
+msgstr "おっと、あなたは許可を持っていません"
 
 #: app/templates/components/errors/forbidden-error.hbs:5:2
 msgid "to access this page"
@@ -6334,7 +6334,7 @@ msgstr "API サーバー"
 
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:15:4
 msgid "Web App Generator"
-msgstr "Webアプリジェネレーター"
+msgstr "ウェブアプリジェネレータ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:4:6
 msgid "Enable Stripe"
@@ -6363,20 +6363,20 @@ msgstr "ストライプ統合モード"
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:289:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:385:15
 msgid "Test mode - Used during development and testing"
-msgstr "テストモード-開発およびテスト中に使用されます"
+msgstr "テストモード - 開発およびテスト中に使用"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:36:10
 msgid "Client Test ID"
-msgstr "クライアントテストID"
+msgstr "クライアント テスト ID"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:40:21
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:206:21
 msgid "This client id will be used for testing mode"
-msgstr "このクライアントIDはテストモードに使用されます"
+msgstr "このクライアント ID は、テスト モードに使用されます。"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:49:10
 msgid "Secret Test Key"
-msgstr "シークレットテストキー"
+msgstr "シークレット テスト キー"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:53:21
 msgid "This secret key will be used for testing mode"
@@ -6384,11 +6384,11 @@ msgstr "この秘密鍵はテストモードに使用されます"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:62:10
 msgid "Publishable Test Key"
-msgstr "公開可能なテストキー"
+msgstr "発行可能なテスト キー"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:66:21
 msgid "This publishable key will be used for testing mode"
-msgstr "この公開可能なキーは、テストモードに使用されます"
+msgstr "この公開可能なキーは、テスト モードに使用されます"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:77:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:229:15
@@ -6407,7 +6407,7 @@ msgstr "Client ID"
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:90:21
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:242:21
 msgid "This client id will be used during live (production) mode"
-msgstr "このクライアントIDは、ライブ（本番）モードで使用されます"
+msgstr "このクライアント ID は、ライブ (実稼働) モードで使用されます。"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:99:10
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:148:8
@@ -6416,7 +6416,7 @@ msgstr "秘密キー"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:103:21
 msgid "This Secret Key will be used during live (production) mode"
-msgstr "この秘密鍵は、ライブ（本番）モードで使用されます"
+msgstr "このシークレットキーは、ライブ(本番)モードで使用されます"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:112:10
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:157:8
@@ -6425,7 +6425,7 @@ msgstr "公開可能なキー"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:116:21
 msgid "This Publishable Key will be used during live (production) mode"
-msgstr "この公開可能なキーは、ライブ（本番）モードで使用されます"
+msgstr "この公開可能なキーは、ライブ (実稼働) モードで使用されます。"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:128:6
 msgid "Enable AliPay"
@@ -8952,15 +8952,15 @@ msgstr "住所を入力"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:3:48
 msgid "Bold (Ctrl+B)"
-msgstr "太字 (Ctrl+B)"
+msgstr "太字（Ctrl + B）"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:4:48
 msgid "Italic (Ctrl+I)"
-msgstr "斜体 (Ctrl+I)"
+msgstr "イタリック（Ctrl + I）"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:5:48
 msgid "Underline (Ctrl+U)"
-msgstr "下線 (Ctrl+ U)"
+msgstr "下線（Ctrl + U）"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:8:48
 msgid "Numbered List"
@@ -8972,11 +8972,11 @@ msgstr "箇条書きリスト(_T)"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:12:48
 msgid "Undo (Ctrl+Z)"
-msgstr "元に戻す (Ctrl+ Z)"
+msgstr "元に戻す（Ctrl + Z）"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:13:48
 msgid "Redo (Ctrl+Y)"
-msgstr "やり直し (Ctrl+ Y)"
+msgstr "やり直し（Ctrl + Y）"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:14:48
 msgid "Line Break"
@@ -8998,7 +8998,7 @@ msgstr "最大"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:45:10
 msgid "This is a free Ticket"
-msgstr "これは無料のチケットです"
+msgstr "これは無料チケットです"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:89:40
 msgid "Ticket Description"
@@ -9006,7 +9006,7 @@ msgstr "チケットの説明"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:94:22
 msgid "This description would be available to the attendees when ordering tickets."
-msgstr "この説明は、チケットを注文する際に出席者が利用できます。"
+msgstr "この説明は、チケットを注文するときに参加者が利用できます。"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:102:43
 msgid "Display Ticket description on Public Events page"
@@ -9018,13 +9018,12 @@ msgstr "公開のイベント ページからチケットを非表示にしま�
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:113:37
 msgid "To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code."
-msgstr ""
-"非表示のチケットを販売するには、[イベント ダッシュボード] > [チケット] "
-"タブ>アクセス コードでアクセス コードを設定する必要があります。"
+msgstr "非表示のチケットを販売するには、[イベントダッシュボード]> [チケット]タブ> "
+"[アクセスコード]でアクセスコードを設定する必要があります。"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:125:14
 msgid "Tickets Absorb Fees"
-msgstr "チケットは手数料を吸収する"
+msgstr "チケットは料金を吸収します"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:126:39
 msgid "Platform fees will always be included in your ticket price. You will receive an invoice each month."
@@ -9083,7 +9082,7 @@ msgstr "注文ごとに許可される登録数"
 
 #: app/templates/components/widgets/twitter-timeline.hbs:4:4
 msgid "Tweets by"
-msgstr "ツイート"
+msgstr "によるツイート"
 
 #: app/templates/create.hbs:4:27
 msgid "Creating"
@@ -9097,11 +9096,11 @@ msgstr "請求書をダウンロード"
 
 #: app/templates/event-invoice/review.hbs:3:26
 msgid "Review Invoice"
-msgstr "請求書の確認"
+msgstr "請求書を確認する"
 
 #: app/templates/event-invoice/review.hbs:24:24
 msgid "Total Invoice Amount"
-msgstr "合計請求金額"
+msgstr "請求書の合計金額"
 
 #: app/templates/events/view.hbs:44:10
 msgid "Documents"
@@ -9185,8 +9184,8 @@ msgstr "セッションを作成"
 #: app/templates/events/view/sessions.hbs:33:30
 #: app/templates/events/view/speakers.hbs:52:30
 msgid "In order to use this feature please activate \"Sessions and Speakers\" for the event."
-msgstr "この機能を使用するには、イベントのセッションとスピーカーを有効にしてください"
-"。"
+msgstr "この機能を使用するには、イベントの「セッションとスピーカー」をアクティブにし"
+"てください。"
 
 #: app/templates/events/view/sessions.hbs:34:30
 #: app/templates/events/view/speakers.hbs:53:30
@@ -9204,7 +9203,7 @@ msgstr "所有権の譲渡"
 
 #: app/templates/events/view/settings/options.hbs:14:10
 msgid "You'll lose all the owner rights once the other user accepts the invitation for ownership."
-msgstr "他のユーザーが所有権の招待を受け入れると、所有者の権利はすべて失われます。"
+msgstr "他のユーザーが所有権の招待を受け入れると、すべての所有権が失われます。"
 
 #: app/templates/events/view/settings/options.hbs:20:10
 msgid "Transfer Event"
@@ -9242,7 +9241,7 @@ msgstr "アクセス コード"
 
 #: app/templates/events/view/tickets.hbs:21:10
 msgid "Add order"
-msgstr "注文の追加"
+msgstr "注文を追加"
 
 #: app/templates/events/view/tickets/access-codes.hbs:11:10
 msgid "Create an access code"
@@ -9254,7 +9253,7 @@ msgstr "新しいアクセスコードを作成する"
 
 #: app/templates/events/view/tickets/access-codes/edit.hbs:3:33
 msgid "Edit an access code"
-msgstr "アクセス コードの編集"
+msgstr "アクセスコードを編集する"
 
 #: app/templates/events/view/tickets/attendees.hbs:5:8
 msgid "View Attendees"
@@ -9278,7 +9277,7 @@ msgstr "CSV"
 #: app/templates/events/view/tickets/attendees.hbs:29:14
 #: app/templates/events/view/tickets/orders.hbs:29:14
 msgid "Showing all the records"
-msgstr "すべてのレコードを表示する"
+msgstr "すべてのレコードを表示しています"
 
 #: app/templates/events/view/tickets/attendees.hbs:35:16
 #: app/templates/events/view/tickets/orders.hbs:35:16
@@ -9301,15 +9300,15 @@ msgstr "割引を作成"
 
 #: app/templates/events/view/tickets/discount-codes/create.hbs:3:33
 msgid "Create a new Discount Code"
-msgstr "新しい割引コードの作成"
+msgstr "新しい割引コードを作成する"
 
 #: app/templates/events/view/tickets/discount-codes/edit.hbs:3:33
 msgid "Edit a Discount Code"
-msgstr "割引コードの編集"
+msgstr "割引コードを編集する"
 
 #: app/templates/events/view/tickets/index.hbs:3:4
 msgid "Total Sold Orders"
-msgstr "販売済み注文合計"
+msgstr "総販売注文数"
 
 #: app/templates/events/view/tickets/index.hbs:8:90
 msgid "Tickets sold"
@@ -9402,7 +9401,7 @@ msgstr "イベント名の入力"
 
 #: app/templates/explore/events.hbs:73:38
 msgid "No events found for selected filters"
-msgstr "選択したフィルタにイベントが見つかりません"
+msgstr "選択したフィルターのイベントが見つかりません"
 
 #: app/templates/explore/groups.hbs:10:25
 msgid "Enter Group Name"
@@ -9418,15 +9417,15 @@ msgstr "イベントのグループが見つかりません。"
 
 #: app/templates/index.hbs:3:34
 msgid "Featured Events"
-msgstr "おすすめイベント"
+msgstr "注目のイベント"
 
 #: app/templates/index.hbs:21:34
 msgid "No Upcoming Events Found"
-msgstr "今後のイベントが見つかりません"
+msgstr "今後のイベントは見つかりませんでした"
 
 #: app/templates/index.hbs:34:85
 msgid "Show more calls for speakers"
-msgstr "スピーカーの通話を増やします"
+msgstr "スピーカーの呼び出しをもっと表示する"
 
 #: app/templates/index.hbs:40:34
 msgid "Popular Groups"
@@ -9455,7 +9454,7 @@ msgstr "キャンセルされた注文"
 
 #: app/templates/my-tickets/upcoming.hbs:11:8
 msgid "Open Orders"
-msgstr "オープン注文"
+msgstr "オープンオーダー"
 
 #: app/templates/notifications/all.hbs:11:96
 msgid "Mark all as read"
@@ -9467,7 +9466,7 @@ msgstr "既読にする"
 
 #: app/templates/notifications/all.hbs:54:36
 msgid "No Unread Notifications"
-msgstr "未読通知なし"
+msgstr "未読の通知はありません"
 
 #: app/templates/notifications/all.hbs:56:36
 msgid "No Notifications"
@@ -9520,15 +9519,15 @@ msgstr "オンサイト"
 #: app/templates/orders/pending.hbs:180:12
 #: app/templates/orders/pending.hbs:185:14
 msgid "Pay Now"
-msgstr "今すぐ支払う"
+msgstr "今払う"
 
 #: app/templates/orders/pending.hbs:205:80
 msgid "Pay with PayTM"
-msgstr "支払いは、支払いのTMで"
+msgstr "PayTMで支払う"
 
 #: app/templates/orders/pending.hbs:209:70
 msgid "Pay with AliPay"
-msgstr "アリペイで支払う"
+msgstr "AliPayで支払う"
 
 #: app/templates/orders/view.hbs:48:12
 msgid "All Tickets"
@@ -9540,7 +9539,7 @@ msgstr "イベントオーガナイザーアプリを開く"
 
 #: app/templates/organizer-app.hbs:41:72
 msgid "Organizer Android App"
-msgstr "オーガナイザーアンドロイドアプリ"
+msgstr "オーガナイザーAndroidアプリ"
 
 #: app/templates/organizer-app.hbs:46:10
 msgid "Make your event success with Orga App"
@@ -9548,12 +9547,12 @@ msgstr "Orgaアプリでイベントを成功させる"
 
 #: app/templates/organizer-app.hbs:51:12
 msgid "Hassle-free checkin"
-msgstr "手間のかみのないチェックイン"
+msgstr "手間のかからないチェックイン"
 
 #: app/templates/organizer-app.hbs:54:12
 msgid "Scan the QR Code and Check-in/Check-out Attendees and Ticket Holder on the go."
-msgstr "QRコード、チェックイン/チェックアウトの参加者とチケットホルダーを外出先でスキ"
-"ャンします。"
+msgstr "外出先でQRコードとチェックイン/チェックアウトの参加者とチケット所有者をスキャ"
+"ンします。"
 
 #: app/templates/organizer-app.hbs:59:34
 msgid "Easy Communication"
@@ -9561,15 +9560,15 @@ msgstr "簡単なコミュニケーション"
 
 #: app/templates/organizer-app.hbs:61:12
 msgid "Sync your app data with Organizer Server on the go."
-msgstr "外出先でオーガナイザーサーバーとアプリデータを同期します。"
+msgstr "外出先でアプリデータをOrganizerServerと同期します。"
 
 #: app/templates/organizer-app.hbs:67:12
 msgid "Manage Efficiently"
-msgstr "効率的な管理"
+msgstr "効率的に管理する"
 
 #: app/templates/organizer-app.hbs:70:12
 msgid "Get Order, Event, Sales Statistics with Orga App on the go."
-msgstr "外出先でオルガアプリで注文、イベント、販売統計を取得します。"
+msgstr "外出先でOrgaアプリを使用して注文、イベント、販売統計を取得します。"
 
 #: app/templates/organizer-app.hbs:76:12
 msgid "Ticket and Event"
@@ -9577,8 +9576,7 @@ msgstr "チケットとイベント"
 
 #: app/templates/organizer-app.hbs:79:12
 msgid "Manage and Create new Tickets or Events with the power of your touch on your phone"
-msgstr "管理し、お使いの携帯電話にあなたのタッチの力で新しいチケットやイベントを作成"
-"します"
+msgstr "携帯電話に触れるだけで、新しいチケットやイベントを管理および作成できます"
 
 #: app/templates/organizer-app.hbs:85:12
 msgid "Communication on the Go"
@@ -9586,12 +9584,12 @@ msgstr "外出先でのコミュニケーション"
 
 #: app/templates/organizer-app.hbs:88:12
 msgid "Get Push Notification about new attendees or Ticket Holders on your phone."
-msgstr "お使いの携帯電話に新しい出席者やチケットホルダーについてのプッシュ通知を取得"
+msgstr "お使いの携帯電話で新しい参加者またはチケット所有者に関するプッシュ通知を取得"
 "します。"
 
 #: app/templates/organizer-app.hbs:99:2
 msgid "Please Check-Out our Attendee App"
-msgstr "私たちの参加者アプリをチェックアウトしてください"
+msgstr "参加者アプリをチェックアウトしてください"
 
 #: app/templates/pricing.hbs:17:8
 msgid "Sign up for our Early Access plan!"
@@ -9775,7 +9773,7 @@ msgstr "グループのフォローを解除"
 
 #: app/templates/public.hbs:94:122
 msgid "Clear Track Filter"
-msgstr "トラックフィルタのクリア"
+msgstr "クリアトラックフィルター"
 
 #: app/templates/public.hbs:108:16
 msgid "Rooms"
@@ -9783,7 +9781,7 @@ msgstr "部屋数"
 
 #: app/templates/public.hbs:109:121
 msgid "Clear Room Filter"
-msgstr "部屋フィルタのクリア"
+msgstr "クリアルームフィルター"
 
 #: app/templates/public.hbs:122:164
 msgid "Clear Session Type Filter"
@@ -9836,11 +9834,11 @@ msgstr "今すぐ登録"
 
 #: app/templates/public/index.hbs:157:77
 msgid "To place a ticket order:"
-msgstr "チケット注文を行うには:"
+msgstr "チケットを注文するには："
 
 #: app/templates/public/index.hbs:174:6
 msgid "Supported By"
-msgstr "サポート対象"
+msgstr "による支援"
 
 #: app/templates/public/index.hbs:186:6
 msgid "Organized by"
@@ -9880,7 +9878,7 @@ msgstr "タイトル別"
 
 #: app/templates/public/sessions.hbs:57:125
 msgid "By Time"
-msgstr "時間別"
+msgstr "時間によって"
 
 #: app/templates/public/sessions.hbs:58:132
 msgid "By Popularity"
@@ -10018,948 +10016,948 @@ msgstr "ベナン共和国"
 
 #: app/utils/dictionary/demography.ts:114:11
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "サン・バルテルミー"
 
 #: app/utils/dictionary/demography.ts:118:11
 msgid "Bermuda"
-msgstr ""
+msgstr "バミューダ諸島"
 
 #: app/utils/dictionary/demography.ts:122:11
 msgid "Brunei"
-msgstr ""
+msgstr "ブルネイ"
 
 #: app/utils/dictionary/demography.ts:126:11
 msgid "Bolivia"
-msgstr ""
+msgstr "ボリビア"
 
 #: app/utils/dictionary/demography.ts:130:11
 msgid "Bonaire"
-msgstr ""
+msgstr "ボネール"
 
 #: app/utils/dictionary/demography.ts:134:11
 msgid "Brazil"
-msgstr ""
+msgstr "ブラジル"
 
 #: app/utils/dictionary/demography.ts:138:11
 msgid "Bahamas"
-msgstr ""
+msgstr "バハマ"
 
 #: app/utils/dictionary/demography.ts:142:11
 msgid "Bhutan"
-msgstr ""
+msgstr "ブータン王国"
 
 #: app/utils/dictionary/demography.ts:146:11
 msgid "Bouvet Island"
-msgstr ""
+msgstr "ブーベ島"
 
 #: app/utils/dictionary/demography.ts:150:11
 msgid "Botswana"
-msgstr ""
+msgstr "ボツワナ"
 
 #: app/utils/dictionary/demography.ts:154:11
 msgid "Belarus"
-msgstr ""
+msgstr "ベラルーシ"
 
 #: app/utils/dictionary/demography.ts:158:11
 msgid "Belize"
-msgstr ""
+msgstr "ベリーズ"
 
 #: app/utils/dictionary/demography.ts:162:11
 msgid "Canada"
-msgstr ""
+msgstr "カナダ"
 
 #: app/utils/dictionary/demography.ts:166:11
 msgid "Cocos [Keeling] Islands"
-msgstr ""
+msgstr "ココス（キーリング）諸島"
 
 #: app/utils/dictionary/demography.ts:170:11
 msgid "Democratic Republic Of Congo"
-msgstr ""
+msgstr "コンゴ民主共和国"
 
 #: app/utils/dictionary/demography.ts:174:11
 msgid "Central African Republic"
-msgstr ""
+msgstr "中央アフリカ共和国"
 
 #: app/utils/dictionary/demography.ts:178:11
 msgid "Republic Of the Congo"
-msgstr ""
+msgstr "コンゴ共和国"
 
 #: app/utils/dictionary/demography.ts:182:11
 msgid "Switzerland"
-msgstr ""
+msgstr "スイス"
 
 #: app/utils/dictionary/demography.ts:186:11
 msgid "Ivory Coast"
-msgstr ""
+msgstr "コートジボワール"
 
 #: app/utils/dictionary/demography.ts:190:11
 msgid "Cook Islands"
-msgstr ""
+msgstr "クック諸島"
 
 #: app/utils/dictionary/demography.ts:194:11
 msgid "Chile"
-msgstr ""
+msgstr "チリ"
 
 #: app/utils/dictionary/demography.ts:198:11
 msgid "Cameroon"
-msgstr ""
+msgstr "カメルーン"
 
 #: app/utils/dictionary/demography.ts:202:11
 msgid "China"
-msgstr ""
+msgstr "中国"
 
 #: app/utils/dictionary/demography.ts:206:11
 msgid "Colombia"
-msgstr ""
+msgstr "コロンビア"
 
 #: app/utils/dictionary/demography.ts:210:11
 msgid "Costa Rica"
-msgstr ""
+msgstr "コスタリカ"
 
 #: app/utils/dictionary/demography.ts:214:11
 msgid "Cuba"
-msgstr ""
+msgstr "キューバ"
 
 #: app/utils/dictionary/demography.ts:218:11
 msgid "Cape Verde"
-msgstr ""
+msgstr "カーボベルデ"
 
 #: app/utils/dictionary/demography.ts:222:11
 msgid "Curacao"
-msgstr ""
+msgstr "キュラソー"
 
 #: app/utils/dictionary/demography.ts:226:11
 msgid "Christmas Island"
-msgstr ""
+msgstr "クリスマス島"
 
 #: app/utils/dictionary/demography.ts:230:11
 msgid "Cyprus"
-msgstr ""
+msgstr "キプロス"
 
 #: app/utils/dictionary/demography.ts:234:11
 msgid "Czech Republic"
-msgstr ""
+msgstr "チェコ"
 
 #: app/utils/dictionary/demography.ts:238:11
 msgid "Germany"
-msgstr ""
+msgstr "ドイツ"
 
 #: app/utils/dictionary/demography.ts:242:11
 msgid "Djibouti"
-msgstr ""
+msgstr "ジブチ"
 
 #: app/utils/dictionary/demography.ts:246:11
 msgid "Denmark"
-msgstr ""
+msgstr "デンマーク"
 
 #: app/utils/dictionary/demography.ts:250:11
 msgid "Dominica"
-msgstr ""
+msgstr "ドミニカ国"
 
 #: app/utils/dictionary/demography.ts:254:11
 msgid "Dominican Republic"
-msgstr ""
+msgstr "ドミニカ共和国"
 
 #: app/utils/dictionary/demography.ts:258:11
 msgid "Algeria"
-msgstr ""
+msgstr "アルジェリア"
 
 #: app/utils/dictionary/demography.ts:262:11
 msgid "Ecuador"
-msgstr ""
+msgstr "エクアドル"
 
 #: app/utils/dictionary/demography.ts:266:11
 msgid "Estonia"
-msgstr ""
+msgstr "エストニア"
 
 #: app/utils/dictionary/demography.ts:270:11
 msgid "Egypt"
-msgstr ""
+msgstr "エジプト"
 
 #: app/utils/dictionary/demography.ts:274:11
 msgid "Western Sahara"
-msgstr ""
+msgstr "西サハラ"
 
 #: app/utils/dictionary/demography.ts:278:11
 msgid "Eritrea"
-msgstr ""
+msgstr "エリトリア"
 
 #: app/utils/dictionary/demography.ts:282:11
 msgid "Spain"
-msgstr ""
+msgstr "スペイン"
 
 #: app/utils/dictionary/demography.ts:286:11
 msgid "Ethiopia"
-msgstr ""
+msgstr "エチオピア"
 
 #: app/utils/dictionary/demography.ts:290:11
 msgid "Finland"
-msgstr ""
+msgstr "フィンランド"
 
 #: app/utils/dictionary/demography.ts:294:11
 msgid "Fiji"
-msgstr ""
+msgstr "フィジー"
 
 #: app/utils/dictionary/demography.ts:298:11
 msgid "Falkland Islands"
-msgstr ""
+msgstr "フォークランド諸島"
 
 #: app/utils/dictionary/demography.ts:302:11
 msgid "Micronesia"
-msgstr ""
+msgstr "ミクロネシア"
 
 #: app/utils/dictionary/demography.ts:306:11
 msgid "Faroe Islands"
-msgstr ""
+msgstr "フェロー諸島"
 
 #: app/utils/dictionary/demography.ts:310:11
 msgid "France"
-msgstr ""
+msgstr "フランス"
 
 #: app/utils/dictionary/demography.ts:314:11
 msgid "Gabon"
-msgstr ""
+msgstr "ガボン"
 
 #: app/utils/dictionary/demography.ts:318:11
 msgid "United Kingdom"
-msgstr ""
+msgstr "イギリス"
 
 #: app/utils/dictionary/demography.ts:322:11
 msgid "Grenada"
-msgstr ""
+msgstr "グレナダ"
 
 #: app/utils/dictionary/demography.ts:326:11
 msgid "Georgia"
-msgstr ""
+msgstr "ジョージア州"
 
 #: app/utils/dictionary/demography.ts:330:11
 msgid "French Guiana"
-msgstr ""
+msgstr "フランス領ギアナ"
 
 #: app/utils/dictionary/demography.ts:334:11
 msgid "Guernsey"
-msgstr ""
+msgstr "ガーンジー"
 
 #: app/utils/dictionary/demography.ts:338:11
 msgid "Ghana"
-msgstr ""
+msgstr "ガーナ"
 
 #: app/utils/dictionary/demography.ts:342:11
 msgid "Gibraltar"
-msgstr ""
+msgstr "ジブラルタル"
 
 #: app/utils/dictionary/demography.ts:346:11
 msgid "Greenland"
-msgstr ""
+msgstr "グリーンランド"
 
 #: app/utils/dictionary/demography.ts:350:11
 msgid "Gambia"
-msgstr ""
+msgstr "ガンビア"
 
 #: app/utils/dictionary/demography.ts:354:11
 msgid "Guinea"
-msgstr ""
+msgstr "ギニア"
 
 #: app/utils/dictionary/demography.ts:358:11
 msgid "Guadeloupe"
-msgstr ""
+msgstr "グアドループ"
 
 #: app/utils/dictionary/demography.ts:362:11
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "赤道ギニア共和国"
 
 #: app/utils/dictionary/demography.ts:366:11
 msgid "Greece"
-msgstr ""
+msgstr "ギリシャ"
 
 #: app/utils/dictionary/demography.ts:370:11
 msgid "South Georgia and The South Sandwich Islands"
-msgstr ""
+msgstr "サウスジョージア・サウスサンドウィッチ諸島"
 
 #: app/utils/dictionary/demography.ts:374:11
 msgid "Guatemala"
-msgstr ""
+msgstr "グアテマラ"
 
 #: app/utils/dictionary/demography.ts:378:11
 msgid "Guam"
-msgstr ""
+msgstr "グアム"
 
 #: app/utils/dictionary/demography.ts:382:11
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "ギニアビサウ"
 
 #: app/utils/dictionary/demography.ts:386:11
 msgid "Guyana"
-msgstr ""
+msgstr "ガイアナ"
 
 #: app/utils/dictionary/demography.ts:390:11
 msgid "Hong Kong"
-msgstr ""
+msgstr "香港"
 
 #: app/utils/dictionary/demography.ts:394:11
 msgid "Heard Island And McDonald Islands"
-msgstr ""
+msgstr "ハード島とマクドナルド諸島"
 
 #: app/utils/dictionary/demography.ts:398:11
 msgid "Honduras"
-msgstr ""
+msgstr "ホンジュラス"
 
 #: app/utils/dictionary/demography.ts:402:11
 msgid "Croatia"
-msgstr ""
+msgstr "クロアチア"
 
 #: app/utils/dictionary/demography.ts:406:11
 msgid "Haiti"
-msgstr ""
+msgstr "ハイチ"
 
 #: app/utils/dictionary/demography.ts:410:11
 msgid "Hungary"
-msgstr ""
+msgstr "ハンガリー"
 
 #: app/utils/dictionary/demography.ts:414:11
 msgid "Indonesia"
-msgstr ""
+msgstr "インドネシア"
 
 #: app/utils/dictionary/demography.ts:418:11
 msgid "Ireland"
-msgstr ""
+msgstr "アイルランド"
 
 #: app/utils/dictionary/demography.ts:422:11
 msgid "Israel"
-msgstr ""
+msgstr "イスラエル"
 
 #: app/utils/dictionary/demography.ts:426:11
 msgid "Isle of Man"
-msgstr ""
+msgstr "マン島"
 
 #: app/utils/dictionary/demography.ts:430:11
 msgid "India"
-msgstr ""
+msgstr "インド"
 
 #: app/utils/dictionary/demography.ts:434:11
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "イギリス領インド洋地域"
 
 #: app/utils/dictionary/demography.ts:438:11
 msgid "Iraq"
-msgstr ""
+msgstr "イラク"
 
 #: app/utils/dictionary/demography.ts:442:11
 msgid "Iran"
-msgstr ""
+msgstr "イラン"
 
 #: app/utils/dictionary/demography.ts:446:11
 msgid "Iceland"
-msgstr ""
+msgstr "アイスランド"
 
 #: app/utils/dictionary/demography.ts:450:11
 msgid "Italy"
-msgstr ""
+msgstr "イタリア"
 
 #: app/utils/dictionary/demography.ts:454:11
 msgid "Jersey"
-msgstr ""
+msgstr "ジャージー"
 
 #: app/utils/dictionary/demography.ts:458:11
 msgid "Jamaica"
-msgstr ""
+msgstr "ジャマイカ"
 
 #: app/utils/dictionary/demography.ts:462:11
 msgid "Jordan"
-msgstr ""
+msgstr "ヨルダン"
 
 #: app/utils/dictionary/demography.ts:466:11
 msgid "Japan"
-msgstr ""
+msgstr "日本"
 
 #: app/utils/dictionary/demography.ts:470:11
 msgid "Kenya"
-msgstr ""
+msgstr "ケニア"
 
 #: app/utils/dictionary/demography.ts:474:11
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "キルギス共和国"
 
 #: app/utils/dictionary/demography.ts:478:11
 msgid "Cambodia"
-msgstr ""
+msgstr "カンボジア王国"
 
 #: app/utils/dictionary/demography.ts:482:11
 msgid "Kiribati"
-msgstr ""
+msgstr "キリバス"
 
 #: app/utils/dictionary/demography.ts:486:11
 msgid "Comoros"
-msgstr ""
+msgstr "コモロ・イスラム連邦共和国"
 
 #: app/utils/dictionary/demography.ts:490:11
 msgid "Saint Kitts And Nevis"
-msgstr ""
+msgstr "セントクリストファー・ネイビス"
 
 #: app/utils/dictionary/demography.ts:494:11
 msgid "North Korea"
-msgstr ""
+msgstr "北朝鮮"
 
 #: app/utils/dictionary/demography.ts:498:11
 msgid "South Korea"
-msgstr ""
+msgstr "韓国"
 
 #: app/utils/dictionary/demography.ts:502:11
 msgid "Kuwait"
-msgstr ""
+msgstr "クウェート"
 
 #: app/utils/dictionary/demography.ts:506:11
 msgid "Cayman Islands"
-msgstr ""
+msgstr "ケイマン諸島"
 
 #: app/utils/dictionary/demography.ts:510:11
 msgid "Kazakhstan"
-msgstr ""
+msgstr "カザフスタン"
 
 #: app/utils/dictionary/demography.ts:514:11
 msgid "Laos"
-msgstr ""
+msgstr "ラオス"
 
 #: app/utils/dictionary/demography.ts:518:11
 msgid "Lebanon"
-msgstr ""
+msgstr "レバノン"
 
 #: app/utils/dictionary/demography.ts:522:11
 msgid "Saint Lucia"
-msgstr ""
+msgstr "セントルシア"
 
 #: app/utils/dictionary/demography.ts:526:11
 msgid "Liechtenstein"
-msgstr ""
+msgstr "リヒテンシュタイン公国"
 
 #: app/utils/dictionary/demography.ts:530:11
 msgid "Sri Lanka"
-msgstr ""
+msgstr "スリランカ"
 
 #: app/utils/dictionary/demography.ts:534:11
 msgid "Liberia"
-msgstr ""
+msgstr "リベリア"
 
 #: app/utils/dictionary/demography.ts:538:11
 msgid "Lesotho"
-msgstr ""
+msgstr "レソト"
 
 #: app/utils/dictionary/demography.ts:542:11
 msgid "Lithuania"
-msgstr ""
+msgstr "リトアニア"
 
 #: app/utils/dictionary/demography.ts:546:11
 msgid "Luxembourg"
-msgstr ""
+msgstr "ルクセンブルク"
 
 #: app/utils/dictionary/demography.ts:550:11
 msgid "Latvia"
-msgstr ""
+msgstr "ラトビア"
 
 #: app/utils/dictionary/demography.ts:554:11
 msgid "Libya"
-msgstr ""
+msgstr "リビア"
 
 #: app/utils/dictionary/demography.ts:558:11
 msgid "Morocco"
-msgstr ""
+msgstr "モロッコ"
 
 #: app/utils/dictionary/demography.ts:562:11
 msgid "Monaco"
-msgstr ""
+msgstr "モナコ"
 
 #: app/utils/dictionary/demography.ts:566:11
 msgid "Moldova"
-msgstr ""
+msgstr "モルドバ"
 
 #: app/utils/dictionary/demography.ts:570:11
 msgid "Montenegro"
-msgstr ""
+msgstr "モンテネグロ"
 
 #: app/utils/dictionary/demography.ts:574:11
 msgid "Saint Martin"
-msgstr ""
+msgstr "サンマルタン"
 
 #: app/utils/dictionary/demography.ts:578:11
 msgid "Madagascar"
-msgstr ""
+msgstr "マダガスカル"
 
 #: app/utils/dictionary/demography.ts:582:11
 msgid "Marshall Islands"
-msgstr ""
+msgstr "マーシャル諸島"
 
 #: app/utils/dictionary/demography.ts:586:11
 msgid "North Macedonia"
-msgstr ""
+msgstr "北マケドニア"
 
 #: app/utils/dictionary/demography.ts:590:11
 msgid "Mali"
-msgstr ""
+msgstr "マリ"
 
 #: app/utils/dictionary/demography.ts:594:11
 msgid "Myanmar"
-msgstr ""
+msgstr "ミャンマー"
 
 #: app/utils/dictionary/demography.ts:598:11
 msgid "Mongolia"
-msgstr ""
+msgstr "モンゴル"
 
 #: app/utils/dictionary/demography.ts:602:11
 msgid "Macao"
-msgstr ""
+msgstr "マカオ"
 
 #: app/utils/dictionary/demography.ts:606:11
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "北マリアナ諸島"
 
 #: app/utils/dictionary/demography.ts:610:11
 msgid "Martinique"
-msgstr ""
+msgstr "マルティニーク"
 
 #: app/utils/dictionary/demography.ts:614:11
 msgid "Mauritania"
-msgstr ""
+msgstr "モーリタニア"
 
 #: app/utils/dictionary/demography.ts:618:11
 msgid "Montserrat"
-msgstr ""
+msgstr "モントセラト（英国統治）"
 
 #: app/utils/dictionary/demography.ts:622:11
 msgid "Malta"
-msgstr ""
+msgstr "マルタ"
 
 #: app/utils/dictionary/demography.ts:626:11
 msgid "Mauritius"
-msgstr ""
+msgstr "モーリシャス"
 
 #: app/utils/dictionary/demography.ts:630:11
 msgid "Maldives"
-msgstr ""
+msgstr "モルジブ"
 
 #: app/utils/dictionary/demography.ts:634:11
 msgid "Malawi"
-msgstr ""
+msgstr "マラウイ"
 
 #: app/utils/dictionary/demography.ts:638:11
 msgid "Mexico"
-msgstr ""
+msgstr "メキシコ"
 
 #: app/utils/dictionary/demography.ts:642:11
 msgid "Malaysia"
-msgstr ""
+msgstr "マレーシア"
 
 #: app/utils/dictionary/demography.ts:646:11
 msgid "Mozambique"
-msgstr ""
+msgstr "モザンビーク"
 
 #: app/utils/dictionary/demography.ts:650:11
 msgid "Namibia"
-msgstr ""
+msgstr "ナミビア"
 
 #: app/utils/dictionary/demography.ts:654:11
 msgid "New Caledonia"
-msgstr ""
+msgstr "ニューカレドニア"
 
 #: app/utils/dictionary/demography.ts:658:11
 msgid "Niger"
-msgstr ""
+msgstr "ニジェール"
 
 #: app/utils/dictionary/demography.ts:662:11
 msgid "Norfolk Island"
-msgstr ""
+msgstr "ノーフォーク島"
 
 #: app/utils/dictionary/demography.ts:666:11
 msgid "Nigeria"
-msgstr ""
+msgstr "ナイジェリア"
 
 #: app/utils/dictionary/demography.ts:670:11
 msgid "Nicaragua"
-msgstr ""
+msgstr "ニカラグア"
 
 #: app/utils/dictionary/demography.ts:674:11
 msgid "Netherlands"
-msgstr ""
+msgstr "オランダ"
 
 #: app/utils/dictionary/demography.ts:678:11
 msgid "Norway"
-msgstr ""
+msgstr "ノルウェー"
 
 #: app/utils/dictionary/demography.ts:682:11
 msgid "Nepal"
-msgstr ""
+msgstr "ネパール"
 
 #: app/utils/dictionary/demography.ts:686:11
 msgid "Nauru"
-msgstr ""
+msgstr "ナウル語"
 
 #: app/utils/dictionary/demography.ts:690:11
 msgid "Niue"
-msgstr ""
+msgstr "ニウエ"
 
 #: app/utils/dictionary/demography.ts:694:11
 msgid "New Zealand"
-msgstr ""
+msgstr "ニュージーランド"
 
 #: app/utils/dictionary/demography.ts:698:11
 msgid "Oman"
-msgstr ""
+msgstr "オマーン国"
 
 #: app/utils/dictionary/demography.ts:702:11
 msgid "Panama"
-msgstr ""
+msgstr "パナマ"
 
 #: app/utils/dictionary/demography.ts:706:11
 msgid "Peru"
-msgstr ""
+msgstr "ペルー"
 
 #: app/utils/dictionary/demography.ts:710:11
 msgid "French Polynesia"
-msgstr ""
+msgstr "フランス領ポリネシア"
 
 #: app/utils/dictionary/demography.ts:714:11
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "パプアニューギニア"
 
 #: app/utils/dictionary/demography.ts:718:11
 msgid "Philippines"
-msgstr ""
+msgstr "フィリピン"
 
 #: app/utils/dictionary/demography.ts:722:11
 msgid "Pakistan"
-msgstr ""
+msgstr "パキスタン"
 
 #: app/utils/dictionary/demography.ts:726:11
 msgid "Poland"
-msgstr ""
+msgstr "ポーランド"
 
 #: app/utils/dictionary/demography.ts:730:11
 msgid "Saint Pierre And Miquelon"
-msgstr ""
+msgstr "サンピェール島・ミクロン島"
 
 #: app/utils/dictionary/demography.ts:734:11
 msgid "Pitcairn Islands"
-msgstr ""
+msgstr "ピトケアン諸島"
 
 #: app/utils/dictionary/demography.ts:738:11
 msgid "Puerto Rico"
-msgstr ""
+msgstr "プエルトリコ"
 
 #: app/utils/dictionary/demography.ts:742:11
 msgid "Palestinian"
-msgstr ""
+msgstr "パレスチナ人"
 
 #: app/utils/dictionary/demography.ts:746:11
 msgid "Portugal"
-msgstr ""
+msgstr "ポルトガル"
 
 #: app/utils/dictionary/demography.ts:750:11
 msgid "Palau"
-msgstr ""
+msgstr "パラオ"
 
 #: app/utils/dictionary/demography.ts:754:11
 msgid "Paraguay"
-msgstr ""
+msgstr "パラグアイ"
 
 #: app/utils/dictionary/demography.ts:758:11
 msgid "Qatar"
-msgstr ""
+msgstr "カタール"
 
 #: app/utils/dictionary/demography.ts:762:11
 #: app/utils/dictionary/event.ts:46:52
 msgid "Reunion"
-msgstr ""
+msgstr "再会"
 
 #: app/utils/dictionary/demography.ts:766:11
 msgid "Romania"
-msgstr ""
+msgstr "ルーマニア"
 
 #: app/utils/dictionary/demography.ts:770:11
 msgid "Serbia"
-msgstr ""
+msgstr "セルビア"
 
 #: app/utils/dictionary/demography.ts:774:11
 msgid "Russian"
-msgstr ""
+msgstr "ロシア語"
 
 #: app/utils/dictionary/demography.ts:778:11
 msgid "Rwanda"
-msgstr ""
+msgstr "ルワンダ"
 
 #: app/utils/dictionary/demography.ts:782:11
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "サウジアラビア"
 
 #: app/utils/dictionary/demography.ts:786:11
 msgid "Solomon Islands"
-msgstr ""
+msgstr "ソロモン諸島"
 
 #: app/utils/dictionary/demography.ts:790:11
 msgid "Seychelles"
-msgstr ""
+msgstr "セーシェル"
 
 #: app/utils/dictionary/demography.ts:794:11
 msgid "Sudan"
-msgstr ""
+msgstr "スーダン"
 
 #: app/utils/dictionary/demography.ts:798:11
 msgid "Sweden"
-msgstr ""
+msgstr "スウェーデン"
 
 #: app/utils/dictionary/demography.ts:802:11
 msgid "Singapore"
-msgstr ""
+msgstr "シンガポール"
 
 #: app/utils/dictionary/demography.ts:806:11
 msgid "Saint Helena"
-msgstr ""
+msgstr "セントヘレナ島"
 
 #: app/utils/dictionary/demography.ts:810:11
 msgid "Slovenia"
-msgstr ""
+msgstr "スロベニア"
 
 #: app/utils/dictionary/demography.ts:814:11
 msgid "Svalbard And Jan Mayen"
-msgstr ""
+msgstr "スバールバル諸島・ヤンマイエン島"
 
 #: app/utils/dictionary/demography.ts:818:11
 msgid "Slovakia"
-msgstr ""
+msgstr "スロバキア"
 
 #: app/utils/dictionary/demography.ts:822:11
 msgid "Sierra Leone"
-msgstr ""
+msgstr "シエラレオネ"
 
 #: app/utils/dictionary/demography.ts:826:11
 msgid "San Marino"
-msgstr ""
+msgstr "サンマリノ共和国"
 
 #: app/utils/dictionary/demography.ts:830:11
 msgid "Senegal"
-msgstr ""
+msgstr "セネガル"
 
 #: app/utils/dictionary/demography.ts:834:11
 msgid "Somalia"
-msgstr ""
+msgstr "ソマリア"
 
 #: app/utils/dictionary/demography.ts:838:11
 msgid "Suriname"
-msgstr ""
+msgstr "スリナム共和国"
 
 #: app/utils/dictionary/demography.ts:842:11
 msgid "South Sudan"
-msgstr ""
+msgstr "南スーダン"
 
 #: app/utils/dictionary/demography.ts:846:11
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "サントメ・プリンシペ民主共和国"
 
 #: app/utils/dictionary/demography.ts:850:11
 msgid "El Salvador"
-msgstr ""
+msgstr "エルサルバドル"
 
 #: app/utils/dictionary/demography.ts:854:11
 msgid "Sint Maarten"
-msgstr ""
+msgstr "シントマールテン"
 
 #: app/utils/dictionary/demography.ts:858:11
 msgid "Syria"
-msgstr ""
+msgstr "シリア"
 
 #: app/utils/dictionary/demography.ts:862:11
 msgid "Swaziland"
-msgstr ""
+msgstr "スワジランド"
 
 #: app/utils/dictionary/demography.ts:866:11
 msgid "Turks And Caicos Islands"
-msgstr ""
+msgstr "タークス諸島・カイコス諸島"
 
 #: app/utils/dictionary/demography.ts:870:11
 msgid "Chad"
-msgstr ""
+msgstr "チャド"
 
 #: app/utils/dictionary/demography.ts:874:11
 msgid "French Southern Territories"
-msgstr ""
+msgstr "フランス領極南諸島"
 
 #: app/utils/dictionary/demography.ts:878:11
 msgid "Togo"
-msgstr ""
+msgstr "トーゴ"
 
 #: app/utils/dictionary/demography.ts:882:11
 msgid "Thailand"
-msgstr ""
+msgstr "タイ"
 
 #: app/utils/dictionary/demography.ts:886:11
 msgid "Tajikistan"
-msgstr ""
+msgstr "タジキスタン共和国"
 
 #: app/utils/dictionary/demography.ts:890:11
 msgid "Tokelau"
-msgstr ""
+msgstr "トケラウ語"
 
 #: app/utils/dictionary/demography.ts:894:11
 msgid "East Timor"
-msgstr ""
+msgstr "東チモール"
 
 #: app/utils/dictionary/demography.ts:898:11
 msgid "Turkmenistan"
-msgstr ""
+msgstr "トルクメニスタン"
 
 #: app/utils/dictionary/demography.ts:902:11
 msgid "Tunisia"
-msgstr ""
+msgstr "チュニジア"
 
 #: app/utils/dictionary/demography.ts:906:11
 msgid "Tonga"
-msgstr ""
+msgstr "トンガ王国"
 
 #: app/utils/dictionary/demography.ts:910:11
 msgid "Turkey"
-msgstr ""
+msgstr "トルコ"
 
 #: app/utils/dictionary/demography.ts:914:11
 msgid "Trinidad And Tobago"
-msgstr ""
+msgstr "トリニダード・トバゴ"
 
 #: app/utils/dictionary/demography.ts:918:11
 msgid "Tuvalu"
-msgstr ""
+msgstr "ツバル語"
 
 #: app/utils/dictionary/demography.ts:922:11
 msgid "Taiwan"
-msgstr ""
+msgstr "台湾"
 
 #: app/utils/dictionary/demography.ts:926:11
 msgid "Tanzania"
-msgstr ""
+msgstr "タンザニア"
 
 #: app/utils/dictionary/demography.ts:930:11
 msgid "Ukraine"
-msgstr ""
+msgstr "ウクライナ"
 
 #: app/utils/dictionary/demography.ts:934:11
 msgid "Uganda"
-msgstr ""
+msgstr "ウガンダ"
 
 #: app/utils/dictionary/demography.ts:938:11
 msgid "United States Minor Outlying Islands"
-msgstr ""
+msgstr "アメリカ合衆国外諸島"
 
 #: app/utils/dictionary/demography.ts:942:11
 msgid "United States"
-msgstr ""
+msgstr "アメリカ"
 
 #: app/utils/dictionary/demography.ts:946:11
 msgid "Uruguay"
-msgstr ""
+msgstr "ウルグアイ"
 
 #: app/utils/dictionary/demography.ts:950:11
 msgid "Uzbekistan"
-msgstr ""
+msgstr "ウズベキスタン"
 
 #: app/utils/dictionary/demography.ts:954:11
 msgid "Vatican City"
-msgstr ""
+msgstr "バチカン市"
 
 #: app/utils/dictionary/demography.ts:958:11
 msgid "Saint Vincent And The Grenadines"
-msgstr ""
+msgstr "セントビンセントおよびグレナディーン諸島"
 
 #: app/utils/dictionary/demography.ts:962:11
 msgid "Venezuela"
-msgstr ""
+msgstr "ベネズエラ"
 
 #: app/utils/dictionary/demography.ts:966:11
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "イギリス領ヴァージン諸島"
 
 #: app/utils/dictionary/demography.ts:970:11
 msgid "U.S. Virgin Islands"
-msgstr ""
+msgstr "アメリカ領バージン諸島"
 
 #: app/utils/dictionary/demography.ts:974:11
 msgid "Vietnam"
-msgstr ""
+msgstr "ベトナム"
 
 #: app/utils/dictionary/demography.ts:978:11
 msgid "Vanuatu"
-msgstr ""
+msgstr "バヌアツ"
 
 #: app/utils/dictionary/demography.ts:982:11
 msgid "Wallis And Futuna"
-msgstr ""
+msgstr "ワリス・フテュナ諸島"
 
 #: app/utils/dictionary/demography.ts:986:11
 msgid "Samoa"
-msgstr ""
+msgstr "サモア"
 
 #: app/utils/dictionary/demography.ts:990:11
 msgid "Kosovo"
-msgstr ""
+msgstr "コソボ"
 
 #: app/utils/dictionary/demography.ts:994:11
 msgid "Yemen"
-msgstr ""
+msgstr "イエメン"
 
 #: app/utils/dictionary/demography.ts:998:11
 msgid "Mayotte"
-msgstr ""
+msgstr "マヨット海外準県"
 
 #: app/utils/dictionary/demography.ts:1002:11
 msgid "South Africa"
-msgstr ""
+msgstr "南アフリカ"
 
 #: app/utils/dictionary/demography.ts:1006:11
 msgid "Zambia"
-msgstr ""
+msgstr "ザンビア"
 
 #: app/utils/dictionary/demography.ts:1010:11
 msgid "Zimbabwe"
-msgstr ""
+msgstr "ジンバブエ"
 
 #: app/utils/dictionary/event.ts:4:2
 msgid "Appearance or Signing"
-msgstr ""
+msgstr "外観または署名"
 
 #: app/utils/dictionary/event.ts:5:2
 msgid "Attraction"
-msgstr ""
+msgstr "アトラクション"
 
 #: app/utils/dictionary/event.ts:6:2
 msgid "Camp, Trip, or Retreat"
-msgstr ""
+msgstr "キャンプ、旅行、またはリトリート"
 
 #: app/utils/dictionary/event.ts:7:2
 msgid "Class, Training, or Workshop"
-msgstr ""
+msgstr "クラス、トレーニング、またはワークショップ"
 
 #: app/utils/dictionary/event.ts:8:2
 msgid "Concert or Performance"
-msgstr ""
+msgstr "コンサートまたはパフォーマンス"
 
 #: app/utils/dictionary/event.ts:9:2
 msgid "Conference"
-msgstr ""
+msgstr "会議"
 
 #: app/utils/dictionary/event.ts:10:2
 msgid "Convention"
-msgstr ""
+msgstr "大会"
 
 #: app/utils/dictionary/event.ts:11:2
 msgid "Dinner or Gala"
-msgstr ""
+msgstr "ディナーまたはガラ"
 
 #: app/utils/dictionary/event.ts:12:2
 msgid "Festival or Fair"
-msgstr ""
+msgstr "フェスティバルまたはフェア"
 
 #: app/utils/dictionary/event.ts:13:2
 msgid "Game or Competition"
-msgstr ""
+msgstr "ゲームまたは競争"
 
 #: app/utils/dictionary/event.ts:14:2
 msgid "Meeting or Networking Event"
-msgstr ""
+msgstr "ミーティングまたはネットワーキングイベント"
 
 #: app/utils/dictionary/event.ts:15:2 app/utils/dictionary/event.ts:28:69
 #: app/utils/dictionary/event.ts:32:63 app/utils/dictionary/event.ts:38:31
@@ -10972,615 +10970,615 @@ msgstr ""
 #: app/utils/dictionary/event.ts:84:74 app/utils/dictionary/event.ts:89:53
 #: app/utils/dictionary/event.ts:95:23 app/utils/dictionary/event.ts:99:74
 msgid "Other"
-msgstr ""
+msgstr "他の"
 
 #: app/utils/dictionary/event.ts:16:2
 msgid "Party or Social Gathering"
-msgstr ""
+msgstr "パーティーまたは懇親会"
 
 #: app/utils/dictionary/event.ts:17:2
 msgid "Race or Endurance Event"
-msgstr ""
+msgstr "レースまたは持久力イベント"
 
 #: app/utils/dictionary/event.ts:18:2
 msgid "Rally"
-msgstr ""
+msgstr "ラリー"
 
 #: app/utils/dictionary/event.ts:19:2
 msgid "Screening"
-msgstr ""
+msgstr "ふるい分け"
 
 #: app/utils/dictionary/event.ts:20:2
 msgid "Seminar or Talk"
-msgstr ""
+msgstr "セミナーまたはトーク"
 
 #: app/utils/dictionary/event.ts:21:2
 msgid "Tour"
-msgstr ""
+msgstr "旅行"
 
 #: app/utils/dictionary/event.ts:22:2
 msgid "Tournament"
-msgstr ""
+msgstr "トーナメント"
 
 #: app/utils/dictionary/event.ts:23:2
 msgid "Tradeshow, Consumer Show, or Expo"
-msgstr ""
+msgstr "見本市、消費者ショー、または博覧会"
 
 #: app/utils/dictionary/event.ts:28:4
 msgid "Air"
-msgstr ""
+msgstr "空気"
 
 #: app/utils/dictionary/event.ts:28:17
 msgid "Auto"
-msgstr ""
+msgstr "自動"
 
 #: app/utils/dictionary/event.ts:28:31
 msgid "Boat"
-msgstr ""
+msgstr "ボート"
 
 #: app/utils/dictionary/event.ts:28:45
 msgid "Motorcycle/ATV"
-msgstr ""
+msgstr "オートバイ/ ATV"
 
 #: app/utils/dictionary/event.ts:31:4
 msgid "Career"
-msgstr ""
+msgstr "キャリア"
 
 #: app/utils/dictionary/event.ts:31:20
 msgid "Design"
-msgstr ""
+msgstr "設計"
 
 #: app/utils/dictionary/event.ts:31:36
 msgid "Educators"
-msgstr ""
+msgstr "教育者"
 
 #: app/utils/dictionary/event.ts:31:55
 msgid "Environment & Sustainability"
-msgstr ""
+msgstr "環境と持続可能性"
 
 #: app/utils/dictionary/event.ts:32:4
 msgid "Finance"
-msgstr ""
+msgstr "ファイナンス"
 
 #: app/utils/dictionary/event.ts:32:21
 msgid "Media"
-msgstr ""
+msgstr "メディア"
 
 #: app/utils/dictionary/event.ts:32:36
 msgid "Non Profit & NGOs"
-msgstr ""
+msgstr "非営利およびNGO"
 
 #: app/utils/dictionary/event.ts:32:78
 msgid "Real Estate"
-msgstr ""
+msgstr "不動産"
 
 #: app/utils/dictionary/event.ts:33:4
 msgid "Sales & Marketing"
-msgstr ""
+msgstr "セールス＆マーケティング"
 
 #: app/utils/dictionary/event.ts:33:31
 msgid "Startups & Small Business"
-msgstr ""
+msgstr "スタートアップと中小企業"
 
 #: app/utils/dictionary/event.ts:36:4
 msgid "Animal Welfare"
-msgstr ""
+msgstr "動物福祉"
 
 #: app/utils/dictionary/event.ts:36:28
 msgid "Disaster Relief"
-msgstr ""
+msgstr "災害救援"
 
 #: app/utils/dictionary/event.ts:36:53 app/utils/dictionary/event.ts:45:60
 msgid "Education"
-msgstr ""
+msgstr "教育"
 
 #: app/utils/dictionary/event.ts:37:4
 msgid "Environment"
-msgstr ""
+msgstr "環境"
 
 #: app/utils/dictionary/event.ts:37:25
 msgid "Healthcare"
-msgstr ""
+msgstr "健康管理"
 
 #: app/utils/dictionary/event.ts:37:45
 msgid "Human Rights"
-msgstr ""
+msgstr "人権"
 
 #: app/utils/dictionary/event.ts:38:4
 msgid "International Aid"
-msgstr ""
+msgstr "国際援助"
 
 #: app/utils/dictionary/event.ts:38:46
 msgid "Poverty"
-msgstr ""
+msgstr "貧困"
 
 #: app/utils/dictionary/event.ts:41:4
 msgid "City/Town"
-msgstr ""
+msgstr "市/町"
 
 #: app/utils/dictionary/event.ts:41:23
 msgid "County"
-msgstr ""
+msgstr "郡"
 
 #: app/utils/dictionary/event.ts:41:39
 msgid "Heritage"
-msgstr ""
+msgstr "遺産"
 
 #: app/utils/dictionary/event.ts:41:57
 msgid "LGBT"
-msgstr ""
+msgstr "LGBT"
 
 #: app/utils/dictionary/event.ts:42:4
 msgid "Medieval"
-msgstr ""
+msgstr "中世"
 
 #: app/utils/dictionary/event.ts:42:22
 msgid "Nationality"
-msgstr ""
+msgstr "国籍"
 
 #: app/utils/dictionary/event.ts:42:58
 msgid "Renaissance"
-msgstr ""
+msgstr "ルネッサンス"
 
 #: app/utils/dictionary/event.ts:45:4
 msgid "Alumni"
-msgstr ""
+msgstr "同窓生"
 
 #: app/utils/dictionary/event.ts:45:20
 msgid "Baby"
-msgstr ""
+msgstr "赤ちゃん"
 
 #: app/utils/dictionary/event.ts:45:34
 msgid "Children & Youth"
-msgstr ""
+msgstr "子供と若者"
 
 #: app/utils/dictionary/event.ts:46:4
 msgid "Parenting"
-msgstr ""
+msgstr "子育て"
 
 #: app/utils/dictionary/event.ts:46:23
 msgid "Parents Association"
-msgstr ""
+msgstr "PTA"
 
 #: app/utils/dictionary/event.ts:49:4
 msgid "Accessories"
-msgstr ""
+msgstr "付属品"
 
 #: app/utils/dictionary/event.ts:49:25
 msgid "Beauty"
-msgstr ""
+msgstr "美しさ"
 
 #: app/utils/dictionary/event.ts:49:41
 msgid "Bridal"
-msgstr ""
+msgstr "ブライダル"
 
 #: app/utils/dictionary/event.ts:49:57
 msgid "Fashion"
-msgstr ""
+msgstr "ファッション"
 
 #: app/utils/dictionary/event.ts:52:4 app/utils/dictionary/event.ts:64:4
 msgid "Adult"
-msgstr ""
+msgstr "大人"
 
 #: app/utils/dictionary/event.ts:52:19
 msgid "Anime"
-msgstr ""
+msgstr "アニメ"
 
 #: app/utils/dictionary/event.ts:52:34 app/utils/dictionary/event.ts:76:20
 msgid "Comedy"
-msgstr ""
+msgstr "コメディ"
 
 #: app/utils/dictionary/event.ts:52:50
 msgid "Comics"
-msgstr ""
+msgstr "漫画"
 
 #: app/utils/dictionary/event.ts:52:66
 msgid "Film"
-msgstr ""
+msgstr "映画"
 
 #: app/utils/dictionary/event.ts:52:80 app/utils/dictionary/event.ts:64:97
 msgid "Gaming"
-msgstr ""
+msgstr "ゲーム"
 
 #: app/utils/dictionary/event.ts:52:111
 msgid "TV"
-msgstr ""
+msgstr "テレビ"
 
 #: app/utils/dictionary/event.ts:54:29
 msgid "Beer"
-msgstr ""
+msgstr "ビール"
 
 #: app/utils/dictionary/event.ts:54:43
 msgid "Food"
-msgstr ""
+msgstr "食べ物"
 
 #: app/utils/dictionary/event.ts:54:72
 msgid "Spirits"
-msgstr ""
+msgstr "スピリッツ"
 
 #: app/utils/dictionary/event.ts:54:89
 msgid "Wine"
-msgstr ""
+msgstr "ワイン"
 
 #: app/utils/dictionary/event.ts:56:4
 msgid "County/Municipal Government"
-msgstr ""
+msgstr "郡/市政府"
 
 #: app/utils/dictionary/event.ts:56:41
 msgid "Democratic Party"
-msgstr ""
+msgstr "民主党"
 
 #: app/utils/dictionary/event.ts:56:67
 msgid "Federal Government"
-msgstr ""
+msgstr "連邦政府"
 
 #: app/utils/dictionary/event.ts:57:4
 msgid "Non-partisan"
-msgstr ""
+msgstr "無党派の"
 
 #: app/utils/dictionary/event.ts:57:41
 msgid "Other Party"
-msgstr ""
+msgstr "相手"
 
 #: app/utils/dictionary/event.ts:57:62
 msgid "Republican Party"
-msgstr ""
+msgstr "共和党"
 
 #: app/utils/dictionary/event.ts:58:4
 msgid "State Government"
-msgstr ""
+msgstr "州政府"
 
 #: app/utils/dictionary/event.ts:61:4
 msgid "Medical"
-msgstr ""
+msgstr "医学"
 
 #: app/utils/dictionary/event.ts:61:21
 msgid "Mental health"
-msgstr ""
+msgstr "メンタルヘルス"
 
 #: app/utils/dictionary/event.ts:61:59
 msgid "Personal health"
-msgstr ""
+msgstr "個人の健康"
 
 #: app/utils/dictionary/event.ts:61:84
 msgid "Spa"
-msgstr ""
+msgstr "スパ"
 
 #: app/utils/dictionary/event.ts:61:97 app/utils/dictionary/event.ts:96:90
 msgid "Yoga"
-msgstr ""
+msgstr "ヨガ"
 
 #: app/utils/dictionary/event.ts:64:19
 msgid "Anime/Comics"
-msgstr ""
+msgstr "アニメ/コミック"
 
 #: app/utils/dictionary/event.ts:64:41
 msgid "Books"
-msgstr ""
+msgstr "本"
 
 #: app/utils/dictionary/event.ts:64:56
 msgid "DIY"
-msgstr ""
+msgstr "DIY"
 
 #: app/utils/dictionary/event.ts:64:69
 msgid "Drawing & Painting"
-msgstr ""
+msgstr "ドローイング＆ペインティング"
 
 #: app/utils/dictionary/event.ts:65:4
 msgid "Knitting"
-msgstr ""
+msgstr "編み物"
 
 #: app/utils/dictionary/event.ts:65:37
 msgid "Photography"
-msgstr ""
+msgstr "写真撮影"
 
 #: app/utils/dictionary/event.ts:67:24
 msgid "Dating"
-msgstr ""
+msgstr "デート"
 
 #: app/utils/dictionary/event.ts:67:40
 msgid "Home & Garden"
-msgstr ""
+msgstr "ホーム＆ガーデン"
 
 #: app/utils/dictionary/event.ts:67:78
 msgid "Pets & Animals"
-msgstr ""
+msgstr "ペットと動物"
 
 #: app/utils/dictionary/event.ts:69:4
 msgid "Alternative"
-msgstr ""
+msgstr "別"
 
 #: app/utils/dictionary/event.ts:69:25
 msgid "Blues & Jazz"
-msgstr ""
+msgstr "ブルース＆ジャズ"
 
 #: app/utils/dictionary/event.ts:69:47
 msgid "Classical"
-msgstr ""
+msgstr "クラシック"
 
 #: app/utils/dictionary/event.ts:69:83
 msgid "Cultural"
-msgstr ""
+msgstr "文化"
 
 #: app/utils/dictionary/event.ts:70:4
 msgid "EDM / Electronic"
-msgstr ""
+msgstr "EDM /エレクトロニック"
 
 #: app/utils/dictionary/event.ts:70:30
 msgid "Folk"
-msgstr ""
+msgstr "フォーク"
 
 #: app/utils/dictionary/event.ts:70:44
 msgid "Hip Hop / Rap"
-msgstr ""
+msgstr "ヒップホップ/ラップ"
 
 #: app/utils/dictionary/event.ts:70:67
 msgid "Indie"
-msgstr ""
+msgstr "インディー"
 
 #: app/utils/dictionary/event.ts:70:82
 msgid "Latin"
-msgstr ""
+msgstr "ラテン語"
 
 #: app/utils/dictionary/event.ts:70:97
 msgid "Metal"
-msgstr ""
+msgstr "金属"
 
 #: app/utils/dictionary/event.ts:71:4 app/utils/dictionary/event.ts:77:21
 msgid "Opera"
-msgstr ""
+msgstr "オペラ"
 
 #: app/utils/dictionary/event.ts:71:34
 msgid "Pop"
-msgstr ""
+msgstr "ポップ"
 
 #: app/utils/dictionary/event.ts:71:47
 msgid "R&B"
-msgstr ""
+msgstr "R＆B"
 
 #: app/utils/dictionary/event.ts:71:60
 msgid "Reggae"
-msgstr ""
+msgstr "レゲエ"
 
 #: app/utils/dictionary/event.ts:71:76
 msgid "Religious/Spiritual"
-msgstr ""
+msgstr "宗教的/精神的"
 
 #: app/utils/dictionary/event.ts:71:105
 msgid "Rock"
-msgstr ""
+msgstr "岩"
 
 #: app/utils/dictionary/event.ts:72:4
 msgid "Top 40"
-msgstr ""
+msgstr "トップ40"
 
 #: app/utils/dictionary/event.ts:74:32
 msgid "Avatar"
-msgstr ""
+msgstr "アバター"
 
 #: app/utils/dictionary/event.ts:76:4
 msgid "Ballet"
-msgstr ""
+msgstr "バレエ"
 
 #: app/utils/dictionary/event.ts:76:36
 msgid "Craft"
-msgstr ""
+msgstr "クラフト"
 
 #: app/utils/dictionary/event.ts:76:51
 msgid "Dance"
-msgstr ""
+msgstr "ダンス"
 
 #: app/utils/dictionary/event.ts:76:66
 msgid "Fine Art"
-msgstr ""
+msgstr "美術品"
 
 #: app/utils/dictionary/event.ts:76:84
 msgid "Literary Arts"
-msgstr ""
+msgstr "文学芸術"
 
 #: app/utils/dictionary/event.ts:77:4
 msgid "Musical"
-msgstr ""
+msgstr "ミュージカル"
 
 #: app/utils/dictionary/event.ts:77:36
 msgid "Orchestra"
-msgstr ""
+msgstr "オーケストラ"
 
 #: app/utils/dictionary/event.ts:77:70
 msgid "Theatre"
-msgstr ""
+msgstr "シアター"
 
 #: app/utils/dictionary/event.ts:80:4
 msgid "Buddhism"
-msgstr ""
+msgstr "仏教"
 
 #: app/utils/dictionary/event.ts:80:22
 msgid "Christianity"
-msgstr ""
+msgstr "キリスト教"
 
 #: app/utils/dictionary/event.ts:80:44
 msgid "Eastern Religion"
-msgstr ""
+msgstr "東洋の宗教"
 
 #: app/utils/dictionary/event.ts:80:70
 msgid "Islam"
-msgstr ""
+msgstr "イスラム教"
 
 #: app/utils/dictionary/event.ts:80:85
 msgid "Judaism"
-msgstr ""
+msgstr "ユダヤ教"
 
 #: app/utils/dictionary/event.ts:81:4
 msgid "Mormonism"
-msgstr ""
+msgstr "モルモン教"
 
 #: app/utils/dictionary/event.ts:81:23
 msgid "Mysticism and Occult"
-msgstr ""
+msgstr "神秘主義とオカルト"
 
 #: app/utils/dictionary/event.ts:81:53
 msgid "New Age"
-msgstr ""
+msgstr "新時代"
 
 #: app/utils/dictionary/event.ts:81:85
 msgid "Sikhism"
-msgstr ""
+msgstr "シーク教"
 
 #: app/utils/dictionary/event.ts:84:4
 msgid "Biotech"
-msgstr ""
+msgstr "バイオテクノロジー"
 
 #: app/utils/dictionary/event.ts:84:21
 msgid "High Tech"
-msgstr ""
+msgstr "ハイテク"
 
 #: app/utils/dictionary/event.ts:84:40
 msgid "Medicine"
-msgstr ""
+msgstr "薬"
 
 #: app/utils/dictionary/event.ts:84:89
 msgid "Robotics"
-msgstr ""
+msgstr "ロボット工学"
 
 #: app/utils/dictionary/event.ts:85:4
 msgid "Science"
-msgstr ""
+msgstr "化学"
 
 #: app/utils/dictionary/event.ts:88:4
 msgid "Channukah"
-msgstr ""
+msgstr "ハヌカ"
 
 #: app/utils/dictionary/event.ts:88:23
 msgid "Christmas"
-msgstr ""
+msgstr "クリスマス"
 
 #: app/utils/dictionary/event.ts:88:42
 msgid "Easter"
-msgstr ""
+msgstr "イースター"
 
 #: app/utils/dictionary/event.ts:88:58
 msgid "Fall events"
-msgstr ""
+msgstr "秋のイベント"
 
 #: app/utils/dictionary/event.ts:88:79
 msgid "Halloween/Haunt"
-msgstr ""
+msgstr "ハロウィーン/出没"
 
 #: app/utils/dictionary/event.ts:89:4
 msgid "Independence Day"
-msgstr ""
+msgstr "独立記念日"
 
 #: app/utils/dictionary/event.ts:89:30
 msgid "New Years Eve"
-msgstr ""
+msgstr "大晦日"
 
 #: app/utils/dictionary/event.ts:89:68
 msgid "St Patricks Day"
-msgstr ""
+msgstr "聖パトリックの日"
 
 #: app/utils/dictionary/event.ts:90:4
 msgid "Thanksgiving"
-msgstr ""
+msgstr "感謝祭"
 
 #: app/utils/dictionary/event.ts:93:4
 msgid "Baseball"
-msgstr ""
+msgstr "野球"
 
 #: app/utils/dictionary/event.ts:93:22
 msgid "Basketball"
-msgstr ""
+msgstr "バスケットボール"
 
 #: app/utils/dictionary/event.ts:93:42
 msgid "Cycling"
-msgstr ""
+msgstr "サイクリング"
 
 #: app/utils/dictionary/event.ts:93:59
 msgid "Exercise"
-msgstr ""
+msgstr "エクササイズ"
 
 #: app/utils/dictionary/event.ts:93:77
 msgid "Fighting & Martial Arts"
-msgstr ""
+msgstr "ファイティング＆マーシャルアーツ"
 
 #: app/utils/dictionary/event.ts:94:4
 msgid "Football"
-msgstr ""
+msgstr "フットボール"
 
 #: app/utils/dictionary/event.ts:94:22
 msgid "Golf"
-msgstr ""
+msgstr "ゴルフ"
 
 #: app/utils/dictionary/event.ts:94:36
 msgid "Hockey"
-msgstr ""
+msgstr "ホッケー"
 
 #: app/utils/dictionary/event.ts:94:52
 msgid "Motorsports"
-msgstr ""
+msgstr "モータースポーツ"
 
 #: app/utils/dictionary/event.ts:94:73
 msgid "Mountain Biking"
-msgstr ""
+msgstr "マウンテンバイク"
 
 #: app/utils/dictionary/event.ts:95:4
 msgid "Obstacles"
-msgstr ""
+msgstr "障害物"
 
 #: app/utils/dictionary/event.ts:95:38
 msgid "Rugby"
-msgstr ""
+msgstr "ラグビー"
 
 #: app/utils/dictionary/event.ts:95:53
 msgid "Running"
-msgstr ""
+msgstr "ランニング"
 
 #: app/utils/dictionary/event.ts:95:70
 msgid "Snow Sports"
-msgstr ""
+msgstr "スノースポーツ"
 
 #: app/utils/dictionary/event.ts:95:91
 msgid "Soccer"
-msgstr ""
+msgstr "サッカー"
 
 #: app/utils/dictionary/event.ts:96:4
 msgid "Swimming & Water Sports"
-msgstr ""
+msgstr "水泳＆ウォータースポーツ"
 
 #: app/utils/dictionary/event.ts:96:37
 msgid "Tennis"
-msgstr ""
+msgstr "テニス"
 
 #: app/utils/dictionary/event.ts:96:53
 msgid "Volleyball"
-msgstr ""
+msgstr "バレーボール"
 
 #: app/utils/dictionary/event.ts:96:73
 msgid "Walking"
-msgstr ""
+msgstr "ウォーキング"
 
 #: app/utils/dictionary/event.ts:99:4
 msgid "Canoeing"
-msgstr ""
+msgstr "カヌー"
 
 #: app/utils/dictionary/event.ts:99:22
 msgid "Climbing"
-msgstr ""
+msgstr "クライミング"
 
 #: app/utils/dictionary/event.ts:99:40
 msgid "Hiking"
-msgstr ""
+msgstr "ハイキング"
 
 #: app/utils/dictionary/event.ts:99:56
 msgid "Kayaking"
-msgstr ""
+msgstr "カヤック"
 
 #: app/utils/dictionary/event.ts:99:89
 msgid "Rafting"
-msgstr ""
+msgstr "ラフティング"
 
 #: app/utils/dictionary/event.ts:99:106
 msgid "Travel"
-msgstr ""
+msgstr "トラベル"
 
 #: app/utils/dictionary/filters.js:4:13
 msgid "All Dates"
@@ -11596,7 +11594,7 @@ msgstr "明日"
 
 #: app/utils/dictionary/filters.js:16:13
 msgid "This week"
-msgstr ""
+msgstr "今週"
 
 #: app/utils/dictionary/filters.js:20:13
 msgid "This Weekend"
@@ -11604,7 +11602,7 @@ msgstr "今週末"
 
 #: app/utils/dictionary/filters.js:24:13
 msgid "Next week"
-msgstr ""
+msgstr "Next week"
 
 #: app/utils/dictionary/filters.js:28:13
 msgid "This Month"
@@ -11612,143 +11610,143 @@ msgstr "今月"
 
 #: app/utils/dictionary/filters.js:32:13
 msgid "Custom dates"
-msgstr ""
+msgstr "カスタム日付"
 
 #: app/utils/dictionary/licenses.ts:12:15
 msgid "Attribution-NonCommercial-NoDerivs"
-msgstr ""
+msgstr "アトリビューション-非商用-NoDerivs"
 
 #: app/utils/dictionary/licenses.ts:18:15
 msgid "Attribution-NonCommercial"
-msgstr ""
+msgstr "帰属-非営利"
 
 #: app/utils/dictionary/licenses.ts:24:15
 msgid "Public Domain Dedication (CC0)"
-msgstr ""
+msgstr "パブリックドメインの献身（CC0）"
 
 #: app/utils/dictionary/licenses.ts:30:15
 msgid "Attribution"
-msgstr ""
+msgstr "翻訳の著作情報"
 
 #: app/utils/dictionary/licenses.ts:36:15
 msgid "All rights reserved"
-msgstr ""
+msgstr "全著作権所有。"
 
 #: app/utils/dictionary/licenses.ts:42:15
 msgid "Attribution-NoDerivs"
-msgstr ""
+msgstr "アトリビューション-NoDerivs"
 
 #: app/utils/dictionary/licenses.ts:48:15
 msgid "Public Domain Work"
-msgstr ""
+msgstr "PD 楽曲"
 
 #: app/utils/dictionary/licenses.ts:54:15
 msgid "Attribution-NonCommercial-ShareAlike"
-msgstr ""
+msgstr "アトリビューション-非商用-継承"
 
 #: app/utils/dictionary/licenses.ts:60:15
 msgid "Attribution-ShareAlike"
-msgstr ""
+msgstr "帰属-継承"
 
 #: app/utils/dictionary/payment.ts:21:13
 msgid "Polish zloty"
-msgstr ""
+msgstr "ポーランドズウォティ"
 
 #: app/utils/dictionary/payment.ts:31:13
 msgid "New Zealand dollar"
-msgstr ""
+msgstr "ニュージーランドドル"
 
 #: app/utils/dictionary/payment.ts:41:13
 msgid "Indian rupee"
-msgstr ""
+msgstr "インドルピー"
 
 #: app/utils/dictionary/payment.ts:51:13
 msgid "Brazilian real"
-msgstr ""
+msgstr "ブラジルレアル"
 
 #: app/utils/dictionary/payment.ts:61:13
 msgid "Singapore dollar"
-msgstr ""
+msgstr "シンガポールドル"
 
 #: app/utils/dictionary/payment.ts:71:13
 msgid "Canadian dollar"
-msgstr ""
+msgstr "カナダドル"
 
 #: app/utils/dictionary/payment.ts:81:13
 msgid "Hong Kong dollar"
-msgstr ""
+msgstr "香港ドル"
 
 #: app/utils/dictionary/payment.ts:91:13
 msgid "Czech koruna"
-msgstr ""
+msgstr "チェココルナ"
 
 #: app/utils/dictionary/payment.ts:101:13
 msgid "Danish krone"
-msgstr ""
+msgstr "デンマーククローネ"
 
 #: app/utils/dictionary/payment.ts:111:13
 msgid "Norwegian krone"
-msgstr ""
+msgstr "ノルウェークローネ"
 
 #: app/utils/dictionary/payment.ts:121:13
 msgid "Swedish krona"
-msgstr ""
+msgstr "スウェーデンクローナ"
 
 #: app/utils/dictionary/payment.ts:131:13
 msgid "New Taiwan dollar"
-msgstr ""
+msgstr "ニュー台湾ドル"
 
 #: app/utils/dictionary/payment.ts:141:13
 msgid "United States dollar"
-msgstr ""
+msgstr "米ドル"
 
 #: app/utils/dictionary/payment.ts:151:13
 msgid "Hungarian forint"
-msgstr ""
+msgstr "ハンガリーフォリント"
 
 #: app/utils/dictionary/payment.ts:161:13
 msgid "Japanese yen"
-msgstr ""
+msgstr "日本円"
 
 #: app/utils/dictionary/payment.ts:171:13
 msgid "Israeli new sheqel"
-msgstr ""
+msgstr "イスラエルの新しいシェケル"
 
 #: app/utils/dictionary/payment.ts:181:13
 msgid "European Euro"
-msgstr ""
+msgstr "欧州ユーロ"
 
 #: app/utils/dictionary/payment.ts:191:13
 msgid "Mexican peso"
-msgstr ""
+msgstr "メキシコペソ"
 
 #: app/utils/dictionary/payment.ts:201:13
 msgid "Philippine peso"
-msgstr ""
+msgstr "フィリピンペソ"
 
 #: app/utils/dictionary/payment.ts:211:13
 msgid "Australian dollar"
-msgstr ""
+msgstr "オーストラリアドル"
 
 #: app/utils/dictionary/payment.ts:221:13
 msgid "British pound"
-msgstr ""
+msgstr "英国ポンド"
 
 #: app/utils/dictionary/payment.ts:231:13
 msgid "Thai baht"
-msgstr ""
+msgstr "タイバーツ"
 
 #: app/utils/dictionary/payment.ts:241:13
 msgid "Russian ruble"
-msgstr ""
+msgstr "ロシアルーブル"
 
 #: app/utils/dictionary/payment.ts:251:13
 msgid "Malaysian ringgit"
-msgstr ""
+msgstr "マレーシアリンギット"
 
 #: app/utils/dictionary/payment.ts:261:13
 msgid "Swiss franc"
-msgstr ""
+msgstr "スイスフラン"
 
 #: app/utils/dictionary/age-groups.ts:5:9
 msgid "Under 18"
