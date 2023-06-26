@@ -144,9 +144,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.prepareCustomFormsForSave();
       this._super();
     },
-    move() {
+    move(direction) {
       this.prepareCustomFormsForSave();
-      // this._super(direction);
+      this._super(direction);
     },
     onRemoveForm(_id) {
       const deleteForm = this.data.forms.find(_form => _form.formID === _id);

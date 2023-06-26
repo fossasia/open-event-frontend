@@ -24,7 +24,7 @@ interface SubForm {
   languages: object,
   selectedLang: string,
   isDeleted: boolean,
-  id: string,
+  id: any,
   form_id: string
 }
 
@@ -187,20 +187,21 @@ export default class CustomFormInput extends Component<Args> {
     this.name = '';
     this.min = 0;
     this.max = 10;
-    this.subForm.clear()
+    this.subForm.clear();
+    this.selectedLanguage.clear();
+    this.mainLanguage = 'en-US'
+    this.selectedLanguage.pushObject(this.mainLanguage);
     this.args.onSave && this.args.onSave();
   }
 
   @action
   addTranslation():void {
-    const obj: SubForm = {
+    const obj: any = {
       name            : '',
       languages       : languageForms,
       ignoreLanguages : this.selectedLanguage,
       selectedLang    : '',
-      isDeleted       : false,
-      form_id         : '',
-      id              : ''
+      isDeleted       : false
     }
     this.subForm.pushObject(obj);
   }
