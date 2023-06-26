@@ -76,8 +76,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         if (!field.isDeleted) {
           field.formID = formID;
         }
+        
         if (!field.id) {
           this.data.customForms.pushObject(field);
+          
+        }
+
+        if(field.translations && field.translations.length){
+          console.log("========================>", field.translations)
         }
       });
 
@@ -146,7 +152,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
     move(direction) {
       this.prepareCustomFormsForSave();
-      this._super(direction);
+      // this._super(direction);
     },
     onRemoveForm(_id) {
       const deleteForm = this.data.forms.find(_form => _form.formID === _id);

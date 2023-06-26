@@ -619,8 +619,6 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
-      validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
-      validationRules.fields[`is_consent_form_field_${  index}`] = isConsentFormFieldValidation;
       validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
       validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
@@ -639,20 +637,29 @@ export default Component.extend(FormMixin, {
   },
 
   allFields: computed('fields', function() {
-    let customFields = [];
-    const requiredFixed = [];
-    this.fields.forEach(field => {
-      if (field.isFixed) {
-        requiredFixed.push(field);
+    const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
+    const current_locale = this.cookies.read('current_locale');
+    
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => {
+      const {isFixed, main_language, translations} = field
+
+      if((main_language && main_language.split('-')[0] == current_locale) || !field.translations || !field.translations.length){
+        field.transName = field.name
+      } else if (field.translations?.length){
+        
+        const transName = field.translations.filter(trans => trans.language_code.split('-')[0] == current_locale)
+        
+        if(transName.length){
+          field.transName = transName[0].name
+        } else{
+          field.transName = field.name
+        }
       } else {
-        customFields.push(field);
+        field.transName = field.name
       }
-      field.nameConvert = field.name;
-      if (field.name === 'Consent of refund policy') {
-        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
-      }
-    });
-    customFields =  orderBy(customFields, ['position']);
+
+      return !isFixed
+    }), ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
@@ -660,8 +667,16 @@ export default Component.extend(FormMixin, {
   ageGroups     : orderBy(ageGroups, 'position'),
   countries     : orderBy(countries, 'name'),
   years         : orderBy(years, 'year'),
-  languageForms : orderBy(languageForms, 'name'),
+  languageForms : orderBy(languageForms, 'item'),
   homeWikis     : orderBy(homeWikis, 'item'),
+
+  currentLocale: computed('cookies.current_locale', function(){
+    return this.cookies.read('current_locale')
+  }),
+
+  getData: function(){
+    return "hello";
+  },
 
   actions: {
     submit(data) {
@@ -669,7 +684,7 @@ export default Component.extend(FormMixin, {
         const currentUser = this.data.user;
         currentUser.set('firstName', this.buyerFirstName);
         currentUser.set('lastName', this.buyerLastName);
-        this.sendAction('save', data);
+      this.sendAction('save', data);
       });
     },
     modifyHolder(holder) {

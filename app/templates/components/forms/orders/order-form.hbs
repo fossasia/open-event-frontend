@@ -79,7 +79,7 @@
           {{#if field.isIncluded }}
             {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
+                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
                 {{#if (eq field.type 'paragraph')}}
                   <Widgets::Forms::RichTextEditor
                     @value={{mut (get holder field.identifierPath)}}
@@ -117,6 +117,7 @@
                         @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} 
                         @min={{if field.min field.min null}} @max={{if field.max field.max null}}/>
                     {{else}}
+                    
                       <Input
                         @type={{field.type}}
                         @value={{mut (get holder field.identifierPath)}}
@@ -214,25 +215,7 @@
                     @label={{t "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."}}
                     @checked={{holder.acceptVideoRecording}}         
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
-                    @onChange={{action (mut holder.acceptVideoRecording)}}/>
-                {{else if (eq field.fieldIdentifier 'is_consent_form_field')}}
-                  <UiCheckbox
-                    @checked={{get holder field.identifierPath}}         
-                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
-                    @onChange={{action (mut (get holder field.identifierPath))}} />
-                    <span>{{t 'I agree to the terms of the'}} </span>
-                    <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}}</a>
-                    <span> {{t 'and the'}} </span>
-                    <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
-                    <span> .</span>
-                {{else if (eq field.type 'checkbox')}}
-                  {{#if (and (not-eq field.fieldIdentifier "language_form_1") (not-eq field.fieldIdentifier "language_form_2"))}}     
-                    <UiCheckbox
-                      @checked={{get holder field.identifierPath}}         
-                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
-                      @onChange={{action (mut (get holder field.identifierPath))}}/>
-                      {{t field.nameConvert}}
-                  {{/if}}
+                    @onChange={{action (mut holder.acceptVideoRecording)}}/> 
                 {{/if}}
                 {{#if (eq field.type 'year')}}
                   <UiDropdown
