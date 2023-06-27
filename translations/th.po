@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-06-25 09:29+0000\n"
+"PO-Revision-Date: 2023-06-25 11:17+0000\n"
 "Last-Translator: Hong Phuc Dang <hp@fossasia.org>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/open-event/frontend/"
 "th/>\n"
@@ -5252,6 +5252,11 @@ msgid ""
 "in the system for accounting purposes will be anonymised and there will be no link to any of your personal information. \n"
 "Once you delete this account, you will have no longer access to the system."
 msgstr ""
+"ข้อมูลผู้ใช้ทั้งหมดจะถูกลบ ข้อมูลผู้ใช้ของคุณจะถูกลบทั้งหมดและข้อมูลใด ๆ "
+"ที่จะยังคงอยู่\n"
+"ในระบบเพื่อวัตถุประสงค์ทางบัญชีจะไม่เปิดเผยตัวตนและจะไม่มีการเชื่อมโยงไปยังข้"
+"อมูลส่วนบุคคลใด ๆ ของคุณ\n"
+"เมื่อคุณลบบัญชีนี้คุณจะไม่สามารถเข้าถึงระบบได้อีกต่อไป"
 
 #: app/templates/components/account/danger-zone.hbs:13:10
 msgid ""
@@ -5259,53 +5264,58 @@ msgid ""
 "Before you can delete your account you must transfer the ownership of your event(s) to another organizer or cancel your event(s). \n"
 "If you have ticket orders stored in the system, please cancel your orders first too."
 msgstr ""
+"ไม่สามารถลบบัญชีของคุณได้ในขณะนี้เนื่องจากกิจกรรมที่ใช้งานอยู่และ / "
+"หรือคำสั่งซื้อเชื่อมโยงกับบัญชีนี้\n"
+"ก่อนที่คุณจะสามารถลบบัญชีของคุณคุณต้องโอนความเป็นเจ้าของกิจกรรมของคุณไปยังผู้"
+"จัดงานรายอื่นหรือยกเลิกกิจกรรมของคุณ\n"
+"หากคุณมีใบสั่งซื้อตั๋วอยู่ในระบบโปรดยกเลิกคำสั่งซื้อของคุณก่อนด้วย"
 
 #: app/templates/components/account/email-preferences-section.hbs:5:8
 msgid "Email Updates are"
-msgstr ""
+msgstr "การอัปเดตอีเมลคือ"
 
 #: app/templates/components/account/email-preferences-section.hbs:16:8
 msgid "Updates about events"
-msgstr ""
+msgstr "อัปเดตเกี่ยวกับเหตุการณ์"
 
 #: app/templates/components/account/email-preferences-section.hbs:30:12
 msgid "On"
-msgstr ""
+msgstr "เปิด"
 
 #: app/templates/components/account/email-preferences-section.hbs:32:12
 msgid "Off"
-msgstr ""
+msgstr "ปิด"
 
 #: app/templates/components/account/email-preferences-section.hbs:42:10
 msgid "New Paper is Submitted to your Event"
-msgstr ""
+msgstr "กระดาษใหม่ถูกส่งไปยังกิจกรรมของคุณ"
 
 #: app/templates/components/account/email-preferences-section.hbs:50:10
 msgid "Change in Schedule of Sessions in your Event"
-msgstr ""
+msgstr "เปลี่ยนกำหนดการเซสชันในกิจกรรมของคุณ"
 
 #: app/templates/components/account/email-preferences-section.hbs:58:10
 msgid "Reminder for Next Event"
-msgstr ""
+msgstr "การแจ้งเตือนสำหรับกิจกรรมถัดไป"
 
 #: app/templates/components/account/email-preferences-section.hbs:67:34
 msgid "No events have been created by the user"
-msgstr ""
+msgstr "ไม่มีการสร้างเหตุการณ์โดยผู้ใช้"
 
 #: app/templates/components/account/password-section.hbs:4:6
 #: app/templates/components/account/password-section.hbs:7:102
 msgid "Current Password"
-msgstr ""
+msgstr "รหัสผ่านปัจจุบัน"
 
 #: app/templates/components/account/password-section.hbs:17:6
 #: app/templates/components/account/password-section.hbs:20:94
 msgid "New Password"
-msgstr ""
+msgstr "รหัสผ่านใหม่"
 
 #: app/templates/components/account/password-section.hbs:30:6
 #: app/templates/components/account/password-section.hbs:33:100
 msgid "Repeat Password"
-msgstr ""
+msgstr "ใส่รหัสผ่านซ้ำ"
 
 #: app/templates/components/country-dropdown.hbs:15:30
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:58:23
@@ -5313,118 +5323,120 @@ msgstr ""
 #: app/templates/components/widgets/forms/billing-info.hbs:43:26
 #: app/templates/components/widgets/forms/billing-info.hbs:53:30
 msgid "Select country"
-msgstr ""
+msgstr "เลือกประเทศ"
 
 #: app/templates/components/create-session-message.hbs:6:6
 msgid "Your Speaker Details have been saved, you can now submit a proposal by clicking Submit proposal!"
-msgstr ""
+msgstr "บันทึกรายละเอียดลำโพงของคุณแล้วคุณสามารถส่งข้อเสนอได้โดยคลิกส่งข้อเสนอ!"
 
 #: app/templates/components/errors/forbidden-error.hbs:2:55
 msgid "Forbidden"
-msgstr ""
+msgstr "ต้องห้าม"
 
 #: app/templates/components/errors/forbidden-error.hbs:4:2
 msgid "Oops, you don't have the permission"
-msgstr ""
+msgstr "อ๊ะคุณไม่มีสิทธิ์"
 
 #: app/templates/components/errors/forbidden-error.hbs:5:2
 msgid "to access this page"
-msgstr ""
+msgstr "เพื่อเข้าถึงหน้านี้"
 
 #: app/templates/components/errors/forbidden-error.hbs:8:2
 #: app/templates/components/errors/not-found.hbs:5:2
 #: app/templates/components/errors/server-error.hbs:9:2
 msgid "You may want to head back to the home page."
-msgstr ""
+msgstr "คุณอาจต้องการกลับไปที่หน้าแรก"
 
 #: app/templates/components/errors/forbidden-error.hbs:9:2
 msgid "If you think you shouldn't be seeing this, please contact the administrator."
-msgstr ""
+msgstr "หากคุณคิดว่าคุณไม่ควรเห็นสิ่งนี้โปรดติดต่อผู้ดูแลระบบ"
 
 #: app/templates/components/errors/forbidden-error.hbs:12:64
 #: app/templates/components/errors/generic-error.hbs:9:64
 #: app/templates/components/errors/not-found.hbs:9:64
 #: app/templates/components/errors/server-error.hbs:13:64
 msgid "Go Back Home"
-msgstr ""
+msgstr "กลับบ้าน"
 
 #: app/templates/components/errors/generic-error.hbs:3:35
 msgid "Oops, the page you were trying"
-msgstr ""
+msgstr "อ๊ะหน้าที่คุณกำลังพยายาม"
 
 #: app/templates/components/errors/generic-error.hbs:3:78
 msgid "to access"
-msgstr ""
+msgstr "เพื่อเข้าถึง"
 
 #: app/templates/components/errors/generic-error.hbs:3:100
 msgid "has caused an error."
-msgstr ""
+msgstr "ทำให้เกิดข้อผิดพลาด"
 
 #: app/templates/components/errors/generic-error.hbs:5:2
 msgid "This, may or may not be a server issue. We are looking into it. You may want to head back to the home page."
 msgstr ""
+"สิ่งนี้อาจเป็นปัญหาของเซิร์ฟเวอร์หรือไม่ก็ได้ เรากำลังตรวจสอบมัน "
+"คุณอาจต้องการกลับไปที่หน้าแรก"
 
 #: app/templates/components/errors/generic-error.hbs:6:2
 msgid "Please try visiting after some time."
-msgstr ""
+msgstr "โปรดลองเยี่ยมชมในภายหลัง"
 
 #: app/templates/components/errors/not-found.hbs:2:55
 msgid "Not Found"
-msgstr ""
+msgstr "ไม่พบ"
 
 #: app/templates/components/errors/not-found.hbs:3:35
 #: app/templates/components/errors/server-error.hbs:4:2
 msgid "Oops, the page you are"
-msgstr ""
+msgstr "อ๊ะหน้าคุณ"
 
 #: app/templates/components/errors/not-found.hbs:3:70
 msgid "looking for does not"
-msgstr ""
+msgstr "มองหาไม่ได้"
 
 #: app/templates/components/errors/not-found.hbs:3:103
 msgid "exist"
-msgstr ""
+msgstr "มีอยู่"
 
 #: app/templates/components/errors/not-found.hbs:6:2
 #: app/templates/components/errors/server-error.hbs:10:2
 msgid "If you think something is broken, try again."
-msgstr ""
+msgstr "หากคุณคิดว่ามีบางอย่างเสียให้ลองอีกครั้ง"
 
 #: app/templates/components/errors/server-error.hbs:2:55
 msgid "Internal Server Error"
-msgstr ""
+msgstr "ข้อผิดพลาดเซิร์ฟเวอร์ภายใน"
 
 #: app/templates/components/errors/server-error.hbs:5:2
 msgid "looking for caused an error"
-msgstr ""
+msgstr "กำลังมองหาข้อผิดพลาดที่เกิดขึ้น"
 
 #: app/templates/components/errors/server-error.hbs:6:2
 msgid "on our servers."
-msgstr ""
+msgstr "บนเซิร์ฟเวอร์ของเรา"
 
 #: app/templates/components/event-card.hbs:71:81
 msgid "Add event to group."
-msgstr ""
+msgstr "เพิ่มกิจกรรมในกลุ่ม"
 
 #: app/templates/components/event-card.hbs:75:55
 msgid "Cannot announce unsaved event!"
-msgstr ""
+msgstr "ไม่สามารถประกาศกิจกรรมที่ยังไม่ได้บันทึก!"
 
 #: app/templates/components/event-card.hbs:77:55
 msgid "Cannot announce past event!"
-msgstr ""
+msgstr "ประกาศงานย้อนหลังไม่ได้!"
 
 #: app/templates/components/event-card.hbs:79:55
 msgid "Cannot announce unpublished event!"
-msgstr ""
+msgstr "ประกาศกิจกรรมที่ไม่ได้เผยแพร่ไม่ได้!"
 
 #: app/templates/components/event-card.hbs:83:88
 msgid "Announce event"
-msgstr ""
+msgstr "ประกาศกิจกรรม"
 
 #: app/templates/components/event-card.hbs:86:83
 msgid "Remove event from group."
-msgstr ""
+msgstr "ลบกิจกรรมออกจากกลุ่ม"
 
 #: app/templates/components/event-invoice/billing-info.hbs:20:16
 #: app/templates/components/event-invoice/billing-info.hbs:42:16
@@ -5435,127 +5447,129 @@ msgstr ""
 #: app/templates/components/widgets/forms/billing-info.hbs:36:40
 #: app/templates/components/widgets/forms/location-input.hbs:37:22
 msgid "ZIP Code"
-msgstr ""
+msgstr "รหัสไปรษณีย์"
 
 #: app/templates/components/event-invoice/billing-info.hbs:39:16
 msgid "Billing Address"
-msgstr ""
+msgstr "ที่อยู่เรียกเก็บเงิน"
 
 #: app/templates/components/event-invoice/event-info.hbs:5:8
 #: app/templates/components/orders/event-info.hbs:6:10
 msgid "Event Information"
-msgstr ""
+msgstr "ข้อมูลเหตุการณ์"
 
 #: app/templates/components/event-invoice/event-info.hbs:10:27
 #: app/templates/components/orders/event-info.hbs:12:27
 msgid "When & Where"
-msgstr ""
+msgstr "เมื่อไรและที่ไหน"
 
 #: app/templates/components/event-invoice/event-info.hbs:13:12
 #: app/templates/components/orders/event-info.hbs:22:14
 msgid "At"
-msgstr ""
+msgstr "ที่"
 
 #: app/templates/components/event-invoice/event-info.hbs:20:14
 #: app/templates/components/orders/event-info.hbs:32:14
 msgid "Organized By"
-msgstr ""
+msgstr "จัดโดย"
 
 #: app/templates/components/event-invoice/invoice-summary.hbs:8:8
 msgid "Your invoice payment completed successfully."
-msgstr ""
+msgstr "การชำระเงินใบแจ้งหนี้ของคุณเสร็จสมบูรณ์"
 
 #: app/templates/components/event-invoice/invoice-summary.hbs:10:8
 msgid "Find all the details related to your invoice below."
-msgstr ""
+msgstr "ค้นหารายละเอียดทั้งหมดที่เกี่ยวข้องกับใบแจ้งหนี้ของคุณด้านล่าง"
 
 #: app/templates/components/event-invoice/invoice-summary.hbs:15:27
 #: app/templates/components/orders/ticket-holder.hbs:115:12
 #: app/templates/event-invoice/review.hbs:10:35
 msgid "Invoice Details"
-msgstr ""
+msgstr "รายละเอียดใบแจ้งหนี้"
 
 #: app/templates/components/event-invoice/invoice-summary.hbs:21:30
 #: app/templates/event-invoice/review.hbs:18:24
 msgid "Date Issued"
-msgstr ""
+msgstr "วันที่ออก"
 
 #: app/templates/components/event-invoice/invoice-summary.hbs:22:30
 msgid "Date Completed"
-msgstr ""
+msgstr "วันที่แล้วเสร็จ"
 
 #: app/templates/components/event-invoice/invoice-summary.hbs:23:40
 msgid "Amount Payable"
-msgstr ""
+msgstr "จำนวนเงินที่จ่าย"
 
 #: app/templates/components/event-invoice/payee-info.hbs:26:14
 #: app/templates/components/event-invoice/payee-info.hbs:46:33
 #: app/templates/components/orders/ticket-holder.hbs:30:14
 #: app/templates/components/orders/ticket-holder.hbs:50:33
 msgid "Payment Mode"
-msgstr ""
+msgstr "โหมดการชำระเงิน"
 
 #: app/templates/components/event-invoice/payee-info.hbs:35:20
 #: app/templates/components/orders/ticket-holder.hbs:39:20
 msgid "Transaction ID"
-msgstr ""
+msgstr "รหัสธุรกรรม"
 
 #: app/templates/components/event-invoice/payee-info.hbs:54:38
 #: app/templates/components/orders/ticket-holder.hbs:58:38
 msgid "Card Type"
-msgstr ""
+msgstr "ประเภทบัตร"
 
 #: app/templates/components/event-invoice/payee-info.hbs:66:38
 #: app/templates/components/orders/ticket-holder.hbs:70:38
 msgid "Card Number"
-msgstr ""
+msgstr "หมายเลขบัตร"
 
 #: app/templates/components/event-invoice/payee-info.hbs:72:38
 msgid "Exp Date"
-msgstr ""
+msgstr "วันหมดอายุ"
 
 #: app/templates/components/events/event-import-section.hbs:4:42
 msgid "Select event source file to import"
-msgstr ""
+msgstr "เลือกไฟล์แหล่งเหตุการณ์ที่จะนำเข้า"
 
 #: app/templates/components/events/event-import-section.hbs:9:11
 msgid "Supported formats:"
-msgstr ""
+msgstr "รูปแบบที่รองรับ:"
 
 #: app/templates/components/events/event-import-section.hbs:10:8
 msgid "Open Event compatible json package (.zip), PentabarfXML (.xml), iCalendar (.ical, .ics), XML Representation of iCalendar (.xcal)"
 msgstr ""
+"เปิดแพ็คเกจ json ที่เข้ากันได้กับเหตุการณ์ (.zip), PentabarfXML (.xml), "
+"iCalendar (.ical, .ics), การเป็นตัวแทน XML ของ iCalendar (.xcal)"
 
 #: app/templates/components/events/event-import-section.hbs:13:88
 msgid "Import Event"
-msgstr ""
+msgstr "นำเข้าเหตุการณ์"
 
 #: app/templates/components/events/imports-history-section.hbs:2:33
 msgid "Imported Events"
-msgstr ""
+msgstr "เหตุการณ์ที่นำเข้า"
 
 #: app/templates/components/events/view/export/api-response.hbs:3:4
 msgid "Access event information via REST API"
-msgstr ""
+msgstr "เข้าถึงข้อมูลเหตุการณ์ผ่าน REST API"
 
 #: app/templates/components/events/view/export/api-response.hbs:10:48
 msgid "Basic Event Details"
-msgstr ""
+msgstr "รายละเอียดเหตุการณ์พื้นฐาน"
 
 #: app/templates/components/events/view/export/api-response.hbs:16:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:33:20
 msgid "Microlocations"
-msgstr ""
+msgstr "Microlocations"
 
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
 #: app/templates/public.hbs:93:16
 msgid "Tracks"
-msgstr ""
+msgstr "แทร็ค"
 
 #: app/templates/components/events/view/export/api-response.hbs:32:2
 msgid "You can make a GET request to the following endpoint to access the selected information"
-msgstr ""
+msgstr "คุณสามารถส่งคำขอ GET ไปยังปลายทางต่อไปนี้เพื่อเข้าถึงข้อมูลที่เลือก"
 
 #: app/templates/components/events/view/export/api-response.hbs:34:30
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:197:40
@@ -5564,147 +5578,155 @@ msgstr ""
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-video-recording.hbs:4:34
 #: app/templates/components/url-box.hbs:3:32
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "ลิงก์คัดลอกไปยังคลิปบอร์ด"
 
 #: app/templates/components/events/view/export/api-response.hbs:42:2
 msgid "Response"
-msgstr ""
+msgstr "การตอบสนอง"
 
 #: app/templates/components/events/view/export/download-common.hbs:3:4
 msgid "Download Event as {{file}}"
-msgstr ""
+msgstr "ดาวน์โหลดกิจกรรมเป็น {{file}}"
 
 #: app/templates/components/events/view/export/download-common.hbs:6:4
 msgid "Once the event is live and the schedule is published, {{file}} version of the schedule will be available at:"
 msgstr ""
+"เมื่อถ่ายทอดสดและกำหนดการเผยแพร่แล้วกำหนดการเวอร์ชัน {{file}} จะอยู่ที่:"
 
 #: app/templates/components/events/view/export/download-common.hbs:12:66
 msgid "Alternatively, you can download the {{file}} here"
-msgstr ""
+msgstr "หรือคุณสามารถดาวน์โหลด {{file}} ได้ที่นี่"
 
 #: app/templates/components/events/view/export/download-zip.hbs:3:4
 msgid "Export and Download Event as Zip"
-msgstr ""
+msgstr "ส่งออกและดาวน์โหลดเหตุการณ์เป็น Zip"
 
 #: app/templates/components/events/view/export/download-zip.hbs:5:6
 msgid "Select the media files you want in the Zip file."
-msgstr ""
+msgstr "เลือกไฟล์สื่อที่คุณต้องการในไฟล์ Zip"
 
 #: app/templates/components/events/view/export/download-zip.hbs:13:39
 #: app/templates/components/explore/side-bar.hbs:249:23
 msgid "Image"
-msgstr ""
+msgstr "ภาพ"
 
 #: app/templates/components/events/view/export/download-zip.hbs:26:6
 msgid "Start"
-msgstr ""
+msgstr "เริ่ม"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:2:22
 msgid "Website Generator"
-msgstr ""
+msgstr "เครื่องมือสร้างเว็บไซต์"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
 msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
 msgstr ""
+"คุณต้องการมีเว็บไซต์กิจกรรมเฉพาะที่มีรายละเอียดรายชื่อผู้สนับสนุนวิทยากรและเซ"
+"สชันและกำหนดการทั้งหมดหรือไม่?"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:7:4
 msgid "Simply use the website generator."
-msgstr ""
+msgstr "เพียงใช้ตัวสร้างเว็บไซต์"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:8:4
 msgid "It transfers the data of the event via an API to our website tool and creates a website for you."
 msgstr ""
+"จะถ่ายโอนข้อมูลของเหตุการณ์ผ่าน API "
+"ไปยังเครื่องมือเว็บไซต์ของเราและสร้างเว็บไซต์ให้คุณ"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:9:4
 msgid "You can download the entire site as a Zip file and upload it to your own web hosting service."
 msgstr ""
+"คุณสามารถดาวน์โหลดทั้งไซต์เป็นไฟล์ Zip "
+"และอัปโหลดไปยังบริการเว็บโฮสติ้งของคุณเองได้"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:10:4
 msgid "No database set up or framework required."
-msgstr ""
+msgstr "ไม่จำเป็นต้องตั้งค่าฐานข้อมูลหรือกรอบงาน"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:11:4
 msgid "This feature is still in Alpha stage, but is already used actively by a number of events."
 msgstr ""
+"คุณลักษณะนี้ยังอยู่ในขั้นตอนอัลฟ่า แต่มีการใช้งานอย่างแข็งขันในหลายเหตุการณ์"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:12:4
 msgid "If you press the below button a tab will open where your website is generated."
-msgstr ""
+msgstr "หากคุณกดปุ่มด้านล่างแท็บจะเปิดขึ้นเพื่อสร้างเว็บไซต์ของคุณ"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:15:140
 msgid "Create Website"
-msgstr ""
+msgstr "สร้างเว็บไซต์"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:2:22
 msgid "Event Checklist"
-msgstr ""
+msgstr "รายการตรวจสอบเหตุการณ์"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:15:14
 msgid "Basic information including title, date, venue, ticketing"
-msgstr ""
+msgstr "ข้อมูลพื้นฐานรวมถึงชื่อเรื่องวันที่สถานที่การออกตั๋ว"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:30:14
 msgid "Links, social media, privacy, code of conduct"
-msgstr ""
+msgstr "ลิงค์โซเชียลมีเดียความเป็นส่วนตัวจรรยาบรรณ"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:45:14
 msgid "Information to be collected from attendees"
-msgstr ""
+msgstr "ข้อมูลที่จะรวบรวมจากผู้เข้าร่วม"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:60:14
 msgid "Details and logos of sponsors"
-msgstr ""
+msgstr "รายละเอียดและโลโก้ของผู้สนับสนุน"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:73:12
 msgid "Session, Tracks & Microlocations"
-msgstr ""
+msgstr "เซสชันแทร็กและไมโครโลเคชั่น"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:75:14
 msgid "Tracks details and colors, session lengths, room locations"
-msgstr ""
+msgstr "ติดตามรายละเอียดและสีระยะเวลาเซสชันตำแหน่งห้อง"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:88:12
 #: app/templates/components/explore/side-bar.hbs:215:8
 msgid "Call For Speakers"
-msgstr ""
+msgstr "โทรหาลำโพง"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:90:14
 msgid "Call for speakers announcement and dates"
-msgstr ""
+msgstr "ประกาศและวันที่ของลำโพง"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:103:12
 msgid "Session & Speaker forms customization"
-msgstr ""
+msgstr "การปรับแต่งรูปแบบเซสชันและลำโพง"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:105:14
 msgid "Customize the session and speaker registration forms"
-msgstr ""
+msgstr "ปรับแต่งเซสชั่นและแบบฟอร์มการลงทะเบียนลำโพง"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 #: app/templates/components/events/view/overview/speaker-session.hbs:5:24
 msgid "Summary"
-msgstr ""
+msgstr "ภาพรวม"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:9:12
 msgid "Total tickets sold"
-msgstr ""
+msgstr "ขายตั๋วทั้งหมด"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:13:12
 msgid "No. of orders"
-msgstr ""
+msgstr "จำนวนคำสั่งซื้อ"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:17:12
 msgid "Sales (amount)"
-msgstr ""
+msgstr "ยอดขาย (จำนวน)"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:22:24
 #: app/templates/components/events/view/overview/speaker-session.hbs:78:24
 msgid "Details"
-msgstr ""
+msgstr "รายละเอียด"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:27:12
 msgid "Sold"
-msgstr ""
+msgstr "ขายแล้ว"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:28:12
 #: app/templates/components/orders/order-summary.hbs:169:28
@@ -5712,47 +5734,47 @@ msgstr ""
 #: app/templates/components/public/ticket-list.hbs:156:157
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:3:22
 msgid "Total"
-msgstr ""
+msgstr "ทั้งหมด"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:29:12
 msgid "Available"
-msgstr ""
+msgstr "ที่มี"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:42:10
 msgid "There are no tickets for this event"
-msgstr ""
+msgstr "ไม่มีตั๋วสำหรับงานนี้"
 
 #: app/templates/components/events/view/overview/general-info.hbs:9:8
 msgid "Your event is live at"
-msgstr ""
+msgstr "กิจกรรมของคุณถ่ายทอดสดที่"
 
 #: app/templates/components/events/view/overview/general-info.hbs:19:6
 msgid "Your event is not live yet. Make it live now."
-msgstr ""
+msgstr "กิจกรรมของคุณยังไม่ถ่ายทอดสด ทําให้มันมีชีวิตตอนนี้"
 
 #: app/templates/components/events/view/overview/general-info.hbs:32:14
 msgid "Online and in-person event at {{location}}."
-msgstr ""
+msgstr "เหตุการณ์ออนไลน์และเหตุการณ์ด้วยตนเองที่ {{location}}"
 
 #: app/templates/components/events/view/overview/general-info.hbs:34:14
 msgid "Online event"
-msgstr ""
+msgstr "งานออนไลน์"
 
 #: app/templates/components/events/view/overview/general-info.hbs:37:67
 msgid "Click to add location."
-msgstr ""
+msgstr "คลิกเพื่อเพิ่มตําแหน่งที่ตั้ง"
 
 #: app/templates/components/events/view/overview/general-info.hbs:39:12
 msgid "To be announced."
-msgstr ""
+msgstr "ที่จะประกาศ"
 
 #: app/templates/components/events/view/overview/general-info.hbs:52:20
 msgid "Links and Social Media"
-msgstr ""
+msgstr "ลิงค์และโซเชียลมีเดีย"
 
 #: app/templates/components/events/view/overview/general-info.hbs:59:12
 msgid "No social links present."
-msgstr ""
+msgstr "ไม่มีการเชื่อมโยงทางสังคม"
 
 #: app/templates/components/events/view/overview/general-info.hbs:59:113
 #: app/templates/components/events/view/overview/speaker-session.hbs:16:105
@@ -5760,57 +5782,57 @@ msgstr ""
 #: app/templates/components/events/view/overview/speaker-session.hbs:40:107
 #: app/templates/components/events/view/overview/speaker-session.hbs:52:111
 msgid "Click here to add"
-msgstr ""
+msgstr "คลิกที่นี่เพื่อเพิ่ม"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
 msgid "No. of Sponsors"
-msgstr ""
+msgstr "จำนวนผู้สนับสนุน"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
 msgid "No Sponsor added yet."
-msgstr ""
+msgstr "ยังไม่มีการเพิ่มผู้สนับสนุน"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:2:22
 #: app/templates/components/group-card.hbs:45:30
 #: app/templates/events/view/team.hbs:6:10 app/templates/groups/team.hbs:7:10
 #: app/templates/groups/team.hbs:17:29
 msgid "Team Members"
-msgstr ""
+msgstr "สมาชิกในทีม"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:4:77
 #: app/templates/groups/team.hbs:18:83
 msgid "Add People"
-msgstr ""
+msgstr "เพิ่มผู้คน"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:14:103
 #: app/templates/groups/team.hbs:22:111
 msgid "Invited"
-msgstr ""
+msgstr "เชิญ"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:20:12
 #: app/templates/groups/team.hbs:27:18
 msgid "User (Email)"
-msgstr ""
+msgstr "ผู้ใช้ (อีเมล)"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:21:12
 #: app/templates/groups/team.hbs:28:18
 msgid "Role"
-msgstr ""
+msgstr "หน้าที่"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:39:47
 #: app/templates/groups/team.hbs:45:49
 msgid "Are you sure you would like to cancel this invite?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการยกเลิกคำเชิญนี้"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:43:31
 #: app/templates/groups/team.hbs:49:33
 msgid "Resend invite"
-msgstr ""
+msgstr "ส่งคำเชิญอีกครั้ง"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:55:12
 #: app/templates/groups/team.hbs:62:16
 msgid "No records to show"
-msgstr ""
+msgstr "ไม่มีบันทึกที่จะแสดง"
 
 #: app/templates/components/events/view/overview/session-view.hbs:10:61
 #: app/templates/components/events/view/overview/session-view.hbs:34:65
@@ -5819,66 +5841,66 @@ msgstr ""
 #: app/templates/components/forms/speaker-section.hbs:9:51
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:223:22
 msgid "Private"
-msgstr ""
+msgstr "ส่วนตัว"
 
 #: app/templates/components/events/view/overview/session-view.hbs:53:49
 msgid "Average Rating"
-msgstr ""
+msgstr "คะแนนเฉลี่ย"
 
 #: app/templates/components/events/view/overview/session-view.hbs:57:49
 msgid "Locked"
-msgstr ""
+msgstr "ถูกล็อก"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
 #: app/templates/public.hbs:121:16
 msgid "Session Types"
-msgstr ""
+msgstr "ประเภทเซสชัน"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:16:12
 msgid "No Session Type present."
-msgstr ""
+msgstr "ไม่มีประเภทเซสชันอยู่"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:28:12
 msgid "No Track Present."
-msgstr ""
+msgstr "ไม่มีแทร็กอยู่"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:40:12
 msgid "No Microlocations Present."
-msgstr ""
+msgstr "ไม่มีตําแหน่งจุลชีววิทยาอยู่"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:48:12
 #: app/templates/components/modals/event-revision.hbs:29:30
 msgid "Start Time"
-msgstr ""
+msgstr "เวลาเริ่ม"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:50:12
 #: app/templates/components/modals/event-revision.hbs:44:30
 msgid "End Time"
-msgstr ""
+msgstr "เวลาสิ้นสุด"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:52:12
 msgid "Call for Speakers not enabled."
-msgstr ""
+msgstr "ไม่ได้เปิดใช้งานการเรียกลําโพง"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:57:20
 msgid "No. of Speakers"
-msgstr ""
+msgstr "จำนวนลำโพง"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:62:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:72:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:97:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:111:12
 msgid "Sessions and Speakers not enabled."
-msgstr ""
+msgstr "ไม่ได้เปิดใช้งานเซสชันและลำโพง"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:67:20
 msgid "No. of Sessions"
-msgstr ""
+msgstr "จำนวนเซสชัน"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:83:12
 msgid "States"
-msgstr ""
+msgstr "สถานะ"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:94:14
 #: app/templates/components/events/view/overview/speaker-session.hbs:109:14
@@ -5887,21 +5909,21 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:5:22
 #: app/templates/events/view/speakers.hbs:17:14
 msgid "Confirmed"
-msgstr ""
+msgstr "ได้รับการยืนยัน"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:105:12
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:3:22
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:3:22
 msgid "Submitted"
-msgstr ""
+msgstr "ส่ง"
 
 #: app/templates/components/explore/side-bar.hbs:16:8
 msgid "Setting"
-msgstr ""
+msgstr "การตั้งค่า"
 
 #: app/templates/components/explore/side-bar.hbs:49:35
 msgid "Enter Location"
-msgstr ""
+msgstr "ป้อนตำแหน่ง"
 
 #: app/templates/components/explore/side-bar.hbs:88:65
 #: app/templates/components/forms/wizard/basic-details-step.hbs:81:47
@@ -5909,7 +5931,7 @@ msgstr ""
 #: app/templates/components/widgets/forms/ticket-input.hbs:133:58
 #: app/templates/components/widgets/forms/ticket-input.hbs:335:60
 msgid "Starts"
-msgstr ""
+msgstr "เริ่ม"
 
 #: app/templates/components/explore/side-bar.hbs:96:63
 #: app/templates/components/forms/wizard/basic-details-step.hbs:99:45
@@ -5917,96 +5939,96 @@ msgstr ""
 #: app/templates/components/widgets/forms/ticket-input.hbs:151:56
 #: app/templates/components/widgets/forms/ticket-input.hbs:353:58
 msgid "Ends"
-msgstr ""
+msgstr "สิ้นสุด"
 
 #: app/templates/components/explore/side-bar.hbs:122:8
 msgid "Categories"
-msgstr ""
+msgstr "หมวดหมู่"
 
 #: app/templates/components/explore/side-bar.hbs:127:10
 msgid "All Categories"
-msgstr ""
+msgstr "ทุกหมวดหมู่"
 
 #: app/templates/components/explore/side-bar.hbs:159:8
 msgid "Event Type"
-msgstr ""
+msgstr "ประเภทเหตุการณ์"
 
 #: app/templates/components/explore/side-bar.hbs:163:17
 msgid "All Types"
-msgstr ""
+msgstr "ทุกประเภท"
 
 #: app/templates/components/explore/side-bar.hbs:187:8
 #: app/templates/components/orders/order-summary.hbs:50:16
 #: app/templates/components/orders/order-summary.hbs:64:16
 msgid "Ticket Type"
-msgstr ""
+msgstr "ประเภทตั๋ว"
 
 #: app/templates/components/explore/side-bar.hbs:194:23
 #: app/templates/components/order-card.hbs:37:12
 #: app/templates/components/orders/ticket-price.hbs:2:4
 #: app/templates/pricing.hbs:178:58 app/templates/public/index.hbs:45:24
 msgid "Free"
-msgstr ""
+msgstr "ฟรี"
 
 #: app/templates/components/explore/side-bar.hbs:228:23
 #: app/templates/components/public/call-for-speakers.hbs:19:43
 msgid "Closed"
-msgstr ""
+msgstr "ปิดงาน"
 
 #: app/templates/components/explore/side-bar.hbs:267:100
 msgid "Default Filters"
-msgstr ""
+msgstr "ตัวกรองเริ่มต้น"
 
 #: app/templates/components/footer-main.hbs:9:31
 msgid "Use {{app}}"
-msgstr ""
+msgstr "ใช้ {{app}}"
 
 #: app/templates/components/footer-main.hbs:10:104
 msgid "How it Works"
-msgstr ""
+msgstr "มันทำงานอย่างไร"
 
 #: app/templates/components/footer-main.hbs:11:56
 #: app/templates/components/nav-bar.hbs:24:24
 #: app/templates/components/side-bar.hbs:30:49 app/templates/pricing.hbs:8:35
 msgid "Pricing"
-msgstr ""
+msgstr "ราคา"
 
 #: app/templates/components/footer-main.hbs:17:31
 msgid "Plan Events"
-msgstr ""
+msgstr "วางแผนกิจกรรม"
 
 #: app/templates/components/footer-main.hbs:19:12
 msgid "Online Registration"
-msgstr ""
+msgstr "การลงทะเบียนออนไลน์"
 
 #: app/templates/components/footer-main.hbs:22:12
 msgid "Sell Event Tickets"
-msgstr ""
+msgstr "ขายตั๋วงาน"
 
 #: app/templates/components/footer-main.hbs:25:12
 msgid "Event Management Software"
-msgstr ""
+msgstr "ซอฟต์แวร์การจัดการเหตุการณ์"
 
 #: app/templates/components/footer-main.hbs:31:31
 msgid "Find Events"
-msgstr ""
+msgstr "ค้นหากิจกรรม"
 
 #: app/templates/components/footer-main.hbs:33:12
 msgid "Browse Events"
-msgstr ""
+msgstr "เรียกดูกิจกรรม"
 
 #: app/templates/components/footer-main.hbs:36:12
 msgid "Attendee App"
-msgstr ""
+msgstr "แอพ Attendee"
 
 #: app/templates/components/footer-main.hbs:39:12
 #: app/templates/organizer-app.hbs:8:35
 msgid "Organizer App"
-msgstr ""
+msgstr "แอพ Organizer"
 
 #: app/templates/components/footer-main.hbs:45:31
 msgid "Connect With Us"
-msgstr ""
+msgstr "ติดต่อกับเรา"
 
 #: app/templates/components/footer-main.hbs:73:43
 #: app/templates/components/forms/admin/content/social-links-form.hbs:46:11
@@ -6015,75 +6037,75 @@ msgstr ""
 
 #: app/templates/components/footer-main.hbs:78:49
 msgid "Google Groups"
-msgstr ""
+msgstr "Google Groups"
 
 #: app/templates/components/footer-main.hbs:83:43
 #: app/templates/components/forms/admin/content/social-links-form.hbs:64:11
 msgid "Patreon"
-msgstr ""
+msgstr "Patreon"
 
 #: app/templates/components/footer-main.hbs:88:42
 #: app/templates/components/forms/admin/content/social-links-form.hbs:73:11
 msgid "Gitter"
-msgstr ""
+msgstr "Gitter"
 
 #: app/templates/components/footer-main.hbs:93:44
 #: app/templates/components/forms/admin/content/social-links-form.hbs:77:11
 msgid "Telegram"
-msgstr ""
+msgstr "โทรเลข"
 
 #: app/templates/components/footer-main.hbs:98:33
 #: app/templates/components/forms/admin/content/social-links-form.hbs:81:11
 msgid "Weblate"
-msgstr ""
+msgstr "Weblate"
 
 #: app/templates/components/footer-main.hbs:108:29
 msgid "Maintained by"
-msgstr ""
+msgstr "ดูแลโดย"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:4:75
 msgid "Page Name"
-msgstr ""
+msgstr "ชื่อเพจ"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:8:77
 msgid "Title of the Page"
-msgstr ""
+msgstr "ชื่อของเพจ"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:11:28
 msgid "Path"
-msgstr ""
+msgstr "เส้นทาง"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:12:73
 msgid "URL for the Page"
-msgstr ""
+msgstr "URL สำหรับเพจ"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:19:28
 msgid "Place"
-msgstr ""
+msgstr "สถานที่"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:23:32
 msgid "Select Page Place"
-msgstr ""
+msgstr "เลือก Page Place"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:26:46
 msgid "Footer"
-msgstr ""
+msgstr "ส่วนท้าย"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:39:32
 msgid "Select Language"
-msgstr ""
+msgstr "เลือกภาษา"
 
 #: app/templates/components/forms/admin/content/social-links-form.hbs:37:11
 msgid "Google Group"
-msgstr ""
+msgstr "Google Group"
 
 #: app/templates/components/forms/admin/content/translation-form.hbs:19:61
 msgid "Upload"
-msgstr ""
+msgstr "อัปโหลด"
 
 #: app/templates/components/forms/admin/settings/analytics-form.hbs:3:4
 msgid "Google Analytics"
-msgstr ""
+msgstr "Google Analytics"
 
 #: app/templates/components/forms/admin/settings/analytics-form.hbs:5:7
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:15:8
@@ -6100,7 +6122,7 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:16:5
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:47:5
 msgid "See"
-msgstr ""
+msgstr "ดู"
 
 #: app/templates/components/forms/admin/settings/analytics-form.hbs:7:8
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:17:10
@@ -6122,91 +6144,91 @@ msgstr ""
 #: app/templates/events/view/sessions.hbs:34:110
 #: app/templates/events/view/speakers.hbs:53:110
 msgid "here"
-msgstr ""
+msgstr "ที่นี่"
 
 #: app/templates/components/forms/admin/settings/analytics-form.hbs:9:6
 msgid "on how to get this tracking ID."
-msgstr ""
+msgstr "เกี่ยวกับวิธีรับรหัสติดตามนี้"
 
 #: app/templates/components/forms/admin/settings/analytics-form.hbs:14:6
 msgid "Tracking ID"
-msgstr ""
+msgstr "รหัสติดตาม"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:3:4
 msgid "Invoice Handling"
-msgstr ""
+msgstr "การจัดการใบแจ้งหนี้"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:9:32
 msgid "Invoices Sent Out"
-msgstr ""
+msgstr "ส่งใบแจ้งหนี้แล้ว"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:11:41
 msgid "First of every month"
-msgstr ""
+msgstr "แรกของทุกเดือน"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:12:41
 msgid "Second of every month"
-msgstr ""
+msgstr "ที่สองของทุกเดือน"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:13:41
 msgid "Third of every month"
-msgstr ""
+msgstr "สามของทุกเดือน"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:20:32
 #: app/templates/components/forms/wizard/basic-details-step.hbs:129:34
 msgid "Select timezone"
-msgstr ""
+msgstr "เลือกเขตเวลา"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:30:4
 msgid "Invoice Contact"
-msgstr ""
+msgstr "ติดต่อใบแจ้งหนี้"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:33:41
 #: app/templates/components/forms/user-payment-info-form.hbs:16:29
 #: app/templates/components/modals/tax-info-modal.hbs:41:13
 #: app/templates/components/orders/company-info.hbs:25:22
 msgid "Contact Name"
-msgstr ""
+msgstr "ชื่อผู้ติดต่อ"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:45:58
 msgid "Paypal Email"
-msgstr ""
+msgstr "อีเมล Paypal"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:54:37
 #: app/templates/components/modals/tax-info-modal.hbs:20:13
 #: app/templates/components/orders/company-info.hbs:115:22
 msgid "Tax ID"
-msgstr ""
+msgstr "เลขประจำตัวผู้เสียภาษี"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:81:36
 msgid "Organisation Logo"
-msgstr ""
+msgstr "โลโก้องค์กร"
 
 #: app/templates/components/forms/admin/settings/billing.hbs:87:14
 msgid "Select Organisation Logo"
-msgstr ""
+msgstr "เลือกโลโก้องค์กร"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:2:24
 msgid "Event Images"
-msgstr ""
+msgstr "ภาพเหตุการณ์"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:3:24
 msgid "Large Size"
-msgstr ""
+msgstr "ขนาดใหญ่"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:6:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:29:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:54:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:73:13
 msgid "Width (in px)"
-msgstr ""
+msgstr "ความกว้าง (เป็น px)"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:10:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:33:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:58:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:77:13
 msgid "Height (in px)"
-msgstr ""
+msgstr "ความสูง (เป็น px)"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:14:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:37:13
@@ -6215,15 +6237,15 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/images-form.hbs:107:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:123:13
 msgid "Quality (in %)"
-msgstr ""
+msgstr "คุณภาพ (เป็น%)"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:19:23
 msgid "Standard aspect ratio is 13:5. Tick to maintain aspect ratio."
-msgstr ""
+msgstr "อัตราส่วนภาพมาตรฐานคือ 13: 5 ทำเครื่องหมายเพื่อรักษาอัตราส่วน"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:21:2
 msgid "Standard Size of the available area is 1300px X 500px"
-msgstr ""
+msgstr "ขนาดมาตรฐานของพื้นที่ว่างคือ 1300px X 500px"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:22:5
 #: app/templates/components/forms/admin/settings/images-form.hbs:45:5
@@ -6231,110 +6253,110 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/images-form.hbs:112:5
 #: app/templates/components/forms/admin/settings/images-form.hbs:128:5
 msgid "Found in :"
-msgstr ""
+msgstr "พบใน :"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:24:22
 msgid "Background Header Image in Public Event Page"
-msgstr ""
+msgstr "รูปภาพส่วนหัวพื้นหลังในหน้ากิจกรรมสาธารณะ"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:26:24
 #: app/templates/components/forms/admin/settings/images-form.hbs:84:24
 msgid "Thumbnail Size"
-msgstr ""
+msgstr "ขนาดภาพขนาดย่อ"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:42:23
 #: app/templates/components/forms/admin/settings/images-form.hbs:67:23
 msgid "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."
-msgstr ""
+msgstr "อัตราส่วนภาพมาตรฐานคือ 5: 2 ทำเครื่องหมายเพื่อรักษาอัตราส่วน"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:44:2
 #: app/templates/components/forms/admin/settings/images-form.hbs:81:2
 msgid "Standard Size of the available area is 500px X 200px"
-msgstr ""
+msgstr "ขนาดมาตรฐานของพื้นที่ว่างคือ 500px X 200px"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:47:22
 msgid "Home Page Event Images"
-msgstr ""
+msgstr "ภาพเหตุการณ์ในหน้าแรก"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:48:22
 msgid "My Session Page Event Images"
-msgstr ""
+msgstr "รูปภาพเหตุการณ์ในหน้าเซสชันของฉัน"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:49:22
 msgid "My Ticket Page Event Images"
-msgstr ""
+msgstr "ภาพกิจกรรมหน้าตั๋วของฉัน"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:51:24
 #: app/templates/components/forms/admin/settings/images-form.hbs:116:24
 msgid "Icon Size"
-msgstr ""
+msgstr "ขนาดไอคอน"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:69:2
 msgid "Standard Size of the available area is 75px X 30px"
-msgstr ""
+msgstr "ขนาดมาตรฐานของพื้นที่ว่างคือ 75px X 30px"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:70:24
 msgid "Logo Size (Event Wizard)"
-msgstr ""
+msgstr "ขนาดโลโก้ (ตัวช่วยสร้างเหตุการณ์)"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:83:24
 msgid "Profile/Speaker Images"
-msgstr ""
+msgstr "โปรไฟล์ / รูปภาพลำโพง"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:87:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:103:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:119:13
 msgid "Width & Height (in px)"
-msgstr ""
+msgstr "ความกว้างและความสูง (เป็น px)"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:95:2
 msgid "Standard Size of the available area is 150px X 150px"
-msgstr ""
+msgstr "ขนาดมาตรฐานของพื้นที่ว่างคือ 150px X 150px"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:98:22
 msgid "Event Public Page"
-msgstr ""
+msgstr "หน้าสาธารณะของกิจกรรม"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:100:24
 msgid "Small Size"
-msgstr ""
+msgstr "ขนาดเล็ก"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:111:2
 msgid "Standard Size of the available area is 50px X 50px"
-msgstr ""
+msgstr "ขนาดมาตรฐานของพื้นที่ว่างคือ 50px X 50px"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:114:22
 msgid "Speaker Tab in Event Dashboard"
-msgstr ""
+msgstr "แท็บลำโพงในแดชบอร์ดเหตุการณ์"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:127:2
 msgid "Standard Size of the available area is 35px X 35px"
-msgstr ""
+msgstr "ขนาดมาตรฐานของพื้นที่ว่างคือ 35px X 35px"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:130:22
 msgid "Top Bar Right Corner"
-msgstr ""
+msgstr "แถบด้านบนมุมขวา"
 
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:3:4
 msgid "Android App Generator"
-msgstr ""
+msgstr "โปรแกรมสร้างแอป Android"
 
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:7:6
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:19:6
 msgid "API Server"
-msgstr ""
+msgstr "เซิร์ฟเวอร์ API"
 
 #: app/templates/components/forms/admin/settings/microservices-form.hbs:15:4
 msgid "Web App Generator"
-msgstr ""
+msgstr "เครื่องมือสร้างเว็บแอป"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:4:6
 msgid "Enable Stripe"
-msgstr ""
+msgstr "เปิดใช้งาน Stripe"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:13:6
 msgid "Stripe Keys"
-msgstr ""
+msgstr "ปุ่มลาย"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:19:8
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:143:8
@@ -6345,770 +6367,774 @@ msgstr ""
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:20:4
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:51:4
 msgid "on how to obtain these keys."
-msgstr ""
+msgstr "เกี่ยวกับวิธีรับคีย์เหล่านี้"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:23:6
 msgid "Stripe Integration Mode"
-msgstr ""
+msgstr "โหมดการรวม Stripe"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:27:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:289:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:385:15
 msgid "Test mode - Used during development and testing"
-msgstr ""
+msgstr "โหมดทดสอบ - ใช้ระหว่างการพัฒนาและการทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:36:10
 msgid "Client Test ID"
-msgstr ""
+msgstr "รหัสทดสอบไคลเอ็นต์"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:40:21
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:206:21
 msgid "This client id will be used for testing mode"
-msgstr ""
+msgstr "รหัสไคลเอ็นต์นี้จะใช้สำหรับโหมดทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:49:10
 msgid "Secret Test Key"
-msgstr ""
+msgstr "รหัสทดสอบลับ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:53:21
 msgid "This secret key will be used for testing mode"
-msgstr ""
+msgstr "คีย์ลับนี้จะใช้สำหรับโหมดทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:62:10
 msgid "Publishable Test Key"
-msgstr ""
+msgstr "รหัสทดสอบที่เผยแพร่ได้"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:66:21
 msgid "This publishable key will be used for testing mode"
-msgstr ""
+msgstr "คีย์ที่เผยแพร่ได้นี้จะใช้สำหรับโหมดทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:77:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:229:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:325:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:421:15
 msgid "Live mode - Used during production"
-msgstr ""
+msgstr "โหมดสด - ใช้ระหว่างการผลิต"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:86:10
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:13:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:38:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:88:4
 msgid "Client ID"
-msgstr ""
+msgstr "ไอดีของลูกข่าย"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:90:21
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:242:21
 msgid "This client id will be used during live (production) mode"
-msgstr ""
+msgstr "รหัสไคลเอ็นต์นี้จะถูกใช้ระหว่างโหมดใช้งานจริง (การผลิต)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:99:10
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:148:8
 msgid "Secret Key"
-msgstr ""
+msgstr "คีย์ลับ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:103:21
 msgid "This Secret Key will be used during live (production) mode"
-msgstr ""
+msgstr "รหัสลับนี้จะถูกใช้ในโหมดถ่ายทอดสด (การผลิต)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:112:10
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:157:8
 msgid "Publishable Key"
-msgstr ""
+msgstr "คีย์ที่เผยแพร่ได้"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:116:21
 msgid "This Publishable Key will be used during live (production) mode"
-msgstr ""
+msgstr "คีย์ที่สามารถเผยแพร่ได้นี้จะถูกใช้ในโหมดถ่ายทอดสด (การผลิต)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:128:6
 msgid "Enable AliPay"
-msgstr ""
+msgstr "เปิดใช้งาน AliPay"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:137:6
 msgid "AliPay Keys (Stripe Sources)"
-msgstr ""
+msgstr "คีย์ AliPay (ที่มาของ Stripe)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:169:6
 msgid "Enable PayPal"
-msgstr ""
+msgstr "เปิดใช้งาน PayPal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:178:6
 msgid "PayPal Credentials"
-msgstr ""
+msgstr "ข้อมูลประจำตัวของ PayPal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:189:6
 msgid "PayPal Integration Mode"
-msgstr ""
+msgstr "โหมดการรวม PayPal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:193:15
 msgid "Sandbox mode - Used during development and testing"
-msgstr ""
+msgstr "โหมดแซนด์บ็อกซ์ - ใช้ระหว่างการพัฒนาและการทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:202:10
 msgid "Paypal Sandbox Client Id"
-msgstr ""
+msgstr "รหัสไคลเอ็นต์ Paypal Sandbox"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:215:10
 msgid "Paypal Sandbox Secret Token"
-msgstr ""
+msgstr "Paypal Sandbox Secret Token"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:219:21
 msgid "This secret token will be used during testing mode"
-msgstr ""
+msgstr "โทเค็นลับนี้จะถูกใช้ระหว่างโหมดทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:238:10
 msgid "Paypal Client Id"
-msgstr ""
+msgstr "รหัสลูกค้า Paypal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:251:10
 msgid "Paypal Secret Token"
-msgstr ""
+msgstr "โทเค็นลับของ Paypal"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:255:21
 msgid "This secret tocken will be used during live (production) mode"
-msgstr ""
+msgstr "โทเค็นลับนี้จะถูกใช้ระหว่างโหมดถ่ายทอดสด (การผลิต)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:266:6
 msgid "Enable Omise"
-msgstr ""
+msgstr "เปิดใช้งาน Omise"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:275:6
 msgid "Omise Credentials"
-msgstr ""
+msgstr "ข้อมูลประจำตัวของ Omise"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:285:6
 msgid "Omise Integration Mode"
-msgstr ""
+msgstr "Omise Integration Mode"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:298:10
 msgid "Omise Test Public Key"
-msgstr ""
+msgstr "คีย์สาธารณะของ Omise Test"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:302:21
 msgid "This public key will be used for testing mode"
-msgstr ""
+msgstr "คีย์สาธารณะนี้จะใช้สำหรับโหมดทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:311:10
 msgid "Omise Test Secret Key"
-msgstr ""
+msgstr "รหัสลับการทดสอบโอมิเซะ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:315:21
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:411:21
 msgid "This secret key will be used during testing mode"
-msgstr ""
+msgstr "คีย์ลับนี้จะถูกใช้ระหว่างโหมดทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:334:10
 msgid "Omise Live Public Key"
-msgstr ""
+msgstr "คีย์สาธารณะ Omise Live"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:338:21
 msgid "This public key will be used during live (production) mode"
-msgstr ""
+msgstr "คีย์สาธารณะนี้จะถูกใช้ระหว่างโหมดใช้งานจริง (ที่ใช้งานจริง)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:347:10
 msgid "Omise Live Secret Key"
-msgstr ""
+msgstr "รหัสลับ Omise Live"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:351:21
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:447:21
 msgid "This secret key will be used during live (production) mode"
-msgstr ""
+msgstr "คีย์ลับนี้จะถูกใช้ระหว่างโหมดถ่ายทอดสด (การผลิต)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:362:6
 msgid "Enable PayTM"
-msgstr ""
+msgstr "เปิดใช้งาน PayTM"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:371:6
 msgid "PayTM Credentials"
-msgstr ""
+msgstr "ข้อมูลรับรอง PayTM"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:381:6
 msgid "PayTM Integration Mode"
-msgstr ""
+msgstr "โหมดบูรณาการ PayTM"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:394:10
 msgid "PayTM Test Merchant ID"
-msgstr ""
+msgstr "รหัสผู้ค้าทดสอบ PayTM"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:398:21
 msgid "This Merchant ID will be used for testing mode"
-msgstr ""
+msgstr "รหัสผู้ขายนี้จะใช้สำหรับโหมดทดสอบ"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:407:10
 msgid "PayTM Test Secret Key"
-msgstr ""
+msgstr "รหัสลับการทดสอบ PayTM"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:430:10
 msgid "PayTM Live Merchant ID"
-msgstr ""
+msgstr "รหัสผู้ค้า PayTM Live"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:434:21
 msgid "This Merchant ID will be used during live (production) mode"
-msgstr ""
+msgstr "รหัสผู้ขายนี้จะถูกใช้ในโหมดใช้งานจริง (การผลิต)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:443:10
 msgid "PayTM Live Secret Key"
-msgstr ""
+msgstr "รหัสลับ PayTM Live"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:3:4
 msgid "App Environment"
-msgstr ""
+msgstr "สภาพแวดล้อมของแอป"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:5:6
 msgid "Where is the application running ?"
-msgstr ""
+msgstr "แอปพลิเคชันทำงานอยู่ที่ไหน"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:9:20
 msgid "Development"
-msgstr ""
+msgstr "การพัฒนา"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:12:20
 msgid "Staging"
-msgstr ""
+msgstr "จัดฉาก"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:15:20
 msgid "Production"
-msgstr ""
+msgstr "Production"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:18:4
 #: app/templates/components/forms/admin/settings/system-form.hbs:25:6
 msgid "App Name"
-msgstr ""
+msgstr "ชื่อแอป"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:20:6
 msgid "The name of your deployment. This will be used throughout this application."
-msgstr ""
+msgstr "ชื่อการปรับใช้ของคุณ สิ่งนี้จะถูกใช้ตลอดทั้งแอปพลิเคชันนี้"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:31:6
 msgid "Tagline"
-msgstr ""
+msgstr "แท็กไลน์"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:36:4
 msgid "API server details"
-msgstr ""
+msgstr "รายละเอียดเซิร์ฟเวอร์ API"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:38:6
 msgid "The URL of the API that this frontend will make use of as the backend."
-msgstr ""
+msgstr "URL ของ API ที่ส่วนหน้านี้จะใช้เป็นแบ็กเอนด์"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:43:6
 msgid "API Url"
-msgstr ""
+msgstr "URL ของ API"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:52:4
 #: app/templates/components/forms/admin/settings/system-form.hbs:61:11
 msgid "Cookie Policy"
-msgstr ""
+msgstr "นโยบายคุกกี้"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:56:6
 msgid "Cookie Policy URL"
-msgstr ""
+msgstr "URL นโยบายคุกกี้"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:78:4
 msgid "Upload Size"
-msgstr ""
+msgstr "ขนาดอัพโหลด"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:80:6
 msgid "Set maximum upload size in KB."
-msgstr ""
+msgstr "กำหนดขนาดอัพโหลดสูงสุดเป็น KB"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:85:6
 msgid "Logo Size"
-msgstr ""
+msgstr "ขนาดโลโก้"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:91:6
 msgid "Image Size"
-msgstr ""
+msgstr "ขนาดรูปภาพ"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:97:6
 msgid "Slide Size"
-msgstr ""
+msgstr "ขนาดสไลด์"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:103:4
 msgid "Rocket Chat Integration"
-msgstr ""
+msgstr "บูรณาการ Rocket Chat"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:107:6
 msgid "Rocket Chat URL"
-msgstr ""
+msgstr "Rocket Chat URL"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:116:6
 msgid "Registration Secret"
-msgstr ""
+msgstr "ความลับในการลงทะเบียน"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:3:2
 msgid "Captcha Options"
-msgstr ""
+msgstr "ตัวเลือก Captcha"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:8:21
 msgid "Page"
-msgstr ""
+msgstr "หน้า"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:9:16
 msgid "Functionality"
-msgstr ""
+msgstr "ฟังก์ชันการทำงาน"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:13:18
 msgid "User Register Page"
-msgstr ""
+msgstr "หน้าลงทะเบียนผู้ใช้"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:14:18
 msgid "HCaptcha is enabled if new user is creating account."
-msgstr ""
+msgstr "HCaptcha ถูกเปิดใช้งานหากผู้ใช้ใหม่กำลังสร้างบัญชี"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:17:18
 msgid "Login Page"
-msgstr ""
+msgstr "หน้าเข้าสู่ระบบ"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:18:18
 msgid "HCaptcha is enabled if user try to login more than 2 times with wrong credentials."
 msgstr ""
+"HCaptcha จะเปิดใช้งานหากผู้ใช้พยายามเข้าสู่ระบบมากกว่า 2 "
+"ครั้งโดยใช้ข้อมูลรับรองไม่ถูกต้อง"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:21:18
 msgid "Forgot Password page"
-msgstr ""
+msgstr "หน้าลืมรหัสผ่าน"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:22:18
 msgid "HCaptcha is always enabled."
-msgstr ""
+msgstr "HCaptcha เปิดใช้งานอยู่เสมอ"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:29:4
 msgid "Captcha settings for sensitive actions in app."
-msgstr ""
+msgstr "การตั้งค่า Captcha สำหรับการกระทำที่ละเอียดอ่อนในแอป"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:34:4
 msgid "Enable Google reCAPTCHA"
-msgstr ""
+msgstr "เปิดใช้งาน Google reCAPTCHA"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:40:4
 msgid "Google reCaptcha"
-msgstr ""
+msgstr "Google reCaptcha"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:51:6
 msgid "Google reCAPTCHA Site Key"
-msgstr ""
+msgstr "คีย์ไซต์ Google reCAPTCHA"
 
 #: app/templates/components/forms/admin/settings/system/captcha-form.hbs:57:6
 msgid "Google reCAPTCHA Secret Key"
-msgstr ""
+msgstr "คีย์ลับ reCAPTCHA ของ Google"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:2:2
 msgid "Mail Settings"
-msgstr ""
+msgstr "การตั้งค่าเมล"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:6:4
 msgid "From Email"
-msgstr ""
+msgstr "จากอีเมล"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:12:4
 msgid "From Name"
-msgstr ""
+msgstr "จากชื่อ"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:18:4
 msgid "Frontend Url"
-msgstr ""
+msgstr "URL ส่วนหน้า"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:27:18
 msgid "Disable email"
-msgstr ""
+msgstr "ปิดการใช้งานอีเมล"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:30:18
 msgid "SMTP"
-msgstr ""
+msgstr "SMTP"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:35:6
 msgid "Host"
-msgstr ""
+msgstr "โฮสต์"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:41:6
 msgid "Port"
-msgstr ""
+msgstr "พอร์ต"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:46:11
 msgid "Encryption"
-msgstr ""
+msgstr "การเข้ารหัส"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:50:8
 msgid "Choose Encryption type"
-msgstr ""
+msgstr "เลือกประเภทการเข้ารหัส"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:55:10
 msgid "TLS"
-msgstr ""
+msgstr "ทล"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:58:10
 msgid "TLS (optional)"
-msgstr ""
+msgstr "TLS (ไม่บังคับ)"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:61:10
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:64:10
 msgid "No Encryption"
-msgstr ""
+msgstr "ไม่มีการเข้ารหัส"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:71:6
 msgid "Username"
-msgstr ""
+msgstr "ชื่อผู้ใช้"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:84:18
 msgid "Sendgrid API"
-msgstr ""
+msgstr "Sendgrid API"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:90:4
 msgid "on how to get this token."
-msgstr ""
+msgstr "เกี่ยวกับวิธีรับโทเค็นนี้"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings.hbs:96:6
 msgid "Sendgrid Token"
-msgstr ""
+msgstr "Sendgrid Token"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings/test-email-form.hbs:5:6
 msgid "Send Test Email"
-msgstr ""
+msgstr "ส่งอีเมลทดสอบ"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings/test-email-form.hbs:10:42
 msgid "Recipient E-mail"
-msgstr ""
+msgstr "อีเมลผู้รับ"
 
 #: app/templates/components/forms/admin/settings/system/mail-settings/test-email-form.hbs:12:12
 msgid "Test"
-msgstr ""
+msgstr "ทดสอบ"
 
 #: app/templates/components/forms/admin/settings/system/order-expiry-form.hbs:2:2
 msgid "Order Expiry Time"
-msgstr ""
+msgstr "เวลาหมดอายุการสั่งซื้อ"
 
 #: app/templates/components/forms/admin/settings/system/order-expiry-form.hbs:4:4
 msgid "Set registration time limit for your order in minutes"
-msgstr ""
+msgstr "กำหนดระยะเวลาการลงทะเบียนสำหรับคำสั่งซื้อของคุณเป็นนาที"
 
 #: app/templates/components/forms/admin/settings/system/order-expiry-form.hbs:8:26
 msgid "Registration Time Limit"
-msgstr ""
+msgstr "จำกัด เวลาการลงทะเบียน"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:2:2
 msgid "Google Tokens"
-msgstr ""
+msgstr "Google โทเค็น"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:8:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:33:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:58:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:83:4
 msgid "on how to obtain these tokens."
-msgstr ""
+msgstr "เกี่ยวกับวิธีการรับโทเค็นเหล่านี้"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:19:4
 msgid "Client secret"
-msgstr ""
+msgstr "ความเป็นส่วนตัวของลูกข่าย"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:27:2
 msgid "Facebook Tokens"
-msgstr ""
+msgstr "โทเค็น Facebook"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:44:4
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:94:4
 msgid "Client Secret"
-msgstr ""
+msgstr "ความเป็นส่วนตัวของลูกข่าย"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:52:2
 msgid "Twitter Tokens"
-msgstr ""
+msgstr "โทเค็น Twitter"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:63:4
 msgid "Consumer ID"
-msgstr ""
+msgstr "รหัสผู้บริโภค"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:69:4
 msgid "Consumer Secret"
-msgstr ""
+msgstr "ความลับของผู้บริโภค"
 
 #: app/templates/components/forms/admin/settings/system/social-media-token.hbs:77:2
 msgid "Instagram Tokens"
-msgstr ""
+msgstr "โทเค็น Instagram"
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:2:2
 msgid "Start Page"
-msgstr ""
+msgstr "หน้าแรก"
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:4:4
 msgid "To customize the default start page"
-msgstr ""
+msgstr "ในการปรับแต่งหน้าเริ่มต้นเริ่มต้น"
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:8:18
 msgid "Use default start page"
-msgstr ""
+msgstr "ใช้หน้าเริ่มต้นเริ่มต้น"
 
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:11:18
 #: app/templates/components/forms/admin/settings/system/start-page.hbs:16:6
 msgid "Use event as start page with ID (Enter event ID here)"
-msgstr ""
+msgstr "ใช้เหตุการณ์เป็นหน้าเริ่มต้นด้วย ID (ป้อน ID เหตุการณ์ที่นี่)"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:2:2
 msgid "Storage"
-msgstr ""
+msgstr "พื้นที่จัดเก็บ"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:4:4
 msgid "Where to store data ?"
-msgstr ""
+msgstr "เก็บข้อมูลไว้ที่ไหน?"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:8:18
 msgid "Local"
-msgstr ""
+msgstr "โลคอล"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:10:5
 msgid "stored in"
-msgstr ""
+msgstr "เก็บไว้ใน"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:14:18
 msgid "Google Storage"
-msgstr ""
+msgstr "Google Storage"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:26:6
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:76:6
 msgid "Bucket name"
-msgstr ""
+msgstr "ชื่อที่เก็บข้อมูล"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:32:6
 msgid "Interoperable access key"
-msgstr ""
+msgstr "คีย์การเข้าถึงที่ทำงานร่วมกันได้"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:38:6
 msgid "Interoperable access secret"
-msgstr ""
+msgstr "ความลับการเข้าถึงที่ทำงานร่วมกันได้"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:45:18
 msgid "Amazon S3"
-msgstr ""
+msgstr "Amazon S3"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:57:6
 msgid "Region"
-msgstr ""
+msgstr "ขอบเขต"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:62:8
 msgid "Select S3 Region"
-msgstr ""
+msgstr "เลือกภูมิภาค S3"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:82:6
 msgid "Key"
-msgstr ""
+msgstr "กุญแจ"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:88:6
 msgid "Secret"
-msgstr ""
+msgstr "ความลับ"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:3:4
 msgid "Add Fee Settings for the event invoices"
-msgstr ""
+msgstr "เพิ่มการตั้งค่าค่าธรรมเนียมสำหรับใบแจ้งหนี้เหตุการณ์"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:7:6
 msgid "Global Settings"
-msgstr ""
+msgstr "การตั้งค่าส่วนกลาง"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:13:10
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:87:10
 msgid "Service Fee"
-msgstr ""
+msgstr "ค่าบริการ"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:31:10
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:104:10
 msgid "Maximum Fee"
-msgstr ""
+msgstr "ค่าธรรมเนียมสูงสุด"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:48:6
 msgid "Country-Wise Settings"
-msgstr ""
+msgstr "การตั้งค่าประเทศที่ชาญฉลาด"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:62:32
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:72:36
 #: app/templates/components/forms/wizard/basic-details-step.hbs:444:34
 #: app/templates/components/forms/wizard/basic-details-step.hbs:455:38
 msgid "Select currency"
-msgstr ""
+msgstr "เลือกสกุลเงิน"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:120:23
 msgid "If you keep the maximum fee as 0, it would become unlimited. Kindly set the maximum fee to some value."
 msgstr ""
+"หากคุณเก็บค่าธรรมเนียมสูงสุดเป็น 0 มันจะกลายเป็นไม่ จำกัด "
+"กรุณากำหนดค่าธรรมเนียมสูงสุดเป็นค่าบางค่า"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:131:35
 msgid "Are you sure you would like to remove this event fee?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบค่าธรรมเนียมกิจกรรมนี้"
 
 #: app/templates/components/forms/admin/settings/ticket-fees-form.hbs:141:4
 msgid "Add New"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:10:28
 msgid "Number of Access Tickets"
-msgstr ""
+msgstr "จำนวนตั๋วเข้า"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:19:30
 msgid "Select Ticket(s) applied to the access code"
-msgstr ""
+msgstr "เลือกตั๋วที่ใช้กับรหัสการเข้าถึง"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:22:15
 #: app/templates/components/forms/events/view/create-discount-code.hbs:60:15
 msgid "Select all Ticket types"
-msgstr ""
+msgstr "เลือกตั๋วทุกประเภท"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:30:13
 msgid "No hidden tickets available for this event to select from"
-msgstr ""
+msgstr "ไม่มีตั๋วที่ซ่อนอยู่สำหรับงานนี้ให้เลือก"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:44:15
 msgid "Access valid from"
-msgstr ""
+msgstr "เข้าถึงได้จาก"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:61:15
 msgid "Access expires on"
-msgstr ""
+msgstr "การเข้าถึงหมดอายุเมื่อ"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:78:13
 msgid "Access Link"
-msgstr ""
+msgstr "เข้าถึงลิงค์"
 
 #: app/templates/components/forms/events/view/create-access-code.hbs:86:10
 #: app/templates/components/forms/events/view/create-discount-code.hbs:129:10
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:200:14
 #: app/templates/components/modals/event-share-modal.hbs:33:10
 msgid "Copy"
-msgstr ""
+msgstr "คัดลอก"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:10:28
 msgid "Enter Discount"
-msgstr ""
+msgstr "ป้อนส่วนลด"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:30:13
 msgid "Percent (%)"
-msgstr ""
+msgstr "เปอร์เซ็นต์ (%)"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:48:28
 msgid "Number of Discount Tickets"
-msgstr ""
+msgstr "จำนวนตั๋วลดราคา"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:57:30
 msgid "Select Ticket(s) applied to the discount code"
-msgstr ""
+msgstr "เลือกตั๋วที่ใช้กับรหัสส่วนลด"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:68:13
 msgid "No event tickets to select from"
-msgstr ""
+msgstr "ไม่มีตั๋วงานให้เลือก"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:83:13
 msgid "Discount valid from"
-msgstr ""
+msgstr "ส่วนลดใช้ได้จาก"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:101:13
 msgid "Discount expires on"
-msgstr ""
+msgstr "ส่วนลดหมดอายุเมื่อ"
 
 #: app/templates/components/forms/events/view/create-discount-code.hbs:121:13
 msgid "Discount Link"
-msgstr ""
+msgstr "ลิงค์ส่วนลด"
 
 #: app/templates/components/forms/events/view/edit-session.hbs:15:4
 msgid "Save Session"
-msgstr ""
+msgstr "บันทึกเซสชัน"
 
 #: app/templates/components/forms/group/group-events-form.hbs:5:10
 #: app/templates/components/forms/group/group-settings-form.hbs:5:10
 msgid "Create a Group"
-msgstr ""
+msgstr "สร้างกลุ่ม"
 
 #: app/templates/components/forms/group/group-events-form.hbs:17:38
 msgid "Group Events"
-msgstr ""
+msgstr "กิจกรรมกลุ่ม"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:16:30
 msgid "Group name"
-msgstr ""
+msgstr "ชื่อกลุ่ม"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:24:13
 msgid "About"
-msgstr ""
+msgstr "เกี่ยวกับ"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:34:17
 #: app/templates/components/forms/wizard/basic-details-step.hbs:151:15
 msgid "Event Image"
-msgstr ""
+msgstr "ภาพเหตุการณ์"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:37:16
 msgid "Select Group Banner Image"
-msgstr ""
+msgstr "เลือกรูปภาพแบนเนอร์ของกลุ่ม"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:38:21
 #: app/templates/components/forms/wizard/basic-details-step.hbs:155:19
 msgid "Header Image"
-msgstr ""
+msgstr "รูปภาพส่วนหัว"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:41:20
 msgid "We recommend using at least a 2160x1080px (2:1 ratio) image."
-msgstr ""
+msgstr "เราขอแนะนําให้ใช้ภาพขนาด 2160x1080px (อัตราส่วน 2:1) เป็นอย่างน้อย"
 
 #: app/templates/components/forms/group/group-view.hbs:48:16
 #: app/templates/components/public/ticket-list.hbs:238:12
 msgid "Contact Organizer"
-msgstr ""
+msgstr "ติดต่อผู้จัดงาน"
 
 #: app/templates/components/forms/group/group-view.hbs:80:12
 #: app/templates/components/group-card.hbs:63:16
 #: app/templates/components/promoted-group-card.hbs:24:12
 #: app/templates/public.hbs:84:16 app/templates/public.hbs:200:42
 msgid "Follow Group"
-msgstr ""
+msgstr "ติดตามกลุ่ม"
 
 #: app/templates/components/forms/group/group-view.hbs:99:24
 msgid "{{userThumbnailImg}}and {{followerCount}} others"
-msgstr ""
+msgstr "{{userThumbnailImg}}และอีก {{followerCount}} คน"
 
 #: app/templates/components/forms/login-form.hbs:25:17
 msgid "You have been registered successfully. Please login to continue."
-msgstr ""
+msgstr "คุณได้ลงทะเบียนเรียบร้อยแล้ว โปรดเข้าสู่ระบบเพื่อจะดำเนินการต่อ."
 
 #: app/templates/components/forms/login-form.hbs:31:47
 #: app/templates/components/forms/reset-password-form.hbs:43:49
 msgid "Email ID"
-msgstr ""
+msgstr "ชื่ออีเมล์"
 
 #: app/templates/components/forms/login-form.hbs:51:23
 msgid "Remember me"
-msgstr ""
+msgstr "จดจำฉัน"
 
 #: app/templates/components/forms/login-form.hbs:62:75
 #: app/templates/components/forms/orders/guest-order-form.hbs:24:107
 msgid "Forgot your password ?"
-msgstr ""
+msgstr "ลืมรหัสผ่านหรือไม่?"
 
 #: app/templates/components/forms/login-form.hbs:79:10
 #: app/templates/components/forms/reset-password-form.hbs:57:73
 msgid "New to site? Create Account"
-msgstr ""
+msgstr "เพิ่งเข้าสู่เว็บไซต์? สร้างบัญชี"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:4:29
 msgid "Attendee Information"
-msgstr ""
+msgstr "ข้อมูลผู้เข้าร่วม"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:10:10
 #: app/templates/components/forms/orders/order-form.hbs:53:10
 msgid "Registration Holder's Information"
-msgstr ""
+msgstr "ข้อมูลผู้ลงทะเบียน"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:12:10
 #: app/templates/components/forms/orders/order-form.hbs:55:10
 msgid "Ticket Holder's Information"
-msgstr ""
+msgstr "ข้อมูลของผู้ถือตั๋ว"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:21:16
 msgid "Registration Holder -for- {{ticketName}}"
-msgstr ""
+msgstr "ผู้ถือการลงทะเบียน -for- {{ticketName}}"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:23:16
 msgid "Ticket Holder -for- {{ticketName}}"
-msgstr ""
+msgstr "ผู้ถือตั๋ว -สำหรับ- {{ticketName}}"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:30:16
 msgid "Download Ticket"
-msgstr ""
+msgstr "ดาวน์โหลด Ticket"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:49:26
 #: app/templates/components/modals/confirm-modal.hbs:36:79
@@ -7116,207 +7142,223 @@ msgstr ""
 #: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
 msgid "Yes"
-msgstr ""
+msgstr "ใช่"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:51:26
 #: app/templates/components/modals/confirm-modal.hbs:32:75
 #: app/templates/components/modals/edit-user-modal.hbs:10:40
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
 msgid "No"
-msgstr ""
+msgstr "ไม่"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:71:12
 #: app/templates/components/forms/orders/order-form.hbs:191:10
 msgid "Billing Information"
-msgstr ""
+msgstr "ข้อมูลการเรียกเก็บเงิน"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:81:18
 #: app/templates/components/forms/user-payment-info-form.hbs:62:23
 #: app/templates/components/widgets/forms/billing-info.hbs:9:48
 msgid "Tax ID or Business ID"
-msgstr ""
+msgstr "หมายเลขประจำตัวผู้เสียภาษีหรือรหัสธุรกิจ"
 
 #: app/templates/components/forms/orders/cancel-order.hbs:3:27
 msgid "Ticket cancellation"
-msgstr ""
+msgstr "การยกเลิกตั๋ว"
 
 #: app/templates/components/forms/orders/cancel-order.hbs:6:4
 msgid "You can cancel this order with the button below. This will void all tickets in this order."
 msgstr ""
+"คุณสามารถยกเลิกคำสั่งซื้อนี้ด้วยปุ่มด้านล่าง "
+"การทำเช่นนี้จะทำให้ตั๋วทั้งหมดในคำสั่งซื้อนี้เป็นโมฆะ"
 
 #: app/templates/components/forms/orders/cancel-order.hbs:8:233
 #: app/templates/components/order-card.hbs:16:28
 #: app/templates/components/order-card.hbs:17:12
 msgid "Cancel Order"
-msgstr ""
+msgstr "ยกเลิกคำสั่งซื้อ"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:7:24
 msgid "Please enter your email address to continue."
-msgstr ""
+msgstr "โปรดป้อนที่อยู่อีเมลของคุณเพื่อดำเนินการต่อ"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:10:102
 msgid "Email Address"
-msgstr ""
+msgstr "ที่อยู่อีเมล"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:17:31
 msgid "You have previously registered with this email address."
-msgstr ""
+msgstr "คุณได้ลงทะเบียนด้วยที่อยู่อีเมลนี้ก่อนหน้านี้"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:20:45
 msgid "Please enter your password to continue."
-msgstr ""
+msgstr "กรุณากรอกรหัสผ่านของคุณเพื่อดำเนินการต่อ"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:27:6
 msgid "Sign In"
-msgstr ""
+msgstr "เข้าสู่ระบบ"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:30:31
 msgid "Please set up a password to continue."
-msgstr ""
+msgstr "โปรดตั้งรหัสผ่านเพื่อดำเนินการต่อ"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:37:52
 #: app/templates/components/forms/reset-password-form.hbs:33:113
 msgid "Confirm Password"
-msgstr ""
+msgstr "ยืนยันรหัสผ่าน"
 
 #: app/templates/components/forms/orders/guest-order-form.hbs:45:6
 msgid "Continue"
-msgstr ""
+msgstr "ดำเนินการต่อ"
 
 #: app/templates/components/forms/orders/order-form.hbs:4:29
 msgid "Registration Information"
-msgstr ""
+msgstr "ข้อมูลการลงทะเบียน"
 
 #: app/templates/components/forms/orders/order-form.hbs:12:10
 msgid "Please complete registration within {{time}} minutes."
-msgstr ""
+msgstr "กรุณาลงทะเบียนให้เสร็จสมบูรณ์ภายใน {{time}} นาที"
 
 #: app/templates/components/forms/orders/order-form.hbs:14:10
 msgid "After {{time}} minutes, the reservation we're holding will be released to others."
-msgstr ""
+msgstr "หลังจาก {{time}} นาที การจองที่เรากําลังถืออยู่จะถูกปล่อยไปยังผู้อื่น"
 
 #: app/templates/components/forms/orders/order-form.hbs:22:10
 msgid "Registrant"
-msgstr ""
+msgstr "ผู้ลงทะเบียน"
 
 #: app/templates/components/forms/orders/order-form.hbs:24:10
 #: app/templates/components/orders/ticket-holder.hbs:9:8
 msgid "Ticket Buyer"
-msgstr ""
+msgstr "ผู้ซื้อตั๋ว"
 
 #: app/templates/components/forms/orders/order-form.hbs:62:21
 msgid "Ticket holder is the same person as ticket buyer"
-msgstr ""
+msgstr "ผู้ถือตั๋วเป็นบุคคลเดียวกับผู้ซื้อตั๋ว"
 
 #: app/templates/components/forms/orders/order-form.hbs:71:14
 msgid "Registration Holder"
-msgstr ""
+msgstr "ผู้ถือทะเบียน"
 
 #: app/templates/components/forms/orders/order-form.hbs:73:14
 msgid "Ticket Holder"
-msgstr ""
+msgstr "ผู้ถือตั๋ว"
 
 #: app/templates/components/forms/orders/order-form.hbs:75:25
 msgid "-for-"
-msgstr ""
+msgstr "-สำหรับ-"
 
 #: app/templates/components/forms/orders/order-form.hbs:116:46
 #: app/templates/components/forms/speaker-section.hbs:91:38
 msgid "Select your gender"
-msgstr ""
+msgstr "เลือกเพศของคุณ"
 
 #: app/templates/components/forms/orders/order-form.hbs:135:46
 msgid "Select your country"
-msgstr ""
+msgstr "เลือกประเทศของคุณ"
 
 #: app/templates/components/forms/orders/order-form.hbs:154:46
 msgid "Select your age group"
-msgstr ""
+msgstr "เลือกกลุ่มอายุของคุณ"
 
 #: app/templates/components/forms/orders/order-form.hbs:165:27
 msgid "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"
 msgstr ""
+"เราต้องการแบ่งปันข้อมูลกับคุณหลังจบงานทางอีเมลเช่นผ่านอีเมลส่วนตัวโดยทีมงานจด"
+"หมายข่าวหรือการสื่อสารทางอิเล็กทรอนิกส์อื่น ๆ "
+"คุณสามารถยกเลิกข้อตกลงนี้ได้ทุกเมื่อ "
+"คุณตกลงที่จะรับจดหมายอิเล็กทรอนิกส์หรือไม่?"
 
 #: app/templates/components/forms/orders/order-form.hbs:171:27
 msgid "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"
 msgstr ""
+"เราต้องการแบ่งปันข้อมูลระหว่างพันธมิตรการจัดงานเพื่อให้คุณได้รับประสบการณ์ที่"
+"ดีที่สุดเท่าที่จะเป็นไปได้และช่วยให้พันธมิตรสามารถติดต่อคุณเพื่อขอข้อมูลเพิ่ม"
+"เติมหลังจบงานผ่านการสื่อสารทางอิเล็กทรอนิกส์ "
+"คุณสามารถยกเลิกข้อตกลงนี้ได้ทุกเมื่อ คุณยินยอมที่จะแบ่งปันข้อมูลของคุณกับพันธ"
+"มิตรกิจกรรมและรับจดหมายอิเล็กทรอนิกส์หรือไม่?"
 
 #: app/templates/components/forms/orders/order-form.hbs:177:27
 msgid "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
 msgstr ""
+"ฉันยอมรับว่าผู้จัดงานได้รับอนุญาตให้ถ่ายภาพวิดีโอและ / หรือบันทึกเสียงของฉันห"
+"รือโปรไฟล์ของฉันและข้อความที่ฉันสร้างขึ้นในการแชทซึ่งอาจเผยแพร่บนเว็บไซต์ของผ"
+"ู้จัดงานและ / หรือช่องทางโซเชียลมีเดีย"
 
 #: app/templates/components/forms/orders/order-form.hbs:196:21
 msgid "Enable Billing Information"
-msgstr ""
+msgstr "เปิดใช้งานข้อมูลการเรียกเก็บเงิน"
 
 #: app/templates/components/forms/orders/order-form.hbs:209:8
 msgid "Acknowledgement"
-msgstr ""
+msgstr "การรับทราบ"
 
 #: app/templates/components/forms/orders/order-form.hbs:213:21
 msgid "By clicking \"{{orderState}}\", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website."
 msgstr ""
+"การคลิก \"{{orderState}}\" แสดงว่าฉันได้อ่านและยอมรับ {{terms}} และ "
+"{{ความเป็นส่วนตัว}} บนเว็บไซต์นี้"
 
 #: app/templates/components/forms/orders/order-form.hbs:214:42
 #: app/templates/components/forms/orders/order-form.hbs:223:84
 msgid "Proceed to Checkout"
-msgstr ""
+msgstr "ดำเนินการชำระเงิน"
 
 #: app/templates/components/forms/orders/order-form.hbs:214:68
 #: app/templates/components/forms/orders/order-form.hbs:223:110
 #: app/templates/components/public/ticket-list.hbs:223:10
 msgid "Order Now"
-msgstr ""
+msgstr "สั่งซื้อตอนนี้"
 
 #: app/templates/components/forms/orders/order-form.hbs:215:60
 msgid "terms of services"
-msgstr ""
+msgstr "เงื่อนไขการบริการ"
 
 #: app/templates/components/forms/orders/order-form.hbs:216:64
 msgid "privacy policy"
-msgstr ""
+msgstr "นโยบายความเป็นส่วนตัว"
 
 #: app/templates/components/forms/orders/order-form.hbs:221:62
 msgid "One Click Signup"
-msgstr ""
+msgstr "คลิกเดียวสมัคร"
 
 #: app/templates/components/forms/register-form.hbs:32:135
 msgid "Re-enter Password"
-msgstr ""
+msgstr "ป้อนรหัสผ่านอีกครั้ง"
 
 #: app/templates/components/forms/register-form.hbs:50:6
 msgid "Already have an account? Login"
-msgstr ""
+msgstr "มีบัญชีอยู่แล้ว? เข้าสู่ระบบ"
 
 #: app/templates/components/forms/reset-password-form.hbs:5:31
 msgid "Forgot Password"
-msgstr ""
+msgstr "ลืมรหัสผ่าน"
 
 #: app/templates/components/forms/session-section.hbs:43:16
 #: app/templates/components/forms/speaker-section.hbs:54:16
 msgid "Select an image"
-msgstr ""
+msgstr "เลือกภาพ"
 
 #: app/templates/components/forms/session-section.hbs:48:30
 msgid "Add Session document"
-msgstr ""
+msgstr "เพิ่มเอกสารเซสชัน"
 
 #: app/templates/components/forms/session-section.hbs:59:27
 msgid "slide"
-msgstr ""
+msgstr "สไลด์"
 
 #: app/templates/components/forms/session-section.hbs:86:38
 msgid "Select"
-msgstr ""
+msgstr "เลือก"
 
 #: app/templates/components/forms/session-section.hbs:104:38
 msgid "Select your level"
-msgstr ""
+msgstr "เลือกระดับของคุณ"
 
 #: app/templates/components/forms/session-section.hbs:138:30
 #: app/templates/components/forms/speaker-section.hbs:120:30
 msgid "Please enable session/speaker form to create a session/speaker."
-msgstr ""
+msgstr "โปรดเปิดใช้งานแบบฟอร์มเซสชัน / วิทยากรเพื่อสร้างเซสชัน / ลำโพง"
 
 #: app/templates/components/forms/session-speaker-form.hbs:5:8
 #: app/templates/components/forms/session-speaker-form.hbs:93:6
@@ -7324,197 +7366,203 @@ msgstr ""
 #: app/templates/public/cfs/view-session.hbs:67:6
 #: app/templates/public/speaker-invite/view-session.hbs:49:6
 msgid "Session details"
-msgstr ""
+msgstr "รายละเอียดเซสชัน"
 
 #: app/templates/components/forms/session-speaker-form.hbs:15:6
 #: app/templates/components/forms/session-speaker-form.hbs:81:8
 #: app/templates/events/view/speaker/view.hbs:18:6
 #: app/templates/public/cfs/view-speaker.hbs:30:6
 msgid "Speaker details"
-msgstr ""
+msgstr "รายละเอียดลำโพง"
 
 #: app/templates/components/forms/session-speaker-form.hbs:18:6
 msgid "Choose from existing speaker(s)"
-msgstr ""
+msgstr "เลือกจากลำโพงที่มีอยู่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:26:8
 msgid "Select Speakers"
-msgstr ""
+msgstr "เลือกลำโพง"
 
 #: app/templates/components/forms/session-speaker-form.hbs:39:10
 msgid "Drag speakers to reorder!"
-msgstr ""
+msgstr "ลากลำโพงเพื่อเรียงลำดับใหม่!"
 
 #: app/templates/components/forms/session-speaker-form.hbs:57:44
 msgid "No speaker exists. Add a new speaker."
-msgstr ""
+msgstr "ไม่มีลำโพง เพิ่มลำโพงใหม่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:65:15
 msgid "Add a new speaker"
-msgstr ""
+msgstr "เพิ่มลำโพงใหม่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:96:6
 msgid "Choose from an existing session"
-msgstr ""
+msgstr "เลือกจากเซสชันที่มีอยู่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:104:8
 msgid "Select Session"
-msgstr ""
+msgstr "เลือกเซสชัน"
 
 #: app/templates/components/forms/session-speaker-form.hbs:117:44
 msgid "No session exists. Add a new session proposal."
-msgstr ""
+msgstr "ไม่มีเซสชัน เพิ่มข้อเสนอเซสชันใหม่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:127:15
 msgid "Add a new Proposal"
-msgstr ""
+msgstr "เพิ่มข้อเสนอใหม่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:145:20
 msgid "Add Email of Speakers"
-msgstr ""
+msgstr "เพิ่มอีเมลของผู้พูด"
 
 #: app/templates/components/forms/session-speaker-form.hbs:163:4
 #: app/templates/components/forms/user-payment-info-form.hbs:77:4
 msgid "Submit"
-msgstr ""
+msgstr "ส่ง"
 
 #: app/templates/components/forms/session-speaker-form.hbs:166:5
 msgid "You need to hit \"Submit\" to save your changes."
-msgstr ""
+msgstr "คุณต้องกด \"ส่ง\" เพื่อบันทึกการเปลี่ยนแปลงของคุณ"
 
 #: app/templates/components/forms/speaker-section.hbs:20:21
 msgid "Do not require email for this speaker."
-msgstr ""
+msgstr "ไม่ต้องใช้อีเมลสำหรับลำโพงนี้"
 
 #: app/templates/components/forms/speaker-section.hbs:50:17
 msgid "Speaker Image"
-msgstr ""
+msgstr "ภาพลำโพง"
 
 #: app/templates/components/forms/speaker-section.hbs:56:20
 msgid "We recommend using a 1:1 ratio image"
-msgstr ""
+msgstr "ขอแนะนำให้ใช้รูปภาพอัตราส่วน 1: 1"
 
 #: app/templates/components/forms/user-payment-info-form.hbs:6:4
 msgid "The information you provide here will be added to your invoices. Please ensure you have the correct information added here as it is not possible to regenerate invoices with different information at a later time."
 msgstr ""
+"ข้อมูลที่คุณให้ไว้ที่นี่จะถูกเพิ่มลงในใบแจ้งหนี้ของคุณ โปรดตรวจสอบให้แน่ใจว่า"
+"คุณได้เพิ่มข้อมูลที่ถูกต้องที่นี่เนื่องจากไม่สามารถสร้างใบแจ้งหนี้ใหม่ด้วยข้อ"
+"มูลที่แตกต่างกันได้ในภายหลัง"
 
 #: app/templates/components/forms/user-profile-form.hbs:12:16
 msgid "Select User Image"
-msgstr ""
+msgstr "เลือกรูปภาพของผู้ใช้"
 
 #: app/templates/components/forms/user-profile-form.hbs:15:20
 msgid "We recommend using at least a 1000x1000px (1:1 ratio) image"
-msgstr ""
+msgstr "เราขอแนะนำให้ใช้รูปภาพอย่างน้อย 1000x1000px (อัตราส่วน 1: 1)"
 
 #: app/templates/components/forms/user-profile-form.hbs:39:48
 msgid "Family Name"
-msgstr ""
+msgstr "นามสกุล"
 
 #: app/templates/components/forms/user-profile-form.hbs:59:29
 msgid "Bio"
-msgstr ""
+msgstr "ชีวภาพ"
 
 #: app/templates/components/forms/user-profile-form.hbs:80:10
 msgid "Language Preference"
-msgstr ""
+msgstr "การตั้งค่าภาษา"
 
 #: app/templates/components/forms/user-profile-form.hbs:94:11
 msgid "Make Profile Public"
-msgstr ""
+msgstr "ทำให้โปรไฟล์เป็นสาธารณะ"
 
 #: app/templates/components/forms/user-profile-form.hbs:106:8
 msgid "Update Changes"
-msgstr ""
+msgstr "อัปเดตการเปลี่ยนแปลง"
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:13:57
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:11:63
 #: app/templates/components/forms/wizard/sponsors-step.hbs:14:47
 msgid "Turn off"
-msgstr ""
+msgstr "ปิด"
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:13:72
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:11:78
 #: app/templates/components/forms/wizard/sponsors-step.hbs:14:62
 msgid "Turn on"
-msgstr ""
+msgstr "เปิด"
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:21:8
 msgid "Information About Attendee Form"
-msgstr ""
+msgstr "ข้อมูลเกี่ยวกับแบบฟอร์มผู้เข้าร่วม"
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:24:8
 msgid "The attendee form by default collects the name and email of an attendee. You also have the option to collect additional information such as contact data, position, organization and more. This information will be available together with the ticket information in a CSV file in the ticket section of your event."
 msgstr ""
+"โดยค่าเริ่มต้นแบบฟอร์มผู้เข้าร่วมจะรวบรวมชื่อและอีเมลของผู้เข้าร่วม "
+"คุณยังมีตัวเลือกในการรวบรวมข้อมูลเพิ่มเติมเช่นข้อมูลติดต่อตำแหน่งองค์กรและอื่"
+"น ๆ ข้อมูลนี้จะพร้อมใช้งานพร้อมกับข้อมูลตั๋วในไฟล์ CSV ในส่วนตั๋วของงานของคุณ"
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:32:6
 msgid "Required Form Fields"
-msgstr ""
+msgstr "ฟิลด์แบบฟอร์มที่จำเป็น"
 
 #: app/templates/components/forms/wizard/attendee-step.hbs:45:8
 msgid "Information to Collect"
-msgstr ""
+msgstr "ข้อมูลที่จะรวบรวม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:15:21
 msgid "Select Event Type"
-msgstr ""
+msgstr "เลือกประเภทเหตุการณ์"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:36:21
 msgid "Select Event Sub-Topic"
-msgstr ""
+msgstr "เลือกหัวข้อย่อยของกิจกรรม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:60:21
 msgid "Location is required to make this event live"
-msgstr ""
+msgstr "ต้องระบุตำแหน่งเพื่อให้กิจกรรมนี้ใช้งานได้จริง"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:67:34
 msgid "Show map on event page"
-msgstr ""
+msgstr "แสดงแผนที่ในหน้ากิจกรรม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:75:6
 msgid "You can add video meeting rooms or streams after you created a draft of the event."
-msgstr ""
+msgstr "คุณเพิ่มห้องประชุมหรือสตรีมวิดีโอได้หลังจากสร้างฉบับร่างของกิจกรรมแล้ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:118:45
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:166:49
 #: app/templates/components/widgets/forms/ticket-input.hbs:169:56
 #: app/templates/components/widgets/forms/ticket-input.hbs:371:58
 msgid "Timezone"
-msgstr ""
+msgstr "เขตเวลา"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:154:14
 msgid "Select Event Header Image"
-msgstr ""
+msgstr "เลือก Event Header Image"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:180:41
 msgid "Add Organizer or Group Information"
-msgstr ""
+msgstr "เพิ่มข้อมูลผู้จัดหรือกลุ่ม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:186:30
 msgid "Organizer or Group Name"
-msgstr ""
+msgstr "ชื่อผู้จัดหรือกลุ่ม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:193:37
 msgid "About the Organizer or Group"
-msgstr ""
+msgstr "เกี่ยวกับผู้จัดหรือกลุ่ม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:200:11
 msgid "Ticketed Event"
-msgstr ""
+msgstr "ตั๋วเหตุการณ์"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:205:15
 #: app/templates/public/index.hbs:9:21
 msgid "Registration"
-msgstr ""
+msgstr "การลงทะเบียน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:209:32
 msgid "Ticketing System"
-msgstr ""
+msgstr "ระบบจำหน่ายตั๋ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:215:42
 #: app/templates/components/widgets/forms/ticket-input.hbs:9:20
 #: app/templates/events/view/tickets/index.hbs:122:45
 msgid "Ticket Name"
-msgstr ""
+msgstr "ชื่อตั๋ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:218:42
 #: app/templates/components/forms/wizard/basic-details-step.hbs:279:42
@@ -7525,7 +7573,7 @@ msgstr ""
 #: app/templates/components/widgets/forms/ticket-input.hbs:221:24
 #: app/templates/pricing.hbs:172:43
 msgid "Price"
-msgstr ""
+msgstr "ราคา"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:221:42
 #: app/templates/components/forms/wizard/basic-details-step.hbs:282:42
@@ -7535,768 +7583,802 @@ msgstr ""
 #: app/templates/components/widgets/forms/ticket-input.hbs:55:20
 #: app/templates/components/widgets/forms/ticket-input.hbs:257:22
 msgid "Quantity"
-msgstr ""
+msgstr "ปริมาณ"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:241:14
 msgid "You don't have any tickets added. Please add at least one ticket to publish your event."
 msgstr ""
+"คุณไม่มีตั๋วเพิ่ม โปรดเพิ่มตั๋วอย่างน้อยหนึ่งใบเพื่อเผยแพร่กิจกรรมของคุณ"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:250:10
 msgid "Free Ticket"
-msgstr ""
+msgstr "ตั๋วฟรี"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:257:10
 msgid "Paid Ticket"
-msgstr ""
+msgstr "ตั๋วชำระเงิน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:265:10
 msgid "Donation Ticket"
-msgstr ""
+msgstr "ตั๋วบริจาค"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:270:32
 msgid "Registration System"
-msgstr ""
+msgstr "ระบบลงทะเบียน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:276:42
 #: app/templates/components/widgets/forms/ticket-input.hbs:211:22
 msgid "Registration Name"
-msgstr ""
+msgstr "ชื่อลงทะเบียน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:303:14
 msgid "You don't have any registrations added. Please add at least one registration to publish your event."
 msgstr ""
+"คุณไม่มีการลงทะเบียนเพิ่ม "
+"โปรดเพิ่มการลงทะเบียนอย่างน้อยหนึ่งรายการเพื่อเผยแพร่กิจกรรมของคุณ"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:312:10
 msgid "Free Registration"
-msgstr ""
+msgstr "ลงทะเบียนฟรี"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:319:10
 msgid "Paid Registration"
-msgstr ""
+msgstr "ชำระค่าลงทะเบียน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:326:10
 msgid "Donation Registration"
-msgstr ""
+msgstr "ลงทะเบียนบริจาค"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:334:12
 msgid "Invoice and Tax Information"
-msgstr ""
+msgstr "ข้อมูลใบแจ้งหนี้และภาษี"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:394:8
 msgid "Add invoice and tax information"
-msgstr ""
+msgstr "เพิ่มใบแจ้งหนี้และข้อมูลภาษี"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:435:10
 msgid "Add Payment Details"
-msgstr ""
+msgstr "เพิ่มรายละเอียดการชำระเงิน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:471:10
 msgid "Choose payment methods"
-msgstr ""
+msgstr "เลือกวิธีการชำระเงิน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:473:15
 msgid "Payment by PayPal"
-msgstr ""
+msgstr "ชำระเงินด้วย PayPal"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:481:20
 msgid "YES, accept payment through PayPal"
-msgstr ""
+msgstr "ใช่ยอมรับการชำระเงินผ่าน PayPal"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:484:16
 msgid "Paypal accepts credit card, debit card and PayPal payments. To learn how it works"
 msgstr ""
+"Paypal รับชำระด้วยบัตรเครดิตบัตรเดบิตและ PayPal เพื่อเรียนรู้วิธีการทำงาน"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:487:18
 msgid "click here"
-msgstr ""
+msgstr "คลิกที่นี่"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:504:15
 msgid "Payment by Paytm"
-msgstr ""
+msgstr "ชำระเงินด้วย Paytm"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:512:20
 msgid "YES, accept payment through Paytm"
-msgstr ""
+msgstr "ใช่ยอมรับการชำระเงินผ่าน Paytm"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:519:15
 msgid "Payment with AliPay"
-msgstr ""
+msgstr "ชำระเงินด้วย AliPay"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:527:14
 msgid "Yes, accept payment through AliPay Gateway"
-msgstr ""
+msgstr "ใช่ยอมรับการชำระเงินผ่าน AliPay Gateway"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:530:16
 msgid "AliPay can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details"
 msgstr ""
+"AliPay สามารถรับบัตรเครดิตและบัตรเดบิต Net-Banking และ AliPay "
+"ค้นหารายละเอียดเพิ่มเติม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:538:17
 msgid "AliPay Gateway has been successfully activated"
-msgstr ""
+msgstr "เปิดใช้งาน AliPay Gateway สำเร็จแล้ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:542:15
 msgid "Payment with Omise"
-msgstr ""
+msgstr "ชำระเงินด้วย Omise"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:550:14
 msgid "Yes, accept payment through Omise Gateway"
-msgstr ""
+msgstr "ใช่ยอมรับการชำระเงินผ่าน Omise Gateway"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:553:16
 msgid "Omise can accept Credit and Debit Cards, Net-Banking and AliPay. Find more details"
 msgstr ""
+"Omise สามารถรับบัตรเครดิตและบัตรเดบิต Net-Banking และ AliPay ได้ "
+"ค้นหารายละเอียดเพิ่มเติม"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:561:17
 msgid "Omise Gateway has been successfully activated"
-msgstr ""
+msgstr "เปิดใช้งาน Omise Gateway สำเร็จแล้ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:565:15
 msgid "Payment by Stripe"
-msgstr ""
+msgstr "ชำระเงินด้วย Stripe"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:573:20
 msgid "YES, accept payment through Stripe"
-msgstr ""
+msgstr "ใช่ยอมรับการชำระเงินผ่าน Stripe"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:576:16
 msgid "Stripe accepts Visa, Master and Amex. Find out more about Stripe"
-msgstr ""
+msgstr "Stripe รับ Visa, Master และ Amex ค้นหาข้อมูลเพิ่มเติมเกี่ยวกับ Stripe"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:586:16
 msgid "You have linked your Stripe account successfully. Click here to disconnect your account."
 msgstr ""
+"คุณได้เชื่อมโยงบัญชี Stripe ของคุณเรียบร้อยแล้ว "
+"คลิกที่นี่เพื่อยกเลิกการเชื่อมต่อบัญชีของคุณ"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:589:52
 msgid "Disconnect Stripe Account"
-msgstr ""
+msgstr "ยกเลิกการเชื่อมต่อบัญชี Stripe"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:591:38
 msgid "Connect to your Stripe account"
-msgstr ""
+msgstr "เชื่อมต่อกับบัญชี Stripe ของคุณ"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:593:49
 msgid "Connect with Stripe"
-msgstr ""
+msgstr "เชื่อมต่อกับ Stripe"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:598:13
 msgid "Offline Payments"
-msgstr ""
+msgstr "การชำระเงินแบบออฟไลน์"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:607:12
 msgid "YES, accept payment by purchase on invoice."
-msgstr ""
+msgstr "ใช่ ยอมรับการชำระเงินด้วยการซื้อในใบแจ้งหนี้"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:614:12
 msgid "Enter the required details/instructions to ticket buyers."
-msgstr ""
+msgstr "ป้อนรายละเอียด/คำแนะนำที่จำเป็นสำหรับผู้ซื้อตั๋ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:630:12
 msgid "YES, accept payment by Cheque."
-msgstr ""
+msgstr "ใช่ ยอมรับการชำระเงินด้วยเช็ค"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:637:12
 msgid "Enter you account name and other required details/instructions to ticket buyers."
-msgstr ""
+msgstr "ป้อนชื่อบัญชีและรายละเอียด/คำแนะนำที่จำเป็นอื่นๆ สำหรับผู้ซื้อตั๋ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:654:12
 msgid "YES, accept payment by telegraphic transfer (TT) / bank transfer."
-msgstr ""
+msgstr "ใช่ ยอมรับการชำระเงินด้วยการโอนเงินทางโทรเลข (TT) / โอนเงินผ่านธนาคาร"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:662:12
 msgid "Enter your bank details and other required details/instructions to ticket buyers."
 msgstr ""
+"ป้อนรายละเอียดธนาคารของคุณและรายละเอียด/คำแนะนำที่จำเป็นอื่นๆ "
+"สำหรับผู้ซื้อตั๋ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:678:12
 msgid "YES, accept payment at the event (on site)."
-msgstr ""
+msgstr "ใช่ รับชำระเงินที่งาน (ในสถานที่)"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:686:12
 msgid "Enter your payment instructions and other required details/instructions to ticket buyers."
 msgstr ""
+"ป้อนคำแนะนำการชำระเงินและรายละเอียด/คำแนะนำที่จำเป็นอื่นๆ สำหรับผู้ซื้อตั๋ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:706:14
 msgid "Require billing information from ticket buyer."
-msgstr ""
+msgstr "ต้องการข้อมูลการเรียกเก็บเงินจากผู้ซื้อตั๋ว"
 
 #: app/templates/components/forms/wizard/basic-details-step.hbs:715:29
 msgid "After Order Message"
-msgstr ""
+msgstr "หลังจากสั่งซื้อข้อความ"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:5:13
 msgid "Links & Social Media"
-msgstr ""
+msgstr "ลิงค์และโซเชียลมีเดีย"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:57:8
 msgid "Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the {{appName}} platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the {{appName}} platform."
 msgstr ""
+"การคืนเงินจะดำเนินการโดยผู้จัดงานผ่านผู้ให้บริการชำระเงิน "
+"ไม่สามารถคืนเงินให้กับผู้เข้าร่วมบนแพลตฟอร์ม {{appName}} "
+"โปรดไปที่ผู้ให้บริการชำระเงิน คืนเงิน "
+"และทำเครื่องหมายตั๋วว่าได้รับเงินคืนแล้วในแพลตฟอร์ม {{appName}}"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:68:25
 msgid "Listing Privacy"
-msgstr ""
+msgstr "รายชื่อความเป็นส่วนตัว"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:73:18
 msgid "Public event"
-msgstr ""
+msgstr "กิจกรรมสาธารณะ"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:74:10
 msgid "list this event on this site and search engines"
-msgstr ""
+msgstr "แสดงรายการเหตุการณ์นี้บนไซต์นี้และเครื่องมือค้นหา"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:82:18
 msgid "Private event"
-msgstr ""
+msgstr "กิจกรรมส่วนตัว"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:83:10
 msgid "do not list this event publicly"
-msgstr ""
+msgstr "อย่าแสดงรายการกิจกรรมนี้ต่อสาธารณะ"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:96:39
 msgid "Add Code of Conduct"
-msgstr ""
+msgstr "เพิ่มจรรยาบรรณ"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:112:6
 msgid "License of Event Data & Content"
-msgstr ""
+msgstr "ใบอนุญาตของข้อมูลและเนื้อหาเหตุการณ์"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:117:20
 msgid "Licenses"
-msgstr ""
+msgstr "สัญญาอนุญาต"
 
 #: app/templates/components/forms/wizard/other-details-step.hbs:144:34
 msgid "Select License"
-msgstr ""
+msgstr "เลือกใบอนุญาต"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:26:8
 msgid "Sessions, Microlocations, Session Types"
-msgstr ""
+msgstr "เซสชันไมโครโลเคชั่นประเภทเซสชัน"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:51:53
 msgid "Preview Text"
-msgstr ""
+msgstr "ดูตัวอย่างข้อความ"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:60:30
 msgid "Microlocations or Virtual Online Rooms"
-msgstr ""
+msgstr "Microlocations หรือห้องออนไลน์เสมือนจริง"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:134:42
 msgid "Enable Call For Speakers"
-msgstr ""
+msgstr "เปิดใช้งานการโทรสำหรับลำโพง"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:141:10
 #: app/templates/index.hbs:24:34 app/templates/pricing.hbs:97:24
 msgid "Call for speakers"
-msgstr ""
+msgstr "โทรหาวิทยากร"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:145:32
 msgid "Announcement"
-msgstr ""
+msgstr "การประกาศ"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:178:38
 msgid "Enable Soft Closing"
-msgstr ""
+msgstr "เปิดใช้งานการปิดอย่างนุ่มนวล"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:184:37
 msgid "Soft Ends"
-msgstr ""
+msgstr "ปลายอ่อน"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:194:15
 msgid "Private Link"
-msgstr ""
+msgstr "ลิงก์ส่วนตัว"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:205:10
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
 msgstr ""
+"แชร์ลิงก์นี้เพื่อรับการส่งแบบส่วนตัวโดยไม่ขึ้นกับการโทรเปิด / "
+"ปิดสำหรับลำโพงได้ตลอดเวลา (ลิงก์จะใช้งานได้เมื่อบันทึกกิจกรรมแล้ว)"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:215:14
 msgid "Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published."
 msgstr ""
+"แสดงสิ่งนี้ต่อสาธารณะ "
+"ทุกคนจะสามารถส่งข้อเสนอได้ภายในวันที่ที่เลือกเมื่อกิจกรรมได้รับการเผยแพร่"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:224:14
 msgid "Do not display this publicly. Proposals can be submitted only using the private link."
-msgstr ""
+msgstr "อย่าแสดงสิ่งนี้ต่อสาธารณะ สามารถส่งข้อเสนอได้โดยใช้ลิงก์ส่วนตัวเท่านั้น"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:234:8
 msgid "Customize submission forms"
-msgstr ""
+msgstr "ปรับแต่งแบบฟอร์มการส่ง"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:241:22
 msgid "Collect Speaker Details"
-msgstr ""
+msgstr "รวบรวมรายละเอียดลำโพง"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:257:22
 msgid "Collect Session Details"
-msgstr ""
+msgstr "รวบรวมรายละเอียดเซสชัน"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:27:8
 msgid "Sponsor"
-msgstr ""
+msgstr "สปอนเซอร์"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:86:138
 msgid "Add another sponsor"
-msgstr ""
+msgstr "เพิ่มผู้สนับสนุนรายอื่น"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:86:164
 msgid "Add sponsor"
-msgstr ""
+msgstr "เพิ่มผู้สนับสนุน"
 
 #: app/templates/components/group-card.hbs:16:39 app/templates/public.hbs:86:76
 msgid "followers"
-msgstr ""
+msgstr "ผู้ติดตาม"
 
 #: app/templates/components/group-header.hbs:5:8
 #: app/templates/events/view/settings/export.hbs:3:4
 #: app/templates/events/view/videoroom/list.hbs:3:4
 msgid "This feature is still in alpha stage."
-msgstr ""
+msgstr "คุณลักษณะนี้ยังอยู่ในขั้นตอนอัลฟา"
 
 #: app/templates/components/group-header.hbs:7:6
 #: app/templates/events/view/settings/export.hbs:5:2
 #: app/templates/events/view/videoroom/list.hbs:5:2
 msgid "Please use with care."
-msgstr ""
+msgstr "กรุณาใช้ด้วยความระมัดระวัง"
 
 #: app/templates/components/group-header.hbs:7:36
 #: app/templates/events/view/settings/export.hbs:5:32
 #: app/templates/events/view/videoroom/list.hbs:5:32
 msgid "Thank You."
-msgstr ""
+msgstr "ขอบคุณ"
 
 #: app/templates/components/group-header.hbs:19:10
 msgid "Create Group"
-msgstr ""
+msgstr "สร้างกลุ่ม"
 
 #: app/templates/components/modals/add-system-role-modal.hbs:3:4
 msgid "Add New System Role"
-msgstr ""
+msgstr "เพิ่มบทบาทของระบบใหม่"
 
 #: app/templates/components/modals/add-system-role-modal.hbs:5:4
 msgid "Edit System Role"
-msgstr ""
+msgstr "แก้ไขบทบาทของระบบ"
 
 #: app/templates/components/modals/add-system-role-modal.hbs:14:82
 msgid "Enter Role name"
-msgstr ""
+msgstr "ป้อนชื่อบทบาท"
 
 #: app/templates/components/modals/add-system-role-modal.hbs:40:6
 #: app/templates/components/modals/add-user-role-modal.hbs:40:4
 msgid "Add Team Member"
-msgstr ""
+msgstr "เพิ่มสมาชิกในทีม"
 
 #: app/templates/components/modals/add-system-role-modal.hbs:42:6
 msgid "Edit Team Member"
-msgstr ""
+msgstr "แก้ไขสมาชิกในทีม"
 
 #: app/templates/components/modals/add-to-calendar.hbs:3:4
 msgid "Please choose a calendar"
-msgstr ""
+msgstr "โปรดเลือกปฏิทิน"
 
 #: app/templates/components/modals/add-user-role-modal.hbs:2:2
 msgid "Add Role"
-msgstr ""
+msgstr "เพิ่มบทบาท"
 
 #: app/templates/components/modals/add-user-role-modal.hbs:8:8
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:14:8
 msgid "User Email"
-msgstr ""
+msgstr "อีเมลผู้ใช้"
 
 #: app/templates/components/modals/add-user-role-modal.hbs:14:8
 msgid "User role"
-msgstr ""
+msgstr "บทบาทของผู้ใช้"
 
 #: app/templates/components/modals/add-user-role-modal.hbs:20:10
 msgid "Select a role"
-msgstr ""
+msgstr "เลือกบทบาท"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:2:2
 msgid "Add New Event Sub Topic"
-msgstr ""
+msgstr "เพิ่มหัวข้อย่อยกิจกรรมใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:13:8
 msgid "New Event Sub Topic"
-msgstr ""
+msgstr "หัวข้อย่อยกิจกรรมใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:15:96
 msgid "Enter New Event Sub Topic"
-msgstr ""
+msgstr "ป้อนหัวข้อย่อยกิจกรรมใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-sub-topic-modal.hbs:24:4
 msgid "Add Event Sub Topic"
-msgstr ""
+msgstr "เพิ่มหัวข้อย่อยของกิจกรรม"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:2:2
 msgid "Add New Event Topic"
-msgstr ""
+msgstr "เพิ่มหัวข้อกิจกรรมใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:8:8
 msgid "New Event Topic"
-msgstr ""
+msgstr "หัวข้อกิจกรรมใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:10:73
 msgid "Enter New Event Topic"
-msgstr ""
+msgstr "ป้อนหัวข้อกิจกรรมใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-topic-modal.hbs:19:4
 msgid "Add Event Topic"
-msgstr ""
+msgstr "เพิ่มหัวข้อกิจกรรม"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:2:2
 msgid "Add New Event Type"
-msgstr ""
+msgstr "เพิ่มประเภทเหตุการณ์ใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:8:8
 msgid "New Event Type"
-msgstr ""
+msgstr "ประเภทเหตุการณ์ใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:10:72
 msgid "Enter New Event Type"
-msgstr ""
+msgstr "ป้อนประเภทเหตุการณ์ใหม่"
 
 #: app/templates/components/modals/admin/content/new-event-type-modal.hbs:19:4
 msgid "Add Event Type"
-msgstr ""
+msgstr "เพิ่มประเภทเหตุการณ์"
 
 #: app/templates/components/modals/change-image-modal.hbs:3:2
 msgid "Update image"
-msgstr ""
+msgstr "อัปเดตรูปภาพ"
 
 #: app/templates/components/modals/change-image-modal.hbs:13:17
 msgid "Update Image"
-msgstr ""
+msgstr "อัปเดตรูปภาพ"
 
 #: app/templates/components/modals/change-image-modal.hbs:17:16
 msgid "Select Image"
-msgstr ""
+msgstr "เลือกรูปภาพ"
 
 #: app/templates/components/modals/change-image-modal.hbs:19:20
 msgid ""
 "For Cover Photos : 300x150px (2:1 ratio) image.\n"
 "For Avatar Photos : 150x150px (1:1 ratio) image."
 msgstr ""
+"สำหรับรูปภาพปก: รูปภาพ 300x150px (อัตราส่วน 2: 1)\n"
+"สำหรับ Avatar Photos: 150x150px (อัตราส่วน 1: 1)"
 
 #: app/templates/components/modals/change-image-modal.hbs:23:36
 msgid "Copyright information"
-msgstr ""
+msgstr "ข้อมูลลิขสิทธิ์"
 
 #: app/templates/components/modals/change-image-modal.hbs:31:36
 msgid "Origin information"
-msgstr ""
+msgstr "ข้อมูลแหล่งกำเนิด"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:2:2
 msgid "You are transferring this event. This action cannot be undone."
-msgstr ""
+msgstr "คุณกำลังโอนกิจกรรมนี้ การดำเนินการนี้ไม่สามารถยกเลิกได้"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:4:4
 msgid "All the event rights will be transferred to another user."
-msgstr ""
+msgstr "สิทธิ์กิจกรรมทั้งหมดจะถูกโอนไปยังผู้ใช้รายอื่น"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:7:4
 msgid "Transfering event to another user will void all previous owner invites."
-msgstr ""
+msgstr "การโอนกิจกรรมไปยังผู้ใช้รายอื่นจะทำให้คำเชิญเจ้าของเดิมทั้งหมดเป็นโมฆะ"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:19:25
 msgid "Please tick the box to agree and press TRANSFER"
-msgstr ""
+msgstr "กรุณาติ๊กในช่องเพื่อยอมรับและกด TRANSFER"
 
 #: app/templates/components/modals/confirm-event-transfer-modal.hbs:28:4
 msgid "Transfer"
-msgstr ""
+msgstr "โอน"
 
 #: app/templates/components/modals/confirm-modal.hbs:2:55
 msgid "Are you sure ?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่?"
 
 #: app/templates/components/modals/confirm-modal.hbs:27:8
 msgid "Ok"
-msgstr ""
+msgstr "ตกลง"
 
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:2:2
 msgid "You are deleting this account. This action cannot be undone."
-msgstr ""
+msgstr "คุณกำลังลบบัญชีนี้ การดำเนินการนี้ไม่สามารถยกเลิกได้"
 
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:4:4
 msgid "All user data will be deleted"
-msgstr ""
+msgstr "ข้อมูลผู้ใช้ทั้งหมดจะถูกลบ"
 
 #: app/templates/components/modals/confirm-user-delete-modal.hbs:9:23
 msgid "Please tick the box to agree and press DELETE"
-msgstr ""
+msgstr "กรุณาทำเครื่องหมายในช่องเพื่อยอมรับและกด DELETE"
 
 #: app/templates/components/modals/contact-organizer.hbs:3:4
 msgid "Contact the Organizer"
-msgstr ""
+msgstr "ติดต่อผู้จัดงาน"
 
 #: app/templates/components/modals/contact-organizer.hbs:9:16
 msgid "Your message was sent to the organizers of this group."
-msgstr ""
+msgstr "ข้อความของคุณถูกส่งไปยังผู้จัดงานของกลุ่มนี้"
 
 #: app/templates/components/modals/contact-organizer.hbs:11:16
 msgid "Your message was sent to the organizers of this event."
-msgstr ""
+msgstr "ข้อความของคุณถูกส่งไปยังผู้จัดงานนี้แล้ว"
 
 #: app/templates/components/modals/contact-organizer.hbs:13:12
 msgid "You should receive a copy of the message to your email inbox."
-msgstr ""
+msgstr "คุณควรได้รับสำเนาข้อความในกล่องจดหมายอีเมลของคุณ"
 
 #: app/templates/components/modals/contact-organizer.hbs:14:12
 msgid "The organizers will contact you by email."
-msgstr ""
+msgstr "ผู้จัดงานจะติดต่อคุณทางอีเมล"
 
 #: app/templates/components/modals/contact-organizer.hbs:17:12
 msgid "Close"
-msgstr ""
+msgstr "ปิด"
 
 #: app/templates/components/modals/contact-organizer.hbs:34:38
 msgid "Group Organizer"
-msgstr ""
+msgstr "ผู้จัดกลุ่ม"
 
 #: app/templates/components/modals/contact-organizer.hbs:34:60
 msgid "Event Organizer"
-msgstr ""
+msgstr "ผู้จัดงาน"
 
 #: app/templates/components/modals/contact-organizer.hbs:42:16
 msgid "Send Email"
-msgstr ""
+msgstr "ส่งอีเมล"
 
 #: app/templates/components/modals/cropper-modal.hbs:3:2
 msgid "Crop Image"
-msgstr ""
+msgstr "ครอบตัดรูปภาพ"
 
 #: app/templates/components/modals/cropper-modal.hbs:10:4
 #: app/templates/events/view/exhibitors/reorder.hbs:14:172
 #: app/templates/events/view/speakers/reorder.hbs:14:170
 msgid "Reset"
-msgstr ""
+msgstr "ตั้งค่าใหม่"
 
 #: app/templates/components/modals/cropper-modal.hbs:13:4
 msgid "Looks good"
-msgstr ""
+msgstr "ดูดี"
 
 #: app/templates/components/modals/edit-user-modal.hbs:3:2
 msgid "Update System Roles"
-msgstr ""
+msgstr "อัปเดตบทบาทของระบบ"
 
 #: app/templates/components/modals/edit-user-modal.hbs:7:26
 msgid "Provide admin access?"
-msgstr ""
+msgstr "ให้สิทธิ์การเข้าถึงระดับผู้ดูแลระบบ?"
 
 #: app/templates/components/modals/edit-user-modal.hbs:14:26
 msgid "Custom system roles"
-msgstr ""
+msgstr "บทบาทของระบบที่กำหนดเอง"
 
 #: app/templates/components/modals/edit-user-modal.hbs:16:25
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:26:46
 msgid "Sales Admin"
-msgstr ""
+msgstr "ธุรการฝ่ายขาย"
 
 #: app/templates/components/modals/event-delete-modal.hbs:2:2
 msgid "Are you sure you would like to delete this event?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบกิจกรรมนี้"
 
 #: app/templates/components/modals/event-delete-modal.hbs:4:4
 msgid "Deleting the event will delete all the data associated with it."
-msgstr ""
+msgstr "การลบกิจกรรมจะลบข้อมูลทั้งหมดที่เกี่ยวข้อง"
 
 #: app/templates/components/modals/event-delete-modal.hbs:11:8
 msgid "Please enter the full name of the event to continue"
-msgstr ""
+msgstr "โปรดป้อนชื่อเต็มของกิจกรรมเพื่อดำเนินการต่อ"
 
 #: app/templates/components/modals/event-delete-modal.hbs:22:4
 #: app/templates/events/view/settings/options.hbs:35:10
 msgid "Delete Event"
-msgstr ""
+msgstr "ลบกิจกรรม"
 
 #: app/templates/components/modals/event-revision.hbs:3:2
 msgid "Revisions"
-msgstr ""
+msgstr "การแก้ไข"
 
 #: app/templates/components/modals/event-revision.hbs:15:10
 msgid "Revisions by testuser"
-msgstr ""
+msgstr "การแก้ไขโดยผู้ทดสอบ"
 
 #: app/templates/components/modals/event-revision.hbs:18:12
 msgid "days ago"
-msgstr ""
+msgstr "วันที่ผ่านมา"
 
 #: app/templates/components/modals/event-revision.hbs:23:10
 msgid "Current Revision"
-msgstr ""
+msgstr "การแก้ไขปัจจุบัน"
 
 #: app/templates/components/modals/event-share-modal.hbs:3:2
 msgid "Share this event"
-msgstr ""
+msgstr "แชร์กิจกรรมนี้"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:2:2
 msgid "Are you sure you would like to transfer this event?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการโอนกิจกรรมนี้"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:4:4
 msgid "Transferring the event to another user will lead to you losing all the owner rights."
-msgstr ""
+msgstr "การโอนกิจกรรมไปยังผู้ใช้รายอื่นจะทำให้คุณสูญเสียสิทธิ์ของเจ้าของทั้งหมด"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:7:4
 msgid "On successful transfer of event you will be downgraded to Organizer."
-msgstr ""
+msgstr "เมื่อโอนกิจกรรมสำเร็จ คุณจะถูกดาวน์เกรดเป็นผู้จัดงาน"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:14:8
 msgid "Please enter the event-name to confirm that you want to transfer the event."
-msgstr ""
+msgstr "โปรดป้อนชื่อกิจกรรมเพื่อยืนยันว่าคุณต้องการโอนกิจกรรม"
 
 #: app/templates/components/modals/event-transfer-modal.hbs:25:4
 #: app/templates/components/modals/paytm-payment-options.hbs:30:4
 #: app/templates/components/modals/user-delete-modal.hbs:22:4
 msgid "Proceed"
-msgstr ""
+msgstr "ดำเนินการ"
 
 #: app/templates/components/modals/login-signup-modal.hbs:13:4
 msgid "Login or Signup"
-msgstr ""
+msgstr "เข้าสู่ระบบหรือสมัครสมาชิก"
 
 #: app/templates/components/modals/login-signup-modal.hbs:16:26
 msgid "Please Login or Signup before you can submit a proposal."
-msgstr ""
+msgstr "กรุณาเข้าสู่ระบบหรือลงทะเบียนก่อนที่คุณจะสามารถส่งข้อเสนอ"
 
 #: app/templates/components/modals/login-signup-modal.hbs:26:8
 msgid "Signup"
-msgstr ""
+msgstr "ลงชื่อ"
 
 #: app/templates/components/modals/paytm-otp.hbs:2:2
 #: app/templates/components/modals/paytm-payment-options.hbs:2:2
 msgid "Amount to be paid:"
-msgstr ""
+msgstr "จำนวนที่ต้องจ่าย:"
 
 #: app/templates/components/modals/paytm-otp.hbs:6:2
 msgid "Enter OTP sent to mobile number"
-msgstr ""
+msgstr "ป้อน OTP ที่ส่งไปยังหมายเลขโทรศัพท์มือถือ"
 
 #: app/templates/components/modals/paytm-payment-options.hbs:7:4
 msgid "Select an option to pay"
-msgstr ""
+msgstr "เลือกตัวเลือกเพื่อชำระเงิน"
 
 #: app/templates/components/modals/paytm-payment-options.hbs:12:6
 msgid "Paytm Wallet"
-msgstr ""
+msgstr "กระเป๋าเงิน Paytm"
 
 #: app/templates/components/modals/paytm-payment-options.hbs:17:10
 msgid "Please enter your Paytm registered Mobile Number to continue"
-msgstr ""
+msgstr "โปรดป้อนหมายเลขโทรศัพท์มือถือที่ลงทะเบียน Paytm ของคุณเพื่อดำเนินการต่อ"
 
 #: app/templates/components/modals/proposal-withdraw-modal.hbs:2:2
 msgid "Are you sure you would like to withdraw this proposal?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการถอนข้อเสนอนี้"
 
 #: app/templates/components/modals/proposal-withdraw-modal.hbs:4:4
 msgid "This action is final and cannot be reverted."
-msgstr ""
+msgstr "การดำเนินการนี้ถือเป็นที่สิ้นสุดและไม่สามารถเปลี่ยนกลับได้"
 
 #: app/templates/components/modals/proposal-withdraw-modal.hbs:10:6
 msgid "Proceeding forward will withdraw the proposal titled:"
-msgstr ""
+msgstr "การดำเนินการต่อไปจะถอนข้อเสนอหัวข้อ:"
 
 #: app/templates/components/modals/proposal-withdraw-modal.hbs:19:4
 msgid "Withdraw Proposal"
-msgstr ""
+msgstr "ถอนข้อเสนอ"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:4:2
 msgid "Are you sure?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่?"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:6:2
 msgid "Incomplete event details"
-msgstr ""
+msgstr "รายละเอียดกิจกรรมไม่สมบูรณ์"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:11:7
 msgid "This will unpublish your event. It will not be accessible to the public on the Internet anymore if you continue. The data of the event will still be available on your dashboard, but tickets, call for speakers or any other features will no longer be available online. Do you want to unpublish your event now?"
 msgstr ""
+"การดำเนินการนี้จะยกเลิกการเผยแพร่กิจกรรมของคุณ "
+"บุคคลทั่วไปจะไม่สามารถเข้าถึงได้ทางอินเทอร์เน็ตอีกต่อไปหากคุณดำเนินการต่อ "
+"ข้อมูลของกิจกรรมจะยังคงมีอยู่บนแดชบอร์ดของคุณ "
+"แต่ตั๋วการโทรหาวิทยากรหรือคุณสมบัติอื่น ๆ จะไม่สามารถใช้งานออนไลน์ได้อีกต่"
+"อไป คุณต้องการยกเลิกการเผยแพร่กิจกรรมของคุณตอนนี้หรือไม่"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:14:6
 msgid "This will publish the event and the event will be visible on the Internet. Please confirm you want to publish your event."
 msgstr ""
+"สิ่งนี้จะเผยแพร่กิจกรรมและเหตุการณ์จะปรากฏบนอินเทอร์เน็ต "
+"โปรดยืนยันว่าคุณต้องการเผยแพร่กิจกรรมของคุณ"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:16:6
 msgid "You need to add more details such as location and tickets to your event in order to publish it."
 msgstr ""
+"คุณต้องเพิ่มรายละเอียดเพิ่มเติมเช่นสถานที่และตั๋วเข้าร่วมกิจกรรมของคุณเพื่อเผ"
+"ยแพร่"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:23:3
 msgid "Yes, Unpublish it"
-msgstr ""
+msgstr "ใช่ยกเลิกการเผยแพร่"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:34:4
 msgid "Cancel, Do Not Publish it Now"
-msgstr ""
+msgstr "ยกเลิกอย่าเผยแพร่เลย"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:38:4
 msgid "Okay"
-msgstr ""
+msgstr "ตกลง"
 
 #: app/templates/components/modals/tax-info-modal.hbs:3:2
 msgid "Add tax information"
-msgstr ""
+msgstr "เพิ่มข้อมูลภาษี"
 
 #: app/templates/components/modals/tax-info-modal.hbs:8:19
 msgid "Choose country"
-msgstr ""
+msgstr "เลือกประเทศ"
 
 #: app/templates/components/modals/tax-info-modal.hbs:12:13
 msgid "Tax name"
-msgstr ""
+msgstr "ชื่อผู้เสียภาษี"
 
 #: app/templates/components/modals/tax-info-modal.hbs:16:13
 msgid "Tax rate"
-msgstr ""
+msgstr "อัตราภาษี"
 
 #: app/templates/components/modals/tax-info-modal.hbs:24:13
 msgid "Tax Invoices"
-msgstr ""
+msgstr "ใบกำกับภาษี"
 
 #: app/templates/components/modals/tax-info-modal.hbs:28:18
 msgid "Send tax invoice to attendees"
-msgstr ""
+msgstr "ส่งใบกำกับภาษีให้กับผู้เข้าร่วมประชุม"
 
 #: app/templates/components/modals/tax-info-modal.hbs:30:12
 msgid ""
 "Tax Invoices are sent to your attendees when you select this feature.\n"
 "Enter your registered business organisation name and address to be included on the tax invoice."
 msgstr ""
+"ใบกำกับภาษีจะถูกส่งไปยังผู้เข้าร่วมของคุณเมื่อคุณเลือกคุณสมบัตินี้\n"
+"ป้อนชื่อองค์กรธุรกิจที่จดทะเบียนและที่อยู่ที่จะรวมไว้ในใบกำกับภาษี"
 
 #: app/templates/components/modals/tax-info-modal.hbs:37:13
 msgid "Registered Organisation"
-msgstr ""
+msgstr "องค์กรที่ลงทะเบียน"
 
 #: app/templates/components/modals/tax-info-modal.hbs:53:13
 msgid "Business Address"
-msgstr ""
+msgstr "ที่อยู่ บริษัท"
 
 #: app/templates/components/modals/tax-info-modal.hbs:68:13
 msgid "Text for invoice footer (optional)"
-msgstr ""
+msgstr "ข้อความสำหรับส่วนท้ายใบแจ้งหนี้ (ไม่บังคับ)"
 
 #: app/templates/components/modals/tax-info-modal.hbs:71:27
 msgid "Add or Include Tax Fee"
-msgstr ""
+msgstr "เพิ่มหรือรวมค่าธรรมเนียมภาษี"
 
 #: app/templates/components/modals/tax-info-modal.hbs:75:31
 msgid "Add tax as separate fee on top of the price"
-msgstr ""
+msgstr "บวกภาษีเป็นค่าธรรมเนียมแยกต่างหากด้านบนของราคา"
 
 #: app/templates/components/modals/tax-info-modal.hbs:81:35
 msgid "Include tax in ticket price"
-msgstr ""
+msgstr "รวมภาษีในราคาตั๋ว"
 
 #: app/templates/components/modals/tax-info-modal.hbs:92:4
 msgid "Update tax information"
-msgstr ""
+msgstr "อัปเดตข้อมูลภาษี"
 
 #: app/templates/components/modals/user-delete-modal.hbs:2:2
 msgid "Are you sure you would like to delete your account?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบบัญชีของคุณ"
 
 #: app/templates/components/modals/user-delete-modal.hbs:4:4
 msgid "Deleting the account will delete all the data associated with it."
-msgstr ""
+msgstr "การลบบัญชีจะลบข้อมูลทั้งหมดที่เกี่ยวข้อง"
 
 #: app/templates/components/modals/user-delete-modal.hbs:11:8
 msgid "Please enter your Email ID to confirm that you want to delete the account."
-msgstr ""
+msgstr "โปรดป้อน ID อีเมลของคุณเพื่อยืนยันว่าคุณต้องการลบบัญชี"
 
 #: app/templates/components/nav-bar.hbs:17:112
 #: app/templates/components/nav-bar.hbs:80:131
@@ -8304,120 +8386,123 @@ msgstr ""
 #: app/templates/components/tables/utilities/search-box.hbs:2:128
 #: app/templates/events/view/scheduler.hbs:10:39
 msgid "Search"
-msgstr ""
+msgstr "ค้นหา"
 
 #: app/templates/components/nav-bar.hbs:45:68
 #: app/templates/components/side-bar.hbs:21:60
 msgid "Manage Events"
-msgstr ""
+msgstr "จัดการกิจกรรม"
 
 #: app/templates/components/nav-bar.hbs:52:105
 #: app/templates/components/side-bar.hbs:28:62
 msgid "Logout"
-msgstr ""
+msgstr "ออกจากระบบ"
 
 #: app/templates/components/nav-bar.hbs:63:12
 #: app/templates/components/nav-bar.hbs:98:14
 #: app/templates/components/welcome-header.hbs:4:4
 #: app/templates/pricing.hbs:176:10
 msgid "Create Event"
-msgstr ""
+msgstr "สร้างกิจกรรม"
 
 #: app/templates/components/notification-dropdown.hbs:14:45
 msgid "Mark all as Read"
-msgstr ""
+msgstr "ทำเครื่องหมายทั้งหมดว่าอ่านแล้ว"
 
 #: app/templates/components/notification-dropdown.hbs:36:44
 msgid "Go to notifications panel"
-msgstr ""
+msgstr "ไปที่แผงการแจ้งเตือน"
 
 #: app/templates/components/notification-dropdown.hbs:40:8
 msgid "No new notifications"
-msgstr ""
+msgstr "ไม่มีการแจ้งเตือนใหม่"
 
 #: app/templates/components/order-card.hbs:16:74
 msgid "This action will cancel the entire order. If there is more than one ticket in this order the other tickets will also be canceled. Are you sure you would like to cancel this order now? Yes, cancel order now. / No, do not cancel the order."
 msgstr ""
+"การดำเนินการนี้จะยกเลิกคำสั่งซื้อทั้งหมด หากมีตั๋วมากกว่าหนึ่งใบในลำดับนี้ "
+"ตั๋วอื่นๆ จะถูกยกเลิกด้วย คุณแน่ใจหรือไม่ว่าต้องการยกเลิกคำสั่งซื้อนี้ตอนนี้ "
+"ใช่ ยกเลิกคำสั่งซื้อเดี๋ยวนี้ / ไม่ อย่ายกเลิกคำสั่งซื้อ"
 
 #: app/templates/components/order-card.hbs:41:10
 msgid "order"
-msgstr ""
+msgstr "ใบสั่ง"
 
 #: app/templates/components/order-card.hbs:45:16
 msgid "on"
-msgstr ""
+msgstr "on"
 
 #: app/templates/components/orders/after-order-message.hbs:5:10
 msgid "Organizer Message"
-msgstr ""
+msgstr "ข้อความของผู้จัดงาน"
 
 #: app/templates/components/orders/company-info.hbs:5:8
 msgid "Company Information"
-msgstr ""
+msgstr "ข้อมูล บริษัท"
 
 #: app/templates/components/orders/company-info.hbs:105:22
 msgid "Tax Name"
-msgstr ""
+msgstr "ชื่อผู้เสียภาษี"
 
 #: app/templates/components/orders/company-info.hbs:125:22
 msgid "Tax Rate"
-msgstr ""
+msgstr "อัตราภาษี"
 
 #: app/templates/components/orders/event-info.hbs:17:16
 msgid "Event taking place online and at"
-msgstr ""
+msgstr "กิจกรรมเกิดขึ้นทางออนไลน์และที่"
 
 #: app/templates/components/orders/event-info.hbs:24:14
 msgid "Location or online event details to be announced"
-msgstr ""
+msgstr "รายละเอียดสถานที่หรือกิจกรรมออนไลน์ที่จะแจ้งให้ทราบ"
 
 #: app/templates/components/orders/event-info.hbs:38:40
 msgid "Go to event page"
-msgstr ""
+msgstr "ไปที่หน้ากิจกรรม"
 
 #: app/templates/components/orders/order-summary.hbs:7:12
 msgid "Success"
-msgstr ""
+msgstr "สำเร็จ"
 
 #: app/templates/components/orders/order-summary.hbs:14:12
 msgid "Your order completed successfully."
-msgstr ""
+msgstr "คำสั่งซื้อของคุณเสร็จสมบูรณ์"
 
 #: app/templates/components/orders/order-summary.hbs:16:12
 msgid "Your order placed successfully."
-msgstr ""
+msgstr "ส่งคำสั่งซื้อของคุณเรียบร้อยแล้ว"
 
 #: app/templates/components/orders/order-summary.hbs:19:10
 msgid "Find all the details related to your order below."
-msgstr ""
+msgstr "ค้นหารายละเอียดทั้งหมดที่เกี่ยวข้องกับคำสั่งซื้อของคุณด้านล่าง"
 
 #: app/templates/components/orders/order-summary.hbs:31:10
 msgid "Your order has been placed."
-msgstr ""
+msgstr "ส่งคำสั่งซื้อของคุณแล้ว"
 
 #: app/templates/components/orders/order-summary.hbs:33:10
 msgid "Please pay for your tickets to complete the order now."
-msgstr ""
+msgstr "กรุณาชำระค่าตั๋วของคุณเพื่อดำเนินการสั่งซื้อตอนนี้"
 
 #: app/templates/components/orders/order-summary.hbs:39:27
 #: app/templates/events/view/tickets/index.hbs:14:4
 msgid "Order Summary"
-msgstr ""
+msgstr "สรุปคำสั่งซื้อ"
 
 #: app/templates/components/orders/order-summary.hbs:48:16
 #: app/templates/components/orders/order-summary.hbs:62:16
 msgid "Registration Type"
-msgstr ""
+msgstr "ประเภทการลงทะเบียน"
 
 #: app/templates/components/orders/order-summary.hbs:55:36
 msgid "Discount"
-msgstr ""
+msgstr "ส่วนลด"
 
 #: app/templates/components/orders/order-summary.hbs:56:46
 #: app/templates/components/orders/order-summary.hbs:69:45
 #: app/templates/components/public/ticket-list.hbs:10:48
 msgid "Subtotal"
-msgstr ""
+msgstr "ผลรวมย่อย"
 
 #: app/templates/components/orders/order-summary.hbs:113:24
 #: app/templates/components/orders/order-summary.hbs:125:30
@@ -8425,226 +8510,228 @@ msgstr ""
 #: app/templates/components/public/ticket-list.hbs:79:28
 #: app/templates/public/index.hbs:61:28 app/templates/public/index.hbs:71:34
 msgid "includes"
-msgstr ""
+msgstr "รวมถึง"
 
 #: app/templates/components/orders/order-summary.hbs:172:29
 #: app/templates/components/public/ticket-list.hbs:146:27
 msgid "Tax"
-msgstr ""
+msgstr "ภาษี"
 
 #: app/templates/components/orders/order-summary.hbs:174:60
 msgid "Included in Total"
-msgstr ""
+msgstr "รวมอยู่ในผลรวม"
 
 #: app/templates/components/orders/order-summary.hbs:180:26
 #: app/templates/components/public/ticket-list.hbs:154:24
 msgid "Grand Total"
-msgstr ""
+msgstr "ผลรวมทั้งสิ้น"
 
 #: app/templates/components/orders/order-summary.hbs:199:8
 msgid "Your order expired because you did not complete registration in time."
-msgstr ""
+msgstr "คำสั่งซื้อของคุณหมดอายุเนื่องจากคุณลงทะเบียนไม่เสร็จทันเวลา"
 
 #: app/templates/components/orders/order-summary.hbs:201:8
 msgid "Please click on event link given on the right to order your tickets again."
-msgstr ""
+msgstr "กรุณาคลิกที่ลิงค์กิจกรรมทางด้านขวาเพื่อสั่งซื้อตั๋วของคุณอีกครั้ง"
 
 #: app/templates/components/orders/order-summary.hbs:213:8
 msgid "Your order has been cancelled due to some unavoidable circumstances."
-msgstr ""
+msgstr "คำสั่งซื้อของคุณถูกยกเลิกเนื่องจากสถานการณ์ที่หลีกเลี่ยงไม่ได้"
 
 #: app/templates/components/orders/order-summary.hbs:215:8
 msgid "Please contact the event organizer for further details."
-msgstr ""
+msgstr "กรุณาติดต่อผู้จัดงานเพื่อขอรายละเอียดเพิ่มเติม"
 
 #: app/templates/components/orders/ticket-holder.hbs:76:38
 msgid "Expiry Date"
-msgstr ""
+msgstr "วันหมดอายุ"
 
 #: app/templates/components/orders/ticket-holder.hbs:84:12
 msgid "Paid via"
-msgstr ""
+msgstr "ชำระเงินผ่าน"
 
 #: app/templates/components/orders/ticket-holder.hbs:91:12
 msgid "Cheque Details"
-msgstr ""
+msgstr "ตรวจสอบรายละเอียด"
 
 #: app/templates/components/orders/ticket-holder.hbs:99:12
 msgid "Onsite Instructions"
-msgstr ""
+msgstr "คำแนะนำในสถานที่"
 
 #: app/templates/components/orders/ticket-holder.hbs:107:12
 msgid "Bank Details"
-msgstr ""
+msgstr "รายละเอียดธนาคาร"
 
 #: app/templates/components/public/call-for-speakers.hbs:8:8
 msgid "Call for Speakers will softly close on {{softCloseDate}} and will be finally closed on {{closeDate}}."
 msgstr ""
+"Call for Speakers จะปิดอย่างนุ่มนวลในวันที่ {{softCloseDate}} "
+"และจะปิดในที่สุดในวันที่ {{closeDate}}"
 
 #: app/templates/components/public/call-for-speakers.hbs:13:8
 msgid "Call for Speakers will close on {{closeDate}}."
-msgstr ""
+msgstr "การโทรสำหรับผู้พูดจะปิดในวันที่ {{closeDate}}"
 
 #: app/templates/components/public/call-for-speakers.hbs:22:8
 msgid "Call for Speakers will open at {{openDate}}."
-msgstr ""
+msgstr "Call for Speakers จะเปิดในเวลา {{openDate}}"
 
 #: app/templates/components/public/call-for-speakers.hbs:26:8
 msgid "Call for Speakers was closed at {{closeDate}}."
-msgstr ""
+msgstr "การโทรสำหรับผู้พูดถูกปิดเมื่อ {{closeDate}}"
 
 #: app/templates/components/public/call-for-speakers.hbs:39:9
 msgid "You have not submitted any session."
-msgstr ""
+msgstr "คุณยังไม่ได้ส่งเซสชั่นใด ๆ"
 
 #: app/templates/components/public/call-for-speakers.hbs:41:9
 msgid "You need to login to view and submit session(s)."
-msgstr ""
+msgstr "คุณต้องเข้าสู่ระบบเพื่อดูและส่งเซสชั่น"
 
 #: app/templates/components/public/call-for-speakers.hbs:44:7
 msgid "You have submitted the following session(s)."
-msgstr ""
+msgstr "คุณได้ส่งเซสชันต่อไปนี้"
 
 #: app/templates/components/public/call-for-speakers.hbs:62:22
 msgid "Invitation for Sessions"
-msgstr ""
+msgstr "คำเชิญสำหรับเซสชั่น"
 
 #: app/templates/components/public/call-for-speakers.hbs:65:9
 msgid "You have not been invited for any session."
-msgstr ""
+msgstr "คุณยังไม่ได้รับเชิญให้เข้าร่วมเซสชั่นใดๆ"
 
 #: app/templates/components/public/call-for-speakers.hbs:67:9
 msgid "You need to login to view and accept invite(s)."
-msgstr ""
+msgstr "คุณต้องเข้าสู่ระบบเพื่อดูและยอมรับคำเชิญ"
 
 #: app/templates/components/public/call-for-speakers.hbs:70:7
 msgid "You have been invited for the following session(s)."
-msgstr ""
+msgstr "คุณได้รับเชิญสำหรับเซสชันต่อไปนี้"
 
 #: app/templates/components/public/call-for-speakers.hbs:90:4
 msgid "Add Speaker Details"
-msgstr ""
+msgstr "เพิ่มรายละเอียดลำโพง"
 
 #: app/templates/components/public/call-for-speakers.hbs:96:74
 msgid "Edit Speaker Details"
-msgstr ""
+msgstr "แก้ไขรายละเอียดลำโพง"
 
 #: app/templates/components/public/call-for-speakers.hbs:103:4
 msgid "Add New Session"
-msgstr ""
+msgstr "เพิ่มเซสชันใหม่"
 
 #: app/templates/components/public/copyright-item.hbs:7:7
 msgid "This event is licenced under"
-msgstr ""
+msgstr "งานนี้ได้รับอนุญาตภายใต้"
 
 #: app/templates/components/public/event-map.hbs:4:10
 msgid "Getting Here"
-msgstr ""
+msgstr "เดินทางมาที่นี่"
 
 #: app/templates/components/public/exhibition-view.hbs:20:33
 msgid "Meet us in our exhibitor video room!"
-msgstr ""
+msgstr "พบกับเราในห้องวิดีโอผู้แสดงสินค้าของเรา!"
 
 #: app/templates/components/public/exhibition-view.hbs:22:16
 msgid "Join Exhibitor Video Room"
-msgstr ""
+msgstr "เข้าร่วม Exhibitor Video Room"
 
 #: app/templates/components/public/exhibition-view.hbs:62:16
 msgid "Get in touch"
-msgstr ""
+msgstr "ได้รับการติดต่อ"
 
 #: app/templates/components/public/exhibition-view.hbs:77:81
 msgid "Related Sessions"
-msgstr ""
+msgstr "เซสชันที่เกี่ยวข้อง"
 
 #: app/templates/components/public/exhibition-view.hbs:94:65
 msgid "Exhibitor Video"
-msgstr ""
+msgstr "วิดีโอผู้แสดงสินค้า"
 
 #: app/templates/components/public/exhibition-view.hbs:107:65
 msgid "Exhibitor Slides"
-msgstr ""
+msgstr "สไลด์ผู้จัดแสดง"
 
 #: app/templates/components/public/featured-speaker-list.hbs:1:18
 msgid "Featured Speakers"
-msgstr ""
+msgstr "ลำโพงที่โดดเด่น"
 
 #: app/templates/components/public/featured-speaker-list.hbs:10:66
 msgid "More Speakers"
-msgstr ""
+msgstr "ลำโพงเพิ่มเติม"
 
 #: app/templates/components/public/side-menu.hbs:72:101
 #: app/templates/components/public/side-menu.hbs:76:101
 msgid "Getting here"
-msgstr ""
+msgstr "เดินทางมาที่นี่"
 
 #: app/templates/components/public/social-links.hbs:6:59
 msgid "Site"
-msgstr ""
+msgstr "ไซต์"
 
 #: app/templates/components/public/ticket-list.hbs:34:50
 msgid "Sale ends on"
-msgstr ""
+msgstr "การขายสิ้นสุดลงเมื่อ"
 
 #: app/templates/components/public/ticket-list.hbs:45:54
 #: app/templates/public/index.hbs:33:60
 msgid "Enter Donation"
-msgstr ""
+msgstr "เข้าสู่การบริจาค"
 
 #: app/templates/components/public/ticket-list.hbs:95:77
 msgid "Sold Out"
-msgstr ""
+msgstr "ขายหมดแล้ว"
 
 #: app/templates/components/public/ticket-list.hbs:120:43
 msgid "Subtotal :"
-msgstr ""
+msgstr "ผลรวมย่อย:"
 
 #: app/templates/components/public/ticket-list.hbs:148:58
 msgid "Included in Grand Total"
-msgstr ""
+msgstr "รวมอยู่ในยอดรวม"
 
 #: app/templates/components/public/ticket-list.hbs:178:28
 #: app/templates/public/index.hbs:97:22
 msgid "Promotional Code"
-msgstr ""
+msgstr "รหัสส่วนลด"
 
 #: app/templates/components/public/ticket-list.hbs:184:16
 #: app/templates/public/index.hbs:103:12
 msgid "Apply code"
-msgstr ""
+msgstr "ใส่รหัส"
 
 #: app/templates/components/public/ticket-list.hbs:201:59
 #: app/templates/public/index.hbs:113:59
 msgid "Enter promotional code"
-msgstr ""
+msgstr "ป้อนรหัสส่งเสริมการขาย"
 
 #: app/templates/components/session-card.hbs:25:12
 msgid "Session Not Yet Scheduled"
-msgstr ""
+msgstr "ยังไม่กำหนดเซสชัน"
 
 #: app/templates/components/tables/utilities/page-size-input.hbs:2:2
 msgid "Show"
-msgstr ""
+msgstr "แสดง"
 
 #: app/templates/components/tables/utilities/page-size-input.hbs:14:2
 msgid "entries per page"
-msgstr ""
+msgstr "รายการต่อหน้า"
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:2
 msgid "Showing"
-msgstr ""
+msgstr "กำลังแสดง"
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:40
 msgid "of"
-msgstr ""
+msgstr "ของ"
 
 #: app/templates/components/tables/utilities/pagination.hbs:16:80
 msgid "entries"
-msgstr ""
+msgstr "รายการ"
 
 #: app/templates/components/ui-table/cell/admin/cell-recording-action.hbs:2:61
 msgid "Are you sure you would like to delete this video recording?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบการบันทึกวิดีโอนี้"
 
 #: app/templates/components/ui-table/cell/admin/groups/cell-group-name.hbs:15:22
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:12:24
@@ -8652,449 +8739,463 @@ msgstr ""
 #: app/templates/components/ui-table/cell/cell-buttons.hbs:13:22
 #: app/templates/components/ui-table/cell/cell-event.hbs:17:22
 msgid "Restore"
-msgstr ""
+msgstr "กู้คืน"
 
 #: app/templates/components/ui-table/cell/admin/sales/cell-action.hbs:1:20
 msgid "Resend invoice mail"
-msgstr ""
+msgstr "ส่งจดหมายใบแจ้งหนี้อีกครั้ง"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:16:64
 #: app/templates/components/ui-table/cell/admin/users/cell-first-name.hbs:18:64
 msgid "Are you sure you would like to delete this user?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบผู้ใช้นี้"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:3:4
 msgid "User has administrative privileges, he has privileges of the following roles for all the events:"
 msgstr ""
+"ผู้ใช้มีสิทธิ์ระดับผู้ดูแลระบบเขามีสิทธิ์ของบทบาทต่อไปนี้สำหรับกิจกรรมทั้งหมด"
+":"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:11:47
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:46:68
 msgid "Co organizer"
-msgstr ""
+msgstr "ผู้จัดงานร่วม"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:14:44
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:53:134
 msgid "Track Organizer"
-msgstr ""
+msgstr "ติดตามผู้จัด"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:17:47
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:60:134
 msgid "Registrar"
-msgstr ""
+msgstr "นายทะเบียน"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:20:46
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:67:133
 msgid "Moderator"
-msgstr ""
+msgstr "พิธีกร"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-system-roles.hbs:14:6
 msgid "Verified User"
-msgstr ""
+msgstr "ผู้ใช้ที่ได้รับการยืนยัน"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-user-links.hbs:12:78
 msgid "Accounts"
-msgstr ""
+msgstr "บัญชี"
 
 #: app/templates/components/ui-table/cell/cell-channel-action.hbs:5:61
 msgid "Are you sure you would like to delete this video channel?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบช่องวิดีโอนี้"
 
 #: app/templates/components/ui-table/cell/cell-code-buttons.hbs:5:20
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:7:24
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:7:24
 msgid "Deactivate"
-msgstr ""
+msgstr "ปิดใช้งาน"
 
 #: app/templates/components/ui-table/cell/cell-event-date.hbs:12:6
 #: app/templates/components/ui-table/cell/cell-event-date.hbs:17:4
 msgid "No dates available."
-msgstr ""
+msgstr "ไม่มีวันที่"
 
 #: app/templates/components/ui-table/cell/cell-event-general.hbs:11:22
 msgid "Event Dashboard"
-msgstr ""
+msgstr "แดชบอร์ดเหตุการณ์"
 
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:8:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:8:22
 #: app/templates/events/view/speakers.hbs:23:14
 msgid "Withdrawn"
-msgstr ""
+msgstr "ถอน"
 
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:9:22
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:9:22
 #: app/templates/events/view/speakers.hbs:26:14
 msgid "Canceled"
-msgstr ""
+msgstr "ยกเลิก"
 
 #: app/templates/components/ui-table/cell/cell-sessions-dashboard.hbs:12:2
 #: app/templates/components/ui-table/cell/cell-sessions.hbs:10:2
 msgid "No Session Information Added Yet"
-msgstr ""
+msgstr "ยังไม่มีการเพิ่มข้อมูลเซสชัน"
 
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:8:20
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:16:20
 msgid "Delete Session"
-msgstr ""
+msgstr "ลบเซสชัน"
 
 #: app/templates/components/ui-table/cell/cell-simple-buttons.hbs:8:68
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-session-title.hbs:16:68
 msgid "Are you sure you would like to delete this Session?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบเซสชันนี้"
 
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:12:2
 msgid "No Speaker Added Yet"
-msgstr ""
+msgstr "ยังไม่มีการเพิ่มลำโพง"
 
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:5:60
 msgid "Are you sure you would like to delete this Sponsor?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบผู้สนับสนุนนี้"
 
 #: app/templates/components/ui-table/cell/cell-tickets.hbs:6:9
 #: app/templates/events/view/tickets/index.hbs:25:34
 msgid "Total Sales"
-msgstr ""
+msgstr "ยอดขายทั้งหมด"
 
 #: app/templates/components/ui-table/cell/cell-tickets.hbs:9:7
 msgid "No Ticket Information"
-msgstr ""
+msgstr "ไม่มีข้อมูลตั๋ว"
 
 #: app/templates/components/ui-table/cell/events/cell-action.hbs:3:4
 msgid "Review and Pay"
-msgstr ""
+msgstr "ตรวจสอบและชำระเงิน"
 
 #: app/templates/components/ui-table/cell/events/cell-action.hbs:7:4
 msgid "See Payment"
-msgstr ""
+msgstr "ดูการชำระเงิน"
 
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-lock-session.hbs:2:20
 msgid "Unlock Session"
-msgstr ""
+msgstr "ปลดล็อกเซสชัน"
 
 #: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:60
 msgid "Are you sure you would like to delete this Speaker?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบลำโพงนี้"
 
 #: app/templates/components/ui-table/cell/events/view/speakers/speaker-mobile.hbs:4:2
 msgid "Not Provided"
-msgstr ""
+msgstr "ไม่ได้จัดเตรียมไว้ให้"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:11:24
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:11:24
 msgid "Activate"
-msgstr ""
+msgstr "เปิดใช้งาน"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/access-codes/cell-actions.hbs:16:60
 msgid "Are you sure you would like to delete this Access Code?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบรหัสการเข้าถึงนี้"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/attendees/cell-action.hbs:4:6
 msgid "Checkin"
-msgstr ""
+msgstr "เช็คอิน"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/attendees/cell-order.hbs:9:8
 #: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:11:8
 msgid "Payment via"
-msgstr ""
+msgstr "ชำระเงินผ่าน"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:7:68
 msgid "Are you sure you would like to deactivate this Discount Code?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการปิดใช้งานรหัสส่วนลดนี้"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:11:66
 msgid "Are you sure you would like to activate this Discount Code?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการเปิดใช้งานรหัสส่วนลดนี้"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/discount-codes/cell-actions.hbs:16:60
 msgid "Are you sure you would like to delete this Discount Code?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบรหัสส่วนลดนี้"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:25:22
 msgid "Mark Completed"
-msgstr ""
+msgstr "ทำเครื่องหมายเสร็จสิ้น"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:25:70
 msgid "Are you sure you would like to mark this Order as completed?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการทำเครื่องหมายคำสั่งซื้อนี้ว่าเสร็จสมบูรณ์"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:30:22
 msgid "Cancel order"
-msgstr ""
+msgstr "ยกเลิกคำสั่งซื้อ"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:30:68
 msgid "Are you sure you would like to cancel this Order?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกคำสั่งซื้อนี้"
 
 #: app/templates/components/ui-table/cell/events/view/tickets/orders/cell-order.hbs:34:20
 msgid "Resend order confirmation"
-msgstr ""
+msgstr "ส่งการยืนยันคำสั่งซื้ออีกครั้ง"
 
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-stream-title.hbs:16:64
 msgid "Are you sure you would like to delete this stream?"
-msgstr ""
+msgstr "แน่ใจไหมว่าต้องการลบสตรีมนี้"
 
 #: app/templates/components/ui-table/cell/events/view/videoroom/cell-video-url.hbs:4:6
 msgid "Auto-Generated"
-msgstr ""
+msgstr "สร้างขึ้นโดยอัตโนมัติ"
 
 #: app/templates/components/welcome-header.hbs:2:30
 msgid "The open source event solution for virtual and in-person events."
-msgstr ""
+msgstr "โซลูชันเหตุการณ์โอเพนซอร์สสำหรับเหตุการณ์เสมือนและในบุคคล"
 
 #: app/templates/components/widgets/forms/billing-info.hbs:29:21
 msgid "State/Province"
-msgstr ""
+msgstr "รัฐ / จังหวัด"
 
 #: app/templates/components/widgets/forms/color-picker.hbs:1:49
 msgid "Hex value or pick"
-msgstr ""
+msgstr "ค่า Hex หรือเลือก"
 
 #: app/templates/components/widgets/forms/file-upload.hbs:7:8
 msgid "Remove file"
-msgstr ""
+msgstr "ลบไฟล์"
 
 #: app/templates/components/widgets/forms/file-upload.hbs:22:11
 #: app/templates/components/widgets/forms/image-upload.hbs:80:7
 msgid "Not larger than"
-msgstr ""
+msgstr "มีขนาดไม่เกิน"
 
 #: app/templates/components/widgets/forms/image-upload.hbs:9:38
 #: app/templates/components/widgets/forms/image-upload.hbs:34:38
 msgid "Image Uploading"
-msgstr ""
+msgstr "การอัปโหลดรูปภาพ"
 
 #: app/templates/components/widgets/forms/image-upload.hbs:19:12
 #: app/templates/components/widgets/forms/image-upload.hbs:44:12
 msgid "Re-crop"
-msgstr ""
+msgstr "ครอบตัดใหม่"
 
 #: app/templates/components/widgets/forms/image-upload.hbs:73:16
 msgid "click or drag-and-drop"
-msgstr ""
+msgstr "คลิกหรือลากแล้วปล่อย"
 
 #: app/templates/components/widgets/forms/location-input.hbs:9:22
 msgid "Venue Name"
-msgstr ""
+msgstr "ชื่อสถานที่"
 
 #: app/templates/components/widgets/forms/location-input.hbs:16:22
 msgid "Street Address"
-msgstr ""
+msgstr "ที่อยู่ถนน"
 
 #: app/templates/components/widgets/forms/location-input.hbs:48:57
 msgid "Reset Map"
-msgstr ""
+msgstr "รีเซ็ตแผนที่"
 
 #: app/templates/components/widgets/forms/location-input.hbs:76:36
 msgid "Enter address"
-msgstr ""
+msgstr "ป้อนที่อยู่"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:3:48
 msgid "Bold (Ctrl+B)"
-msgstr ""
+msgstr "ตัวหนา (Ctrl + B)"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:4:48
 msgid "Italic (Ctrl+I)"
-msgstr ""
+msgstr "ตัวเอียง (Ctrl + I)"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:5:48
 msgid "Underline (Ctrl+U)"
-msgstr ""
+msgstr "ขีดเส้นใต้ (Ctrl + U)"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:8:48
 msgid "Numbered List"
-msgstr ""
+msgstr "รายการลำดับเลข"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:9:48
 msgid "Bullet List"
-msgstr ""
+msgstr "รายการหัวข้อย่อย"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:12:48
 msgid "Undo (Ctrl+Z)"
-msgstr ""
+msgstr "เลิกทำ (Ctrl + Z)"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:13:48
 msgid "Redo (Ctrl+Y)"
-msgstr ""
+msgstr "ทำซ้ำ (Ctrl + Y)"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:14:48
 msgid "Line Break"
-msgstr ""
+msgstr "เส้นแบ่ง"
 
 #: app/templates/components/widgets/forms/rich-text-editor.hbs:15:84
 msgid "Insert Link"
-msgstr ""
+msgstr "แทรกลิงค์"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:29:24
 #: app/templates/components/widgets/forms/ticket-input.hbs:231:26
 msgid "Min"
-msgstr ""
+msgstr "นาที"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:37:24
 #: app/templates/components/widgets/forms/ticket-input.hbs:239:26
 msgid "Max"
-msgstr ""
+msgstr "สูงสุด"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:45:10
 msgid "This is a free Ticket"
-msgstr ""
+msgstr "นี่คือตั๋วฟรี"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:89:40
 msgid "Ticket Description"
-msgstr ""
+msgstr "คำอธิบายตั๋ว"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:94:22
 msgid "This description would be available to the attendees when ordering tickets."
-msgstr ""
+msgstr "คำอธิบายนี้สามารถใช้ได้กับผู้เข้าร่วมเมื่อสั่งซื้อตั๋ว"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:102:43
 msgid "Display Ticket description on Public Events page"
-msgstr ""
+msgstr "แสดงคำอธิบายตั๋วในหน้ากิจกรรมสาธารณะ"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:112:12
 msgid "Hide Ticket from the Public Events page"
-msgstr ""
+msgstr "ซ่อนตั๋วจากหน้ากิจกรรมสาธารณะ"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:113:37
 msgid "To sell hidden tickets you need to set up an access code under Event Dashboard > Tickets Tab > Access Code."
 msgstr ""
+"หากต้องการขายตั๋วที่ซ่อนอยู่คุณต้องตั้งรหัสการเข้าถึงใต้แดชบอร์ดเหตุการณ์> "
+"แท็บตั๋ว> รหัสการเข้าถึง"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:125:14
 msgid "Tickets Absorb Fees"
-msgstr ""
+msgstr "ตั๋วดูดซับค่าธรรมเนียม"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:126:39
 msgid "Platform fees will always be included in your ticket price. You will receive an invoice each month."
 msgstr ""
+"ค่าธรรมเนียมแพลตฟอร์มจะรวมอยู่ในราคาตั๋วของคุณเสมอ "
+"คุณจะได้รับใบแจ้งหนี้ในแต่ละเดือน"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:179:32
 msgid "Number of tickets allowed per order"
-msgstr ""
+msgstr "จำนวนตั๋วที่อนุญาตต่อคำสั่งซื้อ"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:182:70
 #: app/templates/components/widgets/forms/ticket-input.hbs:384:72
 msgid "Minimum Order"
-msgstr ""
+msgstr "สั่งซื้อขั้นต่ำ"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:189:70
 #: app/templates/components/widgets/forms/ticket-input.hbs:392:72
 msgid "Maximum Order"
-msgstr ""
+msgstr "คำสั่งซื้อสูงสุด"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:247:12
 msgid "This is a free Registration"
-msgstr ""
+msgstr "นี่คือการลงทะเบียนฟรี"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:291:42
 msgid "Registration Description"
-msgstr ""
+msgstr "รายละเอียดการลงทะเบียน"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:296:24
 msgid "This description would be available to the attendees when registering."
-msgstr ""
+msgstr "คำอธิบายนี้จะพร้อมใช้งานสำหรับผู้เข้าร่วมประชุมเมื่อลงทะเบียน"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:304:45
 msgid "Display registration description on public events page."
-msgstr ""
+msgstr "แสดงคำอธิบายการลงทะเบียนในหน้ากิจกรรมสาธารณะ"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:314:14
 msgid "Hide registration from the public events page."
-msgstr ""
+msgstr "ซ่อนการลงทะเบียนจากหน้ากิจกรรมสาธารณะ"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:315:39
 msgid "To sell hidden registrations you need to set up an access code under Event Dashboard > Tickets Tab > Access Code."
 msgstr ""
+"ในการขายการลงทะเบียนที่ซ่อนอยู่ คุณต้องตั้งค่ารหัสการเข้าถึงในแดชบอร์ดกิ"
+"จกรรม > แท็บตั๋ว > รหัสการเข้าถึง"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:327:16
 msgid "Registrations Absorb Fees"
-msgstr ""
+msgstr "ค่าลงทะเบียน ค่าสมัคร"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:328:41
 msgid "Platform fees will always be included in your registration price. You will receive an invoice each month."
 msgstr ""
+"ค่าธรรมเนียมแพลตฟอร์มจะรวมอยู่ในราคาลงทะเบียนของคุณเสมอ "
+"คุณจะได้รับใบแจ้งหนี้ทุกเดือน"
 
 #: app/templates/components/widgets/forms/ticket-input.hbs:381:34
 msgid "Number of registrations allowed per order"
-msgstr ""
+msgstr "จำนวนการลงทะเบียนที่อนุญาตต่อคำสั่งซื้อ"
 
 #: app/templates/components/widgets/twitter-timeline.hbs:4:4
 msgid "Tweets by"
-msgstr ""
+msgstr "ทวีตโดย"
 
 #: app/templates/create.hbs:4:27
 msgid "Creating"
-msgstr ""
+msgstr "การสร้าง"
 
 #: app/templates/event-invoice/paid.hbs:24:8
 #: app/templates/event-invoice/review.hbs:30:18
 #: app/templates/orders/view.hbs:54:10
 msgid "Download Invoice"
-msgstr ""
+msgstr "ดาวน์โหลดใบแจ้งหนี้"
 
 #: app/templates/event-invoice/review.hbs:3:26
 msgid "Review Invoice"
-msgstr ""
+msgstr "ตรวจสอบใบแจ้งหนี้"
 
 #: app/templates/event-invoice/review.hbs:24:24
 msgid "Total Invoice Amount"
-msgstr ""
+msgstr "ยอดรวมใบแจ้งหนี้"
 
 #: app/templates/events/view.hbs:44:10
 msgid "Documents"
-msgstr ""
+msgstr "เอกสาร"
 
 #: app/templates/events/view/chat.hbs:13:46
 msgid "Turn off Event Chat"
-msgstr ""
+msgstr "ปิดการสนทนาในเหตุการณ์"
 
 #: app/templates/events/view/chat.hbs:13:72
 msgid "Turn on Event Chat"
-msgstr ""
+msgstr "เปิดการแชทกิจกรรม"
 
 #: app/templates/events/view/chat.hbs:21:36
 msgid "Chat is currently enabled for this event. Users can access a chat channel for this event."
 msgstr ""
+"แชทถูกเปิดใช้งานสำหรับกิจกรรมนี้ "
+"ผู้ใช้สามารถเข้าถึงช่องแชทสำหรับกิจกรรมนี้ได้"
 
 #: app/templates/events/view/chat.hbs:23:36
 msgid "Chat is currently not enabled for this event. Users cannot access chat for this event."
 msgstr ""
+"ไม่ได้เปิดใช้งานการแชทสำหรับกิจกรรมนี้ในขณะนี้ "
+"ผู้ใช้ไม่สามารถเข้าถึงแชทสำหรับกิจกรรมนี้"
 
 #: app/templates/events/view/documents.hbs:13:50
 msgid "Disable Add Event Documents"
-msgstr ""
+msgstr "ปิดใช้งานการเพิ่มเอกสารเหตุการณ์"
 
 #: app/templates/events/view/documents.hbs:13:84
 msgid "Enable Add Event Documents"
-msgstr ""
+msgstr "เปิดใช้งาน 'เพิ่มเอกสารเหตุการณ์'"
 
 #: app/templates/events/view/edit.hbs:2:25
 msgid "Editing"
-msgstr ""
+msgstr "การแก้ไข"
 
 #: app/templates/events/view/exhibitors/list.hbs:8:10
 msgid "Add Exhibitor"
-msgstr ""
+msgstr "เพิ่มผู้แสดงสินค้า"
 
 #: app/templates/events/view/exhibitors/reorder.hbs:10:13
 #: app/templates/events/view/speakers/reorder.hbs:10:13
 msgid "Swap Places"
-msgstr ""
+msgstr "สลับสถานที่"
 
 #: app/templates/events/view/scheduler.hbs:5:111
 msgid "Unpublish Schedule"
-msgstr ""
+msgstr "ยกเลิกการเผยแพร่กำหนดการ"
 
 #: app/templates/events/view/scheduler.hbs:7:110
 msgid "Publish Schedule"
-msgstr ""
+msgstr "เผยแพร่กำหนดการ"
 
 #: app/templates/events/view/scheduler.hbs:13:28
 msgid "Unscheduled Sessions"
-msgstr ""
+msgstr "เซสชันที่ไม่ได้จัดกำหนดการ"
 
 #: app/templates/events/view/session/view.hbs:14:8
 #: app/templates/public/cfs/view-session.hbs:25:8
 #: app/templates/public/speaker-invite/view-session.hbs:25:8
 msgid "Timing:"
-msgstr ""
+msgstr "เวลา:"
 
 #: app/templates/events/view/session/view.hbs:16:8
 #: app/templates/public/cfs/view-session.hbs:27:8
@@ -9102,169 +9203,171 @@ msgstr ""
 #: app/templates/public/sessions.hbs:113:18
 #: app/templates/public/speaker-invite/view-session.hbs:27:8
 msgid "Not yet scheduled"
-msgstr ""
+msgstr "ยังไม่มีกำหนด"
 
 #: app/templates/events/view/session/view.hbs:52:45
 #: app/templates/public/cfs/view-session.hbs:92:43
 msgid "Speakers Invited"
-msgstr ""
+msgstr "วิทยากรรับเชิญ"
 
 #: app/templates/events/view/sessions.hbs:21:14
 #: app/templates/events/view/sessions/create.hbs:3:4
 msgid "Create Session"
-msgstr ""
+msgstr "สร้างเซสชัน"
 
 #: app/templates/events/view/sessions.hbs:33:30
 #: app/templates/events/view/speakers.hbs:52:30
 msgid "In order to use this feature please activate \"Sessions and Speakers\" for the event."
-msgstr ""
+msgstr "ในการใช้คุณสมบัตินี้โปรดเปิดใช้งาน \"เซสชันและลำโพง\" สำหรับกิจกรรม"
 
 #: app/templates/events/view/sessions.hbs:34:30
 #: app/templates/events/view/speakers.hbs:53:30
 msgid "Please click"
-msgstr ""
+msgstr "กรุณาคลิก"
 
 #: app/templates/events/view/sessions.hbs:34:126
 #: app/templates/events/view/speakers.hbs:53:126
 msgid "to activate this module."
-msgstr ""
+msgstr "เพื่อเปิดใช้งานโมดูลนี้"
 
 #: app/templates/events/view/settings/options.hbs:11:10
 msgid "Transfer Ownership"
-msgstr ""
+msgstr "โอนความเป็นเจ้าของ"
 
 #: app/templates/events/view/settings/options.hbs:14:10
 msgid "You'll lose all the owner rights once the other user accepts the invitation for ownership."
 msgstr ""
+"คุณจะสูญเสียสิทธิ์ของเจ้าของทั้งหมดเมื่อผู้ใช้รายอื่นยอมรับคำเชิญเพื่อเป็นเจ้"
+"าของ"
 
 #: app/templates/events/view/settings/options.hbs:20:10
 msgid "Transfer Event"
-msgstr ""
+msgstr "โอนเหตุการณ์"
 
 #: app/templates/events/view/settings/options.hbs:26:10
 msgid "Delete this event"
-msgstr ""
+msgstr "ลบกิจกรรมนี้"
 
 #: app/templates/events/view/settings/options.hbs:29:10
 msgid "Once you delete an event, you will lose all the data related to this event."
-msgstr ""
+msgstr "เมื่อคุณลบกิจกรรมคุณจะสูญเสียข้อมูลทั้งหมดที่เกี่ยวข้องกับเหตุการณ์นี้"
 
 #: app/templates/events/view/speaker/view.hbs:13:83
 msgid "Edit speaker"
-msgstr ""
+msgstr "แก้ไขลำโพง"
 
 #: app/templates/events/view/speakers.hbs:40:14
 msgid "Add Speaker"
-msgstr ""
+msgstr "เพิ่มลำโพง"
 
 #: app/templates/events/view/speakers/create.hbs:3:4
 msgid "Create a Speaker"
-msgstr ""
+msgstr "สร้างลำโพง"
 
 #: app/templates/events/view/tickets.hbs:15:10
 #: app/templates/events/view/tickets/discount-codes.hbs:6:97
 msgid "Discount Codes"
-msgstr ""
+msgstr "รหัสส่วนลด"
 
 #: app/templates/events/view/tickets.hbs:18:10
 #: app/templates/events/view/tickets/access-codes.hbs:7:97
 msgid "Access Codes"
-msgstr ""
+msgstr "รหัสการเข้าถึง"
 
 #: app/templates/events/view/tickets.hbs:21:10
 msgid "Add order"
-msgstr ""
+msgstr "เพิ่มคำสั่งซื้อ"
 
 #: app/templates/events/view/tickets/access-codes.hbs:11:10
 msgid "Create an access code"
-msgstr ""
+msgstr "สร้างรหัสการเข้าถึง"
 
 #: app/templates/events/view/tickets/access-codes/create.hbs:3:33
 msgid "Create a New Access code"
-msgstr ""
+msgstr "สร้างรหัสการเข้าถึงใหม่"
 
 #: app/templates/events/view/tickets/access-codes/edit.hbs:3:33
 msgid "Edit an access code"
-msgstr ""
+msgstr "แก้ไขรหัสการเข้าถึง"
 
 #: app/templates/events/view/tickets/attendees.hbs:5:8
 msgid "View Attendees"
-msgstr ""
+msgstr "ดูผู้เข้าร่วม"
 
 #: app/templates/events/view/tickets/attendees.hbs:13:14
 #: app/templates/events/view/tickets/orders.hbs:13:14
 msgid "Export As"
-msgstr ""
+msgstr "ส่งออกเป็น"
 
 #: app/templates/events/view/tickets/attendees.hbs:19:16
 #: app/templates/events/view/tickets/orders.hbs:19:16
 msgid "PDF"
-msgstr ""
+msgstr "ไฟล์ PDF"
 
 #: app/templates/events/view/tickets/attendees.hbs:23:16
 #: app/templates/events/view/tickets/orders.hbs:23:16
 msgid "CSV"
-msgstr ""
+msgstr "CSV"
 
 #: app/templates/events/view/tickets/attendees.hbs:29:14
 #: app/templates/events/view/tickets/orders.hbs:29:14
 msgid "Showing all the records"
-msgstr ""
+msgstr "กำลังแสดงบันทึกทั้งหมด"
 
 #: app/templates/events/view/tickets/attendees.hbs:35:16
 #: app/templates/events/view/tickets/orders.hbs:35:16
 msgid "Filter by Date"
-msgstr ""
+msgstr "กรองตามวันที่"
 
 #: app/templates/events/view/tickets/attendees.hbs:39:16
 #: app/templates/events/view/tickets/orders.hbs:39:16
 msgid "Filter by Discount"
-msgstr ""
+msgstr "กรองตามส่วนลด"
 
 #: app/templates/events/view/tickets/attendees.hbs:43:16
 #: app/templates/events/view/tickets/orders.hbs:43:16
 msgid "Remove Filters"
-msgstr ""
+msgstr "ลบฟิลเตอร์"
 
 #: app/templates/events/view/tickets/discount-codes.hbs:10:10
 msgid "Create a discount"
-msgstr ""
+msgstr "สร้างส่วนลด"
 
 #: app/templates/events/view/tickets/discount-codes/create.hbs:3:33
 msgid "Create a new Discount Code"
-msgstr ""
+msgstr "สร้างรหัสส่วนลดใหม่"
 
 #: app/templates/events/view/tickets/discount-codes/edit.hbs:3:33
 msgid "Edit a Discount Code"
-msgstr ""
+msgstr "แก้ไขรหัสส่วนลด"
 
 #: app/templates/events/view/tickets/index.hbs:3:4
 msgid "Total Sold Orders"
-msgstr ""
+msgstr "ยอดสั่งซื้อที่ขายได้ทั้งหมด"
 
 #: app/templates/events/view/tickets/index.hbs:8:90
 msgid "Tickets sold"
-msgstr ""
+msgstr "ขายตั๋วแล้ว"
 
 #: app/templates/events/view/tickets/index.hbs:16:6
 msgid "By order status"
-msgstr ""
+msgstr "ตามสถานะการสั่งซื้อ"
 
 #: app/templates/events/view/tickets/index.hbs:22:12
 msgid "Order Status"
-msgstr ""
+msgstr "สถานะการสั่งซื้อ"
 
 #: app/templates/events/view/tickets/index.hbs:23:34
 msgid "Total Tickets"
-msgstr ""
+msgstr "ตั๋วทั้งหมด"
 
 #: app/templates/events/view/tickets/index.hbs:24:34
 msgid "Total Orders"
-msgstr ""
+msgstr "ยอดสั่งซื้อทั้งหมด"
 
 #: app/templates/events/view/tickets/index.hbs:26:12
 msgid "View Reports"
-msgstr ""
+msgstr "ดูรายงาน"
 
 #: app/templates/events/view/tickets/index.hbs:37:12
 #: app/templates/events/view/tickets/index.hbs:54:12
@@ -9272,7 +9375,7 @@ msgstr ""
 #: app/templates/events/view/tickets/index.hbs:88:12
 #: app/templates/events/view/tickets/index.hbs:105:12
 msgid "View orders"
-msgstr ""
+msgstr "ดูคำสั่งซื้อ"
 
 #: app/templates/events/view/tickets/index.hbs:41:12
 #: app/templates/events/view/tickets/index.hbs:58:12
@@ -9280,265 +9383,275 @@ msgstr ""
 #: app/templates/events/view/tickets/index.hbs:92:12
 #: app/templates/events/view/tickets/index.hbs:109:12
 msgid "View attendees"
-msgstr ""
+msgstr "ดูผู้เข้าร่วม"
 
 #: app/templates/events/view/tickets/index.hbs:123:45
 msgid "Tickets Capacity Set"
-msgstr ""
+msgstr "ชุดความจุตั๋ว"
 
 #: app/templates/events/view/tickets/orders.hbs:5:8
 msgid "View Orders"
-msgstr ""
+msgstr "ดูคำสั่งซื้อ"
 
 #: app/templates/events/view/videoroom/list.hbs:16:51
 msgid "Turn off Video"
-msgstr ""
+msgstr "ปิดวิดีโอ"
 
 #: app/templates/events/view/videoroom/list.hbs:16:72
 msgid "Turn on Video"
-msgstr ""
+msgstr "เปิดวิดีโอ"
 
 #: app/templates/events/view/videoroom/list.hbs:25:33
 msgid "Virtual Event Room"
-msgstr ""
+msgstr "ห้องกิจกรรมเสมือนจริง"
 
 #: app/templates/events/view/videoroom/list.hbs:27:7
 msgid "This category is especially suitable for welcome, support, discussion or social video rooms. Virtual event video rooms do not require dedicated sessions and do not need a schedule setup."
 msgstr ""
+"หมวดหมู่นี้เหมาะอย่างยิ่งสำหรับการต้อนรับ การสนับสนุน การสนทนา "
+"หรือห้องวิดีโอโซเชียล "
+"ห้องวิดีโอเหตุการณ์เสมือนไม่ต้องการเซสชันเฉพาะและไม่จำเป็นต้องตั้งค่ากำหนดการ"
 
 #: app/templates/events/view/videoroom/list.hbs:40:29
 msgid "Microlocation Video Rooms"
-msgstr ""
+msgstr "ห้องวิดีโอระบุตําแหน่งไมโคร"
 
 #: app/templates/events/view/videoroom/list.hbs:44:12
 msgid "Add Microlocation"
-msgstr ""
+msgstr "เพิ่ม Microlocation"
 
 #: app/templates/events/view/videoroom/list.hbs:47:11
 msgid "Microlocation video rooms are suitable for events with different tracks, rooms and sessions that are listed in a schedule. All microlocations are listed on the event schedule. Note: Microlocation rooms require a session in order to be visible to attendees.They are only listed on the video channel list on side panels of online events, if sessions have been added into the location in the schedule."
 msgstr ""
+"ห้องวิดีโอ Microlocation เหมาะสำหรับกิจกรรมที่มีแทร็ก ห้องและเซสชันต่างๆ "
+"ที่ระบุไว้ในกำหนดการ microlocations ทั้งหมดจะแสดงอยู่ในตารางกิจกรรม หมายเหตุ:"
+" ห้อง Microlocation จำเป็นต้องมีเซสชันเพื่อให้ผู้เข้าร่วมมองเห็นได้ "
+"ห้องเหล่านี้จะแสดงอยู่ในรายการช่องวิดีโอบนแผงด้านข้างของกิจกรรมออนไลน์เท่านั้"
+"น หากมีการเพิ่มเซสชันลงในสถานที่ในกำหนดการ"
 
 #: app/templates/explore/events.hbs:12:25
 msgid "Enter Event Name"
-msgstr ""
+msgstr "ใส่ชื่อเหตุการณ์"
 
 #: app/templates/explore/events.hbs:73:38
 msgid "No events found for selected filters"
-msgstr ""
+msgstr "ไม่พบเหตุการณ์สำหรับตัวกรองที่เลือก"
 
 #: app/templates/explore/groups.hbs:10:25
 msgid "Enter Group Name"
-msgstr ""
+msgstr "ใส่ชื่อกลุ่ม"
 
 #: app/templates/explore/groups.hbs:27:38
 msgid "No groups found for selected filters"
-msgstr ""
+msgstr "ไม่พบกลุ่มสำหรับตัวกรองที่เลือก"
 
 #: app/templates/groups/list.hbs:8:38 app/templates/my-groups/list.hbs:8:38
 msgid "No groups found for the events."
-msgstr ""
+msgstr "ไม่พบกลุ่มสำหรับกิจกรรม"
 
 #: app/templates/index.hbs:3:34
 msgid "Featured Events"
-msgstr ""
+msgstr "กิจกรรมเด่น"
 
 #: app/templates/index.hbs:21:34
 msgid "No Upcoming Events Found"
-msgstr ""
+msgstr "ไม่พบกิจกรรมที่จะเกิดขึ้น"
 
 #: app/templates/index.hbs:34:85
 msgid "Show more calls for speakers"
-msgstr ""
+msgstr "แสดงการโทรเพิ่มเติมสำหรับลำโพง"
 
 #: app/templates/index.hbs:40:34
 msgid "Popular Groups"
-msgstr ""
+msgstr "กลุ่มยอดนิยม"
 
 #: app/templates/index.hbs:52:63
 msgid "Show more groups"
-msgstr ""
+msgstr "แสดงกลุ่มเพิ่มเติม"
 
 #: app/templates/my-groups/following.hbs:8:38
 msgid "No groups followed."
-msgstr ""
+msgstr "ไม่มีกลุ่มที่ติดตาม"
 
 #: app/templates/my-tickets.hbs:5:8
 msgid "My tickets"
-msgstr ""
+msgstr "ตั๋วของฉัน"
 
 #: app/templates/my-tickets/past.hbs:14:38
 #: app/templates/my-tickets/upcoming/list.hbs:8:38
 msgid "No tickets found"
-msgstr ""
+msgstr "ไม่พบตั๋ว"
 
 #: app/templates/my-tickets/upcoming.hbs:8:8
 msgid "Cancelled Orders"
-msgstr ""
+msgstr "ยกเลิกคำสั่งซื้อ"
 
 #: app/templates/my-tickets/upcoming.hbs:11:8
 msgid "Open Orders"
-msgstr ""
+msgstr "เปิดคำสั่งซื้อ"
 
 #: app/templates/notifications/all.hbs:11:96
 msgid "Mark all as read"
-msgstr ""
+msgstr "ทำเครื่องหมายทั้งหมดว่าอ่านแล้ว"
 
 #: app/templates/notifications/all.hbs:27:14
 msgid "Mark as read"
-msgstr ""
+msgstr "กาว่าอ่านแล้ว"
 
 #: app/templates/notifications/all.hbs:54:36
 msgid "No Unread Notifications"
-msgstr ""
+msgstr "ไม่มีการแจ้งเตือนที่ยังไม่ได้อ่าน"
 
 #: app/templates/notifications/all.hbs:56:36
 msgid "No Notifications"
-msgstr ""
+msgstr "ไม่มีการแจ้งเตือน"
 
 #: app/templates/orders/pending.hbs:42:10
 msgid "Payment Method"
-msgstr ""
+msgstr "วิธีการชำระเงิน"
 
 #: app/templates/orders/pending.hbs:45:53
 msgid "Please choose your payment method"
-msgstr ""
+msgstr "โปรดเลือกวิธีการชำระเงินของคุณ"
 
 #: app/templates/orders/pending.hbs:51:25
 msgid "Stripe"
-msgstr ""
+msgstr "ลาย"
 
 #: app/templates/orders/pending.hbs:68:25
 msgid "Paypal"
-msgstr ""
+msgstr "Paypal"
 
 #: app/templates/orders/pending.hbs:79:25
 msgid "Paytm"
-msgstr ""
+msgstr "Paytm"
 
 #: app/templates/orders/pending.hbs:90:25
 msgid "Omise"
-msgstr ""
+msgstr "โอมิเซะ"
 
 #: app/templates/orders/pending.hbs:102:25
 msgid "AliPay"
-msgstr ""
+msgstr "อาลีเพย์"
 
 #: app/templates/orders/pending.hbs:114:25
 msgid "Pay on Invoice"
-msgstr ""
+msgstr "ชำระเงินตามใบแจ้งหนี้"
 
 #: app/templates/orders/pending.hbs:130:25
 msgid "Cheque"
-msgstr ""
+msgstr "ตรวจสอบ"
 
 #: app/templates/orders/pending.hbs:146:25
 msgid "Bank"
-msgstr ""
+msgstr "ธนาคาร"
 
 #: app/templates/orders/pending.hbs:162:25
 msgid "Onsite"
-msgstr ""
+msgstr "ในสถานที่"
 
 #: app/templates/orders/pending.hbs:180:12
 #: app/templates/orders/pending.hbs:185:14
 msgid "Pay Now"
-msgstr ""
+msgstr "จ่ายตอนนี้"
 
 #: app/templates/orders/pending.hbs:205:80
 msgid "Pay with PayTM"
-msgstr ""
+msgstr "ชำระเงินด้วย PayTM"
 
 #: app/templates/orders/pending.hbs:209:70
 msgid "Pay with AliPay"
-msgstr ""
+msgstr "ชำระเงินด้วย AliPay"
 
 #: app/templates/orders/view.hbs:48:12
 msgid "All Tickets"
-msgstr ""
+msgstr "ตั๋วทั้งหมด"
 
 #: app/templates/organizer-app.hbs:17:4
 msgid "Open Event Organizer App"
-msgstr ""
+msgstr "เปิดแอพ Event Organizer"
 
 #: app/templates/organizer-app.hbs:41:72
 msgid "Organizer Android App"
-msgstr ""
+msgstr "แอพ Organizer Android"
 
 #: app/templates/organizer-app.hbs:46:10
 msgid "Make your event success with Orga App"
-msgstr ""
+msgstr "ทำให้งานของคุณประสบความสำเร็จด้วย Orga App"
 
 #: app/templates/organizer-app.hbs:51:12
 msgid "Hassle-free checkin"
-msgstr ""
+msgstr "การเช็คอินที่ไม่ยุ่งยาก"
 
 #: app/templates/organizer-app.hbs:54:12
 msgid "Scan the QR Code and Check-in/Check-out Attendees and Ticket Holder on the go."
 msgstr ""
+"สแกนรหัส QR และผู้เข้าร่วมการเช็คอิน / "
+"เช็คเอาท์และผู้ถือตั๋วในระหว่างการเดินทาง"
 
 #: app/templates/organizer-app.hbs:59:34
 msgid "Easy Communication"
-msgstr ""
+msgstr "สื่อสารง่าย"
 
 #: app/templates/organizer-app.hbs:61:12
 msgid "Sync your app data with Organizer Server on the go."
-msgstr ""
+msgstr "ซิงค์ข้อมูลแอพของคุณกับ Organizer Server ได้ทุกที่"
 
 #: app/templates/organizer-app.hbs:67:12
 msgid "Manage Efficiently"
-msgstr ""
+msgstr "จัดการอย่างมีประสิทธิภาพ"
 
 #: app/templates/organizer-app.hbs:70:12
 msgid "Get Order, Event, Sales Statistics with Orga App on the go."
-msgstr ""
+msgstr "รับคำสั่งซื้อกิจกรรมสถิติการขายด้วย Orga App ในระหว่างการเดินทาง"
 
 #: app/templates/organizer-app.hbs:76:12
 msgid "Ticket and Event"
-msgstr ""
+msgstr "ตั๋วและกิจกรรม"
 
 #: app/templates/organizer-app.hbs:79:12
 msgid "Manage and Create new Tickets or Events with the power of your touch on your phone"
-msgstr ""
+msgstr "จัดการและสร้างตั๋วหรือกิจกรรมใหม่ด้วยพลังสัมผัสของคุณบนโทรศัพท์ของคุณ"
 
 #: app/templates/organizer-app.hbs:85:12
 msgid "Communication on the Go"
-msgstr ""
+msgstr "การสื่อสารระหว่างเดินทาง"
 
 #: app/templates/organizer-app.hbs:88:12
 msgid "Get Push Notification about new attendees or Ticket Holders on your phone."
-msgstr ""
+msgstr "รับการแจ้งเตือนเกี่ยวกับผู้เข้าร่วมใหม่หรือผู้ถือตั๋วบนโทรศัพท์ของคุณ"
 
 #: app/templates/organizer-app.hbs:99:2
 msgid "Please Check-Out our Attendee App"
-msgstr ""
+msgstr "โปรดตรวจสอบแอป Attendee ของเรา"
 
 #: app/templates/pricing.hbs:17:8
 msgid "Sign up for our Early Access plan!"
-msgstr ""
+msgstr "สมัครแผนทดลองใช้ก่อนเปิดตัวของเรา!"
 
 #: app/templates/pricing.hbs:23:35
 msgid "Features"
-msgstr ""
+msgstr "คุณสมบัติ"
 
 #: app/templates/pricing.hbs:24:35
 msgid "Early Access Plan"
-msgstr ""
+msgstr "แผนทดลองใช้ก่อนเปิดตัว"
 
 #: app/templates/pricing.hbs:29:24
 msgid "Basics"
-msgstr ""
+msgstr "พื้นฐาน"
 
 #: app/templates/pricing.hbs:30:12
 msgid "Fee per paid tickets"
-msgstr ""
+msgstr "ค่าธรรมเนียมต่อตั๋วที่จ่าย"
 
 #: app/templates/pricing.hbs:34:12
 msgid "Fee per free tickets"
-msgstr ""
+msgstr "ค่าธรรมเนียมต่อตั๋วฟรี"
 
 #: app/templates/pricing.hbs:35:12
 msgid "No fee"
-msgstr ""
+msgstr "ไม่มีค่าธรรมเนียม"
 
 #: app/templates/pricing.hbs:38:24
 msgid "Ticket Sales"
