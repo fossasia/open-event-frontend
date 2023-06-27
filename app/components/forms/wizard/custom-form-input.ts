@@ -77,7 +77,7 @@ export default class CustomFormInput extends Component<Args> {
       form            : this.args.form,
       type            : this.type,
       isRequired      : false,
-      isIncluded      : false,
+      isIncluded      : true,
       isComplex       : true,
       event           : this.args.event,
       formID          : this.args.formIdentifier,
