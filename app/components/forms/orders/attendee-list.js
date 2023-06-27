@@ -30,15 +30,19 @@ export default class AttendeeList extends Component {
   }
 
   languageFormMapCodeToName(attendee, key) {
+    if ( attendee.get(key.concat("_name_mapped")) ) {
+      return
+    }
     const languageFormMap = [];
-    const languageFormList = attendee[key].split(',').map(item => item.trim());
+    const languageFormList = attendee[key].split(',').map(item => item);
     languageForms.forEach(languageForm => {
       languageFormList.forEach(item => {
-        if (item === languageForm.code || item === languageForm.name) {
+        if (item === languageForm.code) {
           languageFormMap.push(languageForm.name);
         }
       });
     });
+    attendee.set(key.concat("_name_mapped"), true);
     return attendee.set(key, languageFormMap.map(select => select).join(', '));
   }
 
