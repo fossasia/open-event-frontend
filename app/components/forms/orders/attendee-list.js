@@ -31,10 +31,10 @@ export default class AttendeeList extends Component {
 
   languageFormMapCodeToName(attendee, key) {
     const languageFormMap = [];
-    const languageFormList = attendee[key].split(',');
+    const languageFormList = attendee[key].split(',').map(item => item.trim());
     languageForms.forEach(languageForm => {
       languageFormList.forEach(item => {
-        if (item === languageForm.code) {
+        if (item === languageForm.code || item === languageForm.name) {
           languageFormMap.push(languageForm.name);
         }
       });
