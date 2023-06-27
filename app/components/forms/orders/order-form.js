@@ -16,6 +16,7 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { years } from 'open-event-frontend/utils/dictionary/year-list';
 import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
 import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
+import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -662,6 +663,7 @@ export default Component.extend(FormMixin, {
   years         : orderBy(years, 'year'),
   languageForms : orderBy(languageForms, 'name'),
   homeWikis     : orderBy(homeWikis, 'item'),
+  booleanComplex: orderBy(booleanComplex, 'position'),
 
   actions: {
     submit(data) {

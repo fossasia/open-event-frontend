@@ -86,17 +86,14 @@
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                 {{/if}}
                 {{#if (eq field.type 'boolean')}}
+                  {{#each this.booleanComplex as |item|}}
                   <div class="ui radio checkbox mr-radio">
                     <Widgets::Forms::RadioButton
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                      @value={{true}} @checked={{mut (get holder field.identifierPath)}}/>
-                    <label for="yes_include">{{t 'Yes'}}</label>
+                      @value={{item.name}} @checked={{mut (get holder field.identifierPath)}}/>
+                    <label for="yes_include">{{t item.name}}</label>
                   </div>
-                  <div class="ui radio checkbox mr-radio">
-                    <Widgets::Forms::RadioButton @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                     @value={{false}} @checked={{mut (get holder field.identifierPath)}}/>
-                    <label for="no_include">{{t 'No'}}</label>
-                  </div>
+                  {{/each}}
                 {{/if}}
                 {{#if (or (is-input-field field.type) (eq field.type 'richtextlink'))}}
                   {{#if (or field.isLongText (eq field.type 'richtextlink')) }}
