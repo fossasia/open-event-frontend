@@ -1,6 +1,6 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { belongsTo } from 'ember-data/relationships';
 
 const detectedTimezone = moment.tz.guess();

@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
 export default class extends Route.extend(EmberTableRouteMixin) {
 

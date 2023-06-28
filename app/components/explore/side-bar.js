@@ -1,7 +1,7 @@
 import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { computed, action } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { getDateRanges } from 'open-event-frontend/utils/dictionary/filters';

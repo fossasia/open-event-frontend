@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 @classic
 export default class ListRoute extends Route.extend(AuthenticatedRouteMixin) {

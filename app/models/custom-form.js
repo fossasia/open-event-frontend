@@ -72,7 +72,8 @@ export default ModelBase.extend({
   formID          : attr('string', { defaultValue: '' }),
   min             : attr('number', { defaultValue: 0 }),
   max             : attr('number', { defaultValue: 10 }),
-
+  translations    : attr(),
+  mainLanguage    : attr('string', { defaultValue: 'en-US' }),
 
   event             : belongsTo('event'),
   customFormOptions : hasMany('customFormOptions'),
@@ -111,7 +112,8 @@ export default ModelBase.extend({
     homeWiki                : tn.t('What is your home wiki'),
     languageForm1           : tn.t('What is your native language, or what language are you most fluent in?'),
     languageForm2           : tn.t('Are you fluent in any other of the following languages?'),
-    is_consent_form_field   : tn.t('Consent form field')
+    is_consent_form_field   : tn.t('Consent form field'),
+    wikiScholarship         : tn.t('Have you received a Wikimedia scholarship?')
   },
 
   ready() {
