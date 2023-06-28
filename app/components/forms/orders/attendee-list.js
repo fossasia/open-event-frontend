@@ -30,9 +30,6 @@ export default class AttendeeList extends Component {
   }
 
   languageFormMapCodeToName(attendee, key) {
-    if (attendee.get(key.concat('_name_mapped'))) {
-      return;
-    }
     const languageFormMap = [];
     const languageFormList = attendee[key].split(',');
     languageForms.forEach(languageForm => {
@@ -42,8 +39,7 @@ export default class AttendeeList extends Component {
         }
       });
     });
-    attendee.set(key.concat('_name_mapped'), true);
-    return attendee.set(key, languageFormMap.map(select => select).join(', '));
+    return attendee.set(key.concat('_name_mapping'), languageFormMap.map(select => select).join(', '));
   }
 
   @or('event.isBillingInfoMandatory', 'data.isBillingEnabled')
