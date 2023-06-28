@@ -114,8 +114,8 @@ export default ModelBase.extend({
     languageForm2               : tn.t('Are you fluent in any other of the following languages?'),
     is_consent_form_field       : tn.t('Consent form field'),
     wikiScholarship             : tn.t('Have you received a Wikimedia scholarship?'),
-    is_consent_form_field_photo : tn.t('Consent of wikimania photo policy'),
-    is_consent_form_field_email : tn.t('Consent of receiving wikimania email update')
+    is_consent_form_field_photo : tn.t('Wikimania photo consent'),
+    is_consent_form_field_email : tn.t('Wikimania email updates')
   },
 
   ready() {

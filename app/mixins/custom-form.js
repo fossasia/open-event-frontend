@@ -684,7 +684,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'Consent of wikimania photo policy',
+        name            : 'Wikimania photo consent',
         fieldIdentifier : 'is_consent_form_field_photo',
         formID          : _formID,
         form            : 'attendee',
@@ -695,7 +695,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'Consent of receiving wikimania email update',
+        name            : 'Wikimania email updates',
         fieldIdentifier : 'is_consent_form_field_email',
         formID          : _formID,
         form            : 'attendee',
