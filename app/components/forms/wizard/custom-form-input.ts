@@ -53,7 +53,7 @@ interface Args {
   form: string,
   event: any,
   formIdentifier: string | '',
-  mainLanguage: string | 'en-US',
+  mainLanguage: string | 'en',
   min: number | 0,
   max: number | 10,
   onSave: (() => void) | null
@@ -76,7 +76,7 @@ export default class CustomFormInput extends Component<Args> {
   max = 10;
 
   @tracked
-  mainLanguage = 'en-US'
+  mainLanguage = 'en'
 
   @tracked
   selectedLanguage:string[] = [this.mainLanguage]
@@ -112,7 +112,7 @@ export default class CustomFormInput extends Component<Args> {
       this.name = '';
       this.min = 0;
       this.max = 10;
-      this.mainLanguage = 'en-US';
+      this.mainLanguage = 'en';
     }
   }
 
@@ -164,7 +164,7 @@ export default class CustomFormInput extends Component<Args> {
       min             : this.min,
       max             : this.max,
       translations    : this.translationsList,
-      mainLanguage    : this.mainLanguage || 'en-US'
+      mainLanguage    : this.mainLanguage || 'en'
     });
   }
 
@@ -189,7 +189,7 @@ export default class CustomFormInput extends Component<Args> {
     this.max = 10;
     this.subForm.clear();
     this.selectedLanguage.clear();
-    this.mainLanguage = 'en-US'
+    this.mainLanguage = 'en'
     this.selectedLanguage.pushObject(this.mainLanguage);
     this.args.onSave && this.args.onSave();
   }

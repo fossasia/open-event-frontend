@@ -88,5 +88,5 @@ export const translateLanguages = [
     name      : 'Svenska',
     code      : 'sv',
     isChecked : false
-  },
+  }
 ];
