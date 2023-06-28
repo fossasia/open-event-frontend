@@ -3,7 +3,7 @@ import { computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { filterBy } from '@ember/object/computed';
 import Controller from '@ember/controller';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { tracked } from '@glimmer/tracking';
 
 
