@@ -69,6 +69,9 @@ export default ModelBase.extend({
   position        : attr('number'),
   isComplex       : attr('boolean', { defaultValue: false }),
   description     : attr('string', { defaultValue: 'text' }),
+  formID          : attr('string', { defaultValue: '' }),
+  min             : attr('number', { defaultValue: 0 }),
+  max             : attr('number', { defaultValue: 10 }),
 
 
   event             : belongsTo('event'),
@@ -79,36 +82,44 @@ export default ModelBase.extend({
   speaker: SPEAKER_FORM_FIELDS,
 
   attendee: {
-    firstname            : tn.t('First Name'),
-    lastname             : tn.t('Last Name'),
-    email                : tn.t('Email'),
-    address              : tn.t('Address (Street, Building, Number etc.)'),
-    city                 : tn.t('City'),
-    state                : tn.t('State'),
-    country              : tn.t('Country'),
-    jobTitle             : tn.t('Job Title'),
-    phone                : tn.t('Phone'),
-    taxBusinessInfo      : tn.t('Tax Business Info'),
-    company              : tn.t('Organisation'),
-    workPhone            : tn.t('Work Phone'),
-    website              : tn.t('Website'),
-    blog                 : tn.t('Blog'),
-    twitter              : tn.t('Twitter'),
-    facebook             : tn.t('Facebook'),
-    github               : tn.t('GitHub'),
-    instagram            : tn.t('Instagram'),
-    linkedin             : tn.t('LinkedIn'),
-    mastodon             : tn.t('Mastodon'),
-    gender               : tn.t('Gender'),
-    acceptReceiveEmails  : tn.t('Email consent'),
-    acceptVideoRecording : tn.t('Photo & video & text consent'),
-    acceptShareDetails   : tn.t('Partner contact consent'),
-    ageGroup             : tn.t('Age Group')
+    firstname               : tn.t('First Name'),
+    lastname                : tn.t('Last Name'),
+    email                   : tn.t('Email'),
+    address                 : tn.t('Address (Street, Building, Number etc.)'),
+    city                    : tn.t('City'),
+    state                   : tn.t('State'),
+    country                 : tn.t('Country'),
+    jobTitle                : tn.t('Job Title'),
+    phone                   : tn.t('Phone'),
+    taxBusinessInfo         : tn.t('Tax Business Info'),
+    company                 : tn.t('Organisation'),
+    workPhone               : tn.t('Work Phone'),
+    website                 : tn.t('Website'),
+    blog                    : tn.t('Blog'),
+    twitter                 : tn.t('Twitter'),
+    facebook                : tn.t('Facebook'),
+    github                  : tn.t('GitHub'),
+    instagram               : tn.t('Instagram'),
+    linkedin                : tn.t('LinkedIn'),
+    mastodon                : tn.t('Mastodon'),
+    gender                  : tn.t('Gender'),
+    acceptReceiveEmails     : tn.t('Email consent'),
+    acceptVideoRecording    : tn.t('Photo & video & text consent'),
+    acceptShareDetails      : tn.t('Partner contact consent'),
+    ageGroup                : tn.t('Age Group'),
+    isConsentOfRefundPolicy : tn.t('Consent of refund policy'),
+    homeWiki                : tn.t('What is your home wiki'),
+    languageForm1           : tn.t('What is your native language, or what language are you most fluent in?'),
+    languageForm2           : tn.t('Are you fluent in any other of the following languages?'),
+    is_consent_form_field   : tn.t('Consent form field'),
+    wikiScholarship         : tn.t('Have you received a Wikimedia scholarship?')
   },
 
   ready() {
     if (!this.name) {
       this.name = this[this.form][this.fieldIdentifier];
+    } else if (this.attendee[this.name] && this.name !== this.attendee[this.name]) {
+      this.name = this.attendee[this.name];
     }
   },
 
