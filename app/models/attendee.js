@@ -48,6 +48,7 @@ export default ModelBase.extend({
   is_consent_form_field       : attr('boolean', { defaultValue: false }),
   is_consent_of_wikimania_photo_consent       : attr('boolean', { defaultValue: false }),
   is_consent_of_wikimania_email_consent       : attr('boolean', { defaultValue: false }),
+  wiki_scholarship            : attr('string'),
 
   /**
    * Relationships
