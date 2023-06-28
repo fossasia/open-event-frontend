@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 @classic
 export default class IndexRoute  extends Route.extend(EmberTableRouteMixin) {
