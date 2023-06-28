@@ -47,7 +47,27 @@ export default class AttendeeList extends Component {
 
   @computed('fields.@each.form')
   get allFields() {
-    return groupBy(this.fields.toArray(), field => field.form);
+    const current_locale = this.cookies.read('current_locale');
+    return groupBy(this.fields.toArray(), field => {
+      const { main_language } = field;
+
+      if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
+        field.transName = field.name;
+      } else if (field.translations?.length) {
+
+        const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
+
+        if (transName.length) {
+          field.transName = transName[0].name;
+        } else {
+          field.transName = field.name;
+        }
+      } else {
+        field.transName = field.name;
+      }
+
+      return field.form;
+    });
   }
 
   @action
