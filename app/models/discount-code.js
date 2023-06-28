@@ -1,7 +1,7 @@
 import attr from 'ember-data/attr';
 import { computed } from '@ember/object';
 import ModelBase from 'open-event-frontend/models/base';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 

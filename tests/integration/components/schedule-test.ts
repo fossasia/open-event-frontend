@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import Object from '@ember/object';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { patchFullCalendar } from 'open-event-frontend/utils/patches/fullcalendar';
 import 'qunit-dom';
 
