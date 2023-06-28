@@ -4,7 +4,7 @@ import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo } from 'ember-data/relationships';
 import { v4 } from 'ember-uuid';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 const detectedTimezone = moment.tz.guess();
 

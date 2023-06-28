@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { getScript } from 'open-event-frontend/utils/loader';
 
 @classic

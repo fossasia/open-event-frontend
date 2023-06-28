@@ -72,7 +72,8 @@ export default ModelBase.extend({
   formID          : attr('string', { defaultValue: '' }),
   min             : attr('number', { defaultValue: 0 }),
   max             : attr('number', { defaultValue: 10 }),
-
+  translations    : attr(),
+  mainLanguage    : attr('string', { defaultValue: 'en-US' }),
 
   event             : belongsTo('event'),
   customFormOptions : hasMany('customFormOptions'),

@@ -79,7 +79,7 @@
           {{#if field.isIncluded }}
             {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
+                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
                 {{#if (eq field.type 'paragraph')}}
                   <Widgets::Forms::RichTextEditor
                     @value={{mut (get holder field.identifierPath)}}
@@ -117,6 +117,7 @@
                         @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} 
                         @min={{if field.min field.min null}} @max={{if field.max field.max null}}/>
                     {{else}}
+                    
                       <Input
                         @type={{field.type}}
                         @value={{mut (get holder field.identifierPath)}}
