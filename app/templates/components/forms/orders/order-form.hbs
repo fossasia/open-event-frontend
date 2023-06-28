@@ -198,6 +198,24 @@
                       {{/each}}
                     </div>
                   </UiDropdown>
+                {{else if (eq field.fieldIdentifier 'wiki_scholarship')}}
+                  <UiDropdown
+                    @class="search selection"
+                    @selected={{get holder field.identifierPath}}
+                    @onChange={{action (mut holder.wiki_scholarship)}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your answer'}}</div>
+                    <div class="menu">
+                      {{#each this.wikiScholarship as |wikiScholarship|}}
+                        <div class="item" data-value="{{map-value mapper wikiScholarship.name}}">
+                          {{t wikiScholarship.name}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
                  {{else if (eq field.fieldIdentifier 'acceptReceiveEmails')}}         
                   <UiCheckbox
                     @label={{t "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"}}
