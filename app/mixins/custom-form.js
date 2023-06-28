@@ -682,6 +682,17 @@ export default Mixin.create(MutableArray, {
         isIncluded      : false,
         isPublic        : false,
         event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        name            : 'wikiScholarship',
+        fieldIdentifier : 'wiki_scholarship',
+        formID          : _formID,
+        form            : 'attendee',
+        type            : 'select',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
       })
     ];
   }
