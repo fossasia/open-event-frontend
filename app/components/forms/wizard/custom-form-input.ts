@@ -4,7 +4,7 @@ import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import { tracked } from '@glimmer/tracking';
-import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
+import { translateLanguages } from 'open-event-frontend/utils/dictionary/translate-language';
 import { A } from '@ember/array';
 
 interface CustomForm {
@@ -102,7 +102,7 @@ export default class CustomFormInput extends Component<Args> {
           id,
           form_id,
           name,
-          languages       : languageForms,
+          languages       : translateLanguages,
           ignoreLanguages : this.selectedLanguage,
           selectedLang    : code || language_code,
           isDeleted
@@ -127,7 +127,7 @@ export default class CustomFormInput extends Component<Args> {
   }
 
   get languageList(): object[] {
-    return languageForms.filter(language =>
+    return translateLanguages.filter(language =>
       language.code === this.mainLanguage || !this.selectedLanguage.includes(language.code)
     )
   }
@@ -198,7 +198,7 @@ export default class CustomFormInput extends Component<Args> {
   addTranslation():void {
     const obj: any = {
       name            : '',
-      languages       : languageForms,
+      languages       : translateLanguages,
       ignoreLanguages : this.selectedLanguage,
       selectedLang    : '',
       isDeleted       : false
@@ -229,7 +229,7 @@ export default class CustomFormInput extends Component<Args> {
 
   @computed('subForm.@each.isDeleted')
   get disableAddTranslation() {
-    return this.subForm.filter(item => !item.isDeleted).length === languageForms.length - 1;
+    return this.subForm.filter(item => !item.isDeleted).length === translateLanguages.length - 1;
   }
 
   @computed('subForm.@each.isDeleted')
