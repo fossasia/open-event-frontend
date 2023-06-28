@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import { orderBy } from 'lodash-es';
 import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { levels } from 'open-event-frontend/utils/dictionary/levels';

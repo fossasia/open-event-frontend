@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { later } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { orderBy, filter, find, difference } from 'lodash-es';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 import { paymentCountries, paymentCurrencies } from 'open-event-frontend/utils/dictionary/payment';

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Component from '@ember/component';
 import { merge } from 'lodash-es';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 import FormMixin from 'open-event-frontend/mixins/form';
 

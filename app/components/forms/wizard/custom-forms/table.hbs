@@ -52,19 +52,30 @@
       <DraggableObject @overrideClass="{{if field.isIncluded 'positive'}} table-row" @content={{field}} @isSortable={{true}}>
           <td class="{{if this.device.isMobile 'center' 'right'}} border right aligned">
             <label class="{{if field.isFixed 'required'}}">
-              {{#if (eq field.fieldIdentifier 'is_consent_form_field')}}
-                <span>{{ t 'I agree to the terms of the'}} </span>
-                <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}} </a>
-                <span> {{t 'and the'}} </span>
-                <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
-                <span> .</span>
+              {{#if field.translations}}
+                <div>
+                  {{concat field.name " - " field.mainLanguage}}
+                  {{#if field.isComplex}}
+                    <div class="ui icon d-inline" data-tooltip="Custom Field">
+                      <i class="info icon"></i>
+                    </div>
+                  {{/if}}
+                </div>
+                {{#each field.translations as |translation|}}
+                  <div>
+                    {{concat translation.name " - " translation.language_code}}
+                    <div class="ui icon d-inline" data-tooltip="Custom Field" style="visibility: hidden">
+                      <i class="info icon"></i>
+                    </div>
+                  </div>
+                {{/each}}
               {{else}}
                 {{t-var field.name}}
-              {{/if}}
-              {{#if field.isComplex}}
+                {{#if field.isComplex}}
                 <div class="ui icon d-inline" data-tooltip="Custom Field">
                   <i class="info icon"></i>
                 </div>
+                {{/if}}
               {{/if}}
               </label>
           </td>
