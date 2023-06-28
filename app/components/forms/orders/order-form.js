@@ -657,13 +657,13 @@ export default Component.extend(FormMixin, {
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
-  genders       : orderBy(genders, 'name'),
-  ageGroups     : orderBy(ageGroups, 'position'),
-  countries     : orderBy(countries, 'name'),
-  years         : orderBy(years, 'year'),
-  languageForms : orderBy(languageForms, 'name'),
-  homeWikis     : orderBy(homeWikis, 'item'),
-  booleanComplex: orderBy(booleanComplex, 'position'),
+  genders        : orderBy(genders, 'name'),
+  ageGroups      : orderBy(ageGroups, 'position'),
+  countries      : orderBy(countries, 'name'),
+  years          : orderBy(years, 'year'),
+  languageForms  : orderBy(languageForms, 'name'),
+  homeWikis      : orderBy(homeWikis, 'item'),
+  booleanComplex : orderBy(booleanComplex, 'position'),
 
   actions: {
     submit(data) {
