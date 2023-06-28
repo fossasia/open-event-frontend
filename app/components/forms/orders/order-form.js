@@ -16,6 +16,7 @@ import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { years } from 'open-event-frontend/utils/dictionary/year-list';
 import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
 import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
+import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
 import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
 
 export default Component.extend(FormMixin, {
@@ -682,6 +683,7 @@ export default Component.extend(FormMixin, {
   languageForms   : orderBy(languageForms, 'name'),
   homeWikis       : orderBy(homeWikis, 'item'),
   wikiScholarship : orderBy(wikiScholarship, 'position'),
+  booleanComplex  : orderBy(booleanComplex, 'position'),
 
   currentLocale: computed('cookies.current_locale', function() {
     return this.cookies.read('current_locale');
