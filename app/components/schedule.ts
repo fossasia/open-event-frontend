@@ -4,7 +4,7 @@ import Event from 'open-event-frontend/models/event';
 import Session from 'open-event-frontend/models/session';
 import Microlocation from 'open-event-frontend/models/microlocation';
 import Speaker from 'open-event-frontend/models/speaker';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import $ from 'jquery';
 import { isTesting } from 'open-event-frontend/utils/testing';
 import { getTextColor } from 'open-event-frontend/utils/color';

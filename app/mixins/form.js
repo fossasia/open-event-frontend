@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Mixin from '@ember/object/mixin';
 import { merge } from 'lodash-es';
 import { debounce } from '@ember/runloop';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 
 export default Mixin.create({

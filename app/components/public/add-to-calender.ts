@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import moment, { Moment } from 'moment';
+import moment from 'moment-timezone';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
@@ -52,12 +52,12 @@ export default class AddToCalender extends Component<Args> {
     this.showSessions = this.showSessions ?? await hasSessions(this.loader, event);
   }
 
-  get startsAt(): Moment {
+  get startsAt(): moment.Moment {
     const { event } = this.args;
     return moment(event.startsAt).tz(event.timezone);
   }
 
-  get endsAt(): Moment {
+  get endsAt(): moment.Moment {
     const { event } = this.args;
     return moment(event.endsAt).tz(event.timezone);
   }

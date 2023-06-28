@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { tracked } from '@glimmer/tracking';
 import { matchPropertyIn } from 'open-event-frontend/utils/text';
 import $ from 'jquery';

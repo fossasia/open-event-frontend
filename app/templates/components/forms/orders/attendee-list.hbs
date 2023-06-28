@@ -37,7 +37,7 @@
               {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
                 <div class="field">
                     <h4 class="weight-300">
-                      {{t-var field.name}}
+                      {{t-var field.transName}}
                     </h4>
                     {{#if (is-input-field field.type)}}
                       {{#if (or (not this.editFields) (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname')) (eq field.fieldIdentifier 'email')))}} 
@@ -69,7 +69,7 @@
                       {{/if}}
                     {{/if}}
                     {{#if field.isComplex}}
-                      <span class="word-break">{{get holder.complexFieldValues field.fieldIdentifier}}</span>
+                      <span class="word-break">{{t (get holder.complexFieldValues field.fieldIdentifier)}}</span>
                     {{/if}}
                 </div>
               {{/if}}
