@@ -660,8 +660,6 @@ export default Mixin.create(MutableArray, {
         isIncluded      : false,
         isPublic        : false,
         event           : parent
-<<<<<<< HEAD
-=======
       }),
       this.store.createRecord('custom-form', {
         name            : 'Consent of refund policy',
@@ -695,7 +693,6 @@ export default Mixin.create(MutableArray, {
         isIncluded      : false,
         isPublic        : false,
         event           : parent
->>>>>>> development
       })
     ];
   }
