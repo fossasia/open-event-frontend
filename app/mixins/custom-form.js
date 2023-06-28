@@ -684,8 +684,8 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'Consent form field photo',
-        fieldIdentifier : 'is_consent_form_field',
+        name            : 'Consent of wikimania photo policy',
+        fieldIdentifier : 'is_consent_form_field_photo',
         formID          : _formID,
         form            : 'attendee',
         type            : 'checkbox',
@@ -695,8 +695,8 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'I want to receive email updates about future Wikimania editions.',
-        fieldIdentifier : 'is_consent_form_field',
+        name            : 'Consent of receiving wikimania email update',
+        fieldIdentifier : 'is_consent_form_field_email',
         formID          : _formID,
         form            : 'attendee',
         type            : 'checkbox',
