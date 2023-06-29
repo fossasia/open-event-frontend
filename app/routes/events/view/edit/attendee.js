@@ -23,7 +23,7 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
       customForms : (await event.query('customForms', {
         filter       : filterOptions,
         sort         : 'id',
-        'page[size]' : 50
+        'page[size]' : 500
       })).toArray().filter(field => field.form === 'attendee')
     };
     return data;
