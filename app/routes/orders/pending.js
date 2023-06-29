@@ -21,11 +21,32 @@ export default class PendingRoute extends Route {
       reload  : true
     });
     const eventDetails = await order.query('event', { include: 'tax' });
+    const tickets     = await order.query('tickets', {});
+    const filterOptions = [
+      {
+        or: []
+      }
+    ];
+    tickets.forEach(ticket => {
+      filterOptions[0].or.pushObject({
+        name : 'form_id',
+        op   : 'eq',
+        val  : ticket.formID
+      });
+    });
+
+    filterOptions[0].or.pushObject({
+      name : 'is_required',
+      op   : 'eq',
+      val  : true
+    });
+
     return {
       order,
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
-        'page[size]' : 70,
+        filter       : filterOptions,
+        'page[size]' : 700,
         sort         : 'id'
       })
     };
