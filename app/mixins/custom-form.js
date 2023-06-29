@@ -640,7 +640,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'languageForm1',
+        name            : 'nativeLanguage',
         fieldIdentifier : 'native_language',
         formID          : _formID,
         form            : 'attendee',
@@ -651,7 +651,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'languageForm2',
+        name            : 'fluentLanguage',
         fieldIdentifier : 'fluent_language',
         formID          : _formID,
         form            : 'attendee',
