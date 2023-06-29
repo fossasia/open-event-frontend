@@ -70,14 +70,22 @@
                   </div>
                 {{/each}}
               {{else}}
-                {{t-var field.name}}
+                {{#if (eq field.fieldIdentifier 'is_consent_form_field')}}
+                  <span>{{ t 'I agree to the terms of the'}} </span>
+                  <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}} </a>
+                  <span> {{t 'and the'}} </span>
+                  <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
+                  <span> .</span>
+                {{else}}
+                  {{t-var field.name}}
+                {{/if}}
                 {{#if field.isComplex}}
-                <div class="ui icon d-inline" data-tooltip="Custom Field">
-                  <i class="info icon"></i>
-                </div>
+                  <div class="ui icon d-inline" data-tooltip="Custom Field">
+                    <i class="info icon"></i>
+                  </div>
                 {{/if}}
               {{/if}}
-              </label>
+            </label>
           </td>
           <td class="border center aligned">
             {{t-var field.type}}
