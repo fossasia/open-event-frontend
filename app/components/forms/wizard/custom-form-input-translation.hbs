@@ -1,6 +1,12 @@
-<div style="width: 30%">
-  <Input type="text" placeholder={{t "Field Name"}} @value={{@data.name}}/>
-</div>
+{{#if (not-eq @type "number")}}
+  <div style="width: 30%">
+    <Input type="text" placeholder={{t "Field Name"}} @value={{@data.name}}/>
+  </div>
+{{else}}
+  <div style="width: 20%">
+    <Input type="text" placeholder={{t "Field Name"}} @value={{@data.name}}/>
+  </div>
+{{/if}}
 <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" 
   @selected={{@data.selectedLang}} 
   @onChange={{action 'onChangeLanguage' }}>

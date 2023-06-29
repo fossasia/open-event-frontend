@@ -655,7 +655,10 @@ export default Component.extend(FormMixin, {
 
     const customFields =  orderBy(this.fields.toArray()?.filter(field => {
       const { isFixed, main_language } = field;
-
+      field.nameConvert = field.name;
+      if (field.name === 'Consent of refund policy') {
+        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
+      }
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
       } else if (field.translations?.length) {

@@ -113,7 +113,7 @@ export default ModelBase.extend({
     languageForm1           : tn.t('What is your native language, or what language are you most fluent in?'),
     languageForm2           : tn.t('Are you fluent in any other of the following languages?'),
     is_consent_form_field   : tn.t('Consent form field'),
-    wikiScholarship         : tn.t('Have you received a Wikimedia scholarship?')
+    wikiScholarship         : tn.t('Have you received a Wikimania scholarship?')
   },
 
   ready() {
