@@ -25,14 +25,14 @@
         {{/if}}
       </h4>
       <div class="field {{if this.buyerHasFirstName 'disabled'}}">
-        <label class="required" for="firstname">{{t 'First Name'}}</label>
+        <label for="firstname">{{t 'First Name'}}</label>
         <Input
           @type="text"
           @name="first_name"
           @value={{this.buyerFirstName}} />
       </div>
       <div class="field {{if this.buyerHasLastName 'disabled'}}">
-        <label class="required" for="lastname">{{t 'Last Name'}}</label>
+        <label for="lastname">{{t 'Last Name'}}</label>
         <Input
           @type="text"
           @name="last_name"
