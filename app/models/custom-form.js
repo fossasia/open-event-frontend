@@ -110,8 +110,8 @@ export default ModelBase.extend({
     ageGroup                : tn.t('Age Group'),
     isConsentOfRefundPolicy : tn.t('Consent of refund policy'),
     homeWiki                : tn.t('What is your home wiki'),
-    languageForm1           : tn.t('What is your native language, or what language are you most fluent in?'),
-    languageForm2           : tn.t('Are you fluent in any other of the following languages?'),
+    nativeLanguage          : tn.t('What is your native language, or what language are you most fluent in?'),
+    fluentLanguage          : tn.t('Are you fluent in any other of the following languages?'),
     is_consent_form_field   : tn.t('Consent form field'),
     wikiScholarship         : tn.t('Have you received a Wikimedia scholarship?')
   },

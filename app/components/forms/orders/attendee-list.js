@@ -19,11 +19,11 @@ export default class AttendeeList extends Component {
   @computed('data.attendees')
   get holders() {
     this.data.attendees.forEach(attendee => {
-      if (attendee.language_form_1) {
-        this.languageFormMapCodeToName(attendee, 'language_form_1');
+      if (attendee.native_language) {
+        this.languageFormMapCodeToName(attendee, 'native_language');
       }
-      if (attendee.language_form_2) {
-        this.languageFormMapCodeToName(attendee, 'language_form_2');
+      if (attendee.fluent_language) {
+        this.languageFormMapCodeToName(attendee, 'fluent_language');
       }
     });
     return this.data.attendees;
@@ -50,6 +50,12 @@ export default class AttendeeList extends Component {
     const current_locale = this.cookies.read('current_locale');
     return groupBy(this.fields.toArray(), field => {
       const { main_language } = field;
+
+      if (field.fieldIdentifier === 'language_form_1') {
+        field.fieldIdentifier = 'native_language';
+      } else if (field.fieldIdentifier === 'language_form_2') {
+        field.fieldIdentifier = 'fluent_language';
+      }
 
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
