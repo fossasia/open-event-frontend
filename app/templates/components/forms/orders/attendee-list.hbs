@@ -66,6 +66,8 @@
                     {{else}}
                       {{#if (not field.isComplex)}}
                         <span class="word-break">{{sanitize (get holder field.identifierPath)}}</span>
+                      {{else}}
+                        <span class="word-break">{{t (get holder field.identifierPath)}}</span>
                       {{/if}}
                     {{/if}}
                 </div>

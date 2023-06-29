@@ -684,6 +684,28 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
+        name            : 'Wikimania photo consent',
+        fieldIdentifier : 'is_consent_form_field_photo',
+        formID          : _formID,
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
+        name            : 'Wikimania email updates',
+        fieldIdentifier : 'is_consent_form_field_email',
+        formID          : _formID,
+        form            : 'attendee',
+        type            : 'checkbox',
+        isRequired      : false,
+        isIncluded      : false,
+        isPublic        : false,
+        event           : parent
+      }),
+      this.store.createRecord('custom-form', {
         name            : 'wikiScholarship',
         fieldIdentifier : 'wiki_scholarship',
         formID          : _formID,
