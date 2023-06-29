@@ -53,7 +53,7 @@
                       <span class="word-break">{{get holder field.identifierPath}}</span>
                     {{else if (eq field.type 'checkbox')}}
                       {{#if (or (eq field.fieldIdentifier "language_form_1") (eq field.fieldIdentifier "language_form_2"))}}
-                        <span class="word-break">{{get holder field.identifierPath}}</span>
+                        <span class="word-break">{{get holder (concat field.fieldIdentifier '_name_mapping')}}</span>
                       {{else}}
                         <span class="word-break">
                           {{#if (get holder field.identifierPath)}}
