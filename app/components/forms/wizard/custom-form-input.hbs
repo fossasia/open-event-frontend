@@ -7,23 +7,13 @@
 </div>
 <div style="display: flex; flex-direction: column">
   <div {{did-update this.updated @field}} class="ui action input main" style="width: inherit;">
-    <div style="width: 30%">
-      <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}}/>
-    </div>
     {{#if (eq this.type "number")}}
-      <div class="ui action input input-attendee-custom-form">
-          <Input
-            @type="number"
-            @name="min_price"
-            placeholder={{t "Min"}}
-            @value={{this.min}} />
+      <div style="width: 20%">
+        <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}}/>
       </div>
-      <div class="ui action input input-attendee-custom-form">
-        <Input
-          @type="number"
-          @name="max_price"
-          placeholder={{t "Max"}}
-          @value={{this.max}} />
+    {{else}}
+      <div style="width: 30%">
+        <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}}/>
       </div>
     {{/if}}
     {{#if (eq @form 'attendee')}}
@@ -38,6 +28,22 @@
           {{/each}}
         </div>
       </UiDropdown>
+    {{/if}}
+    {{#if (eq this.type "number")}}
+      <div class="ui action input input-attendee-custom-form" style="width: 8%;">
+          <Input
+            @type="number"
+            @name="min_price"
+            placeholder={{t "Min"}}
+            @value={{this.min}} />
+      </div>
+      <div class="ui action input input-attendee-custom-form" style="width: 8%;">
+        <Input
+          @type="number"
+          @name="max_price"
+          placeholder={{t "Max"}}
+          @value={{this.max}} />
+      </div>
     {{/if}}
     <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" @selected={{this.type}} @onChange={{action (mut this.type)}}>
       <div class="default text">
@@ -67,6 +73,7 @@
       {{#unless sub.isDeleted }}
         <Forms::Wizard::CustomFormInputTranslation
           @data={{sub}}
+          @type={{this.type}}
           @onRemoveTranslation={{action (mut sub.isDeleted) true}} 
           @onChange={{action 'onChildChangeLanguage'}}
         />
