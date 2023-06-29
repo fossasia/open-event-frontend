@@ -39,7 +39,7 @@ export default class AttendeeList extends Component {
         }
       });
     });
-    return attendee.set(key, languageFormMap.map(select => select).join(', '));
+    return attendee.set(key.concat('_name_mapping'), languageFormMap.map(select => select).join(', '));
   }
 
   @or('event.isBillingInfoMandatory', 'data.isBillingEnabled')
