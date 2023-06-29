@@ -4,7 +4,8 @@ import { action } from '@ember/object';
 interface Args {
   onChange: ((code: string, value: string) => void) | null,
   onRemoveTranslation: ((field: object) => void) | null,
-  data: any
+  data: any,
+  type: string
 }
 
 interface SubForm {
