@@ -513,24 +513,6 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        firstName: {
-          identifier : 'first_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your first name.')
-            }
-          ]
-        },
-        lastName: {
-          identifier : 'last_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your last name.')
-            }
-          ]
-        },
         email: {
           identifier : 'email',
           rules      : [
