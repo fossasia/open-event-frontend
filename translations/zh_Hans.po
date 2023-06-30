@@ -5,15 +5,17 @@
 # fossasia/open-event-orga-server project.
 # FOSSASIA <open-event@googlegroups.com>, 2016.
 # yzqzss <yzqzss@yandex.com>, 2022.
-# MikeyWei <fowse@outlook.com>, 2022.
+# MikeyWei <fowse@outlook.com>, 2022, 2023.
 # Hong Phuc Dang <hp@fossasia.org>, 2023.
+# Leslie Wong <79917148leslie@gmail.com>, 2023.
+# yzqzss <yzqzss@othing.xyz>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: v1\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-06-23 15:13+0000\n"
-"Last-Translator: Hong Phuc Dang <hp@fossasia.org>\n"
+"PO-Revision-Date: 2023-06-29 14:05+0000\n"
+"Last-Translator: yzqzss <yzqzss@othing.xyz>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "open-event/frontend/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -9237,7 +9239,8 @@ msgstr "虚拟活动室"
 
 #: app/templates/events/view/videoroom/list.hbs:27:7
 msgid "This category is especially suitable for welcome, support, discussion or social video rooms. Virtual event video rooms do not require dedicated sessions and do not need a schedule setup."
-msgstr "此类别特别适用于欢迎、支持、讨论或社交视频室。虚拟活动视频室不需要专门的会话，也不需要设置时间表。"
+msgstr "此类别特别适用于欢迎、支持、讨论或社交视频室。虚拟活动视频室不需要专门的会话"
+"，也不需要设置时间表。"
 
 #: app/templates/events/view/videoroom/list.hbs:40:29
 msgid "Microlocation Video Rooms"
@@ -9249,7 +9252,10 @@ msgstr "添加微分配"
 
 #: app/templates/events/view/videoroom/list.hbs:47:11
 msgid "Microlocation video rooms are suitable for events with different tracks, rooms and sessions that are listed in a schedule. All microlocations are listed on the event schedule. Note: Microlocation rooms require a session in order to be visible to attendees.They are only listed on the video channel list on side panels of online events, if sessions have been added into the location in the schedule."
-msgstr "微定位视频室适用于日程表中列出的具有不同轨道、房间和会话的活动。所有微地点都列在活动时间表上。注意：微定位房间需要会话才能对与会者可见。如果会话已添加到日程中的位置，则它们仅列在在线活动侧面板的视频频道列表中。"
+msgstr ""
+"微定位视频室适用于日程表中列出的具有不同轨道、房间和会话的活动。所有微地点都"
+"列在活动时间表上。注意：微定位房间需要会话才能对与会者可见。如果会话已添加到"
+"日程中的位置，则它们仅列在在线活动侧面板的视频频道列表中。"
 
 #: app/templates/explore/events.hbs:12:25
 msgid "Enter Event Name"
@@ -11752,3 +11758,23 @@ msgstr "是的，来自维基媒体附属机构"
 #: app/templates/components/forms/orders/order-form.hbs:209:48
 msgid "Select your answer"
 msgstr "选择你的答案"
+
+#: app/models/custom-form.js:116:36
+msgid "Wikimania photo consent"
+msgstr "维基百科照片同意"
+
+#: app/models/custom-form.js:117:36
+msgid "Wikimania email updates"
+msgstr "维基百科电子邮件更新"
+
+#: app/templates/components/forms/orders/order-form.hbs:251:26
+msgid "I consent to having my photo taken at Wikimania per the"
+msgstr "我同意按照 Wikimania 的规定拍摄我的照片"
+
+#: app/templates/components/forms/orders/order-form.hbs:252:91
+msgid "photo policy"
+msgstr "照片政策"
+
+#: app/templates/components/forms/orders/order-form.hbs:259:26
+msgid "I want to receive email updates about future Wikimania editions."
+msgstr "我想接收有关维基百科未来版本的电子邮件更新"

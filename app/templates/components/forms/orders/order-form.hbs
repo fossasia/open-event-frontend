@@ -25,14 +25,14 @@
         {{/if}}
       </h4>
       <div class="field {{if this.buyerHasFirstName 'disabled'}}">
-        <label class="required" for="firstname">{{t 'First Name'}}</label>
+        <label for="firstname">{{t 'First Name'}}</label>
         <Input
           @type="text"
           @name="first_name"
           @value={{this.buyerFirstName}} />
       </div>
       <div class="field {{if this.buyerHasLastName 'disabled'}}">
-        <label class="required" for="lastname">{{t 'Last Name'}}</label>
+        <label for="lastname">{{t 'Last Name'}}</label>
         <Input
           @type="text"
           @name="last_name"
@@ -241,6 +241,20 @@
                     <span> {{t 'and the'}} </span>
                     <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
                     <span> .</span>
+                {{else if (eq field.fieldIdentifier 'is_consent_form_field_photo')}}
+                  <UiCheckbox
+                    @checked={{get holder field.identifierPath}}         
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
+                    @onChange={{action (mut (get holder field.identifierPath))}} />
+                    <span>{{t 'I consent to having my photo taken at Wikimania per the'}} </span>
+                    <a href="https://wikimania.wikimedia.org/wiki/2023:Photography_policy">{{t 'photo policy'}}</a>
+                    <span> .</span>
+                {{else if (eq field.fieldIdentifier 'is_consent_form_field_email')}}
+                  <UiCheckbox
+                    @checked={{get holder field.identifierPath}}         
+                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
+                    @onChange={{action (mut (get holder field.identifierPath))}} />
+                    <span>{{t 'I want to receive email updates about future Wikimania editions.'}} </span>
                 {{else if (eq field.type 'checkbox')}}
                   {{#if (and (not-eq field.fieldIdentifier "language_form_1") (not-eq field.fieldIdentifier "language_form_2"))}}     
                     <UiCheckbox

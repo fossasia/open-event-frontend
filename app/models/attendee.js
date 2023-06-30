@@ -46,6 +46,8 @@ export default ModelBase.extend({
   language_form_2             : attr('string'),
   home_wiki                   : attr('string'),
   is_consent_form_field       : attr('boolean', { defaultValue: false }),
+  is_consent_form_field_photo : attr('boolean', { defaultValue: false }),
+  is_consent_form_field_email : attr('boolean', { defaultValue: false }),
   wiki_scholarship            : attr('string'),
 
   /**
