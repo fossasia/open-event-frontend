@@ -122,23 +122,12 @@
                     {{/if}}
                   {{/if}}
                 {{else if (eq field.fieldIdentifier 'gender')}}
-                  <UiDropdown
-                    @class="search selection"
-                    @selected={{get holder field.identifierPath}}
-                    @onChange={{action (mut holder.gender)}} as |execute mapper|>
-                    <Input
-                      @type="hidden"
-                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-                    <i class="dropdown icon"></i>
-                    <div class="default text">{{t 'Select your gender'}}</div>
-                    <div class="menu">
-                      {{#each this.genders as |gender|}}
-                        <div class="item" data-value="{{map-value mapper gender.name}}">
-                          {{gender.name}}
-                        </div>
-                      {{/each}}
-                    </div>
-                  </UiDropdown>
+                  <Widgets::Forms::UiCheckboxGroup 
+                    @options={{genders}}
+                    @onChange={{action "updateGendersSelection"}}
+                    @entity={{holder}}
+                    @field={{field}}
+                  />
                 {{else if (eq field.fieldIdentifier 'country')}}
                   <UiDropdown
                     @class="search selection"
