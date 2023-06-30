@@ -25,6 +25,9 @@ export default class AttendeeList extends Component {
       if (attendee.language_form_2) {
         this.languageFormMapCodeToName(attendee, 'language_form_2');
       }
+      if (attendee.gender) {
+        this.genderAddSpaces(attendee);
+      }
     });
     return this.data.attendees;
   }
@@ -40,6 +43,10 @@ export default class AttendeeList extends Component {
       });
     });
     return attendee.set(key.concat('_name_mapping'), languageFormMap.map(select => select).join(', '));
+  }
+
+  genderAddSpaces(attendee) {
+    return attendee.set('gender'.concat('_name_mapping'), attendee.gender.split(',').join(', '));
   }
 
   @or('event.isBillingInfoMandatory', 'data.isBillingEnabled')

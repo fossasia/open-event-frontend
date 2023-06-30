@@ -6,5 +6,5 @@ import { orderBy } from 'lodash-es';
 
 export default Component.extend(FormMixin, {
   countries : orderBy(countries, 'name'),
-  genders   : orderBy(genders, 'name')
+  genders   : orderBy(genders, 'position')
 });

@@ -125,7 +125,7 @@
                   <Widgets::Forms::UiCheckboxGroup 
                     @options={{genders}}
                     @onChange={{action "updateGendersSelection"}}
-                    @entity={{holder}}
+                    @holder={{holder}}
                     @field={{field}}
                   />
                 {{else if (eq field.fieldIdentifier 'country')}}
