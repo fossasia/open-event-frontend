@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { extractYoutubeUrl } from 'open-event-frontend/utils/url';

@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
-import moment from 'moment';
+import moment from 'moment-timezone';
 @classic
 export default class CellAction extends Component {
     currentlyCheckedin = [];

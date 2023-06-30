@@ -2,7 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupIntegrationTest } from 'open-event-frontend/tests/helpers/setup-integration-test';
 import { render } from '@ember/test-helpers';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 module('Integration | Helper | general date', function(hooks) {
   setupIntegrationTest(hooks);

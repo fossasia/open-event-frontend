@@ -79,24 +79,21 @@
           {{#if field.isIncluded }}
             {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.name}}</label>
+                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
                 {{#if (eq field.type 'paragraph')}}
                   <Widgets::Forms::RichTextEditor
                     @value={{mut (get holder field.identifierPath)}}
                     @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                 {{/if}}
                 {{#if (eq field.type 'boolean')}}
+                  {{#each this.booleanComplex as |item|}}
                   <div class="ui radio checkbox mr-radio">
                     <Widgets::Forms::RadioButton
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                      @value={{true}} @checked={{mut (get holder field.identifierPath)}}/>
-                    <label for="yes_include">{{t 'Yes'}}</label>
+                      @value={{item.name}} @checked={{mut (get holder field.identifierPath)}}/>
+                    <label for="yes_include">{{t item.name}}</label>
                   </div>
-                  <div class="ui radio checkbox mr-radio">
-                    <Widgets::Forms::RadioButton @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                     @value={{false}} @checked={{mut (get holder field.identifierPath)}}/>
-                    <label for="no_include">{{t 'No'}}</label>
-                  </div>
+                  {{/each}}
                 {{/if}}
                 {{#if (or (is-input-field field.type) (eq field.type 'richtextlink'))}}
                   {{#if (or field.isLongText (eq field.type 'richtextlink')) }}
@@ -117,6 +114,7 @@
                         @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} 
                         @min={{if field.min field.min null}} @max={{if field.max field.max null}}/>
                     {{else}}
+                    
                       <Input
                         @type={{field.type}}
                         @value={{mut (get holder field.identifierPath)}}
@@ -193,6 +191,24 @@
                       {{#each this.homeWikis as |homeWiki|}}
                         <div class="item" data-value="{{map-value mapper homeWiki.item}}">
                           {{t homeWiki.item}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                {{else if (eq field.fieldIdentifier 'wiki_scholarship')}}
+                  <UiDropdown
+                    @class="search selection"
+                    @selected={{get holder field.identifierPath}}
+                    @onChange={{action (mut holder.wiki_scholarship)}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{t 'Select your answer'}}</div>
+                    <div class="menu">
+                      {{#each this.wikiScholarship as |wikiScholarship|}}
+                        <div class="item" data-value="{{map-value mapper wikiScholarship.name}}">
+                          {{t wikiScholarship.name}}
                         </div>
                       {{/each}}
                     </div>
