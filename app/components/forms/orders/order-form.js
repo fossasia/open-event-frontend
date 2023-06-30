@@ -701,8 +701,8 @@ export default Component.extend(FormMixin, {
     updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
       holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     },
-    updateGendersSelection(checked, changed, selectedOptions, entity, field) {
-      entity.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
+    updateGendersSelection(checked, changed, selectedOptions, holder, field) {
+      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
   }
 });
