@@ -1,17 +1,30 @@
 export const genders = [
   {
-    name: 'Female'
+    name      : 'Man',
+    isChecked : false
   },
   {
-    name: 'Male'
+    name      : 'Woman',
+    isChecked : false
   },
   {
-    name: 'Diverse / Non-binary'
+    name      : 'Transgender',
+    isChecked : false
   },
   {
-    name: 'Other'
+    name      : 'Non-binary',
+    isChecked : false
   },
   {
-    name: 'Prefer not to share'
+    name      : 'Genderqueer',
+    isChecked : false
+  },
+  {
+    name      : 'An identity not listed here',
+    isChecked : false
+  },
+  {
+    name      : 'I prefer not to say',
+    isChecked : false
   }
 ];

@@ -56,7 +56,7 @@ export default class UiCheckboxGroupComponent extends Component {
     for (let i = 0; i < this.args.options.length; i++) {
       const item = this.args.options[i];
       const label = item.name;
-      const value = item.code;
+      const value = item.code ? item.code : item.name;
       const checked = this.isOptionChecked(value);
       const obj = EmberObject.create({
         label,

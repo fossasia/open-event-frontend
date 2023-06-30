@@ -103,7 +103,7 @@ export default ModelBase.extend({
     instagram                   : tn.t('Instagram'),
     linkedin                    : tn.t('LinkedIn'),
     mastodon                    : tn.t('Mastodon'),
-    gender                      : tn.t('Gender'),
+    gender                      : tn.t('Which of these categories describe your gender identity? (check all that apply)'),
     acceptReceiveEmails         : tn.t('Email consent'),
     acceptVideoRecording        : tn.t('Photo & video & text consent'),
     acceptShareDetails          : tn.t('Partner contact consent'),

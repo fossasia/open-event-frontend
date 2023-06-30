@@ -117,7 +117,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please select a gender.')
+          prompt : this.l10n.t('Please select categories that describe your gender identity.')
         }
       ]
     };
@@ -661,7 +661,7 @@ export default Component.extend(FormMixin, {
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
-  genders         : orderBy(genders, 'name'),
+  genders         : orderBy(genders, 'position'),
   ageGroups       : orderBy(ageGroups, 'position'),
   countries       : orderBy(countries, 'name'),
   years           : orderBy(years, 'year'),
@@ -700,6 +700,9 @@ export default Component.extend(FormMixin, {
     },
     updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
       holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
+    },
+    updateGendersSelection(checked, changed, selectedOptions, entity, field) {
+      entity.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
   }
 });
