@@ -1,5 +1,10 @@
 export const translateLanguages = [
   {
+    name      : 'عربي',
+    code      : 'ar',
+    isChecked : false
+  },
+  {
     name      : 'বাংলা',
     code      : 'bn',
     isChecked : false
@@ -20,8 +25,18 @@ export const translateLanguages = [
     isChecked : false
   },
   {
+    name      : 'Français',
+    code      : 'fr',
+    isChecked : false
+  },
+  {
     name      : 'हिंदी',
     code      : 'hi',
+    isChecked : false
+  },
+  {
+    name      : 'Bahasa Indonesia',
+    code      : 'id',
     isChecked : false
   },
   {
@@ -30,13 +45,13 @@ export const translateLanguages = [
     isChecked : false
   },
   {
-    name      : 'Français',
-    code      : 'fr',
+    name      : '한국어',
+    code      : 'ko',
     isChecked : false
   },
   {
-    name      : 'Bahasa Indonesia',
-    code      : 'id',
+    name      : 'Bokmål',
+    code      : 'nb_NO',
     isChecked : false
   },
   {
@@ -47,6 +62,11 @@ export const translateLanguages = [
   {
     name      : 'Русский',
     code      : 'ru',
+    isChecked : false
+  },
+  {
+    name      : 'Svenska',
+    code      : 'sv',
     isChecked : false
   },
   {
@@ -67,26 +87,6 @@ export const translateLanguages = [
   {
     name      : '中文（繁體)',
     code      : 'zh_Hant',
-    isChecked : false
-  },
-  {
-    name      : '한국어',
-    code      : 'ko',
-    isChecked : false
-  },
-  {
-    name      : 'عربي',
-    code      : 'ar',
-    isChecked : false
-  },
-  {
-    name      : 'Bokmål',
-    code      : 'nb_NO',
-    isChecked : false
-  },
-  {
-    name      : 'Svenska',
-    code      : 'sv',
     isChecked : false
   }
 ];
