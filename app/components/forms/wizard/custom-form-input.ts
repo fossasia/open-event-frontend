@@ -102,7 +102,7 @@ export default class CustomFormInput extends Component<Args> {
       this.selectedLanguage.pushObjects(selectedLanguage)
       this.translations?.forEach((trans: Translate) => {
         const { name, code, language_code, form_id, isDeleted, id } = trans;
-        if(isDeleted || (name && (code||language_code))){
+        if (isDeleted || (name && (code || language_code))) {
           this.subForm.pushObject({
             id,
             form_id,
@@ -127,10 +127,10 @@ export default class CustomFormInput extends Component<Args> {
     return getIdentifier(this.name, this.args.customForms);
   }
 
-  @computed('name', 'selectedLanguage.@each','subForm.@each.name')
+  @computed('name', 'selectedLanguage.@each', 'subForm.@each.name')
   get validIdentifier(): boolean {
     const nameValid = this.identifier.trim().length > 0 && this.name.trim().length > 0;
-    const transInValid = this.subForm.filter(field => !field.isDeleted && ( !field.name || !field.selectedLang))
+    const transInValid = this.subForm.filter(field => !field.isDeleted && (!field.name || !field.selectedLang))
     return nameValid && !transInValid?.length;
   }
 
@@ -145,7 +145,7 @@ export default class CustomFormInput extends Component<Args> {
     const translations: Translate[] = []
     this.subForm.forEach(field => {
       const { id, form_id, name, isDeleted, selectedLang } = field
-      if(isDeleted || (name && selectedLang)){
+      if (isDeleted || (name && selectedLang)) {
         translations.pushObject({
           id,
           form_id,
