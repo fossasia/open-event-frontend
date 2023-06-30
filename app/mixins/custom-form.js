@@ -446,7 +446,7 @@ export default Mixin.create(MutableArray, {
         fieldIdentifier : 'gender',
         formID          : _formID,
         form            : 'attendee',
-        type            : 'select',
+        type            : 'checkbox',
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
