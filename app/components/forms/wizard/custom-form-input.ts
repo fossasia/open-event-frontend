@@ -96,17 +96,23 @@ export default class CustomFormInput extends Component<Args> {
       this.max = this.args.field.max;
       this.mainLanguage = this.args.field.mainLanguage;
       this.translations = this.args.field.translations;
+      this.selectedLanguage.clear();
+      this.selectedLanguage.pushObject(this.mainLanguage)
+      const selectedLanguage = this.translations?.map(trans => trans.code || trans.language_code);
+      this.selectedLanguage.pushObjects(selectedLanguage)
       this.translations?.forEach((trans: Translate) => {
         const { name, code, language_code, form_id, isDeleted, id } = trans;
-        this.subForm.pushObject({
-          id,
-          form_id,
-          name,
-          languages       : translateLanguages,
-          ignoreLanguages : this.selectedLanguage,
-          selectedLang    : code || language_code,
-          isDeleted
-        })
+        if(isDeleted || (name && (code||language_code))){
+          this.subForm.pushObject({
+            id,
+            form_id,
+            name,
+            languages       : translateLanguages,
+            ignoreLanguages : this.selectedLanguage,
+            selectedLang    : code || language_code,
+            isDeleted
+          })
+        }
       })
     } else {
       this.name = '';
@@ -121,9 +127,11 @@ export default class CustomFormInput extends Component<Args> {
     return getIdentifier(this.name, this.args.customForms);
   }
 
-  @computed('name')
+  @computed('name', 'selectedLanguage.@each','subForm.@each.name')
   get validIdentifier(): boolean {
-    return this.identifier.trim().length > 0 && this.name.trim().length > 0;
+    const nameValid = this.identifier.trim().length > 0 && this.name.trim().length > 0;
+    const transInValid = this.subForm.filter(field => !field.isDeleted && ( !field.name || !field.selectedLang))
+    return nameValid && !transInValid?.length;
   }
 
   get languageList(): object[] {
@@ -136,15 +144,17 @@ export default class CustomFormInput extends Component<Args> {
   get translationsList(): Translate[] {
     const translations: Translate[] = []
     this.subForm.forEach(field => {
-      const { id, form_id, name, isDeleted } = field
-      translations.pushObject({
-        id,
-        form_id,
-        name,
-        code          : field.selectedLang,
-        language_code : field.selectedLang,
-        isDeleted
-      })
+      const { id, form_id, name, isDeleted, selectedLang } = field
+      if(isDeleted || (name && selectedLang)){
+        translations.pushObject({
+          id,
+          form_id,
+          name,
+          code          : selectedLang,
+          language_code : selectedLang,
+          isDeleted
+        })
+      }
     })
     return translations;
   }

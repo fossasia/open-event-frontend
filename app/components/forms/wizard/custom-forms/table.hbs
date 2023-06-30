@@ -62,12 +62,16 @@
                   {{/if}}
                 </div>
                 {{#each field.translations as |translation|}}
-                  <div>
-                    {{concat translation.name " - " translation.language_code}}
-                    <div class="ui icon d-inline" data-tooltip="Custom Field" style="visibility: hidden">
-                      <i class="info icon"></i>
-                    </div>
-                  </div>
+                  {{#unless translation.isDeleted}}
+                    {{#if (and translation.name translation.language_code )}} 
+                      <div>
+                          {{concat translation.name " - " translation.language_code}}
+                        <div class="ui icon d-inline" data-tooltip="Custom Field" style="visibility: hidden">
+                          <i class="info icon"></i>
+                        </div>
+                      </div>
+                    {{/if}}
+                  {{/unless}}
                 {{/each}}
               {{else}}
                 {{#if (eq field.fieldIdentifier 'is_consent_form_field')}}
