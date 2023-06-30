@@ -20,10 +20,6 @@ export const genders = [
     isChecked : false
   },
   {
-    name      : 'Open',
-    isChecked : false
-  },
-  {
     name      : 'An identity not listed here',
     isChecked : false
   },
