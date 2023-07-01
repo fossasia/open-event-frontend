@@ -383,7 +383,7 @@ export default Component.extend(FormMixin, {
 
   languages: orderBy(languages, 'name'),
 
-  genders: orderBy(genders, 'name'),
+  genders: orderBy(genders, 'position'),
 
   levels: orderBy(levels, 'position'),
 
