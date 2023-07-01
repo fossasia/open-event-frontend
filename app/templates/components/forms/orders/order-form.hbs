@@ -56,14 +56,6 @@
         {{/if}}
       </h4>
       {{#each this.holders as |holder index|}}
-        {{#if (eq index 0)}}
-          <div class="field">
-            <UiCheckbox
-              @label={{t "Ticket holder is the same person as ticket buyer"}}
-              @checked={{this.sameAsBuyer}}
-              @onChange={{pipe-action (action (mut this.sameAsBuyer)) (action "modifyHolder" holder)}} />
-          </div>
-        {{/if}}
         <div class="inline field">
           <i class="user icon"></i>
           <label>
@@ -74,6 +66,12 @@
             {{/if}}
             {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}
           </label>
+        </div>
+        <div class="field">
+          <UiCheckbox
+            @label={{t "Ticket holder is the same person as ticket buyer"}}
+            @checked={{holder.sameAsBuyer}}
+            @onChange={{action "triggerSameAsBuyerOption" holder}} />
         </div>
         {{#each this.allFields.attendee as |field index|}}
           {{#if field.isIncluded }}
@@ -101,7 +99,7 @@
                       @value={{mut (get holder field.identifierPath)}}
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                   {{else}}
-                    {{#if (and this.sameAsBuyer (eq index 0) (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
+                    {{#if (and holder.sameAsBuyer (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname') (eq field.fieldIdentifier 'email')))}}
                       <Input
                         @type={{field.type}}
                         @value={{mut (get holder field.identifierPath)}}
@@ -114,7 +112,6 @@
                         @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} 
                         @min={{if field.min field.min null}} @max={{if field.max field.max null}}/>
                     {{else}}
-                    
                       <Input
                         @type={{field.type}}
                         @value={{mut (get holder field.identifierPath)}}
