@@ -1,4 +1,5 @@
 $font-weights: 100 200 300 400 500 600 700 800 900;
+
 @each $font-weight in $font-weights {
   .weight-#{$font-weight} {
     font-weight: $font-weight !important;
@@ -6,6 +7,7 @@ $font-weights: 100 200 300 400 500 600 700 800 900;
 }
 
 $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
+
 @each $spacer-height in $spacer-heights {
   .spacer-#{$spacer-height} {
     min-height: $spacer-height + px !important;
@@ -29,6 +31,7 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
 }
 
 @media only screen and (max-width: 767px) {
+
   .mobile.hidden,
   .tablet.only,
   .small.monitor.only,
@@ -36,7 +39,9 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
     display: none !important;
   }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+
   .mobile.only,
   .tablet.hidden,
   .small.monitor.only,
@@ -44,7 +49,9 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
     display: none !important;
   }
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+
   .mobile.only,
   .tablet.only,
   .small.monitor.hidden,
@@ -52,7 +59,9 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
     display: none !important;
   }
 }
+
 @media only screen and (min-width: 1200px) {
+
   .mobile.only,
   .tablet.only,
   .small.monitor.only,
@@ -189,6 +198,7 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
     color: inherit;
   }
 }
+
 @media only screen and (max-width: 767px) {
   .menu-fixed {
     position: fixed !important;
@@ -213,5 +223,39 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
 @media only screen and (max-width: 1200px) {
   .hide-detail {
     display: none;
+  }
+}
+
+.input-full {
+  input {
+    width: 100%;
+  }
+}
+
+.transition-size {
+  transition: width .3s ease-in-out;
+}
+
+.dropdown-overflow-text {
+  .text {
+    width: calc(100% - .15rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.min-half-width {
+  min-width: 50% !important;
+}
+
+.max-half-width {
+  max-width: 50%;
+}
+
+.focus-search-full {
+  &:focus-within {
+    max-width: 100% !important;
+    width: 100% !important;
   }
 }
