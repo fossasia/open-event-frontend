@@ -79,9 +79,7 @@
               <div class="field">
                 <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
                 {{#if (eq field.type 'paragraph')}}
-                  <Widgets::Forms::RichTextEditor
-                    @value={{mut (get holder field.identifierPath)}}
-                    @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                  <Textarea @id={{this.textareaIdGenerated}} @value={{mut (get holder field.identifierPath)}} placeholder={{this.placeholder}} @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                 {{/if}}
                 {{#if (eq field.type 'boolean')}}
                   {{#each this.booleanComplex as |item|}}
