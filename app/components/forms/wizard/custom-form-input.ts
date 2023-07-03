@@ -234,7 +234,9 @@ export default class CustomFormInput extends Component<Args> {
     if (old_code) {
       this.selectedLanguage.removeObject(old_code)
     }
-    this.selectedLanguage.pushObject(new_code)
+    if (new_code) {
+      this.selectedLanguage.pushObject(new_code)
+    }
   }
 
   @computed('subForm.@each.isDeleted')
