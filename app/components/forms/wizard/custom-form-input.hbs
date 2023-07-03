@@ -63,7 +63,7 @@
       {{#if (eq @form 'attendee')}}
         <button class="ui button h-full" {{action 'addTranslation'}} disabled={{this.disableAddTranslation}}>{{t 'Add Translation'}}</button>
       {{/if}}
-      <button class="ui button h-full" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>{{if @field (t 'Save') (t 'Add')}}</button>
+      <button class="ui button h-full" {{action 'addFormField'}} {{action @setEditingField ''}} disabled={{not this.validIdentifier}}>{{if @field (t 'Save') (t 'Add')}}</button>
     </div>  
   </div>
 </div>

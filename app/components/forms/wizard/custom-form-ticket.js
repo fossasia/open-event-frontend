@@ -6,6 +6,7 @@ import { sortBy, union } from 'lodash-es';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected: [],
+  trackedfieldEditing: [],
   init() {
     this._super(...arguments);
     this.currentSelected = this.data.ticketsDetails;
@@ -54,9 +55,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
+  getEditingField: computed('fieldEditing', function() {
+    return this.fieldEditing;
+  }),
+
   actions: {
     removeField(field) {
       field.deleteRecord();
+    },
+    setEditingField(name){
+        this.set('fieldEditing', name)
     }
   }
 });
