@@ -4,7 +4,8 @@ import { action, computed } from '@ember/object';
 import { groupBy } from 'lodash-es';
 import { or } from '@ember/object/computed';
 import { tracked } from '@glimmer/tracking';
-import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
+import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
+import { languageForms2 } from 'open-event-frontend/utils/dictionary/language-form-2';
 
 @classic
 export default class AttendeeList extends Component {
@@ -20,10 +21,10 @@ export default class AttendeeList extends Component {
   get holders() {
     this.data.attendees.forEach(attendee => {
       if (attendee.language_form_1) {
-        this.languageFormMapCodeToName(attendee, 'language_form_1');
+        this.languageFormMapCodeToName(attendee, 'language_form_1', languageForms1);
       }
       if (attendee.language_form_2) {
-        this.languageFormMapCodeToName(attendee, 'language_form_2');
+        this.languageFormMapCodeToName(attendee, 'language_form_2', languageForms2);
       }
       if (attendee.gender) {
         this.genderAddSpaces(attendee);
@@ -32,10 +33,10 @@ export default class AttendeeList extends Component {
     return this.data.attendees;
   }
 
-  languageFormMapCodeToName(attendee, key) {
+  languageFormMapCodeToName(attendee, key, possibleLanguages) {
     const languageFormMap = [];
     const languageFormList = attendee[key].split(',');
-    languageForms.forEach(languageForm => {
+    possibleLanguages.forEach(languageForm => {
       languageFormList.forEach(item => {
         if (item === languageForm.code) {
           languageFormMap.push(languageForm.name);

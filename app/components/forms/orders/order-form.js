@@ -14,7 +14,8 @@ import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
 import { years } from 'open-event-frontend/utils/dictionary/year-list';
-import { languageForms } from 'open-event-frontend/utils/dictionary/language-form';
+import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
+import { languageForms2 } from 'open-event-frontend/utils/dictionary/language-form-2';
 import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
 import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
 import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
@@ -651,7 +652,8 @@ export default Component.extend(FormMixin, {
   ageGroups       : orderBy(ageGroups, 'position'),
   countries       : orderBy(countries, 'name'),
   years           : orderBy(years, 'year'),
-  languageForms   : orderBy(languageForms, 'name'),
+  languageForms1  : orderBy(languageForms1, 'name'),
+  languageForms2  : orderBy(languageForms2, 'name'),
   homeWikis       : orderBy(homeWikis, 'item'),
   wikiScholarship : orderBy(wikiScholarship, 'position'),
   booleanComplex  : orderBy(booleanComplex, 'position'),
