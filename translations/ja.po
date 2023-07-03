@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the
 # fossasia/open-event-orga-server project.
 # FOSSASIA <open-event@googlegroups.com>, 2016.
-# naofum <naofum@gmail.com>, 2021.
+# naofum <naofum@gmail.com>, 2021, 2023.
 # Meghal Bisht <mailtomeghu25@gmail.com>, 2021.
 # Hong Phuc Dang <hp@fossasia.org>, 2023.
 msgid ""
@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: v1\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-06-26 18:38+0000\n"
-"Last-Translator: Hong Phuc Dang <hp@fossasia.org>\n"
+"PO-Revision-Date: 2023-07-02 13:53+0000\n"
+"Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/open-event/"
 "frontend/ja/>\n"
 "Language: ja\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.3.4\n"
 
 #: app/adapters/application.js:44:24
@@ -7854,11 +7854,13 @@ msgstr ""
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:215:14
 msgid "Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published."
-msgstr "これを公開して表示します。イベントが公開されると、誰でも選択した日付に提案を提出することができます。"
+msgstr "これを公開して表示します。イベントが公開されると、誰でも選択した日付に提案を"
+"提出することができます。"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:224:14
 msgid "Do not display this publicly. Proposals can be submitted only using the private link."
-msgstr "公開で表示しません。プライベート リンクを使用して提案を提出することができます。"
+msgstr "公開で表示しません。プライベート "
+"リンクを使用して提案を提出することができます。"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:234:8
 msgid "Customize submission forms"
@@ -11855,7 +11857,7 @@ msgid "Please enter your wiki scholarship."
 msgstr "Wiki 奨学金を入力してください。"
 
 #: app/models/custom-form.js:115:30
-msgid "Have you received a Wikimedia scholarship?"
+msgid "Have you received a Wikimania scholarship?"
 msgstr "ウィキメディア奨学金を受け取ったことがありますか?"
 
 #: app/utils/dictionary/wiki-scholarship.ts:5:10
@@ -11873,3 +11875,23 @@ msgstr "はい、ウィキメディアのアフィリエイトから"
 #: app/templates/components/forms/orders/order-form.hbs:209:48
 msgid "Select your answer"
 msgstr "答えを選択してください"
+
+#: app/models/custom-form.js:116:36
+msgid "Wikimania photo consent"
+msgstr "ウィキマニアの写真撮影の同意"
+
+#: app/models/custom-form.js:117:36
+msgid "Wikimania email updates"
+msgstr "ウィキマニアの電子メール更新情報"
+
+#: app/templates/components/forms/orders/order-form.hbs:251:26
+msgid "I consent to having my photo taken at Wikimania per the"
+msgstr "私は、ウィキマニアで私の写真を撮影することに同意します。"
+
+#: app/templates/components/forms/orders/order-form.hbs:252:91
+msgid "photo policy"
+msgstr "写真ポリシー"
+
+#: app/templates/components/forms/orders/order-form.hbs:259:26
+msgid "I want to receive email updates about future Wikimania editions."
+msgstr "ウィキマニアの将来のエディションに関する最新情報を電子メールで受け取りたい"

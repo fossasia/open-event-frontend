@@ -29,8 +29,8 @@ export default Component.extend(FormMixin, {
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
   holders           : computed('data.attendees', 'buyer', function() {
-    this.data.attendees.forEach((attendee, index) => {
-      if (index === 0 && this.buyerFirstName && this.buyerLastName) {
+    this.data.attendees.forEach(attendee => {
+      if (this.buyerFirstName && this.buyerLastName) {
         attendee.set('firstname', this.buyerFirstName);
         attendee.set('lastname', this.buyerLastName);
         attendee.set('email', this.buyer.get('email'));
@@ -48,9 +48,6 @@ export default Component.extend(FormMixin, {
       return false;
     }
     return true;
-  }),
-  sameAsBuyer: computed('data', function() {
-    return (this.buyerHasFirstName && this.buyerHasLastName);
   }),
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
@@ -117,7 +114,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please select a gender.')
+          prompt : this.l10n.t('Please select categories that describe your gender identity.')
         }
       ]
     };
@@ -513,24 +510,6 @@ export default Component.extend(FormMixin, {
       delay  : false,
       on     : 'blur',
       fields : {
-        firstName: {
-          identifier : 'first_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your first name.')
-            }
-          ]
-        },
-        lastName: {
-          identifier : 'last_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your last name.')
-            }
-          ]
-        },
         email: {
           identifier : 'email',
           rules      : [
@@ -655,7 +634,10 @@ export default Component.extend(FormMixin, {
 
     const customFields =  orderBy(this.fields.toArray()?.filter(field => {
       const { isFixed, main_language } = field;
-
+      field.nameConvert = field.name;
+      if (field.name === 'Consent of refund policy') {
+        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
+      }
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
       } else if (field.translations?.length) {
@@ -676,7 +658,7 @@ export default Component.extend(FormMixin, {
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
-  genders         : orderBy(genders, 'name'),
+  genders         : orderBy(genders, 'position'),
   ageGroups       : orderBy(ageGroups, 'position'),
   countries       : orderBy(countries, 'name'),
   years           : orderBy(years, 'year'),
@@ -702,8 +684,9 @@ export default Component.extend(FormMixin, {
         this.sendAction('save', data);
       });
     },
-    modifyHolder(holder) {
-      if (this.sameAsBuyer) {
+    triggerSameAsBuyerOption(holder) {
+      holder.set('sameAsBuyer', !holder.sameAsBuyer);
+      if (holder.sameAsBuyer) {
         holder.set('firstname', this.buyerFirstName);
         holder.set('lastname', this.buyerLastName);
         holder.set('email', this.buyer.content.email);
@@ -714,6 +697,9 @@ export default Component.extend(FormMixin, {
       }
     },
     updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
+      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
+    },
+    updateGendersSelection(checked, changed, selectedOptions, holder, field) {
       holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
   }

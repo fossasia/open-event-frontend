@@ -49,11 +49,13 @@
                       {{else}}
                         <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.identifierPath}}/>
                       {{/if}}
+                    {{else if (eq field.type 'paragraph')}}
+                      <span>{{get holder field.identifierPath}}</span>
                     {{else if (eq field.type 'select')}}
                       <span class="word-break">{{get holder field.identifierPath}}</span>
                     {{else if (eq field.type 'checkbox')}}
-                      {{#if (or (eq field.fieldIdentifier "native_language") (eq field.fieldIdentifier "fluent_language"))}}
-                        <span class="word-break">{{get holder field.identifierPath}}</span>
+                      {{#if (or (eq field.fieldIdentifier "native_language") (eq field.fieldIdentifier "fluent_language") (eq field.fieldIdentifier "gender"))}}
+                        <span class="word-break">{{get holder (concat field.fieldIdentifier '_name_mapping')}}</span>
                       {{else}}
                         <span class="word-break">
                           {{#if (get holder field.identifierPath)}}
@@ -66,10 +68,9 @@
                     {{else}}
                       {{#if (not field.isComplex)}}
                         <span class="word-break">{{sanitize (get holder field.identifierPath)}}</span>
+                      {{else}}
+                        <span class="word-break">{{t (get holder field.identifierPath)}}</span>
                       {{/if}}
-                    {{/if}}
-                    {{#if field.isComplex}}
-                      <span class="word-break">{{t (get holder.complexFieldValues field.fieldIdentifier)}}</span>
                     {{/if}}
                 </div>
               {{/if}}

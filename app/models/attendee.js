@@ -7,6 +7,7 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
+  sameAsBuyer                 : attr('boolean', { defaultValue: true }),
   city                        : attr('string'),
   firstname                   : attr('string'),
   lastname                    : attr('string'),
@@ -46,6 +47,8 @@ export default ModelBase.extend({
   fluent_language             : attr('string'),
   home_wiki                   : attr('string'),
   is_consent_form_field       : attr('boolean', { defaultValue: false }),
+  is_consent_form_field_photo : attr('boolean', { defaultValue: false }),
+  is_consent_form_field_email : attr('boolean', { defaultValue: false }),
   wiki_scholarship            : attr('string'),
 
   /**
