@@ -50,7 +50,12 @@
                         <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.identifierPath}}/>
                       {{/if}}
                     {{else if (eq field.type 'paragraph')}}
-                      <span>{{get holder field.identifierPath}}</span>
+                    <style>
+                      .line-break {
+                        white-space: pre-line;
+                      }
+                    </style>
+                    <span class="line-break">{{get holder field.identifierPath}}</span>
                     {{else if (eq field.type 'select')}}
                       <span class="word-break">{{get holder field.identifierPath}}</span>
                     {{else if (eq field.type 'checkbox')}}
