@@ -7,7 +7,7 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
-  sameAsBuyer                 : attr('boolean', { defaultValue: true }),
+  sameAsBuyer                 : attr('boolean', { defaultValue: false }),
   city                        : attr('string'),
   firstname                   : attr('string'),
   lastname                    : attr('string'),
