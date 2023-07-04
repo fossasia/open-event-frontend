@@ -1,20 +1,20 @@
 {{#if (eq @type "number")}}
-  <div style="width: 36%;">
+  <div style="width: 34%; max-width: 23rem">
     <Widgets::Forms::RichTextLink
       @value={{@data.name}}/>
   </div>
 {{else}}
-  <div style="width: 51%;">
+  <div style="width: 48%; max-width: 33rem">
     <Widgets::Forms::RichTextLink
       @value={{@data.name}}/>
   </div>
 {{/if}}
-<div>
+<div style="width: 20%;min-width: 11rem;max-width: 11rem;">
   <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
   <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" 
     @selected={{@data.selectedLang}} 
     @onChange={{action 'onChangeLanguage'}}
-    style="line-height: inherit; min-width: 10rem">
+    style="line-height: inherit; width: 20%;min-width: 11rem;max-width: 11rem;">
     <div class="default text">
       {{ @data.selectedLang }}
     </div>
