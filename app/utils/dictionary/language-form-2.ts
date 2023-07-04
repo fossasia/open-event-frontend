@@ -1,5 +1,15 @@
 export const languageForms2 = [
   {
+    name      : 'عربي',
+    code      : 'ar',
+    isChecked : false
+  },
+  {
+    name      : 'Bahasa Indonesia',
+    code      : 'id',
+    isChecked : false
+  },
+  {
     name      : 'English',
     code      : 'en-US',
     isChecked : false
@@ -10,23 +20,13 @@ export const languageForms2 = [
     isChecked : false
   },
   {
-    name      : 'عربي',
-    code      : 'ar',
-    isChecked : false
-  },
-  {
-    name      : '中文',
-    code      : 'zh-CN',
-    isChecked : false
-  },
-  {
     name      : 'Français',
     code      : 'fr-FR',
     isChecked : false
   },
   {
-    name      : 'Bahasa Indonesia',
-    code      : 'id',
+    name      : '中文',
+    code      : 'zh-CN',
     isChecked : false
   }
 ];
