@@ -77,6 +77,18 @@ export default class AttendeeList extends Component {
     });
   }
 
+  get fieldNameConvertRichText() {
+    this.holders.forEach((holder, indexHolder) => {
+      this.fields.forEach((field, index) => {
+        const elem = document.getElementById(field.fieldIdentifier + '_' + indexHolder + '_' + index);
+        if (elem) {
+          elem.innerHTML = field.transName;
+        }
+      });
+    });
+    return null;
+  }
+
   @action
   toggleEditFields() {
     this.editFields = !this.editFields;

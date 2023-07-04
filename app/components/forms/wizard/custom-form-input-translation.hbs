@@ -1,25 +1,34 @@
-{{#if (not-eq @type "number")}}
-  <div style="width: 30%">
-    <Input type="text" placeholder={{t "Field Name"}} @value={{@data.name}}/>
+{{#if (eq @type "number")}}
+  <div style="width: 36%;">
+    <Widgets::Forms::RichTextLink
+      @value={{@data.name}}/>
   </div>
 {{else}}
-  <div style="width: 20%">
-    <Input type="text" placeholder={{t "Field Name"}} @value={{@data.name}}/>
+  <div style="width: 51%;">
+    <Widgets::Forms::RichTextLink
+      @value={{@data.name}}/>
   </div>
 {{/if}}
-<UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" 
-  @selected={{@data.selectedLang}} 
-  @onChange={{action 'onChangeLanguage' }}>
-  <div class="default text">
-    {{ @data.selectedLang }}
-  </div>
-  <i class="dropdown icon"></i>
-  <div class="menu">
-    {{#each this.languageList as |language|}}
-      <div class="item" data-value={{language.code}}>{{language.name}}</div>
-    {{/each}}
-  </div>
-</UiDropdown>
-<button style="font-size: 1.1em;" class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action 'onRemoveForm' ))}}>
-  <i class="trash box icon"></i>  
-</button>
+<div>
+  <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+  <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" 
+    @selected={{@data.selectedLang}} 
+    @onChange={{action 'onChangeLanguage'}}
+    style="line-height: inherit; min-width: 10rem">
+    <div class="default text">
+      {{ @data.selectedLang }}
+    </div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each this.languageList as |language|}}
+        <div class="item" data-value={{language.code}}>{{language.name}}</div>
+      {{/each}}
+    </div>
+  </UiDropdown>
+</div>
+<div>
+  <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+  <button style="font-size: 1.1em; line-height: 1.7rem;" class="ui compact icon negative button" data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action 'onRemoveForm' ))}}>
+    <i class="trash box icon"></i>  
+  </button>
+</div>
