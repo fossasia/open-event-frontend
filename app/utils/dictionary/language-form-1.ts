@@ -1,4 +1,14 @@
-export const languageForms = [
+export const languageForms1 = [
+  {
+    name      : 'عربي',
+    code      : 'ar',
+    isChecked : false
+  },
+  {
+    name      : 'Bahasa Indonesia',
+    code      : 'id',
+    isChecked : false
+  },
   {
     name      : 'English',
     code      : 'en-US',
@@ -10,8 +20,8 @@ export const languageForms = [
     isChecked : false
   },
   {
-    name      : 'عرب',
-    code      : 'ar',
+    name      : 'Français',
+    code      : 'fr-FR',
     isChecked : false
   },
   {
@@ -20,13 +30,8 @@ export const languageForms = [
     isChecked : false
   },
   {
-    name      : 'Français',
-    code      : 'fr-FR',
-    isChecked : false
-  },
-  {
-    name      : 'Bahasa Indonesia',
-    code      : 'id',
+    name      : 'Other',
+    code      : 'other',
     isChecked : false
   }
 ];
