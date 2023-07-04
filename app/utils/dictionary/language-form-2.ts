@@ -1,4 +1,4 @@
-export const languageForms = [
+export const languageForms2 = [
   {
     name      : 'English',
     code      : 'en-US',
@@ -10,7 +10,7 @@ export const languageForms = [
     isChecked : false
   },
   {
-    name      : 'عرب',
+    name      : 'عربي',
     code      : 'ar',
     isChecked : false
   },
