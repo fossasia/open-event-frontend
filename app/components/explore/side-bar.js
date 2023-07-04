@@ -247,4 +247,13 @@ export default class SideBar extends Component {
   toggleMap() {
     this.toggleProperty('isMapVisible');
   }
+
+  // New feature: Tracking the number of times the sidebar is toggled
+  @tracked toggleCount = 0;
+
+  // New action: Increment the toggleCount when the sidebar is toggled
+  @action
+  toggleSidebar() {
+    this.toggleCount++;
+  }
 }
