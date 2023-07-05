@@ -56,6 +56,11 @@ export default Component.extend(FormMixin, {
       });
     }
 
+    // since this.data only contains the initial tickets
+    // we need to make sure that the tickets added via access code
+    // are added to the list.
+    // We do that below once with this.tickets.addObject(ticket),
+    // but this value will be overwritten here on recomputation
     return this.data.sortBy('position').map(ticket => {
       const ticketExtra = ticketMap[ticket.id];
 
@@ -65,7 +70,7 @@ export default Component.extend(FormMixin, {
       }
 
       return ticket;
-    });
+    }).concat(this.accessCodeTickets);
   }),
 
   hasTicketsInOrder: computed('tickets.@each.orderQuantity', function() {
