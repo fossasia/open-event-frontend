@@ -61,6 +61,7 @@
       @event={{this.data.event}}
       @form="attendee"
       @field={{this.field}}
+      @setEditingField={{action (mut this.field) null}}
       @onSave={{action (mut this.field) null}} />
     {{else}}
       <div class="ui hidden divider"></div>
