@@ -45,7 +45,8 @@ export default Component.extend(FormMixin, {
   accessCodeTickets : A(),
   discountedTickets : A(),
 
-  invalidPromotionalCode: false,
+  invalidPromotionalAccessCode: false,
+  invalidPromotionalDiscountCode: false,
 
   tickets: computed('orderAmount', function() {
     const ticketMap = {};
@@ -55,6 +56,11 @@ export default Component.extend(FormMixin, {
       });
     }
 
+    // since this.data only contains the initial tickets
+    // we need to make sure that the tickets added via access code
+    // are added to the list.
+    // We do that below once with this.tickets.addObject(ticket),
+    // but this value will be overwritten here on recomputation
     return this.data.sortBy('position').map(ticket => {
       const ticketExtra = ticketMap[ticket.id];
 
@@ -64,7 +70,7 @@ export default Component.extend(FormMixin, {
       }
 
       return ticket;
-    });
+    }).concat(this.accessCodeTickets);
   }),
 
   hasTicketsInOrder: computed('tickets.@each.orderQuantity', function() {
@@ -141,11 +147,11 @@ export default Component.extend(FormMixin, {
           ticket.set('isHidden', false);
           this.tickets.addObject(ticket);
           this.accessCodeTickets.addObject(ticket);
-          this.set('invalidPromotionalCode', false);
+          this.set('invalidPromotionalAccessCode', false);
         });
       } catch (e) {
         console.error('Error while applying access code', e);
-        this.set('invalidPromotionalCode', true);
+        this.set('invalidPromotionalAccessCode', true);
       }
       try {
         const discountCode = await this.store.queryRecord('discount-code', { eventIdentifier: this.event.id, code: this.promotionalCode, include: 'event,tickets' });
@@ -175,18 +181,17 @@ export default Component.extend(FormMixin, {
             ticket.set('discountedTicketTax', discountedTicket.discounted_tax);
             ticket.set('discount', discountedTicket.discount.amount);
             this.discountedTickets.addObject(ticket);
-            this.set('invalidPromotionalCode', false);
+            this.set('invalidPromotionalDiscountCode', false);
           });
         } else {
-          this.set('invalidPromotionalCode', true);
+          this.set('invalidPromotionalDiscountCode', true);
         }
       } catch (e) {
         console.error('Error while applying discount code as promo code', e);
-        if (this.invalidPromotionalCode) {
-          this.set('invalidPromotionalCode', true);
-        }
+        this.set('invalidPromotionalDiscountCode', true);
       }
-      if (this.invalidPromotionalCode) {
+      // if both access code and discount code are invalid, warn
+      if (this.invalidPromotionalDiscountCode && this.invalidPromotionalAccessCode) {
         this.set('promotionalCodeApplied', false);
         this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
           id: 'prom_inval'
