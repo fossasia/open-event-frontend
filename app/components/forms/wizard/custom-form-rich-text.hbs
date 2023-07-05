@@ -1,0 +1,99 @@
+<div class="ui hidden divider"></div>
+<div class="ui dividing">
+  <i class="checkmark box icon"></i>
+  <span class="content">
+    {{t 'Add Custom Form Field'}}
+  </span>
+</div>
+<div style="display: flex; flex-direction: column">
+  <div {{did-update this.updated @field}} class="ui action input main" style="width: inherit;">
+    {{#if (eq this.type "number")}}
+      <div style="width: 34%; max-width: 23rem">
+        <Widgets::Forms::RichTextLink
+          @value={{this.name}}/>
+      </div>
+    {{else}}
+      <div style="width: 48%; max-width: 33rem">
+        <Widgets::Forms::RichTextLink
+          @value={{this.name}}/>
+      </div>
+    {{/if}}
+    <div style="width: 11rem;">
+      <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+      {{#if (eq @form 'attendee')}}
+        <UiDropdown 
+          class="ui selection dropdown custom-form-dropdown-attendee" 
+          @selected={{this.mainLanguage}} 
+          @onChange={{action 'onMainLanguageChange'}}
+          style="line-height: inherit; min-width: 11rem;">
+          <div class="default text">
+            {{ this.mainLanguage }}
+          </div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#each this.languageList as |language|}}
+              <div class="item" data-value={{language.code}}>{{language.name}}</div>
+            {{/each}}
+          </div>
+        </UiDropdown>
+      {{/if}}
+    </div>
+    <div>
+      {{#if (eq this.type "number")}}
+        <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+        <div style="display: flex;">
+          <Input
+            @type="number"
+            @name="min_price"
+            placeholder={{t "Min"}} style="width: 5rem; line-height: 1.7rem"
+            @value={{this.min}} />
+          <Input
+            @type="number"
+            @name="max_price"
+            placeholder={{t "Max"}} style="width: 5rem; line-height: 1.7rem"
+            @value={{this.max}} />
+        </div>
+      {{/if}}
+    </div>
+    <div style="width: 11rem;">
+      <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+      <UiDropdown 
+        class="ui selection dropdown custom-form-dropdown-attendee"
+        @selected={{this.type}}
+        @onChange={{action (mut this.type)}}
+        style="line-height: inherit; min-width: 11rem">
+        <div class="default text">
+          {{ this.type }}
+        </div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="text">{{t "Short Answer"}}</div>
+          <div class="item" data-value="paragraph">{{t "Paragraph"}}</div>
+          <div class="item" data-value="number">{{t "Number"}}</div>
+          <div class="item" data-value="year">{{t "Year"}}</div>
+          <div class="item" data-value="boolean">{{t "Yes/No"}}</div>
+        </div>
+      </UiDropdown>
+    </div>
+    <div>
+      <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+      {{#if (eq @form 'attendee')}}
+        <button class="ui button" style="margin: 0; width:50%; float:left; min-width: 7rem" {{action 'addTranslation'}} disabled={{this.disableAddTranslation}}>{{t 'Add Translation'}}</button>
+      {{/if}}
+      <button class="ui button" style="line-height: 1.7rem; margin: 0; width:50%; float:left; min-width: 7rem" {{action 'addFormField'}} disabled={{not this.validIdentifier}}>{{if @field (t 'Save') (t 'Add')}}</button>
+    </div>
+  </div>
+</div>
+<div style="display: flex; flex-direction: column">
+  {{#each this.visibleForm as |sub|}}
+    <div {{did-update this.updated @field}} class="ui action input sub" style="width: inherit; margin-top: 10px">
+      {{#unless sub.isDeleted }}
+        <Forms::Wizard::CustomFormInputTranslation
+          @data={{sub}}
+          @type={{this.type}}
+          @onRemoveTranslation={{action (mut sub.isDeleted) true}} 
+          @onChange={{action 'onChildChangeLanguage'}}/>
+      {{/unless}}
+    </div>
+  {{/each}}
+</div>
