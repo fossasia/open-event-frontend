@@ -127,7 +127,7 @@ export default class CustomFormInput extends Component<Args> {
     return getIdentifier(this.name, this.args.customForms);
   }
 
-  @computed('name', 'selectedLanguage.@each', 'subForm.@each.name')
+  @computed('name', 'selectedLanguage.@each', 'subForm.@each.name', 'subForm.@each.isDeleted')
   get validIdentifier(): boolean {
     const nameValid = this.identifier.trim().length > 0 && this.name.trim().length > 0;
     const transInValid = this.subForm.filter(field => !field.isDeleted && (!field.name || !field.selectedLang))
@@ -234,7 +234,9 @@ export default class CustomFormInput extends Component<Args> {
     if (old_code) {
       this.selectedLanguage.removeObject(old_code)
     }
-    this.selectedLanguage.pushObject(new_code)
+    if (new_code) {
+      this.selectedLanguage.pushObject(new_code)
+    }
   }
 
   @computed('subForm.@each.isDeleted')

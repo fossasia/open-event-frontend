@@ -241,6 +241,7 @@
           @headerText={{t "Collect Speaker Details"}}
           @fields={{this.customForm.speaker}}
           @updateField={{action (mut this.speakerField)}} 
+          @form="speaker"
           @removeField={{action "removeField"}}
         />
 
@@ -257,6 +258,7 @@
           @headerText={{t "Collect Session Details"}}
           @fields={{this.customForm.session}}
           @updateField={{action (mut this.sessionField)}} 
+          @form="session"
           @removeField={{action "removeField"}}
         />
 
