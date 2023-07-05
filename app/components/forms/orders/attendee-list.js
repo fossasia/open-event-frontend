@@ -56,7 +56,7 @@ export default class AttendeeList extends Component {
   @computed('fields.@each.form')
   get allFields() {
     const current_locale = this.cookies.read('current_locale');
-    const customFields = orderBy(this.fields.toArray()?.filter(field => {
+    const customFields = orderBy(this.fields.toArray()?.map(field => {
       const { main_language } = field;
 
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
@@ -74,7 +74,7 @@ export default class AttendeeList extends Component {
         field.transName = field.name;
       }
 
-      return true;
+      return field;
     }), ['position']);
     return groupBy(customFields, field => field.get('form'));
   }
