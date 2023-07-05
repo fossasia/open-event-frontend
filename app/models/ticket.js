@@ -26,6 +26,7 @@ export default ModelBase.extend({
   isFeeAbsorbed        : attr('boolean', { defaultValue: true }),
   position             : attr('number'),
   formID               : attr('string', { defaultValue: '' }),
+  badgeID              : attr('string', { defaultValue: '' }),
   hasOrders            : false,
 
   /**

@@ -33,7 +33,7 @@ export default class BadgeController extends Controller.extend(EventWizardMixin)
     try {
       await this.saveForms(data);
       this.saveEventDataAndRedirectTo(
-        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.other-details',
+        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.attendee',
         ['tickets']
       );
     } catch (error) {
