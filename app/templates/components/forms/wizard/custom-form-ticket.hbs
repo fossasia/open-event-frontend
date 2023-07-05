@@ -36,6 +36,8 @@
       @fields={{this.editableFields}}
       @form={{"attendee"}}
       @removeField={{action "removeField"}}
+      @setEditingField={{action "setEditingField"}}
+      @getEditingField={{this.getEditingField}}
       @updateField={{action (mut this.ticketField)}} 
     />
   </div>
@@ -45,6 +47,7 @@
   @event={{this.event}}
   @form="attendee"
   @field={{this.ticketField}}
+  @setEditingField={{action "setEditingField"}}
   @formIdentifier={{this.id}}
   @onSave={{action (mut this.ticketField) null}} />
 <div class="ui hidden divider"></div>
