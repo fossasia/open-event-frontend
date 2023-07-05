@@ -18,14 +18,14 @@
           @value={{this.name}}/>
       </div>
     {{/if}}
-    <div style="width: 20%;min-width: 11rem;max-width: 11rem;">
+    <div style="width: 11rem;">
       <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
       {{#if (eq @form 'attendee')}}
         <UiDropdown 
           class="ui selection dropdown custom-form-dropdown-attendee" 
           @selected={{this.mainLanguage}} 
           @onChange={{action 'onMainLanguageChange'}}
-          style="line-height: inherit; width: 20%;min-width: 11rem;max-width: 11rem;">
+          style="line-height: inherit; min-width: 11rem;">
           <div class="default text">
             {{ this.mainLanguage }}
           </div>
@@ -55,13 +55,13 @@
         </div>
       {{/if}}
     </div>
-    <div style="width: 20%;min-width: 11rem;max-width: 11rem;">
+    <div style="width: 11rem;">
       <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
       <UiDropdown 
         class="ui selection dropdown custom-form-dropdown-attendee"
         @selected={{this.type}}
         @onChange={{action (mut this.type)}}
-        style="line-height: inherit; width: 20%;min-width: 11rem;max-width: 11rem;">
+        style="line-height: inherit; min-width: 11rem">
         <div class="default text">
           {{ this.type }}
         </div>
