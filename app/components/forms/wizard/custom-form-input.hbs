@@ -7,7 +7,7 @@
 </div>
 <div style="display: flex; flex-direction: column">
   <div {{did-update this.updated @field}} class="ui action input main" style="width: inherit;">
-    {{#if (eq this.type "number")}}
+    {{#if (or (eq this.type "number") (eq this.type "year"))}}
       <div style="width: 20%">
         <Input type="text" placeholder={{t "Field Name"}} @value={{this.name}}/>
       </div>
@@ -29,7 +29,7 @@
         </div>
       </UiDropdown>
     {{/if}}
-    {{#if (eq this.type "number")}}
+    {{#if (or (eq this.type "number") (eq this.type "year"))}}
       <div class="ui action input input-attendee-custom-form number-item">
           <Input
             @type="number"

@@ -266,9 +266,9 @@
                     <i class="dropdown icon"></i>
                     <div class="default text">{{t 'Select your year'}}</div>
                     <div class="menu">
-                      {{#each this.years as |years|}}
-                        <div class="item" data-value="{{@years.year}}">
-                          {{years.year}}
+                      {{#each (range field.min (add field.max 1)) as |year|}}
+                        <div class="item" data-value="{{year}}">
+                          {{year}}
                         </div>
                       {{/each}}
                     </div>

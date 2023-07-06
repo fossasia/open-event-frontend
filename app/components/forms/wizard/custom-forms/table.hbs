@@ -90,7 +90,7 @@
           </td>
           {{#if (and this.complexColumn (eq @form 'attendee'))}}
             <td class="border center aligned">
-              {{if (eq field.type "number") (concat field.min " - " field.max) "-"}}
+              {{if (or (eq field.type "number") (eq field.type "year")) (concat field.min " - " field.max) "-"}}
             </td>
           {{/if}}
           <td class="border center aligned">
