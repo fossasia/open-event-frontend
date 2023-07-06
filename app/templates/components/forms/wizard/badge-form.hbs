@@ -23,4 +23,34 @@
       {{/each}}
     </div>
   </UiDropdown>
+  <div>
+    <div class="badge-setting">
+      <h2 class="badge-setting-title ">
+        <div class="ui hidden divider mb-0"/>
+        {{t 'Fields'}}
+        <button type="button" class="ui mini blue button right floated m-2" {{action 'addBadgeField'}}>
+          <i class="add icon"/>
+          {{t 'Add Rows'}}
+        </button>
+      </h2>
+      {{#if this.data.badgeFields.length}}
+        <div>
+          {{#each this.data.badgeFields as |_field index|}}
+            <div class="ui hidden divider mb-0"></div>
+            <Forms::Wizard::BadgeFieldForm
+              @data={{_field}}
+              @index={{index}}
+              @event={{this.data.event}}
+              @move="move" 
+              @save="save"
+              @removeBadgeField={{this.removeBadgeField}}
+              @isLoading={{this.isLoading}} />
+          {{/each}}
+          <div class="spacer-50"></div>
+        </div>
+      {{else}}
+        <div class="spacer-50"></div>
+      {{/if}}
+    </div>
+  </div>
 </div>
