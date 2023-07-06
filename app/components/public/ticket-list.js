@@ -45,8 +45,8 @@ export default Component.extend(FormMixin, {
   accessCodeTickets : A(),
   discountedTickets : A(),
 
-  invalidPromotionalAccessCode: false,
-  invalidPromotionalDiscountCode: false,
+  invalidPromotionalAccessCode   : false,
+  invalidPromotionalDiscountCode : false,
 
   tickets: computed('orderAmount', function() {
     const ticketMap = {};
