@@ -112,9 +112,9 @@ export default ModelBase.extend({
     is_consent_form_field_photo : tn.t('Wikimania photo consent'),
     is_consent_form_field_email : tn.t('Wikimania email updates'),
     isConsentOfRefundPolicy     : tn.t('Consent of refund policy'),
-    languageForm1               : tn.t('What is your native language, or what language are you most fluent in?'),
-    languageForm2               : tn.t('Are you fluent in any other of the following languages?'),
     homeWiki                    : tn.t('What is your home wiki'),
+    nativeLanguage              : tn.t('What is your native language, or what language are you most fluent in?'),
+    fluentLanguage              : tn.t('Are you fluent in any other of the following languages?'),
     wikiScholarship             : tn.t('Have you received a Wikimania scholarship?')
   },
 
