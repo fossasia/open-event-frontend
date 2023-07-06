@@ -4,7 +4,7 @@ import Controller from '@ember/controller';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 
 @classic
-export default class AttendeeController extends Controller.extend(EventWizardMixin) {
+export default class BadgeController extends Controller.extend(EventWizardMixin) {
   async saveForms(data) {
     await Promise.all((data?.customForms?.toArray() ?? []).map(customForm => customForm.save()));
     await Promise.all((data?.tickets ?? []).map(ticket => ticket.save()));
@@ -33,7 +33,7 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
     try {
       await this.saveForms(data);
       this.saveEventDataAndRedirectTo(
-        direction === 'forwards' ? 'events.view.edit.badge' : 'events.view.edit.other-details',
+        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.attendee',
         ['tickets']
       );
     } catch (error) {
