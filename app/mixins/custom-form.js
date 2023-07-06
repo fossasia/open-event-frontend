@@ -673,7 +673,7 @@ export default Mixin.create(MutableArray, {
         event           : parent
       }),
       this.store.createRecord('custom-form', {
-        name            : 'Consent form field',
+        name            : 'Code of conduct consent',
         fieldIdentifier : 'is_consent_form_field',
         formID          : _formID,
         form            : 'attendee',

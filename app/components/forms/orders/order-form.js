@@ -460,7 +460,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter Consent form field.')
+          prompt : this.l10n.t('Please enter Code of conduct consent.')
         }
       ]
     };

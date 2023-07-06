@@ -108,7 +108,7 @@ export default ModelBase.extend({
     acceptVideoRecording        : tn.t('Photo & video & text consent'),
     acceptShareDetails          : tn.t('Partner contact consent'),
     acceptReceiveEmails         : tn.t('Email consent'),
-    is_consent_form_field       : tn.t('Consent form field'),
+    is_consent_form_field       : tn.t('Code of conduct consent'),
     is_consent_form_field_photo : tn.t('Wikimania photo consent'),
     is_consent_form_field_email : tn.t('Wikimania email updates'),
     isConsentOfRefundPolicy     : tn.t('Consent of refund policy'),

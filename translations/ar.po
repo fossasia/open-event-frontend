@@ -3591,11 +3591,11 @@ msgstr "اعرف جمهورك"
 #: app/templates/components/forms/wizard/sponsors-step.hbs:15:16
 #: app/templates/components/public/side-menu.hbs:41:87
 #: app/templates/components/public/side-menu.hbs:45:89
-msgid "Sponsors"
+msgid "Supporters"
 msgstr "الرعاة"
 
 #: app/mixins/event-wizard.js:36:22
-msgid "Advertise your sponsors"
+msgid "Advertise your Supporters"
 msgstr "أعلن الرعاة"
 
 #: app/mixins/event-wizard.js:41:22
@@ -5737,7 +5737,7 @@ msgstr "مولد الموقع"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
 msgid ""
-"You would like to have a dedicated event website with all details, sponsors "
+"You would like to have a dedicated event website with all details, supporters "
 "listing, speakers and sessions and the entire schedule?"
 msgstr ""
 "هل ترغب في الحصول على موقع ويب مخصص للأحداث يحتوي على جميع التفاصيل وقائمة "
@@ -5804,7 +5804,7 @@ msgid "Information to be collected from attendees"
 msgstr "المعلومات التي سيتم جمعها من الحاضرين"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:60:14
-msgid "Details and logos of sponsors"
+msgid "Details and logos of supporters"
 msgstr "تفاصيل وشعارات الرعاة"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:73:12
@@ -5915,7 +5915,7 @@ msgid "Click here to add"
 msgstr "انقر هنا للإضافة"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
-msgid "No. of Sponsors"
+msgid "No. of Supporters"
 msgstr "عدد الرعاة"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
@@ -12129,8 +12129,8 @@ msgid "Friendly Space Policy"
 msgstr "سياسة المساحة الودية"
 
 #: app/models/custom-form.js:113:28
-msgid "Consent form field"
-msgstr "حقل نموذج الموافقة"
+msgid "Code of conduct consent"
+msgstr "الموافقة على مدونة قواعد السلوك"
 
 #: app/utils/dictionary/age-groups.ts:5:9
 msgid "Under 18"
@@ -12203,3 +12203,55 @@ msgstr "ما هي لغتك الأم ، أو ما هي اللغة التي تتق
 #: app/models/custom-form.js:111:27
 msgid "Are you fluent in any other of the following languages?"
 msgstr "هل تتقن أي لغة أخرى من اللغات التالية؟"
+
+#: app/models/custom-form.js:106:27
+msgid "Which of these categories describe your gender identity? (check all that apply)"
+msgstr "أي من الفئات التالية يصف هويتك الجنسية على أفضل نحو؟ (اختر كل ما ينطبق)"
+
+#: app/utils/dictionary/genders.ts:5:12
+msgid "Man"
+msgstr "رجل"
+
+#: app/utils/dictionary/genders.ts:8:12
+msgid "Woman"
+msgstr "امرأة"
+
+#: app/utils/dictionary/genders.ts:11:12
+msgid "Transgender"
+msgstr "المتحولين جنسيا"
+
+#: app/utils/dictionary/genders.ts:14:12
+msgid "Non-binary"
+msgstr "غير ثنائي"
+
+#: app/utils/dictionary/genders.ts:17:12
+msgid "Genderqueer"
+msgstr "الجنس"
+
+#: app/utils/dictionary/genders.ts:20:12
+msgid "An identity not listed here"
+msgstr "هوية غير مدرجة هنا"
+
+#: app/utils/dictionary/genders.ts:23:12
+msgid "I prefer not to say"
+msgstr "أنا أفضل ألا أقول"
+
+#: app/templates/components/forms/orders/order-form.hbs:251:26
+msgid "I consent to the Wikimania"
+msgstr "أوافق على ويكيمانيا"
+
+#: app/templates/components/forms/orders/order-form.hbs:252:91
+msgid "photo policy"
+msgstr "سياسة الصور"
+
+#: app/models/custom-form.js:116:36
+msgid "Wikimania photo consent"
+msgstr "ويكيمانيا الموافقة على الصورة"
+
+#: app/models/custom-form.js:117:36
+msgid "Wikimania email updates"
+msgstr "تحديثات البريد الإلكتروني Wikimania"
+
+#: app/templates/components/forms/orders/order-form.hbs:259:26
+msgid "I want to receive email updates about future Wikimania editions."
+msgstr "أرغب في تلقي تحديثات عبر البريد الإلكتروني حول إصدارات Wikimania المستقبلية."
