@@ -5,27 +5,27 @@
     {{t 'Add Custom Form Field'}}
   </span>
 </div>
-<div style="display: flex; flex-direction: column">
-  <div {{did-update this.updated @field}} class="ui action input main" style="width: inherit;">
+<div class="cf-container">
+  <div {{did-update this.updated @field}} class="ui action input main number-text">
     {{#if (eq this.type "number")}}
-      <div style="width: 34%; max-width: 23rem">
+      <div class="number-div">
         <Widgets::Forms::RichTextLink
           @value={{this.name}}/>
       </div>
     {{else}}
-      <div style="width: 48%; max-width: 33rem">
+      <div class="other-div">
         <Widgets::Forms::RichTextLink
           @value={{this.name}}/>
       </div>
     {{/if}}
-    <div style="width: 11rem;">
-      <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+    <div class="lang-dropdown">
+      <div class="ui hidden divider lang-dropdown-item"></div>
       {{#if (eq @form 'attendee')}}
         <UiDropdown 
-          class="ui selection dropdown custom-form-dropdown-attendee" 
+          class="ui selection dropdown custom-form-dropdown-attendee item-content" 
           @selected={{this.mainLanguage}} 
           @onChange={{action 'onMainLanguageChange'}}
-          style="line-height: inherit; min-width: 11rem;">
+          >
           <div class="default text">
             {{ this.mainLanguage }}
           </div>
@@ -40,8 +40,8 @@
     </div>
     <div>
       {{#if (eq this.type "number")}}
-        <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
-        <div style="display: flex;">
+        <div class="ui hidden divider range-box"></div>
+        <div class="number-warpper">
           <Input
             @type="number"
             @name="min_price"
@@ -51,6 +51,7 @@
             @type="number"
             @name="max_price"
             placeholder={{t "Max"}} style="width: 5rem; line-height: 1.7rem"
+            @class="abc"
             @value={{this.max}} />
         </div>
       {{/if}}
@@ -76,7 +77,7 @@
       </UiDropdown>
     </div>
     <div>
-      <div class="ui hidden divider" style="margin: 1.2rem 0rem;"></div>
+      <div class="ui hidden divider wrapper-button"></div>
       {{#if (eq @form 'attendee')}}
         <button class="ui button" style="margin: 0; width:50%; float:left; min-width: 7rem" {{action 'addTranslation'}} disabled={{this.disableAddTranslation}}>{{t 'Add Translation'}}</button>
       {{/if}}

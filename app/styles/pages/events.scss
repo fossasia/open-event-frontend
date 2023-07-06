@@ -119,8 +119,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
   width: 100%;
   height: 100%;
   border: 0;
@@ -141,5 +139,58 @@
 .input-attendee-custom-form {
   input {
     border-radius: unset !important;
+  }
+}
+
+.cf-container {
+  display: flex !important;
+  flex-direction: column !important;
+
+  .number-text {
+    width: inherit !important;
+
+    .number-div {
+      width: 34% !important;
+      max-width: 23rem !important;
+    }
+
+    .other-div {
+      width: 48% !important;
+      max-width: 33rem !important;
+    }
+  }
+
+  .lang-dropdown {
+    width: 11rem !important;
+
+    .lang-dropdown-item {
+      margin-top: 1.2rem !important;
+      margin-bottom: 1.2rem !important;
+      margin-left: unset !important;
+      margin-right: unset !important;
+    }
+
+    .item-content {
+      line-height: inherit !important;
+      min-width: 11rem !important;
+    }
+  }
+
+  .range-box {
+    margin-top: 1.2rem !important;
+    margin-bottom: 1.2rem !important;
+    margin-left: unset !important;
+    margin-right: unset !important;
+  }
+
+  .number-warpper {
+    display: flex;
+  }
+
+  .wrapper-button {
+    margin-top: 1.2rem !important;
+    margin-bottom: 1.2rem !important;
+    margin-left: unset !important;
+    margin-right: unset !important;
   }
 }
