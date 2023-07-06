@@ -35,5 +35,8 @@ export default class CustomFormInputTranslation extends Component<Args> {
     if (this.args.onRemoveTranslation) {
       this.args.onRemoveTranslation(this.args.data)
     }
+    if (this.args.onChange) {
+      this.args.onChange(this.args.data, '')
+    }
   }
 }
