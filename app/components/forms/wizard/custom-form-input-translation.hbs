@@ -1,10 +1,10 @@
 {{#if (eq @type "number")}}
-  <div style="width: 23rem">
+  <div class="rich-text-type-number" >
     <Widgets::Forms::RichTextLink
       @value={{@data.name}}/>
   </div>
 {{else}}
-  <div style="width: 33rem">
+  <div class="rich-text-other" >
     <Widgets::Forms::RichTextLink
       @value={{@data.name}}/>
   </div>
