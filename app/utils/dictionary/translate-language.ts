@@ -11,7 +11,7 @@ export const LANGUAGE_CODE_ENUM = {
   BENGALI             : 'bn',
   SPANISH             : 'es',
   THAILAND            : 'th',
-  VIETNAMESS          : 'vi',
+  VIETNAMESE          : 'vi',
   KOREAN              : 'ko',
   ARABIC              : 'ar',
   HINDI               : 'hi',
@@ -97,7 +97,7 @@ export const translateLanguages = [
   },
   {
     name      : 'Tiếng Việt',
-    code      : LANGUAGE_CODE_ENUM.VIETNAMESS,
+    code      : LANGUAGE_CODE_ENUM.VIETNAMESE,
     isChecked : false
   },
   {
