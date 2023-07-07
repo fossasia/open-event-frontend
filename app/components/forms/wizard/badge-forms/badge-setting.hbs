@@ -1,0 +1,51 @@
+<table class="ui selectable celled table">
+  <thead>
+    {{#if @headerText}}
+      <tr>
+        <th class="text left aligned">
+          {{@headerText}}
+        </th>
+      </tr>
+    {{/if}}
+  </thead>
+  <tbody>
+    <tr class="border left aligned ml-2">
+      <span class="ml-4">{{t 'Badge Size'}}</span>
+      <UiDropdown
+        @class="search selection mt-2 mb-2 ml-2"
+        {{!-- @selected={{get holder field.identifierPath}} --}}
+        @onChange={{action (mut holder.badgeSize)}} as |execute mapper|>
+        <i class="dropdown icon"></i>
+        <div class="default text">{{t 'Select your badge size'}}</div>
+        <div class="menu">
+          {{#each this.badgeSize as |size|}}
+            <div class="item" data-value="{{map-value mapper size.name}}">
+              {{t size.name}}
+            </div>
+          {{/each}}
+        </div>
+      </UiDropdown>
+    </tr>
+    <tr class="border left aligned ml-2">
+      <span class="ml-4">{{t 'Badge Orientation'}}</span>
+      <UiDropdown
+        @class="search selection mt-2 mb-2 ml-2"
+        {{!-- @selected={{get holder field.identifierPath}} --}}
+        @onChange={{action (mut holder.badgeOrientation)}} as |execute mapper|>
+        <i class="dropdown icon"></i>
+        <div class="default text">{{t 'Select your badge orientation'}}</div>
+        <div class="menu">
+          {{#each this.badgeOrientation as |size|}}
+            <div class="item" data-value="{{map-value mapper size.name}}">
+              {{t size.name}}
+            </div>
+          {{/each}}
+        </div>
+      </UiDropdown>
+    </tr>
+    <tr class="border left aligned ml-2">
+      <span class="ml-4 mb-4">{{t 'Background'}}</span>
+
+    </tr>
+  </tbody>
+</table>
