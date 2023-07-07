@@ -4,6 +4,7 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy, union } from 'lodash-es';
 import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
+import { tinycolor } from 'tinycolor2';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected: [],
@@ -65,23 +66,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     badgeField.isDeleted = true;
   },
 
-  getBadgeSize: computed('badgeSize', function() {
-    return this.badgeSize;
-  }),
-
-  getBadgeSize: computed('badgeOrientation', function() {
-    return this.badgeOrientation;
-  }),
-
-  getBadgeColor: computed('badgeColor', function() {
-    return this.data.badgeColor;
-  }),
-
   getsampleData: computed('sampleData', function() {
     return {
-      name : 'Barack Obama',
-      organisation: 'US',
-      position : 'President'
+      name         : 'Barack Obama',
+      organisation : 'US',
+      position     : 'President'
     };
   }),
 
@@ -104,10 +93,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     mutateBadgeOrientation(value) {
       this.set('badgeOrientation', value);
       this.data.badgeOrientation = value;
-      debugger
     },
     mutateBadgeColor(color) {
-      let colorCode = tinycolor(color.target.value);
+      const colorCode = tinycolor(color.target.value);
       this.set('badgeColor', colorCode.toHexString());
       this.data.badgeColor = this.badgeColor;
     }

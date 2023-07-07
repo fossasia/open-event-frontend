@@ -1,13 +1,13 @@
 <div class="ui basic segment">
     <div class="bgImg ui raised segment"
-        style="padding:0; width:calc({{if @previewHeight (if (eq @badgeOrientation 'Landscape') @previewHeight @previewLineHeight) (if (eq @badgeOrientation 'Landscape') 4 3)}}in);">
-        <div style="color: #000000;
+        style={{ html-safe (concat "padding:0; width:calc({{if @previewHeight (if (eq @badgeOrientation 'Landscape') @previewHeight @previewLineHeight) (if (eq @badgeOrientation 'Landscape') 4 3)}}in);")}}>
+        <div style={{ html-safe (concat "color: #000000;
             background-size: cover;
             background-repeat: no-repeat;
 
             height: calc({{if @previewHeight (if (eq @badgeOrientation 'Landscape') @previewLineHeight @previewHeight) (if (eq @badgeOrientation 'Landscape') 3 4)}}in);
             background-color: {{if @showSampleData '#85afe66e' @backColor}};
-            ">
+            ")}}>
             <div class="preview content" style="padding-top: 20%">
                 {{#if showSampleData}}
                 <p style="
@@ -35,13 +35,13 @@
                 {{else}}
                 {{#each @fields as |_field|}}
                 {{#if (not _field.isDeleted)}}
-                <p style="
+                <p style={{ html-safe (concat "
                             font-size : {{if (gt _field.fontSize 90) 90 _field.fontSize}}px;
                             text-align: {{_field.textAlignment}};
                             text-transform: {{_field.textType}};
                             overflow: hidden;
                             word-wrap: break-word;
-                            ">
+                            ")}}>
                     {{_field.sampleText}}
                 </p>
                 {{/if}}
