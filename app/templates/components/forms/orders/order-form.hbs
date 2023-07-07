@@ -55,7 +55,7 @@
           {{t 'Ticket Holder\'s Information'}}
         {{/if}}
       </h4>
-      {{#each this.holders as |holder index|}}
+      {{#each this.holders as |holder indexHolder|}}
         <div class="inline field">
           <i class="user icon"></i>
           <label>
@@ -64,7 +64,7 @@
             {{else}}
               {{t 'Ticket Holder'}}
             {{/if}}
-            {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}
+            {{inc indexHolder}}{{t ' -for- '}}{{holder.ticket.name}}
           </label>
         </div>
         <div class="field">
@@ -77,7 +77,13 @@
           {{#if field.isIncluded }}
             {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
-                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
+                {{#if field.isComplex}}
+                  <label class="{{if field.isRequired 'required'}}" for="name">
+                    <span id={{concat field.fieldIdentifier "_" indexHolder "_" index}}>{{this.fieldNameConvertRichText}}</span>
+                  </label>
+                {{else}}
+                  <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
+                {{/if}}
                 {{#if (eq field.type 'paragraph')}}
                   <Textarea @id={{this.textareaIdGenerated}} @value={{mut (get holder field.identifierPath)}} placeholder={{this.placeholder}} @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                 {{/if}}
@@ -224,7 +230,7 @@
                     <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}}</a>
                     <span> {{t 'and the'}} </span>
                     <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
-                    <span> .</span>
+                    <span>.</span>
                 {{else if (eq field.fieldIdentifier 'is_consent_form_field_photo')}}
                   <UiCheckbox
                     @checked={{get holder field.identifierPath}}         
@@ -232,7 +238,7 @@
                     @onChange={{action (mut (get holder field.identifierPath))}} />
                     <span>{{t 'I consent to the Wikimania'}} </span>
                     <a href="https://wikimania.wikimedia.org/wiki/2023:Photography_policy">{{t 'photo policy'}}</a>
-                    <span> .</span>
+                    <span>.</span>
                 {{else if (eq field.fieldIdentifier 'is_consent_form_field_email')}}
                   <UiCheckbox
                     @checked={{get holder field.identifierPath}}         
@@ -240,7 +246,7 @@
                     @onChange={{action (mut (get holder field.identifierPath))}} />
                     <span>{{t 'I want to receive email updates about future Wikimania editions.'}} </span>
                 {{else if (eq field.type 'checkbox')}}
-                  {{#if (and (not-eq field.fieldIdentifier "language_form_1") (not-eq field.fieldIdentifier "language_form_2"))}}     
+                  {{#if (and (not-eq field.fieldIdentifier "native_language") (not-eq field.fieldIdentifier "fluent_language"))}}     
                     <UiCheckbox
                       @checked={{get holder field.identifierPath}}         
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
@@ -268,7 +274,7 @@
                     </div>
                   </UiDropdown>
                 {{/if}}
-                {{#if (eq field.fieldIdentifier "language_form_1")}}
+                {{#if (eq field.fieldIdentifier "native_language")}}
                   <Widgets::Forms::UiCheckboxGroup 
                     @options={{languageForms1}}
                     @onChange={{action "updateLanguageFormsSelection"}}
@@ -276,7 +282,7 @@
                     @field={{field}}
                   />
                 {{/if}}
-                {{#if (eq field.fieldIdentifier "language_form_2")}}
+                {{#if (eq field.fieldIdentifier "fluent_language")}}
                   <Widgets::Forms::UiCheckboxGroup 
                     @options={{languageForms2}}
                     @onChange={{action "updateLanguageFormsSelection"}}

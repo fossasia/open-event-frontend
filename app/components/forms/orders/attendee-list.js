@@ -20,11 +20,11 @@ export default class AttendeeList extends Component {
   @computed('data.attendees')
   get holders() {
     this.data.attendees.forEach(attendee => {
-      if (attendee.language_form_1) {
-        this.languageFormMapCodeToName(attendee, 'language_form_1', languageForms1);
+      if (attendee.native_language) {
+        this.languageFormMapCodeToName(attendee, 'native_language', languageForms1);
       }
-      if (attendee.language_form_2) {
-        this.languageFormMapCodeToName(attendee, 'language_form_2', languageForms2);
+      if (attendee.fluent_language) {
+        this.languageFormMapCodeToName(attendee, 'fluent_language', languageForms2);
       }
       if (attendee.gender) {
         this.genderAddSpaces(attendee);
@@ -58,7 +58,6 @@ export default class AttendeeList extends Component {
     const current_locale = this.cookies.read('current_locale');
     const customFields = orderBy(this.fields.toArray()?.map(field => {
       const { main_language } = field;
-
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
       } else if (field.translations?.length) {
@@ -77,6 +76,22 @@ export default class AttendeeList extends Component {
       return field;
     }), ['position']);
     return groupBy(customFields, field => field.get('form'));
+  }
+
+  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
+    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
+  }
+
+  get fieldNameConvertRichText() {
+    this.holders.forEach((holder, indexHolder) => {
+      this.fields.forEach((field, index) => {
+        const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
+        if (elem) {
+          elem.innerHTML = field.transName;
+        }
+      });
+    });
+    return null;
   }
 
   @action

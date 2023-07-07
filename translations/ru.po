@@ -3567,11 +3567,11 @@ msgstr "Знай свою аудиторию"
 #: app/templates/components/forms/wizard/sponsors-step.hbs:15:16
 #: app/templates/components/public/side-menu.hbs:41:87
 #: app/templates/components/public/side-menu.hbs:45:89
-msgid "Sponsors"
+msgid "Supporters"
 msgstr "Спонсоры"
 
 #: app/mixins/event-wizard.js:36:22
-msgid "Advertise your sponsors"
+msgid "Advertise your supporters"
 msgstr "Прорекламируйте своих спонсоров"
 
 #: app/mixins/event-wizard.js:41:22
@@ -5694,7 +5694,7 @@ msgid "Website Generator"
 msgstr "Генератор веб-сайтов"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
-msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
+msgid "You would like to have a dedicated event website with all details, supporters listing, speakers and sessions and the entire schedule?"
 msgstr ""
 "Вы хотели бы иметь специальный веб-сайт мероприятия со всеми подробностями, "
 "списком спонсоров, докладчиками, сессиями и всем расписанием?"
@@ -5752,7 +5752,7 @@ msgid "Information to be collected from attendees"
 msgstr "Информация, которую необходимо собрать от участников"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:60:14
-msgid "Details and logos of sponsors"
+msgid "Details and logos of supporters"
 msgstr "Реквизиты и логотипы спонсоров"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:73:12
@@ -5863,7 +5863,7 @@ msgid "Click here to add"
 msgstr "Нажмите здесь, чтобы добавить"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
-msgid "No. of Sponsors"
+msgid "No. of Supporters"
 msgstr "Кол-во спонсоров"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
@@ -12028,8 +12028,8 @@ msgid "Friendly Space Policy"
 msgstr "Дружественная космическая политика"
 
 #: app/models/custom-form.js:113:28
-msgid "Consent form field"
-msgstr "Поле формы согласия"
+msgid "Code of conduct consent"
+msgstr "Согласие с кодексом поведения"
 
 #: app/utils/dictionary/boolean-complex.ts:13:15
 msgid "Not sure yet"
@@ -12068,10 +12068,8 @@ msgid "Wikimania email updates"
 msgstr "Электронная почта Викимании"
 
 #: app/templates/components/forms/orders/order-form.hbs:251:26
-msgid "I consent to having my photo taken at Wikimania per the"
-msgstr ""
-"Я даю согласие на то, чтобы моя фотография была сделана в Викимании в "
-"соответствии с"
+msgid "I consent to the Wikimania"
+msgstr "Я согласен с Викиманией"
 
 #: app/templates/components/forms/orders/order-form.hbs:252:91
 msgid "photo policy"
@@ -12080,4 +12078,39 @@ msgstr "фото политика"
 #: app/templates/components/forms/orders/order-form.hbs:259:26
 msgid "I want to receive email updates about future Wikimania editions."
 msgstr ""
-"Я хочу получать по электронной почте новости о будущих выпусках Викимании"
+"Я хочу получать по электронной почте новости о будущих выпусках Викимании."
+
+#: app/models/custom-form.js:106:27
+msgid "Which of these categories describe your gender identity? (check all that apply)"
+msgstr "Какие из этих категорий описывают вашу гендерную идентичность? (отметьте все, что подходят)"
+
+#: app/utils/dictionary/genders.ts:5:12
+msgid "Man"
+msgstr "Мужчина"
+
+#: app/utils/dictionary/genders.ts:8:12
+msgid "Woman"
+msgstr "Женщина"
+
+#: app/utils/dictionary/genders.ts:11:12
+msgid "Transgender"
+msgstr "Трансгендер"
+
+#: app/utils/dictionary/genders.ts:14:12
+msgid "Non-binary"
+msgstr "Небинарный"
+
+#: app/utils/dictionary/genders.ts:17:12
+msgid "Genderqueer"
+msgstr "Гендерквир"
+
+#: app/utils/dictionary/genders.ts:20:12
+msgid "An identity not listed here"
+msgstr "Идентичность, которая не указана здесь"
+
+#: app/utils/dictionary/genders.ts:23:12
+msgid "I prefer not to say"
+msgstr "Я предпочитаю не говорить"
+#: app/models/custom-form.js:106:27
+msgid "Which of these categories describe your gender identity? (check all that apply)"
+msgstr "以下哪些類別描述了你的性別認同？（勾選所有適用的選項）"
