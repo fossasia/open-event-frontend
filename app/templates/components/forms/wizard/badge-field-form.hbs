@@ -59,38 +59,12 @@
       <div class="ui stackable grid padding-left-1rem">
         <div class="row pt-0">
           <div class="field five wide column">
-            <label>{{t 'Font name'}}</label>
-            <UiDropdown
-              @class="search selection"
-              {{!-- @selected={{get holder field.identifierPath}} --}}
-              @onChange={{action (mut holder.country)}} as |execute mapper|>
-              <Input
-                @type="hidden"
-                @autocomplete="no"
-                @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
-              <i class="dropdown icon"></i>
-              <div class="default text">{{t 'Select your country'}}</div>
-              <div class="menu">
-                {{#each this.countries as |country|}}
-                  <div class="item" data-value="{{map-value mapper country.name}}">
-                    <i class="{{lowercase country.code}} flag"></i>
-                    {{t-var country.name}}
-                  </div>
-                {{/each}}
-              </div>
-            </UiDropdown>
-          </div>
-          <div class="field five wide column">
             <label>{{t 'Font size (px)'}}</label>
             <Input
               @type='text'
               @placeholder="Font size"
               {{!-- @value={{mut (get holder field.identifierPath)}} --}}
               @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}/>
-          </div>
-          <div class="field five wide column">
-            <label>{{t 'Font Color'}}</label>
-            <SpectrumColorPicker/>
           </div>
         </div>
       </div>
@@ -119,9 +93,7 @@
       <div class="ui stackable grid padding-left-1rem">
         <div class="row pt-0 badge-form-text-alignment">
           <div class="ui icon buttons">
-            <button class="ui button">{{t 'Left'}}</button>
             <button class="ui button">{{t 'Center'}}</button>
-            <button class="ui button">{{t 'Right'}}</button>
           </div>
         </div>
       </div>
