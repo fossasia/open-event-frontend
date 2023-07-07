@@ -8,11 +8,10 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
-  badgeID     : attr('string'),
-  badgeFields : hasMany('badge-field-form'),
+  badgeID : attr('string'),
   /**
    * Relationships
    */
-  event       : belongsTo('event'),
-  ticket      : hasMany('ticket')
+  event   : belongsTo('event'),
+  ticket  : hasMany('ticket')
 });

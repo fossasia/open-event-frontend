@@ -18,6 +18,12 @@
           </div>
         </div>
       </div>
+      <div class="ui center aligned header">
+        {{t 'Information about Badge Creator'}}
+      </div>
+      <div class="ui muted text">
+        {{t 'This badge creator lets you position the data that is going to be printed on the badge. Do note that the image is for PREVIEW only and not going to be printed with the data.'}}
+      </div>
     </div>
   </div>
 
@@ -34,7 +40,7 @@
           @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
           @id={{_badge.badgeID}}
           @onRemoveForm={{action 'onRemoveForm'}}
-          @isLoading={{this.isLoading}} ></Forms::Wizard::BadgeForm>
+          @isLoading={{this.isLoading}} />
       {{/each}}
       {{#if this.selectableTickets.length}}
         <div class="ui hidden divider"></div>
