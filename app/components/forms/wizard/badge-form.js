@@ -94,12 +94,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       badgeSize.forEach(badge => {
         if (badge.name === value) {this.set('badgeSize', badge)}
       });
-      this.data.badgeSize = this.badgeSize
+      this.data.badgeSize = this.badgeSize;
     },
     mutateBadgeColor(color) {
       this.set('badgeColor', color);
       this.data.badgeColor = this.badgeColor;
-      debugger
     }
   }
 });

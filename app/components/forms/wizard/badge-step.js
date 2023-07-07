@@ -73,11 +73,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     addBadge(ticketsDetails = []) {
       const _badgeID =  v4();
       this.data.badges.pushObject(this.store.createRecord('badge-form', {
-        badgeID: _badgeID,
+        badgeID          : _badgeID,
         ticketsDetails,
-        badgeSize: [],
-        isShowSampleData: false,
-        badgeColor: 'FFFFFF'
+        badgeSize        : [],
+        isShowSampleData : false,
+        badgeColor       : 'FFFFFF'
       }));
     },
 
@@ -114,16 +114,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this._super(direction);
     },
     onRemoveForm(_id) {
-      console.log(this.data.badges);
-      // const deleteBadge = this.data.badges.find(_badge => _badge.badgeID === _id);
-      // if (deleteBadge) {
-      //   const { ticketsDetails } = deleteBadge;
-      //   ticketsDetails.forEach(ticket => {
-      //     ticket.badgeID = '';
-      //   });
-      //   this.excludeTickets.removeObjects(deleteBadge.ticketsDetails);
-      //   this.data.badges.removeObject(deleteBadge);
-      // }
+      const deleteBadge = this.data.badges.find(_badge => _badge.badgeID === _id);
+      if (deleteBadge) {
+        const { ticketsDetails } = deleteBadge;
+        ticketsDetails.forEach(ticket => {
+          ticket.badgeID = '';
+        });
+        this.excludeTickets.removeObjects(deleteBadge.ticketsDetails);
+        this.data.badges.removeObject(deleteBadge);
+      }
     }
   }
 });
