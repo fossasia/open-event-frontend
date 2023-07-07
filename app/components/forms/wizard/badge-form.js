@@ -6,16 +6,22 @@ import { sortBy, union } from 'lodash-es';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected: [],
+
   init() {
     this._super(...arguments);
     this.currentSelected = this.data.ticketsDetails;
   },
+
   ticketsEnable: computed('tickets', 'ticketsDetails', function() {
     return union(this.tickets || [], this.data.ticketsDetails || []);
   }),
 
   fixedFields: computed('data.customForms.@each', function() {
     return this.data.customForms?.filter(field => field.isFixed);
+  }),
+
+  badgeFields: computed('data.badgeFields.@each.isDeleted', function() {
+    return this.data.badgeFields?.filter(field => !field.isDeleted);
   }),
 
   selectChanges: observer('data.ticketsDetails', function() {
@@ -53,8 +59,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   showEditColumn: computed('editableFields.@each', function() {
     return this.editableFields?.some(field => field.isComplex);
   }),
+
   removeBadgeField(badgeField) {
-    this.data.badgeFields.removeObject(badgeField);
+    badgeField.isDeleted = true;
   },
 
   actions: {
@@ -64,7 +71,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
     addBadgeField() {
       this.data.badgeFields.pushObject(this.store.createRecord('badge-field-form', {
-        badgeID: this.data.badgeID
+        badgeID   : this.data.badgeID,
+        isDeleted : false
       }));
     }
   }
