@@ -72,28 +72,13 @@
     </div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeImage 
-        @fn="Barack" 
-        @ln="Obama" 
-        @font_fn="20" 
-        @font_ln="20" 
-        @defFontType1="Times New Roman"
-        @defFontType2="Times New Roman" 
-        @fontcol_fn="000"  
-        @fontcol_ln="000"  
-        {{!-- defImageName=defImageName.[0]  --}}
-        {{!-- backImg=imageData.[0]  --}}
         @backColor={{this.badgeColor}}
-        {{!-- custLogoImage=custLogoImage --}}
-        {{!-- logoImageData=logoImageData  --}}
-        {{!-- logoImgChanged=logoImgChanged --}}
-        {{!-- defImage=defImage.[0] --}}
-        {{!-- custImage=custImage.[0]  --}}
-        @previewLineHeight={{this.badgeSize.lineHeight}} 
-        @previewHeight={{this.badgeSize.height}} 
         @sampleData={{this.getsampleData}}
         @showSampleData={{this.data.isShowSampleData}}
         @badgeOrientation={{this.badgeOrientation}}
         @fields={{this.data.badgeFields}}
+        @headerStyle={{this.getBadgeStyle.headerStyle}}
+        @bodyStyle={{this.getBadgeStyle.bodyStyle}}
         />
     </div>
   </div>

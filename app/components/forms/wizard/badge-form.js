@@ -4,6 +4,7 @@ import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy, union } from 'lodash-es';
 import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
+import { htmlSafe } from '@ember/template';
 import { tinycolor } from 'tinycolor2';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
@@ -73,6 +74,35 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       position     : 'President'
     };
   }),
+
+  getBadgeSize: computed('badgeSize', 'badgeOrientation', function() {
+    let height = 4;
+    let lineHeight = 3;
+    if (this.badgeSize) {
+      [height, lineHeight] = [this.badgeSize.height, this.badgeSize.lineHeight];
+    }
+    if (this.badgeOrientation === 'Landscape') {
+      [height, lineHeight] = [lineHeight, height];
+    }
+
+    return {
+      height,
+      lineHeight };
+  }),
+
+  getBadgeStyle: computed('badgeSize', 'badgeOrientation', 'badgeColor', function() {
+    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in)';
+    const bodyStyle = 'color: #000000; background-size: cover; height: calc(' + this.getBadgeSize.height + 'in); background-color: ' + this.badgeColor + ';';
+    return {
+      headerStyle : htmlSafe(headerStyle),
+      bodyStyle   : htmlSafe(bodyStyle)
+    };
+  }),
+
+  // styleHelper: computed('data.badgeFields.@each.fontSize', 'data.badgeFields.@each.textAlignment', 'data.badgeFields.@each.textType', function() {
+  //   const fieldStyle = 'font-size : '  + '; overflow: hidden; word-wrap: break-word;';
+  //   return htmlSafe(fieldStyle);
+  // }),
 
   actions: {
     removeField(field) {
