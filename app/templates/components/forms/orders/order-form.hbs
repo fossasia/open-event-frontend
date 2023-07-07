@@ -240,7 +240,7 @@
                     @onChange={{action (mut (get holder field.identifierPath))}} />
                     <span>{{t 'I want to receive email updates about future Wikimania editions.'}} </span>
                 {{else if (eq field.type 'checkbox')}}
-                  {{#if (and (not-eq field.fieldIdentifier "native_language") (not-eq field.fieldIdentifier "fluent_language"))}}     
+                  {{#if (and (not-eq field.fieldIdentifier "language_form_1") (not-eq field.fieldIdentifier "language_form_2"))}}     
                     <UiCheckbox
                       @checked={{get holder field.identifierPath}}         
                       @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}       
@@ -268,7 +268,7 @@
                     </div>
                   </UiDropdown>
                 {{/if}}
-                {{#if (eq field.fieldIdentifier "native_language")}}
+                {{#if (eq field.fieldIdentifier "language_form_1")}}
                   <Widgets::Forms::UiCheckboxGroup 
                     @options={{languageForms1}}
                     @onChange={{action "updateLanguageFormsSelection"}}
@@ -276,7 +276,7 @@
                     @field={{field}}
                   />
                 {{/if}}
-                {{#if (eq field.fieldIdentifier "fluent_language")}}
+                {{#if (eq field.fieldIdentifier "language_form_2")}}
                   <Widgets::Forms::UiCheckboxGroup 
                     @options={{languageForms2}}
                     @onChange={{action "updateLanguageFormsSelection"}}

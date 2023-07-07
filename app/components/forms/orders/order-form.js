@@ -476,7 +476,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const nativeLanguageValidation = {
+    const languageForm1Validation = {
       rules: [
         {
           type   : 'empty',
@@ -485,7 +485,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const fluentLanguageValidation = {
+    const languageForm2Validation = {
       rules: [
         {
           type   : 'empty',
@@ -598,8 +598,8 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
-      validationRules.fields[`native_language_required_${  index}`] = nativeLanguageValidation;
-      validationRules.fields[`fluent_language_required_${  index}`] = fluentLanguageValidation;
+      validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
+      validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
       validationRules.fields[`is_consent_form_field_required_${  index}`] = isConsentFormFieldValidation;
       validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
