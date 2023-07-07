@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr class="border left aligned ml-2">
-      <span class="ml-4">{{t 'Badge Size'}}</span>
+      <label class="ml-4">{{t 'Badge Size'}}</label>
       <UiDropdown
         @class="search selection mt-2 mb-2 ml-2"
         @selected={{@getBadgeSize}}
@@ -27,7 +27,7 @@
       </UiDropdown>
     </tr>
     <tr class="border left aligned ml-2">
-      <span class="ml-4">{{t 'Badge Orientation'}}</span>
+      <label class="ml-4">{{t 'Badge Orientation'}}</label>
       <UiDropdown
         @class="search selection mt-2 mb-2 ml-2"
         {{!-- @selected={{get holder field.identifierPath}} --}}
@@ -44,8 +44,13 @@
       </UiDropdown>
     </tr>
     <tr class="border left aligned ml-2">
-      <span class="ml-4 mb-4">{{t 'Background'}}</span>
-
+      <label class="ml-4 mb-4">{{t 'Background'}}</label>
+      <div class="field five wide column">
+            {{!-- {{spectrum-color-picker
+                color=teamColor
+                onChange=(action @changeBadgeColor)
+            }} --}}
+      </div>
     </tr>
   </tbody>
 </table>

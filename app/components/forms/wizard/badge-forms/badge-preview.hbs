@@ -16,19 +16,5 @@
             @onChange={{action @showSampleData}} />
             <span>{{t 'Show Sample Data.'}} </span>
     </tr>
-    <tr class="border left aligned">
-        <UiCheckbox
-            @class="slider mt-4 mb-2 ml-2"
-            @checked={{field.isIncluded}}
-            @onChange={{action (mut field.isIncluded)}} />
-            <span>{{t 'Show Rounded Corner.'}} </span>
-    </tr>
-    <tr class="border left aligned">
-        <UiCheckbox
-            @class="slider mt-4 mb-2 ml-2"
-            @checked={{field.isIncluded}}
-            @onChange={{action (mut field.isIncluded)}} />
-            <span>{{t 'Show Badge Hole Slot'}} </span>
-    </tr>
   </tbody>
 </table>

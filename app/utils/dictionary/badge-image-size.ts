@@ -2,22 +2,16 @@ import { tn } from '../text';
 
 export const badgeSize = [
   {
-    name       : '4" x 3"',
+    name       : '4 x 3 inch (101.6 x 76.2 mm)',
     height     : '4',
     lineHeight : '3',
     position   : 1
   },
   {
-    name       : '3.5" x 5"',
-    height     : '3.5',
-    lineHeight : '5',
+    name       : '4 x 6 inch (101.6 x 152.4 mm)',
+    height     : '4',
+    lineHeight : '6',
     position   : 2
-  },
-  {
-    name       : '4.5" x 4"',
-    height     : '4.5',
-    lineHeight : '4',
-    position   : 3
   }
 ];
 

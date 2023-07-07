@@ -23,43 +23,14 @@
       {{/each}}
     </div>
   </UiDropdown>
-  <div>
-    <div class="badge-setting">
-      <h2 class="badge-setting-title ">
-        <div class="ui hidden divider mb-0"/>
-        {{t 'Fields'}}
-        <button type="button" class="ui mini blue button right floated m-2" {{action 'addBadgeField'}}>
-          <i class="add icon"/>
-          {{t 'Add Rows'}}
-        </button>
-      </h2>
-      {{#if this.badgeFields.length}}
-        <div>
-          {{#each this.badgeFields as |_field index|}}
-            <div class="ui hidden divider mb-0"></div>
-            <Forms::Wizard::BadgeFieldForm
-              @data={{_field}}
-              @index={{index}}
-              @event={{this.data.event}}
-              @move="move" 
-              @save="save"
-              @removeBadgeField={{this.removeBadgeField}}
-              @isLoading={{this.isLoading}} />
-          {{/each}}
-          <div class="spacer-50"></div>
-        </div>
-      {{else}}
-        <div class="spacer-50"></div>
-      {{/if}}
-    </div>
-  </div>
+
   <div class="ui hidden divider"></div>
   <div class="ui two column stackable grid">
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeSetting
         @headerText={{t "Page Setting"}}
         @changeBadgeSize={{action 'mutateBadgeSize'}}
-        @changeBadgeColor={{action 'changeBadgeColor'}}
+        {{!-- @changeBadgeColor={{action 'changeBadgeColor'}} --}}
         @getBadgeSize={{this.getBadgeSize}}
         @form="setting" />
     </div>
@@ -72,7 +43,36 @@
   </div>
   <div class="ui hidden divider"></div>
   <div class="ui two column stackable grid">
-    <div class="column"></div>
+    <div class="column">
+      <div class="badge-setting">
+        <h2 class="badge-setting-title ">
+          <div class="ui hidden divider mb-0"/>
+          {{t 'Fields'}}
+          <button type="button" class="ui mini blue button right floated m-2" {{action 'addBadgeField'}}>
+            <i class="add icon"/>
+            {{t 'Add Rows'}}
+          </button>
+        </h2>
+        {{#if this.badgeFields.length}}
+          <div>
+            {{#each this.badgeFields as |_field index|}}
+              <div class="ui hidden divider mb-0"></div>
+              <Forms::Wizard::BadgeFieldForm
+                @data={{_field}}
+                @index={{index}}
+                @event={{this.data.event}}
+                @move="move" 
+                @save="save"
+                @removeBadgeField={{this.removeBadgeField}}
+                @isLoading={{this.isLoading}} />
+            {{/each}}
+            <div class="spacer-50"></div>
+          </div>
+        {{else}}
+          <div class="spacer-50"></div>
+        {{/if}}
+      </div>
+    </div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeImage 
         @fn="Barack" 
