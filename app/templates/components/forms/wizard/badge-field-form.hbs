@@ -23,19 +23,18 @@
             <label>{{t 'Custom Field'}}</label>
             <UiDropdown
               @class="search selection"
-              {{!-- @selected={{get holder field.identifierPath}} --}}
-              @onChange={{action (mut holder.country)}} as |execute mapper|>
+              @selected={{@data.customField}}
+              @onChange={{action (mut @data.customField)}} as |execute mapper|>
               <Input
                 @type="hidden"
                 @autocomplete="no"
-                @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
+                @name={{concat "custom_field" @index}}/>
               <i class="dropdown icon"></i>
-              <div class="default text">{{t 'Select your country'}}</div>
+              <div class="default text">{{t 'Select your custom field'}}</div>
               <div class="menu">
-                {{#each this.countries as |country|}}
-                  <div class="item" data-value="{{map-value mapper country.name}}">
-                    <i class="{{lowercase country.code}} flag"></i>
-                    {{t-var country.name}}
+                {{#each this.badgeCustomFields as |item|}}
+                  <div class="item" data-value="{{map-value mapper item.name}}">
+                    {{t-var item.name}}
                   </div>
                 {{/each}}
               </div>
@@ -46,8 +45,8 @@
             <Input
               @type='text'
               @placeholder="Sample text"
-              {{!-- @value={{mut (get holder field.identifierPath)}} --}}
-              @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}/>
+              @value={{mut @data.sampleText}}
+              @name={{concat "sample_text" @index}}/>
           </div>
         </div>
       </div>
@@ -63,8 +62,8 @@
             <Input
               @type='text'
               @placeholder="Font size"
-              {{!-- @value={{mut (get holder field.identifierPath)}} --}}
-              @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}/>
+              @value={{mut @data.fontSize}}
+              @name={{concat "font_size" @index}}/>
           </div>
         </div>
       </div>
@@ -78,8 +77,8 @@
           {{#each this.booleanTextType as |item|}}
             <div class="ui radio checkbox five wide column">
               <Widgets::Forms::RadioButton
-                @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}}
-                @value={{item.name}} @checked={{mut (get holder field.identifierPath)}}/>
+                @name={{concat "text_type" @index}}
+                @value={{item.name}} @checked={{mut @data.textType}}/>
                 <label>{{t item.name}}</label>
             </div>
           {{/each}}
@@ -93,7 +92,7 @@
       <div class="ui stackable grid padding-left-1rem">
         <div class="row pt-0 badge-form-text-alignment">
           <div class="ui icon buttons">
-            <button class="ui button">{{t 'Center'}}</button>
+            <button class="ui button" {{action 'toggleTextAlignments' 'Center'}}>{{t 'Center'}}</button>
           </div>
         </div>
       </div>

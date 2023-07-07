@@ -33,9 +33,9 @@
           {{t 'Add Rows'}}
         </button>
       </h2>
-      {{#if this.data.badgeFields.length}}
+      {{#if this.badgeFields.length}}
         <div>
-          {{#each this.data.badgeFields as |_field index|}}
+          {{#each this.badgeFields as |_field index|}}
             <div class="ui hidden divider mb-0"></div>
             <Forms::Wizard::BadgeFieldForm
               @data={{_field}}
