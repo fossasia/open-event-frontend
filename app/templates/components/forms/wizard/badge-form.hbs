@@ -28,11 +28,14 @@
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeSetting
         @headerText={{t "Page Setting"}}
+        @changeBadgeSize={{action 'mutateBadgeSize'}}
+        @getBadgeSize={{this.getBadgeSize}}
         @form="setting" />
     </div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgePreview
         @headerText={{t "Preview"}}
+        @showSampleData={{action 'showSampleData'}}
         @form="preview" />
     </div>
   </div>
@@ -41,27 +44,15 @@
     <div class="column"></div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeImage 
-        @fn="firstName" 
-        @ln="lastName" 
-        @org="organization" 
-        @sh="socialHandle" 
-        @desg="designation"
+        @fn="Barack" 
+        @ln="Obama" 
         @defColor="d2192145"  
         @font_fn="20" 
         @font_ln="20" 
-        @font_desg="20" 
-        @font_org="20" 
-        @font_sh="20"
         @defFontType1="Times New Roman"
         @defFontType2="Times New Roman" 
-        @defFontType3="Times New Roman" 
-        @defFontType4="Times New Roman" 
-        @defFontType5="Times New Roman"
-        @fontcol_fn="d2192145"  
-        @fontcol_ln="d2192145"  
-        @fontcol_desg="d2192145"  
-        @fontcol_org="d2192145"  
-        @fontcol_sh="d2192145"  
+        @fontcol_fn="000"  
+        @fontcol_ln="000"  
         {{!-- defImageName=defImageName.[0]  --}}
         {{!-- backImg=imageData.[0]  --}}
         @backColor="d2192145"  
@@ -73,7 +64,11 @@
         @logo_text="logo_text" 
         {{!-- defImage=defImage.[0] --}}
         {{!-- custImage=custImage.[0]  --}}
-        @previewHeight="150" />
+        @previewLineHeight={{this.badgeSize.lineHeight}} 
+        @previewHeight={{this.badgeSize.height}} 
+        @sampleData={{this.getsampleData}}
+        @showSampleData={{this.showSampleData}}
+        />
     </div>
   </div>
 </div>

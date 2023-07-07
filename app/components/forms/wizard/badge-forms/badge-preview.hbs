@@ -13,7 +13,7 @@
         <UiCheckbox
             @class="slider mt-4 mb-2 ml-2"
             @checked={{field.isIncluded}}
-            @onChange={{action (mut field.isIncluded)}} />
+            @onChange={{action @showSampleData}} />
             <span>{{t 'Show Sample Data.'}} </span>
     </tr>
     <tr class="border left aligned">

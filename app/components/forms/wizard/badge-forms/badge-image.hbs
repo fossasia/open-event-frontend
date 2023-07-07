@@ -1,28 +1,25 @@
-<div class="ui basic segment">
-    <div class="bgImg ui raised segment" style="padding:0">
+{{!-- <div class="ui basic segment">
+    <div class="bgImg ui raised segment" style="padding:0; width:calc({{if @previewLineHeight @previewLineHeight 3}}in);">
         <div
             style="background-size:contain;
             background-position:center;
             background-repeat: no-repeat;
-            height: {{if previewHeight '105' '120'}}px;
-            color: #{{logofontcolor}};
+            height: calc({{if @previewHeight @previewHeight 4}}in*0.2);
+            color: #{{@logofontcolor}};
             width : 100%;
             font-size: 60px;
             position : relative;
             text-align: center;
-            line-height: {{if @previewHeight '105' '120'}}px;
+            line-height: calc({{if @previewLineHeight @previewLineHeight 3}}in);
             background-color: #{{@logoBackColor}};
             
             ">
-            {{#if (or (not @logoImgChanged) (not @custLogoImage))}}
-                {{@logo_text}}
-            {{/if}}
         </div>
         <div
             style="color: #{{@defColor}};
             background-size: cover;
             background-repeat: no-repeat;
-            height: {{if @previewHeight '370' '480'}}px;
+            height: calc({{if @previewHeight @previewHeight 4}}in*0.8);
             background-color: #{{@backColor}};
 
             ">
@@ -32,37 +29,16 @@
                 font-size : {{@font_fn}}px;
                 font-family : {{@defFontType1}};
                 color: #{{@fontcol_fn}}">
-                {{@fn}}
+                {{if @showSampleData @sampleData.fn @fn}}
                 </p>
                 <p
                 style="
                 font-size : {{@font_ln}}px;
                 font-family : {{@defFontType2}};
                 color: #{{@fontcol_ln}}">
-                {{@ln}}
-                </p>
-                <p
-                style="
-                font-size : {{@font_desg}}px;
-                font-family : {{@defFontType3}};
-                color: #{{@fontcol_desg}}">
-                {{@desg}}
-                </p>
-                <p
-                style="
-                font-size : {{@font_org}}px;
-                font-family : {{@defFontType4}};
-                color: #{{@fontcol_org}}">
-                {{@org}}
-                </p>
-                <p
-                style="
-                font-size : {{@font_sh}}px;
-                font-family : {{@defFontType5}};
-                color: #{{@fontcol_sh}}">
-                {{sh}}
+                {{if @showSampleData @sampleData.ln @ln}}
                 </p>
             </div>
         </div>
     </div>
-</div>
+</div> --}}

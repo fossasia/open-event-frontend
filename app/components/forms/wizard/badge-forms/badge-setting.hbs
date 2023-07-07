@@ -13,8 +13,8 @@
       <span class="ml-4">{{t 'Badge Size'}}</span>
       <UiDropdown
         @class="search selection mt-2 mb-2 ml-2"
-        {{!-- @selected={{get holder field.identifierPath}} --}}
-        @onChange={{action (mut holder.badgeSize)}} as |execute mapper|>
+        @selected={{@getBadgeSize}}
+        @onChange={{action @changeBadgeSize}} as |execute mapper|>
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select your badge size'}}</div>
         <div class="menu">
