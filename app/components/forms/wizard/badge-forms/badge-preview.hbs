@@ -10,11 +10,13 @@
   </thead>
   <tbody>
     <tr class="border left aligned">
+      <div class="ui w-full">
         <UiCheckbox
-            @class="slider mt-4 mb-2 ml-2"
+            @class="slider mt-2 ml-2"
             @checked={{@data.isShowSampleData}}
             @onChange={{action (mut @data.isShowSampleData)}} />
-            <span>{{t 'Show Sample Data.'}} </span>
+            <label>{{t 'Show Sample Data.'}} </label>
+      </div>
     </tr>
   </tbody>
 </table>

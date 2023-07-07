@@ -1,53 +1,51 @@
-<table class="ui selectable celled table">
-  <thead>
-    {{#if @headerText}}
+<div class="badge-setting">
+  <table class="ui selectable celled table">
+    <thead>
+      {{#if @headerText}}
       <tr>
         <th class="text left aligned">
           {{@headerText}}
         </th>
       </tr>
-    {{/if}}
-  </thead>
-  <tbody>
-    <tr class="border left aligned ml-2">
-      <label class="ml-4">{{t 'Badge Size'}}</label>
-      <UiDropdown
-        @class="search selection mt-2 mb-2 ml-2"
-        @selected={{@data.badgeSize}}
-        @onChange={{action @changeBadgeSize}} as |execute mapper|>
-        <i class="dropdown icon"></i>
-        <div class="default text">{{t 'Select your badge size'}}</div>
-        <div class="menu">
-          {{#each this.badgeSize as |size|}}
+      {{/if}}
+    </thead>
+    <tbody>
+      <tr class="border left aligned ml-2">
+        <label class="ml-2">{{t 'Badge Size'}}</label>
+        <UiDropdown @class="search selection mt-2 mb-2 ml-2 border right aligned" @selected={{@data.badgeSize}} @onChange={{action
+          @changeBadgeSize}} as |execute mapper|>
+          <i class="dropdown icon"></i>
+          <div class="default text">{{t 'Select your badge size'}}</div>
+          <div class="menu">
+            {{#each this.badgeSize as |size|}}
             <div class="item" data-value="{{map-value mapper size.name}}">
               {{t size.name}}
             </div>
-          {{/each}}
-        </div>
-      </UiDropdown>
-    </tr>
-    <tr class="border left aligned ml-2">
-      <label class="ml-4">{{t 'Badge Orientation'}}</label>
-      <UiDropdown
-        @class="search selection mt-2 mb-2 ml-2"
-        @selected={{@data.badgeOrientation}}
-        @onChange={{action @changeBadgeOrientation}} as |execute mapper|>
-        <i class="dropdown icon"></i>
-        <div class="default text">{{t 'Select your badge orientation'}}</div>
-        <div class="menu">
-          {{#each this.badgeOrientation as |size|}}
+            {{/each}}
+          </div>
+        </UiDropdown>
+      </tr>
+      <tr class="border left aligned ml-2">
+        <label class="ml-2">{{t 'Badge Orientation'}}</label>
+        <UiDropdown @class="search selection mt-2 mb-2 ml-2" @selected={{@data.badgeOrientation}} @onChange={{action
+          @changeBadgeOrientation}} as |execute mapper|>
+          <i class="dropdown icon"></i>
+          <div class="default text">{{t 'Select your badge orientation'}}</div>
+          <div class="menu">
+            {{#each this.badgeOrientation as |size|}}
             <div class="item" data-value="{{map-value mapper size.name}}">
               {{t size.name}}
             </div>
-          {{/each}}
+            {{/each}}
+          </div>
+        </UiDropdown>
+      </tr>
+      <tr class="border left aligned ml-2">
+        <div class="mt-2 mb-2 ml-2">
+          <label class="mr-2">{{t 'Background'}}</label>
+            <SpectrumColorPicker class="w-30" showAlpha={{true}} onChange={{action @changeBadgeColor}} />
         </div>
-      </UiDropdown>
-    </tr>
-    <tr class="border left aligned ml-2">
-      <label class="ml-4 mb-4">{{t 'Background'}}</label>
-      <div class="field five wide column">
-            <SpectrumColorPicker color="#f00" showAlpha={{true}} preferredFormat={{'hex'}} onChange={{action @changeBadgeColor}} />
-      </div>
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
+</div>

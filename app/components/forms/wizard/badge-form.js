@@ -5,7 +5,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy, union } from 'lodash-es';
 import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
 import { htmlSafe } from '@ember/template';
-import { tinycolor } from 'tinycolor2';
+import tinycolor from 'tinycolor2';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected: [],
