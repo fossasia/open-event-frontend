@@ -89,7 +89,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
     },
     mutateBadgeColor(color) {
-      this.set('badgeColor', color)
+      this.set('badgeColor', color);
     },
     showSampleData() {
       if (this.showSampleData) {
