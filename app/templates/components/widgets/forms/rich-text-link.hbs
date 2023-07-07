@@ -1,0 +1,18 @@
+<div id="{{this.textareaIdGenerated}}-toolbar" style="display: flex; flex-direction: column">
+  <div class="{{if this.device.isMobile 'compact'}} ui icon buttons">
+    <a href="#" class="ui button" data-content="{{t 'Bold (Ctrl+B)'}}" data-wysihtml5-command="bold"><i class="bold icon"></i></a>
+    <a href="#" class="ui button" data-content="{{t 'Italic (Ctrl+I)'}}" data-wysihtml5-command="italic"><i class="italic icon"></i></a>
+    <a href="#" class="ui button" data-content="{{t 'Underline (Ctrl+U)'}}" data-wysihtml5-command="underline"><i class="underline icon"></i></a>
+    <a href="#" class="ui button" data-wysihtml5-command="createLink" data-content="{{t 'Insert Link'}}" ><i class="linkify icon"></i></a>
+  </div>
+  <div style="display: flex; flex-direction: column; width: 100%">
+    <Textarea @id={{this.textareaIdGenerated}} @value={{value}} placeholder={{this.placeholder}} @name={{name}} rows="1"/>
+  </div>
+  <div data-wysihtml5-dialog="createLink" style="display: none">
+    <label>
+      <input data-wysihtml5-dialog-field="href" value="https://">
+    </label>
+    <a href="#" class="ui button" data-wysihtml5-dialog-action="save">Insert</a>
+    <a href="#" class="ui button" data-wysihtml5-dialog-action="cancel">Cancel</a>
+  </div>
+</div>
