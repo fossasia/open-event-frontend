@@ -13,7 +13,6 @@ import {
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { years } from 'open-event-frontend/utils/dictionary/year-list';
 import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
 import { languageForms2 } from 'open-event-frontend/utils/dictionary/language-form-2';
 import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
@@ -461,7 +460,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please enter Consent form field.')
+          prompt : this.l10n.t('Please enter Code of conduct consent.')
         }
       ]
     };
@@ -477,7 +476,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const languageForm1Validation = {
+    const nativeLanguageValidation = {
       rules: [
         {
           type   : 'empty',
@@ -486,7 +485,7 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const languageForm2Validation = {
+    const fluentLanguageValidation = {
       rules: [
         {
           type   : 'empty',
@@ -599,8 +598,8 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
-      validationRules.fields[`language_form_1_required_${  index}`] = languageForm1Validation;
-      validationRules.fields[`language_form_2_required_${  index}`] = languageForm2Validation;
+      validationRules.fields[`native_language_required_${  index}`] = nativeLanguageValidation;
+      validationRules.fields[`fluent_language_required_${  index}`] = fluentLanguageValidation;
       validationRules.fields[`is_consent_form_field_required_${  index}`] = isConsentFormFieldValidation;
       validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
@@ -631,9 +630,7 @@ export default Component.extend(FormMixin, {
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
       } else if (field.translations?.length) {
-
         const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
-
         if (transName.length) {
           field.transName = transName[0].name;
         } else {
@@ -642,7 +639,6 @@ export default Component.extend(FormMixin, {
       } else {
         field.transName = field.name;
       }
-
       return !isFixed;
     }), ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
@@ -651,7 +647,6 @@ export default Component.extend(FormMixin, {
   genders         : orderBy(genders, 'position'),
   ageGroups       : orderBy(ageGroups, 'position'),
   countries       : orderBy(countries, 'name'),
-  years           : orderBy(years, 'year'),
   languageForms1  : orderBy(languageForms1, 'position'),
   languageForms2  : orderBy(languageForms2, 'position'),
   homeWikis       : orderBy(homeWikis, 'item'),
@@ -664,6 +659,22 @@ export default Component.extend(FormMixin, {
 
   getData() {
     return 'hello';
+  },
+
+  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
+    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
+  },
+
+  get fieldNameConvertRichText() {
+    this.holders.forEach((holder, indexHolder) => {
+      this.fields.forEach((field, index) => {
+        const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
+        if (elem) {
+          elem.innerHTML = field.transName;
+        }
+      });
+    });
+    return null;
   },
 
   actions: {

@@ -38,11 +38,11 @@
 {{#if (and this.event.isSponsorsEnabled this.event.sponsors)}}
  {{#if (eq this.session.currentRouteName 'public.index')}}
    <a href='#sponsor' {{action "scrollToTarget" 'sponsor' }} class='item scroll'>
-    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>{{t 'Sponsors'}}</div>
+    <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>{{t 'Supporters'}}</div>
    </a>
  {{else}}
    <LinkTo class="item" @route="public.index" {{action 'goToSection' 'sponsor' }}>
-      <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>{{t 'Sponsors'}}</div>
+      <div><i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>{{t 'Supporters'}}</div>
    </LinkTo>
  {{/if}}
 {{/if}}

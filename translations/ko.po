@@ -3495,11 +3495,11 @@ msgstr "청중을 알아라"
 #: app/templates/components/forms/wizard/sponsors-step.hbs:15:16
 #: app/templates/components/public/side-menu.hbs:41:87
 #: app/templates/components/public/side-menu.hbs:45:89
-msgid "Sponsors"
+msgid "Supporters"
 msgstr "후원사"
 
 #: app/mixins/event-wizard.js:36:22
-msgid "Advertise your sponsors"
+msgid "Advertise your supporters"
 msgstr "스폰서 광고"
 
 #: app/mixins/event-wizard.js:41:22
@@ -5590,7 +5590,7 @@ msgid "Website Generator"
 msgstr "웹 사이트 생성기"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
-msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
+msgid "You would like to have a dedicated event website with all details, supporters listing, speakers and sessions and the entire schedule?"
 msgstr "모든 세부 사항, 스폰서 목록, 연사 및 세션 및 전체 일정이 포함 된 전용 이벤트 "
 "웹 사이트를 원하십니까?"
 
@@ -5642,7 +5642,7 @@ msgid "Information to be collected from attendees"
 msgstr "참석자로부터 수집하는 정보"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:60:14
-msgid "Details and logos of sponsors"
+msgid "Details and logos of supporters"
 msgstr "스폰서 세부 정보 및 로고"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:73:12
@@ -5753,7 +5753,7 @@ msgid "Click here to add"
 msgstr "추가하려면 여기를 클릭하십시오."
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
-msgid "No. of Sponsors"
+msgid "No. of Supporters"
 msgstr "후원자 수"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
@@ -11810,8 +11810,8 @@ msgid "Friendly Space Policy"
 msgstr "친근한 공간정책"
 
 #: app/models/custom-form.js:113:28
-msgid "Consent form field"
-msgstr "동의 양식 필드"
+msgid "Code of conduct consent"
+msgstr "행동 강령 동의"
 
 #: app/utils/dictionary/boolean-complex.ts:13:15
 msgid "Not sure yet"
@@ -11850,8 +11850,8 @@ msgid "Wikimania email updates"
 msgstr "Wikimania 이메일 업데이트"
 
 #: app/templates/components/forms/orders/order-form.hbs:251:26
-msgid "I consent to having my photo taken at Wikimania per the"
-msgstr "나는 Wikimania에서 내 사진을 찍는 것에 동의합니다."
+msgid "I consent to the Wikimania"
+msgstr "위키매니아에 동의합니다"
 
 #: app/templates/components/forms/orders/order-form.hbs:252:91
 msgid "photo policy"
@@ -11860,3 +11860,35 @@ msgstr "사진 정책"
 #: app/templates/components/forms/orders/order-form.hbs:259:26
 msgid "I want to receive email updates about future Wikimania editions."
 msgstr "향후 Wikimania 에디션에 대한 이메일 업데이트를 받고 싶습니다."
+
+#: app/models/custom-form.js:106:27
+msgid "Which of these categories describe your gender identity? (check all that apply)"
+msgstr "다음 중 성 정체성을 설명하는 카테고리는 무엇입니까? (해당되는 모든 항목에 체크하십시오)"
+
+#: app/utils/dictionary/genders.ts:5:12
+msgid "Man"
+msgstr "남자"
+
+#: app/utils/dictionary/genders.ts:8:12
+msgid "Woman"
+msgstr "여자"
+
+#: app/utils/dictionary/genders.ts:11:12
+msgid "Transgender"
+msgstr "트랜스젠더"
+
+#: app/utils/dictionary/genders.ts:14:12
+msgid "Non-binary"
+msgstr "논바이너리"
+
+#: app/utils/dictionary/genders.ts:17:12
+msgid "Genderqueer"
+msgstr "젠더퀴어"
+
+#: app/utils/dictionary/genders.ts:20:12
+msgid "An identity not listed here"
+msgstr "여기에 나열되지 않은 정체성"
+
+#: app/utils/dictionary/genders.ts:23:12
+msgid "I prefer not to say"
+msgstr "말하기 싫습니다"

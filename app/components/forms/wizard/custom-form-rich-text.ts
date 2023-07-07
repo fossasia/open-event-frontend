@@ -4,7 +4,7 @@ import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import DS from 'ember-data';
 import { tracked } from '@glimmer/tracking';
-import { translateLanguages } from 'open-event-frontend/utils/dictionary/translate-language';
+import { translateLanguages, LANGUAGE_CODE_ENUM } from 'open-event-frontend/utils/dictionary/translate-language';
 import { A } from '@ember/array';
 
 interface CustomForm {
@@ -19,7 +19,7 @@ interface CustomForm {
 }
 
 interface SubForm {
-  ignoreLanguages:string[],
+  ignoreLanguages: string[],
   name: string,
   languages: object,
   selectedLang: string,
@@ -30,7 +30,6 @@ interface SubForm {
 
 interface Translate {
   name: string,
-  code: string,
   isDeleted: boolean,
   id: string,
   form_id: string,
@@ -69,22 +68,25 @@ export default class CustomFormInput extends Component<Args> {
   @service
   store!: DS.Store;
 
-  @tracked
-  min = 0;
+  MIN_VAL = 0;
+  MAX_VAL = 10;
 
   @tracked
-  max = 10;
+  min = this.MIN_VAL;
 
   @tracked
-  mainLanguage = 'en'
+  max = this.MAX_VAL;
 
   @tracked
-  selectedLanguage:string[] = [this.mainLanguage]
+  mainLanguage = LANGUAGE_CODE_ENUM.ENGLISH;
 
   @tracked
-  subForm:SubForm[] = A([]);
+  selectedLanguage: string[] = [this.mainLanguage]
 
-  translations:Translate[] = [];
+  @tracked
+  subForm: SubForm[] = A([]);
+
+  translations: Translate[] = [];
 
   @action
   updated(): void {
@@ -98,27 +100,27 @@ export default class CustomFormInput extends Component<Args> {
       this.translations = this.args.field.translations;
       this.selectedLanguage.clear();
       this.selectedLanguage.pushObject(this.mainLanguage)
-      const selectedLanguage = this.translations?.map(trans => trans.code || trans.language_code);
+      const selectedLanguage = this.translations?.map(trans => trans.language_code);
       this.selectedLanguage.pushObjects(selectedLanguage)
       this.translations?.forEach((trans: Translate) => {
-        const { name, code, language_code, form_id, isDeleted, id } = trans;
-        if (isDeleted || (name && (code || language_code))) {
+        const { name, language_code, form_id, isDeleted, id } = trans;
+        if (isDeleted || (name && language_code)) {
           this.subForm.pushObject({
             id,
             form_id,
             name,
             languages       : translateLanguages,
             ignoreLanguages : this.selectedLanguage,
-            selectedLang    : code || language_code,
+            selectedLang    : language_code,
             isDeleted
           })
         }
       })
     } else {
       this.name = '';
-      this.min = 0;
-      this.max = 10;
-      this.mainLanguage = 'en';
+      this.min = this.MIN_VAL;
+      this.max = this.MAX_VAL;
+      this.mainLanguage = LANGUAGE_CODE_ENUM.ENGLISH;
     }
   }
 
@@ -127,7 +129,7 @@ export default class CustomFormInput extends Component<Args> {
     return getIdentifier(this.name, this.args.customForms);
   }
 
-  @computed('name', 'selectedLanguage.@each', 'subForm.@each.name', 'subForm.@each.isDeleted')
+  @computed('name', 'selectedLanguage.@each', 'subForm.@each.name')
   get validIdentifier(): boolean {
     const nameValid = this.identifier.trim().length > 0 && this.name.trim().length > 0;
     const transInValid = this.subForm.filter(field => !field.isDeleted && (!field.name || !field.selectedLang))
@@ -150,8 +152,7 @@ export default class CustomFormInput extends Component<Args> {
           id,
           form_id,
           name,
-          code          : selectedLang,
-          language_code : selectedLang,
+          language_code: selectedLang,
           isDeleted
         })
       }
@@ -174,7 +175,7 @@ export default class CustomFormInput extends Component<Args> {
       min             : this.min,
       max             : this.max,
       translations    : this.translationsList,
-      mainLanguage    : this.mainLanguage || 'en'
+      mainLanguage    : this.mainLanguage || LANGUAGE_CODE_ENUM.ENGLISH
     });
   }
 
@@ -205,7 +206,7 @@ export default class CustomFormInput extends Component<Args> {
   }
 
   @action
-  addTranslation():void {
+  addTranslation(): void {
     const obj: any = {
       name            : '',
       languages       : translateLanguages,
@@ -217,7 +218,7 @@ export default class CustomFormInput extends Component<Args> {
   }
 
   @action
-  onMainLanguageChange(code:string):void {
+  onMainLanguageChange(code: string): void {
     this.onSelectedLanguage(this.mainLanguage, code);
     this.mainLanguage = code;
   }
@@ -228,15 +229,12 @@ export default class CustomFormInput extends Component<Args> {
     form.selectedLang = new_code;
   }
 
-
   @action
-  onSelectedLanguage(old_code:string, new_code: string):void {
+  onSelectedLanguage(old_code: string, new_code: string): void {
     if (old_code) {
       this.selectedLanguage.removeObject(old_code)
     }
-    if (new_code) {
-      this.selectedLanguage.pushObject(new_code)
-    }
+    this.selectedLanguage.pushObject(new_code)
   }
 
   @computed('subForm.@each.isDeleted')

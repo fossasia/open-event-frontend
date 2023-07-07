@@ -3553,11 +3553,11 @@ msgstr "Biết khán giả của bạn"
 #: app/templates/components/forms/wizard/sponsors-step.hbs:15:16
 #: app/templates/components/public/side-menu.hbs:41:87
 #: app/templates/components/public/side-menu.hbs:45:89
-msgid "Sponsors"
+msgid "Supporters"
 msgstr "Nhà Tài Trợ"
 
 #: app/mixins/event-wizard.js:36:22
-msgid "Advertise your sponsors"
+msgid "Advertise your supporters"
 msgstr "Quảng cáo các nhà tài trợ của bạn"
 
 #: app/mixins/event-wizard.js:41:22
@@ -5676,7 +5676,7 @@ msgid "Website Generator"
 msgstr "Trình tạo trang web"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
-msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
+msgid "You would like to have a dedicated event website with all details, supporters listing, speakers and sessions and the entire schedule?"
 msgstr ""
 "Bạn muốn có một trang web dành riêng cho sự kiện với tất cả thông tin chi "
 "tiết, danh sách nhà tài trợ, diễn giả và phiên họp và toàn bộ lịch trình?"
@@ -5733,7 +5733,7 @@ msgid "Information to be collected from attendees"
 msgstr "Thông tin được thu thập từ những người tham dự"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:60:14
-msgid "Details and logos of sponsors"
+msgid "Details and logos of supporters"
 msgstr "Thông tin chi tiết và logo của nhà tài trợ"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:73:12
@@ -5844,7 +5844,7 @@ msgid "Click here to add"
 msgstr "Bấm vào đây để thêm"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
-msgid "No. of Sponsors"
+msgid "No. of Supporters"
 msgstr "Số nhà tài trợ"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
@@ -11982,8 +11982,8 @@ msgid "Friendly Space Policy"
 msgstr "Chính sách không gian thân thiện"
 
 #: app/models/custom-form.js:113:28
-msgid "Consent form field"
-msgstr "trường biểu mẫu đồng ý"
+msgid "Code of conduct consent"
+msgstr "đồng ý quy tắc ứng xử "
 
 #: app/utils/dictionary/boolean-complex.ts:13:15
 msgid "Not sure yet"
@@ -12022,7 +12022,7 @@ msgid "Wikimania email updates"
 msgstr "Đồng ý nhận cập nhật email wikimania"
 
 #: app/templates/components/forms/orders/order-form.hbs:251:26
-msgid "I consent to having my photo taken at Wikimania per the"
+msgid "I consent to the Wikimania"
 msgstr "Tôi đồng ý để ảnh của tôi được chụp tại Wikimania theo"
 
 #: app/templates/components/forms/orders/order-form.hbs:252:91
@@ -12033,4 +12033,36 @@ msgstr "chính sách ảnh"
 msgid "I want to receive email updates about future Wikimania editions."
 msgstr ""
 "Tôi muốn nhận thông tin cập nhật qua email về các phiên bản Wikimania trong "
-"tương lai"
+"tương lai."
+
+#: app/models/custom-form.js:106:27
+msgid "Which of these categories describe your gender identity? (check all that apply)"
+msgstr "Những hạng mục nào sau đây mô tả giới tính của bạn? (đánh dấu vào tất cả những mục áp dụng)"
+
+#: app/utils/dictionary/genders.ts:5:12
+msgid "Man"
+msgstr "Nam"
+
+#: app/utils/dictionary/genders.ts:8:12
+msgid "Woman"
+msgstr "Nữ"
+
+#: app/utils/dictionary/genders.ts:11:12
+msgid "Transgender"
+msgstr "Chuyển giới"
+
+#: app/utils/dictionary/genders.ts:14:12
+msgid "Non-binary"
+msgstr "Không nhị phân"
+
+#: app/utils/dictionary/genders.ts:17:12
+msgid "Genderqueer"
+msgstr "Giới tính lập dị"
+
+#: app/utils/dictionary/genders.ts:20:12
+msgid "An identity not listed here"
+msgstr "Một giới tính không được liệt kê ở đây"
+
+#: app/utils/dictionary/genders.ts:23:12
+msgid "I prefer not to say"
+msgstr "Tôi không muốn nói"
