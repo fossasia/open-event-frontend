@@ -63,6 +63,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.badgeSize;
   }),
 
+  getBadgeColor: computed('badgeColor', function() {
+    return this.badgeColor;
+  }),
+
   getsampleData: computed('sampleData', function() {
     return {
       fn : 'First Name',
@@ -83,6 +87,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       badgeSize.forEach(badge => {
         if (badge.name === value) {this.set('badgeSize', badge)}
       });
+    },
+    mutateBadgeColor(color) {
+      this.set('badgeColor', color)
     },
     showSampleData() {
       if (this.showSampleData) {
