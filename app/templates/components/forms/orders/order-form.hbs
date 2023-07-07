@@ -224,7 +224,7 @@
                     <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}}</a>
                     <span> {{t 'and the'}} </span>
                     <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
-                    <span>.</span>
+                    <span> .</span>
                 {{else if (eq field.fieldIdentifier 'is_consent_form_field_photo')}}
                   <UiCheckbox
                     @checked={{get holder field.identifierPath}}         
@@ -232,7 +232,7 @@
                     @onChange={{action (mut (get holder field.identifierPath))}} />
                     <span>{{t 'I consent to the Wikimania'}} </span>
                     <a href="https://wikimania.wikimedia.org/wiki/2023:Photography_policy">{{t 'photo policy'}}</a>
-                    <span>.</span>
+                    <span> .</span>
                 {{else if (eq field.fieldIdentifier 'is_consent_form_field_email')}}
                   <UiCheckbox
                     @checked={{get holder field.identifierPath}}         
