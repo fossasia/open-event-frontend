@@ -31,6 +31,7 @@
         @headerText={{t "Page Setting"}}
         @changeBadgeSize={{action 'mutateBadgeSize'}}
         @changeBadgeColor={{action 'mutateBadgeColor'}}
+        @changeBadgeOrientation={{action 'mutateBadgeOrientation'}}
         @data={{this.data}} />
     </div>
     <div class="column">
@@ -44,7 +45,6 @@
     <div class="column">
       <div class="badge-setting">
         <h2 class="badge-setting-title ">
-          <div class="ui hidden divider mb-0"/>
           {{t 'Fields'}}
           <button type="button" class="ui mini blue button right floated m-2" {{action 'addBadgeField'}}>
             <i class="add icon"/>
@@ -64,7 +64,6 @@
                 @removeBadgeField={{this.removeBadgeField}}
                 @isLoading={{this.isLoading}} />
             {{/each}}
-            <div class="spacer-50"></div>
           </div>
         {{else}}
           <div class="spacer-50"></div>
@@ -75,7 +74,6 @@
       <Forms::Wizard::BadgeForms::BadgeImage 
         @fn="Barack" 
         @ln="Obama" 
-        @defColor={{this.getBadgeColor}}
         @font_fn="20" 
         @font_ln="20" 
         @defFontType1="Times New Roman"
@@ -84,7 +82,7 @@
         @fontcol_ln="000"  
         {{!-- defImageName=defImageName.[0]  --}}
         {{!-- backImg=imageData.[0]  --}}
-        @backColor={{this.getBadgeColor}}
+        @backColor={{this.badgeColor}}
         {{!-- custLogoImage=custLogoImage --}}
         {{!-- logoImageData=logoImageData  --}}
         {{!-- logoImgChanged=logoImgChanged --}}
@@ -94,6 +92,7 @@
         @previewHeight={{this.badgeSize.height}} 
         @sampleData={{this.getsampleData}}
         @showSampleData={{this.data.isShowSampleData}}
+        @badgeOrientation={{this.badgeOrientation}}
         @fields={{this.data.badgeFields}}
         />
     </div>

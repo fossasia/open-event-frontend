@@ -30,8 +30,8 @@
       <label class="ml-4">{{t 'Badge Orientation'}}</label>
       <UiDropdown
         @class="search selection mt-2 mb-2 ml-2"
-        {{!-- @selected={{get holder field.identifierPath}} --}}
-        @onChange={{action (mut holder.badgeOrientation)}} as |execute mapper|>
+        @selected={{@data.badgeOrientation}}
+        @onChange={{action @changeBadgeOrientation}} as |execute mapper|>
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select your badge orientation'}}</div>
         <div class="menu">
@@ -46,8 +46,7 @@
     <tr class="border left aligned ml-2">
       <label class="ml-4 mb-4">{{t 'Background'}}</label>
       <div class="field five wide column">
-            <SpectrumColorPicker color={{teamColor}} showAlpha={{true}} onChange={{action @changeBadgeColor}} />
-            {{!-- {{spectrum-color-picker color=teamColor onChange=(action @changeBadgeColor)}} --}}
+            <SpectrumColorPicker color="#f00" showAlpha={{true}} preferredFormat={{'hex'}} onChange={{action @changeBadgeColor}} />
       </div>
     </tr>
   </tbody>

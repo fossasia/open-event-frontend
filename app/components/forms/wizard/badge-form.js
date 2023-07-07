@@ -69,14 +69,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.badgeSize;
   }),
 
+  getBadgeSize: computed('badgeOrientation', function() {
+    return this.badgeOrientation;
+  }),
+
   getBadgeColor: computed('badgeColor', function() {
     return this.data.badgeColor;
   }),
 
   getsampleData: computed('sampleData', function() {
     return {
-      fn : 'First Name',
-      ln : 'Last Name'
+      name : 'Barack Obama',
+      organisation: 'US',
+      position : 'President'
     };
   }),
 
@@ -96,8 +101,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
       this.data.badgeSize = this.badgeSize;
     },
+    mutateBadgeOrientation(value) {
+      this.set('badgeOrientation', value);
+      this.data.badgeOrientation = value;
+      debugger
+    },
     mutateBadgeColor(color) {
-      this.set('badgeColor', color);
+      let colorCode = tinycolor(color.target.value);
+      this.set('badgeColor', colorCode.toHexString());
       this.data.badgeColor = this.badgeColor;
     }
   }

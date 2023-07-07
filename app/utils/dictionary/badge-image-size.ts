@@ -19,5 +19,9 @@ export const badgeOrientation = [
   {
     name     : tn.t('Potrait'),
     position : 1
+  },
+  {
+    name     : tn.t('Landscape'),
+    position : 2
   }
 ];
