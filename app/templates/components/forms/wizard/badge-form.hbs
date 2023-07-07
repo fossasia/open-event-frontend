@@ -5,102 +5,116 @@
       <i class="trash box icon"></i>  
     </button>
   </h4>
-  <UiDropdown
-    @class="fluid multiple search selection"
-    @selected={{this.data.ticketsDetails}}
-    @onChange={{action (mut this.data.ticketsDetails)}} as |execute mapper|>
-    <i class="dropdown icon"></i>
-    <div class="default text">
-      {{t 'Select Tickets'}}
+  {{#if this.data.ticketsDetails.length}}
+    <b>{{t 'Ticket names: '}}</b>{{this.ticketNames}}
+    <button type="button" class="ui compact icon button right floated" {{action 'toggleBadge'}}>
+      {{#if this.isExpandedBadge}}
+        <i class="angle up icon"/>
+      {{else}}
+        <i class="angle down icon"/>
+      {{/if}}
+    </button>
+    <div class="ui hidden divider mb-0"></div>
+  {{/if}}
+  {{#if this.isExpandedBadge}}
+    <UiDropdown
+      @class="fluid multiple search selection"
+      @selected={{this.data.ticketsDetails}}
+      @onChange={{action (mut this.data.ticketsDetails)}} as |execute mapper|>
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Tickets'}}
+      </div>
+      <div class="menu">
+        {{#each (sort-by 'name' this.ticketsEnable) as |ticket|}}
+          {{#if ticket.name}}
+            <div data-value="{{map-value mapper ticket}}" class="item">
+              {{ticket.name}}
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </UiDropdown>
+    <div class="ui hidden divider"></div>
+    <div class="ui two column stackable grid">
+      <div class="column">
+        <Forms::Wizard::BadgeForms::BadgeSetting
+          @headerText={{t "Page Setting"}}
+          @form="setting" />
+      </div>
+      <div class="column">
+        <Forms::Wizard::BadgeForms::BadgePreview
+          @headerText={{t "Preview"}}
+          @form="preview" />
+      </div>
     </div>
-    <div class="menu">
-      {{#each (sort-by 'name' this.ticketsEnable) as |ticket|}}
-        {{#if ticket.name}}
-          <div data-value="{{map-value mapper ticket}}" class="item">
-            {{ticket.name}}
-          </div>
-        {{/if}}
-      {{/each}}
+    <div class="ui hidden divider"></div>
+    <div class="ui two column stackable grid">
+      <div class="column">
+        <div class="badge-setting">
+          <h2 class="badge-setting-title ">
+            {{t 'Fields'}}
+            <button type="button" class="ui mini blue button right floated m-2" disabled={{this.disableAddBadgeField}} {{action 'addBadgeField'}}>
+              <i class="add icon"/>
+              {{t 'Add Rows'}}
+            </button>
+          </h2>
+          {{#if this.badgeFields.length}}
+            <div>
+              {{#each this.badgeFields as |_field index|}}
+                <div class="ui hidden divider mb-0"></div>
+                <Forms::Wizard::BadgeFieldForm
+                  @data={{_field}}
+                  @index={{index}}
+                  @move="move" 
+                  @save="save"
+                  @includeCustomField={{this.includeCustomField}}
+                  @onChange={{action 'onChildChangeCustomField'}}
+                  @removeBadgeField={{this.removeBadgeField}}
+                  @isLoading={{this.isLoading}} />
+              {{/each}}
+            </div>
+          {{else}}
+            <div class="spacer-50"></div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="column">
+        <Forms::Wizard::BadgeForms::BadgeImage 
+          @fn="firstName" 
+          @ln="lastName" 
+          @org="organization" 
+          @sh="socialHandle" 
+          @desg="designation"
+          @defColor="d2192145"  
+          @font_fn="20" 
+          @font_ln="20" 
+          @font_desg="20" 
+          @font_org="20" 
+          @font_sh="20"
+          @defFontType1="Times New Roman"
+          @defFontType2="Times New Roman" 
+          @defFontType3="Times New Roman" 
+          @defFontType4="Times New Roman" 
+          @defFontType5="Times New Roman"
+          @fontcol_fn="d2192145"  
+          @fontcol_ln="d2192145"  
+          @fontcol_desg="d2192145"  
+          @fontcol_org="d2192145"  
+          @fontcol_sh="d2192145"  
+          {{!-- defImageName=defImageName.[0]  --}}
+          {{!-- backImg=imageData.[0]  --}}
+          @backColor="d2192145"  
+          {{!-- custLogoImage=custLogoImage --}}
+          {{!-- logoImageData=logoImageData  --}}
+          {{!-- logoImgChanged=logoImgChanged --}}
+          @logoBackColor="079b78" 
+          @logoFontColor="d2192145"  
+          @logo_text="logo_text" 
+          {{!-- defImage=defImage.[0] --}}
+          {{!-- custImage=custImage.[0]  --}}
+          @previewHeight="150" />
+      </div>
     </div>
-  </UiDropdown>
-  <div class="ui hidden divider"></div>
-  <div class="ui two column stackable grid">
-    <div class="column">
-      <Forms::Wizard::BadgeForms::BadgeSetting
-        @headerText={{t "Page Setting"}}
-        @form="setting" />
-    </div>
-    <div class="column">
-      <Forms::Wizard::BadgeForms::BadgePreview
-        @headerText={{t "Preview"}}
-        @form="preview" />
-    </div>
-  </div>
-  <div class="ui hidden divider"></div>
-  <div class="ui two column stackable grid">
-    <div class="column">
-      <div class="badge-setting">
-        <h2 class="badge-setting-title ">
-          {{t 'Fields'}}
-          <button type="button" class="ui mini blue button right floated m-2" {{action 'addBadgeField'}}>
-            <i class="add icon"/>
-            {{t 'Add Rows'}}
-          </button>
-        </h2>
-        {{#if this.badgeFields.length}}
-          <div>
-            {{#each this.badgeFields as |_field index|}}
-              <div class="ui hidden divider mb-0"></div>
-              <Forms::Wizard::BadgeFieldForm
-                @data={{_field}}
-                @index={{index}}
-                @event={{this.data.event}}
-                @move="move" 
-                @save="save"
-                @removeBadgeField={{this.removeBadgeField}}
-                @isLoading={{this.isLoading}} />
-            {{/each}}
-          </div>
-        {{else}}
-          <div class="spacer-50"></div>
-        {{/if}}
-       </div>
-    </div>
-    <div class="column">
-      <Forms::Wizard::BadgeForms::BadgeImage 
-        @fn="firstName" 
-        @ln="lastName" 
-        @org="organization" 
-        @sh="socialHandle" 
-        @desg="designation"
-        @defColor="d2192145"  
-        @font_fn="20" 
-        @font_ln="20" 
-        @font_desg="20" 
-        @font_org="20" 
-        @font_sh="20"
-        @defFontType1="Times New Roman"
-        @defFontType2="Times New Roman" 
-        @defFontType3="Times New Roman" 
-        @defFontType4="Times New Roman" 
-        @defFontType5="Times New Roman"
-        @fontcol_fn="d2192145"  
-        @fontcol_ln="d2192145"  
-        @fontcol_desg="d2192145"  
-        @fontcol_org="d2192145"  
-        @fontcol_sh="d2192145"  
-        {{!-- defImageName=defImageName.[0]  --}}
-        {{!-- backImg=imageData.[0]  --}}
-        @backColor="d2192145"  
-        {{!-- custLogoImage=custLogoImage --}}
-        {{!-- logoImageData=logoImageData  --}}
-        {{!-- logoImgChanged=logoImgChanged --}}
-        @logoBackColor="079b78" 
-        @logoFontColor="d2192145"  
-        @logo_text="logo_text" 
-        {{!-- defImage=defImage.[0] --}}
-        {{!-- custImage=custImage.[0]  --}}
-        @previewHeight="150" />
-    </div>
-  </div>
+  {{/if}}
 </div>
