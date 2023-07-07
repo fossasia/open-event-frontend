@@ -30,15 +30,13 @@
       <Forms::Wizard::BadgeForms::BadgeSetting
         @headerText={{t "Page Setting"}}
         @changeBadgeSize={{action 'mutateBadgeSize'}}
-        {{!-- @changeBadgeColor={{action 'changeBadgeColor'}} --}}
-        @getBadgeSize={{this.getBadgeSize}}
-        @form="setting" />
+        @changeBadgeColor={{action 'mutateBadgeColor'}}
+        @data={{this.data}} />
     </div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgePreview
         @headerText={{t "Preview"}}
-        @showSampleData={{action 'showSampleData'}}
-        @form="preview" />
+        @data={{this.data}} />
     </div>
   </div>
   <div class="ui hidden divider"></div>
@@ -77,7 +75,7 @@
       <Forms::Wizard::BadgeForms::BadgeImage 
         @fn="Barack" 
         @ln="Obama" 
-        @defColor="d2192145"  
+        @defColor={{this.getBadgeColor}}
         @font_fn="20" 
         @font_ln="20" 
         @defFontType1="Times New Roman"
@@ -86,19 +84,17 @@
         @fontcol_ln="000"  
         {{!-- defImageName=defImageName.[0]  --}}
         {{!-- backImg=imageData.[0]  --}}
-        @backColor="d2192145"  
+        @backColor={{this.getBadgeColor}}
         {{!-- custLogoImage=custLogoImage --}}
         {{!-- logoImageData=logoImageData  --}}
         {{!-- logoImgChanged=logoImgChanged --}}
-        @logoBackColor="079b78" 
-        @logoFontColor="d2192145"  
-        @logo_text="logo_text" 
         {{!-- defImage=defImage.[0] --}}
         {{!-- custImage=custImage.[0]  --}}
         @previewLineHeight={{this.badgeSize.lineHeight}} 
         @previewHeight={{this.badgeSize.height}} 
         @sampleData={{this.getsampleData}}
-        @showSampleData={{this.showSampleData}}
+        @showSampleData={{this.data.isShowSampleData}}
+        @fields={{this.data.badgeFields}}
         />
     </div>
   </div>

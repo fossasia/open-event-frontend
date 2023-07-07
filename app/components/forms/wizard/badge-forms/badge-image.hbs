@@ -1,43 +1,23 @@
 {{!-- <div class="ui basic segment">
     <div class="bgImg ui raised segment" style="padding:0; width:calc({{if @previewLineHeight @previewLineHeight 3}}in);">
         <div
-            style="background-size:contain;
-            background-position:center;
-            background-repeat: no-repeat;
-            height: calc({{if @previewHeight @previewHeight 4}}in*0.2);
-            color: #{{@logofontcolor}};
-            width : 100%;
-            font-size: 60px;
-            position : relative;
-            text-align: center;
-            line-height: calc({{@previewLineHeight}}in);
-            background-color: #{{@logoBackColor}};
-            
-            ">
-        </div>
-        <div
-            style="color: #{{@defColor}};
+            style="color: #000000;
             background-size: cover;
             background-repeat: no-repeat;
-            height: calc({{if @previewHeight @previewHeight 4}}in*0.8);
+            height: calc({{if @previewHeight @previewHeight 4}}in);
             background-color: #{{@backColor}};
-
             ">
             <div class="preview content" style="padding-top: {{if @previewHeight '45' '80'}}px">
+                {{#each @fields as |_field|}}
                 <p
                 style="
-                font-size : {{@font_fn}}px;
-                font-family : {{@defFontType1}};
-                color: #{{@fontcol_fn}}">
-                {{if @showSampleData @sampleData.fn @fn}}
+                font-size : {{_field.fontSize}}px;
+                text-align: {{_field.textAlignment}};
+                text-transform: {{_field.textType}};
+                ">
+                    {{_field.sampleText}}
                 </p>
-                <p
-                style="
-                font-size : {{@font_ln}}px;
-                font-family : {{@defFontType2}};
-                color: #{{@fontcol_ln}}">
-                {{if @showSampleData @sampleData.ln @ln}}
-                </p>
+                {{/each}}
             </div>
         </div>
     </div>

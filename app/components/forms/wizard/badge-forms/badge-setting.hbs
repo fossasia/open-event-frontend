@@ -13,7 +13,7 @@
       <label class="ml-4">{{t 'Badge Size'}}</label>
       <UiDropdown
         @class="search selection mt-2 mb-2 ml-2"
-        @selected={{@getBadgeSize}}
+        @selected={{@data.badgeSize}}
         @onChange={{action @changeBadgeSize}} as |execute mapper|>
         <i class="dropdown icon"></i>
         <div class="default text">{{t 'Select your badge size'}}</div>
@@ -46,10 +46,8 @@
     <tr class="border left aligned ml-2">
       <label class="ml-4 mb-4">{{t 'Background'}}</label>
       <div class="field five wide column">
-            {{!-- {{spectrum-color-picker
-                color=teamColor
-                onChange=(action @changeBadgeColor)
-            }} --}}
+            <SpectrumColorPicker color={{teamColor}} showAlpha={{true}} onChange={{action @changeBadgeColor}} />
+            {{!-- {{spectrum-color-picker color=teamColor onChange=(action @changeBadgeColor)}} --}}
       </div>
     </tr>
   </tbody>

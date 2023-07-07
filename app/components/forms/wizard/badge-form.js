@@ -70,7 +70,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   getBadgeColor: computed('badgeColor', function() {
-    return this.badgeColor;
+    return this.data.badgeColor;
   }),
 
   getsampleData: computed('sampleData', function() {
@@ -94,16 +94,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       badgeSize.forEach(badge => {
         if (badge.name === value) {this.set('badgeSize', badge)}
       });
+      this.data.badgeSize = this.badgeSize
     },
     mutateBadgeColor(color) {
       this.set('badgeColor', color);
-    },
-    showSampleData() {
-      if (this.showSampleData) {
-        this.set('showSampleData', false);
-      } else {
-        this.set('showSampleData', true);
-      }
+      this.data.badgeColor = this.badgeColor;
+      debugger
     }
   }
 });
