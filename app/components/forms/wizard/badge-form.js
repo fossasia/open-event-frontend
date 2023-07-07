@@ -8,16 +8,22 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected: [],
   badgeHeight: [],
   badgeLineHeight: [],
+
   init() {
     this._super(...arguments);
     this.currentSelected = this.data.ticketsDetails;
   },
+
   ticketsEnable: computed('tickets', 'ticketsDetails', function() {
     return union(this.tickets || [], this.data.ticketsDetails || []);
   }),
 
   fixedFields: computed('data.customForms.@each', function() {
     return this.data.customForms?.filter(field => field.isFixed);
+  }),
+
+  badgeFields: computed('data.badgeFields.@each.isDeleted', function() {
+    return this.data.badgeFields?.filter(field => !field.isDeleted);
   }),
 
   selectChanges: observer('data.ticketsDetails', function() {
@@ -56,6 +62,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
+  removeBadgeField(badgeField) {
+    badgeField.isDeleted = true;
+  },
+
   actions: {
     removeField(field) {
       field.deleteRecord();
@@ -72,6 +82,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         this.badgeLineHeight = value.lineHeight
       }
       this.set('badgeSize', value);
+    },
+    addBadgeField() {
+      this.data.badgeFields.pushObject(this.store.createRecord('badge-field-form', {
+        badgeID   : this.data.badgeID,
+        isDeleted : false
+      }));
     }
   }
 });

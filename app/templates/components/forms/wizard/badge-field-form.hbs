@@ -1,0 +1,101 @@
+<div class="badge-form-body">
+  <h3 class="lh-2r">
+    {{t 'Row'}} {{inc @index}}
+    <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting'}}>
+      {{#if this.isExpanded}}
+        <i class="angle up icon"/>
+      {{else}}
+        <i class="angle down icon"/>
+      {{/if}}
+    </button>
+    <button type="button" class="ui compact icon negative button right floated" {{action 'removeForm'}}>
+      <i class="trash box icon pr-0"></i>
+    </button>
+  </h3>
+  {{#if this.isExpanded}}
+    <div class="badge-form-body-field">
+      <h3 class="background-color-title padding-left-1rem margin-left-revert-1rem">
+        {{t 'Setting'}}
+      </h3>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row">
+          <div class="field five wide column">
+            <label>{{t 'Custom Field'}}</label>
+            <UiDropdown
+              @class="search selection"
+              @selected={{@data.customField}}
+              @onChange={{action (mut @data.customField)}} as |execute mapper|>
+              <Input
+                @type="hidden"
+                @autocomplete="no"
+                @name={{concat "custom_field" @index}}/>
+              <i class="dropdown icon"></i>
+              <div class="default text">{{t 'Select your custom field'}}</div>
+              <div class="menu">
+                {{#each this.badgeCustomFields as |item|}}
+                  <div class="item" data-value="{{map-value mapper item.name}}">
+                    {{t-var item.name}}
+                  </div>
+                {{/each}}
+              </div>
+            </UiDropdown>
+          </div>
+          <div class="field five wide column">
+            <label>{{t 'Sample Text'}}</label>
+            <Input
+              @type='text'
+              @placeholder="Sample text"
+              @value={{mut @data.sampleText}}
+              @name={{concat "sample_text" @index}}/>
+          </div>
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="field twelve wide">
+          <label class="mb-0">{{t 'Font'}}</label>
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row pt-0">
+          <div class="field five wide column">
+            <label>{{t 'Font size (px)'}}</label>
+            <Input
+              @type='text'
+              @placeholder="Font size"
+              @value={{mut @data.fontSize}}
+              @name={{concat "font_size" @index}}/>
+          </div>
+        </div>
+      </div>
+      <div class="ui stackable grid">
+        <div class="field twelve wide">
+          <label>{{t 'Text Type'}}</label>
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row pt-0">
+          {{#each this.booleanTextType as |item|}}
+            <div class="ui radio checkbox five wide column">
+              <Widgets::Forms::RadioButton
+                @name={{concat "text_type" @index}}
+                @value={{item.name}} @checked={{mut @data.textType}}/>
+                <label>{{t item.name}}</label>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="field twelve wide">
+          <label>{{t 'Text Alignment'}}</label>
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row pt-0 badge-form-text-alignment">
+          <div class="ui icon buttons">
+            <button class="ui button" {{action 'toggleTextAlignments' 'Center'}}>{{t 'Center'}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</div>
