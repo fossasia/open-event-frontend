@@ -5,9 +5,9 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy, union } from 'lodash-es';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
-  currentSelected: [],
-  badgeHeight: [],
-  badgeLineHeight: [],
+  currentSelected : [],
+  badgeHeight     : [],
+  badgeLineHeight : [],
 
   init() {
     this._super(...arguments);
@@ -72,14 +72,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
     mutateBadgeSize(value) {
       if (value.name === '4" x 3"') {
-        this.badgeHeight = value.height
-        this.badgeLineHeight = value.lineHeight
+        this.badgeHeight = value.height;
+        this.badgeLineHeight = value.lineHeight;
       } else if (value.name === '3.5" x 5"') {
-        this.badgeHeight = value.height
-        this.badgeLineHeight = value.lineHeight
+        this.badgeHeight = value.height;
+        this.badgeLineHeight = value.lineHeight;
       } else {
-        this.badgeHeight = value.height
-        this.badgeLineHeight = value.lineHeight
+        this.badgeHeight = value.height;
+        this.badgeLineHeight = value.lineHeight;
       }
       this.set('badgeSize', value);
     },

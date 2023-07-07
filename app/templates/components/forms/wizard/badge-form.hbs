@@ -41,7 +41,6 @@
     <div class="column">
       <div class="badge-setting">
         <h2 class="badge-setting-title ">
-          <div class="ui hidden divider mb-0"/>
           {{t 'Fields'}}
           <button type="button" class="ui mini blue button right floated m-2" {{action 'addBadgeField'}}>
             <i class="add icon"/>
@@ -61,7 +60,6 @@
                 @removeBadgeField={{this.removeBadgeField}}
                 @isLoading={{this.isLoading}} />
             {{/each}}
-            <div class="spacer-50"></div>
           </div>
         {{else}}
           <div class="spacer-50"></div>

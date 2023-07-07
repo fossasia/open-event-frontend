@@ -5,10 +5,11 @@ import { badgeSize, badgeOrientation } from 'open-event-frontend/utils/dictionar
 
 export default class BadgeSetting extends Component {
 
-    get badgeSize() {
-        return orderBy(badgeSize, 'position');
-    }
-    get badgeOrientation() {
-        return orderBy(badgeOrientation, 'position');
-    }
+  get badgeSize() {
+    return orderBy(badgeSize, 'position');
+  }
+
+  get badgeOrientation() {
+    return orderBy(badgeOrientation, 'position');
+  }
 }
