@@ -26,6 +26,12 @@ export default class AttendeeList extends Component {
       if (attendee.fluent_language) {
         this.languageFormMapCodeToName(attendee, 'fluent_language', languageForms2);
       }
+      if (attendee.language_form_1) {
+        this.languageFormMapCodeToName(attendee, 'language_form_1', languageForms1);
+      }
+      if (attendee.language_form_2) {
+        this.languageFormMapCodeToName(attendee, 'language_form_2', languageForms2);
+      }
       if (attendee.gender) {
         this.genderAddSpaces(attendee);
       }
