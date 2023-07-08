@@ -26,6 +26,12 @@ export default class AttendeeList extends Component {
       if (attendee.fluent_language) {
         this.languageFormMapCodeToName(attendee, 'fluent_language', languageForms2);
       }
+      if (attendee.language_form_1) {
+        this.languageFormMapCodeToName(attendee, 'language_form_1', languageForms1);
+      }
+      if (attendee.language_form_2) {
+        this.languageFormMapCodeToName(attendee, 'language_form_2', languageForms2);
+      }
       if (attendee.gender) {
         this.genderAddSpaces(attendee);
       }
@@ -76,22 +82,6 @@ export default class AttendeeList extends Component {
       return field;
     }), ['position']);
     return groupBy(customFields, field => field.get('form'));
-  }
-
-  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
-    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
-  }
-
-  get fieldNameConvertRichText() {
-    this.holders.forEach((holder, indexHolder) => {
-      this.fields.forEach((field, index) => {
-        const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
-        if (elem) {
-          elem.innerHTML = field.transName;
-        }
-      });
-    });
-    return null;
   }
 
   @action
