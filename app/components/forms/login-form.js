@@ -20,7 +20,6 @@ export default class LoginForm extends Component.extend(FormMixin) {
   showHcaptcha     = !!ENV.hcaptchaKey;
   rememberMe       = false;
 
-
   set setSessionCookie(rememberMe) {
     const SECONDS_IN_DAY = 86400;
     const expirationTime = rememberMe ? (365 * SECONDS_IN_DAY) : (1 * SECONDS_IN_DAY);
