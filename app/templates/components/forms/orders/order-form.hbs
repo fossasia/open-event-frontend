@@ -55,7 +55,7 @@
           {{t 'Ticket Holder\'s Information'}}
         {{/if}}
       </h4>
-      {{#each this.holders as |holder indexHolder|}}
+      {{#each this.holders as |holder index|}}
         <div class="inline field">
           <i class="user icon"></i>
           <label>
@@ -64,7 +64,7 @@
             {{else}}
               {{t 'Ticket Holder'}}
             {{/if}}
-            {{inc indexHolder}}{{t ' -for- '}}{{holder.ticket.name}}
+            {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}
           </label>
         </div>
         <div class="field">
@@ -77,13 +77,7 @@
           {{#if field.isIncluded }}
             {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
               <div class="field">
-                {{#if field.isComplex}}
-                  <label class="{{if field.isRequired 'required'}}" for="name">
-                    <span id={{concat field.fieldIdentifier "_" indexHolder "_" index}}>{{this.fieldNameConvertRichText}}</span>
-                  </label>
-                {{else}}
-                  <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
-                {{/if}}
+                <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
                 {{#if (eq field.type 'paragraph')}}
                   <Textarea @id={{this.textareaIdGenerated}} @value={{mut (get holder field.identifierPath)}} placeholder={{this.placeholder}} @name={{if field.isRequired (concat field.fieldIdentifier "_required_" index) (concat field.fieldIdentifier "_" index)}} />
                 {{/if}}
