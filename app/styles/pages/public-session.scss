@@ -12,6 +12,8 @@
         input {
             height: 100%;
             max-width: none;
+            width: calc(100% - .5rem);
+            margin-left: .5rem;
             position: absolute;
             left: auto;
             right: 0;
@@ -21,6 +23,7 @@
             //Expand to full screen width
             &:focus {
                 width: 200%;
+                margin-left: .5rem;
             }
 
             transition: width .35s ease-in-out;
