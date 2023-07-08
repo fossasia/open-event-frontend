@@ -75,15 +75,20 @@
       }}
     />
 
-    <Tables::Utilities::SearchBox
-      @searchQuery={{this.search}}
-      @size="large"
-      class={{if
-        this.device.isMobile
-        "input-full max-half-width focus-search-full transition-size mb-2"
-        "mb-0 mr-2"
-      }}
-    />
+    {{#if this.device.isMobile}}
+
+      <Tables::Utilities::SearchBox
+        @searchQuery={{this.search}}
+        @size="large"
+        class="session-search-box input-full max-half-width mb-2"
+      />
+    {{else}}
+      <Tables::Utilities::SearchBox
+        @searchQuery={{this.search}}
+        @size="small"
+        class="mb-0 mr-2"
+      />
+    {{/if}}
 
     <UiDropdown class="labeled icon button mb-2 mr-2 pb-2">
       <i class="sort amount down icon"></i>
