@@ -30,14 +30,14 @@
       </UiDropdown>
     {{/if}}
     {{#if (or (eq this.type "number") (eq this.type "year"))}}
-      <div class="ui action input input-attendee-custom-form" style="width: 8%;">
+      <div class="ui action input input-attendee-custom-form number-item">
           <Input
             @type="number"
             @name="min_price"
             placeholder={{t "Min"}}
             @value={{this.min}} />
       </div>
-      <div class="ui action input input-attendee-custom-form" style="width: 8%;">
+      <div class="ui action input input-attendee-custom-form number-item">
         <Input
           @type="number"
           @name="max_price"
@@ -71,7 +71,7 @@
 </div>
 <div style="display: flex; flex-direction: column">
   {{#each this.visibleForm as |sub|}}
-    <div {{did-update this.updated @field}} class="ui action input sub" style="width: inherit; margin-top: 10px">
+    <div {{did-update this.updated @field}} class="ui action input sub child-language">
       {{#unless sub.isDeleted }}
         <Forms::Wizard::CustomFormInputTranslation
           @data={{sub}}
