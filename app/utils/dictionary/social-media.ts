@@ -10,7 +10,8 @@ export const socialMediaIdentifiers = socialMediaNames.map(name => {
 
 const prefixOverrides: { [key: string]: string } = {
   'gitter'   : 'https://gitter.im/',
-  'telegram' : 'https://t.me/'
+  'telegram' : 'https://t.me/',
+  'mastodon' : 'https://'
 };
 
 export interface SocialMedia {

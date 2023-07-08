@@ -4,7 +4,7 @@ import { readOnly, oneWay } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { groupBy, orderBy } from 'lodash-es';
 import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
@@ -13,7 +13,11 @@ import {
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-
+import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
+import { languageForms2 } from 'open-event-frontend/utils/dictionary/language-form-2';
+import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
+import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
+import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -25,17 +29,6 @@ export default Component.extend(FormMixin, {
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
   holders           : computed('data.attendees', 'buyer', function() {
-    this.data.attendees.forEach((attendee, index) => {
-      if (index === 0 && this.buyerFirstName && this.buyerLastName) {
-        attendee.set('firstname', this.buyerFirstName);
-        attendee.set('lastname', this.buyerLastName);
-        attendee.set('email', this.buyer.get('email'));
-      } else {
-        attendee.set('firstname', '');
-        attendee.set('lastname', '');
-        attendee.set('email', '');
-      }
-    });
     return this.data.attendees;
   }),
   isPaidOrder: computed('data', function() {
@@ -44,9 +37,6 @@ export default Component.extend(FormMixin, {
       return false;
     }
     return true;
-  }),
-  sameAsBuyer: computed('data', function() {
-    return (this.buyerHasFirstName && this.buyerHasLastName);
   }),
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
@@ -113,7 +103,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please select a gender.')
+          prompt : this.l10n.t('Please select categories that describe your gender identity.')
         }
       ]
     };
@@ -234,6 +224,23 @@ export default Component.extend(FormMixin, {
         {
           type   : 'empty',
           prompt : this.l10n.t('Please enter your home address.')
+        }
+      ]
+    };
+
+    const homeWikiValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter your home wiki.')
+        }
+      ]
+    };
+    const wikiScholarshipValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter your wiki scholarship.')
         }
       ]
     };
@@ -449,29 +456,49 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const isConsentFormFieldValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Code of conduct consent.')
+        }
+      ]
+    };
+
+    const isConsentOfRefundPolicyValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'regExp',
+          value  : compulsoryProtocolValidUrlPattern,
+          prompt : this.l10n.t('Please consent to the Refund Policy.')
+        }
+      ]
+    };
+
+    const nativeLanguageValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Language Form.')
+        }
+      ]
+    };
+
+    const fluentLanguageValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Language Form.')
+        }
+      ]
+    };
+
     const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
       fields : {
-        firstName: {
-          identifier : 'first_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your first name.')
-            }
-          ]
-        },
-        lastName: {
-          identifier : 'last_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your last name.')
-            }
-          ]
-        },
         email: {
           identifier : 'email',
           rules      : [
@@ -493,7 +520,7 @@ export default Component.extend(FormMixin, {
         },
         taxBusinessInfo: {
           identifier : 'taxBusinessInfo',
-          optional: true
+          optional   : true
         },
         address: {
           identifier : 'address',
@@ -551,6 +578,8 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`taxBusinessInfo_required_${  index}`] = taxBusinessInfoValidation;
       validationRules.fields[`billingAddress_required_${  index}`] = billingAddressValidation;
       validationRules.fields[`homeAddress_required_${  index}`] = homeAddressValidation;
+      validationRules.fields[`homeWiki_required_${  index}`] = homeWikiValidation;
+      validationRules.fields[`wikiScholarship_required_${  index}`] = wikiScholarshipValidation;
       validationRules.fields[`shippingAddress_required_${  index}`] = shippingAddressValidation;
       validationRules.fields[`company_required_${  index}`] = companyValidation;
       validationRules.fields[`workAddress_required_${  index}`] = workAddressValidation;
@@ -569,6 +598,10 @@ export default Component.extend(FormMixin, {
       validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
       validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
       validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
+      validationRules.fields[`native_language_required_${  index}`] = nativeLanguageValidation;
+      validationRules.fields[`fluent_language_required_${  index}`] = fluentLanguageValidation;
+      validationRules.fields[`is_consent_form_field_required_${  index}`] = isConsentFormFieldValidation;
+      validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
       this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
         validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
           rules: [
@@ -586,13 +619,50 @@ export default Component.extend(FormMixin, {
 
   allFields: computed('fields', function() {
     const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
-    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['position']);
+    const current_locale = this.cookies.read('current_locale');
+
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => {
+      const { isFixed, main_language } = field;
+      field.nameConvert = field.name;
+      if (field.name === 'Consent of refund policy') {
+        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
+      }
+      if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
+        field.transName = field.name;
+      } else if (field.translations?.length) {
+
+        const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
+
+        if (transName.length) {
+          field.transName = transName[0].name;
+        } else {
+          field.transName = field.name;
+        }
+      } else {
+        field.transName = field.name;
+      }
+
+      return !isFixed;
+    }), ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
-  genders   : orderBy(genders, 'name'),
-  ageGroups : orderBy(ageGroups, 'age'),
-  countries : orderBy(countries, 'name'),
+  genders         : orderBy(genders, 'position'),
+  ageGroups       : orderBy(ageGroups, 'position'),
+  countries       : orderBy(countries, 'name'),
+  languageForms1  : orderBy(languageForms1, 'position'),
+  languageForms2  : orderBy(languageForms2, 'position'),
+  homeWikis       : orderBy(homeWikis, 'item'),
+  wikiScholarship : orderBy(wikiScholarship, 'position'),
+  booleanComplex  : orderBy(booleanComplex, 'position'),
+
+  currentLocale: computed('cookies.current_locale', function() {
+    return this.cookies.read('current_locale');
+  }),
+
+  getData() {
+    return 'hello';
+  },
 
   actions: {
     submit(data) {
@@ -603,8 +673,9 @@ export default Component.extend(FormMixin, {
         this.sendAction('save', data);
       });
     },
-    modifyHolder(holder) {
-      if (this.sameAsBuyer) {
+    triggerSameAsBuyerOption(holder) {
+      holder.set('sameAsBuyer', !holder.sameAsBuyer);
+      if (holder.sameAsBuyer) {
         holder.set('firstname', this.buyerFirstName);
         holder.set('lastname', this.buyerLastName);
         holder.set('email', this.buyer.content.email);
@@ -613,6 +684,12 @@ export default Component.extend(FormMixin, {
         holder.set('lastname', '');
         holder.set('email', '');
       }
+    },
+    updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
+      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
+    },
+    updateGendersSelection(checked, changed, selectedOptions, holder, field) {
+      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
   }
 });

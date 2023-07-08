@@ -7,7 +7,7 @@
   <thead>
     {{#if @headerText}}
       <tr>
-        <th colspan="{{if this.editColumn '5' '4'}}" class="text center aligned">
+        <th colspan="{{if this.editColumn (if this.complexColumn '6' '5') '4'}}" class="text center aligned">
           {{@headerText}}
         </th>
       </tr>
@@ -24,6 +24,11 @@
         <th class="center aligned">
           {{t 'Type'}}
         </th>
+        {{#if (and this.complexColumn (eq @form 'attendee'))}}
+          <th class="center aligned">
+            {{t 'Range'}}
+          </th>
+        {{/if}}
         <th class="center aligned">
           {{t 'Include'}}
         </th>
@@ -33,7 +38,7 @@
         <th class="center aligned">
           {{t 'Show Public'}}
         </th>
-        {{#if this.editColumn}}
+        {{#if this.complexColumn}}
           <th class="center aligned">
             {{t 'Actions'}}
           </th>
@@ -43,20 +48,57 @@
   </thead>
   <tbody>
     {{#each @fields as |field|}}
+      {{#unless field.isDeleted}}
       <DraggableObject @overrideClass="{{if field.isIncluded 'positive'}} table-row" @content={{field}} @isSortable={{true}}>
           <td class="{{if this.device.isMobile 'center' 'right'}} border right aligned">
             <label class="{{if field.isFixed 'required'}}">
-              {{t-var field.name}}
-              {{#if field.isComplex}}
-                <div class="ui icon d-inline" data-tooltip="Custom Field">
-                  <i class="info icon"></i>
+              {{#if field.translations}}
+                <div>
+                  {{concat field.name " - " field.mainLanguage}}
+                  {{#if field.isComplex}}
+                    <div class="ui icon d-inline" data-tooltip="Custom Field">
+                      <i class="info icon"></i>
+                    </div>
+                  {{/if}}
                 </div>
+                {{#each field.translations as |translation|}}
+                  {{#unless translation.isDeleted}}
+                    {{#if (and translation.name translation.language_code )}} 
+                      <div>
+                          {{concat translation.name " - " translation.language_code}}
+                        <div class="ui icon d-inline" data-tooltip="Custom Field" style="visibility: hidden">
+                          <i class="info icon"></i>
+                        </div>
+                      </div>
+                    {{/if}}
+                  {{/unless}}
+                {{/each}}
+              {{else}}
+                {{#if (eq field.fieldIdentifier 'is_consent_form_field')}}
+                  <span>{{ t 'I agree to the terms of the'}} </span>
+                  <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}} </a>
+                  <span> {{t 'and the'}} </span>
+                  <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
+                  <span>.</span>
+                {{else}}
+                  {{t-var field.name}}
+                {{/if}}
+                {{#if field.isComplex}}
+                  <div class="ui icon d-inline" data-tooltip="Custom Field">
+                    <i class="info icon"></i>
+                  </div>
+                {{/if}}
               {{/if}}
-              </label>
+            </label>
           </td>
           <td class="border center aligned">
             {{t-var field.type}}
           </td>
+          {{#if (and this.complexColumn (eq @form 'attendee'))}}
+            <td class="border center aligned">
+              {{if (or (eq field.type "number") (eq field.type "year")) (concat field.min " - " field.max) "-"}}
+            </td>
+          {{/if}}
           <td class="border center aligned">
             <UiCheckbox
               @class="slider"
@@ -80,9 +122,17 @@
               @onChange={{action (mut field.isPublic)}}
               @label={{if this.device.isMobile (t "Public")}} />
           </td>
-          {{#if this.editColumn}}
+          {{#if this.complexColumn}}
             <td class="border center aligned">
               {{#if field.isComplex}}
+              {{#if (eq @form 'attendee')}}
+                <button class="ui compact icon positive circular button" data-tooltip="{{t 'Edit'}}" {{action  @updateField field}} {{action @setEditingField field.name}}>
+                  <i class="pencil icon"></i>
+                </button>
+                <button class="ui compact icon negative circular button" disabled={{if  (eq @getEditingField field.name) true false}} data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action @removeField field))}}>
+                  <i class="trash icon"></i>
+                </button>
+              {{else}}
                 <button class="ui compact icon positive circular button" data-tooltip="{{t 'Edit'}}" {{action  @updateField field}}>
                   <i class="pencil icon"></i>
                 </button>
@@ -90,9 +140,12 @@
                   <i class="trash icon"></i>
                 </button>
               {{/if}}
+                
+              {{/if}}
             </td>
           {{/if}}
       </DraggableObject>
+      {{/unless}}
     {{/each}}
   </tbody>
 </table>

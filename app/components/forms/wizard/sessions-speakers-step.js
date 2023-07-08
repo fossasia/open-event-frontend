@@ -5,7 +5,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { groupBy, sortBy } from 'lodash-es';
 import { sortCustomFormFields } from 'open-event-frontend/utils/sort';
 import { SPEAKER_FORM_ORDER, SESSION_FORM_ORDER } from 'open-event-frontend/models/custom-form';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import $ from 'jquery';
 
 export default Component.extend(EventWizardMixin, FormMixin, {

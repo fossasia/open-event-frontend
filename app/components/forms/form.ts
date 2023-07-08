@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import $ from 'jquery';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { debounce } from '@ember/runloop';
 import { FORM_DATE_FORMAT } from 'open-event-frontend/utils/dictionary/date-time';
 import { merge } from 'lodash-es';

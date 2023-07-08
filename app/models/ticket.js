@@ -1,7 +1,7 @@
 import { computed } from '@ember/object';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { computedDateTimeSplit } from 'open-event-frontend/utils/computed-helpers';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
@@ -25,17 +25,16 @@ export default ModelBase.extend({
   maxPrice             : attr('number'),
   isFeeAbsorbed        : attr('boolean', { defaultValue: true }),
   position             : attr('number'),
-
-  hasOrders: false,
+  formID               : attr('string', { defaultValue: '' }),
+  hasOrders            : false,
 
   /**
    * Relationships
    */
-  event           : belongsTo('event'),
-  orders          : hasMany('order'),
-  attendees       : hasMany('attendee'),
-  orderStatistics : belongsTo('order-statistics-ticket'),
-
+  event            : belongsTo('event'),
+  orders           : hasMany('order'),
+  attendees        : hasMany('attendee'),
+  orderStatistics  : belongsTo('order-statistics-ticket'),
   /**
    * Computed properties
    */
