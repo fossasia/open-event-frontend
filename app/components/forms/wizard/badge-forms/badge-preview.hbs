@@ -1,22 +1,18 @@
-<table class="ui selectable celled table">
-  <thead>
-    {{#if @headerText}}
-      <tr>
-        <th class="text left aligned">
-          {{@headerText}}
-        </th>
-      </tr>
-    {{/if}}
-  </thead>
-  <tbody>
-    <tr class="border left aligned">
-      <div class="ui w-full">
-        <UiCheckbox
-            @class="slider mt-2 ml-2"
-            @checked={{@data.isShowSampleData}}
-            @onChange={{action (mut @data.isShowSampleData)}} />
-            <label>{{t 'Show Sample Data.'}} </label>
-      </div>
-    </tr>
-  </tbody>
-</table>
+<div class="badge-setting">
+  <form class="ui form">
+    <div class="field">
+      {{#if @headerText}}
+      <h2 class="badge-setting-title">
+        {{@headerText}}
+      </h2>
+      {{/if}}
+    </div>
+    <div class="field">
+        <div class="column ui pb-2">
+          <UiCheckbox @class="slider mt-2 ml-2" @checked={{@data.isShowSampleData}} @onChange={{action (mut
+            @data.isShowSampleData)}} />
+          <label class="ui pb-4">{{t 'Show Sample Data.'}} </label>
+        </div>
+    </div>
+  </form>
+</div>
