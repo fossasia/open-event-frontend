@@ -77,7 +77,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         ticketsDetails,
         badgeSize        : [],
         isShowSampleData : false,
-        badgeColor       : 'FFFFFF'
+        badgeColor       : 'FFFFFF',
+        badgeImageURL: []
       }));
     },
 

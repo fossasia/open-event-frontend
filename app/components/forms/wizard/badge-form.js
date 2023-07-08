@@ -90,8 +90,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       lineHeight };
   }),
 
-  getBadgeStyle: computed('badgeSize', 'badgeOrientation', 'badgeColor', function() {
-    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in)';
+  getBadgeStyle: computed('badgeSize', 'badgeOrientation', 'badgeColor', 'data.badgeImageURL', function() {
+    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in); background-image: url(' + this.data.badgeImageURL +')';
     const bodyStyle = 'color: #000000; background-size: cover; height: calc(' + this.getBadgeSize.height + 'in); background-color: ' + this.badgeColor + ';';
     return {
       headerStyle : htmlSafe(headerStyle),

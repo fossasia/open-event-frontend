@@ -56,12 +56,12 @@
         </div>
         <div class="column pl-4 pt-2 pb-2">
           <SpectrumColorPicker class="w-30" showAlpha={{true}} onChange={{action @changeBadgeColor}} />
-          {{!--
-          <Widgets::Forms::FileUpload @fileUrl={{document.link}} @label={{t "document" }} @id={{document.name}}
-            @icon="file" @hint={{t "Select a file" }} @maxSizeInKb={{this.settings.slideSize}} />
-          <Widgets::Forms::ImageUpload @needsCropper={{true}} @icon="image" @hint={{t "Select badge background Image" }}
-            @maxSizeInKb={{this.settings.imageSize}} @aspectRatio={{array 1.86 (if (eq this.badgeSize.lineHeight 3) 1.2
-            2.4 )}} @helpText={{t "We recommend using at 240x180px or 240x360px (1:1 ratio) image" }} /> --}}
+        </div>
+        <div class="column pl-4 pt-2 pb-2">
+          <Forms::Wizard::BadgeForms::BadgeImageUpload @needsCropper={{true}} @icon="image"
+            @hint={{t "Select badge background Image" }} @maxSizeInKb={{this.settings.imageSize}} @aspectRatio={{array
+            1.86 (if (eq this.badgeSize.lineHeight 3) 1.2 2.4 )}}
+            @helpText={{t "We recommend using at 240x180px or 240x360px (1:1 ratio) image" }} @data={{@data}} />
         </div>
       </div>
     </div>
