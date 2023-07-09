@@ -32,7 +32,10 @@ export default class L10nService extends L10n {
       'th'      : 'ไทย',
       'vi'      : 'Tiếng Việt',
       'zh_Hans' : '中文（简体)',
-      'zh_Hant' : '中文（繁體)'
+      'zh_Hant' : '中文（繁體)',
+      'ca'      : 'Català',
+      'hr'      : 'Hrvatski',
+      'te'      : 'తెలుగు'
     };
   })
   availableLocales;
