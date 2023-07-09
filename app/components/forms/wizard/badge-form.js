@@ -75,13 +75,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     };
   }),
 
-  getBadgeSize: computed('badgeSize', 'badgeOrientation', function() {
+  getBadgeSize: computed('data.badgeSize', 'data.badgeOrientation', function() {
     let height = 4;
     let lineHeight = 3;
-    if (this.badgeSize) {
-      [height, lineHeight] = [this.badgeSize.height, this.badgeSize.lineHeight];
+    if (this.data.badgeSize) {
+      [height, lineHeight] = [this.data.badgeSize.height, this.data.badgeSize.lineHeight];
     }
-    if (this.badgeOrientation === 'Landscape') {
+    if (this.data.badgeOrientation === 'Landscape') {
       [height, lineHeight] = [lineHeight, height];
     }
 
@@ -90,17 +90,17 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       lineHeight };
   }),
 
-  getBadgeStyle: computed('badgeSize', 'badgeOrientation', 'badgeColor', 'data.badgeImageURL', function() {
-    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in); background-image: url(' + this.data.badgeImageURL +')';
-    const bodyStyle = 'color: #000000; background-size: cover; height: calc(' + this.getBadgeSize.height + 'in); background-color: ' + this.badgeColor + ';';
+  getBadgeStyle: computed('data.badgeSize', 'data.badgeOrientation', 'data.badgeColor', 'data.badgeImageURL', 'data.badgeFields.@each', function() {
+    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in); background-image: url(' + this.data.badgeImageURL +'); background-size: contain;';
+    const bodyStyle = 'color: #000000; background-size: cover; height: calc(' + this.getBadgeSize.height + 'in); background-color: ' + this.data.badgeColor + ';';
     return {
       headerStyle : htmlSafe(headerStyle),
       bodyStyle   : htmlSafe(bodyStyle)
     };
   }),
 
-  // styleHelper: computed('data.badgeFields.@each.fontSize', 'data.badgeFields.@each.textAlignment', 'data.badgeFields.@each.textType', function() {
-  //   const fieldStyle = 'font-size : '  + '; overflow: hidden; word-wrap: break-word;';
+  // getfieldStyle: computed('field', function() {
+  //   const fieldStyle = 'font-size : ' + field.fontSize + 'px; text-align: ' + field.textAlignment + '; text-transform: ' + field.textType + '; overflow: hidden; word-wrap: break-word; ';
   //   return htmlSafe(fieldStyle);
   // }),
 
@@ -116,18 +116,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
     mutateBadgeSize(value) {
       badgeSize.forEach(badge => {
-        if (badge.name === value) {this.set('badgeSize', badge)}
+        if (badge.name === value) {(this.data.badgeSize = badge)}
       });
-      this.data.badgeSize = this.badgeSize;
-    },
-    mutateBadgeOrientation(value) {
-      this.set('badgeOrientation', value);
-      this.data.badgeOrientation = value;
     },
     mutateBadgeColor(color) {
       const colorCode = tinycolor(color.target.value);
-      this.set('badgeColor', colorCode.toHexString());
-      this.data.badgeColor = this.badgeColor;
+      this.data.badgeColor = colorCode.toHexString();
     }
   }
 });

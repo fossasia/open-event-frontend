@@ -35,7 +35,7 @@
         </div>
         <div class="column pl-4 pt-2">
           <UiDropdown @class="search selection" @selected={{@data.badgeOrientation}} @onChange={{action
-            @changeBadgeOrientation}} as |execute mapper|>
+            (mut @data.badgeOrientation)}} as |execute mapper|>
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select your badge orientation'}}</div>
             <div class="menu">
@@ -56,12 +56,17 @@
         </div>
         <div class="column pl-4 pt-2 pb-2">
           <SpectrumColorPicker class="w-30" showAlpha={{true}} onChange={{action @changeBadgeColor}} />
+          <button type="button" class="ui center aligned icon button ml-4" {{action (mut @data.badgeColor) null }}>
+            <i class="trash icon"></i>
+            {{t 'Clear Color'}}
+          </button>
         </div>
         <div class="column pl-4 pt-2 pb-2">
           <Forms::Wizard::BadgeForms::BadgeImageUpload @needsCropper={{true}} @icon="image"
-            @hint={{t "Select badge background Image" }} @maxSizeInKb={{this.settings.imageSize}} @aspectRatio={{array
-            1.86 (if (eq this.badgeSize.lineHeight 3) 1.2 2.4 )}}
-            @helpText={{t "We recommend using at 240x180px or 240x360px (1:1 ratio) image" }} @data={{@data}} />
+            @hint={{t "Select badge background Image" }} @maxSizeInKb={{this.settings.imageSize}} 
+            @aspectRatio={{array (if (eq @data.badgeSize.lineHeight '6') 3.84 1.92) 2.56}}
+            @helpText={{t "We recommend using at 240x180px or 240x360px (1:1 ratio) image" }} @data={{@data}}
+            @cropPanel={{array 500 450}} />
         </div>
       </div>
     </div>

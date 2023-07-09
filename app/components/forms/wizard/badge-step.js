@@ -75,10 +75,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.data.badges.pushObject(this.store.createRecord('badge-form', {
         badgeID          : _badgeID,
         ticketsDetails,
-        badgeSize        : [],
-        isShowSampleData : false,
-        badgeColor       : 'FFFFFF',
-        badgeImageURL: []
       }));
     },
 

@@ -1,47 +1,52 @@
-<div>
-    <div class="bgImg ui raised segment" style={{@headerStyle}}>
+<div class="bgImg ui raised segment" style={{@headerStyle}}>
 
-        <div style={{@bodyStyle}}>
-            <div class="preview content" style="padding-top: 15%">
-                {{#if showSampleData}}
-                <p style="
+    <div style={{@bodyStyle}}>
+        <div class="preview content" style="padding-top: 15%">
+            {{#if showSampleData}}
+            <p style="
                     font-size : 30px;
                     text-align: center;
                     text-transform: capitalize;
                     ">
-                    {{sampleData.name}}
-                </p>
-                <p style="
+                {{sampleData.name}}
+            </p>
+            <p style="
                     font-size : 20px;
                     text-align: center;
                     text-transform: capitalize;
                     ">
-                    {{sampleData.organisation}}
-                </p>
-                <p style="
+                {{sampleData.organisation}}
+            </p>
+            <p style="
                     font-size : 50px;
                     text-align: center;
                     text-transform: capitalize;
                     ">
-                    {{sampleData.position}}
-                </p>
+                {{sampleData.position}}
+            </p>
 
-                {{else}}
-                {{#each @fields as |_field|}}
-                {{#if (not _field.isDeleted)}}
-                <p style="
+            {{else}}
+            {{#each @fields as |_field|}}
+            {{#if (not _field.isDeleted)}}
+            <p style="
                             font-size : {{_field.fontSize}}px;
                             text-align: {{_field.textAlignment}};
                             text-transform: {{_field.textType}};
                             overflow: hidden;
                             word-wrap: break-word;
                             ">
-                    {{_field.sampleText}}
-                </p>
-                {{/if}}
-                {{/each}}
-                {{/if}}
-            </div>
+                {{_field.sampleText}}
+            </p>
+            {{/if}}
+            {{/each}}
+            {{!-- {{#each @fields as |_field|}}
+            {{#if (not _field.isDeleted)}}
+            <p {{action (mut @field) field}} style={{@getfieldStyle}}>
+                {{_field.sampleText}}
+            </p>
+            {{/if}}
+            {{/each}} --}}
+            {{/if}}
         </div>
     </div>
 </div>

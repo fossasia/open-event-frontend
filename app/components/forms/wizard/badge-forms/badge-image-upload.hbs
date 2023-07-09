@@ -53,5 +53,5 @@
 {{/if}}
 {{#if this.needsCropper}}
 <Modals::CropperModal @isOpen={{this.cropperModalIsShown}} @imgData={{this.imgData}}
-  @onImageCrop={{action "imageCropped" }} @aspectRatio={{this.aspectRatio}} />
+  @onImageCrop={{action "imageCropped" }} @aspectRatio={{this.aspectRatio}} @cropPanel={{@cropPanel}}/>
 {{/if}}

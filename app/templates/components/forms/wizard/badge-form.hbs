@@ -31,7 +31,6 @@
         @headerText={{t "Page Setting"}}
         @changeBadgeSize={{action 'mutateBadgeSize'}}
         @changeBadgeColor={{action 'mutateBadgeColor'}}
-        @changeBadgeOrientation={{action 'mutateBadgeOrientation'}}
         @data={{this.data}} />
     </div>
     <div class="column">
@@ -74,12 +73,13 @@
       <Forms::Wizard::BadgeForms::BadgeImage 
         @backColor={{this.badgeColor}}
         @sampleData={{this.getsampleData}}
-        @showSampleData={{this.data.isShowSampleData}}
-        @badgeOrientation={{this.badgeOrientation}}
+        @showSampleData={{this.data.isShowingSampleData}}
         @fields={{this.data.badgeFields}}
         @headerStyle={{this.getBadgeStyle.headerStyle}}
         @bodyStyle={{this.getBadgeStyle.bodyStyle}}
         @badgeImgURL={{this.getBadgeImageURL}}
+        {{!-- @getfieldStyle={{getfieldStyle}}
+        @field={{@this.field}} --}}
         />
     </div>
   </div>

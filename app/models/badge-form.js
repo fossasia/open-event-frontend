@@ -10,6 +10,11 @@ export default ModelBase.extend({
    */
   badgeID     : attr('string'),
   badgeFields : hasMany('badge-field-form'),
+  isShowingSampleData : false,
+  badgeSize        : attr('string'),
+  badgeColor       : attr('string'),
+  badgeImageURL: attr('string'),
+  badgeOrientation : attr('string'),
   /**
    * Relationships
    */

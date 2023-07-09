@@ -95,10 +95,6 @@ export default class BadgeImageUpload extends Component {
       this.set('selectedImage', null);
       this.set('data.badgeImageURL', null);
       this.set('imageUrl', null);
-      if (this.user) {
-        this.user.set('avatarUrl', null);
-        this.user.save();
-      }
     } else {
       this.set('needsConfirmation', false);
     }
