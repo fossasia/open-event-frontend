@@ -72,10 +72,10 @@
       </div>
     </div>
     <div class="column">
-      <Forms::Wizard::BadgeForms::BadgeImage @backColor={{this.badgeColor}} @sampleData={{this.getsampleData}}
+      <Forms::Wizard::BadgeForms::BadgeImage @sampleData={{this.getsampleData}}
         @showSampleData={{this.data.isShowingSampleData}} @fields={{this.data.badgeFields}}
-        @headerStyle={{this.getBadgeStyle.headerStyle}} @bodyStyle={{this.getBadgeStyle.bodyStyle}}
-        @badgeImgURL={{this.getBadgeImageURL}} {{!-- @getfieldStyle={{getfieldStyle}} @field={{@this.field}} --}} />
+        @badgeHeight={{this.getBadgeSize.height}} @badgeWidth={{this.getBadgeSize.lineHeight}}
+        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}} />
     </div>
   </div>
   {{/if}}

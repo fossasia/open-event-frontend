@@ -1,27 +1,15 @@
-<div class="bgImg ui raised segment" style={{@headerStyle}}>
-
-    <div style={{@bodyStyle}}>
-        <div class="preview content" style="padding-top: 15%">
+<div
+    class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}" style={{badgeImgURL}}>
+    <div class="ui w-full h-full badge-body" style={{@bgColor}}>
+        <div class="sample-text">
             {{#if showSampleData}}
-            <p style="
-                    font-size : 30px;
-                    text-align: center;
-                    text-transform: capitalize;
-                    ">
+            <p class="f-4">
                 {{sampleData.name}}
             </p>
-            <p style="
-                    font-size : 20px;
-                    text-align: center;
-                    text-transform: capitalize;
-                    ">
+            <p class="f-2">
                 {{sampleData.organisation}}
             </p>
-            <p style="
-                    font-size : 50px;
-                    text-align: center;
-                    text-transform: capitalize;
-                    ">
+            <p class="f-6">
                 {{sampleData.position}}
             </p>
 
@@ -36,7 +24,7 @@
                             word-wrap: break-word;
                             "> --}}
                 {{_field.sampleText}}
-            {{!-- </p> --}}
+                {{!-- </p> --}}
             {{/if}}
             {{/each}}
             {{/if}}
