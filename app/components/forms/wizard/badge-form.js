@@ -6,9 +6,14 @@ import { sortBy, union } from 'lodash-es';
 import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
 import { htmlSafe } from '@ember/template';
 import tinycolor from 'tinycolor2';
+import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-custom-fields';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
-  currentSelected: [],
+  currentSelected   : [],
+  badgeHeight       : [],
+  badgeLineHeight   : [],
+  ignoreCustomField : [],
+  isExpandedBadge   : true,
 
   init() {
     this._super(...arguments);
@@ -25,6 +30,22 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   badgeFields: computed('data.badgeFields.@each.isDeleted', function() {
     return this.data.badgeFields?.filter(field => !field.isDeleted);
+  }),
+
+  includeCustomField: computed('ignoreCustomField.@each', function() {
+    return badgeCustomFields.filter(item => !this.ignoreCustomField.includes(item.name));
+  }),
+
+  ticketNames: computed('data.ticketsDetails.@each', function() {
+    let ticketNames = '';
+    this.data.ticketsDetails.forEach(ticket => {
+      if (ticketNames) {
+        ticketNames += ', ' + ticket.name;
+      } else {
+        ticketNames = ticket.name;
+      }
+    });
+    return ticketNames.trim();
   }),
 
   selectChanges: observer('data.ticketsDetails', function() {
@@ -44,7 +65,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       changed,
       formID: this.id
     });
-
   }),
 
   editableFields: computed('data.customForms.@each', function() {
@@ -63,8 +83,22 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
+  disableAddBadgeField: computed('data.badgeFields.@each.isDeleted', function() {
+    return this.data.badgeFields?.filter(field => !field.isDeleted).length === badgeCustomFields.length;
+  }),
+
   removeBadgeField(badgeField) {
     badgeField.isDeleted = true;
+    this.ignoreCustomField.removeObject(badgeField.customField);
+  },
+
+  onSelectedLanguage(old_code, new_code) {
+    if (old_code) {
+      this.ignoreCustomField.removeObject(old_code);
+    }
+    if (new_code) {
+      this.ignoreCustomField.pushObject(new_code);
+    }
   },
 
   getsampleData: computed('sampleData', function() {
@@ -108,10 +142,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     removeField(field) {
       field.deleteRecord();
     },
-    addBadgeField() {
+    addBadgeField(badgeCustomFields = []) {
       this.data.badgeFields.pushObject(this.store.createRecord('badge-field-form', {
         badgeID   : this.data.badgeID,
-        isDeleted : false
+        isDeleted : false,
+        badgeCustomFields
       }));
     },
     mutateBadgeSize(value) {
@@ -122,6 +157,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     mutateBadgeColor(color) {
       const colorCode = tinycolor(color.target.value);
       this.data.badgeColor = colorCode.toHexString();
+    },
+    onChildChangeCustomField(old_code, new_code) {
+      this.onSelectedLanguage(old_code, new_code);
+    },
+    toggleBadge() {
+      if (!this.isExpandedBadge) {
+        this.set('isExpandedBadge', true);
+      } else {
+        this.set('isExpandedBadge', false);
+      }
     }
   }
 });

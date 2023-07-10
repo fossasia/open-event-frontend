@@ -1,42 +1,48 @@
 <div class="">
   <h4>
-    {{t 'Choose from existing ticket(s)'}}
-    <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action @onRemoveForm this.id))}}>
-      <i class="trash box icon"></i>  
+    {{ t 'Choose from existing ticket(s)'}}
+    <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{ action(confirm
+      (t "Are you sure you want to delete this?" )(action @onRemoveForm this.id))}}>
+      <i class="trash box icon"></i>
     </button>
   </h4>
-  <UiDropdown
-    @class="fluid multiple search selection"
-    @selected={{this.data.ticketsDetails}}
-    @onChange={{action (mut this.data.ticketsDetails)}} as |execute mapper|>
+  {{#if this.data.ticketsDetails.length }}
+  <b>{{ t 'Ticket names: '}}</b>{ { this.ticketNames } }
+  <button type="button" class="ui compact icon button right floated" {{action 'toggleBadge' }}>
+    {{#if this.isExpandedBadge}}
+    <i class="angle up icon" />
+    {{else}}
+    <i class="angle down icon" />
+    {{/if}}
+  </button>
+  <div class="ui hidden divider mb-0"></div>
+  {{/if}}
+  {{ #if this.isExpandedBadge }}
+  <UiDropdown @class="fluid multiple search selection" @selected={ { this.data.ticketsDetails } } @onChange={ {
+    action(mut this.data.ticketsDetails) } } as | execute mapper |>
     <i class="dropdown icon"></i>
     <div class="default text">
       {{t 'Select Tickets'}}
     </div>
     <div class="menu">
       {{#each (sort-by 'name' this.ticketsEnable) as |ticket|}}
-        {{#if ticket.name}}
-          <div data-value="{{map-value mapper ticket}}" class="item">
-            {{ticket.name}}
-          </div>
-        {{/if}}
+      {{#if ticket.name}}
+      <div data-value="{{map-value mapper ticket}}" class="item">
+        {{ticket.name}}
+      </div>
+      {{/if}}
       {{/each}}
     </div>
   </UiDropdown>
-
   <div class="ui hidden divider"></div>
   <div class="ui two column stackable grid">
     <div class="column">
-      <Forms::Wizard::BadgeForms::BadgeSetting
-        @headerText={{t "Page Setting"}}
-        @changeBadgeSize={{action 'mutateBadgeSize'}}
-        @changeBadgeColor={{action 'mutateBadgeColor'}}
+      <Forms::Wizard::BadgeForms::BadgeSetting @headerText={{t "Page Setting" }}
+        @changeBadgeSize={{action 'mutateBadgeSize' }} @changeBadgeColor={{action 'mutateBadgeColor' }}
         @data={{this.data}} />
     </div>
     <div class="column">
-      <Forms::Wizard::BadgeForms::BadgePreview
-        @headerText={{t "Preview"}}
-        @data={{this.data}} />
+      <Forms::Wizard::BadgeForms::BadgePreview @headerText={{t "Preview" }} @data={{this.data}} />
     </div>
   </div>
   <div class="ui hidden divider"></div>
@@ -45,42 +51,32 @@
       <div class="badge-setting">
         <h2 class="badge-setting-title ">
           {{t 'Fields'}}
-          <button type="button" class="ui mini blue button right floated m-2" {{action 'addBadgeField'}}>
-            <i class="add icon"/>
+          <button type="button" class="ui mini blue button right floated m-2" disabled={{this.disableAddBadgeField}}
+            {{action 'addBadgeField' }}>
+            <i class="add icon" />
             {{t 'Add Rows'}}
           </button>
         </h2>
         {{#if this.badgeFields.length}}
-          <div>
-            {{#each this.badgeFields as |_field index|}}
-              <div class="ui hidden divider mb-0"></div>
-              <Forms::Wizard::BadgeFieldForm
-                @data={{_field}}
-                @index={{index}}
-                @event={{this.data.event}}
-                @move="move" 
-                @save="save"
-                @removeBadgeField={{this.removeBadgeField}}
-                @isLoading={{this.isLoading}} />
-            {{/each}}
-          </div>
+        <div>
+          {{#each this.badgeFields as |_field index|}}
+          <div class="ui hidden divider mb-0"></div>
+          <Forms::Wizard::BadgeFieldForm @data={{_field}} @index={{index}} @move="move" @save="save"
+            @includeCustomField={{this.includeCustomField}} @onChange={{action 'onChildChangeCustomField' }}
+            @removeBadgeField={{this.removeBadgeField}} @isLoading={{this.isLoading}} />
+          {{/each}}
+        </div>
         {{else}}
-          <div class="spacer-50"></div>
+        <div class="spacer-50"></div>
         {{/if}}
       </div>
     </div>
     <div class="column">
-      <Forms::Wizard::BadgeForms::BadgeImage 
-        @backColor={{this.badgeColor}}
-        @sampleData={{this.getsampleData}}
-        @showSampleData={{this.data.isShowingSampleData}}
-        @fields={{this.data.badgeFields}}
-        @headerStyle={{this.getBadgeStyle.headerStyle}}
-        @bodyStyle={{this.getBadgeStyle.bodyStyle}}
-        @badgeImgURL={{this.getBadgeImageURL}}
-        {{!-- @getfieldStyle={{getfieldStyle}}
-        @field={{@this.field}} --}}
-        />
+      <Forms::Wizard::BadgeForms::BadgeImage @backColor={{this.badgeColor}} @sampleData={{this.getsampleData}}
+        @showSampleData={{this.data.isShowingSampleData}} @fields={{this.data.badgeFields}}
+        @headerStyle={{this.getBadgeStyle.headerStyle}} @bodyStyle={{this.getBadgeStyle.bodyStyle}}
+        @badgeImgURL={{this.getBadgeImageURL}} {{!-- @getfieldStyle={{getfieldStyle}} @field={{@this.field}} --}} />
     </div>
   </div>
+  {{/if}}
 </div>
