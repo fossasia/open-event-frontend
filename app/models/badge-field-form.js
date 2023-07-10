@@ -2,6 +2,8 @@
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { belongsTo, hasMany } from 'ember-data/relationships';
+import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export default ModelBase.extend({
 
@@ -19,5 +21,11 @@ export default ModelBase.extend({
    * Relationships
    */
   event         : belongsTo('event'),
-  ticket        : hasMany('ticket')
+  ticket        : hasMany('ticket'),
+
+  getFieldStyle: computed('sampleText', 'fontSize', 'textAlignment', 'textType', function() {  
+    return htmlSafe('font-size: '+ this.fontSize + 'px; text-align: ' + this.textAlignment + '; text-transform: ' + this.textType);
+  })
+
+
 });

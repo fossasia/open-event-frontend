@@ -1,5 +1,5 @@
-<div
-    class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}" style={{badgeImgURL}}>
+<div class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}"
+    style={{badgeImgURL}}>
     <div class="ui w-full h-full badge-body" style={{@bgColor}}>
         <div class="sample-text">
             {{#if showSampleData}}
@@ -16,15 +16,10 @@
             {{else}}
             {{#each @fields as |_field|}}
             {{#if (not _field.isDeleted)}}
-            {{!-- <p style="
-                            font-size : {{_field.fontSize}}px;
-                            text-align: {{_field.textAlignment}};
-                            text-transform: {{_field.textType}};
-                            overflow: hidden;
-                            word-wrap: break-word;
-                            "> --}}
+            <p class="field-style"
+                style={{_field.getFieldStyle}}>
                 {{_field.sampleText}}
-                {{!-- </p> --}}
+            </p>
             {{/if}}
             {{/each}}
             {{/if}}
