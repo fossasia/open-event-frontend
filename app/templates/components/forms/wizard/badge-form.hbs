@@ -1,13 +1,13 @@
 <div class="">
   <h4>
     {{ t 'Choose from existing ticket(s)'}}
-    <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{ action(confirm
-      (t "Are you sure you want to delete this?" )(action @onRemoveForm this.id))}}>
+    <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" 
+      {{action (confirm (t "Are you sure you want to delete this?" )(action @onRemoveForm this.id))}}>
       <i class="trash box icon"></i>
     </button>
   </h4>
   {{#if this.data.ticketsDetails.length }}
-  <b>{{ t 'Ticket names: '}}</b>{ { this.ticketNames } }
+  <b>{{ t 'Ticket names: '}}</b>{{ this.ticketNames }}
   <button type="button" class="ui compact icon button right floated" {{action 'toggleBadge' }}>
     {{#if this.isExpandedBadge}}
     <i class="angle up icon" />
@@ -17,9 +17,9 @@
   </button>
   <div class="ui hidden divider mb-0"></div>
   {{/if}}
-  {{ #if this.isExpandedBadge }}
-  <UiDropdown @class="fluid multiple search selection" @selected={ { this.data.ticketsDetails } } @onChange={ {
-    action(mut this.data.ticketsDetails) } } as | execute mapper |>
+  {{#if this.isExpandedBadge }}
+  <UiDropdown @class="fluid multiple search selection" @selected={{ this.data.ticketsDetails }} 
+    @onChange={{action (mut this.data.ticketsDetails) }} as | execute mapper |>
     <i class="dropdown icon"></i>
     <div class="default text">
       {{t 'Select Tickets'}}
