@@ -132,6 +132,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return htmlSafe('background-image: url(' + this.data.badgeImageURL + '); background-size: cover;');
   }),
 
+  getQRCode: computed('data.badgeFields.@each.customField', 'data.badgeFields.@each.sampleText', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.textAlignment', 'data.badgeFields.@each.isDeleted', function() {
+    const customeFieldToBeGen = []
+    this.data.badgeFields.forEach(field => {
+      if(!field.isDeleted) {
+        customeFieldToBeGen.pushObject(field)
+      }
+    });
+    return customeFieldToBeGen;
+  }),
+
   // getfieldStyle: computed('field', function() {
   //   const fieldStyle = 'font-size : ' + field.fontSize + 'px; text-align: ' + field.textAlignment + '; text-transform: ' + field.textType + '; overflow: hidden; word-wrap: break-word; ';
   //   return htmlSafe(fieldStyle);

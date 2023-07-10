@@ -16,10 +16,15 @@
             {{else}}
             {{#each @fields as |_field|}}
             {{#if (not _field.isDeleted)}}
-            <p class="field-style"
-                style={{_field.getFieldStyle}}>
-                {{_field.sampleText}}
-            </p>
+                {{#if (eq _field.customField 'QR')}}
+                    {{!-- {{@qrCode}} --}}
+                    {{!-- {{qr-code data="Hello world" light="#EEEEFF" dark="#330000"}} --}}
+                {{else}}
+                <p class="field-style"
+                    style={{_field.getFieldStyle}}>
+                    {{_field.sampleText}}
+                </p>
+                {{/if}}
             {{/if}}
             {{/each}}
             {{/if}}

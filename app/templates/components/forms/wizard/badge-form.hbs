@@ -75,7 +75,9 @@
       <Forms::Wizard::BadgeForms::BadgeImage @sampleData={{this.getsampleData}}
         @showSampleData={{this.data.isShowingSampleData}} @fields={{this.data.badgeFields}}
         @badgeHeight={{this.getBadgeSize.height}} @badgeWidth={{this.getBadgeSize.lineHeight}}
-        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}} />
+        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}} 
+        {{!-- @qrCode={{this.getQRCode}}  --}}
+        />
     </div>
   </div>
   {{/if}}
