@@ -133,10 +133,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   getQRCode: computed('data.badgeFields.@each.customField', 'data.badgeFields.@each.sampleText', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.textAlignment', 'data.badgeFields.@each.isDeleted', function() {
-    const customeFieldToBeGen = []
+    const customeFieldToBeGen = [];
     this.data.badgeFields.forEach(field => {
-      if(!field.isDeleted) {
-        customeFieldToBeGen.pushObject(field)
+      if (!field.isDeleted) {
+        customeFieldToBeGen.pushObject(field);
       }
     });
     return customeFieldToBeGen;
