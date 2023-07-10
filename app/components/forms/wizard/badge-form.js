@@ -91,7 +91,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   getBadgeStyle: computed('data.badgeSize', 'data.badgeOrientation', 'data.badgeColor', 'data.badgeImageURL', 'data.badgeFields.@each', function() {
-    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in); background-image: url(' + this.data.badgeImageURL +'); background-size: contain;';
+    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in); background-image: url(' + this.data.badgeImageURL + '); background-size: contain;';
     const bodyStyle = 'color: #000000; background-size: cover; height: calc(' + this.getBadgeSize.height + 'in); background-color: ' + this.data.badgeColor + ';';
     return {
       headerStyle : htmlSafe(headerStyle),

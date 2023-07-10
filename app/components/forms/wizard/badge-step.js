@@ -73,8 +73,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     addBadge(ticketsDetails = []) {
       const _badgeID =  v4();
       this.data.badges.pushObject(this.store.createRecord('badge-form', {
-        badgeID          : _badgeID,
-        ticketsDetails,
+        badgeID: _badgeID,
+        ticketsDetails
       }));
     },
 
