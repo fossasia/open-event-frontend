@@ -17,11 +17,13 @@ export default class L10nService extends L10n {
     return {
       'ar'      : 'عربي',
       'bn'      : 'বাংলা',
+      'ca'      : 'Català',
       'de'      : 'Deutsch',
       'en'      : 'English',
       'es'      : 'Español',
       'fr'      : 'Français',
       'hi'      : 'हिंदी',
+      'hr'      : 'Hrvatski',
       'id'      : 'Bahasa Indonesia',
       'ja'      : '日本語',
       'ko'      : '한국어',
@@ -29,13 +31,11 @@ export default class L10nService extends L10n {
       'pl'      : 'Polski',
       'ru'      : 'Русский',
       'sv'      : 'Svenska',
+      'te'      : 'తెలుగు',
       'th'      : 'ไทย',
       'vi'      : 'Tiếng Việt',
       'zh_Hans' : '中文（简体)',
-      'zh_Hant' : '中文（繁體)',
-      'ca'      : 'Català',
-      'hr'      : 'Hrvatski',
-      'te'      : 'తెలుగు'
+      'zh_Hant' : '中文（繁體)'
     };
   })
   availableLocales;
