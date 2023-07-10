@@ -10,7 +10,7 @@ export const booleanTextType = [
     position : 2
   },
   {
-    name     : tn.t('Capitalized'),
+    name     : tn.t('Capitalize'),
     position : 3
   }
 ];

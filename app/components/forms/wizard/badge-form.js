@@ -3,6 +3,9 @@ import { computed, observer } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy, union } from 'lodash-es';
+import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
+import { htmlSafe } from '@ember/template';
+import tinycolor from 'tinycolor2';
 import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-custom-fields';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
@@ -98,22 +101,46 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     }
   },
 
+  getsampleData: computed('sampleData', function() {
+    return {
+      name         : 'Barack Obama',
+      organisation : 'US',
+      position     : 'President'
+    };
+  }),
+
+  getBadgeSize: computed('data.badgeSize', 'data.badgeOrientation', function() {
+    let height = 4;
+    let lineHeight = 3;
+    if (this.data.badgeSize) {
+      [height, lineHeight] = [this.data.badgeSize.height, this.data.badgeSize.lineHeight];
+    }
+    if (this.data.badgeOrientation === 'Landscape') {
+      [height, lineHeight] = [lineHeight, height];
+    }
+
+    return {
+      height,
+      lineHeight };
+  }),
+
+  getBadgeStyle: computed('data.badgeSize', 'data.badgeOrientation', 'data.badgeColor', 'data.badgeImageURL', 'data.badgeFields.@each', function() {
+    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in); background-image: url(' + this.data.badgeImageURL + '); background-size: contain;';
+    const bodyStyle = 'color: #000000; background-size: cover; height: calc(' + this.getBadgeSize.height + 'in); background-color: ' + this.data.badgeColor + ';';
+    return {
+      headerStyle : htmlSafe(headerStyle),
+      bodyStyle   : htmlSafe(bodyStyle)
+    };
+  }),
+
+  // getfieldStyle: computed('field', function() {
+  //   const fieldStyle = 'font-size : ' + field.fontSize + 'px; text-align: ' + field.textAlignment + '; text-transform: ' + field.textType + '; overflow: hidden; word-wrap: break-word; ';
+  //   return htmlSafe(fieldStyle);
+  // }),
+
   actions: {
     removeField(field) {
       field.deleteRecord();
-    },
-    mutateBadgeSize(value) {
-      if (value.name === '4" x 3"') {
-        this.badgeHeight = value.height;
-        this.badgeLineHeight = value.lineHeight;
-      } else if (value.name === '3.5" x 5"') {
-        this.badgeHeight = value.height;
-        this.badgeLineHeight = value.lineHeight;
-      } else {
-        this.badgeHeight = value.height;
-        this.badgeLineHeight = value.lineHeight;
-      }
-      this.set('badgeSize', value);
     },
     addBadgeField(badgeCustomFields = []) {
       this.data.badgeFields.pushObject(this.store.createRecord('badge-field-form', {
@@ -121,6 +148,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         isDeleted : false,
         badgeCustomFields
       }));
+    },
+    mutateBadgeSize(value) {
+      badgeSize.forEach(badge => {
+        if (badge.name === value) {(this.data.badgeSize = badge)}
+      });
+    },
+    mutateBadgeColor(color) {
+      const colorCode = tinycolor(color.target.value);
+      this.data.badgeColor = colorCode.toHexString();
     },
     onChildChangeCustomField(old_code, new_code) {
       this.onSelectedLanguage(old_code, new_code);
@@ -134,4 +170,3 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     }
   }
 });
-

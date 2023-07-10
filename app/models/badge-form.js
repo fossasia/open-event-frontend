@@ -8,11 +8,16 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
-  badgeID     : attr('string'),
-  badgeFields : hasMany('badge-field-form'),
+  badgeID             : attr('string'),
+  badgeFields         : hasMany('badge-field-form'),
+  isShowingSampleData : false,
+  badgeSize           : attr('string'),
+  badgeColor          : attr('string'),
+  badgeImageURL       : attr('string'),
+  badgeOrientation    : attr('string'),
   /**
    * Relationships
    */
-  event       : belongsTo('event'),
-  ticket      : hasMany('ticket')
+  event               : belongsTo('event'),
+  ticket              : hasMany('ticket')
 });

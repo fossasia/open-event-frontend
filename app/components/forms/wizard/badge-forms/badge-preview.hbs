@@ -1,34 +1,18 @@
-<table class="ui selectable celled table">
-  <thead>
-    {{#if @headerText}}
-      <tr>
-        <th class="text left aligned">
-          {{@headerText}}
-        </th>
-      </tr>
-    {{/if}}
-  </thead>
-  <tbody>
-    <tr class="border left aligned">
-        <UiCheckbox
-            @class="slider mt-4 mb-2 ml-2"
-            @checked={{field.isIncluded}}
-            @onChange={{action (mut field.isIncluded)}} />
-            <span>{{t 'Show Sample Data.'}} </span>
-    </tr>
-    <tr class="border left aligned">
-        <UiCheckbox
-            @class="slider mt-4 mb-2 ml-2"
-            @checked={{field.isIncluded}}
-            @onChange={{action (mut field.isIncluded)}} />
-            <span>{{t 'Show Rounded Corner.'}} </span>
-    </tr>
-    <tr class="border left aligned">
-        <UiCheckbox
-            @class="slider mt-4 mb-2 ml-2"
-            @checked={{field.isIncluded}}
-            @onChange={{action (mut field.isIncluded)}} />
-            <span>{{t 'Show Badge Hole Slot'}} </span>
-    </tr>
-  </tbody>
-</table>
+<div class="badge-setting">
+  <form class="ui form">
+    <div class="field">
+      {{#if @headerText}}
+      <h2 class="badge-setting-title">
+        {{@headerText}}
+      </h2>
+      {{/if}}
+    </div>
+    <div class="field">
+        <div class="column ui pb-2">
+          <UiCheckbox @class="slider mt-2 ml-2" @checked={{@data.isShowingSampleData}} @onChange={{action (mut
+            @data.isShowingSampleData)}} />
+          <label class="ui pb-4">{{t 'Show Sample Data.'}} </label>
+        </div>
+    </div>
+  </form>
+</div>
