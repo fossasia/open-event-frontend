@@ -23,8 +23,8 @@ export default ModelBase.extend({
   event         : belongsTo('event'),
   ticket        : hasMany('ticket'),
 
-  getFieldStyle: computed('sampleText', 'fontSize', 'textAlignment', 'textType', function() {  
-    return htmlSafe('font-size: '+ this.fontSize + 'px; text-align: ' + this.textAlignment + '; text-transform: ' + this.textType);
+  getFieldStyle: computed('sampleText', 'fontSize', 'textAlignment', 'textType', function() {
+    return htmlSafe('font-size: ' + this.fontSize + 'px; text-align: ' + this.textAlignment + '; text-transform: ' + this.textType);
   })
 
 

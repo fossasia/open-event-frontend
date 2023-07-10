@@ -45,11 +45,13 @@
           </div>
           <div class="field six wide column">
             <label>{{t 'Sample Text'}}</label>
-            <Input
-              @type='text'
-              @placeholder="Sample text"
-              @value={{mut @data.sampleText}}
-              @name={{concat "sample_text_" @data.badgeID "_" @index}}/>
+              <Input
+                @type='text'
+                @placeholder="Sample text"
+                @value={{mut @data.sampleText}}
+                @name={{concat "sample_text_" @data.badgeID "_" @index}}
+                disabled={{if (eq @data.customField 'QR') true false}}
+                />
           </div>
         </div>
       </div>
@@ -61,7 +63,8 @@
               @type='text'
               @placeholder="Font size"
               @value={{mut @data.fontSize}}
-              @name={{concat "font_size_" @data.badgeID "_" @index}}/>
+              @name={{concat "font_size_" @data.badgeID "_" @index}}
+              disabled={{if (eq @data.customField 'QR') true false}} />
           </div>
         </div>
       </div>
@@ -76,7 +79,8 @@
             <div class="ui radio checkbox five wide column">
               <Widgets::Forms::RadioButton
                 @name={{concat "text_type_" @data.badgeID "_" @index}}
-                @value={{item.name}} @checked={{mut @data.textType}}/>
+                @value={{item.name}} @checked={{mut @data.textType}}
+                disabled={{if (eq @data.customField 'QR') true false}} />
                 <label>{{t item.name}}</label>
             </div>
           {{/each}}
@@ -90,7 +94,8 @@
       <div class="ui stackable grid padding-left-1rem">
         <div class="row pt-0 badge-form-text-alignment">
           <div class="ui icon buttons">
-            <button class="ui button" {{action 'toggleTextAlignments' 'Center'}}>{{t 'Center'}}</button>
+            <button class="ui button" {{action 'toggleTextAlignments' 'Center'}} disabled={{if (eq @data.customField 'QR') true false}} >
+              {{t 'Center'}}</button>
           </div>
         </div>
       </div>
