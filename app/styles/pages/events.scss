@@ -14,6 +14,8 @@
   }
 
   .expand-search-box .search-box {
+    transition: width .35s ease-in-out;
+
     input {
       height: 100%;
       max-width: none;
@@ -30,8 +32,6 @@
         width: 200%;
         margin-left: .5rem;
       }
-
-      transition: width .35s ease-in-out;
     }
   }
 }
