@@ -1,7 +1,7 @@
 import { attr, belongsTo } from '@ember-data/model';
 import ModelBase from 'open-event-frontend/models/base';
 import VideoStream from './video-stream';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 
 export default class VideoRecording extends ModelBase.extend() {

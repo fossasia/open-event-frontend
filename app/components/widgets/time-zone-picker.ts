@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
-import moment from 'moment';
-import 'moment-timezone';
+import moment from 'moment-timezone';
 import { timezones } from 'open-event-frontend/utils/dictionary/date-time';
 
 interface Args {

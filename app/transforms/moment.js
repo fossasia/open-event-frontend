@@ -1,5 +1,5 @@
 import Transform from 'ember-data/transform';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 export default Transform.extend({
   deserialize(serialized) {

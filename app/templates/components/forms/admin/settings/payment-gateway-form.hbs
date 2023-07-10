@@ -27,10 +27,10 @@
         @label={{t "Test mode - Used during development and testing"}}
         @name="stripe_integration_mode"
         @value="debug"
-        @current={{this.stripeMode}}
-        @onChange={{action (mut this.stripeMode)}} />
+        @current={{this.settings.stripeMode}}
+        @onChange={{action (mut this.settings.stripeMode)}} />
     </div>
-    {{#if (eq this.stripeMode 'debug')}}
+    {{#if (eq this.settings.stripeMode 'debug')}}
       <div class="field">
         <label>
           {{t 'Client Test ID'}}
@@ -77,10 +77,10 @@
         @label={{t "Live mode - Used during production"}}
         @name="stripe_integration_mode"
         @value="production"
-        @current={{this.stripeMode}}
-        @onChange={{action (mut this.stripeMode)}} />
+        @current={{this.settings.stripeMode}}
+        @onChange={{action (mut this.settings.stripeMode)}} />
     </div>
-    {{#if (eq this.stripeMode 'production')}}
+    {{#if (eq this.settings.stripeMode 'production')}}
       <div class="field">
         <label>
           {{t 'Client ID'}}

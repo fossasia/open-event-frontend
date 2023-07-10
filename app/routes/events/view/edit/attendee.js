@@ -18,13 +18,14 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
     const event = this.modelFor('events.view');
     const data = {
       event,
-      customForms: (await event.query('customForms', {
+      forms       : [],
+      tickets     : (await event.query('tickets', {})),
+      customForms : (await event.query('customForms', {
         filter       : filterOptions,
         sort         : 'id',
-        'page[size]' : 50
+        'page[size]' : 500
       })).toArray().filter(field => field.form === 'attendee')
     };
-
     return data;
   }
 
@@ -38,11 +39,11 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
         customForms.pushObject(customForm);
       }
 
-      const createdCustomForms = this.getCustomAttendeeForm(data.event);
+      // const createdCustomForms = this.getCustomAttendeeForm(data.event);
 
-      for (const customForm of createdCustomForms ? createdCustomForms : []) {
-        customForms.pushObject(customForm);
-      }
+      // for (const customForm of createdCustomForms ? createdCustomForms : []) {
+      //   customForms.pushObject(customForm);
+      // }
 
       data.customForms = customForms;
     }

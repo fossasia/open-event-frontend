@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {

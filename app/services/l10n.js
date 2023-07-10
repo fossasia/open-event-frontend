@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import computed from 'ember-computed';
 import L10n from 'ember-l10n/services/l10n';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { getScript } from 'open-event-frontend/utils/loader';
 
 @classic
@@ -15,6 +15,7 @@ export default class L10nService extends L10n {
 
   @computed(function() {
     return {
+      'ar'      : 'عربي',
       'bn'      : 'বাংলা',
       'de'      : 'Deutsch',
       'en'      : 'English',
@@ -23,13 +24,15 @@ export default class L10nService extends L10n {
       'hi'      : 'हिंदी',
       'id'      : 'Bahasa Indonesia',
       'ja'      : '日本語',
+      'ko'      : '한국어',
+      'nb_NO'   : 'Norsk bokmål',
       'pl'      : 'Polski',
       'ru'      : 'Русский',
+      'sv'      : 'Svenska',
       'th'      : 'ไทย',
       'vi'      : 'Tiếng Việt',
       'zh_Hans' : '中文（简体)',
-      'zh_Hant' : '中文（繁體)',
-      'ko'      : '한국어'
+      'zh_Hant' : '中文（繁體)'
     };
   })
   availableLocales;
@@ -69,6 +72,15 @@ export default class L10nService extends L10n {
 
     this.setLocale(locale);
     if (locale !== 'en') {
+
+      if(locale === 'zh_Hans') {
+        locale = 'zh-cn'
+      } else if(locale === 'zh_Hant') {
+        locale = 'zh-tw'
+      } else if(locale === 'nb_NO') {
+        locale = 'nb'
+      }
+
       getScript(`/assets/moment-locales/${locale}.js`)
         .then(() => {
           moment.locale(locale);

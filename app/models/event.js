@@ -1,6 +1,6 @@
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
@@ -122,6 +122,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   microlocations      : hasMany('microlocation'),
   tracks              : hasMany('track'),
   tickets             : hasMany('ticket'),
+  forms               : hasMany('custom-form-tickets'),
   orders              : hasMany('order'),
   socialLinks         : hasMany('social-link'),
   emailNotifications  : hasMany('email-notification'),

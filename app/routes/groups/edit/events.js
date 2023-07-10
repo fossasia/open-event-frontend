@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import { hash } from 'rsvp';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 @classic
 export default class EventsRoute extends Route.extend(AuthenticatedRouteMixin) {

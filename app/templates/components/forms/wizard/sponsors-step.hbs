@@ -12,7 +12,7 @@
                 @onChange={{action "toggleSponsors"}} />
               <label class="weight-300" style="font-size: large">
                 {{if this.data.sponsors.length (t 'Turn off') (t 'Turn on')}}
-                {{t 'Sponsors'}}
+                {{t 'Supporters'}}
               </label>
             </div>
           </div>
@@ -24,7 +24,7 @@
   {{#if this.data.sponsors.length}}
     {{#each this.sponsors as |sponsor index|}}
       <h4>
-        {{t 'Sponsor'}} #{{inc index}}
+        {{t 'Supporter'}} #{{inc index}}
         {{#if this.sponsors.length}}
           <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}>
             <i class="trash icon"></i>
