@@ -21,7 +21,6 @@
         {{t 'Setting'}}
       </h3>
       <div class="ui stackable grid padding-left-1rem">
-        <div class="row">
           <div class="field six wide column">
             <label>{{t 'Custom Field'}}</label>
             <UiDropdown
@@ -42,7 +41,32 @@
                 {{/each}}
               </div>
             </UiDropdown>
+        </div>
+      </div>
+      {{#if (eq @data.customField 'QR') }}
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row pt-0 badge-form-text-alignment">
+          <div class="field twelve wide">
+            <label>{{t 'Fields To Be Generated as QR Code'}}</label>
+              <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
+                <i class="dropdown icon"></i>
+                <div class="default text">
+                  {{t 'Select Fields'}}
+                </div>
+                <div class="menu">
+                  {{#each @customForms as |item|}}
+                    <UiCheckbox @class="item" @label={{item.name}} 
+                    {{!-- @checked={{}} @onChange={{}}  --}}
+                    />
+                  {{/each}}
+                </div>
+              </UiDropdown>
           </div>
+        </div>
+      </div>
+      {{else}}
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row">
           <div class="field six wide column">
             <label>{{t 'Sample Text'}}</label>
               <Input
@@ -50,21 +74,18 @@
                 @placeholder="Sample text"
                 @value={{mut @data.sampleText}}
                 @name={{concat "sample_text_" @data.badgeID "_" @index}}
-                disabled={{if (eq @data.customField 'QR') true false}}
-                />
+                disabled={{if (eq @data.customField 'QR') true false}} />
           </div>
-        </div>
-      </div>
-      <div class="ui stackable grid padding-left-1rem">
-        <div class="row pt-0">
-          <div class="field six wide column">
-            <label>{{t 'Font size (px)'}}</label>
-            <Input
-              @type='text'
-              @placeholder="Font size"
-              @value={{mut @data.fontSize}}
-              @name={{concat "font_size_" @data.badgeID "_" @index}}
-              disabled={{if (eq @data.customField 'QR') true false}} />
+          <div class="row pt-0">
+            <div class="field six wide column">
+              <label>{{t 'Font size (px)'}}</label>
+              <Input
+                @type='text'
+                @placeholder="Font size"
+                @value={{mut @data.fontSize}}
+                @name={{concat "font_size_" @data.badgeID "_" @index}}
+                disabled={{if (eq @data.customField 'QR') true false}} />
+            </div>
           </div>
         </div>
       </div>
@@ -99,6 +120,7 @@
           </div>
         </div>
       </div>
+      {{/if}}
     </div>
   {{/if}}
 </div>

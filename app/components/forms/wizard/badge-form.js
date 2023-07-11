@@ -36,6 +36,16 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return badgeCustomFields.filter(item => !this.ignoreCustomField.includes(item.name));
   }),
 
+  customFormsValid: computed('ticketsDetails', function() {
+
+    const formIds = this.data.ticketsDetails.map(item => item.formID);
+    const validForms = this.customForms.filter(form => formIds.includes(form.formID) && form.isIncluded);
+    // debugger
+    return validForms;
+
+
+  }),
+
   ticketNames: computed('data.ticketsDetails.@each', function() {
     let ticketNames = '';
     this.data.ticketsDetails.forEach(ticket => {

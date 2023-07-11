@@ -15,6 +15,7 @@ export default ModelBase.extend({
   badgeColor          : attr('string'),
   badgeImageURL       : attr('string'),
   badgeOrientation    : attr('string'),
+  badgeFieldsQR       : attr('string'),
   /**
    * Relationships
    */

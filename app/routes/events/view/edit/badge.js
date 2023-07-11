@@ -9,11 +9,21 @@ export default class BadgeRoute extends Route.extend(CustomFormMixin) {
 
   async model() {
     const event = this.modelFor('events.view');
+    const filterOptions = [{
+      name : 'form',
+      op   : 'eq',
+      val  : 'attendee'
+    }];
     const data = {
       event,
       badges          : [],
       isBadgesEnabled : false,
-      tickets         : (await event.query('tickets', {}))
+      tickets         : (await event.query('tickets', {})),
+      customForms     : (await event.query('customForms', {
+        filter       : filterOptions,
+        sort         : 'id',
+        'page[size]' : 500
+      })).toArray().filter(field => field.form === 'attendee')
     };
     return data;
   }
