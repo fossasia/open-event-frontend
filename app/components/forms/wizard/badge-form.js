@@ -124,13 +124,22 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       lineHeight };
   }),
 
-  getBadgeStyle: computed('data.badgeSize', 'data.badgeOrientation', 'data.badgeColor', 'data.badgeImageURL', 'data.badgeFields.@each', function() {
-    const headerStyle = 'padding: 0; width: calc(' + this.getBadgeSize.lineHeight + 'in); background-image: url(' + this.data.badgeImageURL + '); background-size: contain;';
-    const bodyStyle = 'color: #000000; background-size: cover; height: calc(' + this.getBadgeSize.height + 'in); background-color: ' + this.data.badgeColor + ';';
-    return {
-      headerStyle : htmlSafe(headerStyle),
-      bodyStyle   : htmlSafe(bodyStyle)
-    };
+  getBadgeColor: computed('data.badgeColor', function() {
+    return htmlSafe('background-color: ' + this.data.badgeColor);
+  }),
+
+  getBadgeImg: computed('data.badgeImageURL', function() {
+    return htmlSafe('background-image: url(' + this.data.badgeImageURL + '); background-size: cover;');
+  }),
+
+  getQRCode: computed('data.badgeFields.@each.customField', 'data.badgeFields.@each.sampleText', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.textAlignment', 'data.badgeFields.@each.isDeleted', function() {
+    const customeFieldToBeGen = [];
+    this.data.badgeFields.forEach(field => {
+      if (!field.isDeleted) {
+        customeFieldToBeGen.pushObject(field);
+      }
+    });
+    return customeFieldToBeGen;
   }),
 
   // getfieldStyle: computed('field', function() {

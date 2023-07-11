@@ -17,7 +17,7 @@ export const badgeSize = [
 
 export const badgeOrientation = [
   {
-    name     : tn.t('Potrait'),
+    name     : tn.t('Portrait'),
     position : 1
   },
   {
