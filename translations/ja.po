@@ -3509,11 +3509,11 @@ msgstr "オーディエンスを把握する"
 #: app/templates/components/forms/wizard/sponsors-step.hbs:15:16
 #: app/templates/components/public/side-menu.hbs:41:87
 #: app/templates/components/public/side-menu.hbs:45:89
-msgid "Sponsors"
+msgid "Supporters"
 msgstr "スポンサー"
 
 #: app/mixins/event-wizard.js:36:22
-msgid "Advertise your sponsors"
+msgid "Advertise your supporters"
 msgstr "スポンサーを宣伝する"
 
 #: app/mixins/event-wizard.js:41:22
@@ -5609,7 +5609,7 @@ msgid "Website Generator"
 msgstr "ウェブサイトジェネレータ"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
-msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
+msgid "You would like to have a dedicated event website with all details, supporters listing, speakers and sessions and the entire schedule?"
 msgstr "すべての詳細、スポンサーリスト、講演者とセッション、およびスケジュール全体を"
 "掲載した専用のイベントWebサイトが必要ですか？"
 
@@ -5661,7 +5661,7 @@ msgid "Information to be collected from attendees"
 msgstr "参加者から収集される情報"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:60:14
-msgid "Details and logos of sponsors"
+msgid "Details and logos of supporters"
 msgstr "スポンサーの詳細とロゴ"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:73:12
@@ -5772,7 +5772,7 @@ msgid "Click here to add"
 msgstr "ここをクリックして追加"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
-msgid "No. of Sponsors"
+msgid "No. of Supporters"
 msgstr "いいえ。スポンサーの"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
@@ -11846,8 +11846,8 @@ msgid "Friendly Space Policy"
 msgstr "フレンドリースペースポリシー"
 
 #: app/models/custom-form.js:113:28
-msgid "Consent form field"
-msgstr "同意フォーム欄"
+msgid "Code of conduct consent"
+msgstr "行動規範への同意"
 
 #: app/utils/dictionary/boolean-complex.ts:13:15
 msgid "Not sure yet"
@@ -11886,8 +11886,8 @@ msgid "Wikimania email updates"
 msgstr "ウィキマニアの電子メール更新情報"
 
 #: app/templates/components/forms/orders/order-form.hbs:251:26
-msgid "I consent to having my photo taken at Wikimania per the"
-msgstr "私は、ウィキマニアで私の写真を撮影することに同意します。"
+msgid "I consent to the Wikimania"
+msgstr "ウィキマニアに同意します"
 
 #: app/templates/components/forms/orders/order-form.hbs:252:91
 msgid "photo policy"
@@ -11895,4 +11895,36 @@ msgstr "写真ポリシー"
 
 #: app/templates/components/forms/orders/order-form.hbs:259:26
 msgid "I want to receive email updates about future Wikimania editions."
-msgstr "ウィキマニアの将来のエディションに関する最新情報を電子メールで受け取りたい"
+msgstr "ウィキマニアの将来のエディションに関する最新情報を電子メールで受け取りたい."
+
+#: app/models/custom-form.js:106:27
+msgid "Which of these categories describe your gender identity? (check all that apply)"
+msgstr "これらのカテゴリーのうち、どれがあなたの性別の自認を表していますか？（該当するものすべてにチェックを入れてください）"
+
+#: app/utils/dictionary/genders.ts:5:12
+msgid "Man"
+msgstr "男"
+
+#: app/utils/dictionary/genders.ts:8:12
+msgid "Woman"
+msgstr "女性"
+
+#: app/utils/dictionary/genders.ts:11:12
+msgid "Transgender"
+msgstr "トランスジェンダー"
+
+#: app/utils/dictionary/genders.ts:14:12
+msgid "Non-binary"
+msgstr "ノンバイナリー"
+
+#: app/utils/dictionary/genders.ts:17:12
+msgid "Genderqueer"
+msgstr "ジェンダークィア"
+
+#: app/utils/dictionary/genders.ts:20:12
+msgid "An identity not listed here"
+msgstr "ここにはないアイデンティティ"
+
+#: app/utils/dictionary/genders.ts:23:12
+msgid "I prefer not to say"
+msgstr "言いたくありません"

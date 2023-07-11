@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { action, computed } from '@ember/object';
-import { groupBy } from 'lodash-es';
+import { groupBy, orderBy } from 'lodash-es';
 import { or } from '@ember/object/computed';
 import { tracked } from '@glimmer/tracking';
 import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
@@ -20,6 +20,12 @@ export default class AttendeeList extends Component {
   @computed('data.attendees')
   get holders() {
     this.data.attendees.forEach(attendee => {
+      if (attendee.native_language) {
+        this.languageFormMapCodeToName(attendee, 'native_language', languageForms1);
+      }
+      if (attendee.fluent_language) {
+        this.languageFormMapCodeToName(attendee, 'fluent_language', languageForms2);
+      }
       if (attendee.language_form_1) {
         this.languageFormMapCodeToName(attendee, 'language_form_1', languageForms1);
       }
@@ -56,9 +62,8 @@ export default class AttendeeList extends Component {
   @computed('fields.@each.form')
   get allFields() {
     const current_locale = this.cookies.read('current_locale');
-    return groupBy(this.fields.toArray(), field => {
+    const customFields = orderBy(this.fields.toArray()?.map(field => {
       const { main_language } = field;
-
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
       } else if (field.translations?.length) {
@@ -74,8 +79,9 @@ export default class AttendeeList extends Component {
         field.transName = field.name;
       }
 
-      return field.form;
-    });
+      return field;
+    }), ['position']);
+    return groupBy(customFields, field => field.get('form'));
   }
 
   prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
