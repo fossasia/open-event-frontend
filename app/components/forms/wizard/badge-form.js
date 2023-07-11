@@ -14,9 +14,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   badgeLineHeight   : [],
   ignoreCustomField : [],
   isExpandedBadge   : true,
-
   init() {
     this._super(...arguments);
+    this.removeBadgeField = this.removeBadgeField.bind(this)
     this.currentSelected = this.data.ticketsDetails;
   },
 
