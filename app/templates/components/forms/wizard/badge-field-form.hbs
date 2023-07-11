@@ -91,20 +91,47 @@
       </div>
       <div class="ui stackable grid">
         <div class="field twelve wide">
-          <label>{{t 'Text Type'}}</label>
+          <label>{{t 'Position'}}</label>
         </div>
       </div>
       <div class="ui stackable grid padding-left-1rem">
         <div class="row pt-0">
-          {{#each this.booleanTextType as |item|}}
-            <div class="ui radio checkbox five wide column">
-              <Widgets::Forms::RadioButton
-                @name={{concat "text_type_" @data.badgeID "_" @index}}
-                @value={{item.name}} @checked={{mut @data.textType}}
-                disabled={{if (eq @data.customField 'QR') true false}} />
-                <label>{{t item.name}}</label>
-            </div>
-          {{/each}}
+          <div class="field four wide column mr--4">
+            <label>{{t 'Top (mm)'}}</label>
+              <Input
+                @type='text'
+                @placeholder="Top"
+                @value={{mut @data.marginTop}}
+                @name={{concat "margin_top_" @data.badgeID "_" @index}}
+                disabled={{if (eq @data.customField 'QR') true false}}/>
+          </div>
+          <div class="field four wide column mr--4">
+            <label>{{t 'Left (mm)'}}</label>
+              <Input
+                @type='text'
+                @placeholder="Left"
+                @value={{mut @data.marginLeft}}
+                @name={{concat "margin_left_" @data.badgeID "_" @index}}
+                disabled={{if (eq @data.customField 'QR') true false}}/>
+          </div>
+          <div class="field four wide column mr--4">
+            <label>{{t 'Right (mm)'}}</label>
+              <Input
+                @type='text'
+                @placeholder="Right"
+                @value={{mut @data.marginRight}}
+                @name={{concat "margin_right_" @data.badgeID "_" @index}}
+                disabled={{if (eq @data.customField 'QR') true false}}/>
+          </div>
+          <div class="field four wide column mr--4">
+            <label>{{t 'Bottom (mm)'}}</label>
+              <Input
+                @type='text'
+                @placeholder="Bottom"
+                @value={{mut @data.marginBottom}}
+                @name={{concat "margin_bottom_" @data.badgeID "_" @index}}
+                disabled={{if (eq @data.customField 'QR') true false}}/>
+          </div>
         </div>
       </div>
       <div class="ui stackable grid padding-left-1rem">
@@ -113,14 +140,103 @@
         </div>
       </div>
       <div class="ui stackable grid padding-left-1rem">
-        <div class="row pt-0 badge-form-text-alignment">
+        <div class="row pt-0 ml-4">
           <div class="ui icon buttons">
             <button class="ui button" {{action 'toggleTextAlignments' 'Center'}} disabled={{if (eq @data.customField 'QR') true false}} >
               {{t 'Center'}}</button>
           </div>
         </div>
       </div>
-      {{/if}}
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="field twelve wide">
+          <label>{{t 'Font'}}</label>
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row pt-0">
+          <div class="field six wide column">
+            <label>{{t 'Font Name'}}</label>
+            <UiDropdown
+              @class="search selection min-width-0"
+              @selected={{@data.fontName}}
+              @onChange={{action 'onChangeFontName'}}>
+              <Input
+                @type="hidden"
+                @autocomplete="no"
+                @name={{concat "font_name_" @data.badgeID "_" @index}}/>
+              <i class="dropdown icon"></i>
+              <div class="default text">{{t 'Font Name'}}</div>
+              <div class="menu">
+                {{#each @includeCustomField as |item|}}
+                  <div class="item" data-value="{{item.name}}">
+                    {{t-var item.name}}
+                  </div>
+                {{/each}}
+              </div>
+            </UiDropdown>
+          </div>
+          <div class="field six wide column">
+            <label>{{t 'Font size (px)'}}</label>
+            <Input
+              @type='text'
+              @placeholder="Font size"
+              @value={{mut @data.fontSize}}
+              @name={{concat "font_size_" @data.badgeID "_" @index}}
+              disabled={{if (eq @data.customField 'QR') true false}} />
+          </div>
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem">
+        <div class="row pt-0">
+          <div class="field six wide column">
+            <label>{{t 'Weight (bold)'}}</label>
+            <Input
+              @type='text'
+              @placeholder="Weight"
+              @value={{mut @data.textWeight}}
+              @name={{concat "weight_" @data.badgeID "_" @index}}
+              disabled={{if (eq @data.customField 'QR') true false}} />
+          </div>
+          <div class="field six wide column">
+            <label>{{t 'Text Transform'}}</label>
+            <UiDropdown
+              @class="search selection min-width-0"
+              @selected={{@data.textType}}
+              @onChange={{action 'onChangeTextTransform'}}>
+              <Input
+                @type="hidden"
+                @autocomplete="no"
+                @name={{concat "text_transform_" @data.badgeID "_" @index}}/>
+              <i class="dropdown icon"></i>
+              <div class="default text">{{t 'Text Transform'}}</div>
+              <div class="menu">
+                {{#each this.booleanTextType as |item|}}
+                  <div class="item" data-value="{{item.name}}">
+                    {{t-var item.name}}
+                  </div>
+                {{/each}}
+              </div>
+            </UiDropdown>
+          </div>
+        </div>
+      </div>
+      <div class="ui stackable grid padding-left-1rem mb-2">
+        <div class="row pt-0 pb-0">
+          <div class="field six wide column">
+            <label>{{t 'Text Rotate (deg)'}}</label>
+            <Input
+              @type='text'
+              @placeholder="Text Rotate"
+              @value={{mut @data.textRotation}}
+              @name={{concat "text_rotate_" @data.badgeID "_" @index}}
+              disabled={{if (eq @data.customField 'QR') true false}} />
+          </div>
+          <div class="field six wide column font-color">
+            <label>{{t 'Font Color'}}</label>
+            <SpectrumColorPicker showAlpha={{true}} onChange={{action "onChangeFontColor"}}/>
+          </div>
+        </div>
+      </div>
     </div>
   {{/if}}
 </div>
