@@ -3,26 +3,28 @@
     <div class="ui w-full h-full badge-body" style={{@bgColor}}>
         <div class="sample-text">
             {{#if showSampleData}}
-            <p class="f-4">
+            <p class="f-4 align-center">
                 {{sampleData.name}}
             </p>
-            <p class="f-2">
+            <p class="f-2 align-center">
                 {{sampleData.organisation}}
             </p>
-            <p class="f-6">
+            <p class="f-6 align-center">
                 {{sampleData.position}}
             </p>
 
             {{else}}
             {{#each @fields as |_field|}}
-            {{#if (not _field.isDeleted)}}
-                {{#if (eq _field.customField 'QR')}}
-                    {{!-- {{@qrCode}} --}}
-                    {{!-- {{qr-code data="Hello world" light="#EEEEFF" dark="#330000"}} --}}
+            {{#if (not _field.is_deleted)}}
+                {{#if (eq _field.custom_field 'QR')}}
+                    {{!-- {{spectrum-color-picker
+                        color=qrString
+                        showInput=true
+                        }} --}}
                 {{else}}
                 <p class="field-style"
                     style={{_field.getFieldStyle}}>
-                    {{_field.sampleText}}
+                    {{_field.sample_text}}
                 </p>
                 {{/if}}
             {{/if}}

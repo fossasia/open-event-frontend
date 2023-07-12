@@ -51,23 +51,25 @@
             <div class="menu">
               {{#each @getSelectedField as |field|}}
               <UiCheckbox @class="item" @label={{field}} @checked={{if (includes badgeQRFields field) "active" }}
-                @onChange={{action 'includeCustomForm' field}} />
+                @onChange={{action @selectFieldForQR field}} />
               {{/each}}
             </div>
           </UiDropdown>
         </div>
       </div>
     </div>
-    {{else}}
+    {{/if}}
+    {{#if (not-eq @data.custom_field 'QR') }}
     <div class="ui stackable grid padding-left-1rem">
       <div class="row">
         <div class="field twelve wide column">
           <label>{{t 'Sample Text'}}</label>
           <Input @type='text' @placeholder="Sample text" @value={{mut @data.sample_text}} @name={{concat "sample_text_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+            @data.badge_id "_" @index}} />
         </div>
       </div>
     </div>
+    {{/if}}
     <div class="ui stackable grid">
       <div class="field twelve wide">
         <h4>{{t 'Position'}}</h4>
@@ -78,22 +80,22 @@
         <div class="field four wide column mr--4">
           <label>{{t 'Top (mm)'}}</label>
           <Input @type='text' @placeholder="Top" @value={{mut @data.margin_top}} @name={{concat "margin_top_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+            @data.badge_id "_" @index}} />
         </div>
         <div class="field four wide column mr--4">
           <label>{{t 'Left (mm)'}}</label>
           <Input @type='text' @placeholder="Left" @value={{mut @data.margin_left}} @name={{concat "margin_left_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+            @data.badge_id "_" @index}} />
         </div>
         <div class="field four wide column mr--4">
           <label>{{t 'Right (mm)'}}</label>
           <Input @type='text' @placeholder="Right" @value={{mut @data.margin_right}} @name={{concat "margin_right_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+            @data.badge_id "_" @index}} />
         </div>
         <div class="field four wide column mr--4">
           <label>{{t 'Bottom (mm)'}}</label>
           <Input @type='text' @placeholder="Bottom" @value={{mut @data.margin_bottom}} @name={{concat "margin_bottom_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+            @data.badge_id "_" @index}} />
         </div>
       </div>
     </div>
@@ -105,12 +107,13 @@
     <div class="ui stackable grid padding-left-1rem">
       <div class="row pt-0 ml-4 mb-2">
         <div class="ui icon buttons">
-          <button class="ui button" {{action 'toggleTextAlignments' 'Center' }} disabled={{if (eq @data.custom_field 'QR'
-            ) true false}}>
+          <button class="ui button" {{action 'toggleTextAlignments' 'Center' }} disabled={{if (eq
+            @data.custom_field 'QR' ) true false}}>
             {{t 'Center'}}</button>
         </div>
       </div>
     </div> --}}
+    {{#if (not-eq @data.custom_field 'QR') }}
     <div class="ui stackable grid padding-left-1rem">
       <div class="field twelve wide">
         <h4>{{t 'Font'}}</h4>
@@ -137,7 +140,7 @@
         <div class="field six wide column">
           <label>{{t 'Font size (px)'}}</label>
           <Input @type='text' @placeholder="Font size" @value={{mut @data.font_size}} @name={{concat "font_size_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+            @data.badge_id "_" @index}} />
         </div>
       </div>
     </div>
@@ -146,7 +149,7 @@
         <div class="field six wide column">
           <label>{{t 'Weight (bold)'}}</label>
           <Input @type='text' @placeholder="Weight" @value={{mut @data.font_weight}} @name={{concat "weight_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+            @data.badge_id "_" @index}} />
         </div>
         <div class="field six wide column">
           <label>{{t 'Text Transform'}}</label>
@@ -166,12 +169,12 @@
         </div>
       </div>
     </div>
-    <div class="ui stackable grid padding-left-1rem mb-2">
+    <div class="ui stackable grid padding-left-1rem">
       <div class="row pt-0 pb-0">
         <div class="field six wide column">
           <label>{{t 'Text Rotate (deg)'}}</label>
-          <Input @type='text' @placeholder="Text Rotate" @value={{mut @data.text_rotation}} @name={{concat "text_rotate_"
-            @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
+          <Input @type='text' @placeholder="Text Rotate" @value={{mut @data.text_rotation}}
+            @name={{concat "text_rotate_" @data.badge_id "_" @index}} />
         </div>
         <div class="field six wide column font-color" id={{concat "font_color_" @data.badge_id "_" @index}}>
           <label>{{t 'Font Color'}}</label>
@@ -180,6 +183,7 @@
       </div>
     </div>
     {{/if}}
+    <div class="ui hidden divider"></div>
   </div>
   {{/if}}
 </div>
