@@ -173,9 +173,9 @@
           <Input @type='text' @placeholder="Text Rotate" @value={{mut @data.text_rotation}} @name={{concat "text_rotate_"
             @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
         </div>
-        <div class="field six wide column font-color" id={{concat "font_color_" @data.badge_id "_" @index}}>
+        <div class="field six wide column font-color">
           <label>{{t 'Font Color'}}</label>
-          <SpectrumColorPicker showAlpha={{true}} onChange={{action "onChangeFontColor" }} />
+          <SpectrumColorPicker @color={{@data.font_color}} @preferredFormat={{"hex"}}/>
         </div>
       </div>
     </div>
