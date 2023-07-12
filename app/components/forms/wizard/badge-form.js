@@ -42,8 +42,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return union(sortBy(validForms));
   }),
 
-  getSelectedField: computed('data.badgeFields.@each.customField', function() {
-    return sortBy(this.data.badgeFields.filter(field => !field.isDeleted && field.customField !== 'QR').map(field => field.customField));
+  getSelectedField: computed('data.ticketsDetails.@each', function() {
+    // return sortBy(this.data.badgeFields.filter(field => !field.is_deleted && field.custom_field !== 'QR').map(field => field.custom_field));
+    const formIds = this.data.ticketsDetails.map(item => item.formID);
+    const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed).map(form => form.name);
+    return union(sortBy(validForms));
   }),
 
   ticketNames: computed('data.ticketsDetails.@each', function() {

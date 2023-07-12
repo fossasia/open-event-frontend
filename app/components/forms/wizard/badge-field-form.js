@@ -24,11 +24,6 @@ export default Component.extend(FormMixin, {
         this.removeBadgeField(this.data);
       }
     },
-    includeCustomForm(item) {
-      if (this.includeCustomForm) {
-        this.includeCustomForm(item);
-      }
-    },
     toggleTextAlignments(item) {
       this.set('data.text_alignment', item);
     },

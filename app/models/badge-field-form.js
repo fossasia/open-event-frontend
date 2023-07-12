@@ -28,12 +28,14 @@ export default ModelBase.extend({
   /**
    * Relationships
    */
-  event          : belongsTo('event'),
-  ticket         : hasMany('ticket'),
+  event: belongsTo('event'),
+  ticket: hasMany('ticket'),
 
-  getFieldStyle: computed('sampleText', 'fontSize', 'textAlignment', 'textType', function() {
-    return htmlSafe('font-size: ' + this.fontSize + 'px; text-align: ' + this.textAlignment + '; text-transform: ' + this.textType);
-  })
+  getFieldStyle: computed('font_size', 'font_name', 'font_color', 'text_rotation', 'margin_top', 'margin_bottom', 'margin_left'
+    , 'margin_right', 'text_weight', 'text_alignment', 'text_type', 'is_deleted', function () {
+      return htmlSafe(
+        'font-family: ' + this.font_name + '; font-size: ' + this.font_size + 'px; text-align: ' + this.text_alignment + '; text-transform: ' + this.text_type + '; color:' + this.font_color + '; font-weight:' + this.text_weight + '; -webkit-transform: rotate(' + this.text_rotation + 'deg); -moz-transform: rotate(' + this.text_rotation + 'deg); -o-transform: rotate(' + this.text_rotation + 'deg); writing-mode: lr-tb; margin-top:' + this.margin_top + 'mm; margin-bottom:' + this.margin_bottom + 'mm; margin-left:' + this.margin_left + 'mm; margin-right:' + this.margin_right + 'mm;');
+    })
 
 
 });
