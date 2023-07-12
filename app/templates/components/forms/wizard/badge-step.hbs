@@ -32,13 +32,14 @@
       {{#each this.data.badges as |_badge|}}
         <div class="ui hidden divider"></div>
         <Forms::Wizard::BadgeForm
-          @data={{_badge}} 
+          @data={{_badge.badgeForms}}
+          @customForms={{this.data.customForms}}
           @event={{this.data.event}}
           @move="move" 
           @save="save" 
           @tickets={{this.selectableTickets}}    
           @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
-          @id={{_badge.badgeID}}
+          @id={{_badge.badgeForms.badgeID}}
           @onRemoveForm={{action 'onRemoveForm'}}
           @isLoading={{this.isLoading}} />
       {{/each}}

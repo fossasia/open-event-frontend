@@ -63,7 +63,8 @@
           <div class="ui hidden divider mb-0"></div>
           <Forms::Wizard::BadgeFieldForm @data={{_field}} @index={{index}} @move="move" @save="save"
             @includeCustomField={{this.includeCustomField}} @onChange={{action 'onChildChangeCustomField' }}
-            @removeBadgeField={{this.removeBadgeField}} @isLoading={{this.isLoading}} />
+            @removeBadgeField={{this.removeBadgeField}} @isLoading={{this.isLoading}} @customForms={{this.customFormsValid}}
+            @includeCustomForm={{action 'addCustomForm'}} @getSelectedField={{getSelectedField}} @badgeQRFields={{@data.badgeQRFields}}/>
           {{/each}}
         </div>
         {{else}}
@@ -75,8 +76,7 @@
       <Forms::Wizard::BadgeForms::BadgeImage @sampleData={{this.getsampleData}}
         @showSampleData={{this.data.isShowingSampleData}} @fields={{this.data.badgeFields}}
         @badgeHeight={{this.getBadgeSize.height}} @badgeWidth={{this.getBadgeSize.lineHeight}}
-        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}} 
-        {{!-- @qrCode={{this.getQRCode}}  --}}
+        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}}
         />
     </div>
   </div>

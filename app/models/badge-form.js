@@ -9,12 +9,13 @@ export default ModelBase.extend({
    * Attributes
    */
   badgeID             : attr('string'),
-  badgeFields         : hasMany('badge-field-form'),
-  isShowingSampleData : false,
+  isShowingSampleData : attr('boolean'),
   badgeSize           : attr('string'),
   badgeColor          : attr('string'),
-  badgeImageURL       : attr('string'),
+  badgeImageUrl       : attr('string'),
   badgeOrientation    : attr('string'),
+  badgeQRFields       : attr(),
+  badgeFields         : attr(),
   /**
    * Relationships
    */

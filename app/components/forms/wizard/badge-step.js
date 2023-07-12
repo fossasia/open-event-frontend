@@ -18,34 +18,74 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   prepareCustomFormsForShow() {
-    const { tickets, badges } = this.data;
-    const _badges = {};
-    tickets.forEach(ticket => {
-      const { badgeID } = ticket;
-      if (badgeID) {
-        if (_badges[badgeID]) {
-          _badges[badgeID].ticketsDetails.pushObject(ticket);
-        } else {
-          _badges[badgeID] = {
-            ticketsDetails: [ticket]
-          };
+    const { tickets, badgeForms, badges } = this.data;
+    if (this.isInit) {return}
+    this.isInit = true;
+    const noForm = tickets.filter(_ticket => {
+      // console.log(_ticket.badgeID);
+      return _ticket.badgeID;
+    }).length === 0;
+    // console.log('tickets show------');
+    // console.log(tickets);
+    if (noForm) {
+      // console.log('aaaaaaaaaaaaaa');
+      const _badgeID = v4();
+      const _fields = badgeForms?.filter(field => {
+        if (!field.isDeleted) {
+          field.badgeID = _badgeID;
+          return true;
         }
-        this.excludeTickets.pushObject(ticket);
-      }
-    });
-
-    Object.keys(_badges).forEach(_id => {
-      const selectedTicket = _badges[_id].ticketsDetails;
-      badges.pushObject({
-        badgeID        : _id,
-        ticketsDetails : selectedTicket
+        return false;
       });
-    });
+      if (_fields.length > 0) {
+        tickets.forEach(_ticket => {
+          _ticket.badgeID = _badgeID;
+          this.excludeTickets.pushObject(_ticket);
+        });
+        badges.pushObject(this.store.createRecord('badge', {
+          badgeID        : _badgeID,
+          badgeForms     : _fields,
+          ticketsDetails : tickets
+        }));
+      }
+    } else {
+      const _badges = {};
+      tickets.forEach(ticket => {
+        const { badgeID } = ticket;
+        if (badgeID) {
+          if (_badges[badgeID]) {
+            _badges[badgeID].ticketsDetails.pushObject(ticket);
+          } else {
+            _badges[badgeID] = {
+              ticketsDetails: [ticket]
+            };
+          }
+          this.excludeTickets.pushObject(ticket);
+        }
+      });
+
+      Object.keys(_badges).forEach(_id => {
+        const selectedTicket = _badges[_id].ticketsDetails;
+        // console.log(_badges[_id]);
+        // console.log(_badges[_id].ticketsDetails);
+        badges.pushObject({
+          badgeID        : _id,
+          ticketsDetails : selectedTicket,
+          badgeForms     : badgeForms.filter(_field => _field.badgeID === _id)
+        });
+      });
+    }
   },
 
   prepareCustomFormsForSave() {
     this.data.badges.forEach(_badge => {
-      const { badgeID, ticketsDetails } = _badge;
+      const { badgeID, badgeForms, ticketsDetails } = _badge;
+      if (!badgeForms.isDeleted) {
+        badgeForms.badgeID = badgeID;
+      }
+      if (!badgeForms.id) {
+        this.data.badgeForms.pushObject(badgeForms);
+      }
       ticketsDetails.forEach(ticket => {
         ticket.badgeID = badgeID;
       });
@@ -66,15 +106,26 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
+  getBadgeForm(parent, _badgeID, ticketsDetails, badgeForms = [], badgeFields = []) {
+    return this.store.createRecord('badge-form', {
+      badgeID : _badgeID,
+      event   : parent,
+      ticketsDetails,
+      badgeForms,
+      badgeFields
+    });
+  },
+
   actions: {
     removeField(field) {
       field.deleteRecord();
     },
     addBadge(ticketsDetails = []) {
       const _badgeID =  v4();
-      this.data.badges.pushObject(this.store.createRecord('badge-form', {
-        badgeID: _badgeID,
-        ticketsDetails
+      this.data.badges.pushObject(this.store.createRecord('badge', {
+        badgeID    : _badgeID,
+        ticketsDetails,
+        badgeForms : this.getBadgeForm(this.data.event, _badgeID, ticketsDetails)
       }));
     },
 
@@ -88,9 +139,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
 
     onFormUpdateTicket(changedData) {
-      const { added, changed, badgeID } = changedData;
+      const { added, changed, formID } = changedData;
       changed.forEach(ticket => {
-        ticket.badgeID = added ? badgeID : '';
+        ticket.badgeID = added ? formID : '';
       });
       if (added) {
         this.excludeTickets.pushObjects(changed);

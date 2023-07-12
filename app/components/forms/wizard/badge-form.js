@@ -10,13 +10,11 @@ import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-cu
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected   : [],
-  badgeHeight       : [],
-  badgeLineHeight   : [],
   ignoreCustomField : [],
   isExpandedBadge   : true,
   init() {
     this._super(...arguments);
-    this.removeBadgeField = this.removeBadgeField.bind(this)
+    this.removeBadgeField = this.removeBadgeField.bind(this);
     this.currentSelected = this.data.ticketsDetails;
   },
 
@@ -32,8 +30,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.badgeFields?.filter(field => !field.isDeleted);
   }),
 
-  includeCustomField: computed('ignoreCustomField.@each', function() {
-    return badgeCustomFields.filter(item => !this.ignoreCustomField.includes(item.name));
+  includeCustomField: computed('ignoreCustomField.@each', 'data.ticketsDetails.@each', function() {
+    return this.customFormsValid.filter(item => !this.ignoreCustomField.includes(item));
+  }),
+
+  customFormsValid: computed('data.ticketsDetails.@each', function() {
+    const formIds = this.data.ticketsDetails.map(item => item.formID);
+    const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed).map(form => form.name);
+    validForms.push('QR');
+    return union(sortBy(validForms));
+  }),
+
+  getSelectedField: computed('data.badgeFields.@each.customField', function() {
+    return sortBy(this.data.badgeFields.filter(field => !field.isDeleted && field.customField !== 'QR').map(field => field.customField));
   }),
 
   ticketNames: computed('data.ticketsDetails.@each', function() {
@@ -132,29 +141,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return htmlSafe('background-image: url(' + this.data.badgeImageURL + '); background-size: cover;');
   }),
 
-  getQRCode: computed('data.badgeFields.@each.customField', 'data.badgeFields.@each.sampleText', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.fontSize', 'data.badgeFields.@each.textAlignment', 'data.badgeFields.@each.isDeleted', function() {
-    const customeFieldToBeGen = [];
-    this.data.badgeFields.forEach(field => {
-      if (!field.isDeleted) {
-        customeFieldToBeGen.pushObject(field);
-      }
-    });
-    return customeFieldToBeGen;
-  }),
-
-  // getfieldStyle: computed('field', function() {
-  //   const fieldStyle = 'font-size : ' + field.fontSize + 'px; text-align: ' + field.textAlignment + '; text-transform: ' + field.textType + '; overflow: hidden; word-wrap: break-word; ';
-  //   return htmlSafe(fieldStyle);
-  // }),
-
   actions: {
     removeField(field) {
       field.deleteRecord();
     },
-    addBadgeField(badgeCustomFields = []) {
+    addBadgeField() {
       this.data.badgeFields.pushObject(this.store.createRecord('badge-field-form', {
-        badgeID   : this.data.badgeID,
-        isDeleted : false,
+        badge_id   : this.data.badgeID,
+        is_deleted : false,
         badgeCustomFields
       }));
     },
@@ -175,6 +169,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         this.set('isExpandedBadge', true);
       } else {
         this.set('isExpandedBadge', false);
+      }
+    },
+    addCustomForm(customFormName) {
+      if (!this.data.badgeQRFields.includes(customFormName)) {
+        this.data.badgeQRFields.pushObject(customFormName);
+      } else {
+        this.data.badgeQRFields.removeObject(customFormName);
       }
     }
   }
