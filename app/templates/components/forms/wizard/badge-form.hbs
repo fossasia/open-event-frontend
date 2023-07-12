@@ -39,10 +39,10 @@
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeSetting @headerText={{t "Page Setting" }}
         @changeBadgeSize={{action 'mutateBadgeSize' }} @changeBadgeColor={{action 'mutateBadgeColor' }}
-        @data={{this.data}} />
+        @data={{this.badgeForms}} />
     </div>
     <div class="column">
-      <Forms::Wizard::BadgeForms::BadgePreview @headerText={{t "Preview" }} @data={{this.data}} />
+      <Forms::Wizard::BadgeForms::BadgePreview @headerText={{t "Preview" }} @data={{this.badgeForms}} />
     </div>
   </div>
   <div class="ui hidden divider"></div>
@@ -63,8 +63,7 @@
           <div class="ui hidden divider mb-0"></div>
           <Forms::Wizard::BadgeFieldForm @data={{_field}} @index={{index}} @move="move" @save="save"
             @includeCustomField={{this.includeCustomField}} @onChange={{action 'onChildChangeCustomField' }}
-            @removeBadgeField={{this.removeBadgeField}} @isLoading={{this.isLoading}} @customForms={{this.customFormsValid}}
-            @includeCustomForm={{action 'addCustomForm'}} @getSelectedField={{getSelectedField}} @badgeQRFields={{@data.badgeQRFields}}/>
+            @removeBadgeField={{this.removeBadgeField}} @isLoading={{this.isLoading}} />
           {{/each}}
         </div>
         {{else}}
@@ -76,7 +75,8 @@
       <Forms::Wizard::BadgeForms::BadgeImage @sampleData={{this.getsampleData}}
         @showSampleData={{this.data.isShowingSampleData}} @fields={{this.data.badgeFields}}
         @badgeHeight={{this.getBadgeSize.height}} @badgeWidth={{this.getBadgeSize.lineHeight}}
-        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}}
+        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}} 
+        {{!-- @qrCode={{this.getQRCode}}  --}}
         />
     </div>
   </div>

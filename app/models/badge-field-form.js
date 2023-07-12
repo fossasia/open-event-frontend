@@ -21,10 +21,10 @@ export default ModelBase.extend({
   margin_bottom  : attr('number'),
   margin_left    : attr('number'),
   margin_right   : attr('number'),
-  text_weight    : attr('number'),
+  font_weight    : attr('number'),
   text_alignment : attr('string'),
   text_type      : attr('string'),
-  is_deleted     : attr('boolean'),
+  isDeleted      : attr('boolean'),
   /**
    * Relationships
    */
