@@ -39,7 +39,7 @@
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeSetting @headerText={{t "Page Setting" }}
         @changeBadgeSize={{action 'mutateBadgeSize' }} @changeBadgeColor={{action 'mutateBadgeColor' }}
-        @data={{this.badgeForms}} />
+        @data={{this.badgeForms}} @index={{index}}/>
     </div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgePreview @headerText={{t "Preview" }} @data={{this.badgeForms}} />

@@ -55,7 +55,7 @@
           <label class="ml-4">{{t 'Background'}}</label>
         </div>
         <div class="column pl-4 pt-2 pb-2">
-          <SpectrumColorPicker class="w-30" showAlpha={{true}} color='' onChange={{action @changeBadgeColor}} />
+          <SpectrumColorPicker @color={{@data.badgeColor}} @preferredFormat={{"hex"}}/>
           <button type="button" class="ui center aligned icon button ml-4" {{action (mut @data.badgeColor) null }}>
             <i class="trash icon"></i>
             {{t 'Clear Color'}}

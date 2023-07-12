@@ -3,7 +3,6 @@ import { orderBy } from 'lodash-es';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { booleanTextType } from 'open-event-frontend/utils/dictionary/boolean_text_type';
-import tinycolor from 'tinycolor2';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -39,10 +38,6 @@ export default Component.extend(FormMixin, {
     },
     onChangeFontName(value) {
       this.set('data.font_name', value);
-    },
-    onChangeFontColor(color) {
-      const colorCode = tinycolor(color.target.value);
-      this.set('data.font_color', colorCode.toHexString());
     }
   }
 });
