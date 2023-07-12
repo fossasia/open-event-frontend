@@ -248,7 +248,7 @@
                 </div>
               </div>
             </div>
-            {{#each this.tickets as |ticket index|}}
+            {{#each this.data.tickets as |ticket index|}}
               <Widgets::Forms::TicketInput
                 @ticket={{ticket}}
                 @isExpanded={{if this.data.event.id false true}}
