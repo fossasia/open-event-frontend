@@ -89,8 +89,9 @@ export default class AttendeeList extends Component {
   }
 
   get fieldNameConvertRichText() {
+    const fields = orderBy(this.fields.toArray(), 'position');
     this.holders.forEach((holder, indexHolder) => {
-      this.fields.forEach((field, index) => {
+      fields.forEach((field, index) => {
         const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
         if (elem) {
           elem.innerHTML = field.transName;
