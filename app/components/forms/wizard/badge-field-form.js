@@ -24,24 +24,29 @@ export default Component.extend(FormMixin, {
         this.removeBadgeField(this.data);
       }
     },
+    includeCustomForm(item) {
+      if (this.includeCustomForm) {
+        this.includeCustomForm(item);
+      }
+    },
     toggleTextAlignments(item) {
-      this.set('data.textAlignment', item);
+      this.set('data.text_alignment', item);
     },
     onChangeCustomField(code) {
       if (this.onChange) {
-        this.onChange(this.data.customField, code);
-        this.set('data.customField', code);
+        this.onChange(this.data.custom_field, code);
+        this.set('data.custom_field', code);
       }
     },
     onChangeTextTransform(value) {
-      this.set('data.textType', value);
+      this.set('data.text_type', value);
     },
     onChangeFontName(value) {
-      this.set('data.fontName', value);
+      this.set('data.font_name', value);
     },
     onChangeFontColor(color) {
       const colorCode = tinycolor(color.target.value);
-      this.set('data.fontColor', colorCode.toHexString());
+      this.set('data.font_color', colorCode.toHexString());
     }
   }
 });

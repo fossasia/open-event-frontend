@@ -138,6 +138,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   user                : belongsTo('user', { inverse: 'events' }),
 
   customForms     : hasMany('custom-form'),
+  badgeForms      : hasMany('badge-form'),
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),

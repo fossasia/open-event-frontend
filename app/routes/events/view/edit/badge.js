@@ -19,6 +19,7 @@ export default class BadgeRoute extends Route.extend(CustomFormMixin) {
       badges          : [],
       isBadgesEnabled : false,
       tickets         : (await event.query('tickets', {})),
+      badgeForms      : (await event.query('badgeForms', {})),
       customForms     : (await event.query('customForms', {
         filter       : filterOptions,
         sort         : 'id',
