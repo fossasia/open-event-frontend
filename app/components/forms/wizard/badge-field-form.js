@@ -21,6 +21,7 @@ export default Component.extend(FormMixin, {
     },
     removeForm() {
       if (this.removeBadgeField) {
+        this.set('data.isDeleted', true);
         this.removeBadgeField(this.data);
       }
     },

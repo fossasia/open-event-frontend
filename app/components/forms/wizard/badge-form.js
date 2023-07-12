@@ -16,6 +16,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this._super(...arguments);
     this.removeBadgeField = this.removeBadgeField.bind(this);
     this.currentSelected = this.data.ticketsDetails;
+    this.badgeForms = this.data.badgeForms;
   },
 
   ticketsEnable: computed('tickets', 'ticketsDetails', function() {
@@ -26,8 +27,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.customForms?.filter(field => field.isFixed);
   }),
 
-  badgeFields: computed('data.badgeFields.@each.isDeleted', function() {
-    return this.data.badgeFields?.filter(field => !field.isDeleted);
+  badgeFields: computed('badgeForms.badgeFields.@each.isDeleted', function() {
+    return this.badgeForms.badgeFields?.filter(field => !field.isDeleted);
   }),
 
   includeCustomField: computed('ignoreCustomField.@each', 'data.ticketsDetails.@each', function() {
@@ -92,12 +93,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
-  disableAddBadgeField: computed('data.badgeFields.@each.isDeleted', function() {
-    return this.data.badgeFields?.filter(field => !field.isDeleted).length === badgeCustomFields.length;
+  disableAddBadgeField: computed('data.badgeForms.badgeFields.@each.isDeleted', function() {
+    return this.badgeForms.badgeFields?.filter(field => !field.isDeleted).length === badgeCustomFields.length;
   }),
 
   removeBadgeField(badgeField) {
-    badgeField.isDeleted = true;
     this.ignoreCustomField.removeObject(badgeField.customField);
   },
 
@@ -118,13 +118,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     };
   }),
 
-  getBadgeSize: computed('data.badgeSize', 'data.badgeOrientation', function() {
+  getBadgeSize: computed('badgeForms.badgeSize', 'badgeForms.badgeOrientation', function() {
     let height = 4;
     let lineHeight = 3;
-    if (this.data.badgeSize) {
-      [height, lineHeight] = [this.data.badgeSize.height, this.data.badgeSize.lineHeight];
+    if (this.badgeForms.badgeSize) {
+      [height, lineHeight] = [this.badgeForms.badgeSize.height, this.badgeForms.badgeSize.lineHeight];
     }
-    if (this.data.badgeOrientation === 'Landscape') {
+    if (this.badgeForms.badgeOrientation === 'Landscape') {
       [height, lineHeight] = [lineHeight, height];
     }
 
@@ -133,12 +133,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       lineHeight };
   }),
 
-  getBadgeColor: computed('data.badgeColor', function() {
-    return htmlSafe('background-color: ' + this.data.badgeColor);
+  getBadgeColor: computed('badgeForms.badgeColor', function() {
+    return htmlSafe('background-color: ' + this.badgeForms.badgeColor);
   }),
 
-  getBadgeImg: computed('data.badgeImageURL', function() {
-    return htmlSafe('background-image: url(' + this.data.badgeImageURL + '); background-size: cover;');
+  getBadgeImg: computed('badgeForms.badgeImageURL', function() {
+    return htmlSafe('background-image: url(' + this.badgeForms.badgeImageURL + '); background-size: cover;');
   }),
 
   actions: {
@@ -146,7 +146,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       field.deleteRecord();
     },
     addBadgeField() {
-      this.data.badgeFields.pushObject(this.store.createRecord('badge-field-form', {
+      this.badgeForms.badgeFields.pushObject(this.store.createRecord('badge-field-form', {
         badge_id   : this.data.badgeID,
         is_deleted : false,
         badgeCustomFields
@@ -154,12 +154,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
     mutateBadgeSize(value) {
       badgeSize.forEach(badge => {
-        if (badge.name === value) {(this.data.badgeSize = badge)}
+        if (badge.name === value) {(this.badgeForms.badgeSize = badge)}
       });
     },
     mutateBadgeColor(color) {
       const colorCode = tinycolor(color.target.value);
-      this.data.badgeColor = colorCode.toHexString();
+      this.badgeForms.badgeColor = colorCode.toHexString();
     },
     onChildChangeCustomField(old_code, new_code) {
       this.onSelectedLanguage(old_code, new_code);
@@ -172,10 +172,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       }
     },
     addCustomForm(customFormName) {
-      if (!this.data.badgeQRFields.includes(customFormName)) {
-        this.data.badgeQRFields.pushObject(customFormName);
+      if (!this.badgeForms.badgeQRFields.includes(customFormName)) {
+        this.badgeForms.badgeQRFields.pushObject(customFormName);
       } else {
-        this.data.badgeQRFields.removeObject(customFormName);
+        this.badgeForms.badgeQRFields.removeObject(customFormName);
       }
     }
   }

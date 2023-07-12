@@ -19,16 +19,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   prepareCustomFormsForShow() {
     const { tickets, badgeForms, badges } = this.data;
-    if (this.isInit) {return}
+    if (this.isInit || badges.length) {return}
     this.isInit = true;
-    const noForm = tickets.filter(_ticket => {
-      // console.log(_ticket.badgeID);
-      return _ticket.badgeID;
-    }).length === 0;
-    // console.log('tickets show------');
-    // console.log(tickets);
+    const noForm = tickets.filter(_ticket => _ticket.badgeID).length === 0;
     if (noForm) {
-      // console.log('aaaaaaaaaaaaaa');
       const _badgeID = v4();
       const _fields = badgeForms?.filter(field => {
         if (!field.isDeleted) {
@@ -66,12 +60,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
       Object.keys(_badges).forEach(_id => {
         const selectedTicket = _badges[_id].ticketsDetails;
-        // console.log(_badges[_id]);
-        // console.log(_badges[_id].ticketsDetails);
         badges.pushObject({
           badgeID        : _id,
           ticketsDetails : selectedTicket,
-          badgeForms     : badgeForms.filter(_field => _field.badgeID === _id)
+          badgeForms     : badgeForms.find(_field => _field.badgeID === _id)
         });
       });
     }
@@ -92,7 +84,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     });
   },
 
-  selectableTickets: computed('excludeTickets.@each', 'form.@each', function() {
+  selectableTickets: computed('excludeTickets.@each', 'badge.@each', function() {
     return this.data.tickets.filter(ticket => !this.excludeTickets.includes(ticket));
   }),
 

@@ -145,7 +145,7 @@
       <div class="row pt-0">
         <div class="field six wide column">
           <label>{{t 'Weight (bold)'}}</label>
-          <Input @type='text' @placeholder="Weight" @value={{mut @data.text_weight}} @name={{concat "weight_"
+          <Input @type='text' @placeholder="Weight" @value={{mut @data.font_weight}} @name={{concat "weight_"
             @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
         </div>
         <div class="field six wide column">
@@ -173,7 +173,7 @@
           <Input @type='text' @placeholder="Text Rotate" @value={{mut @data.text_rotation}} @name={{concat "text_rotate_"
             @data.badge_id "_" @index}} disabled={{if (eq @data.custom_field 'QR' ) true false}} />
         </div>
-        <div class="field six wide column font-color">
+        <div class="field six wide column font-color" id={{concat "font_color_" @data.badge_id "_" @index}}>
           <label>{{t 'Font Color'}}</label>
           <SpectrumColorPicker showAlpha={{true}} onChange={{action "onChangeFontColor" }} />
         </div>
