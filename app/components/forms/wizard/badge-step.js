@@ -10,7 +10,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   excludeTickets  : A(),
   isOldFormMode   : false,
   isInit          : false,
-  isBadgesEnabled : false,
 
   init() {
     this._super(...arguments);
@@ -88,8 +87,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.tickets.filter(ticket => !this.excludeTickets.includes(ticket));
   }),
 
-  revertChanges: observer('data.event.isTicketFormEnabled', function() {
-    if (!this.data.event.isTicketFormEnabled) {
+  revertChanges: observer('data.event.isBadgesEnabled', function() {
+    if (!this.data.event.isBadgesEnabled) {
       this.editableFields.forEach(field => field.set('isRequired', false));
     }
   }),

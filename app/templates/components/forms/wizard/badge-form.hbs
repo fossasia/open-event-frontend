@@ -38,11 +38,12 @@
   <div class="ui two column stackable grid">
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeSetting @headerText={{t "Page Setting" }}
-        @changeBadgeSize={{action 'mutateBadgeSize' }} @changeBadgeColor={{action 'mutateBadgeColor' }}
-        @data={{this.badgeForms}} @index={{index}}/>
+        @changeBadgeSize={{action 'mutateBadgeSize' }} @data={{this.badgeForms}} @index={{index}}/>
     </div>
     <div class="column">
-      <Forms::Wizard::BadgeForms::BadgePreview @headerText={{t "Preview" }} @data={{this.badgeForms}} />
+      <Forms::Wizard::BadgeForms::BadgePreview @headerText={{t "Preview" }} 
+      @data={{this.badgeForms}} 
+      @printPreview={{action 'createPDF'}} />
     </div>
   </div>
   <div class="ui hidden divider"></div>
@@ -74,9 +75,9 @@
     </div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgeImage @sampleData={{this.getsampleData}}
-        @showSampleData={{this.data.isShowingSampleData}} @fields={{this.data.badgeFields}}
+        @showSampleData={{this.badgeForms.isShowingSampleData}} @fields={{this.badgeForms.badgeFields}}
         @badgeHeight={{this.getBadgeSize.height}} @badgeWidth={{this.getBadgeSize.lineHeight}}
-        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}} 
+        @badgeImgURL={{this.getBadgeImg}} @bgColor={{this.getBadgeColor}} @generateQRCode={{this.generateQRCode}}
         {{!-- @qrCode={{this.getQRCode}}  --}}
         />
     </div>

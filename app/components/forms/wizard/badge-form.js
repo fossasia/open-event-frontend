@@ -5,8 +5,8 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy, union } from 'lodash-es';
 import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
 import { htmlSafe } from '@ember/template';
-import tinycolor from 'tinycolor2';
 import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-custom-fields';
+import QRCode from 'qrcode';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected   : [],
@@ -86,8 +86,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return sortBy(fields, ['position']);
   }),
 
-  revertChanges: observer('data.event.isTicketFormEnabled', function() {
-    if (!this.event.isTicketFormEnabled) {
+  revertChanges: observer('data.event.isBadgesEnabled', function() {
+    if (!this.event.isBadgesEnabled) {
       this.editableFields.forEach(field => field.set('isRequired', false));
     }
   }),
@@ -124,8 +124,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   getBadgeSize: computed('badgeForms.badgeSize', 'badgeForms.badgeOrientation', function() {
     let height = 4;
     let lineHeight = 3;
-    if (this.badgeForms.badgeSize) {
-      [height, lineHeight] = [this.badgeForms.badgeSize.height, this.badgeForms.badgeSize.lineHeight];
+    const selectedSize = badgeSize.filter(badge => badge.name === this.badgeForms.badgeSize)[0];
+    if (selectedSize) {
+      [height, lineHeight] = [selectedSize.height, selectedSize.lineHeight];
     }
     if (this.badgeForms.badgeOrientation === 'Landscape') {
       [height, lineHeight] = [lineHeight, height];
@@ -144,6 +145,18 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return htmlSafe('background-image: url(' + this.badgeForms.badgeImageURL + '); background-size: cover;');
   }),
 
+  generateQRCode(element) {
+    let text = 'Hello world'; // get the text to encode from the component argument or use a default value
+    const test = document.getElementById("badge_qr");
+    QRCode.toCanvas(test, text, function (error) { // use the qrcode method to create a canvas element with the QR code
+    if (error) {
+      console.error(error); // handle any errors
+    } else {
+      console.log('QR code generated!'); // log success
+    }
+    })
+  },
+
   actions: {
     removeField(field) {
       field.deleteRecord();
@@ -157,12 +170,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     },
     mutateBadgeSize(value) {
       badgeSize.forEach(badge => {
-        if (badge.name === value) {(this.badgeForms.badgeSize = badge)}
+        if (badge.name === value) {(this.badgeForms.badgeSize = badge.name)}
       });
-    },
-    mutateBadgeColor(color) {
-      const colorCode = tinycolor(color.target.value);
-      this.badgeForms.badgeColor = colorCode.toHexString();
     },
     onChildChangeCustomField(old_code, new_code) {
       this.onSelectedLanguage(old_code, new_code);
@@ -174,12 +183,32 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         this.set('isExpandedBadge', false);
       }
     },
-    addCustomForm(customFormName) {
+    mutateQRCustomFields(customFormName) {
       if (!this.badgeForms.badgeQRFields.includes(customFormName)) {
         this.badgeForms.badgeQRFields.pushObject(customFormName);
       } else {
         this.badgeForms.badgeQRFields.removeObject(customFormName);
       }
+    },
+    createPDF() {
+      var doc = new jsPDF('l', 'pt', 'a4');
+      // doc.text(20, 20, 'Hello world.');
+      const badgeElement = document.getElementById("badge-image");
+      doc.html(badgeElement, {
+        callback: function(doc) {
+            // Save the PDF
+            doc.save('sample-document.pdf');
+        },
+        x: 15,
+        y: 15,
+        width: 170, //target width in the PDF document
+        windowWidth: 650 //window width in CSS pixels
+    });
+      // doc.save('Test.pdf');
+      // pdf.addHTML($(test), 15, 15, options, function() {
+      //   pdf.save('pageContent.pdf');
+      // });
+
     }
   }
 });
