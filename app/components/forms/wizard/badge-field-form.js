@@ -38,6 +38,17 @@ export default Component.extend(FormMixin, {
     },
     onChangeFontName(value) {
       this.set('data.font_name', value);
+    },
+    addFieldToQR(customFormName) {
+      if (this.data.qr_custom_field === null) {
+        this.data.qr_custom_field = [];
+      }
+      if (!this.data.qr_custom_field.includes(customFormName)) {
+        this.data.qr_custom_field.pushObject(customFormName);
+      } else {
+        this.data.qr_custom_field.removeObject(customFormName);
+      }
+
     }
   }
 });

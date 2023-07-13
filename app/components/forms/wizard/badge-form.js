@@ -6,7 +6,8 @@ import { sortBy, union } from 'lodash-es';
 import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
 import { htmlSafe } from '@ember/template';
 import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-custom-fields';
-import QRCode from 'qrcode';
+// import QRCode from 'qrcode';
+import {jsPDF as JsPDF} from 'jspdf';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected   : [],
@@ -33,13 +34,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
 
   includeCustomField: computed('ignoreCustomField.@each', 'data.ticketsDetails.@each', function() {
     return this.customFormsValid.filter(item => !this.ignoreCustomField.includes(item));
-  }),
-
-  customFormsValid: computed('data.ticketsDetails.@each', function() {
-    const formIds = this.data.ticketsDetails.map(item => item.formID);
-    const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed).map(form => form.name);
-    validForms.push('QR');
-    return union(sortBy(validForms));
   }),
 
   getSelectedField: computed('data.ticketsDetails.@each', function() {
@@ -145,17 +139,17 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return htmlSafe('background-image: url(' + this.badgeForms.badgeImageURL + '); background-size: cover;');
   }),
 
-  generateQRCode(element) {
-    let text = 'Hello world'; // get the text to encode from the component argument or use a default value
-    const test = document.getElementById("badge_qr");
-    QRCode.toCanvas(test, text, function (error) { // use the qrcode method to create a canvas element with the QR code
-    if (error) {
-      console.error(error); // handle any errors
-    } else {
-      console.log('QR code generated!'); // log success
-    }
-    })
-  },
+  // generateQRCode(element) {
+  //   const text = 'Hello world'; // get the text to encode from the component argument or use a default value
+  //   const test = document.getElementById('badge_qr');
+  //   QRCode.toCanvas(test, text, function(error) { // use the qrcode method to create a canvas element with the QR code
+  //     if (error) {
+  //       console.error(error); // handle any errors
+  //     } else {
+  //       console.log('QR code generated!'); // log success
+  //     }
+  //   });
+  // },
 
   actions: {
     removeField(field) {
@@ -183,32 +177,18 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         this.set('isExpandedBadge', false);
       }
     },
-    mutateQRCustomFields(customFormName) {
-      if (!this.badgeForms.badgeQRFields.includes(customFormName)) {
-        this.badgeForms.badgeQRFields.pushObject(customFormName);
-      } else {
-        this.badgeForms.badgeQRFields.removeObject(customFormName);
-      }
-    },
     createPDF() {
-      var doc = new jsPDF('l', 'pt', 'a4');
-      // doc.text(20, 20, 'Hello world.');
-      const badgeElement = document.getElementById("badge-image");
+      const doc = new JsPDF('l', 'pt', 'a4');
+      const badgeElement = document.getElementById('badge-image');
       doc.html(badgeElement, {
-        callback: function(doc) {
-            // Save the PDF
-            doc.save('sample-document.pdf');
+        callback(doc) {
+          doc.save('sample-document.pdf');
         },
-        x: 15,
-        y: 15,
-        width: 170, //target width in the PDF document
-        windowWidth: 650 //window width in CSS pixels
-    });
-      // doc.save('Test.pdf');
-      // pdf.addHTML($(test), 15, 15, options, function() {
-      //   pdf.save('pageContent.pdf');
-      // });
-
+        x           : 15,
+        y           : 15,
+        width       : 170,
+        windowWidth : 650
+      });
     }
   }
 });

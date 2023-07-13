@@ -50,8 +50,9 @@
             </div>
             <div class="menu">
               {{#each @getSelectedField as |field|}}
-              <UiCheckbox @class="item" @label={{field}} @checked={{if (includes badgeQRFields field) "active" }}
-                @onChange={{action @selectFieldForQR field}} />
+              <UiCheckbox @class="item" @label={{field}} @checked={{if (includes @data.qr_custom_field field) "active" }}
+                @onChange={{action 'addFieldToQR' field}}
+                />
               {{/each}}
             </div>
           </UiDropdown>
@@ -178,7 +179,7 @@
         </div>
         <div class="field six wide column font-color">
           <label>{{t 'Font Color'}}</label>
-          <SpectrumColorPicker @color={{@data.font_color}} @preferredFormat={{"hex"}}/>
+          <SpectrumColorPicker @color={{@data.font_color}} @allowEmpty={{true}} @preferredFormat={{"hex"}}/>
         </div>
       </div>
     </div>

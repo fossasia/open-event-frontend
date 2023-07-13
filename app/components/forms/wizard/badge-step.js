@@ -6,10 +6,10 @@ import { v4 } from 'ember-uuid';
 import { A } from '@ember/array';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
-  tickets         : [],
-  excludeTickets  : A(),
-  isOldFormMode   : false,
-  isInit          : false,
+  tickets        : [],
+  excludeTickets : A(),
+  isOldFormMode  : false,
+  isInit         : false,
 
   init() {
     this._super(...arguments);
