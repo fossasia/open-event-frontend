@@ -7,7 +7,7 @@ import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size
 import { htmlSafe } from '@ember/template';
 import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-custom-fields';
 // import QRCode from 'qrcode';
-import {jsPDF as JsPDF} from 'jspdf';
+import { jsPDF as JsPDF } from 'jspdf';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected   : [],
