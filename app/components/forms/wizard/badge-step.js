@@ -155,10 +155,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     onRemoveForm(_id) {
       const deleteBadge = this.data.badges.find(_badge => _badge.badgeID === _id);
       if (deleteBadge) {
-        const { ticketsDetails } = deleteBadge;
+        const { ticketsDetails, badgeForms } = deleteBadge;
         ticketsDetails.forEach(ticket => {
           ticket.badgeID = '';
         });
+        badgeForms.deleteRecord();
         this.excludeTickets.removeObjects(deleteBadge.ticketsDetails);
         this.data.badges.removeObject(deleteBadge);
       }

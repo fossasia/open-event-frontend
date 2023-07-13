@@ -28,12 +28,19 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.customForms?.filter(field => field.isFixed);
   }),
 
-  badgeFields: computed('badgeForms.badgeFields.@each.isDeleted', function() {
-    return this.badgeForms.badgeFields?.filter(field => !field.isDeleted);
+  badgeFields: computed('badgeForms.badgeFields.@each.is_deleted', function() {
+    return this.badgeForms.badgeFields?.filter(field => !field.is_deleted);
   }),
 
   includeCustomField: computed('ignoreCustomField.@each', 'data.ticketsDetails.@each', function() {
     return this.customFormsValid.filter(item => !this.ignoreCustomField.includes(item));
+  }),
+
+  customFormsValid: computed('data.ticketsDetails.@each', function() {
+    const formIds = this.data.ticketsDetails.map(item => item.formID);
+    const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed);
+    validForms.push({ 'name': 'QR', 'field_identifier': 'qr' });
+    return union(sortBy(validForms));
   }),
 
   getSelectedField: computed('data.ticketsDetails.@each', function() {
@@ -90,8 +97,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
-  disableAddBadgeField: computed('data.badgeForms.badgeFields.@each.isDeleted', function() {
-    return this.badgeForms.badgeFields?.filter(field => !field.isDeleted).length === badgeCustomFields.length;
+  disableAddBadgeField: computed('data.badgeForms.badgeFields.@each.is_deleted', function() {
+    return this.badgeForms.badgeFields?.filter(field => !field.is_deleted).length === badgeCustomFields.length;
   }),
 
   removeBadgeField(badgeField) {

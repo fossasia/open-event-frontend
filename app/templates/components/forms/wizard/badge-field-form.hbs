@@ -29,9 +29,9 @@
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Custom field'}}</div>
           <div class="menu">
-            {{#each @includeCustomField as |item|}}
-            <div class="item" data-value="{{item}}">
-              {{t-var item}}
+            {{#each this.getCustomFields as |cfield|}}
+            <div class="item" data-value="{{cfield}}">
+              {{t-var cfield}}
             </div>
             {{/each}}
           </div>
