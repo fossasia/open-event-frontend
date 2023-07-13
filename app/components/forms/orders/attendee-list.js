@@ -84,6 +84,23 @@ export default class AttendeeList extends Component {
     return groupBy(customFields, field => field.get('form'));
   }
 
+  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
+    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
+  }
+
+  get fieldNameConvertRichText() {
+    const fields = orderBy(this.fields.toArray(), 'position');
+    this.holders.forEach((holder, indexHolder) => {
+      fields.forEach((field, index) => {
+        const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
+        if (elem) {
+          elem.innerHTML = field.transName;
+        }
+      });
+    });
+    return null;
+  }
+
   @action
   toggleEditFields() {
     this.editFields = !this.editFields;
