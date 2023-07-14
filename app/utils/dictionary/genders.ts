@@ -1,17 +1,32 @@
+import { tn } from '../text';
+
 export const genders = [
   {
-    name: 'Female'
+    name      : tn.t('Man'),
+    isChecked : false
   },
   {
-    name: 'Male'
+    name      : tn.t('Woman'),
+    isChecked : false
   },
   {
-    name: 'Diverse / Non-binary'
+    name      : tn.t('Transgender'),
+    isChecked : false
   },
   {
-    name: 'Other'
+    name      : tn.t('Non-binary'),
+    isChecked : false
   },
   {
-    name: 'Prefer not to share'
+    name      : tn.t('Genderqueer'),
+    isChecked : false
+  },
+  {
+    name      : tn.t('An identity not listed here'),
+    isChecked : false
+  },
+  {
+    name      : tn.t('I prefer not to say'),
+    isChecked : false
   }
 ];

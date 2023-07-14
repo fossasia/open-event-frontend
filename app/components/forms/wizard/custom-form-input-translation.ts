@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 interface Args {
   onChange: ((code: string, value: string) => void) | null,
@@ -14,6 +14,8 @@ interface SubForm {
 
 export default class CustomFormInputTranslation extends Component<Args> {
   self = this
+
+  @computed('args.data.ignoreLanguages.@each')
   get languageList(): object[] {
     const { languages, ignoreLanguages, selectedLang } = this.args.data;
     return languages.filter((item: SubForm) =>
@@ -32,6 +34,9 @@ export default class CustomFormInputTranslation extends Component<Args> {
   onRemoveForm() {
     if (this.args.onRemoveTranslation) {
       this.args.onRemoveTranslation(this.args.data)
+    }
+    if (this.args.onChange) {
+      this.args.onChange(this.args.data, '')
     }
   }
 }

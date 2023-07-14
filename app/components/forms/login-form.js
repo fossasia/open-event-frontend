@@ -21,8 +21,9 @@ export default class LoginForm extends Component.extend(FormMixin) {
   rememberMe       = false;
 
   set setSessionCookie(rememberMe) {
-    const expirationTime = rememberMe ? (365 * 24 * 60 * 60) : (1 * 24 * 60 * 60);
-    this.set('session.store.cookieExpirationTime', expirationTime);
+    const SECONDS_IN_DAY = 86400;
+    const expirationTime = rememberMe ? (365 * SECONDS_IN_DAY) : (1 * SECONDS_IN_DAY);
+    this.session.store.cookieExpirationTime = expirationTime;
   }
 
   getValidationRules() {
