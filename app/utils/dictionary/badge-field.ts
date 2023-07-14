@@ -28,18 +28,59 @@ export const badgeOrientation = [
 
 export const fieldFontName = [
   {
-    name     : 'Arial'
+    name: 'Arial',
+    value: 'Arial'
   },
   {
-    name     : 'Helvetica'
+    name: 'Helvetica',
+    value: 'Helvetica'
   },
   {
-    name     : 'Times New Roman'
+    name: 'Times New Roman',
+    value: 'Times New Roman'
   },
   {
-    name     : 'Courier New'
+    name: 'Courier New',
+    value: 'Courier New'
   },
   {
-    name     : 'Lato'
+    name: 'Lato',
+    value: 'Lato'
+  },
+  {
+    name: 'Rubik',
+    value: '"Rubik variant1", Tofu'
+  },
+  {
+    name: 'Hind Siliguri',
+    value: '"Hind_Siliguri variant1", Tofu'
+  },
+  {
+    name: 'Noto Sans Hong Kong',
+    value: '"Noto_Sans_HK variant1", Tofu'
+  },
+  {
+    name: 'Noto Sans Simplified Chinese',
+    value: '"Noto_Sans_SC variant1", Tofu'
+  },
+  {
+    name: 'Noto Sans Traditional Chinese',
+    value: '"Noto_Sans_TC variant1", Tofu'
+  },
+  {
+    name: 'Noto Sans Japanese',
+    value: '"Noto_Sans_JP variant0", Tofu'
+  },
+  {
+    name: 'Noto Sans Korean',
+    value: '"Noto_Sans_KR variant1", Tofu'
+  },
+  {
+    name: 'Roboto',
+    value: '"Roboto variant1", Tofu'
+  },
+  {
+    name: 'Kanit',
+    value: '"Kanit variant1", Tofu'
   }
 ]
