@@ -7,7 +7,6 @@ import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size
 import { htmlSafe } from '@ember/template';
 import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-custom-fields';
 // import QRCode from 'qrcode';
-import { jsPDF as JsPDF } from 'jspdf';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
   currentSelected   : [],
@@ -183,19 +182,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       } else {
         this.set('isExpandedBadge', false);
       }
-    },
-    createPDF() {
-      const doc = new JsPDF('l', 'pt', 'a4');
-      const badgeElement = document.getElementById('badge-image');
-      doc.html(badgeElement, {
-        callback(doc) {
-          doc.save('sample-document.pdf');
-        },
-        x           : 15,
-        y           : 15,
-        width       : 170,
-        windowWidth : 650
-      });
     }
   }
 });
