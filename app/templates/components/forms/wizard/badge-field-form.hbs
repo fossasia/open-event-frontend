@@ -130,7 +130,7 @@
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Font Name'}}</div>
             <div class="menu">
-              {{#each @includeCustomField as |item|}}
+              {{#each this.fieldFont as |item|}}
               <div class="item" data-value="{{item.name}}">
                 {{t-var item.name}}
               </div>

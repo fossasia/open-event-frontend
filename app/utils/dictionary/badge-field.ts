@@ -25,3 +25,21 @@ export const badgeOrientation = [
     position : 2
   }
 ];
+
+export const fieldFontName = [
+  {
+    name     : 'Arial'
+  },
+  {
+    name     : 'Helvetica'
+  },
+  {
+    name     : 'Times New Roman'
+  },
+  {
+    name     : 'Courier New'
+  },
+  {
+    name     : 'Lato'
+  }
+]

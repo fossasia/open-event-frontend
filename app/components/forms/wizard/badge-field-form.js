@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { booleanTextType } from 'open-event-frontend/utils/dictionary/boolean_text_type';
+import { fieldFontName } from 'open-event-frontend/utils/dictionary/badge-field';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -14,6 +15,10 @@ export default Component.extend(FormMixin, {
   getCustomFields: computed('includeCustomField', function() {
     return union(this.includeCustomField.map(item => item.name));
   }),
+
+  get fieldFont() {
+    return orderBy(fieldFontName, 'name');
+  },
 
   actions: {
     toggleSetting() {
