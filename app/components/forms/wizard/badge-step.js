@@ -168,13 +168,13 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       try {
         const badge = this.data.badges.find(_badge => _badge.badgeID === badgeID);
         const config = {
-          "headers": {
+          'headers': {
             'Cache-Control': 'no-cache'
           }
-        }
+        };
         const data = {
           badgeForms: badge.badgeForms
-        }
+        };
         const result = await this.loader.downloadFileWithPost('/badge-forms/preivew-badge-pdf', data, config);
         const anchor = document.createElement('a');
         anchor.style.display = 'none';
@@ -191,7 +191,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         this.notify.error(e, {
           id: 'err_down'
         });
-      };
+      }
     }
   }
 });
