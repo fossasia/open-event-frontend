@@ -6,11 +6,10 @@ import { v4 } from 'ember-uuid';
 import { A } from '@ember/array';
 
 export default Component.extend(FormMixin, EventWizardMixin, {
-  tickets         : [],
-  excludeTickets  : A(),
-  isOldFormMode   : false,
-  isInit          : false,
-  isBadgesEnabled : false,
+  tickets        : [],
+  excludeTickets : A(),
+  isOldFormMode  : false,
+  isInit         : false,
 
   init() {
     this._super(...arguments);
@@ -88,8 +87,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.tickets.filter(ticket => !this.excludeTickets.includes(ticket));
   }),
 
-  revertChanges: observer('data.event.isTicketFormEnabled', function() {
-    if (!this.data.event.isTicketFormEnabled) {
+  revertChanges: observer('data.event.isBadgesEnabled', function() {
+    if (!this.data.event.isBadgesEnabled) {
       this.editableFields.forEach(field => field.set('isRequired', false));
     }
   }),
@@ -156,10 +155,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     onRemoveForm(_id) {
       const deleteBadge = this.data.badges.find(_badge => _badge.badgeID === _id);
       if (deleteBadge) {
-        const { ticketsDetails } = deleteBadge;
+        const { ticketsDetails, badgeForms } = deleteBadge;
         ticketsDetails.forEach(ticket => {
           ticket.badgeID = '';
         });
+        badgeForms.deleteRecord();
         this.excludeTickets.removeObjects(deleteBadge.ticketsDetails);
         this.data.badges.removeObject(deleteBadge);
       }

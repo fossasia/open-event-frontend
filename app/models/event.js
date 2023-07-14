@@ -50,6 +50,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isOneclickSignupEnabled   : attr('boolean', { defaultValue: false }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketFormEnabled       : attr('boolean', { defaultValue: false }),
+  isBadgesEnabled           : attr('boolean', { defaultValue: false }),
   isCfsEnabled              : attr('boolean', { defaultValue: false }),
   isVideoroomEnabled        : attr('boolean', { defaultValue: false }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),

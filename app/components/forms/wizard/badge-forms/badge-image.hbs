@@ -1,4 +1,4 @@
-<div class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}"
+<div id="badge-image" class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}"
     style={{badgeImgURL}}>
     <div class="ui w-full h-full badge-body" style={{@bgColor}}>
         <div class="sample-text">
@@ -17,15 +17,11 @@
             {{#each @fields as |_field|}}
             {{#if (not _field.is_deleted)}}
                 {{#if (eq _field.custom_field 'QR')}}
-                    {{!-- {{spectrum-color-picker
-                        color=qrString
-                        showInput=true
-                        }} --}}
+                    {{!-- <div id="badge_qr" {{did-insert @generateQRCode}}></div> --}}
                 {{else}}
-                <p class="field-style"
-                    style={{_field.getFieldStyle}}>
-                    {{_field.sample_text}}
-                </p>
+                    <p class="field-style" style={{_field.getFieldStyle}}>
+                        {{_field.sample_text}}
+                    </p>
                 {{/if}}
             {{/if}}
             {{/each}}
