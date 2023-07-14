@@ -41,6 +41,7 @@
           @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
           @id={{_badge.badgeID}}
           @onRemoveForm={{action 'onRemoveForm'}}
+          @onPrintPreview={{action 'onPrintPreview'}}
           @isLoading={{this.isLoading}} />
       {{/each}}
       {{#if this.selectableTickets.length}}

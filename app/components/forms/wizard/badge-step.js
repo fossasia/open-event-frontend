@@ -163,6 +163,35 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         this.excludeTickets.removeObjects(deleteBadge.ticketsDetails);
         this.data.badges.removeObject(deleteBadge);
       }
+    },
+    async onPrintPreview(badgeID) {
+      try {
+        const badge = this.data.badges.find(_badge => _badge.badgeID === badgeID);
+        const config = {
+          'headers': {
+            'Cache-Control': 'no-cache'
+          }
+        };
+        const data = {
+          badgeForms: badge.badgeForms
+        };
+        const result = await this.loader.downloadFileWithPost('/badge-forms/preivew-badge-pdf', data, config);
+        const anchor = document.createElement('a');
+        anchor.style.display = 'none';
+        anchor.href = URL.createObjectURL(new Blob([result], { type: 'application/pdf' }));
+        anchor.download = `${badgeID}.pdf`;
+        document.body.appendChild(anchor);
+        anchor.click();
+        this.notify.success(this.l10n.t('Here is your Badge Preview'),
+          {
+            id: 'badge_preview'
+          });
+        document.body.removeChild(anchor);
+      } catch (e) {
+        this.notify.error(e, {
+          id: 'err_down'
+        });
+      }
     }
   }
 });
