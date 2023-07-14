@@ -81,7 +81,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   editableFields: computed('data.customForms.@each', function() {
-    const filteredFields = this.data.customForms?.filter(field => !field.isFixed);
+    const filteredFields = this.customForms?.filter(field => !field.isFixed);
     const fields = sortBy(filteredFields, ['isComplex', 'name']);
     return sortBy(fields, ['position']);
   }),
@@ -97,7 +97,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   disableAddBadgeField: computed('data.badgeForms.badgeFields.@each.is_deleted', function() {
-    return this.badgeForms.badgeFields?.filter(field => !field.is_deleted).length === badgeCustomFields.length;
+    return this.badgeForms.badgeFields?.filter(field => !field.is_deleted).length - 1 === this.customForms?.filter(field => field.isIncluded).length;
   }),
 
   removeBadgeField(badgeField) {
