@@ -42,7 +42,7 @@
     </div>
     <div class="column">
       <Forms::Wizard::BadgeForms::BadgePreview @headerText={{t "Preview" }} 
-      @data={{this.badgeForms}}/>
+      @data={{this.badgeForms}} @onPrintPreview={{action @onPrintPreview this.id}}/>
     </div>
   </div>
   <div class="ui hidden divider"></div>
