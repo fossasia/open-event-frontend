@@ -48,6 +48,7 @@ export default class ScheduleMenuFilter extends Component {
 
     @action
     sessionFilter(name) {
+      this.activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
       if (this.activeSession.includes(name)) {
         this.activeSession = this.activeSession.filter(session => session !== name);
       } else {
@@ -58,6 +59,7 @@ export default class ScheduleMenuFilter extends Component {
 
     @action
     sessionLevelFilter(level) {
+      this.activeSessionLevel = this.router.currentRoute.queryParams.level ? this.router.currentRoute.queryParams.level.split(',') : [];
       if (this.activeSessionLevel.includes(level)) {
         this.activeSessionLevel = this.activeSessionLevel.filter(val => val !== level);
       } else {
@@ -68,6 +70,7 @@ export default class ScheduleMenuFilter extends Component {
 
     @action
     roomFilter(name) {
+      this.activeRoom = this.router.currentRoute.queryParams.room ? this.router.currentRoute.queryParams.room.split(',') : [];
       if (this.activeRoom.includes(name)) {
         this.activeRoom = this.activeRoom.filter(room => room !== name);
       } else {
@@ -78,6 +81,7 @@ export default class ScheduleMenuFilter extends Component {
 
     @action
     trackFilter(name) {
+      this.activeTrack = this.router.currentRoute.queryParams.track ? this.router.currentRoute.queryParams.track.split(',') : [];
       if (this.activeTrack.includes(name)) {
         this.activeTrack = this.activeTrack.filter(track => track !== name);
       } else {
