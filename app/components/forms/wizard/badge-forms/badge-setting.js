@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { orderBy } from 'lodash-es';
-import { badgeSize, badgeOrientation } from 'open-event-frontend/utils/dictionary/badge-image-size';
+import { badgeSize, badgeOrientation } from 'open-event-frontend/utils/dictionary/badge-field';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { computed } from '@ember/object';

@@ -3,7 +3,7 @@ import { computed, observer } from '@ember/object';
 import FormMixin from 'open-event-frontend/mixins/form';
 import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 import { sortBy, union } from 'lodash-es';
-import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-image-size';
+import { badgeSize } from 'open-event-frontend/utils/dictionary/badge-field';
 import { htmlSafe } from '@ember/template';
 import { badgeCustomFields } from 'open-event-frontend/utils/dictionary/badge-custom-fields';
 // import QRCode from 'qrcode';
