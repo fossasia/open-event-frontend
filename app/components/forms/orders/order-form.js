@@ -630,9 +630,7 @@ export default Component.extend(FormMixin, {
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
       } else if (field.translations?.length) {
-
         const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
-
         if (transName.length) {
           field.transName = transName[0].name;
         } else {
@@ -641,7 +639,6 @@ export default Component.extend(FormMixin, {
       } else {
         field.transName = field.name;
       }
-
       return !isFixed;
     }), ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
@@ -662,6 +659,23 @@ export default Component.extend(FormMixin, {
 
   getData() {
     return 'hello';
+  },
+
+  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
+    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
+  },
+
+  get fieldNameConvertRichText() {
+    const fields = orderBy(this.fields.toArray(), 'position');
+    this.holders.forEach((holder, indexHolder) => {
+      fields.forEach((field, index) => {
+        const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
+        if (elem) {
+          elem.innerHTML = field.transName;
+        }
+      });
+    });
+    return null;
   },
 
   actions: {
