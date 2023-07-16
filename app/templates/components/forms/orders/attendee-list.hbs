@@ -12,7 +12,7 @@
           {{t 'Ticket Holder\'s Information'}}
         {{/if}}
       </h4>
-      {{#each this.holders as |holder indexHolder|}}
+      {{#each this.holders as |holder|}}
         <div class="field">
           <div class="inline field">
             <i class="user icon"></i>
@@ -32,16 +32,12 @@
             {{/if}}
           </div>
          
-          {{#each this.allFields.attendee as |field index|}}
+          {{#each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
               {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
                 <div class="field">
                     <h4 class="weight-300">
-                      {{#if field.isComplex}}
-                        <div id={{concat field.fieldIdentifier "_" indexHolder "_" index}}>{{this.fieldNameConvertRichText}}</div>
-                      {{else}}
-                        {{t-var field.transName}}
-                      {{/if}}
+                      {{t-var field.transName}}
                     </h4>
                     {{#if (is-input-field field.type)}}
                       {{#if (or (not this.editFields) (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname')) (eq field.fieldIdentifier 'email')))}} 
