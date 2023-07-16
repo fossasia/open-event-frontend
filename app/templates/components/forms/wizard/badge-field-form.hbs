@@ -22,8 +22,17 @@
     </h3>
     <div class="ui stackable grid padding-left-1rem ">
       <div class="field twelve wide column">
-        <label>{{t 'Custom Field'}}</label>
-        <UiDropdown @class="search selection min-width-0" @selected={{@data.custom_field}}
+        <label>{{t 'Custom Field'}}
+          {{#if this.getWarningFields}}
+            {{#each this.getWarningFields as |warning|}}
+            <UiPopup
+              @tagName="i"
+              @class="info circle icon"
+              @content={{concat warning.field ' is not available in ticket ' warning.ticket }} />
+            {{/each}}
+          {{/if}}
+          </label>
+        <UiDropdown @class="search selection min-width-0" @selected={{this.data.custom_field}}
           @onChange={{action 'onChangeCustomField' }}>
           <Input @type="hidden" @autocomplete="no" @name={{concat "custom_field_" @data.badge_id "_" @index}} />
           <i class="dropdown icon"></i>
@@ -43,16 +52,19 @@
       <div class="row">
         <div class="field twelve wide column">
           <label>{{t 'Fields To Be Included'}}</label>
-          <UiDropdown @class="d-flex items-center pl-2 mb-2 fluid multiple selection">
+          <UiDropdown @class="fluid multiple search selection" @selected={{ this.data.qr_custom_field }} 
+            @onChange={{action (mut this.data.qr_custom_field) }} as | execute mapper |>
             <i class="dropdown icon"></i>
             <div class="default text">
               {{t 'Select Fields'}}
             </div>
             <div class="menu">
               {{#each @getSelectedField as |field|}}
-              <UiCheckbox @class="item" @label={{field}} @checked={{if (includes @data.qr_custom_field field) "active" }}
-                @onChange={{action 'addFieldToQR' field}}
-                />
+              {{#if field}}
+              <div data-value="{{map-value mapper field}}" class="item">
+                {{field}}
+              </div>
+              {{/if}}
               {{/each}}
             </div>
           </UiDropdown>

@@ -17,7 +17,9 @@
             {{#each @fields as |_field|}}
             {{#if (not _field.is_deleted)}}
                 {{#if (eq _field.custom_field 'QR')}}
-                    {{!-- <div id="badge_qr" {{did-insert @generateQRCode}}></div> --}}
+                <div style={{_field.getFieldStyle}}>
+                    <QrCode class="badge-qr" @text="https://eventyay.com" @darkColor="#000" />
+                </div>
                 {{else}}
                     <p class="field-style" style={{_field.getFieldStyle}}>
                         {{_field.sample_text}}
