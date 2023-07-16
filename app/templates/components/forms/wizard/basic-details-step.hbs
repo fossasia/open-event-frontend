@@ -726,6 +726,7 @@
               @type="checkbox"
               @id="billing_info_mandatory"
               @checked={{this.data.event.isBillingInfoMandatory}}
+              @disabled={{this.data.event.canPayByStripe}}
             />
             <label for="billing_info">
               {{t 'Require billing information from ticket buyer.'}}
