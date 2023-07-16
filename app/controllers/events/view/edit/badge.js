@@ -6,7 +6,7 @@ import EventWizardMixin from 'open-event-frontend/mixins/event-wizard';
 @classic
 export default class BadgeController extends Controller.extend(EventWizardMixin) {
   async saveForms(data) {
-    await Promise.all((data?.badges?.toArray() ?? []).map(badge => badge.badgeForms.save()));
+    await Promise.all((data?.badgeForms?.toArray() ?? []).map(badge => badge.save()));
     await Promise.all((data?.tickets ?? []).map(ticket => {
       // console.log(ticket);
       return ticket.save();

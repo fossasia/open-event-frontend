@@ -11,6 +11,7 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
+  badge_field_id   : attr('number'),
   badge_id         : attr('string'),
   field_identifier : attr('string'),
   custom_field     : attr('string'),

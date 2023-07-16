@@ -6,7 +6,7 @@
       <i class="trash box icon"></i>
     </button>
   </h4>
-  {{#if this.data.ticketsDetails.length }}
+  {{#if this.selectedTicket.length }}
   <b>{{ t 'Ticket names: '}}</b>{{ this.ticketNames }}
   <button type="button" class="ui compact icon button right floated" {{action 'toggleBadge' }}>
     {{#if this.isExpandedBadge}}
@@ -18,8 +18,8 @@
   <div class="ui hidden divider mb-0"></div>
   {{/if}}
   {{#if this.isExpandedBadge }}
-  <UiDropdown @class="fluid multiple search selection" @selected={{ this.data.ticketsDetails }} 
-    @onChange={{action (mut this.data.ticketsDetails) }} as | execute mapper |>
+  <UiDropdown @class="fluid multiple search selection" @selected={{ this.selectedTicket }} 
+    @onChange={{action (mut this.selectedTicket) }} as | execute mapper |>
     <i class="dropdown icon"></i>
     <div class="default text">
       {{t 'Select Tickets'}}
@@ -64,7 +64,7 @@
           <Forms::Wizard::BadgeFieldForm @data={{_field}} @index={{index}} @move="move" @save="save"
             @includeCustomField={{this.includeCustomField}} @onChange={{action 'onChildChangeCustomField' }}
             @removeBadgeField={{this.removeBadgeField}} @isLoading={{this.isLoading}}
-            @getSelectedField={{getSelectedField}} />
+            @getSelectedField={{getSelectedField}} @selectedTickets={{this.selectedTicket}} @customForms={{this.customForms}}/>
           {{/each}}
         </div>
         {{else}}
