@@ -1,113 +1,92 @@
-export const LANGUAGE_CODE_ENUM = {
-  ENGLISH             : 'en',
-  FRENCH              : 'fr',
-  GERMAN              : 'de',
-  JAPANESE            : 'ja',
-  RUSSIAN             : 'ru',
-  CHINESE_SIMPLIFIED  : 'zh_Hans',
-  CHINESE_TRADITIONAL : 'zh_Hant',
-  INDONESIAN          : 'id',
-  POLSKI              : 'pl',
-  BENGALI             : 'bn',
-  SPANISH             : 'es',
-  THAILAND            : 'th',
-  VIETNAMESE          : 'vi',
-  KOREAN              : 'ko',
-  ARABIC              : 'ar',
-  HINDI               : 'hi',
-  SWEDISH             : 'sv',
-  NORWEGIAN           : 'nb_NO'
-}
-
 export const translateLanguages = [
   {
     name      : 'عربي',
-    code      : LANGUAGE_CODE_ENUM.ARABIC,
+    code      : 'ar',
     isChecked : false
   },
   {
     name      : 'বাংলা',
-    code      : LANGUAGE_CODE_ENUM.BENGALI,
+    code      : 'bn',
     isChecked : false
   },
   {
     name      : 'Deutsch',
-    code      : LANGUAGE_CODE_ENUM.GERMAN,
+    code      : 'de',
     isChecked : false
   },
   {
     name      : 'English',
-    code      : LANGUAGE_CODE_ENUM.ENGLISH,
+    code      : 'en',
     isChecked : false
   },
   {
     name      : 'Español',
-    code      : LANGUAGE_CODE_ENUM.SPANISH,
+    code      : 'es',
     isChecked : false
   },
   {
     name      : 'Français',
-    code      : LANGUAGE_CODE_ENUM.FRENCH,
+    code      : 'fr',
     isChecked : false
   },
   {
     name      : 'हिंदी',
-    code      : LANGUAGE_CODE_ENUM.HINDI,
+    code      : 'hi',
     isChecked : false
   },
   {
     name      : 'Bahasa Indonesia',
-    code      : LANGUAGE_CODE_ENUM.INDONESIAN,
+    code      : 'id',
     isChecked : false
   },
   {
     name      : '日本語',
-    code      : LANGUAGE_CODE_ENUM.JAPANESE,
+    code      : 'ja',
     isChecked : false
   },
   {
     name      : '한국어',
-    code      : LANGUAGE_CODE_ENUM.KOREAN,
+    code      : 'ko',
     isChecked : false
   },
   {
     name      : 'Bokmål',
-    code      : LANGUAGE_CODE_ENUM.NORWEGIAN,
+    code      : 'nb_NO',
     isChecked : false
   },
   {
     name      : 'Polski',
-    code      : LANGUAGE_CODE_ENUM.POLSKI,
+    code      : 'pl',
     isChecked : false
   },
   {
     name      : 'Русский',
-    code      : LANGUAGE_CODE_ENUM.RUSSIAN,
+    code      : 'ru',
     isChecked : false
   },
   {
     name      : 'Svenska',
-    code      : LANGUAGE_CODE_ENUM.SWEDISH,
+    code      : 'sv',
     isChecked : false
   },
   {
     name      : 'ไทย',
-    code      : LANGUAGE_CODE_ENUM.THAILAND,
+    code      : 'th',
     isChecked : false
   },
   {
     name      : 'Tiếng Việt',
-    code      : LANGUAGE_CODE_ENUM.VIETNAMESE,
+    code      : 'vi',
     isChecked : false
   },
   {
     name      : '中文（简体)',
-    code      : LANGUAGE_CODE_ENUM.CHINESE_SIMPLIFIED,
+    code      : 'zh_Hans',
     isChecked : false
   },
   {
     name      : '中文（繁體)',
-    code      : LANGUAGE_CODE_ENUM.CHINESE_TRADITIONAL,
+    code      : 'zh_Hant',
     isChecked : false
   }
 ];
