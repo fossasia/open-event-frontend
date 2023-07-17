@@ -64,7 +64,7 @@
           <Forms::Wizard::BadgeFieldForm @data={{_field}} @index={{index}} @move="move" @save="save"
             @includeCustomField={{this.includeCustomField}} @onChange={{action 'onChildChangeCustomField' }}
             @removeBadgeField={{this.removeBadgeField}} @isLoading={{this.isLoading}}
-            @getSelectedField={{getSelectedField}} @selectedTickets={{this.selectedTicket}} @customForms={{this.customForms}}/>
+            @qrFields={{qrFields}} @selectedTickets={{this.selectedTicket}} @customForms={{this.customForms}}/>
           {{/each}}
         </div>
         {{else}}
