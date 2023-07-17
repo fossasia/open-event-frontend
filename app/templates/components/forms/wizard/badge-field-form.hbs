@@ -53,7 +53,7 @@
         <div class="field twelve wide column">
           <label>{{t 'Fields To Be Included'}}</label>
           <UiDropdown @class="fluid multiple search selection" @selected={{ this.data.qr_custom_field }} 
-            @onChange={{action 'addFieldToQR' }} as | execute mapper |>
+            @onChange={{action (mut data.qr_custom_field) }} as | execute mapper |>
             <i class="dropdown icon"></i>
             <div class="default text">
               {{t 'Select Fields'}}

@@ -38,16 +38,17 @@ export default Component.extend(FormMixin, {
     return warningFields;
   }),
 
-  getWarningQRFields: computed('data.qr_custom_field', 'selectedTickets', function() {
+  getWarningQRFields: computed('data.qr_custom_field.@each', 'selectedTickets', function() {
     if (this.data.qr_custom_field) {
     const warningFields      = [];
     this.selectedTickets.forEach(ticket => {
-      const listCFields = this.customForms.filter(form => (ticket.formID === form.formID) && form.isIncluded || form.isFixed).map(form => form.fieldIdentifier);
+      const listCFields = union(this.customForms.filter(form => (ticket.formID === form.formID) && form.isIncluded || form.isFixed), 'fieldIdentifier');
       this.data.qr_custom_field.forEach(field => {
-        if (this.data.custom_field && !listCFields.includes(field)) {
+        const warningField = listCFields.map(item => item.fieldIdentifier).includes(field);
+        if (!warningField) {
           warningFields.pushObject(
             {
-              field  : field,
+              field  : this.customForms.find(item => item.fieldIdentifier === field).name,
               ticket : ticket.name
             }
           );
@@ -94,17 +95,6 @@ export default Component.extend(FormMixin, {
     },
     onChangeFontName(value) {
       this.set('data.font_name', value);
-    },
-    addFieldToQR(field) {
-      if (this.data.qr_custom_field == null) {
-        this.data.qr_custom_field = [];
-      }
-      if (!this.data.qr_custom_field.includes(field.at(-1))) {
-        this.data.qr_custom_field.pushObject(field.at(-1));
-      } else {
-        this.data.qr_custom_field.removeObject(field.at(-1));
-      }
-
     }
   }
 });
