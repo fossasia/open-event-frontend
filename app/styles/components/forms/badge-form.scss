@@ -73,3 +73,29 @@
 label.warning {
   color: #db2828 !important;
 }
+
+.badge-orientation,
+.badge-size {
+  width: 18rem;
+
+  .drop-down-badge {
+    min-width: 18rem !important;
+  }
+}
+
+.row-field {
+  display: flex;
+  width: 100%;
+
+  h3 {
+    width: 85%;
+  }
+
+  .btn-row {
+    width: 15%;
+
+    .remove-icon {
+      margin-right: 5px !important;
+    }
+  }
+}

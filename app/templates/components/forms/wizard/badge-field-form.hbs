@@ -1,20 +1,28 @@
 <div class="badge-form-body">
-  <h3 class="lh-2r">
-    {{t 'Row'}} {{inc @index}}
-    {{#if @data.custom_field }}
-    - {{@data.custom_field}}
-    {{/if}}
-    <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting' }}>
+
+  <div class="row-field">
+    <h3 class="lh-2r">
+      {{t 'Row'}} {{inc @index}}
+      {{#if @data.custom_field }}
+      - {{@data.custom_field}}
+      {{/if}}
+    </h3>
+    <div class="btn-row">
+      <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting' }}>
       {{#if this.isExpanded}}
       <i class="angle up icon" />
       {{else}}
       <i class="angle down icon" />
       {{/if}}
-    </button>
-    <button type="button" class="ui compact icon negative button right floated" {{action 'removeForm' }}>
-      <i class="trash box icon pr-0"></i>
-    </button>
-  </h3>
+      </button>
+      <button type="button" class="ui compact icon negative button right floated remove-icon" {{action 'removeForm' }}>
+        <i class="trash box icon pr-0"></i>
+      </button>
+    </div>
+  </div>
+
+
+
   {{#if this.isExpanded}}
   <div class="badge-form-body-field">
     <h3 class="background-color-title padding-left-1rem margin-left-revert-1rem">
