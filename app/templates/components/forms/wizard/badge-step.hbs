@@ -29,20 +29,23 @@
 
   {{#if this.data.badges.length}}
     <div>
-      {{#each this.data.badges as |_badge|}}
-        <div class="ui hidden divider"></div>
-        <Forms::Wizard::BadgeForm
-          @data={{_badge}}
-          @customForms={{this.data.customForms}}
-          @event={{this.data.event}}
-          @move="move" 
-          @save="save" 
-          @tickets={{this.selectableTickets}}    
-          @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
-          @id={{_badge.badgeID}}
-          @onRemoveForm={{action 'onRemoveForm'}}
-          @onPrintPreview={{action 'onPrintPreview'}}
-          @isLoading={{this.isLoading}} />
+        {{#each this.data.badges as |_badge|}}
+          {{#each _badge.badgeForms as |_form|}}
+            <div class="ui hidden divider"></div>
+            <Forms::Wizard::BadgeForm
+              @data={{_form}}
+              @selectedTicket={{_badge.ticketsDetails}}
+              @customForms={{this.data.customForms}}
+              @event={{this.data.event}}
+              @move="move" 
+              @save="save" 
+              @tickets={{this.selectableTickets}}    
+              @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
+              @id={{_form.badgeID}}
+              @onRemoveForm={{action 'onRemoveForm'}}
+              @onPrintPreview={{action 'onPrintPreview'}}
+              @isLoading={{this.isLoading}} />
+        {{/each}}
       {{/each}}
       {{#if this.selectableTickets.length}}
         <div class="ui hidden divider"></div>
@@ -51,7 +54,7 @@
       <div class="spacer-50"></div>
     </div>
   {{else}}
-    {{#if this.data.isBadgesEnabled}}
+    {{#if this.data.event.isBadgesEnabled}}
       <div class="ui hidden divider"></div>
       <button type="button" class="ui primary {{if this.device.isMobile 'small'}} button" {{action 'addBadge'}}>{{t 'Add Badge'}}</button>
     {{/if}}

@@ -16,6 +16,24 @@ export default Component.extend(FormMixin, {
     return union(this.includeCustomField.map(item => item.name));
   }),
 
+  getWarningFields: computed('data.custom_field', function() {
+    const warningFields      = [];
+    if (this.data.custom_field !== 'QR') {
+      this.selectedTickets.forEach(ticket => {
+        const listCFields = this.customForms.filter(form => (ticket.formID === form.formID) && form.isIncluded || form.isFixed).map(form => form.name);
+        if (this.data.custom_field && !listCFields.includes(this.data.custom_field)) {
+          warningFields.pushObject(
+            {
+              field  : this.data.custom_field,
+              ticket : ticket.name
+            }
+          );
+        }
+      });
+    }
+    return warningFields;
+  }),
+
   get fieldFont() {
     return orderBy(fieldFontName, 'name');
   },

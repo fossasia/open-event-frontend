@@ -15,43 +15,44 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   init() {
     this._super(...arguments);
     this.removeBadgeField = this.removeBadgeField.bind(this);
-    this.currentSelected = this.data.ticketsDetails;
-    this.badgeForms = this.data.badgeForms;
+    this.currentSelected = this.selectedTicket;
+    this.badgeForms = this.data;
+    this.ignoreCustomField = [];
   },
 
-  ticketsEnable: computed('tickets', 'ticketsDetails', function() {
-    return union(this.tickets || [], this.data.ticketsDetails || []);
+  ticketsEnable: computed('tickets', 'selectedTicket.@each', function() {
+    return union(this.tickets || [], this.selectedTicket || []);
   }),
 
   fixedFields: computed('data.customForms.@each', function() {
     return this.data.customForms?.filter(field => field.isFixed);
   }),
 
-  badgeFields: computed('badgeForms.badgeFields.@each.is_deleted', function() {
-    return this.badgeForms.badgeFields?.filter(field => !field.is_deleted);
+  badgeFields: computed('data.badgeFields.@each.is_deleted', function() {
+    return this.data.badgeFields?.filter(field => !field.is_deleted);
   }),
 
-  includeCustomField: computed('ignoreCustomField.@each', 'data.ticketsDetails.@each', function() {
-    return this.customFormsValid.filter(item => !this.ignoreCustomField.includes(item));
+  includeCustomField: computed('ignoreCustomField', 'selectedTicket.@each', 'data.badgeFields.@each.is_deleted', 'data.badgeFields.@each', function() {
+    return this.customFormsValid.filter(item => !this.ignoreCustomField.includes(item.name) && !this.data.badgeFields.map(field => !field.is_deleted && field.custom_field).includes(item.name));
   }),
 
-  customFormsValid: computed('data.ticketsDetails.@each', function() {
-    const formIds = this.data.ticketsDetails.map(item => item.formID);
+  customFormsValid: computed('selectedTicket.@each', 'data.badgeFields.@each', function() {
+    const formIds = this.selectedTicket.map(item => item.formID);
     const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed);
     validForms.push({ 'name': 'QR', 'field_identifier': 'qr' });
     return union(sortBy(validForms));
   }),
 
-  getSelectedField: computed('data.ticketsDetails.@each', function() {
+  getSelectedField: computed('selectedTicket.@each', 'data.badgeFields.@each', function() {
     // return sortBy(this.data.badgeFields.filter(field => !field.is_deleted && field.custom_field !== 'QR').map(field => field.custom_field));
-    const formIds = this.data.ticketsDetails.map(item => item.formID);
+    const formIds = this.selectedTicket.map(item => item.formID);
     const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed).map(form => form.name);
     return union(sortBy(validForms));
   }),
 
-  ticketNames: computed('data.ticketsDetails.@each', function() {
+  ticketNames: computed('selectedTicket.@each', function() {
     let ticketNames = '';
-    this.data.ticketsDetails.forEach(ticket => {
+    this.selectedTicket.forEach(ticket => {
       if (ticketNames) {
         ticketNames += ', ' + ticket.name;
       } else {
@@ -61,8 +62,8 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return ticketNames.trim();
   }),
 
-  selectChanges: observer('data.ticketsDetails', function() {
-    const { ticketsDetails } = this.data;
+  selectChanges: observer('selectedTicket.@each', function() {
+    const ticketsDetails = this.selectedTicket;
     const { currentSelected } = this;
 
     const added = currentSelected.length < ticketsDetails.length;
@@ -96,7 +97,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.editableFields?.some(field => field.isComplex);
   }),
 
-  disableAddBadgeField: computed('data.badgeForms.badgeFields.@each.is_deleted', function() {
+  disableAddBadgeField: computed('badgeForms.badgeFields.@each.is_deleted', function() {
     return this.badgeForms.badgeFields?.filter(field => !field.is_deleted).length - 1 === this.customForms?.filter(field => field.isIncluded).length;
   }),
 
@@ -185,6 +186,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       } else {
         this.set('isExpandedBadge', false);
       }
+    },
+    mutatetickets(ticket) {
+      this.selectedTicket.pushObject(ticket);
     }
   }
 });

@@ -31,14 +31,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         return false;
       });
       if (_fields.length > 0) {
-        tickets.forEach(_ticket => {
-          _ticket.badgeID = _badgeID;
-          this.excludeTickets.pushObject(_ticket);
-        });
+        // tickets.forEach(_ticket => {
+        //   _ticket.badgeID = _badgeID;
+        //   this.excludeTickets.pushObject(_ticket);
+        // });
         badges.pushObject(this.store.createRecord('badge', {
           badgeID        : _badgeID,
           badgeForms     : _fields,
-          ticketsDetails : tickets
+          ticketsDetails : []
         }));
       }
     } else {
@@ -62,7 +62,38 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         badges.pushObject({
           badgeID        : _id,
           ticketsDetails : selectedTicket,
-          badgeForms     : badgeForms.find(_field => _field.badgeID === _id)
+          badgeForms     : badgeForms.filter(_field => _field.badgeID === _id)
+        });
+      });
+      badges.forEach(badge => {
+        badge.badgeForms.forEach(form => {
+          const badgeFields = [];
+          form.badgeFields.forEach(field => {
+            if (!field.is_deleted) {
+              badgeFields.pushObject(this.store.createRecord('badge-field-form', {
+                badge_field_id   : field.id,
+                badge_id         : field.badge_id,
+                field_identifier : field.field_identifier,
+                custom_field     : field.custom_field,
+                sample_text      : field.sample_text,
+                font_size        : field.font_size,
+                font_name        : field.font_name,
+                font_color       : field.font_color,
+                text_rotation    : field.text_rotation,
+                margin_top       : field.margin_top,
+                margin_bottom    : field.margin_bottom,
+                margin_left      : field.margin_left,
+                margin_right     : field.margin_right,
+                font_weight      : field.font_weight,
+                text_alignment   : field.text_alignment,
+                text_type        : field.text_type,
+                is_deleted       : field.is_deleted,
+                qr_custom_field  : field.qr_custom_field
+              }));
+              field = null;
+            }
+          });
+          form.badgeFields = badgeFields;
         });
       });
     }
@@ -71,12 +102,14 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   prepareCustomFormsForSave() {
     this.data.badges.forEach(_badge => {
       const { badgeID, badgeForms, ticketsDetails } = _badge;
-      if (!badgeForms.isDeleted) {
-        badgeForms.badgeID = badgeID;
-      }
-      if (!badgeForms.id) {
-        this.data.badgeForms.pushObject(badgeForms);
-      }
+      badgeForms.forEach(field => {
+        if (!field.isDeleted) {
+          field.badgeID = badgeID;
+        }
+        if (!field.id) {
+          this.data.badgeForms.pushObject(field);
+        }
+      });
       ticketsDetails.forEach(ticket => {
         ticket.badgeID = badgeID;
       });
@@ -116,15 +149,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.data.badges.pushObject(this.store.createRecord('badge', {
         badgeID    : _badgeID,
         ticketsDetails,
-        badgeForms : this.getBadgeForm(this.data.event, _badgeID, ticketsDetails)
+        badgeForms : [this.getBadgeForm(this.data.event, _badgeID, ticketsDetails)]
       }));
     },
 
     toggleBadges() {
-      if (!this.data.isBadgesEnabled) {
-        this.set('data.isBadgesEnabled', true);
+      if (!this.data.event.isBadgesEnabled) {
+        this.set('data.event.isBadgesEnabled', true);
       } else {
-        this.set('data.isBadgesEnabled', false);
+        this.set('data.event.isBadgesEnabled', false);
         this.data.badges.clear();
       }
     },
@@ -159,7 +192,9 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         ticketsDetails.forEach(ticket => {
           ticket.badgeID = '';
         });
-        badgeForms.deleteRecord();
+        badgeForms.forEach(field => {
+          field.deleteRecord();
+        });
         this.excludeTickets.removeObjects(deleteBadge.ticketsDetails);
         this.data.badges.removeObject(deleteBadge);
       }
