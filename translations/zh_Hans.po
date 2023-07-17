@@ -922,6 +922,7 @@ msgstr "自定义"
 
 #: app/components/forms/events/view/videoroom-form.hbs:34:28
 #: app/components/modals/add-room-modal.js:17:14
+#: app/templates/components/public/schedule-menu-filter.hbs:73:12
 msgid "Room"
 msgstr "工作区"
 
@@ -3083,6 +3084,7 @@ msgstr "您的会话已保存"
 
 #: app/controllers/events/view/sessions/list.js:68:26
 #: app/models/custom-form.js:37:18
+#: app/templates/components/public/schedule-menu-filter.hbs:59:12
 msgid "Track"
 msgstr "轨道"
 
@@ -3595,6 +3597,7 @@ msgid "Subtitle"
 msgstr "字幕"
 
 #: app/models/custom-form.js:38:18
+#: app/templates/components/public/schedule-menu-filter.hbs:87:12
 msgid "Session Type"
 msgstr "会话类型"
 
@@ -5509,6 +5512,7 @@ msgstr "微型位置"
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
 #: app/templates/public.hbs:93:16
+#: app/templates/components/public/schedule-menu-filter.hbs:118:8
 msgid "Tracks"
 msgstr "轨道"
 
@@ -5792,6 +5796,7 @@ msgstr "已锁定"
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
 #: app/templates/public.hbs:121:16
+#: app/templates/components/public/schedule-menu-filter.hbs:147:8
 msgid "Session Types"
 msgstr "会话类型"
 
@@ -9686,6 +9691,7 @@ msgid "Clear Track Filter"
 msgstr "清除轨道过滤器"
 
 #: app/templates/public.hbs:108:16
+#: app/templates/components/public/schedule-menu-filter.hbs:132:8
 msgid "Rooms"
 msgstr "教室"
 
@@ -9698,10 +9704,12 @@ msgid "Clear Session Type Filter"
 msgstr "清除会话类型过滤器"
 
 #: app/templates/public.hbs:133:18
+#: app/templates/components/public/schedule-menu-filter.hbs:160:12
 msgid "Select Session Type"
 msgstr "选择会话类型"
 
 #: app/templates/public.hbs:148:18
+#: app/templates/components/public/schedule-menu-filter.hbs:172:8
 msgid "Session Levels"
 msgstr "会话级别"
 
@@ -9710,6 +9718,7 @@ msgid "Clear Session Level Filter"
 msgstr "清除会话级过滤器"
 
 #: app/templates/public.hbs:160:20
+#: app/templates/components/public/schedule-menu-filter.hbs:185:12
 msgid "Select Session level"
 msgstr "选择会话级别"
 
@@ -11663,6 +11672,29 @@ msgstr "18岁以下"
 #: app/utils/dictionary/age-groups.ts:41:9
 msgid "I prefer not to say"
 msgstr "我宁愿不说"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:5:12
+msgid "Filter by Tracks"
+msgstr "按照轨道筛选"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:17:12
+msgid "Filter by Rooms"
+msgstr "按房间筛选"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:31:12
+msgid "Filter by Session Types"
+msgstr "按会话类型筛选"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:44:12
+msgid "Filter by Session levels"
+msgstr "按会话级别筛选"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:67:50
+#: app/templates/components/public/schedule-menu-filter.hbs:81:50
+#: app/templates/components/public/schedule-menu-filter.hbs:95:50
+#: app/templates/components/public/schedule-menu-filter.hbs:109:50
+msgid "[Clear Filter]"
+msgstr "[清除过滤器]"
 
 #: app/utils/dictionary/home-wikis.ts:5:10
 msgid "Wikipedia"
