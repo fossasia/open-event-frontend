@@ -16,6 +16,8 @@ export default ModelBase.extend({
   badgeOrientation    : attr('string'),
   badgeQRFields       : attr(),
   badgeFields         : attr(),
+  selectedImage       : attr('string'),
+  imageUrl            : attr('string'),
   /**
    * Relationships
    */

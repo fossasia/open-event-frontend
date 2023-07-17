@@ -55,7 +55,7 @@
           <label class="ml-4">{{t 'Background'}}</label>
         </div>
         <div class="column pl-4 pt-2 pb-2">
-          <SpectrumColorPicker @color={{@data.badgeColor}} @allowEmpty={{true}} @preferredFormat={{"hex"}}/>
+          <SpectrumColorPicker @color={{@data.badgeColor}} @allowEmpty={{true}} @preferredFormat={{"hex"}} onChange={{action 'onChangeBadgeColor'}}/>
         </div>
       </div>
     </div>
@@ -69,7 +69,7 @@
             @hint={{t "Select badge background Image" }} @maxSizeInKb={{this.settings.imageSize}} 
             @aspectRatio={{array getAspectRatio.width getAspectRatio.height}}
             @helpText={{t "We recommend using at 240x180px or 240x360px (1:1 ratio) image" }} @data={{@data}}
-            @cropPanel={{array 650 600}} />
+            @cropPanel={{array 650 600}}/>
         </div>
       </div>
     </div>

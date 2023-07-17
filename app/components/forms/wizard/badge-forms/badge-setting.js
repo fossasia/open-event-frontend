@@ -21,6 +21,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       width  : this.badgeSizeCrop.lineHeight * 96 / 150,
       height : this.badgeSizeCrop.height * 96 / 150
     };
-  })
-}
-);
+  }),
+  actions: {
+    onChangeBadgeColor() {
+      this.set('data.badgeImageURL', null);
+      this.set('data.selectedImage', null);
+      this.set('data.imageUrl', null);
+    }
+  }
+});

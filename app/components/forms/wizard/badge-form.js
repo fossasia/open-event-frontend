@@ -137,12 +137,15 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       lineHeight };
   }),
 
-  getBadgeColor: computed('badgeForms.badgeColor', function() {
-    return htmlSafe('background-color: ' + this.badgeForms.badgeColor);
-  }),
-
-  getBadgeImg: computed('badgeForms.badgeImageURL', function() {
-    return htmlSafe('background-image: url(' + this.badgeForms.badgeImageURL + '); background-size: cover;');
+  getBadgeImgOrColor: computed('badgeForms.badgeColor', 'badgeForms.badgeImageURL', function() {
+    let style = '';
+    if (this.badgeForms.badgeColor) {
+      style += `background-color: ${this.badgeForms.badgeColor}`;
+    }
+    if (this.badgeForms.badgeImageURL) {
+      style += `background-image: url(${this.badgeForms.badgeImageURL}); background-size: cover;`;
+    }
+    return htmlSafe(style);
   }),
 
   // generateQRCode(element) {

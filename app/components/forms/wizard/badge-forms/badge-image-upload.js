@@ -1,4 +1,3 @@
-import { tracked } from '@glimmer/tracking';
 import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import $ from 'jquery';
@@ -8,7 +7,6 @@ import { v4 } from 'ember-uuid';
 
 @classic
 export default class BadgeImageUpload extends Component {
-  @tracked selectedImage = null;
   allowDragDrop = true;
   requiresDivider = false;
 
@@ -22,14 +20,15 @@ export default class BadgeImageUpload extends Component {
     return humanReadableBytes(this.maxSizeInKb);
   }
 
-  @computed('selectedImage', 'needsCropper')
+  @computed('data.selectedImage', 'needsCropper')
   get allowReCrop() {
-    return this.needsCropper && !this.selectedImage.includes('http');
+    return this.needsCropper && !this.data.selectedImage.includes('http');
   }
 
   uploadImage(imageData) {
     this.set('data.badgeImageURL', imageData);
-    this.set('selectedImage', imageData);
+    this.set('data.badgeColor', null);
+    this.set('data.selectedImage', imageData);
     this.set('needsConfirmation', false);
     this.set('uploadingImage', true);
     this.loader
@@ -38,13 +37,13 @@ export default class BadgeImageUpload extends Component {
       })
       .then(image => {
         this.set('uploadingImage', false);
-        this.set('imageUrl', image.url);
+        this.set('data.imageUrl', image.url);
       })
       .catch(e => {
         console.error('Error while uploading and setting image URL', e);
         this.notify.error(this.l10n.t('An unexpected error has occurred.'));
         this.set('uploadingImage', false);
-        this.set('selectedImage', null);
+        this.set('data.selectedImage', null);
         this.set('data.badgeImageURL', null);
       });
   }
@@ -92,9 +91,9 @@ export default class BadgeImageUpload extends Component {
   @action
   removeSelection() {
     if (!this.needsConfirmation) {
-      this.set('selectedImage', null);
+      this.set('data.selectedImage', null);
       this.set('data.badgeImageURL', null);
-      this.set('imageUrl', null);
+      this.set('data.imageUrl', null);
     } else {
       this.set('needsConfirmation', false);
     }
@@ -107,8 +106,8 @@ export default class BadgeImageUpload extends Component {
 
   init() {
     super.init(...arguments);
-    this.set('selectedImage', this.imageUrl);
-    if (this.selectedImage) {
+    this.set('data.selectedImage', this.imageUrl);
+    if (this.data.selectedImage) {
       this.set('needsConfirmation', true);
     }
   }
