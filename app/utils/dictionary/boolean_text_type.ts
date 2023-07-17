@@ -2,15 +2,19 @@ import { tn } from '../text';
 
 export const booleanTextType = [
   {
-    name     : tn.t('Uppercase'),
+    name     : tn.t('None'),
     position : 1
   },
   {
-    name     : tn.t('Lowercase'),
+    name     : tn.t('Uppercase'),
     position : 2
   },
   {
-    name     : tn.t('Capitalize'),
+    name     : tn.t('Lowercase'),
     position : 3
+  },
+  {
+    name     : tn.t('Capitalize'),
+    position : 4
   }
 ];
