@@ -22,16 +22,7 @@
     </h3>
     <div class="ui stackable grid padding-left-1rem ">
       <div class="field twelve wide column">
-        <label>{{t 'Custom Field'}}
-          {{#if this.getWarningFields}}
-            {{#each this.getWarningFields as |warning|}}
-            <UiPopup
-              @tagName="i"
-              @class="info circle icon"
-              @content={{concat warning.field ' is not available in ticket ' warning.ticket }} />
-            {{/each}}
-          {{/if}}
-          </label>
+        <label>{{t 'Custom Field'}}</label>
         <UiDropdown @class="search selection min-width-0" @selected={{this.data.custom_field}}
           @onChange={{action 'onChangeCustomField' }}>
           <Input @type="hidden" @autocomplete="no" @name={{concat "custom_field_" @data.badge_id "_" @index}} />
@@ -45,6 +36,15 @@
             {{/each}}
           </div>
         </UiDropdown>
+          {{#if this.getWarningFields}}
+            {{#each this.getWarningFields as |warning|}}
+            <label class="warning">{{concat '\'' warning.field '\' is not available in ticket \'' warning.ticket '\''}}</label>
+            {{!-- <UiPopup
+              @tagName="i"
+              @class="info circle icon"
+              @content={{concat warning.field ' is not available in ticket ' warning.ticket }} /> --}}
+            {{/each}}
+          {{/if}}
       </div>
     </div>
     {{#if (eq @data.custom_field 'QR') }}
@@ -53,21 +53,30 @@
         <div class="field twelve wide column">
           <label>{{t 'Fields To Be Included'}}</label>
           <UiDropdown @class="fluid multiple search selection" @selected={{ this.data.qr_custom_field }} 
-            @onChange={{action (mut this.data.qr_custom_field) }} as | execute mapper |>
+            @onChange={{action 'addFieldToQR' }} as | execute mapper |>
             <i class="dropdown icon"></i>
             <div class="default text">
               {{t 'Select Fields'}}
             </div>
             <div class="menu">
-              {{#each @getSelectedField as |field|}}
+              {{#each this.getQrFields as |field|}}
               {{#if field}}
-              <div data-value="{{map-value mapper field}}" class="item">
-                {{field}}
+              <div data-value="{{map-value mapper field.fieldIdentifier}}" class="item">
+                {{field.name}}
               </div>
               {{/if}}
               {{/each}}
             </div>
           </UiDropdown>
+          {{#if this.getWarningQRFields}}
+            {{#each this.getWarningQRFields as |warning|}}
+            <label class="warning">{{concat '\'' warning.field '\' is not available in ticket \'' warning.ticket '\''}}</label>
+            {{!-- <UiPopup
+              @tagName="i"
+              @class="info circle icon"
+              @content={{concat warning.field ' is not available in ticket ' warning.ticket }} /> --}}
+            {{/each}}
+          {{/if}}
         </div>
       </div>
     </div>

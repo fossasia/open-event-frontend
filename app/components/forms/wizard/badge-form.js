@@ -43,10 +43,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return union(sortBy(validForms));
   }),
 
-  getSelectedField: computed('selectedTicket.@each', 'data.badgeFields.@each', function() {
+  qrFields: computed('selectedTicket.@each', 'data.badgeFields.@each', function() {
     // return sortBy(this.data.badgeFields.filter(field => !field.is_deleted && field.custom_field !== 'QR').map(field => field.custom_field));
     const formIds = this.selectedTicket.map(item => item.formID);
-    const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed).map(form => form.name);
+    const validForms = this.customForms.filter(form => (formIds.includes(form.formID) && form.isIncluded) || form.isFixed);
     return union(sortBy(validForms));
   }),
 
@@ -87,7 +87,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return sortBy(fields, ['position']);
   }),
 
-  revertChanges: observer('data.event.isBadgesEnabled', function() {
+  revertChanges: observer('event.isBadgesEnabled', function() {
     if (!this.event.isBadgesEnabled) {
       this.editableFields.forEach(field => field.set('isRequired', false));
     }
@@ -102,7 +102,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
 
   removeBadgeField(badgeField) {
-    this.ignoreCustomField.removeObject(badgeField.customField);
+    this.ignoreCustomField.removeObject(badgeField.custom_field);
   },
 
   onSelectedLanguage(old_code, new_code) {
