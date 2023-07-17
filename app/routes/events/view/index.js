@@ -30,7 +30,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const statisticsPromise = eventDetails.query('generalStatistics', {});
     const orderStatPromise = eventDetails.query('orderStatistics', {});
     const ticketsPromise = eventDetails.query('tickets', {
-      'page[size]'   : 50
+      'page[size]'   : 0
     });
 
     const [sponsors, roleInvites, sessionTypes, tracks, microlocations, speakersCall, socialLinks,
