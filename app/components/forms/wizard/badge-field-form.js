@@ -13,7 +13,11 @@ export default Component.extend(FormMixin, {
   booleanTextType    : orderBy(booleanTextType, 'position'),
 
   getCustomFields: computed('includeCustomField', function() {
-    return union(this.includeCustomField.map(item => item.name));
+    const validForms = this.includeCustomField.map(item => item.name);
+    if (this.data.custom_field) {
+      validForms.push(this.data.custom_field);
+    }
+    return union(validForms);
   }),
 
   getQrFields: computed('qrFields', function() {
@@ -40,22 +44,22 @@ export default Component.extend(FormMixin, {
 
   getWarningQRFields: computed('data.qr_custom_field', 'selectedTickets', function() {
     if (this.data.qr_custom_field) {
-    const warningFields      = [];
-    this.selectedTickets.forEach(ticket => {
-      const listCFields = this.customForms.filter(form => (ticket.formID === form.formID) && form.isIncluded || form.isFixed).map(form => form.fieldIdentifier);
-      this.data.qr_custom_field.forEach(field => {
-        if (this.data.custom_field && !listCFields.includes(field)) {
-          warningFields.pushObject(
-            {
-              field  : field,
-              ticket : ticket.name
-            }
-          );
-        }
-      })
-    });
-    return warningFields;
-  }
+      const warningFields      = [];
+      this.selectedTickets.forEach(ticket => {
+        const listCFields = this.customForms.filter(form => (ticket.formID === form.formID) && form.isIncluded || form.isFixed).map(form => form.fieldIdentifier);
+        this.data.qr_custom_field.forEach(field => {
+          if (this.data.custom_field && !listCFields.includes(field)) {
+            warningFields.pushObject(
+              {
+                field,
+                ticket: ticket.name
+              }
+            );
+          }
+        });
+      });
+      return warningFields;
+    }
   }),
 
   get fieldFont() {
@@ -83,10 +87,14 @@ export default Component.extend(FormMixin, {
       if (this.onChange) {
         this.onChange(this.data.custom_field, code);
         this.set('data.custom_field', code);
-      }
-      const cfield = this.includeCustomField.filter(item => item.name === code)[0];
-      if (cfield) {
-        this.set('data.field_identifier', cfield.fieldIdentifier);
+        if (code === 'QR') {
+          this.set('data.field_identifier', 'QR');
+        } else {
+          const cfield = this.includeCustomField.filter(item => item.name === code)[0];
+          if (cfield) {
+            this.set('data.field_identifier', cfield.fieldIdentifier);
+          }
+        }
       }
     },
     onChangeTextTransform(value) {

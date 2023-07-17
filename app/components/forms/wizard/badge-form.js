@@ -32,7 +32,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     return this.data.badgeFields?.filter(field => !field.is_deleted);
   }),
 
-  includeCustomField: computed('ignoreCustomField', 'selectedTicket.@each', 'data.badgeFields.@each.is_deleted', 'data.badgeFields.@each', function() {
+  includeCustomField: computed('ignoreCustomField.@each', 'selectedTicket.@each', 'data.badgeFields.@each.is_deleted', 'data.badgeFields.@each', function() {
     return this.customFormsValid.filter(item => !this.ignoreCustomField.includes(item.name) && !this.data.badgeFields.map(field => !field.is_deleted && field.custom_field).includes(item.name));
   }),
 
@@ -105,7 +105,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
     this.ignoreCustomField.removeObject(badgeField.custom_field);
   },
 
-  onSelectedLanguage(old_code, new_code) {
+  onSelectedCustomField(old_code, new_code) {
     if (old_code) {
       this.ignoreCustomField.removeObject(old_code);
     }
@@ -178,7 +178,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       });
     },
     onChildChangeCustomField(old_code, new_code) {
-      this.onSelectedLanguage(old_code, new_code);
+      this.onSelectedCustomField(old_code, new_code);
     },
     toggleBadge() {
       if (!this.isExpandedBadge) {

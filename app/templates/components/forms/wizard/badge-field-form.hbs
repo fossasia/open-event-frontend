@@ -24,7 +24,7 @@
       <div class="field twelve wide column">
         <label>{{t 'Custom Field'}}</label>
         <UiDropdown @class="search selection min-width-0" @selected={{this.data.custom_field}}
-          @onChange={{action 'onChangeCustomField' }}>
+          @onChange={{action 'onChangeCustomField'}}>
           <Input @type="hidden" @autocomplete="no" @name={{concat "custom_field_" @data.badge_id "_" @index}} />
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Custom field'}}</div>
