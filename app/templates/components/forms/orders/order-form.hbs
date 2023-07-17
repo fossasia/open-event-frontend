@@ -55,7 +55,7 @@
           {{t 'Ticket Holder\'s Information'}}
         {{/if}}
       </h4>
-      {{#each this.holders as |holder indexHolder|}}
+      {{#each this.holders as |holder index|}}
         <div class="inline field">
           <i class="user icon"></i>
           <label>
@@ -64,7 +64,7 @@
             {{else}}
               {{t 'Ticket Holder'}}
             {{/if}}
-            {{inc indexHolder}}{{t ' -for- '}}{{holder.ticket.name}}
+            {{inc index}}{{t ' -for- '}}{{holder.ticket.name}}
           </label>
         </div>
         <div class="field">

@@ -84,10 +84,6 @@ export default class AttendeeList extends Component {
     return groupBy(customFields, field => field.get('form'));
   }
 
-  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
-    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
-  }
-
   @action
   toggleEditFields() {
     this.editFields = !this.editFields;

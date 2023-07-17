@@ -661,10 +661,6 @@ export default Component.extend(FormMixin, {
     return 'hello';
   },
 
-  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
-    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
-  },
-
   actions: {
     submit(data) {
       this.onValid(() => {

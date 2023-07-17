@@ -1,23 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
-interface CustomForm {
-  isComplex: boolean,
-  isFixed: boolean,
-  fieldIdentifier: string,
-  name: string,
-  mainLanguage: string,
-  translations: Translate[],
-}
-
-interface Translate {
-  name: string,
-  code: string,
-  isDeleted: boolean,
-  id: string,
-  form_id: string,
-  language_code: string
-}
+interface CustomForm { isComplex: boolean, isFixed: boolean }
 
 interface Args {
   fields: CustomForm[],
