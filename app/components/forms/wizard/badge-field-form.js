@@ -24,7 +24,7 @@ export default Component.extend(FormMixin, {
     return union(this.qrFields, 'name');
   }),
 
-  getWarningFields: computed('data.custom_field', function() {
+  getWarningFields: computed('data.custom_field', 'selectedTickets', function() {
     const warningFields      = [];
     if (this.data.custom_field !== 'QR') {
       this.selectedTickets.forEach(ticket => {
