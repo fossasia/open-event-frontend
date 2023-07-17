@@ -1,6 +1,6 @@
 {{#if this.device.isMobile}}
 <div>
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
         <div class="default">
             {{t 'Filter by Tracks'}}
         </div>
@@ -12,7 +12,7 @@
             {{/each}}
         </div>
     </UiDropdown>
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
         <div class="default">
             {{t 'Filter by Rooms'}}
         </div>
@@ -26,7 +26,7 @@
             {{/each}}
         </div>
     </UiDropdown>
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
         <div class="default">
             {{t 'Filter by Session Types'}}
         </div>
@@ -39,7 +39,7 @@
         </div>
     </UiDropdown>
     {{#if this.hasSessionLevel}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
         <div class="default">
             {{t 'Filter by Session levels'}}
         </div>
@@ -157,7 +157,7 @@
     </span>
     {{/if}}
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
         <div class="default">
             {{t 'Select Session Type'}}
         </div>
@@ -184,7 +184,7 @@
     </span>
     {{/if}}
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 fluid multiple selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
         <div class="default">
             {{t 'Select Session level'}}
         </div>
