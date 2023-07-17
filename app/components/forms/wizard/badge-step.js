@@ -31,14 +31,43 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         return false;
       });
       if (_fields.length > 0) {
-        // tickets.forEach(_ticket => {
-        //   _ticket.badgeID = _badgeID;
-        //   this.excludeTickets.pushObject(_ticket);
-        // });
+        tickets.forEach(_ticket => {
+          _ticket.badgeID = _badgeID;
+          this.excludeTickets.pushObject(_ticket);
+        });
+        _fields.forEach(form => {
+          const badgeFields = [];
+          form.badgeFields.forEach(field => {
+            if (!field.is_deleted) {
+              badgeFields.pushObject(this.store.createRecord('badge-field-form', {
+                badge_field_id   : field.id,
+                badge_id         : field.badge_id,
+                field_identifier : field.field_identifier,
+                custom_field     : field.custom_field,
+                sample_text      : field.sample_text,
+                font_size        : field.font_size,
+                font_name        : field.font_name,
+                font_color       : field.font_color,
+                text_rotation    : field.text_rotation,
+                margin_top       : field.margin_top,
+                margin_bottom    : field.margin_bottom,
+                margin_left      : field.margin_left,
+                margin_right     : field.margin_right,
+                font_weight      : field.font_weight,
+                text_alignment   : field.text_alignment,
+                text_type        : field.text_type,
+                is_deleted       : field.is_deleted,
+                qr_custom_field  : field.qr_custom_field
+              }));
+              field = null;
+            }
+          });
+          form.badgeFields = badgeFields;
+        });
         badges.pushObject(this.store.createRecord('badge', {
           badgeID        : _badgeID,
           badgeForms     : _fields,
-          ticketsDetails : []
+          ticketsDetails : this.excludeTickets
         }));
       }
     } else {
