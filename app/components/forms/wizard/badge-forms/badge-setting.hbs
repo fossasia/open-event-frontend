@@ -12,8 +12,8 @@
         <div class="column">
           <label class="ml-4">{{t 'Badge Size'}}</label>
         </div>
-        <div class="column pl-4 pt-2">
-          <UiDropdown @class="search selection" @selected={{@data.badgeSize}} @onChange={{action @changeBadgeSize}} as
+        <div class="column pl-4 pt-2 badge-size">
+          <UiDropdown @class="search selection drop-down-badge" @selected={{@data.badgeSize}} @onChange={{action @changeBadgeSize}} as
             |execute mapper|>
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select your badge size'}}</div>
@@ -33,8 +33,8 @@
         <div class="column">
           <label class="ml-4">{{t 'Badge Orientation'}}</label>
         </div>
-        <div class="column pl-4 pt-2">
-          <UiDropdown @class="search selection" @selected={{@data.badgeOrientation}} @onChange={{action
+        <div class="column pl-4 pt-2 badge-orientation">
+          <UiDropdown @class="search selection drop-down-badge" @selected={{@data.badgeOrientation}} @onChange={{action
             (mut @data.badgeOrientation)}} as |execute mapper|>
             <i class="dropdown icon"></i>
             <div class="default text">{{t 'Select your badge orientation'}}</div>
