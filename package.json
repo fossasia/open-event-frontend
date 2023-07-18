@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.22.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-block-scoping": "^7.21.0",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
@@ -173,7 +174,9 @@
   "private": true,
   "dependencies": {
     "@stripe/stripe-js": "^1.53.0",
-    "ua-parser-js": "^1.0.35"
+    "gettext": "^0.0.1",
+    "ua-parser-js": "^1.0.35",
+    "yt-player": "^3.6.1"
   },
   "ember": {
     "edition": "octane"

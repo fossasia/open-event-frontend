@@ -4,8 +4,8 @@
     <div class="ui active centered inline loader"></div>
   {{/if}}
 
-<!--  {{#if this.iframeUrl}}-->
-<!--    <iframe src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" />-->
+  {{#if this.iframeUrl}}
+    <iframe src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" />
 <!--  {{/if}}-->
   {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
@@ -24,16 +24,16 @@
 <!--  	<br>-->
 
 <!--    <iframe id="video2" width="560" height="315" src="https://www.youtube.com/embed/WVThuXEqogY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+<!--		<div class="iframe-container">-->
+      <iframe id="video-player" width="50%" height="50%" frameborder="0" title="YouTube Live Stream"
+              src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute=1&controls=0&disablekb=1"
+      gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
 
-    <iframe id="video-player" width="30%" height="30%" frameborder="0" title="YouTube Live Stream"
-            src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute=1"
-    gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
-    <br>
+<!--    </div>-->
+
     <button {{action "toggleVideo"}}>{{if isPlaying "Pause" "Play"}}</button>
     <br>
     <iframe style="display: none" id="video2" width="560" height="315" src="https://www.youtube.com/embed/BJfN0C2IuxA?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
 
 
   {{/if}}
