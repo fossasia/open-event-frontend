@@ -10,9 +10,9 @@
     <div class="btn-row">
       <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting' }}>
       {{#if this.isExpanded}}
-      <i class="angle up icon" />
+        <i class="angle up icon" />
       {{else}}
-      <i class="angle down icon" />
+        <i class="angle down icon" />
       {{/if}}
       </button>
       <button type="button" class="ui compact icon negative button right floated remove-icon" {{action 'removeForm' }}>
@@ -20,8 +20,6 @@
       </button>
     </div>
   </div>
-
-
 
   {{#if this.isExpanded}}
   <div class="badge-form-body-field">
@@ -33,7 +31,7 @@
         <label>{{t 'Custom Field'}}</label>
         <UiDropdown @class="search selection min-width-0" @selected={{this.data.custom_field}}
           @onChange={{action 'onChangeCustomField'}}>
-          <Input @type="hidden" @autocomplete="no" @name={{concat "custom_field_" @data.badge_id "_" @index}} />
+          <Input @type="hidden" @autocomplete="no" @name={{concat "custom_field_" @data.badge_id "_" @index}}/>
           <i class="dropdown icon"></i>
           <div class="default text">{{t 'Custom field'}}</div>
           <div class="menu">
