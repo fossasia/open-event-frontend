@@ -922,6 +922,7 @@ msgstr "Sesuaikan"
 
 #: app/components/forms/events/view/videoroom-form.hbs:34:28
 #: app/components/modals/add-room-modal.js:17:14
+#: app/templates/components/public/schedule-menu-filter.hbs:73:12
 msgid "Room"
 msgstr "Kamar"
 
@@ -953,12 +954,12 @@ msgstr "Kata Sandi Kamar"
 msgid "The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such as Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in {{appName}} does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone."
 msgstr ""
 "Bidang kata sandi ruangan dapat digunakan untuk mengomunikasikan kata sandi "
-"yang diperlukan untuk mengakses ruang video online misalnya untuk layanan "
+"yang diperlukan untuk mengakses ruang video daring misalnya untuk layanan "
 "video eksternal seperti Zoom, Teams, dan Webex. Kebutuhan entri kata sandi "
 "tergantung pada konfigurasi saluran video Anda. Solusi video Big Blue Button "
 "yang terintegrasi di {{appName}} tidak memerlukan kata sandi karena hanya "
 "pemegang tiket yang dapat mengaksesnya. Perbedaan antara kata sandi dan PIN "
-"adalah opsi kata sandi digunakan untuk akses online, sedangkan PIN digunakan "
+"adalah opsi kata sandi digunakan untuk akses daring, sedangkan PIN digunakan "
 "untuk mengakses ruang video melalui telepon."
 
 #: app/components/forms/events/view/videoroom-form.hbs:86:6
@@ -1562,7 +1563,7 @@ msgstr "Lokasi"
 #: app/components/forms/wizard/basic-details-step.js:25:37
 #: app/templates/components/explore/side-bar.hbs:23:23
 msgid "Online"
-msgstr "Terhubung"
+msgstr "Daring"
 
 #: app/components/forms/wizard/basic-details-step.js:25:53
 #: app/templates/components/explore/side-bar.hbs:37:23
@@ -1933,7 +1934,7 @@ msgstr ""
 msgid "If you hide this microlocation you will not be able to schedule sessions in it. The location will still be available for online events without scheduled sessions, e.g. break-out or discussion rooms."
 msgstr ""
 "Jika Anda menyembunyikan mikrolokasi ini, Anda tidak akan dapat menjadwalkan "
-"sesi di dalamnya. Lokasi akan tetap tersedia untuk acara online tanpa sesi "
+"sesi di dalamnya. Lokasi akan tetap tersedia untuk acara daring tanpa sesi "
 "terjadwal, mis. ruang istirahat atau diskusi."
 
 #: app/components/forms/wizard/sponsors-step.js:18:23
@@ -2088,7 +2089,7 @@ msgstr "Dari"
 #: app/templates/components/orders/event-info.hbs:29:12
 #: app/templates/public.hbs:16:78
 msgid "To"
-msgstr "To"
+msgstr "Sampai"
 
 #: app/components/modals/session-notify-modal.hbs:30:15
 msgid "Reply-to"
@@ -2215,7 +2216,7 @@ msgstr "untuk"
 #: app/templates/components/orders/event-info.hbs:19:16
 #: app/templates/public/index.hbs:198:24
 msgid "Online Event"
-msgstr "Acara Online"
+msgstr "Acara Daring"
 
 #: app/components/public/session-documents.hbs:3:4
 msgid "Session Documents"
@@ -3149,6 +3150,7 @@ msgstr "Sesi Anda telah disimpan"
 
 #: app/controllers/events/view/sessions/list.js:68:26
 #: app/models/custom-form.js:37:18
+#: app/templates/components/public/schedule-menu-filter.hbs:59:12
 msgid "Track"
 msgstr "Trek"
 
@@ -3465,7 +3467,7 @@ msgstr "Ini tiket Anda"
 
 #: app/controllers/public.js:73:13
 msgid "Online and In-Person Event at"
-msgstr "Acara Online dan Tatap Muka di"
+msgstr "Acara daring dan Luring di"
 
 #: app/controllers/public.js:79:13 app/templates/public/index.hbs:205:24
 msgid "Location to be announced"
@@ -3675,6 +3677,7 @@ msgid "Subtitle"
 msgstr "Sub-judul"
 
 #: app/models/custom-form.js:38:18
+#: app/templates/components/public/schedule-menu-filter.hbs:87:12
 msgid "Session Type"
 msgstr "Jenis Sesi"
 
@@ -4001,7 +4004,7 @@ msgstr "Pemasar"
 #: app/templates/events/view/team/permissions.hbs:6:33
 #: app/templates/groups/team/permissions.hbs:6:33
 msgid "Organizer"
-msgstr "Penyelengara"
+msgstr "Penyelenggara"
 
 #: app/routes/admin/sales/revenue.js:7:11
 #: app/templates/admin/sales/revenue.hbs:30:14
@@ -5074,7 +5077,7 @@ msgstr ""
 
 #: app/templates/admin/settings/frontpage.hbs:39:49
 msgid "The event should have location or online link and a date"
-msgstr "Acara tersebut harus memiliki lokasi atau tautan online dan tanggal"
+msgstr "Acara tersebut harus memiliki lokasi atau tautan daring dan tanggal"
 
 #: app/templates/admin/settings/frontpage.hbs:44:49
 msgid "The event should have Tickets."
@@ -5626,6 +5629,7 @@ msgstr "Lokasi mikro"
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
 #: app/templates/public.hbs:93:16
+#: app/templates/components/public/schedule-menu-filter.hbs:118:8
 msgid "Tracks"
 msgstr "Trek"
 
@@ -5822,7 +5826,7 @@ msgstr "Acara Anda belum hidup. Buatlah hidup sekarang."
 
 #: app/templates/components/events/view/overview/general-info.hbs:32:14
 msgid "Online and in-person event at {{location}}."
-msgstr "Acara online dan langsung di {{location}}."
+msgstr "Acara daring dan langsung di {{location}}."
 
 #: app/templates/components/events/view/overview/general-info.hbs:34:14
 msgid "Online event"
@@ -5922,6 +5926,7 @@ msgstr "Terkunci"
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
 #: app/templates/public.hbs:121:16
+#: app/templates/components/public/schedule-menu-filter.hbs:147:8
 msgid "Session Types"
 msgstr "Jenis Sesi"
 
@@ -6067,7 +6072,7 @@ msgstr "Rencanakan Acara"
 
 #: app/templates/components/footer-main.hbs:19:12
 msgid "Online Registration"
-msgstr "Registrasi online"
+msgstr "Registrasi daring"
 
 #: app/templates/components/footer-main.hbs:22:12
 msgid "Sell Event Tickets"
@@ -7930,7 +7935,7 @@ msgstr "Pratinjau teks"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:60:30
 msgid "Microlocations or Virtual Online Rooms"
-msgstr "Microlocations atau Ruang Virtual Online"
+msgstr "Microlocations atau Ruang Virtual Daring"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:134:42
 msgid "Enable Call For Speakers"
@@ -8381,7 +8386,7 @@ msgstr ""
 "Ini akan membatalkan penerbitan acara Anda. Ini tidak akan dapat diakses "
 "oleh publik di Internet lagi jika Anda melanjutkan. Data acara akan tetap "
 "tersedia di dasbor Anda, tetapi tiket, panggilan untuk pembicara, atau fitur "
-"lainnya tidak lagi tersedia secara online. Apakah Anda ingin membatalkan "
+"lainnya tidak lagi tersedia secara daring. Apakah Anda ingin membatalkan "
 "publikasi acara Anda sekarang?"
 
 #: app/templates/components/modals/publish-unpublish-modal.hbs:14:6
@@ -8554,11 +8559,11 @@ msgstr "Tarif Pajak"
 
 #: app/templates/components/orders/event-info.hbs:17:16
 msgid "Event taking place online and at"
-msgstr "Acara berlangsung secara online dan pada"
+msgstr "Acara berlangsung secara daring dan pada"
 
 #: app/templates/components/orders/event-info.hbs:24:14
 msgid "Location or online event details to be announced"
-msgstr "Lokasi atau detail acara online akan diumumkan"
+msgstr "Lokasi atau detail acara daring akan diumumkan"
 
 #: app/templates/components/orders/event-info.hbs:38:40
 msgid "Go to event page"
@@ -9037,7 +9042,7 @@ msgstr "Otomatis dibuat"
 
 #: app/templates/components/welcome-header.hbs:2:30
 msgid "The open source event solution for virtual and in-person events."
-msgstr "Solusi acara sumber terbuka untuk acara virtual dan tatap muka."
+msgstr "Solusi acara sumber terbuka untuk acara virtual dan luring."
 
 #: app/templates/components/widgets/forms/billing-info.hbs:29:21
 msgid "State/Province"
@@ -9541,7 +9546,7 @@ msgstr ""
 "berbeda yang tercantum dalam jadwal. Semua lokasi mikro terdaftar pada "
 "jadwal acara. Catatan: Ruang mikrolokasi memerlukan sesi agar dapat dilihat "
 "oleh peserta. Ruang tersebut hanya tercantum pada daftar saluran video di "
-"panel samping acara online, jika sesi telah ditambahkan ke lokasi dalam "
+"panel samping acara daring, jika sesi telah ditambahkan ke lokasi dalam "
 "jadwal."
 
 #: app/templates/explore/events.hbs:12:25
@@ -9931,6 +9936,7 @@ msgid "Clear Track Filter"
 msgstr "Hapus Filter Track"
 
 #: app/templates/public.hbs:108:16
+#: app/templates/components/public/schedule-menu-filter.hbs:132:8
 msgid "Rooms"
 msgstr "Kamar"
 
@@ -9943,10 +9949,12 @@ msgid "Clear Session Type Filter"
 msgstr "Hapus Filter Jenis Sesi"
 
 #: app/templates/public.hbs:133:18
+#: app/templates/components/public/schedule-menu-filter.hbs:160:12
 msgid "Select Session Type"
 msgstr "Pilih Jenis Sesi"
 
 #: app/templates/public.hbs:148:18
+#: app/templates/components/public/schedule-menu-filter.hbs:172:8
 msgid "Session Levels"
 msgstr "Tingkat Sesi"
 
@@ -9955,6 +9963,7 @@ msgid "Clear Session Level Filter"
 msgstr "Hapus Filter Tingkat Sesi"
 
 #: app/templates/public.hbs:160:20
+#: app/templates/components/public/schedule-menu-filter.hbs:185:12
 msgid "Select Session level"
 msgstr "Pilih tingkat sesi"
 
@@ -9966,7 +9975,7 @@ msgstr "Masuk atau Beli Tiket"
 msgid "You need to login or get a ticket for this event before you can join it online."
 msgstr ""
 "Anda harus login atau mendapatkan tiket untuk acara ini sebelum Anda dapat "
-"bergabung secara online."
+"bergabung secara daring."
 
 #: app/templates/public/cfs/new-session.hbs:4:6
 msgid "Session Details"
@@ -11912,6 +11921,29 @@ msgstr "Dibawah 18"
 #: app/utils/dictionary/age-groups.ts:41:9
 msgid "I prefer not to say"
 msgstr "Saya lebih suka tidak mengatakannya"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:5:12
+msgid "Filter by Tracks"
+msgstr "Filter berdasarkan Jalur"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:17:12
+msgid "Filter by Rooms"
+msgstr "Filter berdasarkan Ruangan"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:31:12
+msgid "Filter by Session Types"
+msgstr "Filter berdasarkan Jenis Sesi"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:44:12
+msgid "Filter by Session levels"
+msgstr "Filter berdasarkan Tingkat Sesi"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:67:50
+#: app/templates/components/public/schedule-menu-filter.hbs:81:50
+#: app/templates/components/public/schedule-menu-filter.hbs:95:50
+#: app/templates/components/public/schedule-menu-filter.hbs:109:50
+msgid "[Clear Filter]"
+msgstr "[Hapus Filter]"
 
 #: app/utils/dictionary/home-wikis.ts:5:10
 msgid "Wikipedia"

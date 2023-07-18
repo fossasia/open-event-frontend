@@ -29,7 +29,9 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const socialLinksPromise = eventDetails.query('socialLinks', {});
     const statisticsPromise = eventDetails.query('generalStatistics', {});
     const orderStatPromise = eventDetails.query('orderStatistics', {});
-    const ticketsPromise = eventDetails.query('tickets', {});
+    const ticketsPromise = eventDetails.query('tickets', {
+      'page[size]'   : 0
+    });
 
     const [sponsors, roleInvites, sessionTypes, tracks, microlocations, speakersCall, socialLinks,
       statistics, orderStat, tickets, usersEventsRoles] = (await allSettled([sponsorsPromise, roleInvitesPromise, sessionTypesPromise, tracksPromise, microlocationsPromise, speakersCallPromise, socialLinksPromise,

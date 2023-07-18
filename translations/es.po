@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-07-04 04:46+0000\n"
+"PO-Revision-Date: 2023-07-09 20:10+0000\n"
 "Last-Translator: Mario Behling <mb@mariobehling.de>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/open-event/"
 "frontend/es/>\n"
@@ -921,6 +921,7 @@ msgstr "Personalizado"
 
 #: app/components/forms/events/view/videoroom-form.hbs:34:28
 #: app/components/modals/add-room-modal.js:17:14
+#: app/templates/components/public/schedule-menu-filter.hbs:73:12
 msgid "Room"
 msgstr "Sala de prácticas"
 
@@ -3167,6 +3168,7 @@ msgstr "Tu sesión ha sido guardada"
 
 #: app/controllers/events/view/sessions/list.js:68:26
 #: app/models/custom-form.js:37:18
+#: app/templates/components/public/schedule-menu-filter.hbs:59:12
 msgid "Track"
 msgstr "Camino rural"
 
@@ -3695,6 +3697,7 @@ msgid "Subtitle"
 msgstr "Subtítulo"
 
 #: app/models/custom-form.js:38:18
+#: app/templates/components/public/schedule-menu-filter.hbs:87:12
 msgid "Session Type"
 msgstr "Tipo de sesión"
 
@@ -5649,6 +5652,7 @@ msgstr "Microlocalizaciones"
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
 #: app/templates/public.hbs:93:16
+#: app/templates/components/public/schedule-menu-filter.hbs:118:8
 msgid "Tracks"
 msgstr "Tracks"
 
@@ -5947,6 +5951,7 @@ msgstr "Bloqueado"
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
 #: app/templates/public.hbs:121:16
+#: app/templates/components/public/schedule-menu-filter.hbs:147:8
 msgid "Session Types"
 msgstr "Tipos de sesión"
 
@@ -6453,7 +6458,7 @@ msgstr "Habilitar Stripe"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:13:6
 msgid "Stripe Keys"
-msgstr "Teclas de rayas"
+msgstr "Clave Stripe"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:19:8
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:143:8
@@ -6468,7 +6473,7 @@ msgstr "sobre cómo obtener estas claves."
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:23:6
 msgid "Stripe Integration Mode"
-msgstr "Modo de integración de bandas"
+msgstr "Modo de integración de Stripe"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:27:15
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:289:15
@@ -6546,7 +6551,7 @@ msgstr "Habilitar AliPay"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:137:6
 msgid "AliPay Keys (Stripe Sources)"
-msgstr "Llaves AliPay (fuentes de rayas)"
+msgstr "Llaves AliPay (fuentes de Stripe)"
 
 #: app/templates/components/forms/admin/settings/payment-gateway-form.hbs:169:6
 msgid "Enable PayPal"
@@ -9670,7 +9675,7 @@ msgstr "Elija su método de pago"
 
 #: app/templates/orders/pending.hbs:51:25
 msgid "Stripe"
-msgstr "Raya"
+msgstr "Stripe"
 
 #: app/templates/orders/pending.hbs:68:25
 msgid "Paypal"
@@ -9971,6 +9976,7 @@ msgid "Clear Track Filter"
 msgstr "Borrar filtro de pista"
 
 #: app/templates/public.hbs:108:16
+#: app/templates/components/public/schedule-menu-filter.hbs:132:8
 msgid "Rooms"
 msgstr "Habitaciones"
 
@@ -9983,10 +9989,12 @@ msgid "Clear Session Type Filter"
 msgstr "Borrar filtro de tipo de sesión"
 
 #: app/templates/public.hbs:133:18
+#: app/templates/components/public/schedule-menu-filter.hbs:160:12
 msgid "Select Session Type"
 msgstr "Seleccione el tipo de sesión"
 
 #: app/templates/public.hbs:148:18
+#: app/templates/components/public/schedule-menu-filter.hbs:172:8
 msgid "Session Levels"
 msgstr "Niveles de sesión"
 
@@ -9995,6 +10003,7 @@ msgid "Clear Session Level Filter"
 msgstr "Borrar filtro de nivel de sesión"
 
 #: app/templates/public.hbs:160:20
+#: app/templates/components/public/schedule-menu-filter.hbs:185:12
 msgid "Select Session level"
 msgstr "Seleccione el nivel de sesión"
 
@@ -11952,6 +11961,29 @@ msgstr "Menores de 18 años"
 #: app/utils/dictionary/age-groups.ts:41:9
 msgid "I prefer not to say"
 msgstr "prefiero no decir"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:5:12
+msgid "Filter by Tracks"
+msgstr "Filtrar por pistas"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:17:12
+msgid "Filter by Rooms"
+msgstr "Filtrar por habitaciones"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:31:12
+msgid "Filter by Session Types"
+msgstr "Filtrar por tipos de sesión"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:44:12
+msgid "Filter by Session levels"
+msgstr "Filtrar por niveles de sesión"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:67:50
+#: app/templates/components/public/schedule-menu-filter.hbs:81:50
+#: app/templates/components/public/schedule-menu-filter.hbs:95:50
+#: app/templates/components/public/schedule-menu-filter.hbs:109:50
+msgid "[Clear Filter]"
+msgstr "[Filtro claro]"
 
 #: app/utils/dictionary/home-wikis.ts:5:10
 msgid "Wikipedia"

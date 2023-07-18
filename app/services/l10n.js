@@ -17,11 +17,13 @@ export default class L10nService extends L10n {
     return {
       'ar'      : 'عربي',
       'bn'      : 'বাংলা',
+      'ca'      : 'Català',
       'de'      : 'Deutsch',
       'en'      : 'English',
       'es'      : 'Español',
       'fr'      : 'Français',
       'hi'      : 'हिंदी',
+      'hr'      : 'Hrvatski',
       'id'      : 'Bahasa Indonesia',
       'ja'      : '日本語',
       'ko'      : '한국어',
@@ -29,6 +31,7 @@ export default class L10nService extends L10n {
       'pl'      : 'Polski',
       'ru'      : 'Русский',
       'sv'      : 'Svenska',
+      'te'      : 'తెలుగు',
       'th'      : 'ไทย',
       'vi'      : 'Tiếng Việt',
       'zh_Hans' : '中文（简体)',
@@ -72,6 +75,15 @@ export default class L10nService extends L10n {
 
     this.setLocale(locale);
     if (locale !== 'en') {
+
+      if (locale === 'zh_Hans') {
+        locale = 'zh-cn';
+      } else if (locale === 'zh_Hant') {
+        locale = 'zh-tw';
+      } else if (locale === 'nb_NO') {
+        locale = 'nb';
+      }
+
       getScript(`/assets/moment-locales/${locale}.js`)
         .then(() => {
           moment.locale(locale);
