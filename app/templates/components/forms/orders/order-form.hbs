@@ -79,7 +79,7 @@
               <div class="field">
                 {{#if field.isComplex}}
                   <label class="{{if field.isRequired 'required'}}" for="name">
-                    <span id={{concat field.fieldIdentifier "_" indexHolder "_" index}}>{{this.fieldNameConvertRichText}}</span>
+                    {{rich-text-link field.transName}}
                   </label>
                 {{else}}
                   <label class="{{if field.isRequired 'required'}}" for="name">{{t-var field.transName}}</label>
