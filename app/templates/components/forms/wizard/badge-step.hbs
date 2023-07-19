@@ -43,6 +43,7 @@
               @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
               @id={{_form.badgeID}}
               @onRemoveForm={{action 'onRemoveForm'}}
+              @keyDown={{action 'handleKeyDown'}}
               @onPrintPreview={{action 'onPrintPreview'}}
               @isLoading={{this.isLoading}} />
         {{/each}}

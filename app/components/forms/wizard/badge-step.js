@@ -214,6 +214,12 @@ export default Component.extend(FormMixin, EventWizardMixin, {
       this.prepareCustomFormsForSave();
       this._super(direction);
     },
+    handleKeyDown(event) {
+      if ((event.key === 'Enter' || event.keyCode === 13)) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    },
     onRemoveForm(_id) {
       const deleteBadge = this.data.badges.find(_badge => _badge.badgeID === _id);
       if (deleteBadge) {
