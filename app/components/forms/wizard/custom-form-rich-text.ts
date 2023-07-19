@@ -175,7 +175,8 @@ export default class CustomFormInput extends Component<Args> {
       min             : this.min,
       max             : this.max,
       translations    : this.translationsList,
-      mainLanguage    : this.mainLanguage || LANGUAGE_CODE_ENUM.ENGLISH
+      mainLanguage    : this.mainLanguage || LANGUAGE_CODE_ENUM.ENGLISH,
+      isAllowEdit     : false
     });
   }
 

@@ -35,26 +35,23 @@
           {{#each this.allFields.attendee as |field|}}
             {{#if field.isIncluded}}
               {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
-                <div class="field">
+                {{#if (not this.editFields)}}
+                  <div class="field">
                     <h4 class="weight-300">
                       {{#if field.isComplex}}
-                         {{rich-text-link field.transName}}
+                          {{rich-text-link field.transName}}
                       {{else}}
                         {{t-var field.transName}}
                       {{/if}}
                     </h4>
                     {{#if (is-input-field field.type)}}
-                      {{#if (or (not this.editFields) (or (or (eq field.fieldIdentifier 'firstname') (eq field.fieldIdentifier 'lastname')) (eq field.fieldIdentifier 'email')))}} 
-                        {{#if (is-url-field field.fieldIdentifier)}}
-                          <a href="{{get holder field.identifierPath}}">{{get holder field.identifierPath}}</a>
-                        {{else}}
-                          <span class="word-break">{{get holder field.identifierPath}}</span>
-                        {{/if}}
+                      {{#if (is-url-field field.fieldIdentifier)}}
+                        <a href="{{get holder field.identifierPath}}">{{get holder field.identifierPath}}</a>
                       {{else}}
-                        <Input type="text" placeholder={{t-var field.name}}  @value={{get holder field.identifierPath}}/>
+                        <span class="word-break">{{get holder field.identifierPath}}</span>
                       {{/if}}
                     {{else if (eq field.type 'paragraph')}}
-                    <span class="line-break">{{get holder field.identifierPath}}</span>
+                      <span class="line-break">{{get holder field.identifierPath}}</span>
                     {{else if (eq field.type 'select')}}
                       <span class="word-break">{{get holder field.identifierPath}}</span>
                     {{else if (eq field.type 'checkbox')}}
@@ -76,7 +73,27 @@
                         <span class="word-break">{{t (get holder field.identifierPath)}}</span>
                       {{/if}}
                     {{/if}}
-                </div>
+                  </div>
+                {{else}}
+                  <div class="field">
+                    <Forms::Orders::EditableFields 
+                      @field={{field}}
+                      @fields={{this.allFields.attendee}}
+                      @data={{this.data}}
+                      @holder={{holder}}
+                      @index={{index}}
+                      @countries={{this.countries}} 
+                      @languageForms1={{languageForms1}}
+                      @languageForms2={{languageForms2}}
+                      @homeWikis={{this.homeWikis}}
+                      @wikiScholarship={{this.wikiScholarship}}
+                      @booleanComplex={{this.booleanComplex}}
+                      @updateGendersSelection={{action 'updateGendersSelection'}}
+                      @updateLanguageFormsSelection={{action "updateLanguageFormsSelection"}}
+                      @editFields={{field.isAllowEdit}}
+                    />
+                  </div>
+                {{/if}}
               {{/if}}
             {{/if}}
           {{/each}}
@@ -85,7 +102,7 @@
       {{/each}}
       {{#if this.editFields}}
         <button class="ui floated button"
-          {{action 'saveHolder' holder}}>
+          {{action 'saveHolder'}}>
           {{t 'Save'}}
         </button>
       {{else}}
