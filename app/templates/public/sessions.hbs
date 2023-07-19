@@ -83,7 +83,12 @@
      'mb-0 mr-2'
     }}"
   />
-
+  {{#if this.device.isMobile}}
+      <Public::ScheduleMenuFilter @event={{this.model.event}} class="w-full"/>
+  {{else}}
+      {{outlet}}
+  {{/if}}
+    <br>
   <UiDropdown class="labeled icon button mb-2 mr-2 pb-2">
    <i class="sort amount down icon"></i>
    <span class="default text">{{this.sortTitle}}</span>

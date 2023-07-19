@@ -436,6 +436,10 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   actions: {
+    onStripeCheckboxChange() {
+      this.data.event.canPayByStripe = !this.data.event.canPayByStripe;
+      this.data.event.isBillingInfoMandatory = this.data.event.canPayByStripe;
+    },
     connectStripe() {
       this.torii.open('stripe')
         .then(authorization => {
