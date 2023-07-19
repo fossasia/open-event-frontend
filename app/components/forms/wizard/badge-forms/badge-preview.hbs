@@ -1,26 +1,68 @@
 <div class="badge-setting">
-  <form class="ui form">
-    <div class="field">
-      {{#if @headerText}}
-      <h2 class="badge-setting-title">
-        {{@headerText}}
-      </h2>
-      {{/if}}
-    </div>
-    <div class="ui grid">
-      <div class="four column row">
-        <div class="nine wide left floated column">
-          <UiCheckbox @class="slider mt-2 ml-2" @checked={{@data.isShowingSampleData}} @onChange={{action (mut
-          @data.isShowingSampleData)}} />
-          <label class="ui pb-4">{{t 'Show Sample Data.'}}</label>
-        </div>
-        <div class="five wide right floated column">
-          <button type="button" class="ui mini blue button right floated mr-2 mb-2" disabled={{this.disableAddBadgeField}}
-            {{action @onPrintPreview @data.badgeID}}>
-            {{t 'Print Badge'}}
-          </button>
+  <div>
+    <form class="ui form">
+      <div class="field">
+        {{#if @headerText}}
+        <h2 class="badge-setting-title">
+          {{@headerText}}
+        </h2>
+        {{/if}}
+      </div>
+      <div class="ui grid">
+        <div class="two column row">
+          <div class="left floated column">
+            <UiCheckbox @class="slider mt-2 ml-2 blog-icon-preview" @checked={{@data.isShowingSampleData}} @onChange={{action (mut
+            @data.isShowingSampleData)}} />
+            <label class="ui">{{t 'Show Sample Data.'}}</label>
+          </div>
+          <div class="column floated right">
+            <button type="button" class="ui  blue button right floated mt-1 mr-2" disabled={{this.disableAddBadgeField}}
+              {{action @onPrintPreview @data.badgeID}}>
+              {{t 'Print Badge'}}
+            </button>
+          </div>
         </div>
       </div>
+    </form>
+  </div>
+
+  <div class="ui one column stackable center aligned page grid preview">
+    <div id="badge-image" class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}"
+      style={{badgeImgOrColor}}>
+      <div class="ui w-full h-full badge-body">
+          <div class="sample-text">
+              {{#if showSampleData}}
+                {{#each @fields as |_field|}}
+                  {{#if (not _field.is_deleted)}}
+                    {{#if (eq _field.custom_field 'QR')}}
+                    <div style={{_field.getFieldStyle}}>
+                        <QrCode class="badge-qr" @text="https://eventyay.com" @darkColor="#000" />
+                    </div>
+                    {{else}}
+                        <p class="field-style" style={{_field.getFieldStyle}}>
+                            {{_field.sample_text}}
+                        </p>
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
+              {{else}}
+                {{#each @fields as |_field|}}
+                  {{#if (not _field.is_deleted)}}
+                    {{#if (eq _field.custom_field 'QR')}}
+                    <div style={{_field.getFieldStyle}}>
+                        <QrCode class="badge-qr" @text="https://eventyay.com" @darkColor="#000" />
+                    </div>
+                    {{else}}
+                        <p class="field-style" style={{_field.getFieldStyle}}>
+                            {{_field.custom_field}}
+                        </p>
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
+              {{/if}}
+          </div>
+      </div>
     </div>
-  </form>
+  </div>
+
 </div>
