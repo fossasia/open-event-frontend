@@ -6,7 +6,7 @@
   margin-top: 10px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
   .search-box {
     float: none;
     margin-top: 2px;
@@ -14,9 +14,8 @@
   }
 
   .expand-search-box .search-box {
-    transition: width .35s ease-in-out;
-
     input {
+      transition: width .35s ease-in-out;
       height: 100%;
       max-width: none;
       width: calc(100% - .5rem);
