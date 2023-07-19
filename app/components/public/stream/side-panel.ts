@@ -33,6 +33,9 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showExhibitors: number | null = null;
   @tracked showChat = false;
   @tracked showVideoRoom = false;
+  @tracked selectingLanguage = '';
+  // TODO: mock data - delete later
+   languages: string[] = ['Vietnamese', 'Chinese', 'Japanese'];
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -62,6 +65,13 @@ export default class PublicStreamSidePanel extends Component<Args> {
     if (!stream) {return;}
     if (this.streams.map(stream => stream.id).any(id => id === stream.id)) {return;}
     this.streams.push(stream);
+  }
+
+  @action
+  switchLanguage(language: string): void {
+    this.selectingLanguage = language;
+    // this.args.selectLanguage(language);
+    console.log('switching language to', language);
   }
 
   @action

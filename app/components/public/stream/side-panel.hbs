@@ -17,7 +17,7 @@
       <div class="mr-8 pt-1" style="font-size: 0.9rem;">
         <Public::EventDateTime @event={{@event}} />
       </div>
-      <button class="ui icon button stream-side-panel-button right" {{action (mut this.shown) false}}>  
+      <button class="ui icon button stream-side-panel-button right" {{action (mut this.shown) false}}>
         <i class="angle left icon pr-2"></i>
       </button>
     </div>
@@ -49,7 +49,7 @@
           {{t 'Chat'}}</span>
         </a>
       {{/if}}
-      
+
       {{#if this.showVideoRoom}}
         <div class="item">
           <span><i class="video icon"></i>
@@ -59,13 +59,28 @@
     </div>
     {{#if this.showVideoRoom}}
       <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
-        {{#each this.streams as |stream|}}
+        {{#each this.streams as |stream index|}}
           <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
             <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
             <span class="ml-2">{{stream.name}}</span>
+              {{#if (eq index 0)}}
+               	 <span style="margin-left: 6rem">
+                  <UiDropdown style="float:right" @language={{this.selectingLanguage}} @class="d-flex items-center" @onChange={{ action "switchLanguage"}}>
+                    <i class="world icon"></i>
+                    <div class="default text">Translation</div>
+                    <div class="ui translation menu">
+                      {{#each-in this.languages as |key value|}}
+                        <div class="item" data-value="{{value}}">{{value}}</div>
+                      {{/each-in}}
+                    </div>
+                  </UiDropdown>
+                 </span>
+              {{/if}}
           </a>
+
         {{/each}}
       </div>
+    <div>{{this.selectingLanguage}}</div>
     {{/if}}
 
     {{#if this.loading}}
