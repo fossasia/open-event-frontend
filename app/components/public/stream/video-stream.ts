@@ -14,6 +14,7 @@ declare global {
 interface Args {
   videoStream: VideoStream,
   event: Event
+
 }
 
 export default class PublicStreamVideoStream extends Component<Args> {
@@ -81,6 +82,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
       const [, id] = stream.url.split('v=');
       if (id) {
         this.youtubeId = id;
+
       }
       this.loading = false;
     } else if (provider === 'vimeo') {

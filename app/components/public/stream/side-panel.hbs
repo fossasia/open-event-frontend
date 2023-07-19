@@ -1,3 +1,4 @@
+
 <button {{did-insert this.setup}} class="ui icon button stream-side-panel-button" {{action (mut this.shown) true}}>
   <i class="angle right icon"></i>
 </button>
@@ -63,7 +64,21 @@
           <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
             <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
             <span class="ml-2">{{stream.name}}</span>
-          </a>
+
+            </a>
+              {{#each this.translationChannels as |channel|}}
+
+          <div class="ui inverted vertical fluid menu borderless stream-side-menu" >
+              <div class=" ui item">
+                <a href={{href-to 'public.stream.view' @event stream.slugName channel.url}} class="item stream-item d-flex items-center"><h3>{{channel.name}}</h3></a>
+                {{!-- <a href={{action this.navigateToStream @event channel.url}} class="item stream-item d-flex items-center"><h3>{{channel.name}}</h3></a> --}}
+                {{!-- <a href="#" {{action this.navigateToStream @event channel.url}} class="item stream-item d-flex items-center"><h3>{{channel.name}}</h3></a> --}}
+                {{!-- <a href={{href-to 'public.stream.view' channel.url}} {{on 'click' this.handleLinkClick}} class="{{if (eq @videoStream.id channel.id) 'video-active'}} item stream-item d-flex items-center">URL: {{channel.url}}</a> --}}
+                {{!-- <LinkTo @route='public.stream.view' @model={{channel.url}} @query={{hash muteYoutube=true}}>URL: {{channel.url}}</LinkTo> --}}
+              </div>
+            </div>
+              {{/each}}
+
         {{/each}}
       </div>
     {{/if}}
@@ -73,3 +88,4 @@
     {{/if}}
   </div>
 {{/if}}
+

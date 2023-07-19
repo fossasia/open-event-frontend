@@ -243,8 +243,61 @@
     {{/if}}
   {{/if}}
 
+  <!-- VIdeo translations-->
+  {{#each this.translationChannels as |channel index|}}
+  <div class="field">
+    <label>Translation Channel {{add index 1}}</label>
+    <div class="ui action input">
+
+      <label>{{t 'Channel Name'}}</label>
+
+      <Input type="text" placeholder="Enter channel name" @value={{channel.name}} />
+      <button class="ui icon button" {{on "click" (fn this.removeChannel index channel.id )}}>
+        <i class="delete icon"></i>
+      </button>
+      <button class="ui primary button" {{on "click" (fn this.updateChannel index channel.id )}}  >
+        Update
+      </button>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>{{t 'Channel URL'}}</label>
+    <Input type="text" placeholder="Enter channel URL" @value={{channel.url}} />
+  </div>
+  {{/each}}
+
+  {{#each this.translationChannelsNew as |channel index|}}
+   <div class="field">
+    <label>New translation Channel {{add index 1}}</label>
+    <div class="ui action input">
+
+      <label>{{t 'Channel Name'}}</label>
+
+      <Input type="text" placeholder="Enter channel name" @value={{channel.name}} />
+      <button class="ui icon button" {{on "click" (fn this.removeChannel index channel.id )}}>
+        <i class="delete icon"></i>
+      </button>
+      <button class="ui primary button" {{on "click" (fn this.updateChannel index channel.id )}}  >
+        Update
+      </button>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>{{t 'Channel URL'}}</label>
+    <Input type="text" placeholder="Enter channel URL" @value={{channel.url}} />
+  </div>
+   {{/each}}
+
+  <button class="ui primary button" {{on "click" this.addChannel }}  >
+    Add
+  </button>
+
+
+
   <div class="ui hidden divider"></div>
-  <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+  <button type="submit" {{on "submit" (fn this.submit )}} class="ui teal submit button" name="submit">{{t 'Save'}}</button>
   <LinkTo @route="events.view.videoroom.index" class="ui red button">
     {{t 'Cancel'}}
   </LinkTo>

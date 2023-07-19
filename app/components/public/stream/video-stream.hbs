@@ -9,7 +9,11 @@
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
   {{/if}}
   {{#if (and (eq @videoStream.videoChannel.provider 'youtube') this.youtubeId)}}
-    <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}" gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+    {{!-- <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}" gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe> --}}
+      <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" 
+    src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute={{if muteYoutube 1 0}}" 
+    gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true">
+    </iframe>
   {{/if}}
   {{#if (and (eq @videoStream.videoChannel.provider 'vimeo') this.vimeoId)}}
     <iframe src="https://player.vimeo.com/video/{{this.vimeoId}}?autoplay={{if @videoStream.extra.autoplay 1 0}}&loop={{if @videoStream.extra.loop 1 0}}" width="100%" height="100%" frameborder="0" title="Vimeo Live Stream" allow="autoplay" allowfullscreen="true"></iframe>

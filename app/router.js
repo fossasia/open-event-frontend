@@ -31,7 +31,15 @@ class Router extends RouterScroll {
   }
 }
 
+
 Router.map(function() {
+
+  this.route('video-streams', function() {
+    this.route('view', { path: '/:video_stream_id' }, function() {
+      this.route('translation-channels', { path: '/translation-channels' });
+    });
+  });
+
   this.route('login');
   this.route('register');
   this.route('reset-password');

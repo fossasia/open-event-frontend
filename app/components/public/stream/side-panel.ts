@@ -9,6 +9,7 @@ import { hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
 import Loader from 'open-event-frontend/services/loader';
 import EventService from 'open-event-frontend/services/event';
 
+
 interface Args {
   videoStream: VideoStream,
   event: Event,
@@ -16,12 +17,49 @@ interface Args {
   showChatPanel: any
 }
 
+interface ChannelData {
+  id: string;
+  attributes: {
+    name: string;
+    url: string;
+  };
+}
+
+
 export default class PublicStreamSidePanel extends Component<Args> {
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+
+    this.ajax.host = 'http://localhost:8080';
+    this.setAuthorizationHeader();
+  }
+
+
+  setAuthorizationHeader() {
+    let cookieContent = this.cookies.read('ember_simple_auth-session'); // replace 'ember_simple_auth-session' with the name of your cookie
+    let parsedContent = JSON.parse(decodeURIComponent(cookieContent));
+    let accessToken = parsedContent.authenticated.access_token;
+
+    const currentHeaders = this.ajax.headers || {};
+    const updatedHeaders = {
+      ...currentHeaders,
+      Authorization: `JWT ${accessToken}`
+    };
+
+    this.ajax.headers = updatedHeaders;
+  }
+
+  // Define other methods...
   @service loader!: Loader;
   @service declare event: EventService;
   @service declare settings: any;
   @service authManager: any;
   @service confirm: any;
+  @tracked translationChannels = [];
+  @service ajax: any;
+  @service cookies: any;
+
+
 
   @tracked shown = false;
   @tracked token = '';
@@ -46,6 +84,23 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
+
+  async fetchTranslationChannels(streamId: string) {
+    let response = await this.ajax.request(`/v1/video-streams/${streamId}/translation_channels`, {
+      // headers: {
+      //   'Authorization': `JWT ${this.authManager.currentUser.jwt}`
+      // }
+    });
+    
+    this.translationChannels = response.data.map((channel: ChannelData) => ({
+      id: channel.id,
+      name: channel.attributes.name,
+      url: channel.attributes.url
+    }));
+
+    console.log(this.translationChannels )
+  }
+
   async checkSpeakers(): Promise<void> {
     this.showSpeakers = this.showSpeakers ?? await this.event.hasSpeakers(this.args.event.id);
   }
@@ -64,8 +119,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.streams.push(stream);
   }
 
+
   @action
   async setup(): Promise<void> {
+
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
     this.addStream(this.args.event.belongsTo('videoStream').value());
 
@@ -74,6 +131,9 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.checkExhibitors();
     this.showChat = this.args.event.isChatEnabled && this.settings.rocketChatUrl;
     this.showVideoRoom = this.args.event.isVideoroomEnabled;
+
+    console.log(this.streams);
+    await Promise.all(this.streams.map(stream => this.fetchTranslationChannels(stream.id)));
 
     if (this.args.event.isSchedulePublished) {
       try {
@@ -85,16 +145,22 @@ export default class PublicStreamSidePanel extends Component<Args> {
           hash     : stringHashCode(stream.attributes.name + stream.id)
         })).forEach((stream: any) => {
           this.addStream(stream)
+
         });
+
+
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
       }
+
 
       if (this.args.event.isChatEnabled) {
         const { success, token } = await this.loader.load(`/events/${this.args.event.id}/chat-token`);
         this.token = token;
         this.success = success;
       }
+
+
 
       this.loading = false;
     }

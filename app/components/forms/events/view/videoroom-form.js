@@ -23,6 +23,10 @@ const jitsi_options = {
 @classic
 export default class VideoroomForm extends Component.extend(FormMixin) {
   @service confirm;
+  @service ajax;
+  @service cookies;
+
+
 
   @tracked integrationLoading = false;
   @tracked loading = false;
@@ -34,6 +38,29 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked previousVideo = '';
   @tracked showUpdateOptions = false;
   @tracked endCurrentMeeting = false;
+  @tracked translationChannels = [];
+  @tracked translationChannelsNew = [];
+
+
+  init() {
+    super.init(...arguments);
+    this.ajax.set('host', 'http://localhost:8080');
+    this.setAuthorizationHeader();
+  }
+
+  setAuthorizationHeader() {
+    let cookieContent = this.cookies.read('ember_simple_auth-session'); // replace 'cookie-name' with the name of your cookie
+    let parsedContent = JSON.parse(decodeURIComponent(cookieContent));
+    let accessToken = parsedContent.authenticated.access_token;
+
+    const currentHeaders = this.ajax.get('headers') || {};
+    const updatedHeaders = {
+      ...currentHeaders,
+      Authorization: `JWT ${accessToken}`
+    };
+
+    this.ajax.set('headers', updatedHeaders);
+  }
 
   get recordingColumns() {
     return [
@@ -74,10 +101,103 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     ];
   }
 
+
+  async loadTranslationChannels() {
+    const videoStreamId = this.data.stream.get('id'); // Get the current video stream id from the route
+    const responseData = await this.ajax.request(`/v1/video-streams/${videoStreamId}/translation_channels`, {
+      method      : 'GET',
+      contentType : 'application/vnd.api+json'
+    });
+    // this.translationChannels = responseData.data.map(channel => channel.attributes);
+    this.translationChannels = responseData.data.map(channel => ({
+      id: channel.id,
+      ...channel.attributes
+    }));
+  }
+
+
+  @action
+  addChannel() {
+    event.preventDefault();
+    this.translationChannelsNew = [...this.translationChannelsNew, { id:'', name: '', url: '' }];
+  }
+
+  @action
+  async updateChannel(index, id) {
+    event.preventDefault();
+    console.log("AHAHAHAH")
+    const channel = this.translationChannels[index]
+    const response = await this.ajax.request(`/v1/translation_channels/${id}`, {
+      // headers: {
+      //   'Content-Type': 'text/plain'
+      // },
+      method      : 'PATCH',
+      contentType : 'application/vnd.api+json',
+      data        : JSON.stringify({
+        data: {
+          type: 'translation_channel',
+          id: `${channel.id}`,
+          attributes : {
+            name : channel.name,
+            url  : channel.url,
+          },
+          relationships: {
+            video_stream: {
+              data: {
+                type : 'video_stream',
+                id   : this.data.stream.get('id') 
+              }
+            },
+            channel: {
+              data: {
+                type : 'video_channel',
+                id   : this.data.stream.videoChannel.get('id')
+              }
+            }
+          }
+        }
+      })
+    });
+
+
+  }
+
+  @action
+  async removeChannel(index, id) {
+    event.preventDefault();
+
+    this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
+
+    const response = await this.ajax.request(`/v1/translation_channels/${id}`, {
+        method      : 'DELETE',
+        contentType : 'application/vnd.api+json',
+      });
+
+
+    }
+    
+
+  @action
+  updateChannelName(index, event) {
+    const newChannels = [...this.translationChannels];
+    newChannels[index].name = event.target.value;
+    this.translationChannels = newChannels;
+  }
+
+  @action
+  updateChannelUrl(index, event) {
+    const newChannels = [...this.translationChannels];
+    newChannels[index].url = event.target.value;
+    this.translationChannels = newChannels;
+  }
+
+
+
   @computed('data.stream.rooms.[]')
   get room() {
     return this.data.stream.rooms.toArray()[0];
   }
+
 
   @action
   setRoom(room) {
@@ -330,13 +450,65 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     event.preventDefault();
     this.onValid(async() => {
       try {
+        this.setAuthorizationHeader();
         this.set('isLoading', true);
+
+        // const response = await this.loader.post('/translation_channels', this.data.stream);
+        // const response = await this.loader.post('/translation_channels', {
+        //   headers: {
+        //       'Content-Type': 'application/vnd.api+json'
+        //   },
+        //     data: JSON.stringify(this.data.stream)
+        // });
+
+        // Iterate over the translationChannels array and send a POST request for each channel
+        for (const channel of this.translationChannelsNew) {
+          const response = await this.ajax.request('/v1/translation_channels', {
+
+            method      : 'POST',
+            contentType : 'application/vnd.api+json',
+            data        : JSON.stringify({
+              data: {
+                type       : 'translation_channel',
+                attributes : {
+                  name : channel.name,
+                  url  : channel.url
+                },
+                relationships: {
+                  video_stream: {
+                    data: {
+                      type : 'video_stream',
+                      id   : this.data.stream.get('id') // Replace this with the appropriate video_stream ID
+                    }
+                  },
+                  channel: {
+                    data: {
+                      type : 'video_channel',
+                      id   : this.data.stream.videoChannel.get('id') // Replace this with the appropriate video_channel ID
+                    }
+                  }
+                }
+              }
+            })
+          });
+        }
+
+        // if (response.status) {
+        //   this.notify.success(this.l10n.t('Your stream has been saved'), {
+        //     id: 'stream_save'
+        //   });
+        //   this.router.transitionTo('events.view.videoroom', this.data.event.id);
+        // }
+
         if (this.data.stream.extra?.bbb_options) {
           this.data.stream.extra.bbb_options.endCurrentMeeting = this
             .showUpdateOptions
             ? this.endCurrentMeeting
             : false;
         }
+
+        this.data.stream.translationChannels = this.translationChannels;
+
         await this.data.stream.save();
         const saveModerators = this.data.stream.moderators
           .toArray()
@@ -425,6 +597,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   didInsertElement() {
+    this.loadTranslationChannels();
     if (this.data.stream.videoChannel.get('provider') === 'bbb') {
       if (this.data.stream.extra?.bbb_options) {
         this.set('actualBBBExtra', { ...this.data.stream.extra.bbb_options });
