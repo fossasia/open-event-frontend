@@ -16,7 +16,7 @@ export default class SponsorsController extends Controller.extend(EventWizardMix
   @action
   move(direction) {
     this.saveEventDataAndRedirectTo(
-      direction === 'forwards' ? 'events.view.edit.sessions-speakers' : 'events.view.edit.attendee',
+      direction === 'forwards' ? 'events.view.edit.sessions-speakers' : 'events.view.edit.badge',
       ['sponsors', 'tickets']
     );
   }
