@@ -1,0 +1,57 @@
+{{#if this.data.selectedImage}}
+{{#if (and this.requiresDivider this.device.isMobile)}}
+<div class="ui hidden divider"></div>
+{{/if}}
+{{#if this.isHeaderImage}}
+<div class="ui" style="width:100%;height: auto;overflow: hidden;">
+  {{#if this.uploadingImage}}
+  <div class="ui active dimmer">
+    <div class="ui text loader">{{t 'Image Uploading'}}</div>
+  </div>
+  {{/if}}
+  {{#if this.allowReCrop}}
+  <button type="button" class="ui center aligned icon button" {{action 'reCrop' }}>
+    <i class="crop icon"></i>
+    {{t 'Re-crop'}}
+  </button>
+  {{/if}}
+  <button type="button" class="ui center aligned icon button" {{action 'removeSelection' }}>
+    <i class="trash icon"></i>
+    {{if this.needsConfirmation 'Delete' 'Confirm Delete'}}
+  </button>
+</div>
+{{else}}
+<div class="ui">
+  {{#if this.uploadingImage}}
+  <div class="ui active dimmer">
+    <div class="ui text loader">{{t 'Image Uploading'}}</div>
+  </div>
+  {{/if}}
+  {{#if this.allowReCrop}}
+  <button type="button" class="ui center aligned icon button" {{action 'reCrop' }}>
+    <i class="crop icon"></i>
+    {{t 'Re-crop'}}
+  </button>
+  {{/if}}
+  <button type="button" class="ui center aligned icon button" {{action 'removeSelection' }}>
+    <i class="trash icon"></i>
+    {{if this.needsConfirmation 'Delete' 'Confirm Delete'}}
+  </button>
+</div>
+{{/if}}
+<div class="ui center aligned text mb-8" style="margin-top:-5px">
+  <span>{{this.imageText}}</span>
+</div>
+{{else}}
+<Input @type="file" @id={{this.inputIdGenerated}} class="styled input" @accept="image/*" @name={{or @name 'image_upload'
+  }} @change={{action "fileSelected" }} />
+<label for="{{this.inputIdGenerated}}">
+  <div class="ui center aligned icon button">
+    <i aria-disabled={{true}}>{{t 'Choose File'}}</i>
+  </div>
+</label>
+{{/if}}
+{{#if this.needsCropper}}
+<Modals::CropperModal @isOpen={{this.cropperModalIsShown}} @imgData={{this.imgData}}
+  @onImageCrop={{action "imageCropped" }} @aspectRatio={{this.aspectRatio}} @cropPanel={{@cropPanel}}/>
+{{/if}}

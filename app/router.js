@@ -99,6 +99,7 @@ Router.map(function() {
         this.route('sponsors');
         this.route('sessions-speakers');
         this.route('attendee');
+        this.route('badge');
       });
       this.route('settings', function() {
         this.route('export');
