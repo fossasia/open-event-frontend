@@ -1,4 +1,4 @@
-export const languageForms1 = [
+export const fluentLanguage = [
   {
     name      : 'عربي',
     code      : 'ar',
@@ -27,11 +27,6 @@ export const languageForms1 = [
   {
     name      : '中文',
     code      : 'zh-CN',
-    isChecked : false
-  },
-  {
-    name      : 'Other',
-    code      : 'other',
     isChecked : false
   }
 ];

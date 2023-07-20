@@ -4,8 +4,8 @@ import { action, computed } from '@ember/object';
 import { groupBy, orderBy } from 'lodash-es';
 import { or } from '@ember/object/computed';
 import { tracked } from '@glimmer/tracking';
-import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
-import { languageForms2 } from 'open-event-frontend/utils/dictionary/language-form-2';
+import { nativeLanguage } from 'open-event-frontend/utils/dictionary/native-language';
+import { fluentLanguage } from 'open-event-frontend/utils/dictionary/fluent-language';
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
@@ -23,24 +23,24 @@ export default class AttendeeList extends Component {
     return this.data.user;
   }
 
-  @tracked languageForms1 = languageForms1;
-  @tracked languageForms2 = languageForms2;
+  @tracked nativeLanguage = nativeLanguage;
+  @tracked fluentLanguage = fluentLanguage;
   @tracked genders = genders;
 
   @computed('data.attendees')
   get holders() {
     this.data.attendees.forEach(attendee => {
       if (attendee.native_language) {
-        this.languageFormMapCodeToName(attendee, 'native_language', this.languageForms1);
+        this.languageFormMapCodeToName(attendee, 'native_language', this.nativeLanguage);
       }
       if (attendee.fluent_language) {
-        this.languageFormMapCodeToName(attendee, 'fluent_language', this.languageForms2);
+        this.languageFormMapCodeToName(attendee, 'fluent_language', this.fluentLanguage);
       }
       if (attendee.language_form_1) {
-        this.languageFormMapCodeToName(attendee, 'language_form_1', this.languageForms1);
+        this.languageFormMapCodeToName(attendee, 'language_form_1', this.nativeLanguage);
       }
       if (attendee.language_form_2) {
-        this.languageFormMapCodeToName(attendee, 'language_form_2', this.languageForms2);
+        this.languageFormMapCodeToName(attendee, 'language_form_2', this.fluentLanguage);
       }
       if (attendee.gender) {
         this.genderAddSpaces(attendee);
@@ -78,14 +78,14 @@ export default class AttendeeList extends Component {
     return orderBy(countries, 'name');
   }
 
-  @computed('languageForms1')
-  get languageForms1() {
-    return orderBy(this.languageForms1, 'position');
+  @computed('nativeLanguage')
+  get nativeLanguage() {
+    return orderBy(this.nativeLanguage, 'position');
   }
 
-  @computed('languageForms2')
-  get languageForms2() {
-    return orderBy(this.languageForms2, 'position');
+  @computed('fluentLanguage')
+  get fluentLanguage() {
+    return orderBy(this.fluentLanguage, 'position');
   }
 
   @computed('homeWikis')
