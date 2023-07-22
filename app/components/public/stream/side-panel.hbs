@@ -65,12 +65,11 @@
             <span class="ml-2">{{stream.name}}</span>
               {{#if (eq index 0)}}
                	 <span style="margin-left: 6rem">
-                  <UiDropdown style="float:right" @language={{this.selectingLanguage}} @class="d-flex items-center" @onChange={{ action "switchLanguage"}}>
+                  <UiDropdown style="float:right"  @class="d-flex items-center" @onChange={{ action "switchLanguage"}}>
                     <i class="world icon"></i>
-                    <div class="default text">Translation</div>
                     <div class="ui translation menu">
-                      {{#each-in this.languages as |key value|}}
-                        <div class="item" data-value="{{value}}">{{value}}</div>
+                      {{#each-in this.translationChannels as |key channel|}}
+                        <div class="item" data-value="{{channel.url}}">{{channel.name}}</div>
                       {{/each-in}}
                     </div>
                   </UiDropdown>
@@ -80,7 +79,6 @@
 
         {{/each}}
       </div>
-    <div>{{this.selectingLanguage}}</div>
     {{/if}}
 
     {{#if this.loading}}

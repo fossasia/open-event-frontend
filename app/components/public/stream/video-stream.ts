@@ -68,16 +68,24 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   isPlaying: any;
 
+  @service
+  selectingLanguage: any;
+
+  @tracked
+  languageUrl = '';
+
   @computed()
   get isRocketChatEnabled(): boolean {
     return this.authManager.currentUser?.isRocketChatRegistered && this.args.event.isChatEnabled;
   }
+
 
   @action
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
     this.loading = true;
     this.iframeUrl = '';
+    this.languageUrl = this.selectingLanguage.selectingLanguage;
 
     if (stream.url.includes('youtube')) {
       this.provider = 'youtube';
@@ -169,14 +177,15 @@ export default class PublicStreamVideoStream extends Component<Args> {
 
   @action
   toggleVideo() {
-    if (this.isPlaying) {
-      this.player.pauseVideo();
-      this.player2.pauseVideo();
-    } else {
-      this.player.playVideo();
-      this.player2.playVideo();
-    }
-    this.isPlaying = !this.isPlaying;
+    // if (this.isPlaying) {
+    //   this.player.pauseVideo();
+    //   this.player2.pauseVideo();
+    // } else {
+    //   this.player.playVideo();
+    //   this.player2.playVideo();
+    // }
+    // this.isPlaying = !this.isPlaying;
+    this.streamYardUnmute();
   }
 
   @action
