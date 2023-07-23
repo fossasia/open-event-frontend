@@ -26,7 +26,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @service ajax;
   @service cookies;
 
-
   @tracked integrationLoading = false;
   @tracked loading = false;
   @tracked moderatorEmail = '';
@@ -114,6 +113,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     }));
   }
 
+
   @action
   addChannel() {
     event.preventDefault();
@@ -123,9 +123,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @action
   async updateChannel(index, id) {
     event.preventDefault();
-    // console.log('AHAHAHAH');
     const channel = this.translationChannels[index];
     const response = await this.ajax.request(`/v1/translation_channels/${id}`, {
+      // headers: {
+      //   'Content-Type': 'text/plain'
+      // },
       method      : 'PATCH',
       contentType : 'application/vnd.api+json',
       data        : JSON.stringify({
@@ -146,13 +148,15 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
             channel: {
               data: {
                 type : 'video_channel',
-                id   : this.data.stream.videoChannel.get('id')
+                id   : '2'// id   : this.data.stream.videoChannel.get('id')
               }
             }
           }
         }
       })
     });
+
+
   }
 
   @action
@@ -444,12 +448,18 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       try {
         this.setAuthorizationHeader();
         this.set('isLoading', true);
+        console.log('stream videoChannel id', this.data.stream.videoChannel.get('id'));
         // Iterate over the translationChannels array and send a POST request for each channel
         if (this.translationChannelsNew !== []) {
           console.log('stream videoChannel id', this.data.stream.videoChannel.get('id'));
 
           for (const channel of this.translationChannelsNew) {
-
+            const randomIdentifier = () => {
+              const min = Math.ceil(0);
+              const max = Math.floor(1000);
+              return Math.floor(Math.random() * (max - min + 1)) + min;
+            };
+            const randomId = randomIdentifier();
             const response = await this.loader.post('/translation_channels', {
               data: {
                 type       : 'translation_channel',
@@ -467,16 +477,16 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
                   channel: {
                     data: {
                       type : 'video_channel',
-                      id   : this.data.stream.videoChannel.get('id') // Replace this with the appropriate video_channel ID
+                      id   : '1'
+                      // id   : this.data.stream.videoChannel.get('id') // Replace this with the appropriate video_channel ID
                     }
                   }
                 }
               }
-            });
+            }, 'application/vnd.api+json');
           }
 
         }
-
 
         // if (response.status) {
         //   this.notify.success(this.l10n.t('Your stream has been saved'), {
@@ -610,4 +620,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     }
     this.selectedVideo = this.previousVideo = this.data.stream.videoChannel;
   }
+
+
 }

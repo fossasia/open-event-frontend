@@ -10,10 +10,7 @@
   {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
   {{/if}}
-  {{#if (eq this.provider 'youtube') }}
-<!--      <iframe id="video-player" width="50%" height="50%" frameborder="0" title="YouTube Live Stream"-->
-<!--              src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute={{if (eq this.selectingLanguage.selectingLanguage 'original') 0 1}}1&controls=0&disablekb=1"-->
-<!--      gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>-->
+  {{#if (eq this.provider 'youtube')}}
     {{#unless (eq this.selectingLanguage.selectingLanguage null)}}
 
       <iframe id="video-player" width="50%" height="50%" frameborder="0" title="YouTube Live Stream"
@@ -31,9 +28,63 @@
     <iframe src="https://player.vimeo.com/video/{{this.vimeoId}}?autoplay={{if @videoStream.extra.autoplay 1 0}}&loop={{if @videoStream.extra.loop 1 0}}" width="100%" height="100%" frameborder="0" title="Vimeo Live Stream" allow="autoplay" allowfullscreen="true"></iframe>
   {{/if}}
 
-	{{#unless (eq this.selectingLanguage.selectingLanguage 'original')}}
-  	<div id="streamyard-iframe" style="width:100%;height:0px;position:relative;padding-bottom:56.25%;margin-bottom:20px"><iframe src="{{this.selectingLanguage.selectingLanguage}}" width="20%" height="20%" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+	{{#unless (eq this.selectingLanguage.selectingLanguage null)}}
+  	<div id="streamyard-iframe" style="width:100%;height:0px;position:relative;padding-bottom:56.25%;margin-bottom:20px">
+      <iframe id="streamyard-iframe-player" src="{{this.selectingLanguage.selectingLanguage}}" width="20%" height="20%" frameborder="0" style="width:50%;height:50%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe>
+
+      <script>
+        // Listen for postMessage events from the parent window
+        window.addEventListener('message', function(event) {
+          // Check if the message is of type "keypress" and the key is "M"
+          if (event.data && event.data.type === 'keypress' && event.data.key === 'M') {
+            // Your code to toggle mute/unmute here
+            // For example, if your video/audio element has ID "myVideo", you can toggle mute like this:
+            // Attach the click event listener to the button to trigger the simulation
+            handleKeyPress(event);
+          }
+        });
+        window.addEventListener('keydown', function(event) {
+            console.log(event.key + ' key was pressed insdie iframe');
+          }
+        }
+
+        // Function to handle the actual keydown event
+        function handleKeyPress(event) {
+          // Check if the pressed key is "M"
+          if (event.key === 'M') {
+            // Do something when "M" key is pressed
+            console.log('The \'M\' key was pressed!');
+          }
+        }
+
+        // Attach the keydown event listener directly to the document
+        document.addEventListener('keydown', handleKeyPress);
+
+        // Function to programmatically trigger the "M" key press event
+        function simulateKeyPress() {
+          // Create a new KeyboardEvent with the "M" key properties
+          const event = new KeyboardEvent('keydown', {
+            key        : 'M',
+            keyCode    : 77,
+            code       : 'KeyM',
+            which      : 77,
+            altKey     : false,
+            ctrlKey    : false,
+            shiftKey   : false,
+            metaKey    : false,
+            bubbles    : true,
+            cancelable : true
+          });
+
+          // Dispatch the event on the document
+          document.dispatchEvent(event);
+        }
+
+      </script>
+    </div>
   {{/unless}}
+
+
 </div>
 <Public::Stream::SidePanel @event={{@event}} @videoStream={{@videoStream}} @selectingLanguage={{this.selectingLanguage}} @shown={{true}} @showChatPanel={{this.showChatPanel}} />
 {{#if this.isRocketChatEnabled}}
@@ -44,3 +95,34 @@
   {{/if}}
 {{/if}}
 
+
+<script>
+  // Function to handle the keyboard events outside the iframe
+  function handleKeyPress(event) {
+    // Check if the pressed key is "M" (case-insensitive)
+    if (event.key.toUpperCase() === "M") {
+      console.log('M key pressed outside iframe');
+      // Get the iframe element by ID
+      const iframe = document.getElementById("streamyard-iframe-player");
+
+      // Post the "M" key press message to the iframe window
+      iframe.contentWindow.postMessage({ type: "keypress", key: "M" }, "*");
+    }
+  }
+Ï
+  // Attach the key press event listener to the document
+  document.addEventListener("keydown", handleKeyPress);
+
+
+  // Function to log the focused element to the console
+  function logFocusedElement(event) {
+    const elementName = event.target.tagName;
+    console.log("Currently Focused Element:", event);
+  }
+
+  // Add focus event listeners to all elements in the document
+  const allElements = document.querySelectorAll('*');
+  allElements.forEach(element => {
+    element.addEventListener("focus", logFocusedElement, true);
+  });
+</script>

@@ -176,19 +176,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   }
 
   @action
-  toggleVideo() {
-    // if (this.isPlaying) {
-    //   this.player.pauseVideo();
-    //   this.player2.pauseVideo();
-    // } else {
-    //   this.player.playVideo();
-    //   this.player2.playVideo();
-    // }
-    // this.isPlaying = !this.isPlaying;
-    this.streamYardUnmute();
-  }
-
-  @action
   setupPlayer() {
     // Create a global function to handle the YouTube API ready event
     window.onYouTubeIframeAPIReady = () => {

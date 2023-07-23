@@ -63,6 +63,7 @@ export default class Loader extends Service {
     fetchOptions.headers = config.replaceHeaders ? config.header : merge(fetchOptions.headers, config.headers);
     fetchOptions.method = method;
 
+    console.log('url', url);
     if (data) {
       if (bodyAllowedIn.includes(method)) {
         if (config.skipDataTransform) {
@@ -73,6 +74,9 @@ export default class Loader extends Service {
           } else if (config.isFile) {
             delete fetchOptions.headers['Content-Type'];
             fetchOptions.body = data;
+          } else if (url.includes('/translation_channels')) {
+            fetchOptions.headers['Content-Type'] = 'application/vnd.api+json';
+            fetchOptions.body = JSON.stringify(data);
           } else {
             fetchOptions.headers['Content-Type'] = 'application/json';
             fetchOptions.body = JSON.stringify(data);
@@ -97,7 +101,7 @@ export default class Loader extends Service {
     };
   }
 
-  async makePromise(urlPath: string, method: string, data = null, config: Config = {}): Promise<any> {
+  async makePromise(urlPath: string, method: string, data = null, config: Config = {}, contentType?: string): Promise<any> {
 
     const { url, fetchOptions } = this.getFetchOptions(urlPath, method, data, config);
 
