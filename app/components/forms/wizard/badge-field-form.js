@@ -4,13 +4,16 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { booleanTextType } from 'open-event-frontend/utils/dictionary/boolean_text_type';
-import { fieldFontName } from 'open-event-frontend/utils/dictionary/badge-field';
+import { fieldFontName, badgeFieldRotate, badgeFieldFontWeight, badgeFieldFontSize } from 'open-event-frontend/utils/dictionary/badge-field';
 
 export default Component.extend(FormMixin, {
   router             : service(),
   autoScrollToErrors : false,
   isExpanded         : true,
   booleanTextType    : orderBy(booleanTextType, 'position'),
+  badgeFieldRotate   : orderBy(badgeFieldRotate),
+  badgeFieldFontWeight: badgeFieldFontWeight,
+  badgeFieldFontSize: badgeFieldFontSize,
 
   getCustomFields: computed('includeCustomField', function() {
     const validForms = this.includeCustomField.map(item => item.name);
@@ -103,6 +106,12 @@ export default Component.extend(FormMixin, {
     },
     onChangeFontName(value) {
       this.set('data.font_name', value);
+    },
+    onChangeTextRotate(value) {
+      this.set('data.text_rotation', value);
+    },
+    onChangeTextFontWeight(value) {
+      this.set('data.font_weight', value);
     }
   }
 });

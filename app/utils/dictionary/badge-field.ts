@@ -84,3 +84,111 @@ export const fieldFontName = [
     value : '"Kanit variant1", Tofu'
   }
 ]
+
+export const badgeFieldRotate = [
+  {
+    value     : 0,
+  },
+  {
+    value     : 45,
+  },
+  {
+    value     : -45,
+  },
+  {
+    value     : 90,
+  },
+  {
+    value     : -90,
+  }
+];
+
+export const badgeFieldFontWeight = [
+  {
+    name: 'Thin',
+    value: 100
+  },
+  {
+    name: 'Extra Light (Ultra Light)',
+    value: 200
+  },
+  {
+    name: 'Light',
+    value: 300
+  },
+  {
+    name: 'Normal',
+    value: 400
+  },
+  {
+    name: 'Medium',
+    value: 500
+  },
+  {
+    name: 'Semi Bold (Demi Bold)',
+    value: 600
+  },
+  {
+    name: 'Bold',
+    value: 700
+  },
+  {
+    name: 'Extra Bold (Ultra Bold)',
+    value: 800
+  },
+  {
+    name: 'Black (Heavy)',
+    value: 900
+  }
+]
+
+export const badgeFieldFontSize = [
+  {
+    value: 8
+  },
+  {
+    value: 9
+  },
+  {
+    value: 10
+  },
+  {
+    value: 11
+  },
+  {
+    value: 12
+  },
+  {
+    value: 14
+  },
+  {
+    value: 16
+  },
+  {
+    value: 18
+  },
+  {
+    value: 20
+  },
+  {
+    value: 22
+  },
+  {
+    value: 24
+  },
+  {
+    value: 26
+  },
+  {
+    value: 28
+  },
+  {
+    value: 36
+  },
+  {
+    value: 48
+  },
+  {
+    value: 72
+  },
+]
