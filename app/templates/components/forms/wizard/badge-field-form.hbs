@@ -4,8 +4,9 @@
     <h3 class="lh-2r">
       {{t 'Row'}} {{inc @index}}
       {{#if @data.custom_field }}
-      - {{@data.custom_field}}
+      - {{rich-text-link @data.custom_field}}
       {{/if}}
+      
     </h3>
     <div class="btn-row">
       <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting' }}>
@@ -37,7 +38,7 @@
           <div class="menu">
             {{#each this.getCustomFields as |cfield|}}
             <div class="item" data-value="{{cfield}}">
-              {{t-var cfield}}
+              {{rich-text-link cfield}}
             </div>
             {{/each}}
           </div>
