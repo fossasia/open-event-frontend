@@ -31,8 +31,8 @@ export default class IndexRoute extends Route {
           ]
         }
       ],
-      cache  : true,
-      public : true,
+      cache        : true,
+      public       : true,
       'page[size]' : 0
     });
     const featuredSpeakersPromise = event.query('speakers', {
