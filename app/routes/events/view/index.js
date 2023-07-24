@@ -22,13 +22,13 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const usersEventsRolesPromise = eventDetails.query('roles', {
       include: 'user,role'
     });
-    const sessionTypesPromise = eventDetails.query('sessionTypes', {'page[size]': 0});
-    const tracksPromise = eventDetails.query('tracks', {'page[size]': 0});
-    const microlocationsPromise = eventDetails.query('microlocations', {'page[size]': 0});
-    const speakersCallPromise = eventDetails.query('speakersCall', {'page[size]': 0});
-    const socialLinksPromise = eventDetails.query('socialLinks', {'page[size]': 0});
-    const statisticsPromise = eventDetails.query('generalStatistics', {'page[size]': 0});
-    const orderStatPromise = eventDetails.query('orderStatistics', {'page[size]': 0});
+    const sessionTypesPromise = eventDetails.query('sessionTypes', { 'page[size]': 0 });
+    const tracksPromise = eventDetails.query('tracks', { 'page[size]': 0 });
+    const microlocationsPromise = eventDetails.query('microlocations', { 'page[size]': 0 });
+    const speakersCallPromise = eventDetails.query('speakersCall', { 'page[size]': 0 });
+    const socialLinksPromise = eventDetails.query('socialLinks', { 'page[size]': 0 });
+    const statisticsPromise = eventDetails.query('generalStatistics', { 'page[size]': 0 });
+    const orderStatPromise = eventDetails.query('orderStatistics', { 'page[size]': 0 });
     const ticketsPromise = eventDetails.query('tickets', {
       'page[size]': 0
     });
