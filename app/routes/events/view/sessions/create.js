@@ -31,8 +31,8 @@ export default class CreateRoute extends Route {
         event : eventDetails,
         user  : this.authManager.currentUser
       }),
-      tracks       : eventDetails.query('tracks', {}),
-      sessionTypes : eventDetails.query('sessionTypes', {})
+      tracks       : eventDetails.query('tracks', {'page[size]': 0}),
+      sessionTypes : eventDetails.query('sessionTypes', {'page[size]': 0})
     });
   }
 

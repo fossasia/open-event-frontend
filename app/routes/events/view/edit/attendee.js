@@ -19,7 +19,7 @@ export default class AttendeeRoute extends Route.extend(CustomFormMixin) {
     const data = {
       event,
       forms       : [],
-      tickets     : (await event.query('tickets', {})),
+      tickets     : (await event.query('tickets', {'page[size]': 0})),
       customForms : (await event.query('customForms', {
         filter       : filterOptions,
         sort         : 'id',
