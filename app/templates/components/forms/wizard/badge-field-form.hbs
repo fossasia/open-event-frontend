@@ -4,7 +4,11 @@
     <h3 class="lh-2r">
       {{t 'Row'}} {{inc @index}}
       {{#if @data.custom_field }}
-      - {{rich-text-link @data.custom_field}}
+        {{#if this.getFieldComplex}}
+          - {{rich-text-link @data.custom_field}}
+        {{else}}
+          - {{t-var @data.custom_field}}
+        {{/if}}
       {{/if}}
       
     </h3>
@@ -37,9 +41,17 @@
           <div class="default text">{{t 'Custom field'}}</div>
           <div class="menu">
             {{#each this.getCustomFields as |cfield|}}
-            <div class="item" data-value="{{cfield}}">
-              {{rich-text-link cfield}}
-            </div>
+              {{#if cfield.isFixed}}
+                <div class=" item fixed-item" data-value="{{cfield.isFixed}}">
+                  {{cfield.isFixed}}
+                </div>
+              {{else}}
+                {{#if cfield.isComplex}}
+                  <div class=" item complex-item" data-value="{{cfield.isComplex}}">
+                    {{rich-text-link cfield.isComplex}}
+                  </div>
+                {{/if}}
+              {{/if}}
             {{/each}}
           </div>
         </UiDropdown>
