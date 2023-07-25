@@ -1,11 +1,9 @@
 import classic from 'ember-classic-decorator';
-import { orderBy } from 'lodash-es';
 import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
 import moment from 'moment-timezone';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import { levels } from 'open-event-frontend/utils/dictionary/levels';
 
 @classic
 export default class PublicController extends Controller {
@@ -17,18 +15,9 @@ export default class PublicController extends Controller {
   side_panel = null;
   video_dialog = null;
 
-  @tracked activeSession = this.router.currentRoute.queryParams.sessionType ? this.router.currentRoute.queryParams.sessionType.split(',') : [];
-
-  @tracked activeSessionLevel = this.router.currentRoute.queryParams.level ? this.router.currentRoute.queryParams.level.split(',') : [];
-
-  @tracked activeRoom = this.router.currentRoute.queryParams.room ? this.router.currentRoute.queryParams.room.split(',') : [];
-
-  @tracked activeTrack = this.router.currentRoute.queryParams.track ? this.router.currentRoute.queryParams.track.split(',') : [];
-
   @tracked hasStreams = null;
   @tracked canAccess = null;
 
-  @tracked levels = orderBy(levels, 'position');
   @tracked shown = false;
 
   @computed('model.socialLinks')
@@ -159,73 +148,6 @@ export default class PublicController extends Controller {
         node.classList.remove('active');
       });
       this.transitionToRoute(this.session.currentRouteName, { queryParams: { video_dialog: null } });
-    }
-  }
-
-  @action
-  removeActiveSession() {
-    this.activeSession = [];
-  }
-
-  @action
-  removeActiveSessionLevel() {
-    this.activeSessionLevel = [];
-  }
-
-  removeActiveClass(name) {
-    const activeEls = document.querySelectorAll(`.${name}.link-item.active`);
-    activeEls.forEach(el => {
-      el.classList.remove('active');
-    });
-  }
-
-  @action
-  sessionFilter(name) {
-    if (this.activeSession.includes(name)) {
-      this.activeSession = this.activeSession.filter(session => session !== name);
-    } else {
-      this.activeSession = [...this.activeSession, name];
-    }
-    this.router.transitionTo('public.sessions', { queryParams: { 'sessionType': this.activeSession } });
-  }
-
-  @action
-  sessionLevelFilter(level) {
-    if (this.activeSessionLevel.includes(level)) {
-      this.activeSessionLevel = this.activeSessionLevel.filter(val => val !== level);
-    } else {
-      this.activeSessionLevel = [...this.activeSessionLevel, level];
-    }
-    this.router.transitionTo('public.sessions', { queryParams: { 'level': this.activeSessionLevel } });
-  }
-
-  @action
-  applyFilter(value, filterType) {
-    const params = this.router.currentRoute.queryParams;
-    if (!params.track) {
-      this.activeTrack = [];
-    }
-    if (!params.room) {
-      this.activeRoom = [];
-    }
-    if (!params.sessionType) {
-      this.activeSession = [];
-    }
-    value = value + ':';
-    if (filterType === 'room') {
-      if (this.activeRoom.includes(value)) {
-        this.activeRoom = this.activeRoom.filter(room => room !== value);
-      } else {
-        this.activeRoom = [...this.activeRoom, value];
-      }
-      this.router.transitionTo('public.sessions', { queryParams: { 'room': this.activeRoom } });
-    } else {
-      if (this.activeTrack.includes(value)) {
-        this.activeTrack = this.activeTrack.filter(track => track !== value);
-      } else {
-        this.activeTrack = [...this.activeTrack, value];
-      }
-      this.router.transitionTo('public.sessions', { queryParams: { 'track': this.activeTrack } });
     }
   }
 

@@ -22,7 +22,7 @@ export default class CreateRoute extends Route {
         minQuantity   : 1,
         maxQuantity   : 1
       }),
-      tickets: this.modelFor('events.view').query('tickets', {})
+      tickets: this.modelFor('events.view').query('tickets', { 'page[size]': 0 })
     });
   }
 

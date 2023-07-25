@@ -57,7 +57,6 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           this.excludeTickets.pushObject(ticket);
         }
       });
-
       Object.keys(_forms).forEach(_id => {
         const selectedTicket = _forms[_id].ticketsDetails;
         forms.pushObject({

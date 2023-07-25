@@ -42,27 +42,4 @@ export default class CustomFormTable extends Component<Args> {
     });
   }
 
-  get fieldNameConvertRichText(): void {
-    this.args.fields.forEach(field => {
-      const elem = document.getElementById(field.fieldIdentifier);
-      if (elem) {
-        elem.innerHTML = field.name + ' - ' + field.mainLanguage + '<div class="ui icon d-inline" data-tooltip="Custom Field"><i class="info icon"></i></div>';
-      }
-    });
-    return;
-  }
-
-  get fieldNameTranslateConvertRichText(): void {
-    this.args.fields.forEach(field => {
-      if (field.translations) {
-        field.translations.forEach(item => {
-          const elem = document.getElementById(field.fieldIdentifier + '_' + item.language_code);
-          if (elem) {
-            elem.innerHTML = item.name + ' - ' + item.language_code + '<div class="ui icon d-inline" data-tooltip="Custom Field" style="visibility: hidden"><i class="info icon"></i></div>';
-          }
-        })
-      }
-    });
-    return;
-  }
 }
