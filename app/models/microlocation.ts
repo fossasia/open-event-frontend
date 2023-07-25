@@ -9,7 +9,8 @@ export default class Microlocation extends ModelBase.extend({
   hiddenInScheduler : attr('boolean', { defaultValue: false }),
   longitude         : attr('number'),
   position          : attr('number', { defaultValue: 0 }),
-
+  isChatEnabled     : attr('boolean', { defaultValue: false }),
+  //chatRoomId        : attr('string'),
   sessions    : hasMany('session'),
   event       : belongsTo('event'),
   videoStream : belongsTo('video-stream')
