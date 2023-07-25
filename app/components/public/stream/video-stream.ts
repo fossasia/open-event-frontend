@@ -175,6 +175,12 @@ export default class PublicStreamVideoStream extends Component<Args> {
     }
   }
 
+
+  @action
+  hideStreamYard() {
+    this.selectingLanguage.setStreamYardVisibility(false);
+  }
+
   @action
   setupPlayer() {
     // Create a global function to handle the YouTube API ready event
@@ -205,6 +211,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }
+
 
   onPlayerStateChange(event) {
     if (event.data === window.YT.PlayerState.PLAYING) {

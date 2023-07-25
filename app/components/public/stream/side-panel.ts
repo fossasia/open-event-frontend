@@ -117,7 +117,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @action
   switchLanguage(url: string): void {
     this.selectingLanguage.setLanguage(url);
-    console.log('channel', url);
   }
 
   @action

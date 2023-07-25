@@ -1,0 +1,55 @@
+.translation-dropdown-container {
+  width: 11rem;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.translation-dropdown-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1; /* This is the important part */
+}
+
+.translation-dropdown {
+  padding: 2px;
+  display: flex;
+  justify-content: space-between;
+  /* Change justify-content to modify the alignment:
+     - space-between: evenly distributed with space between each item
+     - space-around: evenly distributed with equal space around each item
+     - center: items are centered horizontally
+     - flex-start: items are aligned to the left (start) of the container
+     - flex-end: items are aligned to the right (end) of the container
+  */
+  flex-direction: row;
+  align-items: center;
+  /* Centers the items vertically (optional) */
+  width: 100%;
+  background-color: lightgray;
+}
+
+.translation-dropdown-component {
+  display: inline-block;
+}
+
+.translation-dropdown .ui.dropdown {
+  background-color: #f9f9f9; /* Light grey background color */
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.translation-dropdown .ui.dropdown .menu {
+  background-color: #f9f9f9; /* Light grey background color for the dropdown menu */
+}
+
+.translation-dropdown .ui.dropdown .item {
+  color: #333; /* Text color for the items in the dropdown menu */
+}
+
+.translation-dropdown .ui.dropdown i.dropdown.icon {
+  color: #333; /* Icon color */
+}
