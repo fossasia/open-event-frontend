@@ -4,8 +4,14 @@ import { action, computed } from '@ember/object';
 import { groupBy, orderBy } from 'lodash-es';
 import { or } from '@ember/object/computed';
 import { tracked } from '@glimmer/tracking';
-import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
-import { languageForms2 } from 'open-event-frontend/utils/dictionary/language-form-2';
+import { nativeLanguage } from 'open-event-frontend/utils/dictionary/native-language';
+import { fluentLanguage } from 'open-event-frontend/utils/dictionary/fluent-language';
+import { genders } from 'open-event-frontend/utils/dictionary/genders';
+import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
+import { countries } from 'open-event-frontend/utils/dictionary/demography';
+import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
+import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
+import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
 
 @classic
 export default class AttendeeList extends Component {
@@ -17,20 +23,24 @@ export default class AttendeeList extends Component {
     return this.data.user;
   }
 
+  @tracked nativeLanguage = nativeLanguage;
+  @tracked fluentLanguage = fluentLanguage;
+  @tracked genders = genders;
+
   @computed('data.attendees')
   get holders() {
     this.data.attendees.forEach(attendee => {
       if (attendee.native_language) {
-        this.languageFormMapCodeToName(attendee, 'native_language', languageForms1);
+        this.languageFormMapCodeToName(attendee, 'native_language', this.nativeLanguage);
       }
       if (attendee.fluent_language) {
-        this.languageFormMapCodeToName(attendee, 'fluent_language', languageForms2);
+        this.languageFormMapCodeToName(attendee, 'fluent_language', this.fluentLanguage);
       }
       if (attendee.language_form_1) {
-        this.languageFormMapCodeToName(attendee, 'language_form_1', languageForms1);
+        this.languageFormMapCodeToName(attendee, 'language_form_1', this.nativeLanguage);
       }
       if (attendee.language_form_2) {
-        this.languageFormMapCodeToName(attendee, 'language_form_2', languageForms2);
+        this.languageFormMapCodeToName(attendee, 'language_form_2', this.fluentLanguage);
       }
       if (attendee.gender) {
         this.genderAddSpaces(attendee);
@@ -45,6 +55,7 @@ export default class AttendeeList extends Component {
     possibleLanguages.forEach(languageForm => {
       languageFormList.forEach(item => {
         if (item === languageForm.code) {
+          languageForm.isChecked = true;
           languageFormMap.push(languageForm.name);
         }
       });
@@ -52,8 +63,58 @@ export default class AttendeeList extends Component {
     return attendee.set(key.concat('_name_mapping'), languageFormMap.map(select => select).join(', '));
   }
 
+  @computed('genders')
+  get genders() {
+    return orderBy(this.genders, 'position');
+  }
+
+  @computed('ageGroups')
+  get ageGroups() {
+    return orderBy(ageGroups, 'position');
+  }
+
+  @computed('countries')
+  get countries() {
+    return orderBy(countries, 'name');
+  }
+
+  @computed('nativeLanguage')
+  get nativeLanguage() {
+    return orderBy(this.nativeLanguage, 'position');
+  }
+
+  @computed('fluentLanguage')
+  get fluentLanguage() {
+    return orderBy(this.fluentLanguage, 'position');
+  }
+
+  @computed('homeWikis')
+  get homeWikis() {
+    return orderBy(homeWikis, 'item');
+  }
+
+  @computed('wikiScholarship')
+  get wikiScholarship() {
+    return orderBy(wikiScholarship, 'position');
+  }
+
+  @computed('booleanComplex')
+  get booleanComplex() {
+    return orderBy(booleanComplex, 'position');
+  }
+
   genderAddSpaces(attendee) {
-    return attendee.set('gender'.concat('_name_mapping'), attendee.gender.split(',').join(', '));
+    const listMap = [];
+    const genderList = attendee.gender.split(',');
+    this.genders.forEach(gender => {
+      genderList.forEach(item => {
+        if (item === gender.code || item === gender.name) {
+          gender.isChecked = true;
+          listMap.push(gender.name);
+        }
+      });
+    });
+    return attendee.set('gender'.concat('_name_mapping'), listMap.join(', '));
   }
 
   @or('event.isBillingInfoMandatory', 'data.isBillingEnabled')
@@ -64,12 +125,14 @@ export default class AttendeeList extends Component {
     const current_locale = this.cookies.read('current_locale');
     const customFields = orderBy(this.fields.toArray()?.map(field => {
       const { main_language } = field;
+      field.nameConvert = field.name;
+      if (field.name === 'Consent of refund policy') {
+        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
+      }
       if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
         field.transName = field.name;
       } else if (field.translations?.length) {
-
         const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
-
         if (transName.length) {
           field.transName = transName[0].name;
         } else {
@@ -84,32 +147,15 @@ export default class AttendeeList extends Component {
     return groupBy(customFields, field => field.get('form'));
   }
 
-  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
-    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
-  }
-
-  get fieldNameConvertRichText() {
-    const fields = orderBy(this.fields.toArray(), 'position');
-    this.holders.forEach((holder, indexHolder) => {
-      fields.forEach((field, index) => {
-        const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
-        if (elem) {
-          elem.innerHTML = field.transName;
-        }
-      });
-    });
-    return null;
-  }
-
   @action
   toggleEditFields() {
     this.editFields = !this.editFields;
   }
 
   @action
-  async saveHolder(holder) {
+  async saveHolder() {
     try {
-      await holder.save();
+      await this.holders.forEach(holder => holder.save());
       await this.data.save();
     } catch (error) {
       console.warn(error);
@@ -141,5 +187,15 @@ export default class AttendeeList extends Component {
     } catch (error) {
       console.warn(error);
     }
+  }
+
+  @action
+  updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
+    holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
+  }
+
+  @action
+  updateGendersSelection(checked, changed, selectedOptions, holder, field) {
+    holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
   }
 }

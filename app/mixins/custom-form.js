@@ -406,7 +406,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'phone',
@@ -417,7 +418,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'workPhone',
@@ -428,7 +430,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'ageGroup',
@@ -439,7 +442,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'gender',
@@ -450,7 +454,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'company',
@@ -461,7 +466,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'taxBusinessInfo',
@@ -472,7 +478,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'address',
@@ -483,7 +490,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'city',
@@ -494,7 +502,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'state',
@@ -505,7 +514,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'country',
@@ -516,7 +526,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'website',
@@ -527,7 +538,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'blog',
@@ -538,7 +550,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'linkedin',
@@ -549,7 +562,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'twitter',
@@ -560,7 +574,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'github',
@@ -571,7 +586,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'facebook',
@@ -582,7 +598,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'instagram',
@@ -593,7 +610,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'acceptReceiveEmails',
@@ -604,7 +622,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'acceptShareDetails',
@@ -615,7 +634,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'acceptVideoRecording',
@@ -626,7 +646,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : true,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'homeWiki',
@@ -637,7 +658,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'nativeLanguage',
@@ -648,7 +670,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'fluentLanguage',
@@ -659,7 +682,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'Consent of refund policy',
@@ -670,7 +694,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'Code of conduct consent',
@@ -681,7 +706,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'Wikimania photo consent',
@@ -692,7 +718,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'Wikimania email updates',
@@ -703,7 +730,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'wikiScholarship',
@@ -714,7 +742,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'firstname',
@@ -725,7 +754,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       }),
       this.store.createRecord('custom-form', {
         name            : 'lastname',
@@ -736,7 +766,8 @@ export default Mixin.create(MutableArray, {
         isRequired      : false,
         isIncluded      : false,
         isPublic        : false,
-        event           : parent
+        event           : parent,
+        isAllowEdit     : false
       })
     ];
   }

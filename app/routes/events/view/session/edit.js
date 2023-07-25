@@ -21,8 +21,8 @@ export default class EditRoute extends Route.extend(AuthenticatedRouteMixin) {
       session: this.store.findRecord('session', params.session_id, {
         include: 'track,session-type,speakers'
       }),
-      tracks       : eventDetails.query('tracks', {}),
-      sessionTypes : eventDetails.query('sessionTypes', {}),
+      tracks       : eventDetails.query('tracks', { 'page[size]': 0 }),
+      sessionTypes : eventDetails.query('sessionTypes', { 'page[size]': 0 }),
       speakers     : eventDetails.query('speakers', {
         'page[size]': 0
       }),

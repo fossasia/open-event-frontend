@@ -914,6 +914,7 @@ msgstr ""
 
 #: app/components/forms/events/view/videoroom-form.hbs:34:28
 #: app/components/modals/add-room-modal.js:17:14
+#: app/templates/components/public/schedule-menu-filter.hbs:73:12
 msgid "Room"
 msgstr ""
 
@@ -2191,7 +2192,7 @@ msgstr ""
 msgid "Facebook"
 msgstr "ফেসবুক"
 
-#: app/components/public/session-item.hbs:131:113
+#: app/components/public/session-item.hbs:131:119
 #: app/models/custom-form.js:100:27
 msgid "LinkedIn"
 msgstr ""
@@ -2932,7 +2933,7 @@ msgstr ""
 #: app/templates/components/public/exhibition-view.hbs:65:132
 #: app/templates/components/public/exhibition-view.hbs:68:136
 msgid "Email"
-msgstr ""
+msgstr "ইমেইল"
 
 #: app/controllers/admin/users/list.js:49:26
 #: app/routes/admin/permissions/system-roles.js:9:11
@@ -3064,6 +3065,7 @@ msgstr ""
 
 #: app/controllers/events/view/sessions/list.js:68:26
 #: app/models/custom-form.js:37:18
+#: app/templates/components/public/schedule-menu-filter.hbs:59:12
 msgid "Track"
 msgstr ""
 
@@ -3570,6 +3572,7 @@ msgid "Subtitle"
 msgstr ""
 
 #: app/models/custom-form.js:38:18
+#: app/templates/components/public/schedule-menu-filter.hbs:87:12
 msgid "Session Type"
 msgstr ""
 
@@ -3644,7 +3647,7 @@ msgstr ""
 
 #: app/models/custom-form.js:104:27
 msgid "Photo & video & text consent"
-msgstr ""
+msgstr "ফটো এবং ভিডিও এবং পাঠ্য সম্মতি"
 
 #: app/models/custom-form.js:105:27
 msgid "Partner contact consent"
@@ -5470,6 +5473,7 @@ msgstr ""
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
 #: app/templates/public.hbs:93:16
+#: app/templates/components/public/schedule-menu-filter.hbs:118:8
 msgid "Tracks"
 msgstr ""
 
@@ -5752,6 +5756,7 @@ msgstr ""
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
 #: app/templates/public.hbs:121:16
+#: app/templates/components/public/schedule-menu-filter.hbs:147:8
 msgid "Session Types"
 msgstr ""
 
@@ -7037,7 +7042,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
 #: app/utils/dictionary/boolean-complex.ts:5:15
 msgid "Yes"
-msgstr ""
+msgstr "হ্যাঁ"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:51:26
 #: app/templates/components/modals/confirm-modal.hbs:32:75
@@ -7045,7 +7050,7 @@ msgstr ""
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
 #: app/utils/dictionary/boolean-complex.ts:9:15
 msgid "No"
-msgstr ""
+msgstr "না"
 
 #: app/templates/components/forms/orders/attendee-list.hbs:71:12
 #: app/templates/components/forms/orders/order-form.hbs:191:10
@@ -9619,6 +9624,7 @@ msgid "Clear Track Filter"
 msgstr ""
 
 #: app/templates/public.hbs:108:16
+#: app/templates/components/public/schedule-menu-filter.hbs:132:8
 msgid "Rooms"
 msgstr ""
 
@@ -9631,10 +9637,12 @@ msgid "Clear Session Type Filter"
 msgstr ""
 
 #: app/templates/public.hbs:133:18
+#: app/templates/components/public/schedule-menu-filter.hbs:160:12
 msgid "Select Session Type"
 msgstr ""
 
 #: app/templates/public.hbs:148:18
+#: app/templates/components/public/schedule-menu-filter.hbs:172:8
 msgid "Session Levels"
 msgstr ""
 
@@ -9643,6 +9651,7 @@ msgid "Clear Session Level Filter"
 msgstr ""
 
 #: app/templates/public.hbs:160:20
+#: app/templates/components/public/schedule-menu-filter.hbs:185:12
 msgid "Select Session level"
 msgstr ""
 
@@ -11425,6 +11434,671 @@ msgstr ""
 msgid "All Dates"
 msgstr "সব তারিখগুলো"
 
+#: app/utils/dictionary/event.ts:5:2
+msgid "Attraction"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:6:2
+msgid "Camp, Trip, or Retreat"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:7:2
+msgid "Class, Training, or Workshop"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:8:2
+msgid "Concert or Performance"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:9:2
+msgid "Conference"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:10:2
+msgid "Convention"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:11:2
+msgid "Dinner or Gala"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:12:2
+msgid "Festival or Fair"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:13:2
+msgid "Game or Competition"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:14:2
+msgid "Meeting or Networking Event"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:15:2 app/utils/dictionary/event.ts:28:69
+#: app/utils/dictionary/event.ts:32:63 app/utils/dictionary/event.ts:38:31
+#: app/utils/dictionary/event.ts:42:43 app/utils/dictionary/event.ts:45:79
+#: app/utils/dictionary/event.ts:49:74 app/utils/dictionary/event.ts:52:96
+#: app/utils/dictionary/event.ts:54:57 app/utils/dictionary/event.ts:57:26
+#: app/utils/dictionary/event.ts:61:44 app/utils/dictionary/event.ts:65:22
+#: app/utils/dictionary/event.ts:67:63 app/utils/dictionary/event.ts:71:19
+#: app/utils/dictionary/event.ts:77:55 app/utils/dictionary/event.ts:81:70
+#: app/utils/dictionary/event.ts:84:74 app/utils/dictionary/event.ts:89:53
+#: app/utils/dictionary/event.ts:95:23 app/utils/dictionary/event.ts:99:74
+msgid "Other"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:16:2
+msgid "Party or Social Gathering"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:17:2
+msgid "Race or Endurance Event"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:18:2
+msgid "Rally"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:19:2
+msgid "Screening"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:20:2
+msgid "Seminar or Talk"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:21:2
+msgid "Tour"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:22:2
+msgid "Tournament"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:23:2
+msgid "Tradeshow, Consumer Show, or Expo"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:28:4
+msgid "Air"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:28:17
+msgid "Auto"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:28:31
+msgid "Boat"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:28:45
+msgid "Motorcycle/ATV"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:31:4
+msgid "Career"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:31:20
+msgid "Design"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:31:36
+msgid "Educators"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:31:55
+msgid "Environment & Sustainability"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:32:4
+msgid "Finance"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:32:21
+msgid "Media"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:32:36
+msgid "Non Profit & NGOs"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:32:78
+msgid "Real Estate"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:33:4
+msgid "Sales & Marketing"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:33:31
+msgid "Startups & Small Business"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:36:4
+msgid "Animal Welfare"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:36:28
+msgid "Disaster Relief"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:36:53 app/utils/dictionary/event.ts:45:60
+msgid "Education"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:37:4
+msgid "Environment"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:37:25
+msgid "Healthcare"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:37:45
+msgid "Human Rights"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:38:4
+msgid "International Aid"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:38:46
+msgid "Poverty"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:41:4
+msgid "City/Town"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:41:23
+msgid "County"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:41:39
+msgid "Heritage"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:41:57
+msgid "LGBT"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:42:4
+msgid "Medieval"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:42:22
+msgid "Nationality"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:42:58
+msgid "Renaissance"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:45:4
+msgid "Alumni"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:45:20
+msgid "Baby"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:45:34
+msgid "Children & Youth"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:46:4
+msgid "Parenting"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:46:23
+msgid "Parents Association"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:49:4
+msgid "Accessories"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:49:25
+msgid "Beauty"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:49:41
+msgid "Bridal"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:49:57
+msgid "Fashion"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:52:4 app/utils/dictionary/event.ts:64:4
+msgid "Adult"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:52:19
+msgid "Anime"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:52:34 app/utils/dictionary/event.ts:76:20
+msgid "Comedy"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:52:50
+msgid "Comics"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:52:66
+msgid "Film"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:52:80 app/utils/dictionary/event.ts:64:97
+msgid "Gaming"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:52:111
+msgid "TV"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:54:29
+msgid "Beer"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:54:43
+msgid "Food"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:54:72
+msgid "Spirits"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:54:89
+msgid "Wine"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:56:4
+msgid "County/Municipal Government"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:56:41
+msgid "Democratic Party"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:56:67
+msgid "Federal Government"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:57:4
+msgid "Non-partisan"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:57:41
+msgid "Other Party"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:57:62
+msgid "Republican Party"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:58:4
+msgid "State Government"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:61:4
+msgid "Medical"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:61:21
+msgid "Mental health"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:61:59
+msgid "Personal health"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:61:84
+msgid "Spa"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:61:97 app/utils/dictionary/event.ts:96:90
+msgid "Yoga"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:64:19
+msgid "Anime/Comics"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:64:41
+msgid "Books"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:64:56
+msgid "DIY"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:64:69
+msgid "Drawing & Painting"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:65:4
+msgid "Knitting"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:65:37
+msgid "Photography"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:67:24
+msgid "Dating"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:67:40
+msgid "Home & Garden"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:67:78
+msgid "Pets & Animals"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:69:4
+msgid "Alternative"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:69:25
+msgid "Blues & Jazz"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:69:47
+msgid "Classical"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:69:83
+msgid "Cultural"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:70:4
+msgid "EDM / Electronic"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:70:30
+msgid "Folk"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:70:44
+msgid "Hip Hop / Rap"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:70:67
+msgid "Indie"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:70:82
+msgid "Latin"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:70:97
+msgid "Metal"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:71:4 app/utils/dictionary/event.ts:77:21
+msgid "Opera"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:71:34
+msgid "Pop"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:71:47
+msgid "R&B"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:71:60
+msgid "Reggae"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:71:76
+msgid "Religious/Spiritual"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:71:105
+msgid "Rock"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:72:4
+msgid "Top 40"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:74:32
+msgid "Avatar"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:76:4
+msgid "Ballet"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:76:36
+msgid "Craft"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:76:51
+msgid "Dance"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:76:66
+msgid "Fine Art"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:76:84
+msgid "Literary Arts"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:77:4
+msgid "Musical"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:77:36
+msgid "Orchestra"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:77:70
+msgid "Theatre"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:80:4
+msgid "Buddhism"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:80:22
+msgid "Christianity"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:80:44
+msgid "Eastern Religion"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:80:70
+msgid "Islam"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:80:85
+msgid "Judaism"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:81:4
+msgid "Mormonism"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:81:23
+msgid "Mysticism and Occult"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:81:53
+msgid "New Age"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:81:85
+msgid "Sikhism"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:84:4
+msgid "Biotech"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:84:21
+msgid "High Tech"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:84:40
+msgid "Medicine"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:84:89
+msgid "Robotics"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:85:4
+msgid "Science"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:88:4
+msgid "Channukah"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:88:23
+msgid "Christmas"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:88:42
+msgid "Easter"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:88:58
+msgid "Fall events"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:88:79
+msgid "Halloween/Haunt"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:89:4
+msgid "Independence Day"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:89:30
+msgid "New Years Eve"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:89:68
+msgid "St Patricks Day"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:90:4
+msgid "Thanksgiving"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:93:4
+msgid "Baseball"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:93:22
+msgid "Basketball"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:93:42
+msgid "Cycling"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:93:59
+msgid "Exercise"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:93:77
+msgid "Fighting & Martial Arts"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:94:4
+msgid "Football"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:94:22
+msgid "Golf"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:94:36
+msgid "Hockey"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:94:52
+msgid "Motorsports"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:94:73
+msgid "Mountain Biking"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:95:4
+msgid "Obstacles"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:95:38
+msgid "Rugby"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:95:53
+msgid "Running"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:95:70
+msgid "Snow Sports"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:95:91
+msgid "Soccer"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:96:4
+msgid "Swimming & Water Sports"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:96:37
+msgid "Tennis"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:96:53
+msgid "Volleyball"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:96:73
+msgid "Walking"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:99:4
+msgid "Canoeing"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:99:22
+msgid "Climbing"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:99:40
+msgid "Hiking"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:99:56
+msgid "Kayaking"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:99:89
+msgid "Rafting"
+msgstr ""
+
+#: app/utils/dictionary/event.ts:99:106
+msgid "Travel"
+msgstr ""
+
+#: app/utils/dictionary/filters.js:4:13
+msgid "All Dates"
+msgstr "সব তারিখগুলো"
+
 #: app/utils/dictionary/filters.js:8:13
 msgid "Today"
 msgstr "আজকে"
@@ -11596,6 +12270,29 @@ msgstr "18 এর নিচে"
 #: app/utils/dictionary/age-groups.ts:41:9
 msgid "I prefer not to say"
 msgstr "আমি না বলতে পছন্দ করি"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:5:12
+msgid "Filter by Tracks"
+msgstr "ট্র্যাক অনুযায়ী ফিল্টার করুন"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:17:12
+msgid "Filter by Rooms"
+msgstr "রুম অনুযায়ী ফিল্টার করুন"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:31:12
+msgid "Filter by Session Types"
+msgstr "সেশনের ধরণ অনুযায়ী ফিল্টার করুন&quot
+
+#: app/templates/components/public/schedule-menu-filter.hbs:44:12
+msgid "Filter by Session levels"
+msgstr "সেশনের স্তর অনুযায়ী ফিল্টার করুন&quot
+
+#: app/templates/components/public/schedule-menu-filter.hbs:67:50
+#: app/templates/components/public/schedule-menu-filter.hbs:81:50
+#: app/templates/components/public/schedule-menu-filter.hbs:95:50
+#: app/templates/components/public/schedule-menu-filter.hbs:109:50
+msgid "[Clear Filter]"
+msgstr "[স্বচ্ছ ছাকুনী]"
 
 #: app/utils/dictionary/home-wikis.ts:5:10
 msgid "Wikipedia"

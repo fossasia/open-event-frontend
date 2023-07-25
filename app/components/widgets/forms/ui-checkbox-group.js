@@ -57,7 +57,7 @@ export default class UiCheckboxGroupComponent extends Component {
       const item = this.args.options[i];
       const label = item.name;
       const value = item.code ? item.code : item.name;
-      const checked = this.isOptionChecked(value);
+      const checked = item.isChecked ? item.isChecked : this.isOptionChecked(value);
       const obj = EmberObject.create({
         label,
         value: String(value),
@@ -65,7 +65,6 @@ export default class UiCheckboxGroupComponent extends Component {
       });
       _options.pushObject(obj);
     }
-
     return _options;
   }
 

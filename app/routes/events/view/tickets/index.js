@@ -11,7 +11,7 @@ export default class IndexRoute extends Route {
   async model() {
     return hash({
       orderStats  : this.modelFor('events.view').query('orderStatistics', {}),
-      tickets     : this.modelFor('events.view').query('tickets', {}),
+      tickets     : this.modelFor('events.view').query('tickets', { 'page[size]': 0 }),
       eventDetail : this.modelFor('events.view')
     });
   }
