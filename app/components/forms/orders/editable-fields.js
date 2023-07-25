@@ -10,14 +10,6 @@ import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
   validGithubProfileUrlPattern, validInstagramProfileUrlPattern, validLinkedinProfileUrlPattern, validEmail
 } from 'open-event-frontend/utils/validators';
-import { genders } from 'open-event-frontend/utils/dictionary/genders';
-import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
-import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { nativeLanguage } from 'open-event-frontend/utils/dictionary/native-language';
-import { fluentLanguage } from 'open-event-frontend/utils/dictionary/fluent-language';
-import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
-import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
-import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -619,74 +611,7 @@ export default Component.extend(FormMixin, {
 
   allFields: computed('fields', function() {
     const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
-    const current_locale = this.cookies.read('current_locale');
-
-    const customFields =  orderBy(this.fields.toArray()?.filter(field => {
-      const { isFixed, main_language } = field;
-      field.nameConvert = field.name;
-      if (field.name === 'Consent of refund policy') {
-        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
-      }
-      if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
-        field.transName = field.name;
-      } else if (field.translations?.length) {
-        const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
-        if (transName.length) {
-          field.transName = transName[0].name;
-        } else {
-          field.transName = field.name;
-        }
-      } else {
-        field.transName = field.name;
-      }
-      return !isFixed;
-    }), ['position']);
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
-  }),
-
-  genders         : orderBy(genders, 'position'),
-  ageGroups       : orderBy(ageGroups, 'position'),
-  countries       : orderBy(countries, 'name'),
-  nativeLanguage  : orderBy(nativeLanguage, 'position'),
-  fluentLanguage  : orderBy(fluentLanguage, 'position'),
-  homeWikis       : orderBy(homeWikis, 'item'),
-  wikiScholarship : orderBy(wikiScholarship, 'position'),
-  booleanComplex  : orderBy(booleanComplex, 'position'),
-
-  currentLocale: computed('cookies.current_locale', function() {
-    return this.cookies.read('current_locale');
-  }),
-
-  getData() {
-    return 'hello';
-  },
-
-  actions: {
-    submit(data) {
-      this.onValid(() => {
-        const currentUser = this.data.user;
-        currentUser.set('firstName', this.buyerFirstName);
-        currentUser.set('lastName', this.buyerLastName);
-        this.sendAction('save', data);
-      });
-    },
-    triggerSameAsBuyerOption(holder) {
-      holder.set('sameAsBuyer', !holder.sameAsBuyer);
-      if (holder.sameAsBuyer) {
-        holder.set('firstname', this.buyerFirstName);
-        holder.set('lastname', this.buyerLastName);
-        holder.set('email', this.buyer.content.email);
-      } else {
-        holder.set('firstname', '');
-        holder.set('lastname', '');
-        holder.set('email', '');
-      }
-    },
-    updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
-      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
-    },
-    updateGendersSelection(checked, changed, selectedOptions, holder, field) {
-      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
-    }
-  }
+  })
 });
