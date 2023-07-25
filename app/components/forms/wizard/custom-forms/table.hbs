@@ -32,6 +32,11 @@
         <th class="center aligned">
           {{t 'Include'}}
         </th>
+        {{#if (eq @form 'attendee')}}
+          <th class="center aligned">
+            {{t 'Allow Editing'}}
+          </th>
+        {{/if}}
         <th class="center aligned">
           {{t 'Require'}}
         </th>
@@ -101,6 +106,16 @@
               @onChange={{action (mut field.isIncluded)}}
               @label={{if this.device.isMobile (t "Include")}} />
           </td>
+          {{#if (eq @form 'attendee')}}
+            <td class="border center aligned">
+              <UiCheckbox
+                @class="slider"
+                @checked={{field.isAllowEdit}}
+                @disabled={{field.isFixed}}
+                @onChange={{action (mut field.isAllowEdit)}}
+                @label={{if this.device.isMobile (t "Allow Editing")}} />
+            </td>
+          {{/if}}
           <td class="border center aligned">
             <UiCheckbox
               @class="slider"

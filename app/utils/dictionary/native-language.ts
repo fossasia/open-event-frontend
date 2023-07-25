@@ -1,4 +1,4 @@
-export const languageForms2 = [
+export const nativeLanguage = [
   {
     name      : 'عربي',
     code      : 'ar',
@@ -27,6 +27,11 @@ export const languageForms2 = [
   {
     name      : '中文',
     code      : 'zh-CN',
+    isChecked : false
+  },
+  {
+    name      : 'Other',
+    code      : 'other',
     isChecked : false
   }
 ];
