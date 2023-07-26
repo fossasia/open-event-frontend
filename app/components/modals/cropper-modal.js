@@ -9,15 +9,16 @@ export default class extends ModalBase {
     const viewport = {};
     const factor = 150;
     const aspectRatio = this.get('aspectRatio') ?? [2, 1];
+    const isBadgeCrop = this.get('cropPanel') ?? [300, 250];
     viewport.width = aspectRatio[0] * factor;
     viewport.height = aspectRatio[1] * factor;
     viewport.type = 'square';
-    $('.content', this.element).css('height', '300px');
+    $('.content', this.element).css('height', isBadgeCrop[0] + 'px');
     this.croppie = new Croppie(this.element.getElementsByTagName('img')[0], {
       customClass : 'croppie',
       viewport,
       boundary    : {
-        height: 250
+        height: isBadgeCrop[1]
       }
     });
   }

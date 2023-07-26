@@ -33,7 +33,7 @@ export default class AttendeeController extends Controller.extend(EventWizardMix
     try {
       await this.saveForms(data);
       this.saveEventDataAndRedirectTo(
-        direction === 'forwards' ? 'events.view.edit.sponsors' : 'events.view.edit.other-details',
+        direction === 'forwards' ? 'events.view.edit.badge' : 'events.view.edit.other-details',
         ['tickets']
       );
     } catch (error) {

@@ -66,29 +66,34 @@
             <span class="ml-2">{{stream.name}}</span>
             {{#if (eq index 0)}}
               {{#if (gt this.translationChannels.length 1)}}
-                <div style="display:inline-block;margin-left:80px">
-                  <button class="translation-dropdown-container ">
-                    <UiDropdown class="btn btn-secondary dropdown-toggle"
+                <div style="display:inline-block;margin-left:100px">
+                  <div style="padding: 0" class="button ui d-flex translation-dropdown-container">
+                    <UiDropdown class="btn-secondary dropdown-toggle"
                                 @onChange={{ action "switchLanguage"}}>
                       <div class="translation-dropdown-wrapper">
-                        <div class="translation-dropdown-component">
+                        <div class="translation-dropdown-item">
                           <i style="font-size:1.1em" class="language icon"></i>
                         </div>
-                        <div class="translation-dropdown-component">
-                          {{this.translationChannels.length}} {{t 'languagues'}}
+                        <div class="translation-dropdown-item">
+                          {{this.translationChannels.length}} {{t 'languages'}}
                         </div>
-                        <div class="translation-dropdown-component">
+                        <div class="translation-dropdown-item">
                           <i class="dropdown icon"> </i>
                         </div>
                       </div>
-                      <div class="ui translation menu">
+                      <div style="top:30px;width:145px !important;background-color:#E0E1E2 !important;" class="ui translation menu">
                         {{#each-in this.translationChannels as |key channel|}}
-                          <div class="item" data-value="{{channel.url}}">{{channel.name}}</div>
+                          <div class="item" data-value="{{channel.url}}">
+                            <div style="margin-left: 10px">
+                              {{channel.name}}
+                            </div>
+                          </div>
                         {{/each-in}}
                       </div>
                     </UiDropdown>
-                  </button>
+                  </div>
                 </div>
+
               {{/if}}
             {{/if}}
           </a>

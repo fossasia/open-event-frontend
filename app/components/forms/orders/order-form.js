@@ -13,8 +13,8 @@ import {
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-import { languageForms1 } from 'open-event-frontend/utils/dictionary/language-form-1';
-import { languageForms2 } from 'open-event-frontend/utils/dictionary/language-form-2';
+import { nativeLanguage } from 'open-event-frontend/utils/dictionary/native-language';
+import { fluentLanguage } from 'open-event-frontend/utils/dictionary/fluent-language';
 import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
 import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
 import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
@@ -647,8 +647,8 @@ export default Component.extend(FormMixin, {
   genders         : orderBy(genders, 'position'),
   ageGroups       : orderBy(ageGroups, 'position'),
   countries       : orderBy(countries, 'name'),
-  languageForms1  : orderBy(languageForms1, 'position'),
-  languageForms2  : orderBy(languageForms2, 'position'),
+  nativeLanguage  : orderBy(nativeLanguage, 'position'),
+  fluentLanguage  : orderBy(fluentLanguage, 'position'),
   homeWikis       : orderBy(homeWikis, 'item'),
   wikiScholarship : orderBy(wikiScholarship, 'position'),
   booleanComplex  : orderBy(booleanComplex, 'position'),
@@ -659,23 +659,6 @@ export default Component.extend(FormMixin, {
 
   getData() {
     return 'hello';
-  },
-
-  prepareFieldId(fieldIdentifier, holderIndex, fieldIndex) {
-    return `${fieldIdentifier}_${holderIndex}_${fieldIndex}`;
-  },
-
-  get fieldNameConvertRichText() {
-    const fields = orderBy(this.fields.toArray(), 'position');
-    this.holders.forEach((holder, indexHolder) => {
-      fields.forEach((field, index) => {
-        const elem = document.getElementById(this.prepareFieldId(field.fieldIdentifier, indexHolder, index));
-        if (elem) {
-          elem.innerHTML = field.transName;
-        }
-      });
-    });
-    return null;
   },
 
   actions: {
