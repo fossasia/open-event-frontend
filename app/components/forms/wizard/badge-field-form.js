@@ -69,10 +69,10 @@ export default Component.extend(FormMixin, {
 
   actions: {
     toggleSetting() {
-      if (!this.isExpanded) {
-        this.set('isExpanded', true);
+      if (!this.data.is_field_expanded) {
+        this.set('data.is_field_expanded', true);
       } else {
-        this.set('isExpanded', false);
+        this.set('data.is_field_expanded', false);
       }
     },
     removeForm() {
