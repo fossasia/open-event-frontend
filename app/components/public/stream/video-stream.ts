@@ -50,6 +50,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   shown = false;
 
+  @tracked 
+  currentRoom = null;
+
   @computed()
   get isRocketChatEnabled(): boolean {
     return this.authManager.currentUser?.isRocketChatRegistered && this.args.event.isChatEnabled;
@@ -141,5 +144,10 @@ export default class PublicStreamVideoStream extends Component<Args> {
     } catch {
       this.shown = false;
     }
+  }
+
+  @action
+  async setupRoomChat(stream:any) {
+    this.currentRoom = stream;
   }
 }

@@ -59,12 +59,10 @@
     {{#if this.showVideoRoom}}
       <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="margin-top: -20px">
         {{#each this.streams as |stream|}}
-        {{!-- <div {{action @setupRoomChat stream}}> --}}
-          <a href={{href-to 'public.stream.view' @event stream.slugName stream.id }} class="{{if (eq @currentRoom.id stream.id) 'video-active'}} item stream-item d-flex items-center" {{action @setupRoomChat stream}}>
+          <a href={{href-to 'public.stream.view' @event stream.slugName stream.microlocationId }} class="{{if (eq @currentRoom.microlocationId stream.microlocationId) 'video-active'}} item stream-item d-flex items-center" {{on "click" (fn @setupRoomChat stream) }}>
             <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.roomName) 1 false}}</span>
             <span class="ml-2">{{stream.roomName}}</span>
           </a>
-          {{!-- </div> --}}
         {{/each}}
       </div>
     {{/if}}

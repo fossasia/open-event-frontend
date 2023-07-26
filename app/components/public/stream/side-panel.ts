@@ -92,7 +92,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
           id                : stream.id,
           name              : stream.attributes.name,
           roomName          : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes.name)[0],
-          slugName          : slugify(stream.attributes.name),
+          slugName          : slugify(rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['chat-room-name'])[0]),
           isChatEnabled     : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['is-chat-enabled'])[0],
           isGlobalEventRoom : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['is-global-event-room'])[0],
           chatRoomName      : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['chat-room-name'])[0],
