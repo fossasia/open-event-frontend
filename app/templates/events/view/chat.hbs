@@ -22,10 +22,13 @@
             <thead>
               <tr>
                 <th class="text center aligned">
-                  {{t 'Room Name'}}
+                  {{t 'Room'}}
                 </th>
                 <th class="text center aligned">
-                  {{t 'Enable Chat'}}
+                  {{t 'Room Chat'}}
+                </th>
+                <th class="text center aligned">
+                  {{t 'Event Chat'}}
                 </th>
               </tr>
             </thead>
@@ -37,6 +40,10 @@
                     <UiCheckbox @class="ui slider" 
                     @checked={{if room.isChatEnabled 'active' }}
                     @onChange={{action 'changeRoomChatStatus' room }} /></td>
+                  <td class="text center aligned">
+                    <UiCheckbox @class="ui slider" 
+                    @checked={{if room.isGlobalEventRoom 'active' }}
+                    @onChange={{action 'setGlobalEventRoom' room }} /></td>
                 </tr>
               {{/each}}
             </tbody>

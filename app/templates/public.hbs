@@ -140,13 +140,13 @@
 </div>
 
 {{#if this.side_panel}}
-  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @currentRoute={{this.session.currentRouteName}} />  
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @currentRoute={{this.session.currentRouteName}} @setupRoomChat={{action 'setupRoomChat'}} @currentRoom={{this.currentRoom}} />  
 {{/if}}
 {{#if (and this.model.isChatEnabled this.canAccess)}}
   {{#if this.shown}}
-    <Public::Stream::ChatPanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} />
+    <Public::Stream::ChatPanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @currentRoom={{this.currentRoom}} />
   {{else}}
-    <Public::Stream::ChatPanel @event={{this.model}} @shown={{false}} @showChatPanel={{this.showChatPanel}} />
+    <Public::Stream::ChatPanel @event={{this.model}} @shown={{false}} @showChatPanel={{this.showChatPanel}} @currentRoom={{this.currentRoom}} />
   {{/if}}
 {{/if}}
 {{#if this.video_dialog}}
