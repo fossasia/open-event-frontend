@@ -57,7 +57,7 @@
         </UiDropdown>
           {{#if this.getWarningFields}}
             {{#each this.getWarningFields as |warning|}}
-            <label class="warning">{{concat '\'' warning.field '\' is not available in ticket \'' warning.ticket '\''}}</label>
+            <label class="warning">{{warning-badge-ticket  warning.field  warning.ticket}}</label>
             {{!-- <UiPopup
               @tagName="i"
               @class="info circle icon"
