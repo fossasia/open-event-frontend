@@ -114,10 +114,17 @@ label.warning {
 }
 
 .badge-preview {
-  .preview {
+  .badge-preview-title {
+    margin-bottom: unset !important;
+  }
+
+  .label-checkbox-sample {
     margin: unset !important;
+  }
+
+  .preview {
     padding: 50px !important;
     border-top: 1px solid rgb(211, 211, 211);
-    margin-top: 5px !important;
+    margin-top: unset;
   }
 }
