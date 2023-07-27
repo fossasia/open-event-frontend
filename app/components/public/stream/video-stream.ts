@@ -13,7 +13,8 @@ declare global {
 
 interface Args {
   videoStream: VideoStream,
-  event: Event
+  event: Event,
+  streamId: number,
 }
 
 export default class PublicStreamVideoStream extends Component<Args> {
@@ -50,7 +51,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   shown = false;
 
-  @tracked 
+  @tracked
   currentRoom = null;
 
   @computed()

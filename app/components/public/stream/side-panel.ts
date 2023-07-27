@@ -15,6 +15,8 @@ interface Args {
   shown: boolean,
   showChatPanel: any,
   currentRoom: any,
+  streamId: number,
+  setupRoomChat: ((stream: any) => void),
 }
 
 export default class PublicStreamSidePanel extends Component<Args> {
@@ -109,6 +111,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
         const { success, token } = await this.loader.load(`/events/${this.args.event.id}/chat-token`);
         this.token = token;
         this.success = success;
+        if (this.args.streamId) {
+          const microlocation = this.streams.find(stream => stream.id === this.args.streamId)
+          this.args.setupRoomChat(microlocation)
+        }
       }
 
       this.loading = false;
