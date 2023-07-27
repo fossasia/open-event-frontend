@@ -74,6 +74,7 @@ export default ModelBase.extend({
   max             : attr('number', { defaultValue: 10 }),
   translations    : attr(),
   mainLanguage    : attr('string', { defaultValue: 'en' }),
+  isAllowEdit     : attr('boolean', { defaultValue: false }),
 
   event             : belongsTo('event'),
   customFormOptions : hasMany('customFormOptions'),
