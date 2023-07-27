@@ -48,10 +48,10 @@
         </div>
       </div>
     </a>
-    <a href="{{href-to 'events.view.edit.badge'}}" class="ui segment {{unless this.data.event.isTicketFormEnabled 'secondary'}} grid no margin">
+    <a href="{{href-to 'events.view.edit.badge'}}" class="ui segment {{unless this.data.event.isBadgesEnabled 'secondary'}} grid no margin">
       <div class="ui row">
         <div class="column one wide">
-          <i class="{{if this.data.event.isTicketFormEnabled 'checkmark green' 'warning black'}} big icon"></i>
+          <i class="{{if this.data.event.isBadgesEnabled 'checkmark green' 'warning black'}} big icon"></i>
         </div>
         <div class="column fifteen wide">
           <h4 class="ui header">
