@@ -100,24 +100,25 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           form.badgeFields.forEach(field => {
             if (!field.is_deleted) {
               badgeFields.pushObject(this.store.createRecord('badge-field-form', {
-                badge_field_id   : field.id,
-                badge_id         : field.badge_id,
-                field_identifier : field.field_identifier,
-                custom_field     : field.custom_field,
-                sample_text      : field.sample_text,
-                font_size        : field.font_size,
-                font_name        : field.font_name,
-                font_color       : field.font_color,
-                text_rotation    : field.text_rotation,
-                margin_top       : field.margin_top,
-                margin_bottom    : field.margin_bottom,
-                margin_left      : field.margin_left,
-                margin_right     : field.margin_right,
-                font_weight      : field.font_weight,
-                text_alignment   : field.text_alignment,
-                text_type        : field.text_type,
-                is_deleted       : field.is_deleted,
-                qr_custom_field  : field.qr_custom_field
+                badge_field_id    : field.id,
+                badge_id          : field.badge_id,
+                field_identifier  : field.field_identifier,
+                custom_field      : field.custom_field,
+                sample_text       : field.sample_text,
+                font_size         : field.font_size,
+                font_name         : field.font_name,
+                font_color        : field.font_color,
+                text_rotation     : field.text_rotation,
+                margin_top        : field.margin_top,
+                margin_bottom     : field.margin_bottom,
+                margin_left       : field.margin_left,
+                margin_right      : field.margin_right,
+                font_weight       : field.font_weight,
+                text_alignment    : field.text_alignment,
+                text_type         : field.text_type,
+                is_deleted        : field.is_deleted,
+                qr_custom_field   : field.qr_custom_field,
+                is_field_expanded : field.is_field_expanded
               }));
               field = null;
             }

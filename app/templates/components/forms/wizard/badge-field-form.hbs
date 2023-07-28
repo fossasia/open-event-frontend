@@ -14,7 +14,7 @@
     </h3>
     <div class="btn-row">
       <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting' }}>
-      {{#if this.isExpanded}}
+      {{#if @data.is_field_expanded }}
         <i class="angle up icon" />
       {{else}}
         <i class="angle down icon" />
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  {{#if this.isExpanded}}
+  {{#if @data.is_field_expanded }}
   <div class="badge-form-body-field">
     <h3 class="background-color-title padding-left-1rem margin-left-revert-1rem">
       {{t 'Setting'}}
