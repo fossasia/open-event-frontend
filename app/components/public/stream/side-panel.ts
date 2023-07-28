@@ -36,9 +36,9 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
 
   setAuthorizationHeader() {
-    let cookieContent = this.cookies.read('ember_simple_auth-session'); // replace 'ember_simple_auth-session' with the name of your cookie
-    let parsedContent = JSON.parse(decodeURIComponent(cookieContent));
-    let accessToken = parsedContent.authenticated.access_token;
+    const cookieContent = this.cookies.read('ember_simple_auth-session'); // replace 'ember_simple_auth-session' with the name of your cookie
+    const parsedContent = JSON.parse(decodeURIComponent(cookieContent));
+    const accessToken = parsedContent.authenticated.access_token;
 
     const currentHeaders = this.ajax.headers || {};
     const updatedHeaders = {
@@ -58,8 +58,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked translationChannels = [];
   @service ajax: any;
   @service cookies: any;
-
-
 
   @tracked shown = false;
   @tracked token = '';
@@ -86,19 +84,17 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
 
   async fetchTranslationChannels(streamId: string) {
-    let response = await this.ajax.request(`/v1/video-streams/${streamId}/translation_channels`, {
+    const response = await this.ajax.request(`/v1/video-streams/${streamId}/translation_channels`, {
       // headers: {
       //   'Authorization': `JWT ${this.authManager.currentUser.jwt}`
       // }
     });
-    
-    this.translationChannels = response.data.map((channel: ChannelData) => ({
-      id: channel.id,
-      name: channel.attributes.name,
-      url: channel.attributes.url
-    }));
 
-    console.log(this.translationChannels )
+    this.translationChannels = response.data.map((channel: ChannelData) => ({
+      id   : channel.id,
+      name : channel.attributes.name,
+      url  : channel.attributes.url
+    }));
   }
 
   async checkSpeakers(): Promise<void> {
@@ -132,7 +128,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.showChat = this.args.event.isChatEnabled && this.settings.rocketChatUrl;
     this.showVideoRoom = this.args.event.isVideoroomEnabled;
 
-    console.log(this.streams);
     await Promise.all(this.streams.map(stream => this.fetchTranslationChannels(stream.id)));
 
     if (this.args.event.isSchedulePublished) {
@@ -147,20 +142,15 @@ export default class PublicStreamSidePanel extends Component<Args> {
           this.addStream(stream)
 
         });
-
-
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
       }
-
 
       if (this.args.event.isChatEnabled) {
         const { success, token } = await this.loader.load(`/events/${this.args.event.id}/chat-token`);
         this.token = token;
         this.success = success;
       }
-
-
 
       this.loading = false;
     }

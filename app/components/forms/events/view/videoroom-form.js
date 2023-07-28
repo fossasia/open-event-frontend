@@ -26,8 +26,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @service ajax;
   @service cookies;
 
-
-
   @tracked integrationLoading = false;
   @tracked loading = false;
   @tracked moderatorEmail = '';
@@ -49,9 +47,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   setAuthorizationHeader() {
-    let cookieContent = this.cookies.read('ember_simple_auth-session'); // replace 'cookie-name' with the name of your cookie
-    let parsedContent = JSON.parse(decodeURIComponent(cookieContent));
-    let accessToken = parsedContent.authenticated.access_token;
+    const cookieContent = this.cookies.read('ember_simple_auth-session'); // replace 'cookie-name' with the name of your cookie
+    const parsedContent = JSON.parse(decodeURIComponent(cookieContent));
+    const accessToken = parsedContent.authenticated.access_token;
 
     const currentHeaders = this.ajax.get('headers') || {};
     const updatedHeaders = {
@@ -119,33 +117,29 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @action
   addChannel() {
     event.preventDefault();
-    this.translationChannelsNew = [...this.translationChannelsNew, { id:'', name: '', url: '' }];
+    this.translationChannelsNew = [...this.translationChannelsNew, { id: '', name: '', url: '' }];
   }
 
   @action
   async updateChannel(index, id) {
     event.preventDefault();
-    console.log("AHAHAHAH")
-    const channel = this.translationChannels[index]
+    const channel = this.translationChannels[index];
     const response = await this.ajax.request(`/v1/translation_channels/${id}`, {
-      // headers: {
-      //   'Content-Type': 'text/plain'
-      // },
       method      : 'PATCH',
       contentType : 'application/vnd.api+json',
       data        : JSON.stringify({
         data: {
-          type: 'translation_channel',
-          id: `${channel.id}`,
+          type       : 'translation_channel',
+          id         : `${channel.id}`,
           attributes : {
             name : channel.name,
-            url  : channel.url,
+            url  : channel.url
           },
           relationships: {
             video_stream: {
               data: {
                 type : 'video_stream',
-                id   : this.data.stream.get('id') 
+                id   : this.data.stream.get('id')
               }
             },
             channel: {
@@ -158,8 +152,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         }
       })
     });
-
-
+    return response;
   }
 
   @action
@@ -169,13 +162,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
 
     const response = await this.ajax.request(`/v1/translation_channels/${id}`, {
-        method      : 'DELETE',
-        contentType : 'application/vnd.api+json',
-      });
-
-
-    }
-    
+      method      : 'DELETE',
+      contentType : 'application/vnd.api+json'
+    });
+    return response;
+  }
 
   @action
   updateChannelName(index, event) {
@@ -191,13 +182,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.translationChannels = newChannels;
   }
 
-
-
   @computed('data.stream.rooms.[]')
   get room() {
     return this.data.stream.rooms.toArray()[0];
   }
-
 
   @action
   setRoom(room) {
@@ -447,24 +435,15 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async submit(event) {
+    const response = [];
     event.preventDefault();
     this.onValid(async() => {
       try {
         this.setAuthorizationHeader();
         this.set('isLoading', true);
-
-        // const response = await this.loader.post('/translation_channels', this.data.stream);
-        // const response = await this.loader.post('/translation_channels', {
-        //   headers: {
-        //       'Content-Type': 'application/vnd.api+json'
-        //   },
-        //     data: JSON.stringify(this.data.stream)
-        // });
-
         // Iterate over the translationChannels array and send a POST request for each channel
         for (const channel of this.translationChannelsNew) {
-          const response = await this.ajax.request('/v1/translation_channels', {
-
+          response.push(this.ajax.request('/v1/translation_channels', {
             method      : 'POST',
             contentType : 'application/vnd.api+json',
             data        : JSON.stringify({
@@ -490,8 +469,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
                 }
               }
             })
-          });
+          }));
         }
+        Promise.all(response);
 
         // if (response.status) {
         //   this.notify.success(this.l10n.t('Your stream has been saved'), {
@@ -538,6 +518,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.set('isLoading', false);
       }
     });
+    return response;
   }
 
   @action
