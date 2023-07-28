@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
 import { slugify, stringHashCode } from 'open-event-frontend/utils/text';
-import { hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
+import { hasExhibitors, hasSessions } from 'open-event-frontend/utils/event';
 import Loader from 'open-event-frontend/services/loader';
 import EventService from 'open-event-frontend/services/event';
 
@@ -14,7 +14,7 @@ interface Args {
   videoStream: VideoStream,
   event: Event,
   shown: boolean,
-  showChatPanel: any
+  showChatPanel: any,
 }
 
 interface ChannelData {
@@ -55,7 +55,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @service declare settings: any;
   @service authManager: any;
   @service confirm: any;
-  @tracked translationChannels = [];
+  @service selectingLanguage: any;
   @service ajax: any;
   @service cookies: any;
 
@@ -69,6 +69,11 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showExhibitors: number | null = null;
   @tracked showChat = false;
   @tracked showVideoRoom = false;
+  @tracked translationChannels = [{
+    id   : '0',
+    name : 'Original',
+    url  : ''
+  }];
 
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
@@ -115,10 +120,14 @@ export default class PublicStreamSidePanel extends Component<Args> {
     this.streams.push(stream);
   }
 
+  @action
+  switchLanguage(url: string): void {
+    this.selectingLanguage.setLanguage(url);
+  }
 
   @action
   async setup(): Promise<void> {
-
+    this.fetchTranslationChannels(this.args.videoStream.id);
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
     this.addStream(this.args.event.belongsTo('videoStream').value());
 

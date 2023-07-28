@@ -1,25 +1,34 @@
-<div id="video-root" class="video-root" {{did-insert this.setup}} {{did-update this.setup @videoStream}}>
+<div id="video-root" style="position: relative" class="video-root" {{did-insert this.setup}} {{did-update this.setup @videoStream}}>
+
   {{#if this.loading}}
     <div class="ui active centered inline loader"></div>
   {{/if}}
   {{#if this.iframeUrl}}
-    <iframe src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" />
+    <iframe src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true" style="width: 100%; height: 100%; border: 0px;position: absolute" />
   {{/if}}
   {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
   {{/if}}
   {{#if (and (eq @videoStream.videoChannel.provider 'youtube') this.youtubeId)}}
-    {{!-- <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}" gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe> --}}
-      <iframe width="100%" height="100%" frameborder="0" title="YouTube Live Stream" 
-    src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay={{if @videoStream.extra.autoplay 1 0}}&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute={{if muteYoutube 1 0}}" 
-    gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true">
-    </iframe>
+    {{#if (eq this.selectingLanguage.selectingLanguage null)}}
+      <iframe style="position: absolute" id="video-player" width="100%" height="100%" frameborder="0" title="YouTube Live Stream (mute" src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay=1&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute=0&controls=0&disablekb=1" gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+    {{else}}
+      <iframe style="position: absolute" id="video-player" width="100%" height="100%" frameborder="0" title="YouTube Live Stream" src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay=1&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute=1&controls=0&disablekb=1" gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+    {{/if}}
+    <div>{{this.selectingLanguage.selectingLanguage}}</div>
   {{/if}}
   {{#if (and (eq @videoStream.videoChannel.provider 'vimeo') this.vimeoId)}}
-    <iframe src="https://player.vimeo.com/video/{{this.vimeoId}}?autoplay={{if @videoStream.extra.autoplay 1 0}}&loop={{if @videoStream.extra.loop 1 0}}" width="100%" height="100%" frameborder="0" title="Vimeo Live Stream" allow="autoplay" allowfullscreen="true"></iframe>
+    <iframe style="position: absolute"  src="https://player.vimeo.com/video/{{this.vimeoId}}?autoplay={{if @videoStream.extra.autoplay 1 0}}&loop={{if @videoStream.extra.loop 1 0}}" width="100%" height="100%" frameborder="0" title="Vimeo Live Stream" allow="autoplay" allowfullscreen="true"></iframe>
+  {{/if}}
+
+  {{#if (not eq this.selectingLanguage.selectingLanguage null)}}
+      <button class="ui button" style={{html-safe (concat "position:absolute; top:120px; left:650px; z-index:2;" if this.selectingLanguage.isStreamYardVisible "" "display:none;")}} {{on "click" this.hideStreamYard}}>Hide This</button>
+      <div id="streamyard-iframe" style={{html-safe (concat "position:absolute; top:40px; left:340px; width:100%; height:0px; position:relative; padding-bottom:56.25%; margin-bottom:20px;" if this.selectingLanguage.isStreamYardVisible "" "display:none;")}}>
+        <iframe id="streamyard-iframe-player" title="StreamYard stream" src="{{this.selectingLanguage.selectingLanguage}}" width="10%" height="10%" frameborder="0" style="width:30%;height:30%;position:absolute;left:0px;top:0px;overflow:hidden"></iframe>
+      </div>
   {{/if}}
 </div>
-<Public::Stream::SidePanel @event={{@event}} @videoStream={{@videoStream}} @shown={{true}} @showChatPanel={{this.showChatPanel}} />
+<Public::Stream::SidePanel @event={{@event}} @videoStream={{@videoStream}} @selectingLanguage={{this.selectingLanguage}} @shown={{true}} @showChatPanel={{this.showChatPanel}} />
 {{#if this.isRocketChatEnabled}}
   {{#if this.shown}}
     <Public::Stream::ChatPanel @event={{@event}} @shown={{true}} @showChatPanel={{this.showChatPanel}} />
