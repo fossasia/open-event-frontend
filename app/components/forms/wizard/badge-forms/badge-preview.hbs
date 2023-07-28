@@ -54,7 +54,9 @@
                     </div>
                     {{else}}
                         <p class="field-style" style={{_field.getFieldStyle}}>
-                            {{_field.custom_field}}
+                          {{#if _field.custom_field }}
+                            {{ rich-text-link  _field.custom_field}}
+                          {{/if}}
                         </p>
                     {{/if}}
                   {{/if}}
