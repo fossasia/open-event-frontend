@@ -67,7 +67,7 @@
               {{#if (eq index 0)}}
                 {{#if (gt this.translationChannels.length 1)}}
 								<div style="display:inline-block;margin-left:80px">
-                  <button class="translation-dropdown-container ">
+                  <div class="translation-dropdown-button translation-dropdown-container ">
                     <UiDropdown class="btn btn-secondary dropdown-toggle"
                                 @onChange={{ action "switchLanguage"}}>
 									<div class="translation-dropdown-wrapper">
@@ -75,10 +75,11 @@
                       <i style="font-size:1.1em" class="language icon"></i>
                     </div>
                     <div class="translation-dropdown-component">
-                      {{this.translationChannels.length}} {{t 'languagues'}}
+                      {{this.translationChannels.length}} {{t 'languages'}}
                     </div>
                     <div class="translation-dropdown-component">
-                      <i class="dropdown icon"> </i>
+                      <i style="margin-left: 0 !important;text-align: right;"
+                         class="dropdown icon"> </i>
                     </div>
                   </div>
                       <div class="ui translation menu">
@@ -87,7 +88,7 @@
                         {{/each-in}}
                       </div>
                     </UiDropdown>
-                  </button>
+                  </div>
                 </div>
                 {{/if}}
               {{/if}}

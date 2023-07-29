@@ -102,7 +102,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
       this.iframeUrl = stream.url;
       this.iframeTitle = 'Chatmosphere Session';
     } else if (stream.url.includes('libre')) {
-      // TODO: recheck the condition for libre
       this.provider = 'libre';
       this.iframeUrl = stream.url
       this.iframeTitle = 'Libre Work Adventure Session'
@@ -175,58 +174,8 @@ export default class PublicStreamVideoStream extends Component<Args> {
     }
   }
 
-
   @action
   hideStreamYard() {
     this.selectingLanguage.setStreamYardVisibility(false);
   }
-
-  @action
-  setupPlayer() {
-    // Create a global function to handle the YouTube API ready event
-    window.onYouTubeIframeAPIReady = () => {
-      this.player = new window.YT.Player('video-player', {
-        playerVars: {
-          controls       : 0,  // Hide player controls
-          disablekb      : 1, // Disable keyboard controls
-          enablejsapi    : 1, // Enable JavaScript API
-          iv_load_policy : 3, // Hide annotations
-          modestbranding : 1,
-          rel            : 0, // Disable related videos
-          showinfo       : 0 // Hide video title and uploader info
-        },
-        events: {
-          onStateChange: this.onPlayerStateChange.bind(this)
-        }
-      });
-      this.player2 = new window.YT.Player('video2', {
-        events: {
-          onStateChange: this.onPlayerStateChange2.bind(this)
-        }
-      });
-    };
-    // Load the YouTube Iframe API asynchronously
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  }
-
-
-  onPlayerStateChange(event) {
-    if (event.data === window.YT.PlayerState.PLAYING) {
-      this.isPlaying = true;
-    } else {
-      this.isPlaying = false;
-    }
-  }
-
-  onPlayerStateChange2(event) {
-    if (event.data === window.YT.PlayerState.PLAYING) {
-      this.isPlaying = true;
-    } else {
-      this.isPlaying = false;
-    }
-  }
-
 }
