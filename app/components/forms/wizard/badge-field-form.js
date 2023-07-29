@@ -13,10 +13,13 @@ export default Component.extend(FormMixin, {
   booleanTextType    : orderBy(booleanTextType, 'position'),
 
   getCustomFields: computed('includeCustomField', function() {
-    const validForms = this.includeCustomField.map(item => item.name);
-    if (this.data.custom_field) {
-      validForms.push(this.data.custom_field);
-    }
+    const validForms = this.includeCustomField.map(item => {
+      if (item.isComplex) {
+        return { 'isComplex': item.name };
+      } else {
+        return { 'isFixed': item.name };
+      }
+    });
     return union(validForms);
   }),
 
@@ -40,6 +43,25 @@ export default Component.extend(FormMixin, {
       });
     }
     return warningFields;
+  }),
+
+  getFieldComplex: computed('data.custom_field', function() {
+    const { custom_field } = this.data;
+    let isComplex = false;
+    if (custom_field !== 'QR') {
+      this.selectedTickets.forEach(ticket => {
+        const listCFields = this.customForms.filter(form => (ticket.formID === form.formID) && form.isIncluded || form.isFixed);
+        if (custom_field) {
+          listCFields.forEach(field => {
+            const { isComplex: fieldIsComplex } = field;
+            if (field.name === custom_field) {
+              isComplex = fieldIsComplex;
+            }
+          });
+        }
+      });
+    }
+    return isComplex;
   }),
 
   getWarningQRFields: computed('data.qr_custom_field.@each', 'selectedTickets', function() {
@@ -69,10 +91,10 @@ export default Component.extend(FormMixin, {
 
   actions: {
     toggleSetting() {
-      if (!this.isExpanded) {
-        this.set('isExpanded', true);
+      if (!this.data.is_field_expanded) {
+        this.set('data.is_field_expanded', true);
       } else {
-        this.set('isExpanded', false);
+        this.set('data.is_field_expanded', false);
       }
     },
     removeForm() {
