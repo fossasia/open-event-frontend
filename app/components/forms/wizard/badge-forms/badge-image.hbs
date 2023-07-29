@@ -1,0 +1,32 @@
+<div id="badge-image" class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}"
+    style={{badgeImgOrColor}}>
+    <div class="ui w-full h-full badge-body">
+        <div class="sample-text">
+            {{#if showSampleData}}
+            <p class="f-4 align-center">
+                {{sampleData.name}}
+            </p>
+            <p class="f-2 align-center">
+                {{sampleData.organisation}}
+            </p>
+            <p class="f-6 align-center">
+                {{sampleData.position}}
+            </p>
+            {{else}}
+            {{#each @fields as |_field|}}
+            {{#if (not _field.is_deleted)}}
+                {{#if (eq _field.custom_field 'QR')}}
+                <div style={{_field.getFieldStyle}}>
+                    <QrCode class="badge-qr" @text="https://eventyay.com" @darkColor="#000" />
+                </div>
+                {{else}}
+                    <p class="field-style" style={{_field.getFieldStyle}}>
+                        {{_field.sample_text}}
+                    </p>
+                {{/if}}
+            {{/if}}
+            {{/each}}
+            {{/if}}
+        </div>
+    </div>
+</div>
