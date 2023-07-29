@@ -61,7 +61,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
-  async fetchTranslationChannels(streamId: string) {
+  async fetchTranslationChannels(streamId: string): Promise<void> {
     const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
     if (response.data !== undefined && response.data.length > 0) {
       const newChannels = response.data.map((channel: ChannelData) => ({
