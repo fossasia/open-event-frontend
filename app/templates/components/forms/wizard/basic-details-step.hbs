@@ -591,7 +591,9 @@
             <Input
               @type="checkbox"
               @id="payment_by_stripe"
-              @checked={{this.data.event.canPayByStripe}} />
+              checked={{this.data.event.canPayByStripe}}
+              @change={{action "onStripeCheckboxChange"}}
+              />
             <label for="payment_by_stripe">
               <span>{{t 'YES, accept payment through Stripe'}}</span>
               <br>
@@ -724,6 +726,7 @@
               @type="checkbox"
               @id="billing_info_mandatory"
               @checked={{this.data.event.isBillingInfoMandatory}}
+              @disabled={{this.data.event.canPayByStripe}}
             />
             <label for="billing_info">
               {{t 'Require billing information from ticket buyer.'}}

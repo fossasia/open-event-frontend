@@ -934,6 +934,7 @@ msgstr "Personnaliser"
 
 #: app/components/forms/events/view/videoroom-form.hbs:34:28
 #: app/components/modals/add-room-modal.js:17:14
+#: app/templates/components/public/schedule-menu-filter.hbs:73:12
 msgid "Room"
 msgstr "Salle"
 
@@ -3257,6 +3258,7 @@ msgstr "Votre session a été enregistrée"
 
 #: app/controllers/events/view/sessions/list.js:68:26
 #: app/models/custom-form.js:37:18
+#: app/templates/components/public/schedule-menu-filter.hbs:59:12
 msgid "Track"
 msgstr "Suivi"
 
@@ -3800,6 +3802,7 @@ msgid "Subtitle"
 msgstr "Sous-titre"
 
 #: app/models/custom-form.js:38:18
+#: app/templates/components/public/schedule-menu-filter.hbs:87:12
 msgid "Session Type"
 msgstr "Type de session"
 
@@ -5797,6 +5800,7 @@ msgstr "Salles"
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
 #: app/templates/public.hbs:93:16
+#: app/templates/components/public/schedule-menu-filter.hbs:118:8
 msgid "Tracks"
 msgstr "Traces"
 
@@ -6112,6 +6116,7 @@ msgstr "Verrouillé"
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
 #: app/templates/public.hbs:121:16
+#: app/templates/components/public/schedule-menu-filter.hbs:147:8
 msgid "Session Types"
 msgstr "Types de session"
 
@@ -10254,6 +10259,7 @@ msgid "Clear Track Filter"
 msgstr "Effacer le filtre de piste"
 
 #: app/templates/public.hbs:108:16
+#: app/templates/components/public/schedule-menu-filter.hbs:132:8
 msgid "Rooms"
 msgstr "Chambres"
 
@@ -10266,10 +10272,12 @@ msgid "Clear Session Type Filter"
 msgstr "Effacer le filtre de type de session"
 
 #: app/templates/public.hbs:133:18
+#: app/templates/components/public/schedule-menu-filter.hbs:160:12
 msgid "Select Session Type"
 msgstr "Sélectionnez le type de session"
 
 #: app/templates/public.hbs:148:18
+#: app/templates/components/public/schedule-menu-filter.hbs:172:8
 msgid "Session Levels"
 msgstr "Niveaux de session"
 
@@ -10278,6 +10286,7 @@ msgid "Clear Session Level Filter"
 msgstr "Effacer le filtre de niveau de session"
 
 #: app/templates/public.hbs:160:20
+#: app/templates/components/public/schedule-menu-filter.hbs:185:12
 msgid "Select Session level"
 msgstr "Sélectionnez le niveau de session"
 
@@ -12239,6 +12248,29 @@ msgstr "Moins de 18 ans"
 #: app/utils/dictionary/age-groups.ts:41:9
 msgid "I prefer not to say"
 msgstr "Je préfère ne pas dire"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:5:12
+msgid "Filter by Tracks"
+msgstr "Filtrer par pistes"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:17:12
+msgid "Filter by Rooms"
+msgstr "Filtrer par chambres"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:31:12
+msgid "Filter by Session Types"
+msgstr "Filtrer par types de session"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:44:12
+msgid "Filter by Session levels"
+msgstr "Filtrer par niveaux de session"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:67:50
+#: app/templates/components/public/schedule-menu-filter.hbs:81:50
+#: app/templates/components/public/schedule-menu-filter.hbs:95:50
+#: app/templates/components/public/schedule-menu-filter.hbs:109:50
+msgid "[Clear Filter]"
+msgstr "[Effacer le filtre]"
 
 #: app/utils/dictionary/home-wikis.ts:5:10
 msgid "Wikipedia"

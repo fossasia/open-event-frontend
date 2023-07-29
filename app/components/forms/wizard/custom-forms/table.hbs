@@ -32,6 +32,11 @@
         <th class="center aligned">
           {{t 'Include'}}
         </th>
+        {{#if (eq @form 'attendee')}}
+          <th class="center aligned">
+            {{t 'Allow Editing'}}
+          </th>
+        {{/if}}
         <th class="center aligned">
           {{t 'Require'}}
         </th>
@@ -53,15 +58,15 @@
           <td class="{{if this.device.isMobile 'center' 'right'}} border right aligned">
             <label class="{{if field.isFixed 'required'}}">
               {{#if field.isComplex}}
-                <div id={{field.fieldIdentifier}}>
-                  {{this.fieldNameConvertRichText}}
+                <div>
+                  {{rich-text-link field.name field.mainLanguage true}}
                 </div>
                 {{#if field.translations}}
                   {{#each field.translations as |translation|}}
                     {{#unless translation.isDeleted}}
-                      {{#if (and translation.name translation.language_code)}} 
-                        <div id={{concat field.fieldIdentifier "_" translation.language_code}}>
-                          {{this.fieldNameTranslateConvertRichText}}
+                      {{#if (and translation.name translation.language_code)}}
+                        <div>
+                          {{rich-text-link translation.name translation.language_code true}}
                         </div>
                       {{/if}}
                     {{/unless}}
@@ -101,6 +106,16 @@
               @onChange={{action (mut field.isIncluded)}}
               @label={{if this.device.isMobile (t "Include")}} />
           </td>
+          {{#if (eq @form 'attendee')}}
+            <td class="border center aligned">
+              <UiCheckbox
+                @class="slider"
+                @checked={{field.isAllowEdit}}
+                @disabled={{field.isFixed}}
+                @onChange={{action (mut field.isAllowEdit)}}
+                @label={{if this.device.isMobile (t "Allow Editing")}} />
+            </td>
+          {{/if}}
           <td class="border center aligned">
             <UiCheckbox
               @class="slider"

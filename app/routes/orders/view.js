@@ -27,10 +27,25 @@ export default class ViewRoute extends Route {
       reload  : true
     });
     const eventDetails = await order.query('event', { include: 'tax' });
+    const tickets = await order.query('tickets', {});
+    await tickets.forEach(ticket => {
+      ticket.query('attendees', {
+        filter: [{
+          name : 'order',
+          op   : 'has',
+          val  : {
+            name : 'id',
+            op   : 'eq',
+            val  : order.originalId
+          }
+        }]
+      });
+    });
 
     return hash({
       order,
       event      : eventDetails,
+      tickets,
       taxDetails : eventDetails.isTaxEnabled && eventDetails.get('tax', { cache: true, public: true }),
       form       : eventDetails.query('customForms', {
         'page[size]' : 70,

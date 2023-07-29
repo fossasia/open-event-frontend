@@ -63,7 +63,6 @@ export default class Loader extends Service {
     fetchOptions.headers = config.replaceHeaders ? config.header : merge(fetchOptions.headers, config.headers);
     fetchOptions.method = method;
 
-    console.log('url', url);
     if (data) {
       if (bodyAllowedIn.includes(method)) {
         if (config.skipDataTransform) {
@@ -101,7 +100,7 @@ export default class Loader extends Service {
     };
   }
 
-  async makePromise(urlPath: string, method: string, data = null, config: Config = {}, contentType?: string): Promise<any> {
+  async makePromise(urlPath: string, method: string, data = null, config: Config = {}): Promise<any> {
 
     const { url, fetchOptions } = this.getFetchOptions(urlPath, method, data, config);
 
@@ -222,6 +221,29 @@ export default class Loader extends Service {
       xhr.onerror = reject;
       if (onProgressUpdate) {xhr.onprogress = onProgressUpdate}
       xhr.send(null);
+    });
+  }
+
+  downloadFileWithPost(urlPath: string,  data = null, config: Config = {}, method = 'POST'): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const { url, fetchOptions } = this.getFetchOptions(urlPath, method, data, config);
+      const xhr = new XMLHttpRequest();
+
+      xhr.responseType = 'blob';
+      xhr.open(method, url);
+      const headers = fetchOptions.headers || {};
+      for (const k in headers) {
+        xhr.setRequestHeader(k, fetchOptions.headers[k]);
+      }
+      xhr.send(fetchOptions.body)
+      xhr.onload =  (e: any) => {
+        if (e.target.response) {
+          resolve(e.target.response);
+        } else {
+          reject('Failed to download file.');
+        }
+      };
+      xhr.onerror = reject;
     });
   }
 }

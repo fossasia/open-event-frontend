@@ -124,7 +124,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   async updateChannel(index, id) {
     event.preventDefault();
     const channel = this.translationChannels[index];
-    const response = await this.ajax.request(`/v1/translation_channels/${id}`, {
+    await this.ajax.request(`/v1/translation_channels/${id}`, {
       // headers: {
       //   'Content-Type': 'text/plain'
       // },
@@ -165,7 +165,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
     this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
 
-    const response = await this.ajax.request(`/v1/translation_channels/${id}`, {
+    await this.ajax.request(`/v1/translation_channels/${id}`, {
       method      : 'DELETE',
       contentType : 'application/vnd.api+json'
     });
@@ -448,19 +448,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       try {
         this.setAuthorizationHeader();
         this.set('isLoading', true);
-        console.log('stream videoChannel id', this.data.stream.videoChannel.get('id'));
         // Iterate over the translationChannels array and send a POST request for each channel
         if (this.translationChannelsNew !== []) {
-          console.log('stream videoChannel id', this.data.stream.videoChannel.get('id'));
-
           for (const channel of this.translationChannelsNew) {
-            const randomIdentifier = () => {
-              const min = Math.ceil(0);
-              const max = Math.floor(1000);
-              return Math.floor(Math.random() * (max - min + 1)) + min;
-            };
-            const randomId = randomIdentifier();
-            const response = await this.loader.post('/translation_channels', {
+            this.loader.post('/translation_channels', {
               data: {
                 type       : 'translation_channel',
                 attributes : {
