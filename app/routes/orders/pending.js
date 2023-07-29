@@ -22,6 +22,21 @@ export default class PendingRoute extends Route {
     });
     const eventDetails = await order.query('event', { include: 'tax' });
     const tickets     = await order.query('tickets', {});
+
+    await tickets.forEach(ticket => {
+      ticket.query('attendees', {
+        filter: [{
+          name : 'order',
+          op   : 'has',
+          val  : {
+            name : 'id',
+            op   : 'eq',
+            val  : order.originalId
+          }
+        }]
+      });
+    });
+
     const filterOptions = [
       {
         or: []
@@ -43,6 +58,7 @@ export default class PendingRoute extends Route {
 
     return {
       order,
+      tickets,
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
         filter       : filterOptions,

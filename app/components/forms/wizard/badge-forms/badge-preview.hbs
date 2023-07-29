@@ -1,14 +1,14 @@
-<div class="badge-setting">
+<div class="badge-setting badge-preview">
   <div>
-    <form class="ui form">
-      <div class="field">
+    <form class="ui form form-preview">
+      <div class="field badge-preview-title">
         {{#if @headerText}}
         <h2 class="badge-setting-title">
           {{@headerText}}
         </h2>
         {{/if}}
       </div>
-      <div class="ui grid">
+      <div class="ui grid label-checkbox-sample">
         <div class="two column row">
           <div class="left floated column">
             <UiCheckbox @class="slider mt-2 ml-2 blog-icon-preview" @checked={{@data.isShowingSampleData}} @onChange={{action (mut
@@ -54,7 +54,9 @@
                     </div>
                     {{else}}
                         <p class="field-style" style={{_field.getFieldStyle}}>
-                            {{_field.custom_field}}
+                          {{#if _field.custom_field }}
+                            {{ rich-text-link  _field.custom_field}}
+                          {{/if}}
                         </p>
                     {{/if}}
                   {{/if}}

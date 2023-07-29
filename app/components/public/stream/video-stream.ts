@@ -56,6 +56,18 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   provider = '';
 
+  @tracked
+  player = null;
+
+  @tracked
+  player2 = null;
+
+  @tracked
+  players = [];
+
+  @tracked
+  isPlaying: any;
+
   @service
   selectingLanguage: any;
 
@@ -90,7 +102,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
       this.iframeUrl = stream.url;
       this.iframeTitle = 'Chatmosphere Session';
     } else if (stream.url.includes('libre')) {
-      // TODO: recheck the condition for libre
       this.provider = 'libre';
       this.iframeUrl = stream.url
       this.iframeTitle = 'Libre Work Adventure Session'
@@ -167,5 +178,4 @@ export default class PublicStreamVideoStream extends Component<Args> {
   hideStreamYard() {
     this.selectingLanguage.setStreamYardVisibility(false);
   }
-
 }

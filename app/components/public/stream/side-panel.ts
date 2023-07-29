@@ -64,6 +64,24 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+    this.ajax.host = ' http://45.77.243.185:8080';
+    this.setAuthorizationHeader();
+  }
+
+  setAuthorizationHeader() {
+    const cookieContent = this.cookies.read('ember_simple_auth-session'); // replace 'ember_simple_auth-session' with the name of your cookie
+    const parsedContent = JSON.parse(decodeURIComponent(cookieContent));
+    const accessToken = parsedContent.authenticated.access_token;
+
+    const currentHeaders = this.ajax.headers || {};
+    this.ajax.headers = {
+      ...currentHeaders,
+      Authorization: `JWT ${accessToken}`
+    };
+  }
+
   async fetchTranslationChannels(streamId: string) {
     const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
     if (response.data !== undefined && response.data.length > 0) {

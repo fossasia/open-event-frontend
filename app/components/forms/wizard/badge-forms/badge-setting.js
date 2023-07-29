@@ -24,9 +24,11 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   }),
   actions: {
     onChangeBadgeColor() {
-      this.set('data.badgeImageURL', null);
-      this.set('data.selectedImage', null);
-      this.set('data.imageUrl', null);
+      if (this.data.badgeColor != null) {
+        this.set('data.badgeImageURL', null);
+        this.set('data.selectedImage', null);
+        this.set('data.imageUrl', null);
+      }
     }
   }
 });

@@ -2,9 +2,9 @@
   <i class="angle right icon"></i>
 </button>
 {{#if this.showChat}}
-  <div class="ui chat-stream-side-panel-button right">
-    <i class="rocketchat large icon p-4 chat-panel-icon" {{on "click" @showChatPanel}} role="button"></i>
-  </div>
+<div class="ui chat-stream-side-panel-button right">
+  <i class="rocketchat large icon p-4 chat-panel-icon" {{on "click" @showChatPanel}} role="button"></i>
+</div>
 {{/if}}
 {{#if this.shown}}
   <div class="d-flex flex-column stream-side-panel" >
@@ -25,35 +25,35 @@
       {{#if (and @event.isSchedulePublished this.showSessions)}}
         <a class="ui labeled fluid item {{if (eq @currentRoute 'public.sessions.index') 'video-active'}}" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
           <span><i class="calendar icon"></i>
-            {{t 'Schedule'}}</span>
+          {{t 'Schedule'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showSpeakers}}
         <a class="ui labeled icon item {{if (eq @currentRoute 'public.speakers') 'video-active'}}" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
           <span><i class="bullhorn icon"></i>
-            {{t 'Speakers'}}</span>
+          {{t 'Speakers'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showExhibitors}}
         <a class="ui labeled icon item {{if (eq @currentRoute 'public.exhibition.index') 'video-active'}}" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
           <span><i class="image icon"></i>
-            {{t 'Exhibition'}}</span>
+          {{t 'Exhibition'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showChat}}
         <a href="#" class="ui labeled icon item" role="button" {{on "click" @showChatPanel}}>
           <span><i class="comment icon"></i>
-            {{t 'Chat'}}</span>
+          {{t 'Chat'}}</span>
         </a>
       {{/if}}
 
       {{#if this.showVideoRoom}}
         <div class="item">
           <span><i class="video icon"></i>
-            {{t 'Video Rooms'}}</span>
+          {{t 'Video Rooms'}}</span>
         </div>
       {{/if}}
     </div>
@@ -62,40 +62,36 @@
         {{#each this.streams as |stream index|}}
           <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
 
-            <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
-            <span class="ml-2">{{stream.name}}</span>
-            {{#if (eq index 0)}}
-              {{#if (gt this.translationChannels.length 1)}}
-                <div style="display:inline-block;margin-left:100px">
-                  <div style="padding: 0" class="button ui d-flex translation-dropdown-container">
-                    <UiDropdown class="btn-secondary dropdown-toggle"
+              <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
+              <span class="ml-2">{{stream.name}}</span>
+              {{#if (eq index 0)}}
+                {{#if (gt this.translationChannels.length 1)}}
+								<div style="display:inline-block;margin-left:80px">
+                  <div class="translation-dropdown-button translation-dropdown-container ">
+                    <UiDropdown class="btn btn-secondary dropdown-toggle"
                                 @onChange={{ action "switchLanguage"}}>
-                      <div class="translation-dropdown-wrapper">
-                        <div class="translation-dropdown-item">
-                          <i style="font-size:1.1em" class="language icon"></i>
-                        </div>
-                        <div class="translation-dropdown-item">
-                          {{this.translationChannels.length}} {{t 'languages'}}
-                        </div>
-                        <div class="translation-dropdown-item">
-                          <i class="dropdown icon"> </i>
-                        </div>
-                      </div>
-                      <div style="top:30px;width:145px !important;background-color:#E0E1E2 !important;" class="ui translation menu">
+									<div class="translation-dropdown-wrapper">
+                    <div class="translation-dropdown-component">
+                      <i style="font-size:1.1em" class="language icon"></i>
+                    </div>
+                    <div class="translation-dropdown-component">
+                      {{this.translationChannels.length}} {{t 'languages'}}
+                    </div>
+                    <div class="translation-dropdown-component">
+                      <i style="margin-left: 0 !important;text-align: right;"
+                         class="dropdown icon"> </i>
+                    </div>
+                  </div>
+                      <div class="ui translation menu">
                         {{#each-in this.translationChannels as |key channel|}}
-                          <div class="item" data-value="{{channel.url}}">
-                            <div style="margin-left: 10px">
-                              {{channel.name}}
-                            </div>
-                          </div>
+                          <div class="item" data-value="{{channel.url}}">{{channel.name}}</div>
                         {{/each-in}}
                       </div>
                     </UiDropdown>
                   </div>
                 </div>
-
+                {{/if}}
               {{/if}}
-            {{/if}}
           </a>
 
         {{/each}}

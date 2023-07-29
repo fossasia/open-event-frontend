@@ -11,29 +11,30 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
-  badge_field_id   : attr('number'),
-  badge_id         : attr('string'),
-  field_identifier : attr('string'),
-  custom_field     : attr('string'),
-  sample_text      : attr('string'),
-  font_size        : attr('number'),
-  font_name        : attr('string'),
-  font_color       : attr('string'),
-  text_rotation    : attr('number'),
-  margin_top       : attr('number'),
-  margin_bottom    : attr('number'),
-  margin_left      : attr('number'),
-  margin_right     : attr('number'),
-  font_weight      : attr('number'),
-  text_alignment   : attr('string', { defaultValue: 'center' }),
-  text_type        : attr('string'),
-  is_deleted       : attr('boolean'),
-  qr_custom_field  : attr(),
+  badge_field_id    : attr('number'),
+  badge_id          : attr('string'),
+  field_identifier  : attr('string'),
+  custom_field      : attr('string'),
+  sample_text       : attr('string'),
+  font_size         : attr('number'),
+  font_name         : attr('string'),
+  font_color        : attr('string'),
+  text_rotation     : attr('number'),
+  margin_top        : attr('number'),
+  margin_bottom     : attr('number'),
+  margin_left       : attr('number'),
+  margin_right      : attr('number'),
+  font_weight       : attr('number'),
+  text_alignment    : attr('string', { defaultValue: 'center' }),
+  text_type         : attr('string'),
+  is_deleted        : attr('boolean'),
+  qr_custom_field   : attr(),
+  is_field_expanded : attr('boolean', { defaultValue: true }),
   /**
    * Relationships
    */
-  event            : belongsTo('event'),
-  ticket           : hasMany('ticket'),
+  event             : belongsTo('event'),
+  ticket            : hasMany('ticket'),
 
   getFieldStyle: computed('font_size', 'font_name', 'font_color', 'text_rotation', 'margin_top', 'margin_bottom', 'margin_left'
     , 'margin_right', 'font_weight', 'text_alignment', 'text_type', 'isDeleted', 'this', function() {

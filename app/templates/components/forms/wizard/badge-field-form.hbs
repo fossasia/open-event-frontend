@@ -4,12 +4,17 @@
     <h3 class="lh-2r">
       {{t 'Row'}} {{inc @index}}
       {{#if @data.custom_field }}
-      - {{@data.custom_field}}
+        {{#if this.getFieldComplex}}
+          - {{rich-text-link @data.custom_field}}
+        {{else}}
+          - {{t-var @data.custom_field}}
+        {{/if}}
       {{/if}}
+      
     </h3>
     <div class="btn-row">
       <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting' }}>
-      {{#if this.isExpanded}}
+      {{#if @data.is_field_expanded }}
         <i class="angle up icon" />
       {{else}}
         <i class="angle down icon" />
@@ -21,7 +26,7 @@
     </div>
   </div>
 
-  {{#if this.isExpanded}}
+  {{#if @data.is_field_expanded }}
   <div class="badge-form-body-field">
     <h3 class="background-color-title padding-left-1rem margin-left-revert-1rem">
       {{t 'Setting'}}
@@ -36,15 +41,23 @@
           <div class="default text">{{t 'Custom field'}}</div>
           <div class="menu">
             {{#each this.getCustomFields as |cfield|}}
-            <div class="item" data-value="{{cfield}}">
-              {{t-var cfield}}
-            </div>
+              {{#if cfield.isFixed}}
+                <div class=" item fixed-item" data-value="{{cfield.isFixed}}">
+                  {{cfield.isFixed}}
+                </div>
+              {{else}}
+                {{#if cfield.isComplex}}
+                  <div class=" item complex-item" data-value="{{cfield.isComplex}}">
+                    {{rich-text-link cfield.isComplex}}
+                  </div>
+                {{/if}}
+              {{/if}}
             {{/each}}
           </div>
         </UiDropdown>
           {{#if this.getWarningFields}}
             {{#each this.getWarningFields as |warning|}}
-            <label class="warning">{{concat '\'' warning.field '\' is not available in ticket \'' warning.ticket '\''}}</label>
+            <label class="warning">{{warning-badge-ticket  warning.field  warning.ticket}}</label>
             {{!-- <UiPopup
               @tagName="i"
               @class="info circle icon"
