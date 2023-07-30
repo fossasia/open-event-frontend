@@ -22,7 +22,8 @@ export default class PublicStreamView extends Route {
     const event = this.modelFor('public');
     return hash({
       event,
-      stream: this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel', reload: true })
+      stream   : this.store.findRecord('video-stream', params.stream_id, { include: 'video-channel', reload: true }),
+      streamId : params.stream_id
     });
   }
 
