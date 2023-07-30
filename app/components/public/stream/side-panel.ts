@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import Event from 'open-event-frontend/models/event';
 import { inject as service } from '@ember/service';
 import { slugify, stringHashCode } from 'open-event-frontend/utils/text';
-import { hasSessions, hasExhibitors } from 'open-event-frontend/utils/event';
+import { hasExhibitors, hasSessions } from 'open-event-frontend/utils/event';
 import Loader from 'open-event-frontend/services/loader';
 import EventService from 'open-event-frontend/services/event';
 
@@ -13,7 +13,15 @@ interface Args {
   videoStream: VideoStream,
   event: Event,
   shown: boolean,
-  showChatPanel: any
+  showChatPanel: any,
+}
+
+interface ChannelData {
+  id: string,
+  attributes: {
+    name: string,
+    url: string,
+  }
 }
 
 export default class PublicStreamSidePanel extends Component<Args> {
@@ -22,6 +30,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @service declare settings: any;
   @service authManager: any;
   @service confirm: any;
+  @service selectingLanguage: any;
 
   @tracked shown = false;
   @tracked token = '';
@@ -34,6 +43,12 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showChat = false;
   @tracked showVideoRoom = false;
 
+  @tracked translationChannels = [{
+    id   : '0',
+    name : 'Original',
+    url  : ''
+  }];
+
   colors = ['bisque', 'aqua', 'aquamarine', 'cadetblue', 'chartreuse',
     'coral', 'chocolate', 'crimson', 'cyan', 'darkcyan',
     'blueviolet', 'burlywood', 'cornflowerblue', 'darkblue',
@@ -45,6 +60,20 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'green', 'hotpink', 'indianred', 'indigo', 'lawngreen',
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
+
+  async fetchTranslationChannels(streamId: string): Promise<void> {
+    const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
+    if (response.data !== undefined && response.data.length > 0) {
+      const newChannels = response.data.map((channel: ChannelData) => ({
+        id   : channel.id,
+        name : channel.attributes.name,
+        url  : channel.attributes.url
+      }));
+      // Append newChannels to the existing translationChannels list
+      this.translationChannels = [...this.translationChannels, ...newChannels];
+      // eslint-disable-next-line no-mixed-spaces-and-tabs
+    }
+  }
 
   async checkSpeakers(): Promise<void> {
     this.showSpeakers = this.showSpeakers ?? await this.event.hasSpeakers(this.args.event.id);
@@ -65,7 +94,13 @@ export default class PublicStreamSidePanel extends Component<Args> {
   }
 
   @action
+  switchLanguage(url: string): void {
+    this.selectingLanguage.setLanguage(url);
+  }
+
+  @action
   async setup(): Promise<void> {
+    this.fetchTranslationChannels(this.args.videoStream.id);
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
     this.addStream(this.args.event.belongsTo('videoStream').value());
 

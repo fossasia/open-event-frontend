@@ -13,7 +13,7 @@ declare global {
 
 interface Args {
   videoStream: VideoStream,
-  event: Event
+  event: Event,
 }
 
 export default class PublicStreamVideoStream extends Component<Args> {
@@ -39,6 +39,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
   iframeUrl = '';
 
   @tracked
+  translationIframeUrl = '';
+
+  @tracked
   youtubeId = '';
 
   @tracked
@@ -50,47 +53,73 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   shown = false;
 
+  @tracked
+  provider = '';
+
+  @tracked
+  player = null;
+
+  @tracked
+  player2 = null;
+
+  @tracked
+  players = [];
+
+  @tracked
+  isPlaying: any;
+
+  @service
+  selectingLanguage: any;
+
+  @tracked
+  languageUrl = '';
+
   @computed()
   get isRocketChatEnabled(): boolean {
     return this.authManager.currentUser?.isRocketChatRegistered && this.args.event.isChatEnabled;
   }
 
+
   @action
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
-    const provider = stream.get('videoChannel.provider');
-
     this.loading = true;
     this.iframeUrl = '';
+    this.languageUrl = this.selectingLanguage.selectingLanguage;
 
-    if (provider === 'jitsi') {
-      this.loading = false;
-    } else if (provider === 'chatmosphere') {
-      this.iframeUrl = stream.url
-      this.iframeTitle = 'Chatmosphere Session'
-      this.loading = false
-    } else if (provider === 'libre') {
-      this.iframeUrl = stream.url
-      this.iframeTitle = 'Libre Work Adventure Session'
-      this.loading = false
-    } else if (provider === '3cx') {
-      this.iframeUrl = stream.url;
-      this.iframeTitle = '3cx Live Stream'
-      this.loading = false;
-    } else if (provider === 'youtube') {
+    if (stream.url.includes('youtube')) {
+      this.provider = 'youtube';
       const [, id] = stream.url.split('v=');
       if (id) {
         this.youtubeId = id;
       }
-      this.loading = false;
-    } else if (provider === 'vimeo') {
+    } else if (stream.url.includes('jit.si')) {
+      this.provider = 'jitsi';
+      this.iframeUrl = stream.url;
+      this.iframeTitle = 'Jitsi Meet Session';
+    } else if (stream.url.includes('chatmosphere')) {
+      this.provider = 'chatmosphere';
+      this.iframeUrl = stream.url;
+      this.iframeTitle = 'Chatmosphere Session';
+    } else if (stream.url.includes('libre')) {
+      this.provider = 'libre';
+      this.iframeUrl = stream.url
+      this.iframeTitle = 'Libre Work Adventure Session'
+    } else if (stream.url.includes('3cx')) {
+      this.provider = '3cx';
+      this.iframeUrl = stream.url;
+      this.iframeTitle = '3cx Live Stream';
+    } else if (stream.url.includes('vimeo')) {
+      this.provider = 'vimeo';
       const regExp = /https:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/;
       const match = stream.url.match(regExp);
       if (match) {
         this.vimeoId = match[2];
+        this.iframeUrl = `https://player.vimeo.com/video/${this.vimeoId}?autoplay=${stream.extra.autoplay ? 1 : 0}&loop=${stream.extra.loop ? 1 : 0}`;
       }
-      this.loading = false;
-    } else if (provider === 'bbb') {
+      this.iframeTitle = 'Vimeo Live Stream';
+    } else if (stream.url.includes('bbb')) {
+      this.provider = 'bbb';
       const { url } = await this.loader.load(`/video-streams/${stream.id}/join`);
 
       const targetHost = new URL(url).host;
@@ -98,15 +127,17 @@ export default class PublicStreamVideoStream extends Component<Args> {
 
       if (targetHost.includes(currentHost) || currentHost.includes(targetHost)) {
         // Same origin and can be loaded in an iframe
-        this.loading = false;
         this.iframeUrl = url;
         this.iframeTitle = 'BBB'
       } else {
-        location.href = url;
+        window.open(url, '_blank');
+        return;
       }
     } else {
-      location.href = stream.url;
+      window.open(stream.url, '_blank');
+      return;
     }
+    this.loading = false;
   }
 
   @action
@@ -122,7 +153,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
     try {
       const heading = this.l10n.t('Please confirm that you understand and agree to the conditions of using the chat!');
 
-      const content =  this.l10n.t('If you join the event chat, your profile name and image will be visible to other attendees. Other event attendees can also contact you directly.') + '<br/><br/>'
+      const content = this.l10n.t('If you join the event chat, your profile name and image will be visible to other attendees. Other event attendees can also contact you directly.') + '<br/><br/>'
         + this.l10n.t('You may change your chat name and chat profile picture by going to account settings on the chat page on the top left.') + ' '
         + this.l10n.t('You need to minimize the side panel to access it.') + ' '
         + this.l10n.t('The feature integration is still in Alpha stage and currently your profile on the {{appName}} account page and on the chat are not linked and can be independently edited.', { appName: this.settings.appName }) + ' '
@@ -141,5 +172,10 @@ export default class PublicStreamVideoStream extends Component<Args> {
     } catch {
       this.shown = false;
     }
+  }
+
+  @action
+  hideStreamYard() {
+    this.selectingLanguage.setStreamYardVisibility(false);
   }
 }
