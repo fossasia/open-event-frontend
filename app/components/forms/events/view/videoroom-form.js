@@ -34,6 +34,17 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked previousVideo = '';
   @tracked showUpdateOptions = false;
   @tracked endCurrentMeeting = false;
+  @tracked translationChannels = [];
+  @tracked translationChannelsNew = [];
+  @tracked availableLanguages = [
+    'English', 'Vietnamese', 'Chinese'
+  ];
+
+  @tracked selectedLanguage = '';
+  @computed
+  get currentLocale() {
+    return this.l10n.getLocale();
+  }
 
   get recordingColumns() {
     return [
@@ -83,6 +94,76 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   setRoom(room) {
     this.data.stream.rooms = [room];
     this.data.stream.name = room.name;
+  }
+
+  @action
+  switchLanguage(channel, language) {
+    channel.name = language;
+  }
+
+  async loadTranslationChannels() {
+    const videoStreamId = this.data.stream.get('id'); // Get the current video stream id from the route
+    const responseData = await this.loader.load(`/video-streams/${videoStreamId}/translation_channels`);
+    this.translationChannels = responseData.data.map(channel => channel.attributes);
+    this.translationChannels = responseData.data.map(channel => ({
+      id: channel.id,
+      ...channel.attributes
+    }));
+  }
+
+  @action
+  async removeChannel(index, id) {
+    this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
+    this.loader.delete(`/translation_channels/${id}`);
+  }
+
+  @action
+  updateChannelName(index, event) {
+    const newChannels = [...this.translationChannels];
+    newChannels[index].name = event.target.value;
+    this.translationChannels = newChannels;
+  }
+
+  @action
+  updateChannelUrl(index, event) {
+    const newChannels = [...this.translationChannels];
+    newChannels[index].url = event.target.value;
+    this.translationChannels = newChannels;
+  }
+
+  @action
+  async updateChannel(index, id) {
+    event.preventDefault();
+    const channel = this.translationChannels[index];
+    const payload = {
+      data: {
+        type       : 'translation_channel',
+        id         : `${channel.id}`,
+        attributes : {
+          name : channel.name,
+          url  : channel.url
+        },
+        relationships: {
+          video_stream: {
+            data: {
+              type : 'video_stream',
+              id   : this.data.stream.get('id')
+            }
+          },
+          channel: {
+            data: {
+              type : 'video_channel',
+              id   : `${channel.id}`
+            }
+          }
+        }
+      }
+    };
+    try {
+      await this.loader.patch(`/translation_channels/${id}`, payload);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   getValidationRules() {
@@ -253,6 +334,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  addChannel() {
+    event.preventDefault();
+    this.translationChannelsNew = [...this.translationChannelsNew, { id: '', name: '', url: '' }];
+  }
+
+  @action
   async setChannel(channel) {
     const { url, additionalInformation } = getProperties(this.data.stream, [
       'url',
@@ -325,12 +412,47 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     }
   }
 
+  addNewChannel(channel) {
+    event.preventDefault();
+    const payload = {
+      data: {
+        type       : 'translation_channel',
+        attributes : {
+          name : channel.name,
+          url  : channel.url
+        },
+        relationships: {
+          video_stream: {
+            data: {
+              type : 'video_stream',
+              id   : this.data.stream.get('id')
+            }
+          },
+          channel: {
+            data: {
+              type : 'video_channel',
+              id   : this.data.stream.videoChannel.get('id')
+            }
+          }
+        }
+      }
+    };
+    this.loader.post(
+      '/translation_channels',
+      payload
+    );
+  }
+
   @action
   async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
       try {
         this.set('isLoading', true);
+        for (const channel of this.translationChannelsNew) {
+          this.addNewChannel(channel);
+        }
+
         if (this.data.stream.extra?.bbb_options) {
           this.data.stream.extra.bbb_options.endCurrentMeeting = this
             .showUpdateOptions
@@ -425,6 +547,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   didInsertElement() {
+    this.loadTranslationChannels();
     if (this.data.stream.videoChannel.get('provider') === 'bbb') {
       if (this.data.stream.extra?.bbb_options) {
         this.set('actualBBBExtra', { ...this.data.stream.extra.bbb_options });
