@@ -150,5 +150,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @action
   async setupRoomChat(stream:any) {
     this.currentRoom = stream;
+    this.shown = false;
   }
 }

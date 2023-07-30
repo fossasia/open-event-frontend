@@ -208,5 +208,6 @@ export default class PublicController extends Controller {
   @action
   async setupRoomChat(stream) {
     this.currentRoom = stream;
+    this.shown = false;
   }
 }

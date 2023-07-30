@@ -93,12 +93,12 @@ export default class PublicStreamSidePanel extends Component<Args> {
         rooms.included?.map((stream: any) => ({
           id                : stream.id,
           name              : stream.attributes.name,
-          roomName          : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes.name)[0],
-          slugName          : slugify(rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['chat-room-name'])[0]),
-          isChatEnabled     : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['is-chat-enabled'])[0],
-          isGlobalEventRoom : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['is-global-event-room'])[0],
-          chatRoomName      : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.attributes['chat-room-name'])[0],
-          microlocationId   : rooms.data.filter((room: any) => room.relationships['video-stream'].data.id === stream.id).map((room: any) => room.id)[0],
+          roomName          : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes.name)[0],
+          slugName          : slugify(rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['chat-room-name'])[0]),
+          isChatEnabled     : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['is-chat-enabled'])[0],
+          isGlobalEventRoom : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['is-global-event-room'])[0],
+          chatRoomName      : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['chat-room-name'])[0],
+          microlocationId   : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.id)[0],
           hash              : stringHashCode(stream.attributes.name + stream.id)
         })).forEach((stream: any) => {
           this.addStream(stream)
@@ -106,7 +106,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
       }
-
       if (this.args.event.isChatEnabled) {
         const { success, token } = await this.loader.load(`/events/${this.args.event.id}/chat-token`);
         this.token = token;
