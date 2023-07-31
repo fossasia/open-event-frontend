@@ -1,7 +1,7 @@
 <button {{did-insert this.setup}} class="ui icon button stream-side-panel-button" {{action (mut this.shown) true}}>
   <i class="angle right icon"></i>
 </button>
-{{#if this.showChat}}
+{{#if this.isChatShowing}}
 <div class="ui chat-stream-side-panel-button right">
   <i class="rocketchat large icon p-4 chat-panel-icon" {{on "click" @showChatPanel}} role="button"></i>
 </div>
@@ -42,14 +42,12 @@
           {{t 'Exhibition'}}</span>
         </a>
       {{/if}}
-
-      {{#if this.showChat}}
+      {{#if (and @event.isChatEnabled this.settings.rocketChatUrl (or @currentRoom.isChatEnabled @currentRoom.isGlobalEventRoom))}}
         <a href="#" class="ui labeled icon item" role="button" {{on "click" @showChatPanel}}>
           <span><i class="comment icon"></i>
           {{t 'Chat'}}</span>
         </a>
       {{/if}}
-
       {{#if this.showVideoRoom}}
         <div class="item">
           <span><i class="video icon"></i>
@@ -60,7 +58,7 @@
     {{#if this.showVideoRoom}}
       <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="margin-top: -20px;">
         {{#each this.streams as |stream index|}}
-          <a href={{href-to 'public.stream.view' @event stream.slugName stream.id}} class="{{if (eq @videoStream.id stream.id) 'video-active'}} item stream-item d-flex items-center">
+          <a href={{href-to 'public.stream.view' @event stream.slugName stream.id }} class="{{if (eq @currentRoom.microlocationId stream.microlocationId) 'video-active'}} item stream-item d-flex items-center" {{on "click" (fn @setupRoomChat stream) }}>
 
               <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
               <span class="ml-2">{{stream.name}}</span>

@@ -14,6 +14,7 @@ declare global {
 interface Args {
   videoStream: VideoStream,
   event: Event,
+  streamId: number,
 }
 
 export default class PublicStreamVideoStream extends Component<Args> {
@@ -52,6 +53,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
 
   @tracked
   shown = false;
+
+  @tracked
+  currentRoom = null;
 
   @tracked
   provider = '';
@@ -172,6 +176,12 @@ export default class PublicStreamVideoStream extends Component<Args> {
     } catch {
       this.shown = false;
     }
+  }
+
+  @action
+  async setupRoomChat(stream:any) {
+    this.currentRoom = stream;
+    this.shown = false;
   }
 
   @action

@@ -19,6 +19,7 @@ export default class PublicController extends Controller {
   @tracked canAccess = null;
 
   @tracked shown = false;
+  @tracked currentRoom = null;
 
   @computed('model.socialLinks')
   get twitterLink() {
@@ -202,5 +203,11 @@ export default class PublicController extends Controller {
     const { exists, can_access } = streamStatus;
     this.hasStreams = exists;
     this.canAccess = can_access;
+  }
+
+  @action
+  async setupRoomChat(stream) {
+    this.currentRoom = stream;
+    this.shown = false;
   }
 }
