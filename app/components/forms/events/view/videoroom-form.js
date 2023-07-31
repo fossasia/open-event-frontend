@@ -412,26 +412,27 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     }
   }
 
+  @action
   addNewChannel(channel) {
     event.preventDefault();
     const payload = {
-      data: {
-        type       : 'translation_channel',
-        attributes : {
-          name : channel.name,
-          url  : channel.url
+      'data': {
+        'type'       : 'translation_channel',
+        'attributes' : {
+          'name' : channel.name,
+          'url'  : channel.url
         },
-        relationships: {
-          video_stream: {
-            data: {
-              type : 'video_stream',
-              id   : this.data.stream.get('id')
+        'relationships': {
+          'video_stream': {
+            'data': {
+              'type' : 'video_stream',
+              'id'   : this.data.stream.get('id')
             }
           },
-          channel: {
-            data: {
-              type : 'video_channel',
-              id   : this.data.stream.videoChannel.get('id')
+          'channel': {
+            'data': {
+              'type' : 'video_channel',
+              'id'   : '1'
             }
           }
         }

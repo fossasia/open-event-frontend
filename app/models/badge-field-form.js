@@ -33,8 +33,8 @@ export default ModelBase.extend({
   /**
    * Relationships
    */
-  event            : belongsTo('event'),
-  ticket           : hasMany('ticket'),
+  event             : belongsTo('event'),
+  ticket            : hasMany('ticket'),
 
   getFieldStyle: computed('font_size', 'font_name', 'font_color', 'text_rotation', 'margin_top', 'margin_bottom', 'margin_left'
     , 'margin_right', 'font_weight', 'text_alignment', 'text_type', 'isDeleted', 'this', function() {
