@@ -11,22 +11,22 @@ export default ModelBase.extend({
   /**
    * Attributes
    */
-  badge_field_id    : attr('number'),
-  badge_id          : attr('string'),
-  field_identifier  : attr('string'),
-  custom_field      : attr('string'),
-  sample_text       : attr('string', { defaultValue: 'Sample Text' }),
-  font_size         : attr('number', { defaultValue: 14 }),
-  font_name         : attr('string', { defaultValue: 'Arial' }),
-  font_color        : attr('string', { defaultValue: '#000000' }),
-  text_rotation     : attr('number', { defaultValue: 0 }),
-  margin_top        : attr('number', { defaultValue: 0 }),
-  margin_bottom     : attr('number', { defaultValue: 0 }),
-  margin_left       : attr('number', { defaultValue: 0 }),
-  margin_right      : attr('number', { defaultValue: 0 }),
+  badge_field_id   : attr('number'),
+  badge_id         : attr('string'),
+  field_identifier : attr('string'),
+  custom_field     : attr('string'),
+  sample_text      : attr('string', { defaultValue: 'Sample Text' }),
+  font_size        : attr('number', { defaultValue: 14 }),
+  font_name        : attr('string', { defaultValue: 'Arial' }),
+  font_color       : attr('string', { defaultValue: '#000000' }),
+  text_rotation    : attr('number', { defaultValue: 0 }),
+  margin_top       : attr('number', { defaultValue: 0 }),
+  margin_bottom    : attr('number', { defaultValue: 0 }),
+  margin_left      : attr('number', { defaultValue: 0 }),
+  margin_right     : attr('number', { defaultValue: 0 }),
   font_weight      : attr({ defaultValue: () => {
-    return badgeFieldFontWeight.find(item => item.name === 'Regular') 
-  }}),
+    return badgeFieldFontWeight.find(item => item.name === 'Regular');
+  } }),
   text_alignment    : attr('string', { defaultValue: 'center' }),
   text_type         : attr('string', { defaultValue: 'None' }),
   is_deleted        : attr('boolean'),
