@@ -281,17 +281,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const websiteValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : compulsoryProtocolValidUrlPattern,
-          prompt : this.l10n.t('Please enter a valid URL.')
-        }
-      ]
-    };
-
     const websiteRequiredValidation = {
       rules: [
         {
@@ -306,16 +295,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const blogValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : compulsoryProtocolValidUrlPattern,
-          prompt : this.l10n.t('Please enter a valid URL.')
-        }
-      ]
-    };
 
     const blogRequiredValidation = {
       rules: [
@@ -331,16 +310,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const twitterValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validTwitterProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Twitter profile URL.')
-        }
-      ]
-    };
 
     const twitterRequiredValidation = {
       rules: [
@@ -356,16 +325,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const facebookValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validFacebookProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Facebook account URL.')
-        }
-      ]
-    };
 
     const facebookRequiredValidation = {
       rules: [
@@ -377,17 +336,6 @@ export default Component.extend(FormMixin, {
           type   : 'regExp',
           value  : validFacebookProfileUrlPattern,
           prompt : this.l10n.t('Please enter a valid Facebook account URL.')
-        }
-      ]
-    };
-
-    const githubValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validGithubProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid GitHub profile URL.')
         }
       ]
     };
@@ -406,17 +354,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const instagramValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validInstagramProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Instagram account URL.')
-        }
-      ]
-    };
-
     const instagramRequiredValidation = {
       rules: [
         {
@@ -431,16 +368,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const linkedinValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validLinkedinProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Linkedin account URL.')
-        }
-      ]
-    };
 
     const linkedinRequiredValidation = {
       rules: [
@@ -459,7 +386,7 @@ export default Component.extend(FormMixin, {
     const isConsentFormFieldValidation = {
       rules: [
         {
-          type   : 'empty',
+          type   : 'checkbox',
           prompt : this.l10n.t('Please enter Code of conduct consent.')
         }
       ]
@@ -560,63 +487,81 @@ export default Component.extend(FormMixin, {
         }
       }
     };
-    this.holders.forEach((value, index) => {
-      validationRules.fields[`firstname_required_${index}`] = firstNameValidation;
-      validationRules.fields[`lastname_required_${index}`] = lastNameValidation;
-      validationRules.fields[`email_required_${index}`] = emailValidation;
-      validationRules.fields[`gender_required_${  index}`] = genderValidation;
-      validationRules.fields[`ageGroup_required_${  index}`] = ageGroupValidation;
-      validationRules.fields[`address_required_${  index}`] = addressValidation;
-      validationRules.fields[`acceptReceiveEmails_required_${  index}`] = acceptReceiveEmailsValidation;
-      validationRules.fields[`acceptVideoRecording_required_${  index}`] = acceptVideoRecordingValidation;
-      validationRules.fields[`acceptShareDetails_required_${  index}`] = acceptShareDetailsValidation;
-      validationRules.fields[`city_required_${  index}`] = cityValidation;
-      validationRules.fields[`state_required_${  index}`] = stateValidation;
-      validationRules.fields[`country_required_${  index}`] = countryValidation;
-      validationRules.fields[`jobTitle_required_${  index}`] = jobTitleValidation;
-      validationRules.fields[`phone_required_${  index}`] = phoneValidation;
-      validationRules.fields[`taxBusinessInfo_required_${  index}`] = taxBusinessInfoValidation;
-      validationRules.fields[`billingAddress_required_${  index}`] = billingAddressValidation;
-      validationRules.fields[`homeAddress_required_${  index}`] = homeAddressValidation;
-      validationRules.fields[`homeWiki_required_${  index}`] = homeWikiValidation;
-      validationRules.fields[`wikiScholarship_required_${  index}`] = wikiScholarshipValidation;
-      validationRules.fields[`shippingAddress_required_${  index}`] = shippingAddressValidation;
-      validationRules.fields[`company_required_${  index}`] = companyValidation;
-      validationRules.fields[`workAddress_required_${  index}`] = workAddressValidation;
-      validationRules.fields[`workPhone_required_${  index}`] = workPhoneValidation;
-      validationRules.fields[`website_${  index}`] = websiteValidation;
-      validationRules.fields[`website_required_${  index}`] = websiteRequiredValidation;
-      validationRules.fields[`blog_${  index}`] = blogValidation;
-      validationRules.fields[`blog_required_${  index}`] = blogRequiredValidation;
-      validationRules.fields[`twitter_${  index}`] = twitterValidation;
-      validationRules.fields[`twitter_required_${  index}`] = twitterRequiredValidation;
-      validationRules.fields[`facebook_${  index}`] = facebookValidation;
-      validationRules.fields[`facebook_required_${  index}`] = facebookRequiredValidation;
-      validationRules.fields[`github_${  index}`] = githubValidation;
-      validationRules.fields[`github_required_${  index}`] = githubRequiredValidation;
-      validationRules.fields[`instagram_${  index}`] = instagramValidation;
-      validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
-      validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
-      validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
-      validationRules.fields[`native_language_required_${  index}`] = nativeLanguageValidation;
-      validationRules.fields[`fluent_language_required_${  index}`] = fluentLanguageValidation;
-      validationRules.fields[`is_consent_form_field_required_${  index}`] = isConsentFormFieldValidation;
-      validationRules.fields[`is_consent_of_refund_policy_required_${  index}`] = isConsentOfRefundPolicyValidation;
-      this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
-        validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
-          rules: [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter {{field}}.', { field: field.name })
-            }
-          ]
-        };
-      });
+    const validationMap = {
+      firstname                   : firstNameValidation,
+      lastname                    : lastNameValidation,
+      email                       : emailValidation,
+      gender                      : genderValidation,
+      ageGroups                   : ageGroupValidation,
+      address                     : addressValidation,
+      acceptReceiveEmails         : acceptReceiveEmailsValidation,
+      acceptVideoRecording        : acceptVideoRecordingValidation,
+      acceptShareDetails          : acceptShareDetailsValidation,
+      city                        : cityValidation,
+      state                       : stateValidation,
+      country                     : countryValidation,
+      jobTitle                    : jobTitleValidation,
+      phone                       : phoneValidation,
+      taxBusinessInfo             : taxBusinessInfoValidation,
+      billingAddress              : billingAddressValidation,
+      homeAddress                 : homeAddressValidation,
+      homeWiki                    : homeWikiValidation,
+      wikiScholarship             : wikiScholarshipValidation,
+      shippingAddress             : shippingAddressValidation,
+      company                     : companyValidation,
+      workAddress                 : workAddressValidation,
+      workPhone                   : workPhoneValidation,
+      website                     : websiteRequiredValidation,
+      blog                        : blogRequiredValidation,
+      twitter                     : twitterRequiredValidation,
+      facebook                    : facebookRequiredValidation,
+      github                      : githubRequiredValidation,
+      instagram                   : instagramRequiredValidation,
+      linkedin                    : linkedinRequiredValidation,
+      native_language             : nativeLanguageValidation,
+      fluent_language             : fluentLanguageValidation,
+      is_consent_form_field       : isConsentFormFieldValidation,
+      is_consent_of_refund_policy : isConsentOfRefundPolicyValidation
 
+    };
+    this.allFields.attendee.forEach((field, index) => {
+      const { fieldIdentifier } = field;
+      const validationRuleKey = `${fieldIdentifier}_required_${index}`;
+      if (validationMap[fieldIdentifier]) {
+        validationRules.fields[validationRuleKey] = validationMap[fieldIdentifier];
+      } else {
+        if (field.type === 'checkbox') {
+          validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
+            rules: [
+              {
+                type   : 'checkbox',
+                prompt : this.l10n.t('Please select your {{field}}.', { field: field.name })
+              }
+            ]
+          };
+        } else if (field.type === 'boolean') {
+          validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
+            rules: [
+              {
+                type   : 'checked',
+                prompt : this.l10n.t('Please choosen your {{field}}.', { field: field.name })
+              }
+            ]
+          };
+        } else {
+          validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
+            rules: [
+              {
+                type   : 'empty',
+                prompt : this.l10n.t('Please enter your {{field}}.', { field: field.name })
+              }
+            ]
+          };
+        }
+      }
     });
     return validationRules;
   },
-
   allFields: computed('fields', function() {
     const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
     const current_locale = this.cookies.read('current_locale');
