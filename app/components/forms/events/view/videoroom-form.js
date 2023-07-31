@@ -36,11 +36,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked endCurrentMeeting = false;
   @tracked translationChannels = [];
   @tracked translationChannelsNew = [];
-  @tracked availableLanguages = [
-    'English', 'Vietnamese', 'Chinese'
-  ];
-
-  @tracked selectedLanguage = '';
   @computed
   get currentLocale() {
     return this.l10n.getLocale();
