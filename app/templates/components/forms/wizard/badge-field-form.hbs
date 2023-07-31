@@ -200,15 +200,15 @@
     <div class="ui stackable grid padding-left-1rem">
       <div class="row pt-0">
         <div class="field six wide column">
-          <label>{{t 'Weight (bold)'}}</label>
-          <UiDropdown @class="search selection min-width-0" @selected={{@data.font_weight}}
+          <label>{{t 'Font Style'}}</label>
+          <UiDropdown @class="search selection min-width-0" @selected={{@data.font_weight.name}}
             @onChange={{action 'onChangeTextFontWeight' }}>
             <Input @type="hidden" @autocomplete="no" @name={{concat "weight_" @data.badge_id "_" @index}} />
             <i class="dropdown icon"></i>
-            <div class="default text">{{t 'Weight'}}</div>
+            <div class="default text">{{t 'Font Style'}}</div>
             <div class="menu">
               {{#each this.badgeFieldFontWeight as |item|}}
-              <div class="item" data-value="{{item.value}}">
+              <div class="item" data-value={{item.name}}>
                 {{item.name}}
               </div>
               {{/each}}

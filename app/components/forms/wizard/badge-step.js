@@ -246,7 +246,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         const data = {
           badgeForms: badge.badgeForms
         };
-        const result = await this.loader.downloadFileWithPost('/badge-forms/preivew-badge-pdf', data, config);
+        const result = await this.loader.downloadFileWithPost('/badge-forms/preview-badge-pdf', data, config);
         const anchor = document.createElement('a');
         anchor.style.display = 'none';
         anchor.href = URL.createObjectURL(new Blob([result], { type: 'application/pdf' }));

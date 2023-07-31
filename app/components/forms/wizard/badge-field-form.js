@@ -12,8 +12,8 @@ export default Component.extend(FormMixin, {
   isExpanded         : true,
   booleanTextType    : orderBy(booleanTextType, 'position'),
   badgeFieldRotate   : orderBy(badgeFieldRotate),
-  badgeFieldFontWeight: badgeFieldFontWeight,
-  badgeFieldFontSize: badgeFieldFontSize,
+  badgeFieldFontWeight,
+  badgeFieldFontSize,
 
   getCustomFields: computed('includeCustomField', function() {
     const validForms = this.includeCustomField.map(item => {
@@ -133,7 +133,7 @@ export default Component.extend(FormMixin, {
       this.set('data.text_rotation', value);
     },
     onChangeTextFontWeight(value) {
-      this.set('data.font_weight', value);
+      this.set('data.font_weight', this.badgeFieldFontWeight.find(item => item.name === value));
     }
   }
 });
