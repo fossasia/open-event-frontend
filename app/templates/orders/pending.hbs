@@ -17,6 +17,7 @@
     <div class="row">
       <div class="nine wide column">
         <Orders::OrderSummary
+          @tickets={{this.model.tickets}}
           @data={{this.model.order}}
           @event={{this.model.event}}
           @eventCurrency={{this.model.order.event.paymentCurrency}} />

@@ -29,11 +29,12 @@ export default ModelBase.extend({
   text_type        : attr('string', { defaultValue: 'None' }),
   is_deleted       : attr('boolean'),
   qr_custom_field  : attr(),
+  is_field_expanded : attr('boolean', { defaultValue: true }),
   /**
    * Relationships
    */
-  event            : belongsTo('event'),
-  ticket           : hasMany('ticket'),
+  event             : belongsTo('event'),
+  ticket            : hasMany('ticket'),
 
   getFieldStyle: computed('font_size', 'font_name', 'font_color', 'text_rotation', 'margin_top', 'margin_bottom', 'margin_left'
     , 'margin_right', 'font_weight', 'text_alignment', 'text_type', 'isDeleted', 'this', function() {
