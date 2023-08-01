@@ -72,10 +72,25 @@
     <a href="#" class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
+    {{#if (and this.isNotEventPageRoute this.isNotWizardPageRoute)}}
     <LinkTo
       @route="index" class="item" @activeClass="">
       <div class="ui header small text">{{this.settings.appName}}</div>
     </LinkTo>
+    {{else}}
+      {{#if this.globalData.logoUrl}}
+      <div class="ui info d-flex">
+        <LinkTo @route="index">
+          <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8" />
+        </LinkTo>
+      </div>
+      {{else}}
+      <LinkTo
+        @route="index" class="item" @activeClass="">
+        <div class="ui header small text">Home</div>
+      </LinkTo> 
+      {{/if}}
+    {{/if}}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
@@ -91,12 +106,17 @@
         </div>
       {{/if}}
       {{#if this.session.isAuthenticated}}
-        {{#if this.isNotWizardPageRoute}}
+        {{#if (and this.isNotEventPageRoute this.isNotWizardPageRoute)}}
           <LinkTo
             @route="create" class="item ui blue button-text small text">
             <div>
               {{t 'Create Event'}}
             </div>
+          </LinkTo>
+        {{else}}
+          <LinkTo
+            @route="index" class="item" @activeClass="">
+            <div class="ui header small text">{{this.settings.appName}}</div>
           </LinkTo>
         {{/if}}
       {{else}}

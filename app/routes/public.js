@@ -1,8 +1,10 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class PublicRoute extends Route {
+  @service globalData;
   titleToken(model) {
     return model.get('name');
   }
@@ -17,5 +19,9 @@ export default class PublicRoute extends Route {
     if (isExiting) {
       controller.set('side_panel', null);
     }
+  }
+
+  afterModel(model) {
+    this.globalData.setLogoUrl(model.logoUrl);
   }
 }

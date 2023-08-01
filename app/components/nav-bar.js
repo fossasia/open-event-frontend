@@ -1,9 +1,10 @@
 import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
-
+import { inject as service } from '@ember/service';
 @classic
 export default class NavBar extends Component {
+  @service globalData;
   @computed('session.currentRouteName')
   get isGroupRoute() {
     return (String(this.session.currentRouteName).includes('group'));
