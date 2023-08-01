@@ -16,6 +16,9 @@ export default class SessionItem extends Component {
   @tracked
   hideImage = this.args.expanded;
 
+  @tracked
+  sortedSpeakers = [];
+
   get youtubeLink() {
     return extractYoutubeUrl(this.args.session.videoUrl);
   }
@@ -25,8 +28,9 @@ export default class SessionItem extends Component {
     return url.startsWith('https://open-event-api-dev.herokuapp.com') || url.startsWith('https://api.eventyay.com');
   }
 
-  get sortedSpeakers() {
-    const { speakers } = this.args.session;
+  @action
+  async setUpComponent() {
+    const { speakers } = await this.args.session;
     const sortedSpeakers = {};
     const sessionId = this.args.session.id;
     let count = 0;
@@ -37,7 +41,7 @@ export default class SessionItem extends Component {
       }
     });
     Object.fromEntries(Object.entries(sortedSpeakers).sort());
-    return count === speakers.length ? Object.values(sortedSpeakers) : speakers;
+    this.sortedSpeakers = count === speakers.length ? Object.values(sortedSpeakers) : speakers;
   }
 
   get sessionEnded() {

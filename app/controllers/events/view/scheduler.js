@@ -11,7 +11,7 @@ export default class extends Controller {
 
   @computed('model.microlocations')
   get microlocations() {
-    return this.model.microlocations.sortBy('position').filter(x => !x.hiddenInScheduler);
+    return this.model.microlocations?.sortBy('position').filter(x => !x.hiddenInScheduler);
   }
 
   @computed('model.unscheduled', 'filter')
