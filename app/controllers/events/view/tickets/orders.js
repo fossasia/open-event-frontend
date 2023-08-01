@@ -32,7 +32,7 @@ export default class OrdersController extends Controller {
             window.location = exportJobStatus.result.download_url;
             this.notify.success(this.l10n.t('Download Ready'));
           } else if (exportJobStatus.state === 'WAITING') {
-            this.requestLoop(exportJobInfo);
+            this.requestLoop(exportJobInfo, mode);
             this.notify.alert(this.l10n.t('Task is going on.'));
           } else {
             this.notify.error(mode.toUpperCase() + ' ' + this.l10n.t('Export has failed.'));
