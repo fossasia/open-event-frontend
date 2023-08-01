@@ -10,7 +10,7 @@
     </div>
   {{/each}}
   <div class="sixteen wide column">
-    <InfinityLoader @infinityModel={{this.model.speakers}} @triggerOffset={{1000}} @eventDebounce={{50}}>
+    <InfinityLoader @infinityModel={{this.model.speakers}} @triggerOffset={{100}} @eventDebounce={{50}}>
       <div class="ui loading very padded basic segment">
       </div>
       {{this.infintyModel.reachedInfinity}}
