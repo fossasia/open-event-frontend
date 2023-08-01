@@ -105,33 +105,15 @@ export const badgeFieldRotate = [
 
 export const badgeFieldFontWeight = [
   {
-    name            : 'Regular',
-    font_weight     : 'normal',
-    font_style      : 'normal',
-    text_decoration : 'none'
+    name        : 'Bold',
+    font_weight : 'bold'
   },
   {
-    name            : 'Italic',
-    font_weight     : 'normal',
-    font_style      : 'italic',
-    text_decoration : 'none'
-  },
-  {
-    name            : 'Bold',
-    font_weight     : 'bold',
-    font_style      : 'normal',
-    text_decoration : 'none'
-  },
-  {
-    name            : 'Bold Italic',
-    font_weight     : 'bold',
-    font_style      : 'italic',
-    text_decoration : 'none'
+    name       : 'Italic',
+    font_style : 'italic'
   },
   {
     name            : 'Underline',
-    font_weight     : 'normal',
-    font_style      : 'normal',
     text_decoration : 'underline'
   }
 ]

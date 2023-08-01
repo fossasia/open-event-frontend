@@ -38,7 +38,15 @@
           @onChange={{action 'onChangeCustomField'}}>
           <Input @type="hidden" @autocomplete="no" @name={{concat "custom_field_" @data.badge_id "_" @index}}/>
           <i class="dropdown icon"></i>
-          <div class="default text">{{t 'Custom field'}}</div>
+            {{#if this.data.custom_field}}
+            <div class="default">
+              {{t this.data.custom_field}}
+              </div>
+            {{else}}
+            <div class="default text">
+              {{t 'Custom Field'}}
+              </div>
+            {{/if}}
           <div class="menu">
             {{#each this.getCustomFields as |cfield|}}
               {{#if cfield.isFixed}}
@@ -58,10 +66,6 @@
           {{#if this.getWarningFields}}
             {{#each this.getWarningFields as |warning|}}
             <label class="warning">{{warning-badge-ticket  warning.field  warning.ticket}}</label>
-            {{!-- <UiPopup
-              @tagName="i"
-              @class="info circle icon"
-              @content={{concat warning.field ' is not available in ticket ' warning.ticket }} /> --}}
             {{/each}}
           {{/if}}
       </div>
@@ -90,10 +94,6 @@
           {{#if this.getWarningQRFields}}
             {{#each this.getWarningQRFields as |warning|}}
             <label class="warning">{{concat '\'' warning.field '\' is not available in ticket \'' warning.ticket '\''}}</label>
-            {{!-- <UiPopup
-              @tagName="i"
-              @class="info circle icon"
-              @content={{concat warning.field ' is not available in ticket ' warning.ticket }} /> --}}
             {{/each}}
           {{/if}}
         </div>
@@ -140,20 +140,6 @@
         </div>
       </div>
     </div>
-    {{!-- <div class="ui stackable grid padding-left-1rem">
-      <div class="field twelve wide">
-        <label>{{t 'Text Alignment'}}</label>
-      </div>
-    </div>
-    <div class="ui stackable grid padding-left-1rem">
-      <div class="row pt-0 ml-4 mb-2">
-        <div class="ui icon buttons">
-          <button class="ui button" {{action 'toggleTextAlignments' 'Center' }} disabled={{if (eq
-            @data.custom_field 'QR' ) true false}}>
-            {{t 'Center'}}</button>
-        </div>
-      </div>
-    </div> --}}
     {{#if (not-eq @data.custom_field 'QR') }}
     <div class="ui stackable grid padding-left-1rem">
       <div class="field twelve wide">
@@ -201,16 +187,14 @@
       <div class="row pt-0">
         <div class="field six wide column">
           <label>{{t 'Font Style'}}</label>
-          <UiDropdown @class="search selection min-width-0" @selected={{@data.font_weight.name}}
-            @onChange={{action 'onChangeTextFontWeight' }}>
-            <Input @type="hidden" @autocomplete="no" @name={{concat "weight_" @data.badge_id "_" @index}} />
+          <UiDropdown @class="search selection min-width-0">
+            <div class="default">
+              {{this.fontStyle}}
+            </div>
             <i class="dropdown icon"></i>
-            <div class="default text">{{t 'Font Style'}}</div>
             <div class="menu">
               {{#each this.badgeFieldFontWeight as |item|}}
-              <div class="item" data-value={{item.name}}>
-                {{item.name}}
-              </div>
+                <UiCheckbox @class="item" @label={{item.name}} @checked={{if (includes this.fontStyle item.name) 'active'}} @onChange={{action 'onChangeTextFontWeight' item }} />
               {{/each}}
             </div>
           </UiDropdown>

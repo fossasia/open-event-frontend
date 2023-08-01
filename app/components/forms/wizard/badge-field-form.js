@@ -92,6 +92,17 @@ export default Component.extend(FormMixin, {
     return orderBy(fieldFontName, 'name');
   },
 
+  get fontStyle() {
+    let font_style = [];
+    if (this.data.font_weight) {
+      font_style = this.data.font_weight.map(item => item.name);
+    }
+    if (this.data.font_weight === null || this.data.font_weight === []) {
+      return 'None';
+    }
+    return font_style;
+  },
+
   actions: {
     toggleSetting() {
       if (!this.data.is_field_expanded) {
@@ -133,7 +144,14 @@ export default Component.extend(FormMixin, {
       this.set('data.text_rotation', value);
     },
     onChangeTextFontWeight(value) {
-      this.set('data.font_weight', this.badgeFieldFontWeight.find(item => item.name === value));
+      if (this.data.font_weight == null) {
+        this.set('data.font_weight', []);
+      }
+      if (this.data.font_weight.map(item => item.name).includes(value.name)) {
+        this.data.font_weight.removeObject(this.data.font_weight.find(item => item.name === value.name));
+      } else {
+        this.data.font_weight.pushObject(value);
+      }
     }
   }
 });
