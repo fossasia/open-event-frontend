@@ -96,11 +96,16 @@ export default Component.extend(FormMixin, {
     let font_style = [];
     if (this.data.font_weight) {
       font_style = this.data.font_weight.map(item => item.name);
-    }
-    if (this.data.font_weight === null || this.data.font_weight === []) {
-      return 'None';
-    }
+    } 
     return font_style;
+  },
+
+  get fontStyleSelected() {
+    if (this.fontStyle.length > 0 ) {
+      return this.fontStyle.join(', ')
+    } else {
+      return 'Normal'
+  }
   },
 
   actions: {
