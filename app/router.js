@@ -39,6 +39,11 @@ Router.map(function() {
   this.route('organizer-app');
   this.route('logout');
   this.route('oauth', { path: '/oauth/callback' });
+  this.route('video-streams', function() {
+    this.route('view', { path: '/:video_stream_id' }, function() {
+      this.route('translation-channels', { path: '/translation-channels' });
+    });
+  });
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions-index', { path: '/sessions' });
     this.route('sessions', { path: '/schedule' }, function() {
