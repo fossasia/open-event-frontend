@@ -62,7 +62,7 @@ export default class Schedule extends Component<ScheduleArgs> {
   }
 
   get resources() { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
-    return this.args.rooms.map(room => ({ id: room.id, title: room.name }));
+    return this.args.rooms?.map(room => ({ id: room.id, title: room.name }));
   }
 
   get events() { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
