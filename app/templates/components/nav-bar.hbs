@@ -91,13 +91,13 @@
         </LinkTo>
       {{else}}
         {{#if this.globalData.logoUrl}}
-          <a href="#" class="item" {{on "click" this.handleClick}}>
+          <button class="item btn-un-bd" {{on "click" this.handleClick}}>
               <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8"/>
-          </a>
+          </button>
         {{else}}
-        <a href="#" class="item" {{on "click" this.handleClick}}>
+        <button class="item btn-un-bd" {{on "click" this.handleClick}}>
           <div class="ui header small text">Home</div>
-        </a>
+        </button>
         {{/if}}
       {{/if}}
     {{/if}}
