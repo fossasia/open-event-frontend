@@ -84,18 +84,22 @@
           <div class="ui header small text">{{this.settings.appName}}b</div>
         </LinkTo>
     {{else if (and this.isNotExplorePageRoute this.isNotWizardPageRoute (not this.isNotEventPageRoute))}}
+      {{#if (not this.session.isAuthenticated) }}
+        <LinkTo
+          @route="index" class="item" @activeClass="">
+          <div class="ui header small text">Home</div>
+        </LinkTo>
+      {{else}}
         {{#if this.globalData.logoUrl}}
-          <div class="ui info d-flex">
-            <LinkTo @route="public">
-              <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8" />
-            </LinkTo>
-          </div>
+          <button class="item" {{on "click" this.handleClick}}>
+              <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8"/>
+          </button>
         {{else}}
-          <LinkTo
-            @route="index" class="item" @activeClass="">
-            <div class="ui header small text">Home</div>
-          </LinkTo>
+        <button class="item" {{on "click" this.handleClick}}>
+          <div class="ui header small text">Home</div>
+        </button>
         {{/if}}
+      {{/if}}
     {{/if}}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />

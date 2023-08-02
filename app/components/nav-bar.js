@@ -2,6 +2,8 @@ import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
+
+
 @classic
 export default class NavBar extends Component {
   @service globalData;
@@ -68,6 +70,12 @@ export default class NavBar extends Component {
       mobileBar.classList.remove('show-bar');
     });
   }
+
+  @action
+  handleClick() {
+    this.router.replaceWith('public.index',  this.globalData.idEvent);
+  }
+
 
   @action
   logout() {

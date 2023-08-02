@@ -23,5 +23,6 @@ export default class PublicRoute extends Route {
 
   afterModel(model) {
     this.globalData.setLogoUrl(model.logoUrl);
+    this.globalData.saveIdEvent(model.id);
   }
 }
