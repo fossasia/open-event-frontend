@@ -40,9 +40,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   iframeUrl = '';
 
   @tracked
-  translationIframeUrl = '';
-
-  @tracked
   youtubeId = '';
 
   @tracked
@@ -60,18 +57,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   provider = '';
 
-  @tracked
-  player = null;
-
-  @tracked
-  player2 = null;
-
-  @tracked
-  players = [];
-
-  @tracked
-  isPlaying: any;
-
   @service
   selectingLanguage: any;
 
@@ -83,13 +68,12 @@ export default class PublicStreamVideoStream extends Component<Args> {
     return this.authManager.currentUser?.isRocketChatRegistered && this.args.event.isChatEnabled;
   }
 
-
   @action
   async setup(): Promise<void> {
     const stream = this.args.videoStream;
     this.loading = true;
     this.iframeUrl = '';
-    this.languageUrl = this.selectingLanguage.selectingLanguage;
+
 
     if (stream.url.includes('youtube')) {
       this.provider = 'youtube';
@@ -188,4 +172,5 @@ export default class PublicStreamVideoStream extends Component<Args> {
   hideStreamYard() {
     this.selectingLanguage.setStreamYardVisibility(false);
   }
+
 }
