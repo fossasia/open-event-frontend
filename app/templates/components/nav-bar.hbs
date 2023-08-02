@@ -86,7 +86,7 @@
     {{else if (and this.isNotExplorePageRoute this.isNotWizardPageRoute (not this.isNotEventPageRoute))}}
         {{#if this.globalData.logoUrl}}
           <div class="ui info d-flex">
-            <LinkTo @route="index">
+            <LinkTo @route="public">
               <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8" />
             </LinkTo>
           </div>
