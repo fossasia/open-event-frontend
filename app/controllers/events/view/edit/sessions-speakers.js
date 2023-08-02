@@ -9,8 +9,8 @@ export default class SessionsSpeakersController extends Controller.extend(EventW
     const event = await super.saveEventData(...arguments);
 
     event.get('isSessionsSpeakersEnabled')
-      ? await this.model.speakersCall.save()
-      : await this.model.speakersCall.destroyRecord();
+      ? await this.model.speakersCall?.save()
+      : await this.model.speakersCall?.destroyRecord();
 
     return event;
   }
