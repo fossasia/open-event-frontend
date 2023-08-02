@@ -386,7 +386,7 @@ export default Component.extend(FormMixin, {
     const isConsentFormFieldValidation = {
       rules: [
         {
-          type   : 'checkbox',
+          type   : 'checked',
           prompt : this.l10n.t('Please enter Code of conduct consent.')
         }
       ]
@@ -396,8 +396,7 @@ export default Component.extend(FormMixin, {
       optional : true,
       rules    : [
         {
-          type   : 'regExp',
-          value  : compulsoryProtocolValidUrlPattern,
+          type   : 'checked',
           prompt : this.l10n.t('Please consent to the Refund Policy.')
         }
       ]
@@ -534,21 +533,13 @@ export default Component.extend(FormMixin, {
           validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
             rules: [
               {
-                type   : 'checkbox',
+                type   : 'checked',
                 prompt : this.l10n.t('Please select your {{field}}.', { field: field.name })
               }
             ]
           };
-        } else if (field.type === 'boolean') {
-          validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
-            rules: [
-              {
-                type   : 'checked',
-                prompt : this.l10n.t('Please choosen your {{field}}.', { field: field.name })
-              }
-            ]
-          };
-        } else {
+        }
+        else {
           validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
             rules: [
               {
