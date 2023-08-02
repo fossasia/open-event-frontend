@@ -108,6 +108,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @action
   switchLanguage(url: string): void {
     this.selectingLanguage.setLanguage(url);
+    this.selectingLanguage.updateTranslationYTId();
   }
 
   @action

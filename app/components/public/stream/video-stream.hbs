@@ -8,40 +8,24 @@
     <iframe style="position: absolute;width: 100%; height: 100%; border: 0px;" src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true"/>
   {{/if}}
 
-  <!-- youtube channel translation }} -->
 {{#if this.selectingLanguage.selectingLanguage}}
-  <iframe style="position: absolute; z-index: -1" id="video-player-translation" width="100%" height="100%" frameborder="0" title="YouTube Live Stream"
-          src="https://www.youtube.com/embed/FJfwehhzIhw?enablejsapi=1&autoplay=1&modestbranding=1&loop=1&controls=0&disablekb=1"
+
+  <iframe style="position: absolute;width: 50%; height: 100%; z-index: -1" id="video-player-translation" width="50%" height="50%" frameborder="0" title="YouTube Live Stream Translation"
+          src="https://www.youtube.com/embed/{{this.selectingLanguage.translationYoutubeId}}?enablejsapi=1&autoplay=1&modestbranding=1&loop=1&controls=0&disablekb=1"
   gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
 {{/if}}
-
-
-
-
-<!--  {{#if this.selectingLanguage.selectingLanguage}}-->
-<!--    <div >-->
-<!--      {{#if this.selectingLanguage.isStreamYardVisible}}-->
-<!--        <button class="ui button" style="position:absolute;top:5%; left:650px;z-index: 2" {{on "click" this.hideStreamYard}}>Hide This</button>-->
-<!--      {{/if}}-->
-<!--              <div id="streamyard-iframe" style="position:absolute;top:30%; left:431px; width:50%;height:0px;position:relative;padding-bottom:56.25%;margin-bottom:20px" class={{if this.selectingLanguage.isStreamYardVisible "visible" "sink"}}>-->
-<!--                <iframe id="streamyard-iframe-player" src="{{this.selectingLanguage.selectingLanguage}}" width="100%" height="100%" frameborder="0" style="width:30%;height:30%;position:absolute;left:0px;top:0px;" title="Stream Yard Live Stream" ></iframe>-->
-<!--              </div>-->
-<!--      <iframe id="streamyard-iframe-player" style="position:absolute;top:10%; left:330px; width:50%" class={{if this.selectingLanguage.isStreamYardVisible "visible" "sink"}} src="https://streamyard.com/watch/GMf5gbDGk35A?embed=true" width="560" height="315" frameborder="0" allowfullscreen></iframe>-->
-<!--    </div>-->
-<!--  {{/if}}-->
 
   {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
   {{/if}}
   {{#if (eq this.provider 'youtube')}}
-      <iframe id="video-player" style="position: absolute" width="100%" height="100%" frameborder="0" title="YouTube Live Stream"
+      <iframe style="position: absolute;width: 100%; height: 100%;" id="video-player" width="50%" height="50%" frameborder="0" title="YouTube Live Stream"
               src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay=1&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute={{if (eq this.selectingLanguage.selectingLanguage null) 0 1}}&controls=0&disablekb=1"
       gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
   {{/if}}
   {{#if (and (eq @videoStream.videoChannel.provider 'vimeo') this.vimeoId)}}
     <iframe style="position: absolute" src="https://player.vimeo.com/video/{{this.vimeoId}}?autoplay={{if @videoStream.extra.autoplay 1 0}}&loop={{if @videoStream.extra.loop 1 0}}" width="50%" height="50%" frameborder="0" allow="autoplay" title="StreamYard Live Stream" allowfullscreen="true"></iframe>
   {{/if}}
-
 
 </div>
 <Public::Stream::SidePanel @event={{@event}} @videoStream={{@videoStream}} @selectingLanguage={{this.selectingLanguage}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @setupRoomChat={{action 'setupRoomChat'}} @currentRoom={{this.currentRoom}} @streamId={{@streamId}}/>
