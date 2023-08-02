@@ -29,7 +29,7 @@ export default class SessionItem extends Component {
   }
 
   @action
-  async setUpComponent(){
+  async setUpComponent() {
     const { speakers } = await this.args.session;
     const sortedSpeakers = {};
     const sessionId = this.args.session.id;
