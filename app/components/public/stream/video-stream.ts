@@ -78,6 +78,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   languageUrl = '';
 
+  @tracked
+  translationYoutubeId = '';
+
   @computed()
   get isRocketChatEnabled(): boolean {
     return this.authManager.currentUser?.isRocketChatRegistered && this.args.event.isChatEnabled;
@@ -90,6 +93,14 @@ export default class PublicStreamVideoStream extends Component<Args> {
     this.loading = true;
     this.iframeUrl = '';
     this.languageUrl = this.selectingLanguage.selectingLanguage;
+
+    if (this.languageUrl && this.languageUrl.includes('youtube')) {
+      const [, id] = stream.url.split('v=');
+      if (id) {
+        console.log('translationYoutubeId', id);
+        this.translationYoutubeId = id;
+      }
+    }
 
     if (stream.url.includes('youtube')) {
       this.provider = 'youtube';
