@@ -56,6 +56,12 @@
           @site="youtube"
           @value={{this.data.stream.url}}
           @onChange={{action (mut this.data.stream.url)}} />
+      {{else if (eq this.data.stream.videoChannel.provider 'youtube_privacy')}}
+        <Widgets::Forms::SocialLinkField
+          @fixed={{true}}
+          @site="youtube privacy"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
       {{else if (eq this.data.stream.videoChannel.provider 'vimeo')}}
         <Widgets::Forms::SocialLinkField
           @fixed={{true}}
@@ -92,7 +98,7 @@
     <Textarea
       @value={{this.data.stream.additionalInformation}} />
   </div>
-  {{#if (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo'))}}
+  {{#if (or (eq this.data.stream.videoChannel.provider 'youtube_privacy') (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo')))}}
     <div class="field">
       <label for="public_name">
         {{t 'Autoplay'}}

@@ -297,6 +297,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  async addYoutubePrivacy() {
+    this.data.stream.set('extra', { autoplay: true, loop: false });
+    this.data.stream.set('url', 'watch?v=');
+  }
+
+  @action
   async addVimeo() {
     this.data.stream.set('extra', { autoplay: true, loop: false });
     this.data.stream.set('url', '');
@@ -316,6 +322,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         break;
       case 'youtube':
         this.addYoutube();
+        break;
+      case 'youtube_privacy':
+        this.addYoutubePrivacy();
         break;
       case 'vimeo':
         this.addVimeo();
@@ -558,7 +567,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     }
     if (
       this.data.stream.extra === null
-      && ['vimeo', 'youtube'].includes(
+      && ['vimeo', 'youtube', 'youtube_privacy'].includes(
         this.data.stream.videoChannel.get('provider')
       )
     ) {
