@@ -7,7 +7,8 @@ import Event from 'open-event-frontend/models/event';
 interface Args {
   token: string,
   embedded: boolean,
-  event: Event
+  event: Event,
+  currentRoom: any,
 }
 
 export default class PublicStreamChat extends Component<Args> {
@@ -16,6 +17,10 @@ export default class PublicStreamChat extends Component<Args> {
 
   @action
   init(): void {
-    this.iframeUrl = this.settings.rocketChatUrl + `/group/${this.args.event.chatRoomName}?resumeToken=${this.args.token}` + (this.args.embedded ? '&layout=embedded' : '');
+    let room_name = this.args.event.chatRoomName;
+    if (this.args.currentRoom && this.args.currentRoom.isChatEnabled) {
+      room_name = this.args.currentRoom.chatRoomName
+    }
+    this.iframeUrl = this.settings.rocketChatUrl + `/group/${room_name}?resumeToken=${this.args.token}` + (this.args.embedded ? '&layout=embedded' : '');
   }
 }

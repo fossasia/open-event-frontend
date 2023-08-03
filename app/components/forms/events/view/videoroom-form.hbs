@@ -38,7 +38,7 @@
   {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
     <div class="field">
       <label class="required">{{t 'Video Source'}}</label>
-      <input value='Auto-Generated Big Blue Button Video Room' readonly> 
+      <input value='Auto-Generated Big Blue Button Video Room' readonly>
     </div>
   {{/if}}
   {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
@@ -139,7 +139,7 @@
     </div>
     <div class="field">
       <label>
-          {{t 'Auto Start Recording'}}
+        {{t 'Auto Start Recording'}}
       </label>
       <UiCheckbox
         class="toggle"
@@ -148,7 +148,7 @@
     </div>
     <div class="field">
       <label>
-          {{t 'Mute On Start'}}
+        {{t 'Mute On Start'}}
       </label>
       <UiCheckbox
         class="toggle"
@@ -160,7 +160,7 @@
   {{#if (eq this.data.stream.videoChannel.provider 'jitsi')}}
     <div class="field">
       <label>
-          {{t 'Mute On Start'}}
+        {{t 'Mute On Start'}}
       </label>
       <UiCheckbox
         class="toggle"
@@ -169,7 +169,7 @@
     </div>
     <div class="field">
       <label>
-          {{t 'Hide Cam On Start'}}
+        {{t 'Hide Cam On Start'}}
       </label>
       <UiCheckbox
         class="toggle"
@@ -242,6 +242,93 @@
         @hidePageSize={{true}} />
     {{/if}}
   {{/if}}
+
+  <div class="ui divider"></div>
+  <div class="ui header">{{t 'Translation Channels'}}</div>
+
+  <label>
+    {{t 'Source URL'}}
+    <UiPopup
+      @tagName="i"
+      @class="info circle icon"
+      @content={{t 'Only streams are supported. Please add a streaming link here. Share or embed links of recorded sessions are not supported.'}} />
+  </label>
+
+  {{#each this.translationChannels as |channel index|}}
+    <div class="field">
+      <div class="ui action input">
+        <Widgets::Forms::LinkField
+          @value={{channel.url}}
+          @onChange={{action (mut channel.url)}}
+        />
+        <div class="field">
+          <div class="ui labeled action input">
+            <UiDropdown
+                        @class="channel-dropbox floating labeled icon mini button"
+                        @selected={{channel.name}}
+                        @forceSelection={{false}}
+                        @onChange={{fn this.switchLanguage channel}}>
+              <span class="text">English</span>
+              <div class="ui language menu">
+                {{#each-in this.l10n.availableLocales as |key value|}}
+                  <div class="item" data-value="{{value}}">{{value}}</div>
+                {{/each-in}}
+              </div>
+              <i style="margin-left: 0 !important;text-align: right;"
+                 class="dropdown icon"> </i>
+            </UiDropdown>
+            <button class="ml-2 ui icon red button" {{on "click" (fn this.removeChannel index channel.id )}}>
+              <i class="remove icon"></i>
+            </button>
+            <button class="ui icon blue button" {{on "click" (fn this.updateChannel index channel.id )}}  >
+              <i class="add icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+  {{#each this.translationChannelsNew as |channel index|}}
+    <div class="field">
+      <div class="ui action input">
+        <Widgets::Forms::LinkField
+          @value={{channel.url}}
+          @onChange={{action (mut channel.url)}} />
+        <div class="field">
+          <div class="ui labeled action input">
+            <UiDropdown @class="channel-dropbox  floating labeled icon mini button"
+                        @selected={{channel.name}}
+                        @forceSelection={{false}}
+                        @onChange={{fn this.switchLanguage channel}}>
+              <span class="text">English</span>
+              <div class="ui language menu">
+                {{#each-in this.l10n.availableLocales as |key value|}}
+                  <div class="item" data-value="{{value}}">{{value}}</div>
+                {{/each-in}}
+              </div>
+              <i style="margin-left: 0 !important;text-align: right;"
+                 class="dropdown icon"> </i>
+            </UiDropdown>
+            <span class="ml-2"></span>
+            <button class="ui icon red button" {{on "click" (fn this.removeChannel index channel.id )}}>
+              <i class="remove icon"></i>
+            </button>
+            <button class="ui icon blue button" {{on "click" (fn this.addNewChannel channel )}}>
+              <i class="add icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {{/each}}
+  <div class="field">
+    <button class="ui primary button" {{on "click" this.addChannel }}  >
+      {{t 'Add Channel'}}
+    </button>
+  </div>
+
 
   <div class="ui hidden divider"></div>
   <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>

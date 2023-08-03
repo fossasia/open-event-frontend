@@ -73,6 +73,9 @@ export default class Loader extends Service {
           } else if (config.isFile) {
             delete fetchOptions.headers['Content-Type'];
             fetchOptions.body = data;
+          } else if (url.includes('translation_channels')) {
+            fetchOptions.headers['Content-Type'] = 'application/vnd.api+json';
+            fetchOptions.body = JSON.stringify(data);
           } else {
             fetchOptions.headers['Content-Type'] = 'application/json';
             fetchOptions.body = JSON.stringify(data);
