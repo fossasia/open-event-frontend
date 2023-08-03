@@ -38,6 +38,37 @@
     </div>
     {{/if}}
     {{#if this.session.isAuthenticated}}
+      {{#if this.device.isMobile}}
+        <div class="ui grid row-two-my-schedule">
+          <div class="six wide column item-public">
+            <LinkTo
+              class="{{if this.device.isMobile '' 'right floated ml-auto mb-4'}} rounded-default link-item ui p-1 mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}}"
+              @route="public.sessions"
+              @models={{array this.model.event.id}}
+              @query={{hash my_schedule=null my_speaker_sessions=null}}>
+              <div>{{t 'Public Schedule'}}</div>
+            </LinkTo>
+          </div>
+          <div class="four wide column item-my-schedule">
+            <LinkTo
+              class="rounded-default link-item ui right floated p-1 mr-4 {{if this.device.isMobile '' 'mb-4'}} {{if this.my_schedule 'active'}}"
+              @route="public.sessions"
+              @models={{array this.model.event.id}}
+              @query={{hash my_schedule=true my_speaker_sessions=null}}>
+              <div>{{t 'My Schedule'}}</div>
+            </LinkTo>
+          </div>
+          <div class="six wide column item-my-speaker">
+            <LinkTo
+              class="rounded-default link-item ui right floated p-1 mb-4 {{if (eq this.params.my_speaker_sessions true) 'active'}}"
+              @route="public.sessions"
+              @models={{array this.model.event.id}}
+              @query={{hash my_speaker_sessions=true my_schedule=null}}>
+              <div>{{t 'My Speaker Sessions'}}</div>
+            </LinkTo>
+          </div>
+      </div>
+      {{else}}
       <LinkTo
         class="{{if this.device.isMobile '' 'right floated ml-auto mb-4'}} rounded-default link-item ui p-1 mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}}"
         @route="public.sessions"
@@ -59,6 +90,7 @@
         @query={{hash my_speaker_sessions=true my_schedule=null}}>
         <h4>{{t 'My Speaker Sessions'}}</h4>
       </LinkTo> 
+      {{/if}}
     {{/if}}
 </div>
 <div class="d-flex wrap">
