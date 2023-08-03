@@ -8,6 +8,9 @@ export default class EventService extends Service {
   @service declare loader: Loader;
   @service declare authManager: AuthManagerService;
 
+  @tracked
+  currentEvent:any = null
+
   @tracked eventStreamMap = new Map<string, any>();
 
   async hasStreams(eventId: number): Promise<{exists: boolean; can_access: boolean;}> {
@@ -40,6 +43,13 @@ export default class EventService extends Service {
     return (await this.getSpeakersMeta(eventId)).data.length;
   }
 
+  setCurrentEvent(evt:any) {
+    this.currentEvent = evt;
+  }
+
+  getCurrentEvent() {
+    return this.currentEvent
+  }
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your services.
