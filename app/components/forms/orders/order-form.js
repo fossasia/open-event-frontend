@@ -538,8 +538,7 @@ export default Component.extend(FormMixin, {
               }
             ]
           };
-        }
-        else {
+        } else {
           validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
             rules: [
               {

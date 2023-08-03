@@ -4,13 +4,16 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
 import { booleanTextType } from 'open-event-frontend/utils/dictionary/boolean_text_type';
-import { fieldFontName } from 'open-event-frontend/utils/dictionary/badge-field';
+import { fieldFontName, badgeFieldRotate, badgeFieldFontWeight, badgeFieldFontSize } from 'open-event-frontend/utils/dictionary/badge-field';
 
 export default Component.extend(FormMixin, {
   router             : service(),
   autoScrollToErrors : false,
   isExpanded         : true,
   booleanTextType    : orderBy(booleanTextType, 'position'),
+  badgeFieldRotate   : orderBy(badgeFieldRotate),
+  badgeFieldFontWeight,
+  badgeFieldFontSize,
 
   getCustomFields: computed('includeCustomField', function() {
     const validForms = this.includeCustomField.map(item => {
@@ -89,6 +92,22 @@ export default Component.extend(FormMixin, {
     return orderBy(fieldFontName, 'name');
   },
 
+  get fontStyle() {
+    let font_style = [];
+    if (this.data.font_weight) {
+      font_style = this.data.font_weight.map(item => item.name);
+    }
+    return font_style;
+  },
+
+  get fontStyleSelected() {
+    if (this.fontStyle.length > 0) {
+      return this.fontStyle.join(', ');
+    } else {
+      return 'Normal';
+    }
+  },
+
   actions: {
     toggleSetting() {
       if (!this.data.is_field_expanded) {
@@ -125,6 +144,19 @@ export default Component.extend(FormMixin, {
     },
     onChangeFontName(value) {
       this.set('data.font_name', value);
+    },
+    onChangeTextRotate(value) {
+      this.set('data.text_rotation', value);
+    },
+    onChangeTextFontWeight(value) {
+      if (this.data.font_weight == null) {
+        this.set('data.font_weight', []);
+      }
+      if (this.data.font_weight.map(item => item.name).includes(value.name)) {
+        this.data.font_weight.removeObject(this.data.font_weight.find(item => item.name === value.name));
+      } else {
+        this.data.font_weight.pushObject(value);
+      }
     }
   }
 });

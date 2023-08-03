@@ -10,10 +10,10 @@ export default ModelBase.extend({
    */
   badgeID             : attr('string'),
   isShowingSampleData : attr('boolean'),
-  badgeSize           : attr('string'),
+  badgeSize           : attr('string', { defaultValue: '4 x 6 inch (101.6 x 152.4 mm)' }),
   badgeColor          : attr('string'),
   badgeImageUrl       : attr('string'),
-  badgeOrientation    : attr('string'),
+  badgeOrientation    : attr('string', { defaultValue: 'Portrait' }),
   badgeQRFields       : attr(),
   badgeFields         : attr(),
   selectedImage       : attr('string'),
