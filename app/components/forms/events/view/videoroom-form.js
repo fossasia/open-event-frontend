@@ -452,7 +452,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
         this.translationChannels.forEach((channel, index) => {
           this.updateChannel(index, channel.id);
-        })
+        });
 
         if (this.data.stream.extra?.bbb_options) {
           this.data.stream.extra.bbb_options.endCurrentMeeting = this
