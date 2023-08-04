@@ -47,6 +47,7 @@ export default Component.extend(FormMixin, {
 
   invalidPromotionalAccessCode   : false,
   invalidPromotionalDiscountCode : false,
+  isDiscountSoldOut              : false,
 
   tickets: computed('orderAmount', function() {
     const ticketMap = {};
@@ -99,7 +100,8 @@ export default Component.extend(FormMixin, {
         quantity : ticket.orderQuantity,
         price    : ticket.price
       })),
-      'discount-code': this.order.get('discountCode.id')
+      'discount-code'   : this.order.get('discountCode.id'),
+      'discount-verify' : true
     };
     if (this.amountOverride) {
       input.amount = this.amountOverride;
@@ -136,6 +138,8 @@ export default Component.extend(FormMixin, {
       }
     },
     async applyPromotionalCode() {
+      this.isDiscountSoldOut = false;
+      this.set('isDiscountSoldOut', false);
       if (!this.code) {
         this.set('code', this.promotionalCode);
       }
@@ -150,7 +154,7 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalAccessCode', false);
         });
       } catch (e) {
-        console.error('Error while applying access code', e);
+        console.error('Error while applying access code');
         this.set('invalidPromotionalAccessCode', true);
       }
       try {
@@ -166,8 +170,9 @@ export default Component.extend(FormMixin, {
           this.order.set('discountCode', discountCode);
           const tickets = await discountCode.tickets;
           const ticketInput = {
-            'discount-code' : discountCode.id,
-            'tickets'       : tickets.toArray().map(ticket => ({
+            'discount-code'   : discountCode.id,
+            'discount-verify' : true,
+            'tickets'         : tickets.toArray().map(ticket => ({
               id       : ticket.id,
               quantity : 1,
               price    : ticket.price
@@ -187,20 +192,29 @@ export default Component.extend(FormMixin, {
           this.set('invalidPromotionalDiscountCode', true);
         }
       } catch (e) {
-        console.error('Error while applying discount code as promo code', e);
+        console.error('Error while applying discount code as promo code');
         this.set('invalidPromotionalDiscountCode', true);
+        if (e.response?.errors[0]?.source?.pointer === 'discount_sold_out') {
+          this.isDiscountSoldOut = true;
+        }
       }
       // if both access code and discount code are invalid, warn
       if (this.invalidPromotionalDiscountCode && this.invalidPromotionalAccessCode) {
         this.set('promotionalCodeApplied', false);
-        this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
-          id: 'prom_inval'
-        });
+        if (!this.isDiscountSoldOut) {
+          this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
+            id: 'prom_inval'
+          });
+        } else {
+          this.notify.error(this.l10n.t('Discount tickets sold out.'), {
+            id: 'prom_inval'
+          });
+        }
       } else {
         this.set('promotionalCodeApplied', true);
         this.set('promotionalCode', 'Promotional code applied successfully');
+        this.send('updateOrderAmount');
       }
-      this.send('updateOrderAmount');
     },
 
     async updateOrder(ticket, count) {
@@ -238,12 +252,20 @@ export default Component.extend(FormMixin, {
       try {
         this.set('orderAmount', await this.loader.post('/orders/calculate-amount', this.orderAmountInput));
         this.order.amount = this.orderAmount.total;
+        const warningTicket = this.orderAmount.tickets.filter(ticket => ticket.discount && ticket.discount.warning)[0];
+        if (warningTicket) {
+          this.notify.info(warningTicket.discount.warning, {
+            id: 'order-amount-warning'
+          });
+        }
         this.set('amountOverride', null);
       } catch (e) {
-        console.error('Error while calculating order amount', e);
-        this.notify.error(e.response.errors[0].detail, {
-          id: 'order-amount-error'
-        });
+        console.error('Error while calculating order amount');
+        if (e.response?.errors[0]?.source?.pointer !== 'discount_sold_out') {
+          this.notify.error(e.response.errors[0].detail, {
+            id: 'order-amount-error'
+          });
+        }
       }
     },
 
