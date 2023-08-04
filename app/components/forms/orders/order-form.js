@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { cancel } from '@ember/runloop';
 import { readOnly, oneWay } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
@@ -623,5 +624,10 @@ export default Component.extend(FormMixin, {
     updateGendersSelection(checked, changed, selectedOptions, holder, field) {
       holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
+  },
+  willDestroyElement() {
+    clearInterval(this._getRemainingTimeId);
+    this._super(...arguments);
   }
+
 });

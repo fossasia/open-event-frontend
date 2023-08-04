@@ -73,34 +73,42 @@
     <a href="#" class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
-    {{#if (and this.isNotExplorePageRoute this.isNotWizardPageRoute this.isNotEventPageRoute)}}
-        <LinkTo
+    {{#if this.session.isAuthenticated}}
+        {{#if (and this.isNotExplorePageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+         <LinkTo
           @route="index" class="item" @activeClass="">
           <div class="ui header small text">{{this.settings.appName}}</div>
         </LinkTo>
-    {{else if (and this.isNotExplorePageRoute this.isNotEventPageRoute (not this.isNotWizardPageRoute))}}
-        <LinkTo
-          @route="index" class="item" @activeClass="">
-          <div class="ui header small text">{{this.settings.appName}}b</div>
-        </LinkTo>
-    {{else if (and this.isNotExplorePageRoute this.isNotWizardPageRoute (not this.isNotEventPageRoute))}}
-      {{#if (not this.session.isAuthenticated) }}
-        <LinkTo
-          @route="index" class="item" @activeClass="">
-          <div class="ui header small text">Home</div>
-        </LinkTo>
-      {{else}}
-        {{#if this.globalData.logoUrl}}
-          <button class="item btn-un-bd" {{on "click" this.handleClick}}>
-              <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8"/>
-          </button>
-        {{else}}
-        <button class="item btn-un-bd" {{on "click" this.handleClick}}>
-          <div class="ui header small text">Home</div>
-        </button>
+        {{else }}
+            {{#if this.globalData.logoUrl}}
+              <button class="item btn-un-bd" {{on "click" this.handleClick}}>
+                  <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8"/>
+              </button>
+            {{else}}
+            <button class="item btn-un-bd" {{on "click" this.handleClick}}>
+              <div class="ui header small text">Home</div>
+            </button>
+            {{/if}}
         {{/if}}
-      {{/if}}
+    {{else}}
+        {{#if (and this.isNotExplorePageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+          <LinkTo
+            @route="index" class="item" @activeClass="">
+            <div class="ui header small text">{{this.settings.appName}}</div>
+          </LinkTo>
+        {{else}}
+          {{#if this.globalData.logoUrl}}
+            <button class="item btn-un-bd" {{on "click" this.handleClick}}>
+                <img src="{{this.globalData.logoUrl}}" class="logo-event mr-8"/>
+            </button>
+          {{else}}
+          <button class="item btn-un-bd" {{on "click" this.handleClick}}>
+            <div class="ui header small text">Home</div>
+          </button>
+          {{/if}}
+        {{/if}}
     {{/if}}
+
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
@@ -116,14 +124,14 @@
         </div>
       {{/if}}
       {{#if this.session.isAuthenticated}}
-        {{#if (and this.isNotExplorePageRoute this.isNotWizardPageRoute this.isNotEventPageRoute)}}
+        {{#if (and this.isNotExplorePageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
           <LinkTo
             @route="create" class="item ui blue button-text small text">
             <div>
               {{t 'Create Event'}}
             </div>
           </LinkTo>
-        {{else if (and this.isNotExplorePageRoute this.isNotWizardPageRoute (not this.isNotEventPageRoute))}}
+        {{else}}
           <LinkTo
             @route="index" class="item" @activeClass="">
             <div class="ui header small text">{{this.settings.appName}}</div>

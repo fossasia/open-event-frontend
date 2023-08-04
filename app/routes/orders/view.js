@@ -1,10 +1,12 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
-
+import { inject as service } from '@ember/service';
 
 @classic
 export default class ViewRoute extends Route {
+  @service globalData;
+
   titleToken(model) {
     const order = model.order.get('identifier');
     if (model.order.status === 'completed') {
@@ -27,6 +29,8 @@ export default class ViewRoute extends Route {
       reload  : true
     });
     const eventDetails = await order.query('event', { include: 'tax' });
+    this.globalData.saveIdEvent(eventDetails.data.identifier);
+    this.globalData.setLogoUrl(eventDetails.data.logoUrl);
     const tickets = await order.query('tickets', {});
     await tickets.forEach(ticket => {
       ticket.query('attendees', {

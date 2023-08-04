@@ -25,8 +25,7 @@ export default class NavBar extends Component {
     if (this.isGroupRoute) {
       return true;
     }
-    return !(String(this.session.currentRouteName).includes('edit'))
-    && String(this.session.currentRouteName) !== 'create';
+    return !String(this.session.currentRouteName) !== 'create';
   }
 
   @computed('session.currentRouteName')
@@ -35,6 +34,22 @@ export default class NavBar extends Component {
       return true;
     }
     return !(String(this.session.currentRouteName).includes('explore'));
+  }
+
+  @computed('session.currentRouteName')
+  get isNotOrderPageRoute() {
+    if (this.isGroupRoute) {
+      return true;
+    }
+    return !(String(this.session.currentRouteName).includes('order'));
+  }
+
+  @computed('session.currentRouteName')
+  get isNotEventDetailPageRoute() {
+    if (this.isGroupRoute || this.routing.currentRouteName === 'events.list') {
+      return true;
+    }
+    return !(String(this.session.currentRouteName).includes('events'));
   }
 
   @action
