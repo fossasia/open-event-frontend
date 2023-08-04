@@ -72,7 +72,10 @@
 
   .item-public {
     padding: unset !important;
-    padding-left: 16px !important;
+
+    a {
+      margin-right: unset !important;
+    }
   }
 
   .item-my-schedule {
@@ -80,12 +83,14 @@
 
     a {
       margin-right: unset !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
   .item-my-speaker {
     padding: unset !important;
-    padding-right: 16px !important;
 
     a {
       width: 100% !important;
@@ -94,7 +99,6 @@
       display: flex;
       align-items: center;
       height: 100%;
-      justify-content: center;
     }
 
     div {

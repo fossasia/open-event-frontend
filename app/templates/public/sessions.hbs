@@ -39,8 +39,9 @@
     {{/if}}
     {{#if this.session.isAuthenticated}}
       {{#if this.device.isMobile}}
-        <div class="ui grid row-two-my-schedule">
-          <div class="six wide column item-public">
+      <div class="row-two" style="">
+        <div class="ui grid row-two-my-schedule" style="margin-left: unset !important; margin-right: unset !important">
+          <div class="five wide column item-public">
             <LinkTo
               class="{{if this.device.isMobile '' 'right floated ml-auto mb-4'}} rounded-default link-item ui p-1 mr-4 {{if (not (or this.my_schedule this.my_speaker_sessions)) 'active'}}"
               @route="public.sessions"
@@ -49,7 +50,7 @@
               <div>{{t 'Public Schedule'}}</div>
             </LinkTo>
           </div>
-          <div class="four wide column item-my-schedule">
+          <div class="five wide column item-my-schedule">
             <LinkTo
               class="rounded-default link-item ui right floated p-1 mr-4 {{if this.device.isMobile '' 'mb-4'}} {{if this.my_schedule 'active'}}"
               @route="public.sessions"
@@ -67,6 +68,7 @@
               <div>{{t 'My Speaker Sessions'}}</div>
             </LinkTo>
           </div>
+        </div>
       </div>
       {{else}}
       <LinkTo
