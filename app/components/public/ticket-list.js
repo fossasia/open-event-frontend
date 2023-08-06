@@ -93,7 +93,7 @@ export default Component.extend(FormMixin, {
     return true;
   }),
 
-  orderAmountInput: computed('tickets.@each.price', 'order.tickets.@each.orderQuantity', 'order.discountCode', function() {
+  orderAmountInput: computed('tickets.@each.price', 'order.tickets.@each.orderQuantity', 'order.discountCode', 'order.accessCode', function() {
     const input = {
       tickets: this.order.tickets.toArray().map(ticket => ({
         id       : ticket.id,
@@ -101,6 +101,7 @@ export default Component.extend(FormMixin, {
         price    : ticket.price
       })),
       'discount-code'   : this.order.get('discountCode.id'),
+      'access-code'     : this.order.get('accessCode.id'),
       'discount-verify' : true
     };
     if (this.amountOverride) {
