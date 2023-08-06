@@ -29,17 +29,13 @@
   <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}" id="event-contents">
     <div class="ui stackable grid">
       <div class="three wide column" id="public-event-content">
-        {{#if this.device.isMobile}}
-          {{#if this.displaySideMenu}}
-            <Public::SideMenuOuter @event={{this.model}} />
-          {{/if}}
-        {{else}}
+        {{#unless this.device.isMobile}}
           {{#if this.displaySideMenu}}
             <div class="ui fluid side-menu">
               <Public::SideMenuOuter @event={{this.model}} />
             </div>
           {{/if}}
-        {{/if}}
+        {{/unless}}
       </div>
       {{#unless this.device.isMobile}}
         <div class="ten wide column">
