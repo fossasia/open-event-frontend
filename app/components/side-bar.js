@@ -1,11 +1,15 @@
 import classic from 'ember-classic-decorator';
 import $ from 'jquery';
 import Component from '@ember/component';
-import { action } from '@ember/object';
-
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 @classic
 export default class SideBar extends Component {
+  @tracked
   sidebarVisible = false;
+
+  @service('event') evtService;
 
   toggleSidebar() {
     this.toggleProperty('sidebarVisible');
@@ -23,6 +27,13 @@ export default class SideBar extends Component {
     }
   }
 
+
+  @computed('session.currentRouteName')
+  get isEventPageRoute() {
+    const currentRouteName = String(this.session.currentRouteName);
+    return currentRouteName.includes('public') && !currentRouteName.includes('group');
+  }
+
   didInsertElement() {
     super.didInsertElement(...arguments);
 
@@ -35,7 +46,7 @@ export default class SideBar extends Component {
      */
 
     this.set('$sidebarOpener', $('.open.sidebar', this.element));
-    this.set('$sidebarClosers', $('.ui.sidebar', this.element).find('.item,a,.link,button'));
+    this.set('$sidebarClosers', $('.ui.sidebar', this.element).find('.item,a,.link,button').not('div.item.ui'));
     this.$sidebarClosers.push($('.main-container', this.element)[0]);
 
     if (this.$sidebarOpener) {
