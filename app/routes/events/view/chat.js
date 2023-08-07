@@ -24,9 +24,11 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     queryString = this.applySortFilters(queryString, params);
 
     const rooms = this.asArray(event.query('microlocations', queryString));
+    const videoStream = this.asArray(event.query('videoStream', {}));
     return hash({
       event,
-      rooms
+      rooms,
+      videoStream
     });
   }
 }
