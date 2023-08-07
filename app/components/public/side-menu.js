@@ -58,10 +58,23 @@ export default class SideMenu extends Component {
   goToSection(section) {
     this.set('activeSection', section);
     this.set('activeMenuSection', section);
+    this.hideSidebar();
+  }
+
+  @action
+  hideSidebar() {
+    const target = document.querySelector('#main-container');
+    if (target) {
+      // Delay click to give time to render
+      setTimeout(() => {
+        target.click();
+      }, 0);
+    }
   }
 
   @action
   scrollToTarget(section) {
+    this.hideSidebar();
     document.querySelector(`#${section}`).scrollIntoView({
       behavior: 'smooth'
     });
