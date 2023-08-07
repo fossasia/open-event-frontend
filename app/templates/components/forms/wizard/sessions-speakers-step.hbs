@@ -5,13 +5,23 @@
       <div class="ui {{if this.data.event.isSessionsSpeakersEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class="field">
-            <div class="ui slider checkbox">
-              <Input @type="checkbox" @checked={{this.data.event.isSessionsSpeakersEnabled}} />
+            <div class="d-flex" style="justify-content: center;">
+              <UiCheckbox
+                @class="ui slider"
+                @checked={{if this.data.event.isSessionsSpeakersEnabled 'active'}}
+                @onChange={{action "toggleSessionSpeaker"}} />
               <label class="weight-300" style="font-size: large">
                 {{if this.data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sessions & Speakers'}}
               </label>
             </div>
+            {{!-- <div class="ui slider checkbox">
+              <Input @type="checkbox" @checked={{this.data.event.isSessionsSpeakersEnabled}} />
+              <label class="weight-300" style="font-size: large">
+                {{if this.data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
+                {{t 'Sessions & Speakers'}}
+              </label>
+            </div> --}}
           </div>
         </div>
       </div>
