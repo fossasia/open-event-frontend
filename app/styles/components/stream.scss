@@ -79,7 +79,8 @@
   z-index: 1;
 
   @media (max-width: 767px) {
-    width: 100%;
+    width: 75%;
+    overflow-y: auto;
   }
 }
 
@@ -116,6 +117,7 @@ i.chat-panel-icon {
   background-color: #555 !important;
   border: 0 !important;
   box-shadow: none !important;
+  margin-bottom: unset !important;
 }
 
 .video-active {
