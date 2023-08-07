@@ -20,7 +20,7 @@
             <div class="menu">
               {{#each this.badgeSize as |size|}}
               <div class="item" data-value="{{map-value mapper size.name}}">
-                {{t size.name}}
+                {{t-var size.name}}
               </div>
               {{/each}}
             </div>
@@ -41,7 +41,7 @@
             <div class="menu">
               {{#each this.badgeOrientation as |size|}}
               <div class="item" data-value="{{map-value mapper size.name}}">
-                {{t size.name}}
+                {{size.name}}
               </div>
               {{/each}}
             </div>

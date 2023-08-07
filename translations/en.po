@@ -5692,8 +5692,8 @@ msgid "Click here to add"
 msgstr "Click here to add"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
-msgid "No. of Supporters"
-msgstr "No. of Supporters"
+msgid "No. of SupportersSupporters"
+msgstr "No. of SupportersSupporters"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
 msgid "No Supporter added yet."
@@ -8682,8 +8682,8 @@ msgid "No Speaker Added Yet"
 msgstr "No Speaker Added Yet"
 
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:5:60
-msgid "Are you sure you would like to delete this Supporter?"
-msgstr "Are you sure you would like to delete this Supporter?"
+msgid "Are you sure you would like to delete this Supporter??"
+msgstr "Are you sure you would like to delete this Supporter??"
 
 #: app/templates/components/ui-table/cell/cell-tickets.hbs:6:9
 #: app/templates/events/view/tickets/index.hbs:25:34
@@ -9123,10 +9123,6 @@ msgstr "Create a New Access code"
 msgid "Edit an access code"
 msgstr "Edit an access code"
 
-#: app/templates/events/view/tickets/attendees.hbs:5:8
-msgid "View Attendees"
-msgstr "View Attendees"
-
 #: app/templates/events/view/tickets/attendees.hbs:13:14
 #: app/templates/events/view/tickets/orders.hbs:13:14
 msgid "Export As"
@@ -9215,6 +9211,7 @@ msgstr "View orders"
 #: app/templates/events/view/tickets/index.hbs:75:12
 #: app/templates/events/view/tickets/index.hbs:92:12
 #: app/templates/events/view/tickets/index.hbs:109:12
+#: app/templates/events/view/tickets/attendees.hbs:5:8
 msgid "View attendees"
 msgstr "View attendees"
 
@@ -11615,29 +11612,6 @@ msgstr "Under 18"
 msgid "I prefer not to say"
 msgstr "I prefer not to say"
 
-#: app/templates/components/public/schedule-menu-filter.hbs:5:12
-msgid "Filter by Tracks"
-msgstr "Filter by Tracks"
-
-#: app/templates/components/public/schedule-menu-filter.hbs:17:12
-msgid "Filter by Rooms"
-msgstr "Filter by Rooms"
-
-#: app/templates/components/public/schedule-menu-filter.hbs:31:12
-msgid "Filter by Session Types"
-msgstr "Filter by Session Types"
-
-#: app/templates/components/public/schedule-menu-filter.hbs:44:12
-msgid "Filter by Session levels"
-msgstr "Filter by Session levels"
-
-#: app/templates/components/public/schedule-menu-filter.hbs:67:50
-#: app/templates/components/public/schedule-menu-filter.hbs:81:50
-#: app/templates/components/public/schedule-menu-filter.hbs:95:50
-#: app/templates/components/public/schedule-menu-filter.hbs:109:50
-msgid "[Clear Filter]"
-msgstr "[Clear Filter]"
-
 #: app/utils/dictionary/home-wikis.ts:5:10
 msgid "Wikipedia"
 msgstr "Wikipedia"
@@ -11701,6 +11675,29 @@ msgstr "What is your native language, or what language are you most fluent in?"
 #: app/models/custom-form.js:111:27
 msgid "Are you fluent in any other of the following languages?"
 msgstr "Are you fluent in any other of the following languages?"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:5:12
+msgid "Filter by Tracks"
+msgstr "Filter by Tracks"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:17:12
+msgid "Filter by Rooms"
+msgstr "Filter by Rooms"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:31:12
+msgid "Filter by Session Types"
+msgstr "Filter by Session Types"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:44:12
+msgid "Filter by Session levels"
+msgstr "Filter by Session levels"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:67:50
+#: app/templates/components/public/schedule-menu-filter.hbs:81:50
+#: app/templates/components/public/schedule-menu-filter.hbs:95:50
+#: app/templates/components/public/schedule-menu-filter.hbs:109:50
+msgid "[Clear Filter]"
+msgstr "[Clear Filter]"
 
 msgid "Consent of refund policy"
 msgstr "Consent of refund policy"
@@ -11778,32 +11775,45 @@ msgstr "I want to receive email updates about future Wikimania editions."
 
 #: app/models/custom-form.js:106:27
 msgid "Which of these categories describe your gender identity? (check all that apply)"
-msgstr ""
+msgstr "Which of these categories describe your gender identity? (check all that apply)"
 
 #: app/utils/dictionary/genders.ts:5:12
 msgid "Man"
-msgstr ""
+msgstr "Man"
 
 #: app/utils/dictionary/genders.ts:8:12
 msgid "Woman"
-msgstr ""
+msgstr "Woman"
 
 #: app/utils/dictionary/genders.ts:11:12
 msgid "Transgender"
-msgstr ""
+msgstr "Transgender"
 
 #: app/utils/dictionary/genders.ts:14:12
 msgid "Non-binary"
-msgstr ""
+msgstr "Non-binary"
 
 #: app/utils/dictionary/genders.ts:17:12
 msgid "Genderqueer"
-msgstr ""
+msgstr "Genderqueer"
 
 #: app/utils/dictionary/genders.ts:20:12
 msgid "An identity not listed here"
-msgstr ""
+msgstr "An identity not listed here"
 
-#: app/utils/dictionary/genders.ts:23:12
-msgid "I prefer not to say"
-msgstr ""
+#: app/templates/events/view/chat.hbs:32:39
+msgid "Activating a room chat adds a chat channel that is only available for the specific room."
+msgstr "Activating a room chat adds a chat channel that is only available for the specific room."
+
+#: app/templates/events/view/chat.hbs:39:39
+msgid "Activating the event chat for a room adds a chat channel that can be used across different rooms."
+msgstr "Activating the event chat for a room adds a chat channel that can be used across different rooms."
+
+#~ msgid "No. of Supporters"
+#~ msgstr "No. of Supporters"
+
+#~ msgid "View Attendees"
+#~ msgstr "View Attendees"
+
+#~ msgid "Are you sure you would like to delete this Supporter?"
+#~ msgstr "Are you sure you would like to delete this Supporter?"
