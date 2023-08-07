@@ -8,12 +8,12 @@ export default class extends Controller {
     const rooms = [];
     if (this.model.videoStream) {
       const item = this.store.createRecord('microlocation', {
-        id: 0,
-        name : this.model.videoStream.name,
+        id                : 0,
+        name              : this.model.videoStream.name,
         isGlobalEventRoom : this.model.videoStream?.isGlobalEventRoom,
-        isChatEnabled : this.model.videoStream?.isChatEnabled,
-        isVideoStream : true
-      })
+        isChatEnabled     : this.model.videoStream?.isChatEnabled,
+        isVideoStream     : true
+      });
       rooms.pushObject(item);
     }
     rooms.pushObjects(this.model.rooms?.data);
@@ -29,7 +29,7 @@ export default class extends Controller {
     if (!room.isVideoStream) {
       await room.save();
     } else {
-      const videoStream = this.model.videoStream;
+      const { videoStream } = this.model;
       videoStream.isChatEnabled = room.isChatEnabled;
       videoStream.isGlobalEventRoom = room.isGlobalEventRoom;
       await videoStream.save();
@@ -45,7 +45,7 @@ export default class extends Controller {
     if (!room.isVideoStream) {
       await room.save();
     } else {
-      const videoStream = this.model.videoStream;
+      const { videoStream } = this.model;
       videoStream.isChatEnabled = room.isChatEnabled;
       videoStream.isGlobalEventRoom = room.isGlobalEventRoom;
       await videoStream.save();
