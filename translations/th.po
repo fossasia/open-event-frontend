@@ -1,12 +1,13 @@
 # PPNplus <ppnplus@protonmail.com>, 2021, 2023.
 # Hong Phuc Dang <hp@fossasia.org>, 2023.
+# Patsagorn Yuenyong <manpatsagorny@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-07-04 04:49+0000\n"
-"Last-Translator: PPNplus <ppnplus@protonmail.com>\n"
+"PO-Revision-Date: 2023-08-06 23:54+0000\n"
+"Last-Translator: Patsagorn Yuenyong <manpatsagorny@gmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/open-event/frontend/"
 "th/>\n"
 "Language: th\n"
@@ -1031,7 +1032,7 @@ msgstr "ทีมองค์กร"
 #: app/templates/public/cfs/view-session.hbs:75:43
 #: app/templates/public/speaker-invite/view-session.hbs:58:43
 msgid "Speakers"
-msgstr "ลำโพง"
+msgstr "วิทยากร"
 
 #: app/components/forms/events/view/videoroom-form.hbs:169:87
 #: app/routes/events/view/tickets/attendees.js:7:11
@@ -2053,7 +2054,7 @@ msgstr "กรุณากรอกหมายเลขโทรศัพท์
 
 #: app/components/modals/session-notify-modal.hbs:3:2
 msgid "Notify Speakers"
-msgstr "แจ้งลำโพง"
+msgstr "แจ้งวิทยากร"
 
 #: app/components/modals/session-notify-modal.hbs:14:15
 #: app/templates/components/event-invoice/billing-info.hbs:8:16
@@ -2310,7 +2311,7 @@ msgstr "ปฏิทิน"
 #: app/templates/public/cfs/view-speaker.hbs:11:89
 #: app/templates/public/speaker-invite/view-session.hbs:11:89
 msgid "Call for Speakers"
-msgstr "โทรหาลำโพง"
+msgstr "รับสมัครวิทยากร"
 
 #: app/components/public/side-menu-outer.js:26:13 app/routes/public/coc.js:7:11
 #: app/templates/components/forms/wizard/other-details-step.hbs:102:35
@@ -3167,11 +3168,11 @@ msgstr "ส่งคำเชิญบทบาทเจ้าของสำเ
 #: app/controllers/public/cfs/edit-speaker.js:15:28
 #: app/controllers/public/cfs/new-speaker.js:12:28
 msgid "Speaker details have been saved"
-msgstr "บันทึกรายละเอียดลำโพงแล้ว"
+msgstr "บันทึกรายละเอียดวิทยากรแล้ว"
 
 #: app/controllers/events/view/speakers/create.js:30:26
 msgid "The speaker has been saved."
-msgstr "บันทึกลำโพงแล้ว"
+msgstr "บันทึกวิทยากรแล้ว"
 
 #: app/controllers/events/view/speakers/list.js:34:26
 #: app/models/custom-form.js:10:24
@@ -3209,19 +3210,19 @@ msgstr "ลักษณะเฉพาะ"
 
 #: app/controllers/events/view/speakers/list.js:83:26
 msgid "Speaker has been deleted successfully."
-msgstr "ลบลำโพงสำเร็จแล้ว"
+msgstr "วิทยากรถูกลบเรียบร้อยแล้ว"
 
 #: app/controllers/events/view/speakers/list.js:108:26
 msgid "Speaker details modified successfully"
-msgstr "แก้ไขรายละเอียดลำโพงเรียบร้อยแล้ว"
+msgstr "แก้ไขรายละเอียดวิทยากรเรียบร้อยแล้ว"
 
 #: app/controllers/events/view/speakers/reorder.ts:25:26
 msgid "Speaker order reset successfully."
-msgstr "รีเซ็ตลำดับลำโพงสำเร็จ"
+msgstr "รีเซ็ตลำดับวิทยากรสำเร็จ"
 
 #: app/controllers/events/view/speakers/reorder.ts:37:26
 msgid "Speaker order set successfully."
-msgstr "ตั้งค่าลำดับลำโพงเรียบร้อยแล้ว"
+msgstr "ตั้งค่าลำดับวิทยากรเรียบร้อยแล้ว"
 
 #: app/controllers/events/view/tickets/access-codes/create.js:11:28
 msgid "Access code has been successfully created."
@@ -3528,7 +3529,7 @@ msgstr "โฆษณาผู้สนับสนุนของคุณ"
 #: app/routes/events/view/edit/sessions-speakers.js:9:11
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:12:16
 msgid "Sessions & Speakers"
-msgstr "เซสชันและลำโพง"
+msgstr "เซสชันและวิทยากร"
 
 #: app/mixins/event-wizard.js:42:22
 msgid "Expand your event"
@@ -4143,7 +4144,7 @@ msgstr "ไม่มีเซสชัน"
 #: app/templates/events/view/speakers.hbs:37:14
 #: app/templates/events/view/speakers/reorder.hbs:3:4
 msgid "Reorder Speakers"
-msgstr "จัดลำดับลำโพงใหม่"
+msgstr "จัดลำดับวิทยากรใหม่"
 
 #: app/routes/events/view/team.ts:7:11
 #: app/routes/events/view/team/permissions.ts:37:19
@@ -4570,7 +4571,7 @@ msgstr "แก้ไขเซสชัน"
 #: app/templates/public/cfs/view-speaker.hbs:25:83
 #: app/templates/public/speaker/view.hbs:8:83
 msgid "Edit Speaker"
-msgstr "แก้ไขลำโพง"
+msgstr "แก้ไขวิทยากร"
 
 #: app/routes/public/cfs/new-session.js:8:11
 msgid "New Session"
@@ -4578,7 +4579,7 @@ msgstr "เซสชันใหม่"
 
 #: app/routes/public/cfs/new-speaker.js:8:11
 msgid "New Speaker"
-msgstr "ลำโพงใหม่"
+msgstr "เพิ่มวิทยากรใหม่"
 
 #: app/routes/public/cfs/view-session.js:8:11
 #: app/routes/public/speaker-invite/view-session.js:8:11
@@ -4594,7 +4595,7 @@ msgstr "ดูเซสชัน"
 #: app/templates/events/view/speaker/view.hbs:4:6
 #: app/templates/public/cfs/view-speaker.hbs:16:6
 msgid "View Speaker"
-msgstr "ดูลำโพง"
+msgstr "ดูวิทยากร"
 
 #: app/routes/public/speaker-invite/index.js:7:11
 #: app/templates/components/forms/session-speaker-form.hbs:139:27
@@ -5330,7 +5331,8 @@ msgstr "เลือกประเทศ"
 
 #: app/templates/components/create-session-message.hbs:6:6
 msgid "Your Speaker Details have been saved, you can now submit a proposal by clicking Submit proposal!"
-msgstr "บันทึกรายละเอียดลำโพงของคุณแล้วคุณสามารถส่งข้อเสนอได้โดยคลิกส่งข้อเสนอ!"
+msgstr ""
+"บันทึกรายละเอียดวิทยากรของคุณแล้ว คุณสามารถส่งข้อเสนอได้โดยคลิกส่งข้อเสนอ!"
 
 #: app/templates/components/errors/forbidden-error.hbs:2:55
 msgid "Forbidden"
@@ -5692,19 +5694,19 @@ msgstr "ติดตามรายละเอียดและสีระย
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:88:12
 #: app/templates/components/explore/side-bar.hbs:215:8
 msgid "Call For Speakers"
-msgstr "โทรหาลำโพง"
+msgstr "รับสมัครวิทยากร"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:90:14
 msgid "Call for speakers announcement and dates"
-msgstr "ประกาศและวันที่ของลำโพง"
+msgstr "รายละเอียดประกาศรับสมัครวิทยากรและวันที่"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:103:12
 msgid "Session & Speaker forms customization"
-msgstr "การปรับแต่งรูปแบบเซสชันและลำโพง"
+msgstr "การปรับแต่งรูปแบบเซสชันและวิทยากร"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:105:14
 msgid "Customize the session and speaker registration forms"
-msgstr "ปรับแต่งเซสชั่นและแบบฟอร์มการลงทะเบียนลำโพง"
+msgstr "ปรับแต่งเซสชั่นและแบบฟอร์มการลงทะเบียนวิทยากร"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 #: app/templates/components/events/view/overview/speaker-session.hbs:5:24
@@ -5890,14 +5892,14 @@ msgstr "ไม่ได้เปิดใช้งานการเรียก
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:57:20
 msgid "No. of Speakers"
-msgstr "จำนวนลำโพง"
+msgstr "จำนวนวิทยากร"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:62:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:72:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:97:12
 #: app/templates/components/events/view/overview/speaker-session.hbs:111:12
 msgid "Sessions and Speakers not enabled."
-msgstr "ไม่ได้เปิดใช้งานเซสชันและลำโพง"
+msgstr "ไม่ได้เปิดใช้งานเซสชันและวิทยากร"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:67:20
 msgid "No. of Sessions"
@@ -6306,7 +6308,7 @@ msgstr "ขนาดโลโก้ (ตัวช่วยสร้างเห�
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:83:24
 msgid "Profile/Speaker Images"
-msgstr "โปรไฟล์ / รูปภาพลำโพง"
+msgstr "โปรไฟล์ / รูปภาพวิทยากร"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:87:13
 #: app/templates/components/forms/admin/settings/images-form.hbs:103:13
@@ -6332,7 +6334,7 @@ msgstr "ขนาดมาตรฐานของพื้นที่ว่า
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:114:22
 msgid "Speaker Tab in Event Dashboard"
-msgstr "แท็บลำโพงในแดชบอร์ดเหตุการณ์"
+msgstr "แท็บวิทยากรในแดชบอร์ดเหตุการณ์"
 
 #: app/templates/components/forms/admin/settings/images-form.hbs:127:2
 msgid "Standard Size of the available area is 35px X 35px"
@@ -7363,7 +7365,7 @@ msgstr "เลือกระดับของคุณ"
 #: app/templates/components/forms/session-section.hbs:138:30
 #: app/templates/components/forms/speaker-section.hbs:120:30
 msgid "Please enable session/speaker form to create a session/speaker."
-msgstr "โปรดเปิดใช้งานแบบฟอร์มเซสชัน / วิทยากรเพื่อสร้างเซสชัน / ลำโพง"
+msgstr "โปรดเปิดใช้งานแบบฟอร์มเซสชัน/วิทยากรเพื่อสร้างเซสชัน/วิทยากร"
 
 #: app/templates/components/forms/session-speaker-form.hbs:5:8
 #: app/templates/components/forms/session-speaker-form.hbs:93:6
@@ -7378,27 +7380,27 @@ msgstr "รายละเอียดเซสชัน"
 #: app/templates/events/view/speaker/view.hbs:18:6
 #: app/templates/public/cfs/view-speaker.hbs:30:6
 msgid "Speaker details"
-msgstr "รายละเอียดลำโพง"
+msgstr "รายละเอียดวิทยากร"
 
 #: app/templates/components/forms/session-speaker-form.hbs:18:6
 msgid "Choose from existing speaker(s)"
-msgstr "เลือกจากลำโพงที่มีอยู่"
+msgstr "เลือกจากวิทยากรที่มีอยู่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:26:8
 msgid "Select Speakers"
-msgstr "เลือกลำโพง"
+msgstr "เลือกวิทยากร"
 
 #: app/templates/components/forms/session-speaker-form.hbs:39:10
 msgid "Drag speakers to reorder!"
-msgstr "ลากลำโพงเพื่อเรียงลำดับใหม่!"
+msgstr "ลากวิทยากรเพื่อเรียงลำดับใหม่!"
 
 #: app/templates/components/forms/session-speaker-form.hbs:57:44
 msgid "No speaker exists. Add a new speaker."
-msgstr "ไม่มีลำโพง เพิ่มลำโพงใหม่"
+msgstr "ไม่มีวิทยากร เพิ่มลำโพงใหม่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:65:15
 msgid "Add a new speaker"
-msgstr "เพิ่มลำโพงใหม่"
+msgstr "เพิ่มวิทยากรใหม่"
 
 #: app/templates/components/forms/session-speaker-form.hbs:96:6
 msgid "Choose from an existing session"
@@ -7431,11 +7433,11 @@ msgstr "คุณต้องกด \"ส่ง\" เพื่อบันทึ
 
 #: app/templates/components/forms/speaker-section.hbs:20:21
 msgid "Do not require email for this speaker."
-msgstr "ไม่ต้องใช้อีเมลสำหรับลำโพงนี้"
+msgstr "ไม่ต้องใช้อีเมลสำหรับวิทยากรนี้"
 
 #: app/templates/components/forms/speaker-section.hbs:50:17
 msgid "Speaker Image"
-msgstr "ภาพลำโพง"
+msgstr "ภาพวิทยากร"
 
 #: app/templates/components/forms/speaker-section.hbs:56:20
 msgid "We recommend using a 1:1 ratio image"
@@ -7850,7 +7852,7 @@ msgstr "Microlocations หรือห้องออนไลน์เสมื
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:134:42
 msgid "Enable Call For Speakers"
-msgstr "เปิดใช้งานการโทรสำหรับลำโพง"
+msgstr "เปิดรับสมัครวิทยากร"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:141:10
 #: app/templates/index.hbs:24:34 app/templates/pricing.hbs:97:24
@@ -7877,7 +7879,7 @@ msgstr "ลิงก์ส่วนตัว"
 msgid "Share this link to get private submission independently of open/closed Call for Speakers at any time. (the link will be active once the event is saved)"
 msgstr ""
 "แชร์ลิงก์นี้เพื่อรับการส่งแบบส่วนตัวโดยไม่ขึ้นกับการโทรเปิด / "
-"ปิดสำหรับลำโพงได้ตลอดเวลา (ลิงก์จะใช้งานได้เมื่อบันทึกกิจกรรมแล้ว)"
+"ปิดสำหรับวิทยากรได้ตลอดเวลา (ลิงก์จะใช้งานได้เมื่อบันทึกกิจกรรมแล้ว)"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:215:14
 msgid "Display this publicly. Anybody will be able to submit a proposal within the dates chosen, once the event is published."
@@ -7895,7 +7897,7 @@ msgstr "ปรับแต่งแบบฟอร์มการส่ง"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:241:22
 msgid "Collect Speaker Details"
-msgstr "รวบรวมรายละเอียดลำโพง"
+msgstr "รวบรวมรายละเอียดวิทยากร"
 
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:257:22
 msgid "Collect Session Details"
@@ -8615,11 +8617,11 @@ msgstr "คุณได้รับเชิญสำหรับเซสชั
 
 #: app/templates/components/public/call-for-speakers.hbs:90:4
 msgid "Add Speaker Details"
-msgstr "เพิ่มรายละเอียดลำโพง"
+msgstr "เพิ่มรายละเอียดวิทยากร"
 
 #: app/templates/components/public/call-for-speakers.hbs:96:74
 msgid "Edit Speaker Details"
-msgstr "แก้ไขรายละเอียดลำโพง"
+msgstr "แก้ไขรายละเอียดวิทยากร"
 
 #: app/templates/components/public/call-for-speakers.hbs:103:4
 msgid "Add New Session"
@@ -8659,11 +8661,11 @@ msgstr "สไลด์ผู้จัดแสดง"
 
 #: app/templates/components/public/featured-speaker-list.hbs:1:18
 msgid "Featured Speakers"
-msgstr "ลำโพงที่โดดเด่น"
+msgstr "วิทยากรพิเศษ"
 
 #: app/templates/components/public/featured-speaker-list.hbs:10:66
 msgid "More Speakers"
-msgstr "ลำโพงเพิ่มเติม"
+msgstr "วิทยากรเพิ่มเติม"
 
 #: app/templates/components/public/side-menu.hbs:72:101
 #: app/templates/components/public/side-menu.hbs:76:101
@@ -8837,7 +8839,7 @@ msgstr "แน่ใจไหมว่าต้องการลบเซสช
 
 #: app/templates/components/ui-table/cell/cell-speakers-dashboard.hbs:12:2
 msgid "No Speaker Added Yet"
-msgstr "ยังไม่มีการเพิ่มลำโพง"
+msgstr "ยังไม่มีการเพิ่มวิทยากร"
 
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:5:60
 msgid "Are you sure you would like to delete this Supporter??"
@@ -8866,7 +8868,7 @@ msgstr "ปลดล็อกเซสชัน"
 
 #: app/templates/components/ui-table/cell/events/view/speakers/cell-buttons.hbs:14:60
 msgid "Are you sure you would like to delete this Speaker?"
-msgstr "แน่ใจไหมว่าต้องการลบลำโพงนี้"
+msgstr "แน่ใจหรือไม่ว่าต้องการลบวิทยากรนี้?"
 
 #: app/templates/components/ui-table/cell/events/view/speakers/speaker-mobile.hbs:4:2
 msgid "Not Provided"
@@ -9223,7 +9225,7 @@ msgstr "สร้างเซสชัน"
 #: app/templates/events/view/sessions.hbs:33:30
 #: app/templates/events/view/speakers.hbs:52:30
 msgid "In order to use this feature please activate \"Sessions and Speakers\" for the event."
-msgstr "ในการใช้คุณสมบัตินี้โปรดเปิดใช้งาน \"เซสชันและลำโพง\" สำหรับกิจกรรม"
+msgstr "ในการใช้คุณสมบัตินี้โปรดเปิดใช้งาน \"เซสชันและวิทยากร\" สำหรับกิจกรรม"
 
 #: app/templates/events/view/sessions.hbs:34:30
 #: app/templates/events/view/speakers.hbs:53:30
@@ -9259,15 +9261,15 @@ msgstr "เมื่อคุณลบกิจกรรมคุณจะสู
 
 #: app/templates/events/view/speaker/view.hbs:13:83
 msgid "Edit speaker"
-msgstr "แก้ไขลำโพง"
+msgstr "แก้ไขวิทยากร"
 
 #: app/templates/events/view/speakers.hbs:40:14
 msgid "Add Speaker"
-msgstr "เพิ่มลำโพง"
+msgstr "เพิ่มวิทยากร"
 
 #: app/templates/events/view/speakers/create.hbs:3:4
 msgid "Create a Speaker"
-msgstr "สร้างลำโพง"
+msgstr "สร้างวิทยากร"
 
 #: app/templates/events/view/tickets.hbs:15:10
 #: app/templates/events/view/tickets/discount-codes.hbs:6:97
@@ -9464,7 +9466,7 @@ msgstr "ไม่พบกิจกรรมที่จะเกิดขึ้
 
 #: app/templates/index.hbs:34:85
 msgid "Show more calls for speakers"
-msgstr "แสดงการโทรเพิ่มเติมสำหรับลำโพง"
+msgstr "แสดงการรับสมัครวิทยากรเพิ่มเติม"
 
 #: app/templates/index.hbs:40:34
 msgid "Popular Groups"
@@ -9736,7 +9738,7 @@ msgstr "สูงถึง 200"
 
 #: app/templates/pricing.hbs:102:12
 msgid "Speakers form"
-msgstr "แบบฟอร์มลำโพง"
+msgstr "แบบฟอร์มวิทยากร"
 
 #: app/templates/pricing.hbs:106:12
 msgid "Custom speakers form questions"
@@ -9862,7 +9864,7 @@ msgstr "รายละเอียดเซสชัน"
 
 #: app/templates/public/cfs/new-speaker.hbs:4:6
 msgid "Speaker Details"
-msgstr "รายละเอียดลำโพง"
+msgstr "รายละเอียดวิทยากร"
 
 #: app/templates/public/cfs/view-session.hbs:36:49
 msgid "Withdraw"
@@ -9914,7 +9916,7 @@ msgstr "ตารางของฉัน"
 
 #: app/templates/public/sessions.hbs:30:12
 msgid "My Speaker Sessions"
-msgstr "เซสชันลำโพงของฉัน"
+msgstr "วิทยากรเซสชันของฉัน"
 
 #: app/templates/public/sessions.hbs:56:121
 msgid "By Title"
