@@ -17,6 +17,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-order'
       },
       {
+        name            : 'Tags',
+        width           : 60,
+        valuePath       : 'tags',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
+      },
+      {
         name            : 'Ticket Name',
         width           : 80,
         valuePath       : 'ticket.name',

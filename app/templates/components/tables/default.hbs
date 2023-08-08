@@ -6,13 +6,16 @@
           @pageSize={{this.pageSize}} />
       </div>
     {{/unless}}
-    {{#unless @hideSearchBox}}
-      <div class="eight wide right aligned column pr-0">
+    <div class="eight wide right aligned column pr-0">
+      {{#unless @hideSearchBox}}
         <Tables::Utilities::SearchBox
           @searchQuery={{this.searchQuery}}
           @filterOptions={{this.filterOptions}} />
-      </div>
-    {{/unless}}
+      {{/unless}}
+      {{#if @showAddTags}}
+        <Tables::Utilities::AddTags/>
+      {{/if}}
+    </div>
   </div>
   <div class="ui no bottom padding row">
     <EmberTable @tableColor={{@color}} as |t|>
