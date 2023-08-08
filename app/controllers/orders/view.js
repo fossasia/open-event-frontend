@@ -96,4 +96,9 @@ export default class ViewController extends Controller {
         this.set('isLoadingTickets', false);
       });
   }
+
+  @action
+  redirectToStartPage(identifierStartEvent) {
+    this.router.transitionTo('public.index',identifierStartEvent);
+  }
 }
