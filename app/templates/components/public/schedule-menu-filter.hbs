@@ -125,7 +125,7 @@
     </div>
 </div>
 {{else}}
-<div class="mr-8">
+<div>
     <h4>
         {{t 'Tracks'}}
         <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash track=null}}
@@ -169,7 +169,7 @@
     </span>
     {{/if}}
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection min-width-0">
         <div class="default">
             {{t 'Select Session Type'}}
         </div>
@@ -196,7 +196,7 @@
     </span>
     {{/if}}
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection min-width-0">
         <div class="default">
             {{t 'Select Session level'}}
         </div>
