@@ -306,27 +306,27 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             pos > index && item.set('position', pos - 1);
           });
           break;
-        case'sessionType':
+        case 'sessionType':
           this.sessionTypes.forEach(item => {
             const pos = item.get('position');
             pos > index && item.set('position', pos - 1);
           });
-          break
+          break;
         case 'track':
           this.tracks.forEach(item => {
             const pos = item.get('position');
             pos > index && item.set('position', pos - 1);
           });
-          break
+          break;
       }
     },
     moveRoom(item, type, direction) {
       const idx = item.get('position');
       const otherIdx = direction === 'up' ? (idx - 1) : (idx + 1);
       let other;
-      if (type ==='microlocation') {
+      if (type === 'microlocation') {
         other = this.microlocations.find(item => item.get('position') === otherIdx);
-      } else if (type ==='sessionType') {
+      } else if (type === 'sessionType') {
         other = this.sessionTypes.find(item => item.get('position') === otherIdx);
       } else if (type === 'track') {
         other = this.tracks.find(item => item.get('position') === otherIdx);
