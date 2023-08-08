@@ -175,12 +175,22 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     };
   },
 
-  tracks: computed('data.tracks.@each.isDeleted', function() {
-    return this.data.tracks.filterBy('isDeleted', false);
+  tracks: computed('data.tracks.@each.isDeleted', 'data.tracks.@each.position', function() {
+    const sortedRooms = this.data.event.tracks.sortBy('position').filterBy('isDeleted', false);
+    sortedRooms.forEach((room, idx) => {
+      room.set('position', idx);
+    });
+
+    return sortedRooms;
   }),
 
-  sessionTypes: computed('data.sessionTypes.@each.isDeleted', function() {
-    return this.data.sessionTypes.filterBy('isDeleted', false);
+  sessionTypes: computed('data.sessionTypes.@each.isDeleted', 'data.sessionTypes.@each.position', function() {
+    const sortedRooms = this.data.event.sessionTypes.sortBy('position').filterBy('isDeleted', false);
+    sortedRooms.forEach((room, idx) => {
+      room.set('position', idx);
+    });
+
+    return sortedRooms;
   }),
 
   hasCallForSpeaker: computed('data.event.isCfsEnabled', function() {
@@ -241,16 +251,6 @@ export default Component.extend(EventWizardMixin, FormMixin, {
   },
 
   actions: {
-    addItem(type) {
-      switch (type) {
-        case 'sessionType':
-          this.data.sessionTypes.addObject(this.store.createRecord('session-type'));
-          break;
-        case 'track':
-          this.data.tracks.addObject(this.store.createRecord('track'));
-          break;
-      }
-    },
     addCustomField() {
       this.data.customForms.addObject(this.store.createRecord('customForm', {
         event     : this.data.event,
@@ -272,24 +272,65 @@ export default Component.extend(EventWizardMixin, FormMixin, {
     removeField(field) {
       this.data.customForms.removeObject(field);
     },
-    addRoom(index) {
-      this.microlocations.forEach(room => {
-        const pos = room.get('position');
-        pos > index && room.set('position', pos + 1);
-      });
-      this.data.event.microlocations.addObject(this.store.createRecord('microlocation', { position: index + 1 }));
+    addRoom(type, index) {
+      switch (type) {
+        case 'microlocation':
+          this.microlocations.forEach(room => {
+            const pos = room.get('position');
+            pos > index && room.set('position', pos + 1);
+          });
+          this.data.event.microlocations.addObject(this.store.createRecord('microlocation', { position: index + 1 }));
+          break;
+        case 'sessionType':
+          this.sessionTypes.forEach(room => {
+            const pos = room.get('position');
+            pos > index && room.set('position', pos + 1);
+          });
+          this.data.event.sessionTypes.addObject(this.store.createRecord('session-type', { position: index + 1 }));
+          break;
+        case 'track':
+          this.tracks.forEach(room => {
+            const pos = room.get('position');
+            pos > index && room.set('position', pos + 1);
+          });
+          this.data.event.tracks.addObject(this.store.createRecord('track', { position: index + 1 }));
+          break;
+      }
     },
-    removeRoom(room, index) {
+    removeRoom(room, type, index) {
       room.deleteRecord();
-      this.microlocations.forEach(item => {
-        const pos = item.get('position');
-        pos > index && item.set('position', pos - 1);
-      });
+      switch (type) {
+        case 'microlocation':
+          this.microlocations.forEach(item => {
+            const pos = item.get('position');
+            pos > index && item.set('position', pos - 1);
+          });
+          break;
+        case'sessionType':
+          this.sessionTypes.forEach(item => {
+            const pos = item.get('position');
+            pos > index && item.set('position', pos - 1);
+          });
+          break
+        case 'track':
+          this.tracks.forEach(item => {
+            const pos = item.get('position');
+            pos > index && item.set('position', pos - 1);
+          });
+          break
+      }
     },
-    moveRoom(item, direction) {
+    moveRoom(item, type, direction) {
       const idx = item.get('position');
       const otherIdx = direction === 'up' ? (idx - 1) : (idx + 1);
-      const other = this.microlocations.find(item => item.get('position') === otherIdx);
+      let other;
+      if (type ==='microlocation') {
+        other = this.microlocations.find(item => item.get('position') === otherIdx);
+      } else if (type ==='sessionType') {
+        other = this.sessionTypes.find(item => item.get('position') === otherIdx);
+      } else if (type === 'track') {
+        other = this.tracks.find(item => item.get('position') === otherIdx);
+      }
       other.set('position', idx);
       item.set('position', otherIdx);
     },
