@@ -109,8 +109,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async removeChannel(index, id) {
-    this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
-    this.loader.delete(`/translation_channels/${id}`);
+    if (id) {
+      this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
+      this.loader.delete(`/translation_channels/${id}`);
+    } else {
+      this.translationChannelsNew = this.translationChannels.filter((_, i) => i !== index);
+    }
   }
 
   @action
@@ -149,7 +153,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
           channel: {
             data: {
               type : 'video_channel',
-              id   : `${channel.id}`
+              id   : this.data.stream.videoChannel.get('id')
             }
           }
         }
@@ -428,7 +432,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
           'channel': {
             'data': {
               'type' : 'video_channel',
-              'id'   : '1'
+              'id'   : this.data.stream.videoChannel.get('id')
             }
           }
         }
