@@ -99,6 +99,6 @@ export default class ViewController extends Controller {
 
   @action
   redirectToStartPage(identifierStartEvent) {
-    this.router.transitionTo('public.index',identifierStartEvent);
+    this.router.transitionTo('public.index', identifierStartEvent);
   }
 }
