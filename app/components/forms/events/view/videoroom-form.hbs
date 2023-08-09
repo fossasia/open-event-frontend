@@ -244,7 +244,7 @@
   {{/if}}
 
   <div class="ui divider"></div>
-  <div class="ui header">{{t 'Translation Channels'}}</div>
+  <div class="ui header">{{t 'Interpretation Channels'}}</div>
 
   <label>
     {{t 'Source URL'}}
@@ -256,11 +256,10 @@
 
   {{#each this.translationChannels as |channel index|}}
     <div class="field">
-      <div class="ui action input">
+      <div class="ui action input translate-channel">
         <Widgets::Forms::LinkField
           @value={{channel.url}}
-          @onChange={{action (mut channel.url)}}
-        />
+          @onChange={{action (mut channel.url)}}/>
         <div class="field">
           <div class="ui labeled action input">
             <UiDropdown
@@ -275,13 +274,10 @@
                 {{/each-in}}
               </div>
               <i style="margin-left: 0 !important;text-align: right;"
-                 class="dropdown icon"> </i>
+                class="dropdown icon"> </i>
             </UiDropdown>
             <button class="ml-2 ui icon red button" {{on "click" (fn this.removeChannel index channel.id )}}>
               <i class="remove icon"></i>
-            </button>
-            <button class="ui icon blue button" {{on "click" (fn this.updateChannel index channel.id )}}  >
-              <i class="add icon"></i>
             </button>
           </div>
         </div>
@@ -291,7 +287,7 @@
 
   {{#each this.translationChannelsNew as |channel index|}}
     <div class="field">
-      <div class="ui action input">
+      <div class="ui action input translate-channel">
         <Widgets::Forms::LinkField
           @value={{channel.url}}
           @onChange={{action (mut channel.url)}} />
@@ -313,9 +309,6 @@
             <span class="ml-2"></span>
             <button class="ui icon red button" {{on "click" (fn this.removeChannel index channel.id )}}>
               <i class="remove icon"></i>
-            </button>
-            <button class="ui icon blue button" {{on "click" (fn this.addNewChannel channel )}}>
-              <i class="add icon"></i>
             </button>
           </div>
         </div>
