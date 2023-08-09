@@ -110,6 +110,14 @@
 }
 
 .row-dropdown-public {
+  margin-bottom: unset !important;
+
+  @media only screen and (max-width: 767px) {
+    .ui.search.dropdown .menu {
+      max-height: 13rem !important;
+    }
+  }
+
   .ic-ddown {
     right: 6px !important;
   }
@@ -119,58 +127,79 @@
   }
 
   .item-track {
-    padding-right: unset !important;
+    padding-right: 5px !important;
     padding-left: unset !important;
-  }
+    padding-bottom: unset !important;
 
-  .item-track .menu-track .menu {
-    width: 175px !important;
-    transform: translateX(-1%);
-    top: 60px;
-    animation: slideInMenu .1s forwards;
-    opacity: 1;
-    pointer-events: auto;
+    .menu-track {
+      padding-left: 8px !important;
+
+      .menu.transition.visible {
+        border-top: 1px solid #96c8da !important;
+      }
+
+      .menu {
+        width: 240px !important;
+      }
+    }
   }
 
   .item-room {
     padding-right: unset !important;
-    padding-left: 5px !important;
-  }
+    padding-left: unset !important;
+    padding-bottom: unset !important;
 
-  .item-room .menu-room .menu {
-    width: 175px !important;
-    transform: translateX(-1%);
-    top: 60px;
-    animation: slideInMenu .3s forwards;
-    opacity: 1;
-    pointer-events: auto;
+    .menu-room {
+      padding-left: 8px !important;
+    }
+
+    .menu.transition.visible {
+      border-top: 1px solid #96c8da !important;
+    }
+
+    .menu {
+      width: 240px !important;
+    }
   }
 
   .item-session-type {
     padding-right: unset !important;
     padding-left: 5px !important;
+    padding-bottom: unset !important;
+
+    .ui.active.selection.dropdown {
+      border-bottom: unset !important;
+    }
+
+    .menu-type {
+      padding-left: 8px !important;
+    }
+
+    .menu {
+      width: 240px !important;
+      border-bottom: 1px solid #96c8da !important;
+    }
+
+    .menu.transition.visible {
+      border-top: 1px solid #96c8da !important;
+    }
   }
 
   .item-session-level {
     padding-left: 5px !important;
     padding-right: unset !important;
-  }
+    padding-bottom: unset !important;
 
-  .item-session-type .menu-type .menu {
-    width: 175px !important;
-    transform: translateX(-1%);
-    top: 60px;
-    animation: slideInMenu .1s forwards;
-    opacity: 1;
-    pointer-events: auto;
-  }
+    .menu-level {
+      padding-left: 8px !important;
+    }
 
-  .item-session-level .menu-level .menu {
-    width: 175px !important;
-    transform: translateX(-95%);
-    top: 60px;
-    animation: slideInMenu .3s forwards;
-    opacity: 1;
-    pointer-events: auto;
+    .menu.transition.visible {
+      border-top: 1px solid #96c8da !important;
+    }
+
+    .menu {
+      width: 240px !important;
+    }
   }
 }

@@ -215,3 +215,37 @@ $spacer-heights: 50 100 200 300 400 500 600 700 800 900;
     display: none;
   }
 }
+
+.input-full {
+  input {
+    width: 100%;
+  }
+}
+
+.transition-size {
+  transition: width .3s ease-in-out;
+}
+
+.dropdown-overflow-text {
+  .text {
+    width: calc(100% - .15rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.min-half-width {
+  min-width: 50% !important;
+}
+
+.max-half-width {
+  max-width: 50%;
+}
+
+.focus-search-full {
+  &:focus-within {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
