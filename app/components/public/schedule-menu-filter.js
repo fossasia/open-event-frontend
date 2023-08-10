@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import { orderBy } from 'lodash-es';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import { tracked } from '@glimmer/tracking';
 import { levels } from 'open-event-frontend/utils/dictionary/levels';
@@ -118,5 +118,20 @@ export default class ScheduleMenuFilter extends Component {
         }
         this.router.transitionTo('public.sessions', { queryParams: { 'track': this.activeTrack } });
       }
+    }
+
+    @computed('event.tracks')
+    get trackList() {
+      return orderBy(this.event.tracks.toArray(), ['position']);
+    }
+
+    @computed('event.microlocations')
+    get microlocationList() {
+      return orderBy(this.event.microlocations.toArray(), ['position']);
+    }
+
+    @computed('event.sessionTypes')
+    get sessionTypeList() {
+      return orderBy(this.event.sessionTypes.toArray(), ['position']);
     }
 }
