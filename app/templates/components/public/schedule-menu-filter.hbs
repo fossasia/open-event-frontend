@@ -136,7 +136,7 @@
             <Icons::ClearFilter />
         </LinkTo>
     </h4>
-    {{#each this.event.tracks as |track|}}
+    {{#each this.trackList as |track|}}
     <p role="button" class="track p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) " active"}}"
         {{action 'applyFilter' track.name 'track' }}>
         <i class="circle icon" style={{css color=track.color}}></i>
@@ -150,7 +150,7 @@
             <Icons::ClearFilter />
         </LinkTo>
     </h4>
-    {{#each this.event.microlocations as |room|}}
+    {{#each this.microlocationList as |room|}}
     {{#if (not room.hiddenInScheduler)}}
     <p class="room p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) " active"}}" role="button"
         {{action 'applyFilter' room.name 'room' }}>
@@ -178,7 +178,7 @@
         </div>
         <i class="dropdown icon"></i>
         <div class="menu">
-            {{#each this.event.sessionTypes as |sessionType|}}
+            {{#each this.sessionTypeList as |sessionType|}}
             <UiCheckbox @class="item" @label={{sessionType.name}} @checked={{if (includes this.activeSession
                 sessionType.name) "active" }} @onChange={{action this.sessionFilter sessionType.name}} />
             {{/each}}
