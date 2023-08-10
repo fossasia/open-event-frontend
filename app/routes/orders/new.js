@@ -1,9 +1,11 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
+import { inject as service } from '@ember/service';
 
 @classic
 export default class NewRoute extends Route {
+  @service globalData;
   titleToken(model) {
     const order = model.order.get('identifier');
     return this.l10n.t('New Order') + ' - ' + order;
@@ -30,7 +32,8 @@ export default class NewRoute extends Route {
     });
 
     const eventDetails = await order.query('event', { include: 'tax' });
-
+    this.globalData.saveIdEvent(eventDetails.data.identifier);
+    this.globalData.setLogoUrl(eventDetails.data.logoUrl);
     return hash({
       order,
       event      : eventDetails,
