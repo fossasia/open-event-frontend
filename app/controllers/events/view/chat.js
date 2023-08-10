@@ -6,7 +6,7 @@ export default class extends Controller {
   @computed('model.rooms.data', 'model.videoStream')
   get rooms() {
     const rooms = [];
-    if (this.model.videoStream) {
+    if (this.model.videoStream && this.model.videoStream.name) {
       const item = this.store.createRecord('microlocation', {
         name              : this.model.videoStream.name,
         isGlobalEventRoom : this.model.videoStream?.isGlobalEventRoom,
