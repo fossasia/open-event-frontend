@@ -5,13 +5,23 @@
       <div class="ui {{if this.data.event.isSessionsSpeakersEnabled 'basic'}} segment">
         <div class="center aligned text">
           <div class="field">
-            <div class="ui slider checkbox">
-              <Input @type="checkbox" @checked={{this.data.event.isSessionsSpeakersEnabled}} />
+            <div class="d-flex" style="justify-content: center;">
+              <UiCheckbox
+                @class="ui slider"
+                @checked={{if this.data.event.isSessionsSpeakersEnabled 'active'}}
+                @onChange={{action "toggleSessionSpeaker"}} />
               <label class="weight-300" style="font-size: large">
                 {{if this.data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
                 {{t 'Sessions & Speakers'}}
               </label>
             </div>
+            {{!-- <div class="ui slider checkbox">
+              <Input @type="checkbox" @checked={{this.data.event.isSessionsSpeakersEnabled}} />
+              <label class="weight-300" style="font-size: large">
+                {{if this.data.event.isSessionsSpeakersEnabled (t 'Turn off') (t 'Turn on')}}
+                {{t 'Sessions & Speakers'}}
+              </label>
+            </div> --}}
           </div>
         </div>
       </div>
@@ -28,7 +38,7 @@
     </h3>
     <div class="field">
       <label class="required">Tracks</label>
-      {{#each this.tracks as |track|}}
+      {{#each this.tracks as |track index|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
             <Input @type="text" @name="track" @value={{track.name}} placeholder={{t "Name"}} />
@@ -36,11 +46,11 @@
           <div class="{{unless this.device.isMobile 'four wide'}} field">
             <Widgets::Forms::ColorPicker @value={{track.color}} @fontColor={{track.fontColor}}>
               {{#if (gt this.tracks.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' track}}>
+                <button class="ui icon red button" type="button" {{action 'removeRoom' track 'track' index}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'track'}}>
+              <button class="ui icon primary button" type="button" {{action 'addRoom' 'track' index}}>
                 <i class="plus icon"></i>
               </button>
             </Widgets::Forms::ColorPicker>
@@ -51,6 +61,18 @@
                    value="{{if track.name track.name (t 'Preview Text')}}"
                    readonly
                    style={{css background-color=track.color color=(text-color track.color)}}>
+          </div>
+          <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
+            {{#if (not-eq index 0)}}
+              <button type="button" class="ui button" {{action "moveRoom" track 'track' "up"}} data-content="Move room up">
+                <i class="up arrow icon"></i>
+              </button>
+            {{/if}}
+            {{#if (not-eq track.position (dec this.tracks.length))}}
+              <button type="button" class="ui button" {{action "moveRoom" track 'track' "down"}} data-content="Move room down">
+                <i class="down arrow icon"></i>
+              </button>
+            {{/if}}
           </div>
         </div>
       {{/each}}
@@ -67,11 +89,11 @@
             <div class="ui action input fluid">
               <Input @type="number" @value={{microlocation.floor}} placeholder={{t "Floor"}} />
               {{#if (gt this.microlocations.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeRoom' microlocation index}}>
+                <button class="ui icon red button" type="button" {{action 'removeRoom' microlocation 'microlocation' index}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addRoom' index}}>
+              <button class="ui icon primary button" type="button" {{action 'addRoom' 'microlocation' index}}>
                 <i class="plus icon"></i>
               </button>
             </div>
@@ -84,12 +106,12 @@
           </div>
           <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
             {{#if (not-eq index 0)}}
-              <button type="button" class="ui button" {{action "moveRoom" microlocation "up"}} data-content="Move room up">
+              <button type="button" class="ui button" {{action "moveRoom" microlocation 'microlocation' "up"}} data-content="Move room up">
                 <i class="up arrow icon"></i>
               </button>
             {{/if}}
             {{#if (not-eq microlocation.position (dec this.microlocations.length))}}
-              <button type="button" class="ui button" {{action "moveRoom" microlocation "down"}} data-content="Move room down">
+              <button type="button" class="ui button" {{action "moveRoom" microlocation 'microlocation' "down"}} data-content="Move room down">
                 <i class="down arrow icon"></i>
               </button>
             {{/if}}
@@ -99,7 +121,7 @@
     </div>
     <div class="field">
       <label class="required">{{t 'Session Types'}}</label>
-      {{#each this.sessionTypes as |sessionType|}}
+      {{#each this.sessionTypes as |sessionType index|}}
         <div class="{{if this.device.isMobile 'grouped'}} fields">
           <div class="{{unless this.device.isMobile 'three wide'}} field">
             <Input @type="text" @name="session" @value={{sessionType.name}} placeholder={{t "Name"}} />
@@ -108,14 +130,26 @@
             <div class="ui action input fluid">
               <Widgets::Forms::TimePicker @value={{sessionType.length}} @placeholder="HH:MM" @icon={{false}} />
               {{#if (gt this.sessionTypes.length 1)}}
-                <button class="ui icon red button" type="button" {{action 'removeItem' sessionType}}>
+                <button class="ui icon red button" type="button" {{action 'removeRoom' sessionType 'sessionType' index}}>
                   <i class="minus icon"></i>
                 </button>
               {{/if}}
-              <button class="ui icon primary button" type="button" {{action 'addItem' 'sessionType'}}>
+              <button class="ui icon primary button" type="button" {{action 'addRoom' 'sessionType' index}}>
                 <i class="plus icon"></i>
               </button>
             </div>
+          </div>
+          <div class="ui icon buttons {{if this.device.isLargeMonitor 'right floated'}}">
+            {{#if (not-eq index 0)}}
+              <button type="button" class="ui button" {{action "moveRoom" sessionType 'sessionType' "up"}} data-content="Move room up">
+                <i class="up arrow icon"></i>
+              </button>
+            {{/if}}
+            {{#if (not-eq sessionType.position (dec this.sessionTypes.length))}}
+              <button type="button" class="ui button" {{action "moveRoom" sessionType 'sessionType' "down"}} data-content="Move room down">
+                <i class="down arrow icon"></i>
+              </button>
+            {{/if}}
           </div>
         </div>
       {{/each}}
