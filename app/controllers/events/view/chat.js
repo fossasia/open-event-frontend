@@ -8,7 +8,6 @@ export default class extends Controller {
     const rooms = [];
     if (this.model.videoStream) {
       const item = this.store.createRecord('microlocation', {
-        id                : 0,
         name              : this.model.videoStream.name,
         isGlobalEventRoom : this.model.videoStream?.isGlobalEventRoom,
         isChatEnabled     : this.model.videoStream?.isChatEnabled,
