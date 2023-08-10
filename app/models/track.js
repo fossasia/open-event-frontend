@@ -8,7 +8,7 @@ export default ModelBase.extend({
   color       : attr('string', { defaultValue: () => getRandomColor() }),
   description : attr('string'),
   fontColor   : attr('string'),
-
-  sessions : hasMany('session'),
-  event    : belongsTo('event')
+  position    : attr('number', { defaultValue: 0 }),
+  sessions    : hasMany('session'),
+  event       : belongsTo('event')
 });

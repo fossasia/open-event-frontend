@@ -129,6 +129,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
         rooms.included?.map((stream: any) => ({
           id                : stream.id,
           name              : stream.attributes.name,
+          position          : stream.attributes.position,
           roomName          : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes.name)[0],
           slugName          : slugify(rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['chat-room-name'])[0]),
           isChatEnabled     : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['is-chat-enabled'])[0],
@@ -140,6 +141,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
           const res = await this.fetchTranslationChannels(stream.id)
           stream.translations = res
           this.addStream(stream)
+        });
+        this.streams.forEach(async(stream: any) => {
+          const res = await this.fetchTranslationChannels(stream.id)
+          stream.translations = res
         });
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
