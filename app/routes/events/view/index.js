@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
 import { allSettled } from 'rsvp';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+import { inject as service } from '@ember/service';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
-
+  @service globalData;
   async model(params) {
     const eventDetails = this.modelFor('events.view');
     const searchField = 'name';
@@ -36,7 +37,8 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     const [sponsors, roleInvites, sessionTypes, tracks, microlocations, speakersCall, socialLinks,
       statistics, orderStat, tickets, usersEventsRoles] = (await allSettled([sponsorsPromise, roleInvitesPromise, sessionTypesPromise, tracksPromise, microlocationsPromise, speakersCallPromise, socialLinksPromise,
       statisticsPromise, orderStatPromise, ticketsPromise, usersEventsRolesPromise])).map(result => result.value);
-
+    this.globalData.setLogoUrl(roleInvites.recordData.__data.logoUrl);
+    this.globalData.saveIdEvent(roleInvites.recordData.__data.identifier);
 
     return {
       event: eventDetails,

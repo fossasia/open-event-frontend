@@ -1,8 +1,9 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-
+import { inject as service } from '@ember/service';
 @classic
 export default class PendingRoute extends Route {
+  @service globalData;
   titleToken(model) {
     const order = model.order.get('identifier');
     return this.l10n.t('Pending Order')  + ' - ' + order;
@@ -21,6 +22,8 @@ export default class PendingRoute extends Route {
       reload  : true
     });
     const eventDetails = await order.query('event', { include: 'tax' });
+    this.globalData.saveIdEvent(eventDetails.data.identifier);
+    this.globalData.setLogoUrl(eventDetails.data.logoUrl);
     const tickets     = await order.query('tickets', {});
 
     await tickets.forEach(ticket => {
