@@ -34,6 +34,7 @@ export default class VideoStream extends ModelBase.extend() {
   @attr() isGlobalEventRoom?: boolean;
   @attr() additionalInformation!: string;
   @attr() extra!: Extra;
+  @attr() chatRoomName?: string;
 
   @hasMany('microlocation') rooms!: Microlocation[];
   @hasMany('video-recording') videoRecordings!: VideoRecording[];
