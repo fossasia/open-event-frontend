@@ -113,7 +113,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
       this.loader.delete(`/translation_channels/${id}`);
     } else {
-      this.translationChannelsNew = this.translationChannels.filter((_, i) => i !== index);
+      this.translationChannelsNew = this.translationChannelsNew.filter((_, i) => i !== index);
     }
   }
 
