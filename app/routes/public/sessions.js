@@ -90,7 +90,8 @@ export default class SessionsRoute extends Route {
     }
 
     if (params.track) {
-      const tracks = params.track.split(':');
+      const delimiter = this.device.isMobile ? ',' : ':';
+      const tracks = params.track.split(delimiter).map(val => val.trim());
       filterOptions.push({
         name : 'track',
         op   : 'has',
@@ -98,7 +99,7 @@ export default class SessionsRoute extends Route {
           or: tracks.map(val => ({
             name : 'name',
             op   : 'eq',
-            val  : val.charAt(0) === ',' ? val.substring(1) : val
+            val  : val.startsWith(',') ? val.substring(1) : val
           }))
         }
       });
@@ -147,7 +148,9 @@ export default class SessionsRoute extends Route {
     }
 
     if (params.room) {
-      const rooms = params.room.split(':');
+      const delimiter = this.device.isMobile ? ',' : ':';
+      const rooms = params.room.split(delimiter).map(val => val.trim());
+
       filterOptions.push({
         name : 'microlocation',
         op   : 'has',
@@ -155,7 +158,7 @@ export default class SessionsRoute extends Route {
           or: rooms.map(val => ({
             name : 'name',
             op   : 'eq',
-            val  : val.charAt(0) === ',' ? val.substring(1) : val
+            val  : val.startsWith(',') ? val.substring(1) : val
           }))
         }
       });

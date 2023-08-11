@@ -26,9 +26,17 @@
                 </th>
                 <th class="text center aligned">
                   {{t 'Room Chat'}}
+                  <UiPopup
+                    @tagName="i"
+                    @class="info circle icon"
+                    @content={{t-var 'Activating a room chat adds a chat channel that is only available for the specific room.'}} />
                 </th>
                 <th class="text center aligned">
                   {{t 'Event Chat'}}
+                  <UiPopup
+                    @tagName="i"
+                    @class="info circle icon"
+                    @content={{t-var 'Activating the event chat for a room adds a chat channel that can be used across different rooms.'}} />
                 </th>
               </tr>
             </thead>
