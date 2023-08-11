@@ -156,7 +156,7 @@
     </div>
   </InfinityLoader>
 {{/if}}
-<div class="mt-8">
+<div class="{{if this.device.isMobile 'mt-2' 'mt-8'}}">
   {{#if this.model.session}}
   {{#each this.groupByDateSessions key="date" as |group|}}
     <h3 class="ui header {{if this.device.isMobile 'mb--8' 'mb--4'}}">
