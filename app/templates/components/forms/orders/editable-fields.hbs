@@ -23,7 +23,7 @@
                 <Widgets::Forms::RadioButton @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_" @index)
                     (concat @field.fieldIdentifier "_" @index)}} @value={{item.name}} @checked={{mut (get holder
                     @field.identifierPath)}} />
-                <label for="yes_include">{{t item.name}}</label>
+                <label for="yes_include">{{t-var item.name}}</label>
             </div>
         {{/each}}
     {{else}}
@@ -112,7 +112,7 @@
             <div class="menu">
                 {{#each this.ageGroups as |ageGroup|}}
                 <div class="item" data-value="{{map-value mapper ageGroup.age}}">
-                    {{t ageGroup.age}}
+                    {{t-var ageGroup.age}}
                 </div>
                 {{/each}}
             </div>
@@ -131,7 +131,7 @@
             <div class="menu">
                 {{#each @homeWikis as |homeWiki|}}
                 <div class="item" data-value="{{map-value mapper homeWiki.item}}">
-                    {{t homeWiki.item}}
+                    {{t-var homeWiki.item}}
                 </div>
                 {{/each}}
             </div>
@@ -150,7 +150,7 @@
             <div class="menu">
                 {{#each @wikiScholarship as |wikiScholarship|}}
                 <div class="item" data-value="{{map-value mapper wikiScholarship.name}}">
-                    {{t wikiScholarship.name}}
+                    {{t-var wikiScholarship.name}}
                 </div>
                 {{/each}}
             </div>
@@ -265,7 +265,7 @@
             <UiCheckbox @checked={{get holder @field.identifierPath}} @name={{if @field.isRequired (concat
                 @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut
                 (get holder @field.identifierPath))}} />
-                {{t @field.nameConvert}}
+                {{t-var @field.nameConvert}}
         {{else}}
             <span class="word-break">
                 {{#if (get holder field.identifierPath)}}

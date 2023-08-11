@@ -3,9 +3,20 @@ import { action, computed } from '@ember/object';
 
 export default class extends Controller {
 
-  @computed('model.rooms.data')
+  @computed('model.rooms.data', 'model.videoStream')
   get rooms() {
-    return this.model.rooms?.data;
+    const rooms = [];
+    if (this.model.videoStream && this.model.videoStream.name) {
+      const item = this.store.createRecord('microlocation', {
+        name              : this.model.videoStream.name,
+        isGlobalEventRoom : this.model.videoStream?.isGlobalEventRoom,
+        isChatEnabled     : this.model.videoStream?.isChatEnabled,
+        isVideoStream     : true
+      });
+      rooms.pushObject(item);
+    }
+    rooms.pushObjects(this.model.rooms?.data);
+    return rooms;
   }
 
   @action
@@ -14,7 +25,14 @@ export default class extends Controller {
     if (room.isGlobalEventRoom) {
       room.isGlobalEventRoom = !room.isGlobalEventRoom;
     }
-    await room.save();
+    if (!room.isVideoStream) {
+      await room.save();
+    } else {
+      const { videoStream } = this.model;
+      videoStream.isChatEnabled = room.isChatEnabled;
+      videoStream.isGlobalEventRoom = room.isGlobalEventRoom;
+      await videoStream.save();
+    }
   }
 
   @action
@@ -23,7 +41,14 @@ export default class extends Controller {
     if (room.isChatEnabled) {
       room.isChatEnabled = !room.isChatEnabled;
     }
-    await room.save();
+    if (!room.isVideoStream) {
+      await room.save();
+    } else {
+      const { videoStream } = this.model;
+      videoStream.isChatEnabled = room.isChatEnabled;
+      videoStream.isGlobalEventRoom = room.isGlobalEventRoom;
+      await videoStream.save();
+    }
   }
 
   @action
