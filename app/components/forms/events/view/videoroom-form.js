@@ -36,6 +36,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked endCurrentMeeting = false;
   @tracked translationChannels = [];
   @tracked translationChannelsNew = [];
+  @tracked translationChannelsRemoved = [];
 
   @computed
   get currentLocale() {
@@ -111,10 +112,14 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   async removeChannel(index, id) {
     if (id) {
       this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
-      this.loader.delete(`/translation_channels/${id}`);
+      this.translationChannelsRemoved.push(id);
     } else {
       this.translationChannelsNew = this.translationChannelsNew.filter((_, i) => i !== index);
     }
+  }
+
+  async deletedChannels() {
+    this.translationChannelsRemoved.forEach(id => this.loader.delete(`/translation_channels/${id}`));
   }
 
   @action
@@ -457,6 +462,10 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.translationChannels.forEach((channel, index) => {
           this.updateChannel(index, channel.id);
         });
+
+        if (this.translationChannelsRemoved.length > 0) {
+          this.deletedChannels();
+        }
 
         if (this.data.stream.extra?.bbb_options) {
           this.data.stream.extra.bbb_options.endCurrentMeeting = this
