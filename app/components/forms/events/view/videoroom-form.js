@@ -100,12 +100,14 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   async loadTranslationChannels() {
     const videoStreamId = this.data.stream.get('id'); // Get the current video stream id from the route
-    const responseData = await this.loader.load(`/video-streams/${videoStreamId}/translation_channels`);
-    this.translationChannels = responseData.data.map(channel => channel.attributes);
-    this.translationChannels = responseData.data.map(channel => ({
-      id: channel.id,
-      ...channel.attributes
-    }));
+    if (videoStreamId) {
+      const responseData = await this.loader.load(`/video-streams/${videoStreamId}/translation_channels`);
+      this.translationChannels = responseData.data.map(channel => channel.attributes);
+      this.translationChannels = responseData.data.map(channel => ({
+        id: channel.id,
+        ...channel.attributes
+      }));
+    }
   }
 
   @action
@@ -455,6 +457,13 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     this.onValid(async() => {
       try {
         this.set('isLoading', true);
+        if (this.data.stream.extra?.bbb_options) {
+          this.data.stream.extra.bbb_options.endCurrentMeeting = this
+            .showUpdateOptions
+            ? this.endCurrentMeeting
+            : false;
+        }
+        await this.data.stream.save();
         for (const channel of this.translationChannelsNew) {
           this.addNewChannel(channel);
         }
@@ -466,14 +475,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         if (this.translationChannelsRemoved.length > 0) {
           this.deletedChannels();
         }
-
-        if (this.data.stream.extra?.bbb_options) {
-          this.data.stream.extra.bbb_options.endCurrentMeeting = this
-            .showUpdateOptions
-            ? this.endCurrentMeeting
-            : false;
-        }
-        await this.data.stream.save();
         const saveModerators = this.data.stream.moderators
           .toArray()
           .map(moderator => {
