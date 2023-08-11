@@ -7,100 +7,106 @@
 </div>
 {{/if}}
 {{#if this.shown}}
-  <div class="d-flex flex-column stream-side-panel" >
-    <div class="ui header inverted ml-4 mt-4">
-      <a href={{href-to 'public' @event (query-params side_panel='true')}}>
-        <p class="text-white">{{@event.name}}</p>
-      </a>
+<div class="d-flex flex-column stream-side-panel">
+  <div class="ui header inverted ml-4 mt-4">
+    <a href={{href-to 'public' @event (query-params side_panel='true' )}}>
+      <p class="text-white">{{@event.name}}</p>
+    </a>
+  </div>
+  <div class="ml-4">
+    <div class="mr-8 pt-1" style="font-size: 0.9rem;">
+      <Public::EventDateTime @event={{@event}} />
     </div>
-    <div class="ml-4">
-      <div class="mr-8 pt-1" style="font-size: 0.9rem;">
-        <Public::EventDateTime @event={{@event}} />
-      </div>
-      <button class="ui icon button stream-side-panel-button right" {{action (mut this.shown) false}}>
-        <i class="angle left icon pr-2"></i>
-      </button>
-    </div>
-    <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="flex-shrink: 0;">
-      {{#if (and @event.isSchedulePublished this.showSessions)}}
-        <a class="ui labeled fluid item {{if (eq @currentRoute 'public.sessions.index') 'video-active'}}" href={{href-to 'public.sessions' @event (query-params side_panel='true')}}>
-          <span><i class="calendar icon"></i>
-          {{t 'Schedule'}}</span>
-        </a>
-      {{/if}}
-
-      {{#if this.showSpeakers}}
-        <a class="ui labeled icon item {{if (eq @currentRoute 'public.speakers') 'video-active'}}" href={{href-to 'public.speakers' @event (query-params side_panel='true')}}>
-          <span><i class="bullhorn icon"></i>
-          {{t 'Speakers'}}</span>
-        </a>
-      {{/if}}
-
-      {{#if this.showExhibitors}}
-        <a class="ui labeled icon item {{if (eq @currentRoute 'public.exhibition.index') 'video-active'}}" href={{href-to 'public.exhibition' @event (query-params side_panel='true')}}>
-          <span><i class="image icon"></i>
-          {{t 'Exhibition'}}</span>
-        </a>
-      {{/if}}
-      {{#if (and @event.isChatEnabled this.settings.rocketChatUrl (or @currentRoom.isChatEnabled @currentRoom.isGlobalEventRoom))}}
-        <a href="#" class="ui labeled icon item" role="button" {{on "click" @showChatPanel}}>
-          <span><i class="comment icon"></i>
-          {{t 'Chat'}}</span>
-        </a>
-      {{/if}}
-      {{#if this.showVideoRoom}}
-        <div class="item">
-          <span><i class="video icon"></i>
-          {{t 'Video Rooms'}}</span>
-        </div>
-      {{/if}}
-    </div>
-    {{#if this.showVideoRoom}}
-    <div class="chat-video-room">
-      <div>
-        <div class="ui inverted vertical fluid menu borderless stream-side-menu">
-          {{#each this.streams as |stream|}}
-            <a href={{href-to 'public.stream.view' @event stream.slugName stream.id }} class="{{if (eq @currentRoom.microlocationId stream.microlocationId) 'video-active'}} item stream-item d-flex items-center" {{on "click" (fn @setupRoomChat stream) }}>
-
-                <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
-                <span class="ml-2">{{stream.name}}</span>
-                  {{#if (gt stream.translations.length 1)}}
-                  <div style="display:inline-block;margin-left:auto">
-                    <div class="translation-dropdown-button translation-dropdown-container ">
-                      <UiDropdown class="btn btn-secondary dropdown-toggle"
-                                  @onChange={{ action "switchLanguage"}}>
-                    <div class="translation-dropdown-wrapper">
-                      <div class="translation-dropdown-component">
-                        <i style="font-size:1.1em" class="language icon"></i>
-                      </div>
-                      <div class="translation-dropdown-component">
-                        {{stream.translations.length}} {{t 'languages'}}
-                      </div>
-                      <div class="translation-dropdown-component">
-                        <i style="margin-left: 0 !important;text-align: right;"
-                          class="dropdown icon"> </i>
-                      </div>
-                    </div>
-                        <div class="ui translation menu">
-                          {{#each-in stream.translations as |key channel|}}
-                            <div class="item" data-value="{{channel.url}}">{{channel.name}}</div>
-                          {{/each-in}}
-                        </div>
-                      </UiDropdown>
-                    </div>
-                  </div>
-                {{/if}}
-            </a>
-
-          {{/each}}
-        </div>
-      </div>
-    </div>
-
+    <button class="ui icon button stream-side-panel-button right" {{action (mut this.shown) false}}>
+      <i class="angle left icon pr-2"></i>
+    </button>
+  </div>
+  <div class="ui inverted vertical fluid menu borderless stream-side-menu" style="flex-shrink: 0;">
+    {{#if (and @event.isSchedulePublished this.showSessions)}}
+    <a class="ui labeled fluid item {{if (eq @currentRoute 'public.sessions.index') 'video-active'}}"
+      href={{href-to 'public.sessions' @event (query-params side_panel='true' )}}>
+      <span><i class="calendar icon"></i>
+        {{t 'Schedule'}}</span>
+    </a>
     {{/if}}
 
-    {{#if this.loading}}
-      <div class="ui active centered inline loader"></div>
+    {{#if this.showSpeakers}}
+    <a class="ui labeled icon item {{if (eq @currentRoute 'public.speakers') 'video-active'}}"
+      href={{href-to 'public.speakers' @event (query-params side_panel='true' )}}>
+      <span><i class="bullhorn icon"></i>
+        {{t 'Speakers'}}</span>
+    </a>
+    {{/if}}
+
+    {{#if this.showExhibitors}}
+    <a class="ui labeled icon item {{if (eq @currentRoute 'public.exhibition.index') 'video-active'}}"
+      href={{href-to 'public.exhibition' @event (query-params side_panel='true' )}}>
+      <span><i class="image icon"></i>
+        {{t 'Exhibition'}}</span>
+    </a>
+    {{/if}}
+    {{#if (and @event.isChatEnabled this.settings.rocketChatUrl (or @currentRoom.isChatEnabled
+    @currentRoom.isGlobalEventRoom))}}
+    <a href="#" class="ui labeled icon item" role="button" {{on "click" @showChatPanel}}>
+      <span><i class="comment icon"></i>
+        {{t 'Chat'}}</span>
+    </a>
+    {{/if}}
+    {{#if this.showVideoRoom}}
+    <div class="item">
+      <span><i class="video icon"></i>
+        {{t 'Video Rooms'}}</span>
+    </div>
     {{/if}}
   </div>
+  {{#if this.showVideoRoom}}
+  <div class="chat-video-room">
+    <div>
+      <div class="ui inverted vertical fluid menu borderless stream-side-menu">
+        {{#each this.streams as |stream|}}
+        <a href={{href-to 'public.stream.view' @event stream.slugName stream.id }}
+          class="{{if (eq @currentRoom.microlocationId stream.microlocationId) 'video-active'}} item stream-item d-flex items-center"
+          {{on "click" (fn @setupRoomChat stream) }}>
+
+          <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash
+            this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
+          <span class="ml-2">{{stream.name}}</span>
+          {{#if (gt stream.translations.length 1)}}
+          <div style="display:inline-block;margin-left:auto">
+            <div class="translation-dropdown-button translation-dropdown-container ">
+              <UiDropdown class="btn btn-secondary dropdown-toggle" @onChange={{ action "switchLanguage" }}>
+                <div class="translation-dropdown-wrapper">
+                  <div class="translation-dropdown-component">
+                    <i style="font-size:1.8em; color:grey" class="language icon"></i>
+                  </div>
+                  <div class="translation-dropdown-component"
+                    style="font-size: 1.1em; margin-left: 5px; background-color: grey; border-radius: 100%; color: white; padding: 2px 6px;">
+                    {{stream.translations.length}} {{t}}
+                  </div>
+                  <div class="translation-dropdown-component">
+                    <i style="margin-left: 0 !important;text-align: right;color:grey" class="dropdown icon"> </i>
+                  </div>
+                </div>
+                <div class="ui translation menu">
+                  {{#each-in stream.translations as |key channel|}}
+                  <div class="item" data-value="{{channel.url}}">{{channel.name}}</div>
+                  {{/each-in}}
+                </div>
+              </UiDropdown>
+            </div>
+          </div>
+          {{/if}}
+        </a>
+
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  {{/if}}
+
+  {{#if this.loading}}
+  <div class="ui active centered inline loader"></div>
+  {{/if}}
+</div>
 {{/if}}
