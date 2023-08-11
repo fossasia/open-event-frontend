@@ -140,7 +140,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   async updateChannel(index, id) {
-    event.preventDefault();
     const channel = this.translationChannels[index];
     const payload = {
       data: {
@@ -342,7 +341,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   addChannel() {
-    event.preventDefault();
     this.translationChannelsNew = [...this.translationChannelsNew, { id: '', name: '', url: '' }];
   }
 
@@ -421,7 +419,6 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
 
   @action
   addNewChannel(channel) {
-    event.preventDefault();
     const payload = {
       'data': {
         'type'       : 'translation_channel',
