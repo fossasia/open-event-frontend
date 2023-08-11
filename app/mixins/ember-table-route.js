@@ -106,7 +106,7 @@ export default Mixin.create({
         let value = `%${params.search}%`;
         const specialField = ['price'];
         if (specialField.indexOf(splitField[1]) !== -1) {
-          if (!Number(params.search)) {
+          if (isNaN(params.search)) {
             continue;
           }
           condition = 'eq';
