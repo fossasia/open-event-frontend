@@ -63,6 +63,9 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[size]'   : params.per_page || 10,
       'page[number]' : params.page || 1
     };
+    if (params.per_page === 0) {
+      delete queryString['page[size]'];
+    }
 
 
     queryString = this.applySortFilters(queryString, params);
