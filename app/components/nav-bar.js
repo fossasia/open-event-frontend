@@ -1,9 +1,12 @@
 import classic from 'ember-classic-decorator';
 import { action, computed } from '@ember/object';
 import Component from '@ember/component';
+import { inject as service } from '@ember/service';
+
 
 @classic
 export default class NavBar extends Component {
+  @service globalData;
   @computed('session.currentRouteName')
   get isGroupRoute() {
     return (String(this.session.currentRouteName).includes('group'));
@@ -22,8 +25,7 @@ export default class NavBar extends Component {
     if (this.isGroupRoute) {
       return true;
     }
-    return !(String(this.session.currentRouteName).includes('edit'))
-    && String(this.session.currentRouteName) !== 'create';
+    return !String(this.session.currentRouteName) !== 'create';
   }
 
   @computed('session.currentRouteName')
@@ -32,6 +34,30 @@ export default class NavBar extends Component {
       return true;
     }
     return !(String(this.session.currentRouteName).includes('explore'));
+  }
+
+  @computed('session.currentRouteName')
+  get isNotPublicPageRoute() {
+    if (this.isGroupRoute) {
+      return true;
+    }
+    return !(String(this.session.currentRouteName).includes('public'));
+  }
+
+  @computed('session.currentRouteName')
+  get isNotOrderPageRoute() {
+    if (this.isGroupRoute) {
+      return true;
+    }
+    return !(String(this.session.currentRouteName).includes('order'));
+  }
+
+  @computed('session.currentRouteName')
+  get isNotEventDetailPageRoute() {
+    if (this.isGroupRoute || this.routing.currentRouteName === 'events.list') {
+      return true;
+    }
+    return !(String(this.session.currentRouteName).includes('events.view'));
   }
 
   @action
@@ -67,6 +93,12 @@ export default class NavBar extends Component {
       mobileBar.classList.remove('show-bar');
     });
   }
+
+  @action
+  handleClick() {
+    this.router.replaceWith('public.index',  this.globalData.idEvent);
+  }
+
 
   @action
   logout() {

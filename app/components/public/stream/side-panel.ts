@@ -65,18 +65,21 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'lightcoral', 'lightsalmon', 'lightseagreen', 'limegreen',
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
-  async fetchTranslationChannels(streamId: string): Promise<void> {
-    const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
-    if (response.data !== undefined && response.data.length > 0) {
-      const newChannels = response.data.map((channel: ChannelData) => ({
-        id   : channel.id,
-        name : channel.attributes.name,
-        url  : channel.attributes.url
-      }));
-      // Append newChannels to the existing translationChannels list
-      this.translationChannels = [...this.translationChannels, ...newChannels];
-      // eslint-disable-next-line no-mixed-spaces-and-tabs
+  async fetchTranslationChannels(streamId: string): Promise<any[] | undefined> {
+    if (streamId) {
+      const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
+      if (response.data !== undefined && response.data.length > 0) {
+        const newChannels = response.data.map((channel: ChannelData) => ({
+          id   : channel.id,
+          name : channel.attributes.name,
+          url  : channel.attributes.url
+        }));
+        // Append newChannels to the existing translationChannels list
+        const res = [...this.translationChannels, ...newChannels];
+        return res;
+      }
     }
+    return undefined;
   }
 
   async checkSpeakers(): Promise<void> {
@@ -113,9 +116,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
   @action
   async setup(): Promise<void> {
-    if (this.args.videoStream) {
-      this.fetchTranslationChannels(this.args.videoStream.id);
-    }
     this.shown = this.args.shown || Boolean(new URLSearchParams(location.search).get('side_panel'));
     this.addStream(this.args.event.belongsTo('videoStream').value());
 
@@ -131,6 +131,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
         rooms.included?.map((stream: any) => ({
           id                : stream.id,
           name              : stream.attributes.name,
+          position          : stream.attributes.position,
           roomName          : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes.name)[0],
           slugName          : slugify(rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['chat-room-name'])[0]),
           isChatEnabled     : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['is-chat-enabled'])[0],
@@ -138,8 +139,14 @@ export default class PublicStreamSidePanel extends Component<Args> {
           chatRoomName      : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['chat-room-name'])[0],
           microlocationId   : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.id)[0],
           hash              : stringHashCode(stream.attributes.name + stream.id)
-        })).forEach((stream: any) => {
+        })).forEach(async(stream: any) => {
+          const res = await this.fetchTranslationChannels(stream.id)
+          stream.translations = res
           this.addStream(stream)
+        });
+        this.streams.forEach(async(stream: any) => {
+          const res = await this.fetchTranslationChannels(stream.id)
+          stream.translations = res
         });
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);

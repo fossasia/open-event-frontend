@@ -130,6 +130,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   prepareCustomFormsForSave() {
+    this.set('loading', true);
     this.data.badges.forEach(_badge => {
       const { badgeID, badgeForms, ticketsDetails } = _badge;
       badgeForms.forEach(field => {

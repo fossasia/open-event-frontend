@@ -1,58 +1,71 @@
 {{#if this.device.isMobile}}
 <div>
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
-        <div class="default">
-            {{t 'Filter by Tracks'}}
+    <div style="margin-left: 16px !important; margin-right:16px !important">
+        <div class="ui grid row-dropdown-public" style="padding: 0px !important;" >
+                <div class="four wide column item-track">
+                    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-track">
+                        <div class="default">
+                            {{t 'Tracks'}}
+                        </div>
+                        <i class="dropdown icon ic-ddown"></i>
+                        <div class="menu">
+                            {{#each this.event.tracks as |track|}}
+                            <UiCheckbox @class="item" @label={{track.name}} @checked={{if (includes this.activeTrack
+                                track.name) " active"}} @onChange={{action trackFilter track.name }} />
+                            {{/each}}
+                        </div>
+                    </UiDropdown>
+                </div>
+                <div class="four wide column item-room">
+                    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-room">
+                        <div class="default">
+                            {{t 'Rooms'}}
+                        </div>
+                        <i class="dropdown icon ic-ddown"></i>
+                        <div class="menu">
+                            {{#each this.event.microlocations as |room|}}
+                            {{#if (not room.hiddenInScheduler)}}
+                            <UiCheckbox @class="item" @label={{room.name}} @checked={{if (includes this.activeRoom room.name) " active"
+                                }} @onChange={{action roomFilter room.name }} />
+                            {{/if}}
+                            {{/each}}
+                        </div>
+                    </UiDropdown>
+                </div>
+                <div class="four wide column item-session-type">
+                    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-type">
+                        <div class="default">
+                            {{t 'Types'}}
+                        </div>
+                        <i class="dropdown icon ic-ddown"></i>
+                        <div class="menu">
+                            {{#each this.event.sessionTypes as |sessionType|}}
+                            <UiCheckbox @class="item" @label={{sessionType.name}} @checked={{if (includes this.activeSession
+                                sessionType.name) " active" }} @onChange={{action this.sessionFilter sessionType.name}} />
+                            {{/each}}
+                        </div>
+                    </UiDropdown>
+                </div>
+
+                <div class="four wide column item-session-level">
+                    {{#if this.hasSessionLevel}}
+                    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-level">
+                        <div class="default">
+                            {{t 'Levels'}}
+                        </div>
+                        <i class="dropdown icon ic-ddown"></i>
+                        <div class="menu">
+                            {{#each this.levels as |level|}}
+                            <UiCheckbox @class="item" @label={{level.name}} @checked={{if (includes this.activeSessionLevel
+                                level.name) " active" }} @onChange={{action this.sessionLevelFilter level.name}} />
+                            {{/each}}
+                        </div>
+                    </UiDropdown>
+                    {{/if}}
+                </div>
         </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            {{#each this.event.tracks as |track|}}
-            <UiCheckbox @class="item" @label={{track.name}} @checked={{if (includes this.activeTrack
-                track.name) " active"}} @onChange={{action trackFilter track.name }} />
-            {{/each}}
-        </div>
-    </UiDropdown>
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
-        <div class="default">
-            {{t 'Filter by Rooms'}}
-        </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            {{#each this.event.microlocations as |room|}}
-            {{#if (not room.hiddenInScheduler)}}
-            <UiCheckbox @class="item" @label={{room.name}} @checked={{if (includes this.activeRoom room.name) " active"
-                }} @onChange={{action roomFilter room.name }} />
-            {{/if}}
-            {{/each}}
-        </div>
-    </UiDropdown>
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
-        <div class="default">
-            {{t 'Filter by Session Types'}}
-        </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            {{#each this.event.sessionTypes as |sessionType|}}
-            <UiCheckbox @class="item" @label={{sessionType.name}} @checked={{if (includes this.activeSession
-                sessionType.name) " active" }} @onChange={{action this.sessionFilter sessionType.name}} />
-            {{/each}}
-        </div>
-    </UiDropdown>
-    {{#if this.hasSessionLevel}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
-        <div class="default">
-            {{t 'Filter by Session levels'}}
-        </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            {{#each this.levels as |level|}}
-            <UiCheckbox @class="item" @label={{level.name}} @checked={{if (includes this.activeSessionLevel
-                level.name) " active" }} @onChange={{action this.sessionLevelFilter level.name}} />
-            {{/each}}
-        </div>
-    </UiDropdown>
-    {{/if}}
-    <br>
+    </div>
+    {{#if (or this.router.currentRoute.queryParams.track  this.router.currentRoute.queryParams.room this.router.currentRoute.queryParams.sessionType this.router.currentRoute.queryParams.level)}}
     <div class="ui mb-2">
         {{#if this.router.currentRoute.queryParams.track}}
         <div class="pl-4 mb-2" style="background: #E0E1E2 none; opacity: 0.8;">
@@ -111,9 +124,10 @@
         </div>
         {{/if}}
     </div>
+    {{/if}}
 </div>
 {{else}}
-<div class="mr-8">
+<div>
     <h4>
         {{t 'Tracks'}}
         <LinkTo @route="public.sessions" @models={{array this.event.id}} @query={{hash track=null}}
@@ -121,7 +135,7 @@
             <Icons::ClearFilter />
         </LinkTo>
     </h4>
-    {{#each this.event.tracks as |track|}}
+    {{#each this.trackList as |track|}}
     <p role="button" class="track p-1 mb-1 link-item {{if (includes-filter this.activeTrack track.name) " active"}}"
         {{action 'applyFilter' track.name 'track' }}>
         <i class="circle icon" style={{css color=track.color}}></i>
@@ -135,7 +149,7 @@
             <Icons::ClearFilter />
         </LinkTo>
     </h4>
-    {{#each this.event.microlocations as |room|}}
+    {{#each this.microlocationList as |room|}}
     {{#if (not room.hiddenInScheduler)}}
     <p class="room p-1 mb-1 link-item {{if (includes-filter this.activeRoom room.name) " active"}}" role="button"
         {{action 'applyFilter' room.name 'room' }}>
@@ -157,13 +171,13 @@
     </span>
     {{/if}}
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection min-width-0">
         <div class="default">
             {{t 'Select Session Type'}}
         </div>
         <i class="dropdown icon"></i>
         <div class="menu">
-            {{#each this.event.sessionTypes as |sessionType|}}
+            {{#each this.sessionTypeList as |sessionType|}}
             <UiCheckbox @class="item" @label={{sessionType.name}} @checked={{if (includes this.activeSession
                 sessionType.name) "active" }} @onChange={{action this.sessionFilter sessionType.name}} />
             {{/each}}
@@ -184,7 +198,7 @@
     </span>
     {{/if}}
     {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection">
+    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection min-width-0">
         <div class="default">
             {{t 'Select Session level'}}
         </div>

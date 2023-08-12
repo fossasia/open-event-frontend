@@ -1,10 +1,10 @@
 <div class="ui one column container stackable doubling left grid" id="top">
-  <div class="row print">
+  <div class="row print " role="button" {{action 'redirectToStartPage' this.model.order.event.identifier}}>
     <div class="column">
       <h2>{{this.model.order.event.name}}</h2>
     </div>
   </div>
-  <div class="row print">
+  <div class="row print" role="button" {{action 'redirectToStartPage' this.model.order.event.identifier}}>
     <div class="column">
       <div class="ui small gray-text">
         {{general-date this.model.order.event.startsAt 'date-time-long'}} {{general-date this.model.order.event.startsAt 'tz'}} - 
@@ -38,7 +38,8 @@
     </div>
     <div class="six wide column">
       <Orders::EventInfo
-        @data={{this.model.order}} />
+        @data={{this.model.order}}
+        @redirectStartPgEvent={{action this.redirectToStartPage}}/>
       <br/>
       {{#if this.showTicketsButton}}
         <div class="d-flex">
