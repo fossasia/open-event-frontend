@@ -13,7 +13,7 @@ export const humanReadableBytes = (sizeInKb, absolute = true, si = true) => {
   do {
     bytes /= thresh;
     ++u;
-  } while (Math.abs(bytes) >= thresh && u < units.length - 1);
+  } while (Math.round(Math.abs(bytes)*100)/100 >= thresh && u < units.length - 1);
   return `${bytes.toFixed(absolute ? 0 : 1)} ${units[u]}`;
 };
 
