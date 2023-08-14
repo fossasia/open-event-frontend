@@ -108,12 +108,12 @@
           {{/if}}
         {{/if}}
     {{/if}}
-    {{!-- {{#if (not (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute))}} --}}
-    {{#if @needShowEventMenu}}
+    {{#if (not (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute))}}
+    {{!-- {{#if @needShowEventMenu}} --}}
+    {{#if ( or (and this.showSessions this.showSpeakers this.showExhibitors))}}
       <div class="menu-header">
-      <select class="ui dropdown menu-public" value={{this.selectedOption}} onchange={{action "redirectToPage" value="target.value"}}>
-        <option value="">Menu</option>
-        
+      <select class="ui dropdown menu-public custom-style" value={{this.selectedOption}} onchange={{action "redirectToPage"}}>
+        <option value="">Menu Info</option>
         {{#if this.showSessions}}
         <option value="schedule">Schedule</option>
         {{/if}}
@@ -123,9 +123,9 @@
         {{#if this.showExhibitors}}
         <option value="exhibition">Exhibition</option>
         {{/if}}
-        
       </select>
-    </div>
+      </div>
+      {{/if}}
     {{/if }}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />

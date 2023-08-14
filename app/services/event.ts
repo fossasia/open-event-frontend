@@ -51,9 +51,9 @@ export default class EventService extends Service {
     }];
     return (await this.loader.load(`/events/${eventId}/exhibitors?page[size]=1&filter=${JSON.stringify(exhibitorFilter)}`)).data.length;
   }
-  
+
   async hasSessions(eventId: string): Promise<number> {
-    
+
     const filters = [{
       or: [
         {

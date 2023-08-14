@@ -6,11 +6,11 @@ import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class NavBar extends Component {
+  @service router;
   @service globalData;
   @service('event') eventService;
 
   loaded = false
-  
 
   @tracked
   showSpeakers = null;
@@ -20,17 +20,24 @@ export default class NavBar extends Component {
 
   @tracked
   showSessions = null;
-  didUpdateAttrs(){
 
-    if(!this.loaded && this.get('needShowEventMenu')){
-      this.loaded = true
+  constructor(owner, args) {
+    super(owner, args);
+
+    this.router.on('routeDidChange', this.handleRouteChange.bind(this));
+    window.addEventListener('popstate', this.resetSelectedOption.bind(this));
+  }
+
+  didUpdateAttrs() {
+
+    if (!this.loaded && this.get('needShowEventMenu')) {
+      this.loaded = true;
       this.checkSpeakers();
       this.checkSessions();
       this.checkExhibitors();
-    } else if (!this.get('needShowEventMenu')){
-      this.loaded = false
+    } else if (!this.get('needShowEventMenu')) {
+      this.loaded = false;
     }
-    
   }
 
   @computed('session.currentRouteName')
@@ -125,10 +132,10 @@ export default class NavBar extends Component {
     this.router.replaceWith('public.index',  this.globalData.idEvent);
   }
 
-  selectedOption = '';
+  @tracked selectedOption = '';
   @action
-  redirectToPage(optionValue) {
-
+  redirectToPage(event) {
+    const optionValue = event.target.value;
     this.selectedOption = optionValue;
     if (optionValue === 'speakers') {
       this.router.replaceWith('public.speakers',  this.globalData.idEvent);
@@ -136,12 +143,28 @@ export default class NavBar extends Component {
       this.router.replaceWith('public.exhibition',  this.globalData.idEvent);
     } else if (optionValue === 'schedule') {
       this.router.replaceWith('public.sessions.index',  this.globalData.idEvent);
+    } else {
+      this.router.replaceWith('public.index',  this.globalData.idEvent);
+    }
+  }
+
+  resetSelectedOption() {
+    this.selectedOption = '';
+  }
+
+  handleRouteChange() {
+    const { currentRouteName } = this.router;
+    if (currentRouteName === 'public.speakers' || currentRouteName === 'public.exhibition') {
+      this.selectedOption = currentRouteName.split('.')[1];
+    } else if (currentRouteName === 'public.sessions.index') {
+      this.selectedOption = 'schedule';
+    } else {
+      this.selectedOption = '';
     }
   }
 
   async checkSpeakers() {
     this.showSpeakers = await this.eventService.hasSpeakers(this.globalData.idEvent);
-    
   }
 
   async checkExhibitors() {
@@ -157,4 +180,10 @@ export default class NavBar extends Component {
     this.authManager.logout();
     this.routing.transitionTo('index');
   }
+
+  willDestroy() {
+    this.router.off('routeDidChange', this.handleRouteChange.bind(this));
+    window.removeEventListener('popstate', this.resetSelectedOption.bind(this));
+  }
+
 }
