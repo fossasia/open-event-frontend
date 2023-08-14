@@ -21,13 +21,6 @@ export default class NavBar extends Component {
   @tracked
   showSessions = null;
 
-  constructor(owner, args) {
-    super(owner, args);
-
-    this.router.on('routeDidChange', this.handleRouteChange.bind(this));
-    window.addEventListener('popstate', this.resetSelectedOption.bind(this));
-  }
-
   didUpdateAttrs() {
 
     if (!this.loaded && this.get('needShowEventMenu')) {
@@ -135,7 +128,7 @@ export default class NavBar extends Component {
   @tracked selectedOption = '';
   @action
   redirectToPage(event) {
-    const optionValue = event.target.value;
+    const optionValue = event;
     this.selectedOption = optionValue;
     if (optionValue === 'speakers') {
       this.router.replaceWith('public.speakers',  this.globalData.idEvent);
@@ -145,21 +138,6 @@ export default class NavBar extends Component {
       this.router.replaceWith('public.sessions.index',  this.globalData.idEvent);
     } else {
       this.router.replaceWith('public.index',  this.globalData.idEvent);
-    }
-  }
-
-  resetSelectedOption() {
-    this.selectedOption = '';
-  }
-
-  handleRouteChange() {
-    const { currentRouteName } = this.router;
-    if (currentRouteName === 'public.speakers' || currentRouteName === 'public.exhibition') {
-      this.selectedOption = currentRouteName.split('.')[1];
-    } else if (currentRouteName === 'public.sessions.index') {
-      this.selectedOption = 'schedule';
-    } else {
-      this.selectedOption = '';
     }
   }
 
@@ -179,11 +157,6 @@ export default class NavBar extends Component {
   logout() {
     this.authManager.logout();
     this.routing.transitionTo('index');
-  }
-
-  willDestroy() {
-    this.router.off('routeDidChange', this.handleRouteChange.bind(this));
-    window.removeEventListener('popstate', this.resetSelectedOption.bind(this));
   }
 
 }

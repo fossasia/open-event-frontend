@@ -33,13 +33,32 @@
   }
 }
 
-.menu-public {
-  border: unset !important;
-  align-items: center;
-  position: relative;
-  display: flex !important;
-  vertical-align: middle;
-  flex: 0 0 auto;
-  height: 46px !important;
-  background: #fff;
+.menu-header {
+  padding-right: unset !important;
+  padding-left: unset !important;
+  padding-bottom: unset !important;
+
+  .menu-public {
+    min-width: unset !important;
+    padding-left: 8px !important;
+    background: #fff;
+    border: unset !important;
+    height: 46px !important;
+    display: flex !important;
+    justify-content: center !important;
+    background-color: #fff !important;
+    align-items: center !important;
+  }
+
+  .ic-menu-public {
+    padding-top: 16px !important;
+  }
+
+  .menu.transition.visible {
+    border-top: 1px solid #96c8da !important;
+  }
+
+  .menu {
+    max-height: 165px !important;
+  }
 }

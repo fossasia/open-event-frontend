@@ -109,24 +109,27 @@
         {{/if}}
     {{/if}}
     {{#if (not (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute))}}
-    {{!-- {{#if @needShowEventMenu}} --}}
     {{#if ( or (and this.showSessions this.showSpeakers this.showExhibitors))}}
       <div class="menu-header">
-      <select class="ui dropdown menu-public custom-style" value={{this.selectedOption}} onchange={{action "redirectToPage"}}>
-        <option value="">Menu Info</option>
-        {{#if this.showSessions}}
-        <option value="schedule">Schedule</option>
-        {{/if}}
-        {{#if this.showSpeakers}}
-        <option value="speakers">Speakers</option>
-        {{/if}}
-        {{#if this.showExhibitors}}
-        <option value="exhibition">Exhibition</option>
-        {{/if}}
-      </select>
+        <UiDropdown @class="ui selection dropdown button menu-public" selected={{this.selectedOption}}  @onChange={{action "redirectToPage"}}>
+          <Input @type="hidden" @name="" @value={{this.selectedOption}} />
+          <div class="default text">Menu Info</div>
+            <i class="dropdown icon ic-menu-public"></i>
+          <div class="menu">
+            {{#if this.showSessions}}
+            <div class="item" data-value="schedule" >Schedule</div>
+            {{/if}}
+            {{#if this.showSpeakers}}
+            <div class="item" data-value="speakers" >Speakers</div>
+            {{/if}}
+            {{#if this.showExhibitors}}
+            <div class="item" data-value="exhibition" >Exhibition</div>
+             {{/if}}
+          </div>
+        </UiDropdown>
       </div>
-      {{/if}}
-    {{/if }}
+    {{/if}}
+    {{/if}}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
