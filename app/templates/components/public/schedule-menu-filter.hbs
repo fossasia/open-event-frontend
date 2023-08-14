@@ -9,7 +9,7 @@
                         </div>
                         <i class="dropdown icon ic-ddown"></i>
                         <div class="menu">
-                            {{#each this.event.tracks as |track|}}
+                            {{#each this.trackList as |track|}}
                             <UiCheckbox @class="item" @label={{track.name}} @checked={{if (includes this.activeTrack
                                 track.name) " active"}} @onChange={{action trackFilter track.name }} />
                             {{/each}}
@@ -39,7 +39,7 @@
                         </div>
                         <i class="dropdown icon ic-ddown"></i>
                         <div class="menu">
-                            {{#each this.event.sessionTypes as |sessionType|}}
+                            {{#each this.sessionTypeList as |sessionType|}}
                             <UiCheckbox @class="item" @label={{sessionType.name}} @checked={{if (includes this.activeSession
                                 sessionType.name) " active" }} @onChange={{action this.sessionFilter sessionType.name}} />
                             {{/each}}
