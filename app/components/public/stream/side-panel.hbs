@@ -66,8 +66,7 @@
                 <span class="ml-2">{{stream.name}}</span>
                   {{#if (gt stream.translations.length 1)}}
                   <div style="display:inline-block;margin-left:auto">
-                    <div class="translation-dropdown-button translation-dropdown-container">
-                      <UiDropdown class="btn btn-secondary dropdown-toggle"
+                      <UiDropdown class="btn btn-secondary dropdown-toggle translation-dropdown-button translation-dropdown-container"
                                   @selected={{this.selectingLanguage.getName}}
                                   @onChange={{ action "switchLanguage"}} as |execute mapper|>
                         <div class="translation-dropdown-wrapper">
@@ -94,7 +93,6 @@
                           {{/each}}
                         </div>
                       </UiDropdown>
-                    </div>
                   </div>
                 {{/if}}
             </a>

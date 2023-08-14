@@ -1,7 +1,7 @@
 .translation-dropdown-container {
   height: 2.5rem;
   width: 135.5px !important;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
 
@@ -38,7 +38,7 @@
 }
 
 .translation-dropdown-component {
-  display: inline-block;
+  display: flex;
 
   i.translation.icon {
     font-size: 1.8em;
@@ -92,8 +92,8 @@
 }
 
 .translation.menu {
-  left: -6px !important;
-  margin-top: 10px !important;
+  left: 14px !important;
+  margin-top: 18px !important;
   width: 5rem !important;
 
   .item {
