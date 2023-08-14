@@ -46,6 +46,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showChat = false;
   @tracked showRoomChat = false;
   @tracked showVideoRoom = false;
+  @tracked language = null;
 
   @tracked translationChannels = [{
     id   : '0',
@@ -109,9 +110,14 @@ export default class PublicStreamSidePanel extends Component<Args> {
   }
 
   @action
-  switchLanguage(url: string): void {
-    this.selectingLanguage.setLanguage(url);
+  switchLanguage(channel: any): void {
+    this.selectingLanguage.setLanguage(channel.url);
     this.selectingLanguage.updateTranslationYTId();
+    this.selectingLanguage.setName(channel.name);
+    this.language = this.selectingLanguage.getName();
+    if (this.selectingLanguage.getName() === 'Original') {
+      this.language = null
+    }
   }
 
   @action

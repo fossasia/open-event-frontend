@@ -6,6 +6,9 @@ export default class SelectingLanguageService extends Service {
   selectingLanguage = null;
 
   @tracked
+  name = null;
+
+  @tracked
   isStreamYardVisible = true;
 
   @tracked
@@ -14,6 +17,10 @@ export default class SelectingLanguageService extends Service {
   setLanguage(language) {
     this.selectingLanguage = language;
     this.isStreamYardVisible = true;
+  }
+
+  setName(name) {
+    this.name = name;
   }
 
   setStreamYardVisibility(isVisible) {
@@ -31,5 +38,9 @@ export default class SelectingLanguageService extends Service {
 
   getLanguage() {
     return this.selectingLanguage;
+  }
+
+  getName() {
+    return this.name;
   }
 }
