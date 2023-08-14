@@ -337,11 +337,11 @@ export default Component.extend(EventWizardMixin, FormMixin, {
         if (this.data.event.sessionTypes && !this.data.event.sessionTypes.length) {
           this.data.event.sessionTypes.addObject(this.store.createRecord('session-type'));
         }
-  
+
         if (this.data.event.tracks && !this.data.event.tracks.length) {
           this.data.event.tracks.addObject(this.store.createRecord('track'));
         }
-  
+
         if (this.data.event.microlocations && !this.data.event.microlocations.length) {
           this.data.event.microlocations.addObject(this.store.createRecord('microlocation'));
         }
@@ -350,11 +350,11 @@ export default Component.extend(EventWizardMixin, FormMixin, {
         if (this.data.event.sessionTypes && this.data.event.sessionTypes.length) {
           this.data.event.sessionTypes.clear();
         }
-  
+
         if (this.data.event.tracks && this.data.event.tracks.length) {
           this.data.event.tracks.clear();
         }
-  
+
         if (this.data.event.microlocations && this.data.event.microlocations.length) {
           this.data.event.microlocations.clear();
         }

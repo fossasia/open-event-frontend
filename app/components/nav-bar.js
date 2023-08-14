@@ -35,6 +35,7 @@ export default class NavBar extends Component {
     }
     return !(String(this.session.currentRouteName).includes('explore'));
   }
+
   @computed('session.currentRouteName')
   get isNotPublicPageRoute() {
     if (this.isGroupRoute) {
@@ -42,6 +43,7 @@ export default class NavBar extends Component {
     }
     return !(String(this.session.currentRouteName).includes('public'));
   }
+
   @computed('session.currentRouteName')
   get isNotOrderPageRoute() {
     if (this.isGroupRoute) {

@@ -72,7 +72,62 @@ export default Mixin.create({
       };
     }
     return resolved;
+  },
+
+  applySearchFiltersExtend(options, params, searchFields) {
+    if (!Array.isArray(searchFields)) {
+      searchFields = [searchFields];
+    }
+    let filters = options;
+    if (searchFields.length > 1) {
+      filters = [];
+      options.pushObject({ or: filters });
+    }
+    for (let searchField of searchFields) {
+      const findIndex = searchField.includes('__');
+      if (!findIndex) {
+        searchField = kebabCase(searchField);
+        if (params.search) {
+          filters.pushObject({
+            name : searchField,
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          });
+        } else {
+          filters.removeObject({
+            name : searchField,
+            op   : 'ilike',
+            val  : `%${params.search}%`
+          });
+        }
+      } else {
+        const splitField = searchField.split('__');
+        let condition = 'ilike';
+        let value = `%${params.search}%`;
+        const specialField = ['price'];
+        if (specialField.indexOf(splitField[1]) !== -1) {
+          if (isNaN(params.search)) {
+            continue;
+          }
+          condition = 'eq';
+          value = params.search;
+        }
+        const filter = {
+          name : splitField[0],
+          op   : 'has',
+          val  : {
+            name : splitField[1],
+            op   : condition,
+            val  : value
+          }
+        };
+        if (params.search) {
+          filters.pushObject(filter);
+        } else {
+          filters.removeObject(filter);
+        }
+      }
+    }
+    return options;
   }
-
-
 });

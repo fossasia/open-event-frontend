@@ -56,6 +56,12 @@
           @site="youtube"
           @value={{this.data.stream.url}}
           @onChange={{action (mut this.data.stream.url)}} />
+      {{else if (eq this.data.stream.videoChannel.provider 'youtube_privacy')}}
+        <Widgets::Forms::SocialLinkField
+          @fixed={{true}}
+          @site="youtube privacy"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
       {{else if (eq this.data.stream.videoChannel.provider 'vimeo')}}
         <Widgets::Forms::SocialLinkField
           @fixed={{true}}
@@ -92,7 +98,7 @@
     <Textarea
       @value={{this.data.stream.additionalInformation}} />
   </div>
-  {{#if (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo'))}}
+  {{#if (or (eq this.data.stream.videoChannel.provider 'youtube_privacy') (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo')))}}
     <div class="field">
       <label for="public_name">
         {{t 'Autoplay'}}
@@ -276,7 +282,7 @@
               <i style="margin-left: 0 !important;text-align: right;"
                 class="dropdown icon"> </i>
             </UiDropdown>
-            <button class="ml-2 ui icon red button" {{on "click" (fn this.removeChannel index channel.id )}}>
+            <button class="ml-2 ui icon red button" {{action "removeChannel" index channel.id }}>
               <i class="remove icon"></i>
             </button>
           </div>
@@ -307,7 +313,7 @@
                  class="dropdown icon"> </i>
             </UiDropdown>
             <span class="ml-2"></span>
-            <button class="ui icon red button" {{on "click" (fn this.removeChannel index channel.id )}}>
+            <button class="ui icon red button" {{action "removeChannel" index channel.id}}>
               <i class="remove icon"></i>
             </button>
           </div>
@@ -317,7 +323,7 @@
 
   {{/each}}
   <div class="field">
-    <button class="ui primary button" {{on "click" this.addChannel }}  >
+    <button class="ui primary button" {{action "addChannel"}}  >
       {{t 'Add Channel'}}
     </button>
   </div>

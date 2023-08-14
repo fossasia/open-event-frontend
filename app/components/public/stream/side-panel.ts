@@ -66,16 +66,18 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
   async fetchTranslationChannels(streamId: string): Promise<any[] | undefined> {
-    const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
-    if (response.data !== undefined && response.data.length > 0) {
-      const newChannels = response.data.map((channel: ChannelData) => ({
-        id   : channel.id,
-        name : channel.attributes.name,
-        url  : channel.attributes.url
-      }));
-      // Append newChannels to the existing translationChannels list
-      const res = [...this.translationChannels, ...newChannels];
-      return res;
+    if (streamId) {
+      const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
+      if (response.data !== undefined && response.data.length > 0) {
+        const newChannels = response.data.map((channel: ChannelData) => ({
+          id   : channel.id,
+          name : channel.attributes.name,
+          url  : channel.attributes.url
+        }));
+        // Append newChannels to the existing translationChannels list
+        const res = [...this.translationChannels, ...newChannels];
+        return res;
+      }
     }
     return undefined;
   }
@@ -138,8 +140,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
           microlocationId   : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.id)[0],
           hash              : stringHashCode(stream.attributes.name + stream.id)
         })).forEach(async(stream: any) => {
-          const res = await this.fetchTranslationChannels(stream.id)
-          stream.translations = res
           this.addStream(stream)
         });
         this.streams.forEach(async(stream: any) => {
