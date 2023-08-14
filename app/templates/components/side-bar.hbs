@@ -31,15 +31,13 @@
   <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
   {{/if}}
   </UiAccordion>
-
-
-
   {{else}}
-  {{#if this.isEventPageRoute}}
-  <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
-  {{/if}}
-  <a href="{{href-to 'pricing'}}" class="item">{{t 'Pricing'}}</a>
-  <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+    {{#if this.isEventPageRoute}}
+      <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
+    {{else}}
+      <a href="{{href-to 'pricing'}}" class="item">{{t 'Pricing'}}</a>
+    {{/if}}
+    <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
   {{/if}}
 </div>
 <div class="pusher">

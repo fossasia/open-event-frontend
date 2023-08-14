@@ -55,7 +55,18 @@ export default class extends Route.extend(EmberTableRouteMixin) {
         }
       ];
     }
-    filterOptions = this.applySearchFilters(filterOptions, params, ['firstname', 'lastname', 'email']);
+    filterOptions = this.applySearchFiltersExtend(
+      filterOptions,
+      params,
+      [
+        'firstname',
+        'lastname',
+        'email',
+        'ticket__name',
+        'ticket__price',
+        'order__identifier'
+      ]);
+
 
     let queryString = {
       include        : 'user,order',
