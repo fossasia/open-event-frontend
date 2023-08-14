@@ -74,8 +74,7 @@
       <i class="large content icon"></i>
     </a>
     {{#if this.session.isAuthenticated}}
-        {{!-- {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}} --}}
-        {{#if @needShowEventMenu}}
+        {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
          <LinkTo
           @route="index" class="item" @activeClass="">
           <div class="ui header small text">{{this.settings.appName}}</div>
@@ -92,8 +91,7 @@
             {{/if}}
         {{/if}}
     {{else}}
-        {{!-- {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}} --}}
-        {{#if @needShowEventMenu}}
+        {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
           <LinkTo
             @route="index" class="item" @activeClass="">
             <div class="ui header small text">{{this.settings.appName}}</div>
@@ -138,15 +136,13 @@
         {{!-- <NotificationDropdown
           @notifications={{this.notifications}} /> --}}
       {{/if}}
-      {{!-- {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}} --}}
-      {{#if @needShowEventMenu}}
+      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
         <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
           <i class="search icon"></i>
         </div>
       {{/if}}
       {{#if this.session.isAuthenticated}}
-        {{!-- {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}} --}}
-        {{#if @needShowEventMenu}}
+        {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
           <LinkTo
             @route="create" class="item ui blue button-text small text">
             <div>
