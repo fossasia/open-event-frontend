@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Component from '@ember/component';
 import { debounce } from '@ember/runloop';
-import { observer, computed } from '@ember/object';
+import { computed } from '@ember/object';
 import { v4 } from 'ember-uuid';
 import { isTesting } from 'open-event-frontend/utils/testing';
 
@@ -33,12 +33,6 @@ export default Component.extend({
       }
     }
   },
-
-  valueObserver: observer('value', function() {
-    if (this.editor && this.editor.getValue() !== this.value) {
-      this.editor.setValue(this.value);
-    }
-  }),
 
   textareaIdGenerated: computed('textareaId', function() {
     return this.textareaId ? this.textareaId : v4();
