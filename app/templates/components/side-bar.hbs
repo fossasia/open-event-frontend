@@ -5,7 +5,7 @@
   </div>
   {{#if this.session.isAuthenticated}}
   <UiAccordion>
-  <div class="item ui {{if @needShowEventMenu 'title'}}">
+  <div class="item ui {{if this.isEventPageRoute 'title'}}">
       <Widgets::SafeImage @isAvatar={{true}} @class="ui avatar round image side-bar" @src={{if
         this.authManager.currentUser.avatarUrl this.authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"
         }} />
@@ -14,7 +14,7 @@
       this.authManager.currentUser.email)
       'Welcome'}}
   </div>
-  <div class="{{if @needShowEventMenu 'content sub-menu'}} ui">
+  <div class="{{if this.isEventPageRoute 'content sub-menu'}} ui">
     <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
     <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
     <a href="{{href-to 'my-groups.list'}}" class="item">{{t 'Groups'}}</a>
@@ -26,7 +26,7 @@
     {{/if}}
     <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
   </div>
-  {{#if @needShowEventMenu }}
+  {{#if this.isEventPageRoute  }}
 
   <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
   {{/if}}
@@ -35,7 +35,7 @@
 
 
   {{else}}
-  {{#if @needShowEventMenu}}
+  {{#if this.isEventPageRoute}}
   <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
   {{/if}}
   <a href="{{href-to 'pricing'}}" class="item">{{t 'Pricing'}}</a>
