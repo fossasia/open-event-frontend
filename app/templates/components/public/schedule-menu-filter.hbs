@@ -23,7 +23,7 @@
                         </div>
                         <i class="dropdown icon ic-ddown"></i>
                         <div class="menu">
-                            {{#each this.event.microlocations as |room|}}
+                            {{#each this.microlocationList as |room|}}
                             {{#if (not room.hiddenInScheduler)}}
                             <UiCheckbox @class="item" @label={{room.name}} @checked={{if (includes this.activeRoom room.name) " active"
                                 }} @onChange={{action roomFilter room.name }} />
