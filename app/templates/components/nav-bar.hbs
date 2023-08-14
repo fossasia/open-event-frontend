@@ -108,12 +108,23 @@
           {{/if}}
         {{/if}}
     {{/if}}
-
+    {{#if (not (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute))}}
+      <div class="menu-header">
+      <select class="ui dropdown menu-public" value={{this.selectedOption}} onchange={{action "redirectToPage" value="target.value"}}>
+        <option value="">Menu</option>
+        <option value="schedule">Schedule</option>
+        {{#if this.eventService.eventHasSpeakers}}
+        <option value="speakers">Speakers</option>
+        {{/if}}
+        <option value="exhibition">Exhibition</option>
+      </select>
+    </div>
+    {{/if }}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
     </div>
-    <div class="right menu nav-bar">
+    <div class="right menu nav-bar">  
       {{#if this.session.isAuthenticated}}
         {{!-- <NotificationDropdown
           @notifications={{this.notifications}} /> --}}

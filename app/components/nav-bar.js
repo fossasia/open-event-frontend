@@ -35,6 +35,7 @@ export default class NavBar extends Component {
     }
     return !(String(this.session.currentRouteName).includes('explore'));
   }
+
   @computed('session.currentRouteName')
   get isNotPublicPageRoute() {
     if (this.isGroupRoute) {
@@ -42,6 +43,7 @@ export default class NavBar extends Component {
     }
     return !(String(this.session.currentRouteName).includes('public'));
   }
+
   @computed('session.currentRouteName')
   get isNotOrderPageRoute() {
     if (this.isGroupRoute) {
@@ -97,6 +99,19 @@ export default class NavBar extends Component {
     this.router.replaceWith('public.index',  this.globalData.idEvent);
   }
 
+  selectedOption = '';
+  @action
+  redirectToPage(optionValue) {
+
+    this.selectedOption = optionValue;
+    if (optionValue === 'speakers') {
+      this.router.replaceWith('public.speakers',  this.globalData.idEvent);
+    } else if (optionValue === 'exhibition') {
+      this.router.replaceWith('public.exhibition',  this.globalData.idEvent);
+    } else if (optionValue === 'schedule') {
+      this.router.replaceWith('public.sessions.index',  this.globalData.idEvent);
+    }
+  }
 
   @action
   logout() {

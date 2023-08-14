@@ -39,9 +39,20 @@ export default class EventService extends Service {
     return speakersMetaPromise;
   }
 
+  @tracked
+  eventHasSpeakers = false
+
   async hasSpeakers(eventId: string): Promise<number> {
-    return (await this.getSpeakersMeta(eventId)).data.length;
+    const speakers = (await this.getSpeakersMeta(eventId))
+    const length = speakers?.data?.length
+
+    this.eventHasSpeakers = length > 0
+
+    return length;
   }
+  // async hasSpeakers(eventId: string): Promise<number> {
+  //   return (await this.getSpeakersMeta(eventId)).data.length;
+  // }
 
   setCurrentEvent(evt:any) {
     this.currentEvent = evt;
