@@ -58,7 +58,7 @@
       <div class="three wide column">
         {{#if this.displaySideMenu}}
           {{#if this.device.isMobile}}
-            <Public::AddToCalenderJoinVideo 
+            <Public::AddToCalendarJoinVideo
               @event={{this.model}} 
               @location={{this.headerLocation}}
               @showVideo={{false}}
@@ -79,7 +79,7 @@
               @sameTab={{this.side_panel}}
               @showSidePanel={{action "showSidePanel"}}
               class="ui basic segment m-0 p-0" />
-            <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
+            <Public::AddToCalendar @event={{this.model}} @location={{this.headerLocation}}/>
           {{/if}}
           {{#if (and (not-eq this.session.currentRouteName 'public.exhibition.view') (not-eq this.session.currentRouteName 'public.coc'))}}
             {{#if (not-eq this.router.currentRoute.name 'public.sessions.index')}}
