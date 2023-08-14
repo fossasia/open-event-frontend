@@ -220,7 +220,7 @@ export default class SessionsRoute extends Route {
       session : await this.infinity.model('sessions', {
         include      : 'track,speakers,session-type,favourite,microlocation.video-stream',
         filter       : filterOptions,
-        sort         : params.sort || 'starts-at',
+        sort         : params.sort ? params.sort + ',id' : 'starts-at,id',
         perPage      : 6,
         startingPage : 1,
         perPageParam : 'page[size]',
