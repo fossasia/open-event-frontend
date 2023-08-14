@@ -140,16 +140,16 @@ export default class NavBar extends Component {
   }
 
   async checkSpeakers() {
-    this.showSpeakers = this.showSpeakers ?? await this.eventService.hasSpeakers(this.globalData.idEvent);
+    this.showSpeakers = await this.eventService.hasSpeakers(this.globalData.idEvent);
     
   }
 
   async checkExhibitors() {
-    this.showExhibitors = this.showExhibitors ?? await this.eventService.hasExhibitors(this.globalData.idEvent);
+    this.showExhibitors = await this.eventService.hasExhibitors(this.globalData.idEvent);
   }
 
   async checkSessions() {
-    this.showSessions = this.showSessions ?? await this.eventService.hasSessions(this.globalData.idEvent);
+    this.showSessions = await this.eventService.hasSessions(this.globalData.idEvent);
   }
 
   @action
