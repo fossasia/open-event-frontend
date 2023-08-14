@@ -74,7 +74,8 @@
       <i class="large content icon"></i>
     </a>
     {{#if this.session.isAuthenticated}}
-        {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+        {{!-- {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}} --}}
+        {{#if @needShowEventMenu}}
          <LinkTo
           @route="index" class="item" @activeClass="">
           <div class="ui header small text">{{this.settings.appName}}</div>
@@ -91,7 +92,8 @@
             {{/if}}
         {{/if}}
     {{else}}
-        {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+        {{!-- {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}} --}}
+        {{#if @needShowEventMenu}}
           <LinkTo
             @route="index" class="item" @activeClass="">
             <div class="ui header small text">{{this.settings.appName}}</div>
@@ -108,15 +110,22 @@
           {{/if}}
         {{/if}}
     {{/if}}
-    {{#if (not (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute))}}
+    {{!-- {{#if (not (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute))}} --}}
+    {{#if @needShowEventMenu}}
       <div class="menu-header">
       <select class="ui dropdown menu-public" value={{this.selectedOption}} onchange={{action "redirectToPage" value="target.value"}}>
         <option value="">Menu</option>
+        
+        {{#if this.showSessions}}
         <option value="schedule">Schedule</option>
-        {{#if this.eventService.eventHasSpeakers}}
+        {{/if}}
+        {{#if this.showSpeakers}}
         <option value="speakers">Speakers</option>
         {{/if}}
+        {{#if this.showExhibitors}}
         <option value="exhibition">Exhibition</option>
+        {{/if}}
+        
       </select>
     </div>
     {{/if }}
@@ -129,13 +138,15 @@
         {{!-- <NotificationDropdown
           @notifications={{this.notifications}} /> --}}
       {{/if}}
-      {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
+      {{!-- {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}} --}}
+      {{#if @needShowEventMenu}}
         <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
           <i class="search icon"></i>
         </div>
       {{/if}}
       {{#if this.session.isAuthenticated}}
-        {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+        {{!-- {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}} --}}
+        {{#if @needShowEventMenu}}
           <LinkTo
             @route="create" class="item ui blue button-text small text">
             <div>

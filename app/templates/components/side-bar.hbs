@@ -26,7 +26,7 @@
     {{/if}}
     <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
   </div>
-  {{#if this.isEventPageRoute }}
+  {{#if @needShowEventMenu }}
 
   <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
   {{/if}}
@@ -35,7 +35,7 @@
 
 
   {{else}}
-  {{#if this.isEventPageRoute}}
+  {{#if @needShowEventMenu}}
   <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
   {{/if}}
   <a href="{{href-to 'pricing'}}" class="item">{{t 'Pricing'}}</a>
