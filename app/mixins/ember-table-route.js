@@ -109,8 +109,8 @@ export default Mixin.create({
           if (isNaN(params.search)) {
             continue;
           }
-          condition = 'eq';
-          value = params.search;
+          condition = params.search && params.search !== 0 ? 'eq' : 'is_';
+          value = params.search && params.search !== 0 ? params.search : null;
         }
         const filter = {
           name : splitField[0],
