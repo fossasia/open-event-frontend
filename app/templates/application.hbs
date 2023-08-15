@@ -9,25 +9,6 @@
     {{/if}}
   </div>
 {{/if}}
-{{#if this.device.isMobile}}
-<SideBar @event_name={{this.event_name}}>
-  <div class="footer-pusher">
-    <NavBar @search={{action 'search'}} @event_name={{this.event_name}}/>
-
-    {{#if (eq this.routing.currentRouteName 'index')}}
-      <WelcomeHeader @class={{'mb-4'}}/>
-    {{/if}}
-    <div id="main-container"
-      class="ui fluid container main-container 
-        {{unless this.device.isInternetExplorer 'flexed-container' ''}}
-        {{if (eq this.routing.currentRouteName 'public.index') 'mt-0' ''}}
-      ">
-      {{outlet}}
-    </div>
-    <FooterMain @socialLinks={{this.model.socialLinks}} />
-  </div>
-</SideBar>
-{{else}}
 <SideBar @search={{action 'search'}} @event_name={{this.event_name}}>
   <div class="footer-pusher">
     <NavBar @search={{action 'search'}} @event_name={{this.event_name}}/>
@@ -45,6 +26,5 @@
     <FooterMain @socialLinks={{this.model.socialLinks}} />
   </div>
 </SideBar>
-{{/if}}
 <Modals::ConfirmModal @isOpen={{this.confirm.isOpen}} />
 <EmberNotify @messageStyle="semantic-ui" @defaultClass="notification-container" />

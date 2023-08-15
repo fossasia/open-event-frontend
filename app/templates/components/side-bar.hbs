@@ -1,5 +1,5 @@
 <div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
-  {{#if (not this.device.isMobile)}}
+  {{#if (not this.isEventPageRoute)}}
   <div class="search-bar d-flex items-center space-between m-2 p-2">
       <Input @class="prompt" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
     <i class="search icon"></i>
