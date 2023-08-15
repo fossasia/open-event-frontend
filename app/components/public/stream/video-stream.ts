@@ -25,6 +25,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @service
   l10n: any;
 
+  @service 
+  selectingLanguage: any;
+
   @service
   confirm: any;
 
@@ -166,6 +169,10 @@ export default class PublicStreamVideoStream extends Component<Args> {
   async setupRoomChat(stream:any) {
     this.currentRoom = stream;
     this.shown = false;
+    if (this.selectingLanguage.getTranslationRoomId() !== stream.id) {
+      this.selectingLanguage.setName(null);
+    }
+    this.selectingLanguage.setTranslationRoomId(stream.id)
   }
 
   @action
