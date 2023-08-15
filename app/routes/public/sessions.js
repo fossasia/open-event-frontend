@@ -16,6 +16,9 @@ export default class SessionsRoute extends Route {
     track: {
       refreshModel: true
     },
+    language: {
+      refreshModel: true
+    },
     room: {
       refreshModel: true
     },
@@ -103,6 +106,35 @@ export default class SessionsRoute extends Route {
           }))
         }
       });
+    }
+
+    if (params.language) {
+      const conditionOr = [];
+      params.language.split(',').map(val => {
+        val = val.trim();
+        conditionOr.push({
+          name : 'language',
+          op   : 'eq',
+          val
+        });
+      });
+      if (conditionOr.length > 0) {
+        filterOptions.push(
+          {
+            and: [
+              {
+                or: conditionOr
+              }
+            ]
+          }
+        );
+      } else {
+        filterOptions.push({
+          name : 'language',
+          op   : 'eq',
+          val  : params.language
+        });
+      }
     }
 
     if (params.sessionType) {
