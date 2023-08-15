@@ -415,6 +415,10 @@ export default Component.extend(FormMixin, {
     return this.sessions.length === 1;
   }),
 
+  getSessions: computed('sessions', function() {
+    return orderBy(this.sessions.toArray(), 'title');
+  }),
+
   shouldShowNewSessionDetails: computed('sessionDetails', 'newSessionSelected', function() {
     return this.newSessionSelected && !this.sessionDetails;
   }),
