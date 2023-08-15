@@ -1,4 +1,23 @@
-export const socialMediaNames = ['Facebook', 'Flickr', 'GitHub', 'GitLab', 'Gitter', 'Google Groups', 'Instagram', 'Linkedin', 'Mastodon', 'Patreon', 'Telegram', 'Twitter', 'Vimeo', 'VK', 'Weibo', 'Xing', 'YouTube'];
+export const socialMediaNames = [
+  'Facebook',
+  'Flickr',
+  'GitHub',
+  'GitLab',
+  'Gitter',
+  'Google Groups',
+  'Instagram',
+  'Linkedin',
+  'Mastodon',
+  'Patreon',
+  'Telegram',
+  'Twitter',
+  'Vimeo',
+  'VK',
+  'Weibo',
+  'Xing',
+  'YouTube',
+  'YouTube Privacy'
+];
 
 const identifierOverrides: { [key: string]: string } = {
   'Google Groups': 'groups.google'
@@ -9,9 +28,10 @@ export const socialMediaIdentifiers = socialMediaNames.map(name => {
 });
 
 const prefixOverrides: { [key: string]: string } = {
-  'gitter'   : 'https://gitter.im/',
-  'telegram' : 'https://t.me/',
-  'mastodon' : 'https://'
+  'gitter'          : 'https://gitter.im/',
+  'telegram'        : 'https://t.me/',
+  'mastodon'        : 'https://',
+  'youtube privacy' : 'https://youtube-nocookie.com/'
 };
 
 export interface SocialMedia {

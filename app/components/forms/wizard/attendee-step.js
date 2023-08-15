@@ -69,6 +69,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
   },
 
   prepareCustomFormsForSave() {
+    this.set('loading', true);
     this.data.forms.forEach(_form => {
       const { formID, customForms, ticketsDetails } = _form;
       customForms.forEach(field => {
