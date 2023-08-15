@@ -253,4 +253,31 @@
 .align-bottom {
   vertical-align: bottom;
 }
- 
+
+.add-to-calender-join-video {
+  height: 36px;
+}
+
+.btn-add-to-calender-mobile {
+  width: 50%;
+  float: left;
+
+  .button {
+    border-radius: 0 !important;
+  }
+}
+
+.btn-join-video-mobile {
+  width: 50%;
+  float: left;
+
+  .button {
+    border-radius: 0 !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .ui.stackable.grid > .wide.column {
+    padding-bottom: 0 !important;
+  }
+}

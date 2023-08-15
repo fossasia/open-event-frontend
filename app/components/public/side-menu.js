@@ -75,9 +75,12 @@ export default class SideMenu extends Component {
   @action
   scrollToTarget(section) {
     this.hideSidebar();
-    document.querySelector(`#${section}`).scrollIntoView({
-      behavior: 'smooth'
-    });
+    const target = document.querySelector(`#${section}`);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
     this.set('activeMenuSection', section);
     this.set('activeSection', null);
     document.querySelectorAll('.scroll').forEach(node => {
