@@ -65,18 +65,20 @@
         </div>
     </div>
     <div class="four wide column item-track">
-        <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-type">
-            <div class="default">
-                {{t 'Languages'}}
-            </div>
-            <i class="dropdown icon ic-ddown"></i>
-            <div class="menu">
-                {{#each this.languageList as |language|}}
-                <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activelanguage
-                    language.name) " active" }} @onChange={{action this.languageFilter language.name}} />
-                {{/each}}
-            </div>
-        </UiDropdown>
+        {{#if this.languageList}}
+            <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-type">
+                <div class="default">
+                    {{t 'Languages'}}
+                </div>
+                <i class="dropdown icon ic-ddown"></i>
+                <div class="menu">
+                    {{#each this.languageList as |language|}}
+                    <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activelanguage
+                        language.name) " active" }} @onChange={{action this.languageFilter language.name}} />
+                    {{/each}}
+                </div>
+            </UiDropdown>
+        {{/if}}
     </div>
     {{#if (or this.router.currentRoute.queryParams.track  this.router.currentRoute.queryParams.room this.router.currentRoute.queryParams.sessionType this.router.currentRoute.queryParams.level)}}
         <div class="ui mb-2">
@@ -239,31 +241,33 @@
             </div>
         </UiDropdown>
     {{/if}}
-    <h4>
-        {{t 'Language'}}
-        <LinkTo @route="public.sessions" {{action this.removeActiveLanguage}} @models={{array this.event.id}}
-            @query={{hash language=null}} data-tooltip="{{t 'Clear Language Filter'}}">
-            <Icons::ClearFilter />
-        </LinkTo>
-    </h4>
-    {{#each this.activeLanguage as |language|}}
-        {{#if this.router.currentRoute.queryParams.language}}
-            <span class="p-1 mb-1 rounded-default">
-                {{language}}
-            </span>
-        {{/if}}
-    {{/each}}
-    <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection min-width-0">
-        <div class="default">
-            {{t 'Select Language'}}
-        </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            {{#each this.languageFilterList as |language|}}
-                <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activeLanguage
-                    language.name) "active" }} @onChange={{action this.languageFilter language.name}} />
-            {{/each}}
-        </div>
-    </UiDropdown>
+    {{#if this.languageList}}
+        <h4>
+            {{t 'Languages'}}
+            <LinkTo @route="public.sessions" {{action this.removeActiveLanguage}} @models={{array this.event.id}}
+                @query={{hash language=null}} data-tooltip="{{t 'Clear Language Filter'}}">
+                <Icons::ClearFilter />
+            </LinkTo>
+        </h4>
+        {{#each this.activeLanguage as |language|}}
+            {{#if this.router.currentRoute.queryParams.language}}
+                <span class="p-1 mb-1 rounded-default">
+                    {{language}}
+                </span>
+            {{/if}}
+        {{/each}}
+        <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection min-width-0">
+            <div class="default">
+                {{t 'Select Languages'}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                {{#each this.languageFilterList as |language|}}
+                    <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activeLanguage
+                        language.name) "active" }} @onChange={{action this.languageFilter language.name}} />
+                {{/each}}
+            </div>
+        </UiDropdown>
+    {{/if}}
 </div>
 {{/if}}
