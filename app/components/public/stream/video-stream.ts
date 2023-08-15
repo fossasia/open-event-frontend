@@ -25,7 +25,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @service
   l10n: any;
 
-  @service 
+  @service
   selectingLanguage: any;
 
   @service

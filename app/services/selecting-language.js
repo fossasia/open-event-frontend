@@ -54,6 +54,9 @@ export default class SelectingLanguageService extends Service {
 
   @computed('name')
   get getName() {
+    if (this.name === 'Original') {
+      return null;
+    }
     return this.name;
   }
 }
