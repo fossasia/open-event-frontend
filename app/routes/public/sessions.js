@@ -111,11 +111,11 @@ export default class SessionsRoute extends Route {
     if (params.language) {
       const conditionOr = [];
       params.language.split(',').map(val => {
-        val = val.trim()
+        val = val.trim();
         conditionOr.push({
           name : 'language',
           op   : 'eq',
-          val  : val
+          val
         });
       });
       if (conditionOr.length > 0) {
