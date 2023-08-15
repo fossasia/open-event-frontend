@@ -110,15 +110,15 @@
     {{/if}}
     {{#if (not this.isNotPublicPageRoute)}}
     {{#if ( or (and this.showSessions this.showSpeakers this.showExhibitors))}}
-      {{#unless this.isNotPublicPageRoute}}
+      {{#if this.showSessions}}
       <div role="button" class="item menu-item-public" {{on "click" (fn this.redirectToPage 'schedule')}}>Schedule</div>
-      {{/unless}}
-      {{#unless this.isNotPublicPageRoute}}
+      {{/if}}
+      {{#if this.showSpeakers}}
       <div  role="button" class="item menu-item-public" {{on "click" (fn this.redirectToPage 'speakers')}}>Speakers</div>
-      {{/unless}}
-      {{#unless this.isNotPublicPageRoute}}
+      {{/if}}
+      {{#if this.showExhibitors}}
       <div role="button" class="item menu-item-public item-exhibition" {{on "click" (fn this.redirectToPage 'exhibition')}}>Exhibition</div>
-      {{/unless}}
+      {{/if}}
     {{/if}}
     {{/if}}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
