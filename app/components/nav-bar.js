@@ -125,11 +125,9 @@ export default class NavBar extends Component {
     this.router.replaceWith('public.index',  this.globalData.idEvent);
   }
 
-  @tracked selectedOption = '';
   @action
   redirectToPage(event) {
     const optionValue = event;
-    this.selectedOption = optionValue;
     if (optionValue === 'speakers') {
       this.router.replaceWith('public.speakers',  this.globalData.idEvent);
     } else if (optionValue === 'exhibition') {

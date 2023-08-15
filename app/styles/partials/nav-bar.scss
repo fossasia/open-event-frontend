@@ -33,32 +33,18 @@
   }
 }
 
-.menu-header {
-  padding-right: unset !important;
+.menu-item-public {
   padding-left: unset !important;
-  padding-bottom: unset !important;
+  padding-right: unset !important;
+  font-size: 12px;
+}
 
-  .menu-public {
-    min-width: unset !important;
-    padding-left: 8px !important;
-    background: #fff;
-    border: unset !important;
-    height: 46px !important;
-    display: flex !important;
-    justify-content: center !important;
-    background-color: #fff !important;
-    align-items: center !important;
+.item-exhibition {
+  &::before {
+    width: unset !important;
   }
+}
 
-  .ic-menu-public {
-    padding-top: 16px !important;
-  }
-
-  .menu.transition.visible {
-    border-top: 1px solid #96c8da !important;
-  }
-
-  .menu {
-    max-height: 165px !important;
-  }
+.rm-pd-l {
+  padding-left: 5px !important;
 }

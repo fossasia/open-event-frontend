@@ -108,26 +108,17 @@
           {{/if}}
         {{/if}}
     {{/if}}
-    {{#if (not (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute))}}
+    {{#if (not this.isNotPublicPageRoute)}}
     {{#if ( or (and this.showSessions this.showSpeakers this.showExhibitors))}}
-      <div class="menu-header">
-        <UiDropdown @class="ui selection dropdown button menu-public" selected={{this.selectedOption}}  @onChange={{action "redirectToPage"}}>
-          <Input @type="hidden" @name="" @value={{this.selectedOption}} />
-          <div class="default text">Menu Info</div>
-            <i class="dropdown icon ic-menu-public"></i>
-          <div class="menu">
-            {{#if this.showSessions}}
-            <div class="item" data-value="schedule" >Schedule</div>
-            {{/if}}
-            {{#if this.showSpeakers}}
-            <div class="item" data-value="speakers" >Speakers</div>
-            {{/if}}
-            {{#if this.showExhibitors}}
-            <div class="item" data-value="exhibition" >Exhibition</div>
-             {{/if}}
-          </div>
-        </UiDropdown>
-      </div>
+      {{#unless this.isNotPublicPageRoute}}
+      <div role="button" class="item menu-item-public" {{on "click" (fn this.redirectToPage 'schedule')}}>Schedule</div>
+      {{/unless}}
+      {{#unless this.isNotPublicPageRoute}}
+      <div  role="button" class="item menu-item-public" {{on "click" (fn this.redirectToPage 'speakers')}}>Speakers</div>
+      {{/unless}}
+      {{#unless this.isNotPublicPageRoute}}
+      <div role="button" class="item menu-item-public item-exhibition" {{on "click" (fn this.redirectToPage 'exhibition')}}>Exhibition</div>
+      {{/unless}}
     {{/if}}
     {{/if}}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
@@ -135,10 +126,10 @@
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
     </div>
     <div class="right menu nav-bar">  
-      {{#if this.session.isAuthenticated}}
+      {{!-- {{#if this.session.isAuthenticated}} --}}
         {{!-- <NotificationDropdown
           @notifications={{this.notifications}} /> --}}
-      {{/if}}
+      {{!-- {{/if}} --}}
       {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
         <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
           <i class="search icon"></i>
@@ -154,8 +145,8 @@
           </LinkTo>
         {{else}}
           <LinkTo
-            @route="index" class="item" @activeClass="">
-            <div class="ui header small text">{{this.settings.appName}}</div>
+            @route="index" class="item {{if (not this.isNotPublicPageRoute) 'rm-pd-l' ''}}" @activeClass="">
+            <div class="ui header small text" >{{this.settings.appName}}</div>
           </LinkTo>
         {{/if}}
       {{else}}
