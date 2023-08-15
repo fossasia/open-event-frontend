@@ -60,7 +60,7 @@
       <div>
         <div class="ui inverted vertical fluid menu borderless stream-side-menu">
           {{#each this.streams as |stream|}}
-            <a href={{href-to 'public.stream.view' @event stream.slugName stream.id }} class="{{if (eq @currentRoom.microlocationId stream.microlocationId) 'video-active'}} item stream-item d-flex items-center" {{on "click" (fn @setupRoomChat stream) }}>
+            <a href={{href-to 'public.stream.view' @event stream.slugName stream.id }} class="{{if (eq @currentRoom.microlocationId stream.microlocationId) 'video-active'}} item stream-item d-flex items-center" {{on "click" (fn @setupRoomChat stream) }} {{action 'switchRoom' stream}} >
 
                 <span class="stream-preview-letter" style={{css background-color=(object-at (abs (mod stream.hash this.colors.length)) this.colors)}}>{{truncate (uppercase stream.name) 1 false}}</span>
                 <span class="ml-2">{{stream.name}}</span>
@@ -69,25 +69,21 @@
                       <UiDropdown class="btn btn-secondary dropdown-toggle translation-dropdown-button translation-dropdown-container"
                                   @selected={{this.selectingLanguage.getName}}
                                   @onChange={{ action "switchLanguage"}} as |execute mapper|>
-                        <div class="translation-dropdown-wrapper">
-                          {{#if this.language}}
-                          <div class="translation-dropdown-component">
-                            {{this.language}}
-                          </div>
-                          {{else}}
-                          <div class="translation-dropdown-component">
+                        <div class="{{if (and this.selectingLanguage.getName (eq @currentRoom.id stream.id)) 'hidden'}} translation-dropdown-wrapper">
+                          <div class="translation-dropdown-component item-ic-language">
                             <i class="language icon translation icon"></i>
                           </div>
                           <div class="translation-dropdown-component translation-dropdown-language" >
                             {{stream.translations.length}}
                           </div>
-                          {{/if}}
-                          <div class="translation-dropdown-component">
-                            <i style="margin-left: 0 !important;text-align: right;"
-                              class="dropdown icon"> </i>
+                          <div class="translation-dropdown-component item-ic-dropdown">
+                            <i class="dropdown icon"> </i>
                           </div>
                         </div>
-                        <div class="ui translation menu">
+                        {{#if (eq @currentRoom.id)}}
+                        <div class="text">{{this.selectingLanguage.getName}}</div>
+                        {{/if}}
+                        <div class="ui translation menu menu-language">
                           {{#each stream.translations as |channel|}}
                             <div class="item" data-value="{{map-value mapper channel}}">{{channel.name}}</div>
                           {{/each}}

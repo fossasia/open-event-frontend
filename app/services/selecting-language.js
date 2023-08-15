@@ -1,5 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { computed } from '@ember/object';
 
 export default class SelectingLanguageService extends Service {
   @tracked
@@ -7,6 +8,9 @@ export default class SelectingLanguageService extends Service {
 
   @tracked
   name = null;
+
+  @tracked
+  translationRoomId = null;
 
   @tracked
   isStreamYardVisible = true;
@@ -21,6 +25,10 @@ export default class SelectingLanguageService extends Service {
 
   setName(name) {
     this.name = name;
+  }
+
+  setTranslationRoomId(roomId) {
+    this.translationRoomId = roomId;
   }
 
   setStreamYardVisibility(isVisible) {
@@ -40,7 +48,12 @@ export default class SelectingLanguageService extends Service {
     return this.selectingLanguage;
   }
 
-  getName() {
+  getTranslationRoomId() {
+    return this.translationRoomId;
+  }
+
+  @computed('name')
+  get getName() {
     return this.name;
   }
 }
