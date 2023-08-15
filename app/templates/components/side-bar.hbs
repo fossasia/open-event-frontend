@@ -1,8 +1,10 @@
 <div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
+  {{#unless this.device.isMobile}}
   <div class="search-bar d-flex items-center space-between m-2 p-2">
       <Input @class="prompt" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
     <i class="search icon"></i>
   </div>
+  {{/unless}}
   {{#if this.session.isAuthenticated}}
   <UiAccordion>
   <div class="item ui {{if this.isEventPageRoute 'title'}}">
