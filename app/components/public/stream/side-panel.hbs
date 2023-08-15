@@ -69,7 +69,7 @@
                       <UiDropdown class="btn btn-secondary dropdown-toggle translation-dropdown-button translation-dropdown-container"
                                   @selected={{this.selectingLanguage.getName}}
                                   @onChange={{ action "switchLanguage"}} as |execute mapper|>
-                        <div class="{{if (and this.selectingLanguage.getName (eq @currentRoom.id stream.id)) 'hidden'}} translation-dropdown-wrapper">
+                        <div class="{{if (and this.selectingLanguage.getName (eq @currentRoom.id stream.id)) 'translate-hidden'}} translation-dropdown-wrapper">
                           <div class="translation-dropdown-component item-ic-language">
                             <i class="language icon translation icon"></i>
                           </div>
@@ -80,7 +80,7 @@
                             <i class="dropdown icon"> </i>
                           </div>
                         </div>
-                        {{#if (eq @currentRoom.id)}}
+                        {{#if (eq @currentRoom.id stream.id)}}
                         <div class="text">{{this.selectingLanguage.getName}}</div>
                         {{/if}}
                         <div class="ui translation menu menu-language">
