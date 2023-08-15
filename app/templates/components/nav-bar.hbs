@@ -109,7 +109,6 @@
         {{/if}}
     {{/if}}
     {{#if (not this.isNotPublicPageRoute)}}
-    {{#if ( or (and this.showSessions this.showSpeakers this.showExhibitors))}}
       {{#if this.showSessions}}
       <div role="button" class="item menu-item-public" {{on "click" (fn this.redirectToPage 'schedule')}}>Schedule</div>
       {{/if}}
@@ -119,7 +118,6 @@
       {{#if this.showExhibitors}}
       <div role="button" class="item menu-item-public item-exhibition" {{on "click" (fn this.redirectToPage 'exhibition')}}>Exhibition</div>
       {{/if}}
-    {{/if}}
     {{/if}}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
