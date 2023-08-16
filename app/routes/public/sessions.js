@@ -16,6 +16,9 @@ export default class SessionsRoute extends Route {
     track: {
       refreshModel: true
     },
+    language: {
+      refreshModel: true
+    },
     room: {
       refreshModel: true
     },
@@ -103,6 +106,35 @@ export default class SessionsRoute extends Route {
           }))
         }
       });
+    }
+
+    if (params.language) {
+      const conditionOr = [];
+      params.language.split(',').map(val => {
+        val = val.trim();
+        conditionOr.push({
+          name : 'language',
+          op   : 'eq',
+          val
+        });
+      });
+      if (conditionOr.length > 0) {
+        filterOptions.push(
+          {
+            and: [
+              {
+                or: conditionOr
+              }
+            ]
+          }
+        );
+      } else {
+        filterOptions.push({
+          name : 'language',
+          op   : 'eq',
+          val  : params.language
+        });
+      }
     }
 
     if (params.sessionType) {
@@ -220,7 +252,7 @@ export default class SessionsRoute extends Route {
       session : await this.infinity.model('sessions', {
         include      : 'track,speakers,session-type,favourite,microlocation.video-stream',
         filter       : filterOptions,
-        sort         : params.sort || 'starts-at',
+        sort         : params.sort ? params.sort + ',id' : 'starts-at,id',
         perPage      : 6,
         startingPage : 1,
         perPageParam : 'page[size]',

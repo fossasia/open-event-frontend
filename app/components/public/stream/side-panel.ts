@@ -140,8 +140,6 @@ export default class PublicStreamSidePanel extends Component<Args> {
           microlocationId   : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.id)[0],
           hash              : stringHashCode(stream.attributes.name + stream.id)
         })).forEach(async(stream: any) => {
-          const res = await this.fetchTranslationChannels(stream.id)
-          stream.translations = res
           this.addStream(stream)
         });
         this.streams.forEach(async(stream: any) => {
