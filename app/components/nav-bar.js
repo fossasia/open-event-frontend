@@ -151,6 +151,7 @@ export default class NavBar extends Component {
     this.showSessions = await this.eventService.hasSessions(this.globalData.idEvent);
   }
 
+
   @action
   logout() {
     this.authManager.logout();
