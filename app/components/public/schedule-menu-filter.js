@@ -4,6 +4,7 @@ import { action, computed } from '@ember/object';
 import Component from '@ember/component';
 import { tracked } from '@glimmer/tracking';
 import { levels } from 'open-event-frontend/utils/dictionary/levels';
+import { languages } from 'open-event-frontend/utils/dictionary/languages';
 
 @classic
 export default class ScheduleMenuFilter extends Component {
@@ -16,8 +17,11 @@ export default class ScheduleMenuFilter extends Component {
 
     @tracked activeTrack = this.router.currentRoute.queryParams.track ? this.router.currentRoute.queryParams.track.split(',') : [];
 
+    @tracked activeLanguage = this.router.currentRoute.queryParams.language ? this.router.currentRoute.queryParams.language.split(',') : [];
+
     @tracked levels = orderBy(levels, 'position');
 
+    @tracked languageList = [];
 
     @action
     removeActiveSession() {
@@ -27,6 +31,11 @@ export default class ScheduleMenuFilter extends Component {
     @action
     removeActiveSessionLevel() {
       this.activeSessionLevel = [];
+    }
+
+    @action
+    removeActiveLanguage() {
+      this.activeLanguage = [];
     }
 
     @action
@@ -91,10 +100,24 @@ export default class ScheduleMenuFilter extends Component {
     }
 
     @action
+    languageFilter(name) {
+      this.activeLanguage = this.router.currentRoute.queryParams.language ? this.router.currentRoute.queryParams.language.split(',') : [];
+      if (this.activeLanguage.includes(name)) {
+        this.activeLanguage = this.activeLanguage.filter(language => language !== name);
+      } else {
+        this.activeLanguage = [...this.activeLanguage, name];
+      }
+      this.router.transitionTo('public.sessions', { queryParams: { 'language': this.activeLanguage } });
+    }
+
+    @action
     applyFilter(value, filterType) {
       const params = this.router.currentRoute.queryParams;
       if (!params.track) {
         this.activeTrack = [];
+      }
+      if (!params.language) {
+        this.activeLanguage = [];
       }
       if (!params.room) {
         this.activeRoom = [];
@@ -133,5 +156,23 @@ export default class ScheduleMenuFilter extends Component {
     @computed('event.sessionTypes')
     get sessionTypeList() {
       return orderBy(this.event.sessionTypes.toArray(), ['position']);
+    }
+
+    async didInsertElement() {
+      const response = await this.loader.load(`/events/${this.event.id}/sessions/languages`);
+      const languageList = [];
+      languages.forEach(language => {
+        response.forEach(item => {
+          if (item === language.name) {
+            languageList.push(language);
+          }
+        });
+      });
+      this.set('languageList', languageList);
+    }
+
+    @computed('languageList.@each')
+    get languageFilterList() {
+      return orderBy(this.languageList.toArray(), ['name']);
     }
 }
