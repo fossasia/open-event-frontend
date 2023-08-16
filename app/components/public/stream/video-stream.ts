@@ -60,9 +60,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
   @tracked
   provider = '';
 
-  @service
-  selectingLanguage: any;
-
   @tracked
   languageUrl = '';
 
