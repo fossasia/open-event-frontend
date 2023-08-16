@@ -17,10 +17,7 @@
       <WelcomeHeader @class={{'mb-4'}}/>
     {{/if}}
     <div id="main-container"
-      class="ui fluid container main-container 
-        {{unless this.device.isInternetExplorer 'flexed-container' ''}}
-        {{if (eq this.routing.currentRouteName 'public.index') 'mt-0' ''}}
-      ">
+      class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
     <FooterMain @socialLinks={{this.model.socialLinks}} />

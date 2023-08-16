@@ -104,7 +104,7 @@
         {{t 'Select Session'}}
       </div>
       <div class="menu">
-        {{#each this.sessions as |session|}}
+        {{#each this.getSessions as |session|}}
           {{#if session.id}}
             <div data-value="{{map-value mapper session}}" class="item">
               {{session.title}}
