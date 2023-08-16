@@ -27,7 +27,6 @@ export default class SideBar extends Component {
     }
   }
 
-
   @computed('session.currentRouteName')
   get isEventPageRoute() {
     const currentRouteName = String(this.session.currentRouteName);
