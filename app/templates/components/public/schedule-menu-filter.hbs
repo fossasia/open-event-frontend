@@ -71,8 +71,8 @@
                             <i class="dropdown icon ic-ddown"></i>
                             <div class="menu">
                                 {{#each this.languageList as |language|}}
-                                <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activelanguage
-                                    language.name) " active" }} @onChange={{action this.languageFilter language.name}} />
+                                    <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activeLanguage
+                                        language.name) "active" }} @onChange={{action this.languageFilter language.name}} />
                                 {{/each}}
                             </div>
                         </UiDropdown>
@@ -91,8 +91,8 @@
                     <i class="dropdown icon ic-ddown"></i>
                     <div class="menu">
                         {{#each this.languageList as |language|}}
-                        <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activelanguage
-                            language.name) " active" }} @onChange={{action this.languageFilter language.name}} />
+                            <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activeLanguage
+                                language.name) "active" }} @onChange={{action this.languageFilter language.name}} />
                         {{/each}}
                     </div>
                 </UiDropdown>
