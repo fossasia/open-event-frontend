@@ -30,4 +30,5 @@ export default class PublicRoute extends Route {
       controller.set('side_panel', null);
     }
   }
+
 }

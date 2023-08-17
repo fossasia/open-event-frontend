@@ -1,13 +1,13 @@
 import $ from 'jquery';
 import Component from '@ember/component';
-import { debounce } from '@ember/runloop';
 import { observer, computed } from '@ember/object';
 import { v4 } from 'ember-uuid';
 import { isTesting } from 'open-event-frontend/utils/testing';
 
 export default Component.extend({
 
-  editor: null,
+  editor      : null,
+  timeoutFunc : null,
 
   // Ensure any changes to the parser rules are set in the sanitizer @ services/sanitizer.js
   standardParserRules: {
@@ -37,6 +37,7 @@ export default Component.extend({
   valueObserver: observer('value', function() {
     if (this.editor && this.editor.getValue() !== this.value) {
       this.editor.setValue(this.value);
+      this.editor.focus(true);
     }
   }),
 
@@ -61,11 +62,11 @@ export default Component.extend({
       });
 
       const updateValue = () => {
-        debounce(this, () => {
+        if (this.timeoutFunc) {
+          clearTimeout(this.timeoutFunc);
+        }
+        this.timeoutFunc = setTimeout(() => {
           let value = String(this.editor.getValue()).replace(/(<br>)*$/g, '').replace(/&nbsp;/g, ' ');
-          // if (navigator.userAgent.indexOf('Firefox') !== -1) {
-          //   value = value + '<br>';
-          // }
           let trimmedValue = new String('');
           let i = value.length;
           while (i--) {
@@ -75,7 +76,7 @@ export default Component.extend({
           }
           value = trimmedValue;
           this.setProperties({ _value: value, value });
-        }, 200);
+        }, 500);
       };
 
       this.editor.on('interaction', updateValue);

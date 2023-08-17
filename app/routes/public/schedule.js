@@ -15,7 +15,7 @@ export default class ScheduleRoute extends Route {
 
     return hash({
       sessions       : this.getSessions(event),
-      microlocations : event.query('microlocations', {}),
+      microlocations : event.query('microlocations', { 'sort': 'position' }),
       event
     });
   }

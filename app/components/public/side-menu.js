@@ -74,6 +74,9 @@ export default class SideMenu extends Component {
 
   @action
   scrollToTarget(section) {
+    if (!section) {return}
+    const el = document.querySelector(`#${section}`);
+    if (!el) {return}
     this.hideSidebar();
     const target = document.querySelector(`#${section}`);
     if (target) {
