@@ -9,6 +9,7 @@ export default class EditSpeakerRoute extends Route {
 
   async model(params) {
     const eventDetails = this.modelFor('public');
+    const speaker = await this.store.findRecord('speaker', params.speaker_id, { include: 'sessions' })
     return {
       event : eventDetails,
       forms : await eventDetails.query('customForms', {
@@ -20,7 +21,7 @@ export default class EditSpeakerRoute extends Route {
         sort         : 'id',
         'page[size]' : 0
       }),
-      speaker: await this.store.findRecord('speaker', params.speaker_id)
+      speaker
     };
   }
 }
