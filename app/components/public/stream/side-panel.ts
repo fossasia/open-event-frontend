@@ -185,7 +185,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   }
 
   @computed('languageList.@each.streamId')
-    get streamList() {
-      return this.streams;
-    }
+  get streamList() {
+    return this.streams;
+  }
 }
