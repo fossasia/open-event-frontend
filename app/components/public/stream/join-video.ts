@@ -26,6 +26,7 @@ export default class JoinVideo extends Component<Args> {
   openPanel(): void {
     if (this.args.canAccess) {
       this.args.showSidePanel?.();
+      this.eventCheckIn(this.args.event.identifier)
       this.router.transitionTo({ queryParams: { side_panel: true } });
     } else {
       if (this.session.isAuthenticated) {
@@ -33,6 +34,18 @@ export default class JoinVideo extends Component<Args> {
       } else {
         this.router.transitionTo({ queryParams: { video_dialog: true } });
       }
+    }
+  }
+
+  async eventCheckIn(event_identifier: string) {
+    try {
+      const data:any = {
+        'check_in_type' : 'event',
+        'is_check_in'   : true
+      };
+      await this.loader.post(`events/${event_identifier}/virtual/check-in`, data);
+    } catch (e) {
+      // Ignore error to prevent stackoverflow
     }
   }
 }
