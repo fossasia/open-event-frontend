@@ -69,7 +69,7 @@
 </div>
 
 <div class="mobile only row">
-  <div class="ui navbar tiny menu">
+  <div class="ui navbar {{if (and this.showSessions this.showSpeakers this.showExhibitors (not isNotPublicPageRoute)) 'six item item-public' 'tiny'}} menu">
     <a href="#" class="menu item open sidebar">
       <i class="large content icon"></i>
     </a>
@@ -86,7 +86,7 @@
               </button>
             {{else}}
             <button class="item btn-un-bd" {{on "click" this.handleClick}}>
-              <div class="ui header small text">Home</div>
+              <div class="ui header small text item-padding">Home</div>
             </button>
             {{/if}}
         {{/if}}
@@ -103,21 +103,31 @@
             </button>
           {{else}}
           <button class="item btn-un-bd" {{on "click" this.handleClick}}>
-            <div class="ui header small text">Home</div>
+            <div class="ui header small text item-padding">Home</div>
           </button>
           {{/if}}
         {{/if}}
     {{/if}}
-
+    {{#if (not this.isNotPublicPageRoute)}}
+      {{#if this.showSessions}}
+      <div role="button" class="item menu-item-public{{if  (not (and showSessions showSpeakers showExhibitors)) 'item-padding' ''}} " {{on "click" (fn this.redirectToPage 'schedule')}}>Schedule</div>
+      {{/if}}
+      {{#if this.showSpeakers}}
+      <div  role="button" class="item menu-item-public {{if  (not (and showSessions showSpeakers showExhibitors)) 'item-padding' ''}} " {{on "click" (fn this.redirectToPage 'speakers')}}>Speakers</div>
+      {{/if}}
+      {{#if this.showExhibitors}}
+      <div role="button" class="item menu-item-public item-exhibition" {{on "click" (fn this.redirectToPage 'exhibition')}}>Exhibition</div>
+      {{/if}}
+    {{/if}}
     <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
     </div>
-    <div class="right menu nav-bar">
-      {{#if this.session.isAuthenticated}}
+    <div class="{{if (and showSessions showSpeakers showExhibitors (not isNotPublicPageRoute)) 'item-menu-right' 'right menu nav-bar' }}">
+      {{!-- {{#if this.session.isAuthenticated}} --}}
         {{!-- <NotificationDropdown
           @notifications={{this.notifications}} /> --}}
-      {{/if}}
+      {{!-- {{/if}} --}}
       {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
         <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
           <i class="search icon"></i>
@@ -133,12 +143,12 @@
           </LinkTo>
         {{else}}
           <LinkTo
-            @route="index" class="item" @activeClass="">
-            <div class="ui header small text">{{this.settings.appName}}</div>
+            @route="index" class="item {{if (and showSessions showSpeakers showExhibitors (not isNotPublicPageRoute)) 'rm-pd-l' ''}}" @activeClass="">
+            <div class="ui header small text " >{{this.settings.appName}}</div>
           </LinkTo>
         {{/if}}
       {{else}}
-        <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+        <a href="{{href-to 'login'}}" class="item {{if (and showSessions showSpeakers showExhibitors (not isNotPublicPageRoute)) 'rm-pd-l' ''}}">{{t 'Login'}}</a>
       {{/if}}
     </div>
   </div>
