@@ -53,6 +53,16 @@ export default Component.extend(EventWizardMixin, FormMixin, {
             }
           ]
         },
+        floor: {
+          identifier : 'floor',
+          rules      : [
+            {
+              type   : 'regExp',
+              value  : '/^\d+$/',
+              prompt : this.l10n.t('Please enter a valid floor number.')
+            }
+          ]
+        },
         privateLink: {
           identifier : 'private_link',
           rules      : [
