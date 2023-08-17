@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import $ from 'jquery';
 import Component from '@ember/component';
-import { action, computed } from '@ember/object';
+import { action, computed} from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 @classic

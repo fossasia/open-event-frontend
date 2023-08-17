@@ -109,9 +109,18 @@ export default class PublicStreamSidePanel extends Component<Args> {
   }
 
   @action
-  switchLanguage(url: string): void {
-    this.selectingLanguage.setLanguage(url);
+  switchLanguage(channel: any): void {
+    this.selectingLanguage.setLanguage(channel.url);
     this.selectingLanguage.updateTranslationYTId();
+    this.selectingLanguage.setName(channel.name);
+  }
+
+  @action
+  switchRoom(stream: any) {
+    if (this.selectingLanguage.getTranslationRoomId() !== stream.id) {
+      this.selectingLanguage.setName(null);
+    }
+    this.selectingLanguage.setTranslationRoomId(stream.id)
   }
 
   @action

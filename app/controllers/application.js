@@ -67,4 +67,11 @@ export default class ApplicationController extends Controller {
       location.replace(`/e/${this.settings.startPgEventId}`);
     }
   }
+
+  @computed('session.currentRouteName')
+  get needShowEventMenu() {
+    const currentRouteName = String(this.session.currentRouteName);
+    const result = currentRouteName.includes('public') && !currentRouteName.includes('group');
+    return result;
+  }
 }

@@ -26,6 +26,9 @@ export default class PublicStreamVideoStream extends Component<Args> {
   l10n: any;
 
   @service
+  selectingLanguage: any;
+
+  @service
   confirm: any;
 
   @service
@@ -56,9 +59,6 @@ export default class PublicStreamVideoStream extends Component<Args> {
 
   @tracked
   provider = '';
-
-  @service
-  selectingLanguage: any;
 
   @tracked
   languageUrl = '';
