@@ -46,6 +46,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showChat = false;
   @tracked showRoomChat = false;
   @tracked showVideoRoom = false;
+  @tracked languageList: any = [];
 
   @tracked translationChannels = [{
     id   : '0',
@@ -147,14 +148,22 @@ export default class PublicStreamSidePanel extends Component<Args> {
           isGlobalEventRoom : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['is-global-event-room'])[0],
           chatRoomName      : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['chat-room-name'])[0],
           microlocationId   : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.id)[0],
-          hash              : stringHashCode(stream.attributes.name + stream.id)
-        })).forEach(async(stream: any) => {
+          hash              : stringHashCode(stream.attributes.name + stream.id),
+          translations      : []
+        })).forEach((stream: any) => {
           this.addStream(stream)
         });
-        this.streams.forEach(async(stream: any) => {
-          const res = await this.fetchTranslationChannels(stream.id)
-          stream.translations = res
-        });
+        const languageLists: any = [];
+        Promise.all(this.streams.map(async(stream: any) => {
+          const res = await this.fetchTranslationChannels(stream.id);
+          const item = {
+            streamId: stream.id
+          }
+          languageLists.push(item);
+          stream.translations = res;
+        })).then(() => {
+          this.languageList = languageLists;
+        })
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
       }
@@ -173,5 +182,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     this.loading = false;
     this.streams = [...this.streams];
+  }
+
+  @computed('languageList.@each.streamId')
+  get streamList() {
+    return this.streams;
   }
 }

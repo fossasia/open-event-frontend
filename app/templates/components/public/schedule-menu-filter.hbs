@@ -61,25 +61,44 @@
                         </div>
                     </UiDropdown>
                 </div>
+            {{else}}
+                {{#if this.languageList}}
+                    <div class="four wide column item-session-level">
+                        <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-type">
+                            <div class="default">
+                                {{t 'Langs'}}
+                            </div>
+                            <i class="dropdown icon ic-ddown"></i>
+                            <div class="menu">
+                                {{#each this.languageList as |language|}}
+                                    <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activeLanguage
+                                        language.name) "active" }} @onChange={{action this.languageFilter language.name}} />
+                                {{/each}}
+                            </div>
+                        </UiDropdown>
+                     </div>
+                {{/if}}
             {{/if}}
         </div>
     </div>
-    <div class="four wide column item-track">
-        {{#if this.languageList}}
-            <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-type">
-                <div class="default">
-                    {{t 'Languages'}}
-                </div>
-                <i class="dropdown icon ic-ddown"></i>
-                <div class="menu">
-                    {{#each this.languageList as |language|}}
-                    <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activelanguage
-                        language.name) " active" }} @onChange={{action this.languageFilter language.name}} />
-                    {{/each}}
-                </div>
-            </UiDropdown>
-        {{/if}}
-    </div>
+    {{#if this.hasSessionLevel}}
+        <div class="four wide column item-track">
+            {{#if this.languageList}}
+                <UiDropdown @class="d-flex items-center pl-4 mb-2 search selection menu-type">
+                    <div class="default">
+                        {{t 'Languages'}}
+                    </div>
+                    <i class="dropdown icon ic-ddown"></i>
+                    <div class="menu">
+                        {{#each this.languageList as |language|}}
+                            <UiCheckbox @class="item" @label={{language.name}} @checked={{if (includes this.activeLanguage
+                                language.name) "active" }} @onChange={{action this.languageFilter language.name}} />
+                        {{/each}}
+                    </div>
+                </UiDropdown>
+            {{/if}}
+        </div>
+    {{/if}}
     {{#if (or this.router.currentRoute.queryParams.track  this.router.currentRoute.queryParams.room this.router.currentRoute.queryParams.sessionType this.router.currentRoute.queryParams.level)}}
         <div class="ui mb-2">
             {{#if this.router.currentRoute.queryParams.track}}
