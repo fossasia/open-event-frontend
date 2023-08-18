@@ -2269,6 +2269,25 @@
     ember-cli-version-checker "^5.1.1"
     semver "^7.3.2"
 
+"@ember/test-waiters@^3":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@ember/test-waiters/-/test-waiters-3.0.2.tgz#5b950c580a1891ed1d4ee64f9c6bacf49a15ea6f"
+  integrity sha512-H8Q3Xy9rlqhDKnQpwt2pzAYDouww4TZIGSI1pZJhM7mQIGufQKuB0ijzn/yugA6Z+bNdjYp1HioP8Y4hn2zazQ==
+  dependencies:
+    calculate-cache-key-for-tree "^2.0.0"
+    ember-cli-babel "^7.26.6"
+    ember-cli-version-checker "^5.1.2"
+    semver "^7.3.5"
+
+"@embroider/addon-shim@^1.0.0", "@embroider/addon-shim@^1.7.1":
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/@embroider/addon-shim/-/addon-shim-1.8.6.tgz#b676991b4fa32c3a98dc7db7dc6cd655029c3f09"
+  integrity sha512-siC9kP78uucEbpDcVyxjkwa76pcs5rVzDVpWO4PDc9EAXRX+pzmUuSTLAK3GztUwx7/PWhz1BenAivqdSvSgfg==
+  dependencies:
+    "@embroider/shared-internals" "^2.2.3"
+    broccoli-funnel "^3.0.8"
+    semver "^7.3.8"
+
 "@embroider/compat@^0.47.0":
   version "0.47.2"
   resolved "https://registry.yarnpkg.com/@embroider/compat/-/compat-0.47.2.tgz#1f5710ee0f2cea62cd28fdab6844cca5e43c74e0"
@@ -2515,6 +2534,21 @@
   integrity sha512-N5Gho6Qk8z5u+mxLCcMYAoQMbN4MmH+z2jXwQHVs859bxuZTxwF6kKtsybDAASCtd2YGxEmzcc1Ja/wM28824w==
   dependencies:
     babel-import-util "^1.1.0"
+    ember-rfc176-data "^0.3.17"
+    fs-extra "^9.1.0"
+    js-string-escape "^1.0.1"
+    lodash "^4.17.21"
+    resolve-package-path "^4.0.1"
+    semver "^7.3.5"
+    typescript-memoize "^1.0.1"
+
+"@embroider/shared-internals@^2.2.3":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-2.4.0.tgz#0e9fdb0b2df9bad45fab8c54cbb70d8a2cbf01fc"
+  integrity sha512-pFE05ebenWMC9XAPRjadYCXXb6VmqjkhYN5uqkhPo+VUmMHnx7sZYYxqGjxfVuhC/ghS/BNlOffOCXDOoE7k7g==
+  dependencies:
+    babel-import-util "^2.0.0"
+    debug "^4.3.2"
     ember-rfc176-data "^0.3.17"
     fs-extra "^9.1.0"
     js-string-escape "^1.0.1"
@@ -4551,6 +4585,11 @@ babel-import-util@^1.2.0, babel-import-util@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/babel-import-util/-/babel-import-util-1.3.0.tgz#dc9251ea39a7747bd586c1c13b8d785a42797f8e"
   integrity sha512-PPzUT17eAI18zn6ek1R3sB4Krc/MbnmT1MkZQFmyhjoaEGBVwNABhfVU9+EKcDSKrrOm9OIpGhjxukx1GCiy1g==
+
+babel-import-util@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/babel-import-util/-/babel-import-util-2.0.0.tgz#99a2e7424bcde01898bc61bb19700ff4c74379a3"
+  integrity sha512-pkWynbLwru0RZmA9iKeQL63+CkkW0RCP3kL5njCtudd6YPUKb5Pa0kL4fb3bmuKn2QDBFwY5mvvhEK/+jv2Ynw==
 
 babel-loader@^8.0.6:
   version "8.0.6"
@@ -8687,6 +8726,13 @@ ember-cookies@^0.5.0, ember-cookies@^0.5.2:
     ember-cli-babel "^7.1.0"
     ember-getowner-polyfill "^1.1.0 || ^2.0.0"
 
+ember-cookies@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-cookies/-/ember-cookies-1.0.0.tgz#a48445313ea827ac417b65001aa665f5ff848a47"
+  integrity sha512-/kugyQInCkELQAdWMX9ud5AGiQrmkDGV16kOBSCRN3I8jCsaU2uzh8bGFyjyTSFc1cTdIO0Rwm9+ImbgHMzjpA==
+  dependencies:
+    "@embroider/addon-shim" "^1.7.1"
+
 ember-copy@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-copy/-/ember-copy-1.0.0.tgz#426554ba6cf65920f31d24d0a3ca2cb1be16e4aa"
@@ -9212,7 +9258,7 @@ ember-simple-auth-token@^5.3.0:
     ember-fetch "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
     ember-simple-auth "^1.6.0 || ^2.0.0 || ^3.0.0 || ^4.0.0"
 
-"ember-simple-auth@^1.6.0 || ^2.0.0 || ^3.0.0 || ^4.0.0", ember-simple-auth@^4.2.2:
+"ember-simple-auth@^1.6.0 || ^2.0.0 || ^3.0.0 || ^4.0.0":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-4.2.2.tgz#5c1de1bb13a75e519e512fb82cba7cc1e277b07c"
   integrity sha512-D7W6OREUvf5OzeB0ePptSNBilccchRYukH4f7mkbL6WT+z6VEqRRAIaQuBZdFM6lrcSFGmzctINLZJwsIpI3wg==
@@ -9224,6 +9270,18 @@ ember-simple-auth-token@^5.3.0:
     ember-cli-babel "^7.20.5"
     ember-cli-is-package-missing "^1.0.0"
     ember-cookies "^0.5.0"
+    silent-error "^1.0.0"
+
+ember-simple-auth@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-6.0.0.tgz#7c3e4d0885de3f58c0568056eba03a6434f34084"
+  integrity sha512-9SzSFApxZ74CD4UxIeTV+poIPeXcRLXWM60cMvC1SwTYjoc/p9DeQF0pVm6m1XV6uA3kPUzEsEn4/GeHc2YX1w==
+  dependencies:
+    "@ember/test-waiters" "^3"
+    "@embroider/addon-shim" "^1.0.0"
+    "@embroider/macros" "^1.0.0"
+    ember-cli-is-package-missing "^1.0.0"
+    ember-cookies "^1.0.0"
     silent-error "^1.0.0"
 
 ember-source@3.20.3:
@@ -16681,6 +16739,13 @@ semver@^7.0.0, semver@^7.2.1, semver@^7.3.2, semver@^7.3.4, semver@^7.3.5, semve
   version "7.5.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.1.tgz#c90c4d631cf74720e46b21c1d37ea07edfab91ec"
   integrity sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==
+  dependencies:
+    lru-cache "^6.0.0"
+
+semver@^7.3.8:
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
+  integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
   dependencies:
     lru-cache "^6.0.0"
 
