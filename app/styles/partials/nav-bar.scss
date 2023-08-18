@@ -130,16 +130,32 @@
   }
 
   .bl-seven {
-
-    a {
-      background-color: #fff !important;
-    }
-
     border-left: 1px solid rgba(34, 36, 38, .15);
     margin-left: -4px !important;
     display: flex !important;
     justify-content: center;
     align-items: center;
+
+    a {
+      background-color: #fff !important;
+    }
+
+
+    .a-login {
+      width: calc(100% - 4px);
+      padding-left: 10px !important;
+      padding-top: unset !important;
+      padding-right: unset !important;
+      padding-bottom: unset !important;
+    }
+
+    .a-login-public {
+      width: calc(100% - 4px);
+      padding-left: 5px !important;
+      padding-top: unset !important;
+      padding-right: unset !important;
+      padding-bottom: unset !important;
+    }
   }
 
   .bl-six-login {

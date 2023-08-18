@@ -164,7 +164,7 @@
       </div>
       {{else}}
       <div class="two wide right floated column reset-pd bl-seven">
-          <a href="{{href-to 'login'}}" class="item reset-pd">{{t 'Login'}}</a>
+          <a href="{{href-to 'login'}}" class="item {{if (not this.isNotPublicPageRoute) 'a-login-public' 'a-login'}}">{{t 'Login'}}</a>
        </div>
       {{/if}}
   </div>
