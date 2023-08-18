@@ -78,6 +78,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     queryString = this.applySortFilters(queryString, params);
 
-    return  this.asArray(this.modelFor('events.view').query('attendees', queryString));
+    return this.asArray(this.modelFor('events.view').query('attendees', queryString));
   }
 }

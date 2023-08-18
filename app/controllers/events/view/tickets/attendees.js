@@ -23,6 +23,19 @@ export default class AttendeesController extends Controller {
       });
   }
 
+  @action
+  attendeeFilter(name) {
+    if (name === 'all') {
+      name = null;
+    }
+    this.router.transitionTo('events.view.tickets.attendees.list', {
+      queryParams: {
+        sort_by  : name,
+        sort_dir : 'DSC'
+      }
+    });
+  }
+
   requestLoop(exportJobInfo, mode) {
     run.later(() => {
       this.loader
