@@ -48,7 +48,7 @@ export default class SessionsRoute extends Route {
     const dates = await this.loader.load('/events/' + event.id + '/sessions/dates');
     if (moment().isSameOrAfter(event.startsAt) && moment().isSameOrBefore(event.endsAt) && dates.includes(moment().format('YYYY-MM-DD')) && !isDateFilterActive) {
       isDateFilterActive = true;
-      this.transitionTo('public.sessions', event.get('identifier'), { queryParams: { date: moment().format('YYYY-MM-DD') } });
+      this.transitionTo('public.sessions', event.get('identifier'));
     }
   }
 
