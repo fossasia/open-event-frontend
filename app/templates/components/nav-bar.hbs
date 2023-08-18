@@ -120,7 +120,7 @@
           {{/if}}
       </div>
     </div>
-    <div class="two wide column reset-pd bl-three">
+    <div class="{{if (not this.isNotPublicPageRoute) 'two'  'one'}} wide column reset-pd bl-three">
       {{#if (not this.isNotPublicPageRoute)}}
         {{#if this.showSessions}}
         <div role="button" class="item menu-item-public menu-schedule" {{on "click" (fn this.redirectToPage 'schedule')}}>Schedule</div>
@@ -147,7 +147,7 @@
       {{/if}}
     </div>
     {{#if this.session.isAuthenticated}}
-      <div class="three wide right floated column reset-pd bl-seven {{if this.session.isAuthenticated  'bl-seven-login'  'bl-seven-not-login'}}" >
+      <div class="{{if (not this.isNotPublicPageRoute) 'three reset-pd'  'four set-bd-home'}}  wide right floated column bl-seven {{if this.session.isAuthenticated  'bl-seven-login'  'bl-seven-not-login'}}" >
           {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
             <LinkTo
               @route="create" class="item ui blue button-text small text reset-pd">
