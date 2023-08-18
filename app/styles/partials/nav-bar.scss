@@ -34,19 +34,16 @@
 }
 
 .menu-item-public {
+  height: 100%;
   padding-left: unset !important;
   padding-right: unset !important;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .item-exhibition {
   &::before {
     width: unset !important;
   }
-}
-
-.rm-pd-l {
-  width: 100% !important;
 }
 
 .item-public {
@@ -62,6 +59,109 @@
 }
 
 .item-padding {
-  padding-left: 8px !important;
-  padding-right: 8px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+
+
+.layout-header-mobile {
+  .reset-pd {
+    padding: unset !important;
+  }
+
+  .bl-one {
+    display: flex !important;
+    margin-right: -22px !important;
+    padding-left: 18px !important;
+    border-left: 1px solid rgba(34, 36, 38, .15) !important;
+
+    .item-bl-one {
+      width: calc(100% - 44px);
+    }
+  }
+
+  .bl-two {
+    margin-left: 9px !important;
+    border-left: 1px solid rgba(34, 36, 38, .15);
+    font-size: 14px;
+    padding-right: 7px !important;
+
+    .item-bl-two-login {
+      border-right: 1px solid rgba(34, 36, 38, .15) !important;
+      height: 100%;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-un-bd {
+      border: unset;
+      padding: unset !important;
+      height: 46px !important;
+      width: 100%;
+      padding-left: 14px !important;
+
+      img {
+        width: 80%;
+      }
+    }
+  }
+
+  .bl-three {
+
+    .menu-schedule {
+      border-right: 1px solid rgba(34, 36, 38, .15);
+    }
+  }
+
+  .bl-four {
+    margin-right: 10px;
+
+    .menu-speakers {
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+    }
+  }
+
+  .bl-six-border {
+    padding-left: 7px !important;
+    border-left: 1px solid rgba(34, 36, 38, .15);
+  }
+
+  .bl-seven {
+    border-left: 1px solid rgba(34, 36, 38, .15);
+    margin-left: -4px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bl-six-login {
+    margin-right: 11px !important;
+
+    button {
+      padding-left: 7px !important;
+    }
+  }
+
+  .bl-seven-not-login {
+    margin-right: unset !important;
+  }
+
+  .bl-seven-login {
+    margin-right: -4px !important;
+  }
+
+  .item {
+    &::before {
+      position: unset !important;
+      content: unset !important;
+      top: unset !important;
+      right: unset !important;
+      height: unset !important;
+      width: unset !important;
+      background: unset !important;
+    }
+  }
 }
