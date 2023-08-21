@@ -148,6 +148,7 @@ Router.map(function() {
         this.route('edit', { path: '/:speaker_id/edit' });
       });
       this.route('documents');
+      this.route('tags');
       this.route('chat');
       this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });

@@ -12,8 +12,8 @@
           @searchQuery={{this.searchQuery}}
           @filterOptions={{this.filterOptions}} />
       {{/unless}}
-      {{#if @showAddTags}}
-        <Tables::Utilities::AddTags/>
+      {{#if @tags}}
+        <Tables::Utilities::AddTag @tags={{@tags}} @selectTag={{@selectTag}}/>
       {{/if}}
     </div>
   </div>
