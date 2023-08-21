@@ -19,6 +19,7 @@ export default Mixin.create({
       refreshModel: true
     }
   },
+  per_page: 10,
 
   applySearchFilters(options, params, searchFields) {
     if (!Array.isArray(searchFields)) {
