@@ -47,7 +47,7 @@
 }
 
 .item-public {
-  font-size: .85714286rem !important;
+  font-size: 9px !important;
 }
 
 .item-menu-right {
@@ -63,9 +63,17 @@
   padding-right: 16px !important;
 }
 
-
+.header-mobile > .layout-header-mobile > .row > .two.wide.column.bl-six {
+  width: 14.5% !important;
+}
 
 .layout-header-mobile {
+
+  .row {
+    position: absolute;
+  }
+
+
   .reset-pd {
     padding: unset !important;
   }
@@ -85,7 +93,6 @@
     margin-left: 9px !important;
     border-left: 1px solid rgba(34, 36, 38, .15);
     font-size: 14px;
-    padding-right: 7px !important;
 
     .item-bl-two-login {
       border-right: 1px solid rgba(34, 36, 38, .15) !important;
@@ -100,7 +107,11 @@
       padding: unset !important;
       height: 46px !important;
       width: 100%;
-      padding-left: 14px !important;
+      margin: auto !important;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       img {
         width: 80%;
@@ -109,14 +120,19 @@
   }
 
   .bl-three {
+    display: flex !important;
+    text-align: center;
+    justify-content: center;
+  }
 
-    .menu-schedule {
-      border-right: 1px solid rgba(34, 36, 38, .15);
-    }
+  .bl-three-border {
+    border-right: 1px solid rgba(34, 36, 38, .15);
   }
 
   .bl-four {
-    margin-right: 10px;
+    display: flex !important;
+    text-align: center;
+    justify-content: center;
 
     .menu-speakers {
       padding-left: 8px !important;
@@ -124,44 +140,71 @@
     }
   }
 
+  .bl-six {
+    border-right: 1px solid rgba(34, 36, 38, .15);
+
+    .au-public-page {
+      justify-content: center;
+    }
+
+    .un-public-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   .bl-six-border {
-    padding-left: 10px !important;
     border-left: 1px solid rgba(34, 36, 38, .15);
   }
 
+  .bl-seven-au-public-page {
+    margin-right: auto !important;
+    margin-left: auto !important;
+
+    .au-public-page-text {
+      text-align: center !important;
+      justify-content: center;
+    }
+  }
+
+  .bl-seven-au-home-page {
+    .text-home-page {
+      display: flex !important;
+      justify-content: center;
+    }
+  }
+
   .bl-seven {
-    border-left: 1px solid rgba(34, 36, 38, .15);
-    margin-left: -4px !important;
+    left: 3px;
+    width: 18.5% !important;
+    margin: unset !important;
     display: flex !important;
+    text-align: center;
     justify-content: center;
     align-items: center;
 
     a {
+      width: calc(100% - 4px);
       background-color: #fff !important;
     }
 
-
-    .a-login {
-      width: calc(100% - 4px);
-      padding-left: 10px !important;
-      padding-top: unset !important;
-      padding-right: unset !important;
-      padding-bottom: unset !important;
+    .tag-a-not-login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: unset !important;
     }
 
     .a-login-public {
-      width: calc(100% - 4px);
-      padding-left: 5px !important;
-      padding-top: unset !important;
-      padding-right: unset !important;
-      padding-bottom: unset !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: unset !important;
     }
   }
 
   .bl-six-login {
-    padding-left: 3px !important;
-    margin-right: 11px !important;
-
     button {
       padding-left: 7px !important;
     }
@@ -169,10 +212,6 @@
 
   .bl-seven-not-login {
     margin-right: unset !important;
-  }
-
-  .bl-seven-login {
-    margin-right: -4px !important;
   }
 
   .item {
