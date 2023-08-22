@@ -2,8 +2,6 @@ import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
 import moment from 'moment-timezone';
 
-let isDateFilterActive = Boolean(new URLSearchParams(location.search).get('date'));
-
 @classic
 export default class SessionsRoute extends Route {
   queryParams = {
@@ -46,9 +44,10 @@ export default class SessionsRoute extends Route {
   async beforeModel() {
     const event = this.modelFor('public');
     const dates = await this.loader.load('/events/' + event.id + '/sessions/dates');
-    if (moment().isSameOrAfter(event.startsAt) && moment().isSameOrBefore(event.endsAt) && dates.includes(moment().format('YYYY-MM-DD')) && !isDateFilterActive) {
-      isDateFilterActive = true;
-      this.transitionTo('public.sessions', event.get('identifier'));
+    if (new URLSearchParams(location.search).size === 0) {
+      if (moment().isSameOrAfter(event.startsAt) && moment().isSameOrBefore(event.endsAt) && dates.includes(moment().format('YYYY-MM-DD'))) {
+        this.transitionTo('public.sessions', event.get('identifier'));
+      }
     }
   }
 
