@@ -32,3 +32,36 @@
     min-width: 200px;
   }
 }
+
+.menu-item-public {
+  padding-left: unset !important;
+  padding-right: unset !important;
+  font-size: 12px;
+}
+
+.item-exhibition {
+  &::before {
+    width: unset !important;
+  }
+}
+
+.rm-pd-l {
+  width: 100% !important;
+}
+
+.item-public {
+  font-size: .85714286rem !important;
+}
+
+.item-menu-right {
+  display: flex !important;
+  border-left: 1px solid rgba(34, 36, 38, .15) !important;
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+  font-size: 11px !important;
+}
+
+.item-padding {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}

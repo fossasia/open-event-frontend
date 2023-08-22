@@ -21,12 +21,16 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[size]'   : params.per_page || 25,
       'page[number]' : params.page || 1
     };
+    params.sort_by = 'position';
+    params.sort_dir = 'ASC';
     queryString = this.applySortFilters(queryString, params);
 
     const rooms = this.asArray(event.query('microlocations', queryString));
+    const videoStream = event.query('videoStream', {}).then(videoStream => this.asArray(videoStream)).catch(e => {console.error(e)});
     return hash({
       event,
-      rooms
+      rooms,
+      videoStream
     });
   }
 }

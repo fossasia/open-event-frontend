@@ -1,18 +1,12 @@
 <UnverifiedUserMessage />
-<div class="public-event ui relaxed grid mt-0 pt-0" {{did-insert this.setup}}>
+<div class="public-event ui relaxed grid "{{did-insert this.setup}}>
   <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
     <Widgets::SafeImage class="background" @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
     <div class="content">
       <div class="ui container">
         <div class="ui info d-flex">
-          {{#if this.model.logoUrl}}
+          {{#if this.device.isMobile}}
           <div>
-            <LinkTo @route="public">
-              <img src="{{this.model.logoUrl}}" class="logo mr-8" />
-            </LinkTo>
-          </div>
-          {{/if}}
-          <div class="event-info">
             <h4 class="event time" style={{this.vietnameseFontFamily}}>{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
             {{#if this.displayEndDate}}
               <h5 class="event time ends" style={{this.vietnameseFontFamily}}>{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
@@ -22,21 +16,40 @@
             </LinkTo>
             <h4 class="event location" style={{this.vietnameseFontFamily}}><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
           </div>
+          {{else}}
+            {{#if this.model.logoUrl}}
+              <div>
+                <LinkTo @route="public">
+                  <img src="{{this.model.logoUrl}}" class="logo mr-8" />
+                </LinkTo>
+              </div>
+            {{/if}}
+            <div class="event-info">
+              <h4 class="event time" style={{this.vietnameseFontFamily}}>{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
+              {{#if this.displayEndDate}}
+                <h5 class="event time ends" style={{this.vietnameseFontFamily}}>{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
+              {{/if}}
+              <LinkTo @route="public">
+                <h1 class="event name text-white">{{this.model.name}}</h1>
+              </LinkTo>
+              <h4 class="event location" style={{this.vietnameseFontFamily}}><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
+            </div>
+          {{/if}}
         </div>
       </div>
     </div>
   </div>
   <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}" id="event-contents">
     <div class="ui stackable grid">
-      <div class="three wide column" id="public-event-content">
-        {{#unless this.device.isMobile}}
+      {{#unless this.device.isMobile}}
+        <div class="three wide column" id="public-event-content">
           {{#if this.displaySideMenu}}
             <div class="ui fluid side-menu">
               <Public::SideMenuOuter @event={{this.model}} />
             </div>
           {{/if}}
-        {{/unless}}
-      </div>
+        </div>
+      {{/unless}}
       {{#unless this.device.isMobile}}
         <div class="ten wide column">
           {{outlet}}
@@ -44,17 +57,31 @@
       {{/unless}}
       <div class="three wide column">
         {{#if this.displaySideMenu}}
-          <Public::Stream::JoinVideo
-            @showVideo={{false}}
-            @event={{this.model}}
-            @videoStream={{this.model.videoStream}}
-            @canAccess={{this.canAccess}}
-            @hasStreams={{this.hasStreams}}
-            @sameTab={{this.side_panel}}
-            @showSidePanel={{action "showSidePanel"}}
-            class="ui basic segment m-0 p-0" />
-          <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
-          {{#if (not-eq this.session.currentRouteName 'public.exhibition.view')}}
+          {{#if this.device.isMobile}}
+            <Public::AddToCalenderJoinVideo 
+              @event={{this.model}} 
+              @location={{this.headerLocation}}
+              @showVideo={{false}}
+              @videoStream={{this.model.videoStream}}
+              @canAccess={{this.canAccess}}
+              @hasStreams={{this.hasStreams}}
+              @sameTab={{this.side_panel}}
+              @showSidePanel={{action "showSidePanel"}}
+              class="ui basic segment m-0 p-0 mb-0" 
+            />
+          {{else}}
+            <Public::Stream::JoinVideo
+              @showVideo={{false}}
+              @event={{this.model}}
+              @videoStream={{this.model.videoStream}}
+              @canAccess={{this.canAccess}}
+              @hasStreams={{this.hasStreams}}
+              @sameTab={{this.side_panel}}
+              @showSidePanel={{action "showSidePanel"}}
+              class="ui basic segment m-0 p-0" />
+            <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
+          {{/if}}
+          {{#if (and (not-eq this.session.currentRouteName 'public.exhibition.view') (not-eq this.session.currentRouteName 'public.coc'))}}
             {{#if (not-eq this.router.currentRoute.name 'public.sessions.index')}}
               <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
             {{/if}}
