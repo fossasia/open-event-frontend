@@ -40,7 +40,7 @@
           <i class="dropdown icon"></i>
             {{#if this.data.custom_field}}
             <div class="default">
-              {{t-var this.data.custom_field}}
+              {{value-field-link (t-var this.data.custom_field)}}
               </div>
             {{else}}
             <div class="default text">
@@ -55,8 +55,8 @@
                 </div>
               {{else}}
                 {{#if cfield.isComplex}}
-                  <div class=" item complex-item" data-value="{{cfield.isComplex}}">
-                    {{rich-text-link cfield.isComplex}}
+                  <div class=" item complex-item" data-value="{{value-field-link cfield.isComplex}}">
+                    {{value-field-link cfield.isComplex}}
                   </div>
                 {{/if}}
               {{/if}}
