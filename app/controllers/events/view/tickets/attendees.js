@@ -34,6 +34,11 @@ export default class AttendeesController extends Controller {
   attendeeFilter(name) {
     if (name === 'date') {
       if (!this.start_date || !this.end_date) {
+        this.router.transitionTo('events.view.tickets.attendees.list', {
+          queryParams: {
+            filter: name
+          }
+        });
         return;
       }
       this.router.transitionTo('events.view.tickets.attendees.list', {
