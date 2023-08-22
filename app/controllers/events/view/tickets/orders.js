@@ -2,11 +2,18 @@ import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
+import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class OrdersController extends Controller {
   isLoadingcsv = false;
   isLoadingpdf = false;
+
+  @tracked
+  start_date = this.router.currentRoute.queryParams?.start_date;
+
+  @tracked
+  end_date = this.router.currentRoute.queryParams?.end_date;
 
   @action
   export(mode) {
@@ -25,13 +32,50 @@ export default class OrdersController extends Controller {
 
   @action
   orderFilter(name) {
-    if (name === 'all') {
-      name = null;
+    if (name === 'date') {
+      if (!this.start_date || !this.end_date) {
+        return;
+      }
+      this.router.transitionTo('events.view.tickets.orders.list', {
+        queryParams: {
+          start_date : this.start_date,
+          end_date   : this.end_date,
+          filter     : name
+        }
+      });
+    } else {
+      this.router.transitionTo('events.view.tickets.orders.list', {
+        queryParams: {
+          filter: name
+        }
+      });
+    }
+  }
+
+  @action
+  onChangeStartDate() {
+    if (!this.end_date) {
+      return;
     }
     this.router.transitionTo('events.view.tickets.orders.list', {
       queryParams: {
-        sort_by  : name,
-        sort_dir : 'DSC'
+        start_date : this.start_date,
+        end_date   : this.end_date,
+        filter     : 'date'
+      }
+    });
+  }
+
+  @action
+  onChangeEndDate() {
+    if (!this.start_date) {
+      return;
+    }
+    this.router.transitionTo('events.view.tickets.orders.list', {
+      queryParams: {
+        start_date : this.start_date,
+        end_date   : this.end_date,
+        filter     : 'date'
       }
     });
   }
