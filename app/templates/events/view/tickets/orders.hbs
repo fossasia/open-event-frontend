@@ -72,6 +72,7 @@
               @value={{this.start_date}}
               @rangePosition="start"
               @onChange={{action "onChangeStartDate"}}
+              @format="YYYY-MM-DD"
               @placeholder="MM/DD/YYYY"/></div>
           <div class="eight wide column end-date-session">
               <label class="required ui header" for="end_date">{{t 'Ends'}}</label>
@@ -82,6 +83,7 @@
                 @value={{this.end_date}}
                 @rangePosition="end"
                 @onChange={{action "onChangeEndDate"}}
+                @format="YYYY-MM-DD"
                 @placeholder="MM/DD/YYYY"/>
           </div>
         </div>
@@ -102,7 +104,8 @@
                       @value={{this.start_date}}
                       @rangePosition="start"
                       @onChange={{action "onChangeStartDate"}}
-                      @placeholder="MM/DD/YYYY"/>
+                      @format="YYYY-MM-DD"
+                      @placeholder="YYYY-MM-DD"/>
                   </div>
                   <div class="eight wide column">
                     <label class="required ui header" for="end_date">{{t 'Ends'}}</label>
@@ -112,7 +115,8 @@
                       @value={{this.end_date}}
                       @rangePosition="end"
                       @onChange={{action "onChangeEndDate"}}
-                      @placeholder="MM/DD/YYYY"/>
+                      @format="YYYY-MM-DD"
+                      @placeholder="YYYY-MM-DD"/>
                   </div>
                 </div>
               </div>
