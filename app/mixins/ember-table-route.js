@@ -28,6 +28,7 @@ export default Mixin.create({
       refreshModel: true
     }
   },
+  per_page: 10,
 
   applySearchFilters(options, params, searchFields) {
     if (!Array.isArray(searchFields)) {
@@ -118,8 +119,8 @@ export default Mixin.create({
           if (isNaN(params.search)) {
             continue;
           }
-          condition = 'eq';
-          value = params.search;
+          condition = params.search && Number(params.search) !== 0 ? 'eq' : 'is_';
+          value = params.search && Number(params.search) !== 0 ? params.search : null;
         }
         const filter = {
           name : splitField[0],
