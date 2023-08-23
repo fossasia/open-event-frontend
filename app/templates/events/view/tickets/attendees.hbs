@@ -61,35 +61,66 @@
     </div>
   </div>
   {{#if (eq this.router.currentRoute.queryParams.filter 'date')}}
-    <div class="row mt-0 mb-0 p-0">
-      <div class="eight wide column"></div>
-      <div class="eight wide {{unless this.device.isMobile 'right aligned'}} column pr-0">
-        <div class="{{if this.device.isMobile 'ui padded grid'}}">
-          <div class="row">
-            <div class="selection eight wide column ui dropdown ember-view b-0 p-0">
-              <label class="required ui header" for="start_date">{{t 'Starts'}}</label>
-              <Widgets::Forms::DatePicker
-                @type="text"
-                @name="start_date"
-                @value={{this.start_date}}
-                @rangePosition="start"
-                @onChange={{action "onChangeStartDate"}}
-                @placeholder="MM/DD/YYYY"/>
-            </div>
-            <div class="selection eight wide column ui dropdown ember-view b-0 p-0">
+    {{#if this.device.isMobile}}
+      <div class="sixteen wide column filter-date-mobile-session">
+        <div class="ui grid">
+          <div class="eight wide column">
+            <label class="required ui header" for="start_date">{{t 'Starts'}}</label>
+            <Widgets::Forms::DatePicker
+              @type="text"
+              @name="start_date"
+              @value={{this.start_date}}
+              @rangePosition="start"
+              @onChange={{action "onChangeStartDate"}}
+              @placeholder="MM/DD/YYYY"/></div>
+          <div class="eight wide column end-date-session">
               <label class="required ui header" for="end_date">{{t 'Ends'}}</label>
               <Widgets::Forms::DatePicker
+                @class="end-date-session"
                 @type="text"
                 @name="end_date"
                 @value={{this.end_date}}
                 @rangePosition="end"
                 @onChange={{action "onChangeEndDate"}}
                 @placeholder="MM/DD/YYYY"/>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <div class="right floated sixteen wide column">
+        <div class="ui grid">
+          <div class="row">
+            <div class="eight wide column"></div>
+            <div class="eight wide column">
+              <div class="ui grid">
+                <div class="row">
+                  <div class="eight wide column">
+                    <label class="required ui header" for="start_date">{{t 'Starts'}}</label>
+                    <Widgets::Forms::DatePicker
+                      @type="text"
+                      @name="start_date"
+                      @value={{this.start_date}}
+                      @rangePosition="start"
+                      @onChange={{action "onChangeStartDate"}}
+                      @placeholder="MM/DD/YYYY"/>
+                  </div>
+                  <div class="eight wide column">
+                    <label class="required ui header" for="end_date">{{t 'Ends'}}</label>
+                    <Widgets::Forms::DatePicker
+                      @type="text"
+                      @name="end_date"
+                      @value={{this.end_date}}
+                      @rangePosition="end"
+                      @onChange={{action "onChangeEndDate"}}
+                      @placeholder="MM/DD/YYYY"/>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-  </div>
+    {{/if}}
   {{/if}}
   <div class="row">
     <div class="x-scrollable sixteen wide column">
