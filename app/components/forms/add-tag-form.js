@@ -16,7 +16,7 @@ export default class AddTagForm extends Component.extend(FormMixin) {
   }
 
   willDestroyElement() {
-    const tagsNeedRemove = []
+    const tagsNeedRemove = [];
     this.data.tags.forEach(tag => {
       if (!tag.id) {
         tagsNeedRemove.pushObject(tag);
