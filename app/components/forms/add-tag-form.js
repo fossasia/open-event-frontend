@@ -20,6 +20,10 @@ export default class AddTagForm extends Component.extend(FormMixin) {
     this.data.tags.forEach(tag => {
       if (!tag.id) {
         tagsNeedRemove.pushObject(tag);
+      } else {
+        if (tag?.changedAttributes()) {
+          tag.rollbackAttributes();
+        }
       }
     });
     if (tagsNeedRemove.length > 0) {
