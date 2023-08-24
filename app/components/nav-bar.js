@@ -86,6 +86,23 @@ export default class NavBar extends Component {
     return !(String(this.session.currentRouteName).includes('events.view'));
   }
 
+  @computed('isNotPublicPageRoute')
+  get checkShowClassCssPublic() {
+    if (this.session.isAuthenticated) {
+      if (this.isNotPublicPageRoute) {
+        return 'au-home-page';
+      } else {
+        return 'au-public-page';
+      }
+    } else {
+      if (this.isNotPublicPageRoute) {
+        return 'un-home-page';
+      } else {
+        return 'un-public-page';
+      }
+    }
+  }
+
   @action
   handleKeyPress() {
     if (event.keyCode === 13 || event.which === 13) {
@@ -119,6 +136,7 @@ export default class NavBar extends Component {
       mobileBar.classList.remove('show-bar');
     });
   }
+
 
   @action
   handleClick() {
