@@ -12,6 +12,15 @@ export default Mixin.create({
     search: {
       refreshModel: true
     },
+    filter: {
+      refreshModel: true
+    },
+    start_date: {
+      refreshModel: true
+    },
+    end_date: {
+      refreshModel: true
+    },
     sort_dir: {
       refreshModel: true
     },
