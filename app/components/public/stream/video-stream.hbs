@@ -8,19 +8,16 @@
     <iframe style="position: absolute;width: 100%; height: 100%; border: 0px;" src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true"/>
   {{/if}}
 
-{{#if this.selectingLanguage.selectingLanguage}}
-
-  <iframe style="position: absolute;width: 50%; height: 100%; z-index: -1" id="video-player-translation" width="50%" height="50%" frameborder="0" title="YouTube Live Stream Translation"
-          src="https://www.youtube.com/embed/{{this.selectingLanguage.translationYoutubeId}}?enablejsapi=1&autoplay=1&modestbranding=1&loop=1&controls=0&disablekb=1"
-  gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
-{{/if}}
-
   {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
     <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
   {{/if}}
   {{#if (eq this.provider 'youtube')}}
-      <iframe style="position: absolute;width: 100%; height: 100%;" id="video-player" width="50%" height="50%" frameborder="0" title="YouTube Live Stream"
-              src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay=1&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute={{if (eq this.selectingLanguage.selectingLanguage null) 0 1}}&controls=0&disablekb=1"
+      <iframe 
+        style="position: absolute; width: 100%; height: 100%;" 
+        id="video-player" 
+        frameborder="0" 
+        title="YouTube Live Stream"
+        src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay=1&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&controls=0&disablekb=1"
       gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
   {{/if}}
   {{#if (and (eq @videoStream.videoChannel.provider 'vimeo') this.vimeoId)}}
