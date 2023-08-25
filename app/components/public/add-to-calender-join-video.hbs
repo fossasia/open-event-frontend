@@ -1,0 +1,43 @@
+<div class="ui list basic segment m-0 pl-0 pr-0 pb-0 add-to-calender-join-video">
+  {{#if @hasStreams}}
+    <div class="btn-join-video-mobile">
+      <button class="{{unless @showVideo 'primary' 'basic'}} ui button no-wrap" {{action this.openPanel}}>
+        <i class="icon calendar"></i>
+        {{t 'Join Live Event'}}
+      </button>
+    </div>
+    <div class="btn-add-to-calender-mobile">
+      <UiDropdown class="ui floating dropdown button w-full text center aligned pl-4">
+          <i class="add to calendar icon"></i>
+          {{t 'Add to Calendar'}}
+        <div class="menu">
+          <button {{action 'openAddToCalendarModal' this.calendarUrls}} class="ui item inverted fluid button">{{t 'Add Event'}}</button>
+          {{#if (and @event.isSchedulePublished this.showSessions)}}
+            <button {{action 'openAddToCalendarModal' this.sessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add Sessions'}}</button>
+            {{#if this.authManager.currentUser}}
+              <button {{action 'openAddToCalendarModal' this.mySessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add My Schedule'}}</button>
+            {{/if}}
+          {{/if}}
+        </div>
+      </UiDropdown>
+    </div>
+  {{else}}
+    <div class="mt-4">
+      <UiDropdown class="ui floating dropdown button w-full text center aligned">
+          <i class="add to calendar icon"></i>
+          {{t 'Add to Calendar'}}
+        <div class="menu">
+          <button {{action 'openAddToCalendarModal' this.calendarUrls}} class="ui item inverted fluid button">{{t 'Add Event'}}</button>
+          {{#if (and @event.isSchedulePublished this.showSessions)}}
+            <button {{action 'openAddToCalendarModal' this.sessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add Sessions'}}</button>
+            {{#if this.authManager.currentUser}}
+              <button {{action 'openAddToCalendarModal' this.mySessionCalendarUrls}} class="ui item inverted fluid button">{{t 'Add My Schedule'}}</button>
+            {{/if}}
+          {{/if}}
+        </div>
+      </UiDropdown>
+    </div>
+  {{/if}}
+</div>
+
+<Modals::AddToCalendar @isOpen={{this.isAddToCalendarModalOpen}} @calendarUrls={{this.modalUrls}}/>

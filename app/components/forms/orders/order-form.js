@@ -623,5 +623,10 @@ export default Component.extend(FormMixin, {
     updateGendersSelection(checked, changed, selectedOptions, holder, field) {
       holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
+  },
+  willDestroyElement() {
+    clearInterval(this._getRemainingTimeId);
+    this._super(...arguments);
   }
+
 });

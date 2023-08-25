@@ -9,15 +9,15 @@
     {{/if}}
   </div>
 {{/if}}
-<SideBar @search={{action 'search'}} @event_name={{this.event_name}}>
+<SideBar @search={{action 'search'}} @event_name={{this.event_name}} @needShowEventMenu={{this.needShowEventMenu}}>
   <div class="footer-pusher">
-    <NavBar @search={{action 'search'}} @event_name={{this.event_name}}/>
+    <NavBar @search={{action 'search'}} @event_name={{this.event_name}} @needShowEventMenu={{this.needShowEventMenu}}/>
 
     {{#if (eq this.routing.currentRouteName 'index')}}
       <WelcomeHeader @class={{'mb-4'}}/>
     {{/if}}
     <div id="main-container"
-         class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
+      class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
       {{outlet}}
     </div>
     <FooterMain @socialLinks={{this.model.socialLinks}} />

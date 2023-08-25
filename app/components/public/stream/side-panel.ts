@@ -46,6 +46,7 @@ export default class PublicStreamSidePanel extends Component<Args> {
   @tracked showChat = false;
   @tracked showRoomChat = false;
   @tracked showVideoRoom = false;
+  @tracked languageList: any = [];
 
   @tracked translationChannels = [{
     id   : '0',
@@ -66,16 +67,18 @@ export default class PublicStreamSidePanel extends Component<Args> {
     'maroon', 'mediumorchid', 'mediumpurple', 'mediumspringgreen'];
 
   async fetchTranslationChannels(streamId: string): Promise<any[] | undefined> {
-    const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
-    if (response.data !== undefined && response.data.length > 0) {
-      const newChannels = response.data.map((channel: ChannelData) => ({
-        id   : channel.id,
-        name : channel.attributes.name,
-        url  : channel.attributes.url
-      }));
-      // Append newChannels to the existing translationChannels list
-      const res = [...this.translationChannels, ...newChannels];
-      return res;
+    if (streamId) {
+      const response = await this.loader.load(`/video-streams/${streamId}/translation_channels`);
+      if (response.data !== undefined && response.data.length > 0) {
+        const newChannels = response.data.map((channel: ChannelData) => ({
+          id   : channel.id,
+          name : channel.attributes.name,
+          url  : channel.attributes.url
+        }));
+        // Append newChannels to the existing translationChannels list
+        const res = [...this.translationChannels, ...newChannels];
+        return res;
+      }
     }
     return undefined;
   }
@@ -107,9 +110,18 @@ export default class PublicStreamSidePanel extends Component<Args> {
   }
 
   @action
-  switchLanguage(url: string): void {
-    this.selectingLanguage.setLanguage(url);
+  switchLanguage(channel: any): void {
+    this.selectingLanguage.setLanguage(channel.url);
     this.selectingLanguage.updateTranslationYTId();
+    this.selectingLanguage.setName(channel.name);
+  }
+
+  @action
+  switchRoom(stream: any) {
+    if (this.selectingLanguage.getTranslationRoomId() !== stream.id) {
+      this.selectingLanguage.setName(null);
+    }
+    this.selectingLanguage.setTranslationRoomId(stream.id)
   }
 
   @action
@@ -136,16 +148,22 @@ export default class PublicStreamSidePanel extends Component<Args> {
           isGlobalEventRoom : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['is-global-event-room'])[0],
           chatRoomName      : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.attributes['chat-room-name'])[0],
           microlocationId   : rooms.data.filter((room: any) => room.relationships['video-stream'].data ? room.relationships['video-stream'].data.id === stream.id : null).map((room: any) => room.id)[0],
-          hash              : stringHashCode(stream.attributes.name + stream.id)
-        })).forEach(async(stream: any) => {
-          const res = await this.fetchTranslationChannels(stream.id)
-          stream.translations = res
+          hash              : stringHashCode(stream.attributes.name + stream.id),
+          translations      : []
+        })).forEach((stream: any) => {
           this.addStream(stream)
         });
-        this.streams.forEach(async(stream: any) => {
-          const res = await this.fetchTranslationChannels(stream.id)
-          stream.translations = res
-        });
+        const languageLists: any = [];
+        Promise.all(this.streams.map(async(stream: any) => {
+          const res = await this.fetchTranslationChannels(stream.id);
+          const item = {
+            streamId: stream.id
+          }
+          languageLists.push(item);
+          stream.translations = res;
+        })).then(() => {
+          this.languageList = languageLists;
+        })
       } catch (e) {
         console.error('Error while loading rooms in video stream', e);
       }
@@ -164,5 +182,10 @@ export default class PublicStreamSidePanel extends Component<Args> {
 
     this.loading = false;
     this.streams = [...this.streams];
+  }
+
+  @computed('languageList.@each.streamId')
+  get streamList() {
+    return this.streams;
   }
 }

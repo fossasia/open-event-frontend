@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 
 @classic
 export default class PublicRoute extends Route {
+
+  @service globalData;
   @service event;
 
   titleToken(model) {
@@ -17,7 +19,10 @@ export default class PublicRoute extends Route {
   }
 
   afterModel(model) {
+    this.globalData.setLogoUrl(model.logoUrl);
+    this.globalData.saveIdEvent(model.id);
     this.event.currentEvent = model;
+
   }
 
   resetController(controller, isExiting) {
@@ -25,4 +30,5 @@ export default class PublicRoute extends Route {
       controller.set('side_panel', null);
     }
   }
+
 }
