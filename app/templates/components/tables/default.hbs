@@ -54,7 +54,7 @@
               {{#component column.cellComponent
                            record=(get row (t-var column.valuePath))
                            extraRecords=(get-properties row column.extraValuePaths)
-                           props=(hash options=column.options actions=column.actions)
+                           props=(hash options=column.options actions=column.actions row=row)
               }}
                 {{cell}}
               {{/component}}
