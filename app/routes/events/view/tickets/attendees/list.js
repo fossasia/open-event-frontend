@@ -21,6 +21,25 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     }
   }
 
+  addDefaultValue(tags) {
+    tags.addObject(this.store.createRecord('tag', {
+      name       : 'Speakers',
+      color      : '#FF0000',
+      isReadOnly : true
+    }));
+    tags.addObject(this.store.createRecord('tag', {
+      name       : 'Attendees',
+      color      : '#0000FF',
+      isReadOnly : true
+    }));
+    tags.addObject(this.store.createRecord('tag', {
+      name       : 'VIPs',
+      color      : '#0000FF',
+      isReadOnly : true
+    }));
+    tags.save();
+  }
+
   async model(params) {
     this.set('params', params);
     let filterOptions = [];
@@ -75,10 +94,12 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 1
     };
 
-
     queryString = this.applySortFilters(queryString, params);
     const event = this.modelFor('events.view');
     const tags = await event.query('tags', {});
+    if (!tags || tags.length === 0) {
+      this.addDefaultValue(tags);
+    }
     const attendees = await this.asArray(await event.query('attendees', queryString));
     return {
       tags,

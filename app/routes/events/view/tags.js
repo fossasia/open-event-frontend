@@ -21,6 +21,7 @@ export default class extends Route {
       color      : '#0000FF',
       isReadOnly : true
     }));
+    tags.save();
   }
 
   async model() {
