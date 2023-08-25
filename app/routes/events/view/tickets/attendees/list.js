@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import EmberTableRouteMixin from 'open-event-frontend/mixins/ember-table-route';
+import moment from 'moment-timezone';
 
 export default class extends Route.extend(EmberTableRouteMixin) {
   titleToken() {
@@ -23,6 +24,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
   async model(params) {
     this.set('params', params);
+    const eventDetails = this.modelFor('events.view');
     let filterOptions = [];
     if (params.attendees_status === 'checkedIn') {
       filterOptions = [
@@ -40,20 +42,52 @@ export default class extends Route.extend(EmberTableRouteMixin) {
           val  : false
         }
       ];
-    } else if (params.attendees_status === 'all') {
-      filterOptions = [];
     } else {
-      filterOptions = [
-        {
+      if (params.attendees_status !== 'all') {
+        filterOptions = [
+          {
+            name : 'order',
+            op   : 'has',
+            val  : {
+              name : 'status',
+              op   : 'eq',
+              val  : params.attendees_status
+            }
+          }
+        ];
+      }
+    }
+    if (params.filter) {
+      if (params.filter === 'discount') {
+        filterOptions.pushObject({
           name : 'order',
           op   : 'has',
           val  : {
-            name : 'status',
-            op   : 'eq',
-            val  : params.attendees_status
+            name : 'discount_code_id',
+            op   : 'isnot',
+            val  : null
           }
-        }
-      ];
+        });
+      } else if (params.filter === 'date' && params.start_date && params.end_date) {
+        filterOptions.pushObject({
+          name : 'order',
+          op   : 'has',
+          val  : {
+            name : 'created-at',
+            op   : 'ge',
+            val  : moment.tz(params.start_date, eventDetails.timezone).toISOString()
+          }
+        });
+        filterOptions.pushObject({
+          name : 'order',
+          op   : 'has',
+          val  : {
+            name : 'created-at',
+            op   : 'le',
+            val  : moment.tz(params.end_date, eventDetails.timezone).add(1, 'days').toISOString()
+          }
+        });
+      }
     }
     filterOptions = this.applySearchFiltersExtend(
       filterOptions,
@@ -78,6 +112,6 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
     queryString = this.applySortFilters(queryString, params);
 
-    return  this.asArray(this.modelFor('events.view').query('attendees', queryString));
+    return this.asArray(eventDetails.query('attendees', queryString));
   }
 }
