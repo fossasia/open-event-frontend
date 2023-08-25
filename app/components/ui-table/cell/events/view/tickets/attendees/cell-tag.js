@@ -6,8 +6,8 @@ import { htmlSafe } from '@ember/string';
 @classic
 export default class CellTag extends Component {
   didInsertElement() {
-    this._super(...arguments)
-    this.$('.removeTag').on('click', () => { this.removeTag() })
+    this._super(...arguments);
+    this.$('.removeTag').on('click', () => { this.removeTag() });
   }
 
   removeTag() {
