@@ -1,3 +1,6 @@
 {{#if this.record}}
-    {{this.attendeeTagName}}
+    <div class="ui inverted segment link" style={{this.attendeeTagColor}}>
+        <div>{{this.attendeeTagName}}</div>
+        <i class="close icon" role="button" onclick={{action 'removeTag'}}></i>
+    </div>
 {{/if}}

@@ -1,15 +1,15 @@
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { htmlSafe } from '@ember/string';
 
 @classic
 export default class CellTag extends Component {
   didInsertElement() {
     this._super(...arguments);
-    this.$('.removeTag').on('click', () => { this.removeTag() });
   }
 
+  @action
   removeTag() {
     const attendee = this.props.row;
     if (attendee) {
@@ -22,12 +22,16 @@ export default class CellTag extends Component {
   get attendeeTagName() {
     const tag = this.props?.options?.tags?.find(tag => parseInt(tag.id) === this.record);
     if (tag) {
-      return htmlSafe(
-        `<div class="ui inverted segment link" style="background-color: ${tag.color}; display: inline-flex">
-          <div>${tag.name}</div>
-          <i class="close icon removeTag"}}></i>
-        </div>`
-      );
+      return tag.name;
+    }
+    return '';
+  }
+
+  @computed('record')
+  get attendeeTagColor() {
+    const tag = this.props?.options?.tags?.find(tag => parseInt(tag.id) === this.record);
+    if (tag) {
+      return htmlSafe('background-color:' + tag.color + '; display: inline-flex');
     }
     return '';
   }
