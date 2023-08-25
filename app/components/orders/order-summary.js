@@ -22,11 +22,13 @@ export default class OrderSummary extends Component.extend(FormMixin) {
   get orderAmountInput() {
     const discountCodeId = this.data.discountCodeId || undefined;
     const input = {
-      'discount-code' : discountCodeId,
-      'tickets'       : this.data.tickets.toArray().map(ticket => ({
-        id       : ticket.id,
-        quantity : ticket.get('attendees.length'),
-        price    : ticket.price
+      'discount-code'   : discountCodeId,
+      'discount-verify' : false,
+      'tickets'         : this.data.tickets.toArray().map(ticket => ({
+        id                : ticket.id,
+        quantity          : ticket.get('attendees.length'),
+        quantity_discount : ticket.attendees.filter(attendee => attendee.is_discount_applied).length,
+        price             : ticket.price
       }))
     };
     return input;
@@ -38,7 +40,7 @@ export default class OrderSummary extends Component.extend(FormMixin) {
       const ticketInput = this.orderAmountInput;
       const ticketAmount = await this.loader.post('/orders/calculate-amount', ticketInput);
       this.set('total', ticketAmount.sub_total);
-      this.set('grandTotal', ticketAmount.total);
+      this.set('grandTotal', this.data.amount);
       tickets.forEach(ticket => {
         const mappedTicket = ticketAmount.tickets.find(o => {
           return ticket.id === o.id.toString();

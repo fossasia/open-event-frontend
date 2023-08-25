@@ -14,6 +14,7 @@ export default class IndexController extends Controller {
   isContactOrganizerModalOpen = false;
   userExists = false;
   promotionalCodeApplied = false;
+  isDiscountSoldOut = false;
   @tracked selectedRegistration = null;
 
   @computed('model.event.description')
@@ -210,8 +211,9 @@ export default class IndexController extends Controller {
         this.set('discountCode', discountCode);
         const tickets = await discountCode.tickets;
         const ticketInput = {
-          'discount-code' : discountCode.id,
-          'tickets'       : tickets.toArray().map(ticket => ({
+          'discount-code'   : discountCode.id,
+          'discount-verify' : true,
+          'tickets'         : tickets.toArray().map(ticket => ({
             id       : ticket.id,
             quantity : 1,
             price    : ticket.price
@@ -234,12 +236,21 @@ export default class IndexController extends Controller {
       if (!this.invalidPromotionalCode) {
         this.set('invalidPromotionalCode', true);
       }
+      if (e.response?.errors[0]?.source?.pointer === 'discount_sold_out') {
+        this.isDiscountSoldOut = true;
+      }
     }
     if (this.invalidPromotionalCode) {
       this.set('promotionalCodeApplied', false);
-      this.notify.error(this.l10n.t('This Promotional Code is not valid'), {
-        id: 'prom_inval'
-      });
+      if (this.isDiscountSoldOut === true) {
+        this.notify.error(this.l10n.t('Discount tickets sold out.'), {
+          id: 'prom_inval'
+        });
+      } else {
+        this.notify.error(this.l10n.t('This Promotional Code is not valid.'), {
+          id: 'prom_inval'
+        });
+      }
     } else {
       this.set('promotionalCodeApplied', true);
       this.set('promotionalCode', 'Promotional code applied successfully');
