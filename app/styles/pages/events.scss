@@ -264,3 +264,45 @@
     }
   }
 }
+
+.reset-overflow {
+  .z-index-0 {
+    div {
+      overflow: visible !important;
+    }
+  }
+}
+
+.session-list .table tbody  tr {
+  &:nth-last-child(2) {
+    .ui.dropdown.button {
+      position: relative;
+    }
+
+    .menu {
+      position: absolute;
+      transform: translateY(-122%);
+      transition: transform .3s ease-in-out;
+    }
+
+    .menu.hidden.transition {
+      position: relative;
+    }
+  }
+
+  &:nth-last-child(3) {
+    .ui.dropdown.button {
+      position: relative;
+    }
+
+    .menu {
+      position: absolute;
+      transform: translateY(-122%);
+      transition: transform .3s ease-in-out;
+    }
+
+    .menu.hidden.transition {
+      position: relative;
+    }
+  }
+}
