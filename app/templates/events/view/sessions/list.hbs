@@ -1,4 +1,4 @@
-<div class="sixteen wide column">
+<div class="sixteen wide column session-list {{if (lte this.model.sessions.data.length 1) 'reset-overflow'}}">
   <Tables::Default
     @columns={{this.columns}}
     @rows={{this.model.sessions.data}}
