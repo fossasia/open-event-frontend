@@ -52,6 +52,9 @@
         <LinkTo @route="events.view.team" class="item">
           {{t 'Team'}}
         </LinkTo>
+        <LinkTo @route="events.view.tags" class="item">
+          {{t 'Tags'}}
+        </LinkTo>
         {{#if (or this.authManager.currentUser.isAnAdmin (eq this.model.owner.email this.authManager.currentUser.email))}}
           <LinkTo @route="events.view.settings" class="item">
             {{t 'Settings'}}

@@ -22,6 +22,25 @@ export default class extends Route.extend(EmberTableRouteMixin) {
     }
   }
 
+  addDefaultValue(tags) {
+    tags.addObject(this.store.createRecord('tag', {
+      name       : 'Speakers',
+      color      : '#FF0000',
+      isReadOnly : true
+    }));
+    tags.addObject(this.store.createRecord('tag', {
+      name       : 'Attendees',
+      color      : '#0000FF',
+      isReadOnly : true
+    }));
+    tags.addObject(this.store.createRecord('tag', {
+      name       : 'VIPs',
+      color      : '#0000FF',
+      isReadOnly : true
+    }));
+    tags.save();
+  }
+
   async model(params) {
     this.set('params', params);
     const eventDetails = this.modelFor('events.view');
@@ -109,9 +128,15 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       'page[number]' : params.page || 1
     };
 
-
     queryString = this.applySortFilters(queryString, params);
-
-    return this.asArray(eventDetails.query('attendees', queryString));
+    const tags = await eventDetails.query('tags', {});
+    if (!tags || tags.length === 0) {
+      this.addDefaultValue(tags);
+    }
+    const attendees = await this.asArray(await eventDetails.query('attendees', queryString));
+    return {
+      tags,
+      attendees
+    };
   }
 }

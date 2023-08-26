@@ -50,6 +50,7 @@ export default ModelBase.extend({
   is_consent_form_field_photo : attr('boolean', { defaultValue: false }),
   is_consent_form_field_email : attr('boolean', { defaultValue: false }),
   wiki_scholarship            : attr('string'),
+  tagId                       : attr('number'),
 
   /**
    * Relationships

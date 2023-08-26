@@ -6,13 +6,16 @@
           @pageSize={{this.pageSize}} />
       </div>
     {{/unless}}
-    {{#unless @hideSearchBox}}
-      <div class="eight wide right aligned column pr-0">
+    <div class="eight wide right aligned column pr-0">
+      {{#unless @hideSearchBox}}
         <Tables::Utilities::SearchBox
           @searchQuery={{this.searchQuery}}
           @filterOptions={{this.filterOptions}} />
-      </div>
-    {{/unless}}
+      {{/unless}}
+      {{#if @tags}}
+        <Tables::Utilities::AddTag @tags={{@tags}} @selectTag={{@selectTag}}/>
+      {{/if}}
+    </div>
   </div>
   <div class="ui no bottom padding row z-index-0 {{this.classEvent}}">
     <EmberTable @tableColor={{@color}} as |t|>
@@ -51,7 +54,7 @@
               {{#component column.cellComponent
                            record=(get row (t-var column.valuePath))
                            extraRecords=(get-properties row column.extraValuePaths)
-                           props=(hash options=column.options actions=column.actions)
+                           props=(hash options=column.options actions=column.actions row=row)
               }}
                 {{cell}}
               {{/component}}

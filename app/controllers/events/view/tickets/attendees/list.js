@@ -2,13 +2,32 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import EmberTableControllerMixin from 'open-event-frontend/mixins/ember-table-controller';
 import moment from 'moment-timezone';
+import { tracked } from '@glimmer/tracking';
 
 
 export default class extends Controller.extend(EmberTableControllerMixin) {
   sort_by = 'order.completed_at';
   sort_dir = 'DSC';
+
+  @tracked
+  selectAll = false
+
   get columns() {
     return [
+      {
+        name            : '',
+        width           : 50,
+        valuePath       : 'selected',
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-select',
+        headerComponent : 'tables/headers/select-all',
+        actions         : {
+          toggleSelectAll: this.toggleSelectAll.bind(this)
+        },
+        options: {
+          tags: this.model.tags
+
+        }
+      },
       {
         name            : 'Order',
         width           : 190,
@@ -22,6 +41,24 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         valuePath       : 'ticket.name',
         headerComponent : 'tables/headers/sort',
         isSortable      : true
+      },
+      {
+        name            : 'Ticket Name',
+        width           : 80,
+        valuePath       : 'ticket.name',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true
+      },
+      {
+        name            : 'Tags',
+        width           : 100,
+        valuePath       : 'tagId',
+        cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-tag',
+        headerComponent : 'tables/headers/sort',
+        isSortable      : true,
+        options         : {
+          tags: this.model.tags
+        }
       },
       {
         name            : 'Date and Time',
@@ -67,6 +104,36 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         }
       }
     ];
+  }
+
+  @action
+  selectTag(tag) {
+    this.selectedTag = tag;
+    this.addTag();
+  }
+
+  @action
+  addTag() {
+    if (!this.selectedTag) {return}
+    this.model.attendees.data.forEach(attendee => {
+
+      if (attendee.selected) {
+        attendee.set('tagId', parseInt(this.selectedTag));
+        attendee.save();
+      }
+    });
+    this.toggleSelectAll(false);
+    this.selectedTag = null;
+  }
+
+  @action
+  toggleSelectAll(selected) {
+    if (this.selectAll !== selected) {
+      this.selectAll = selected;
+    }
+    this.model.attendees.data.forEach(data => {
+      data.set('selected', selected);
+    });
   }
 
   @action

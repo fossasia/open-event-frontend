@@ -171,6 +171,8 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
 
   accessCodes: hasMany('access-code'),
 
+  tags: hasMany('tag'),
+
   /**
    * Computed properties
    */
