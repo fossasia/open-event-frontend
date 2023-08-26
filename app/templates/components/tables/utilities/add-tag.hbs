@@ -1,0 +1,13 @@
+<UiDropdown @class="ui small selection search dropdown mr-1" @onChange={{action 'onSelectTag'}}>
+    <div class="default text">
+        {{t 'Select Tag'}}
+    </div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        {{#each this.tags as |tag|}}
+        <div class="item" data-value={{tag.id}} >
+            {{tag.name}}
+        </div>
+        {{/each}}
+    </div>
+</UiDropdown>
