@@ -1,0 +1,220 @@
+<div class="event">
+  {{#if this.model.event.publicStreamLink}}
+    <div class="iframe-container mb-4">
+      <iframe class="responsive-iframe" title="{{this.model.event.name}}" src="{{this.publicStreamLink}}" allowfullscreen></iframe>
+    </div>
+  {{/if}}
+  {{#if this.model.event.description}}
+    <div class="description" id="info">
+      {{sanitize this.model.event.description}}
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if (and this.model.event.isOneclickSignupEnabled this.model.tickets)}}
+    <h2 id="tickets">{{t 'Registration'}}</h2>
+    {{!-- template-lint-disable style-concatenation --}}
+     {{#each (sort-by 'position' this.model.tickets) as |ticket| }}
+       {{#if (includes ticket.type 'Registration')}}
+         <div role='button' onclick={{action "selectTicket" ticket}} class="ui segment {{if (eq this.selectedRegistration ticket) 'select-ticket'}}" style="cursor:pointer; max-width:{{if device.isMobile '100%' '50%'}}">
+            {{!-- template-lint-disable no-invalid-interactive --}}
+           <div class="ui two column grid"  style="align-items: center;">
+              <div class="two wide column">
+                <div class="custom-registration-checkbox pb-4">
+                  <span class="custom-registration-bullet {{if (eq this.selectedRegistration ticket) 'select-custom-registration-checkbox'}}"></span>
+                </div>
+              </div>
+              <div class="fourteen wide column">
+                <div class="ui stackable two column grid">
+                  <div class="twelve wide column">
+                    <div class="row">{{ticket.name}}</div>
+                    <div class="row">
+                      <small class="ui gray-text tiny">{{if ticket.description ticket.description}}</small>
+                       {{#if (includes ticket.type 'donation')}}
+                        <div class="ui labeled fluid input">
+                          <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.model.event.paymentCurrency}}</label>
+                          <Input
+                            id="i_{{ticket.id}}_price"
+                            @type="number"
+                            @name={{ticket.id}} placeholder={{t "Enter Donation"}}
+                            @min={{ticket.minPrice}}
+                            @max={{ticket.maxPrice}}
+                            @value={{ticket.price}}
+                            />
+                        </div>
+                      {{/if}}
+                    </div>
+                  </div>
+                  <div class="four wide column">
+                    <div class="bold-text">
+                      {{#if (includes ticket.type 'free')}}
+                        {{t 'Free'}}
+                      {{else if (includes ticket.type 'paid')}}
+                        <div class="{{if ticket.discount 'strike text'}}">
+                          <CurrencyAmount @amount={{ticket.price}} @currency={{this.model.event.paymentCurrency}} />
+                        </div>
+                        {{#if ticket.discount}}
+                          <CurrencyAmount @amount={{sub ticket.price ticket.discount}} @currency={{this.model.event.paymentCurrency}} />
+                        {{/if}}
+                      {{else}}
+                        {{t 'Donation'}}
+                      {{/if}}
+                    </div>
+                    {{#if (and this.model.tax (not-eq ticket.type 'freeRegistration'))}}
+                      <p>
+                        {{#if this.model.tax.isTaxIncludedInPrice}}
+                          <small class="ui gray-text small {{if ticket.discountedTicketTax 'strike text'}}">
+                            {{t 'includes'}} <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{ticket.includedTaxAmount}}/>
+                          </small>
+                        {{else}}
+                          <small class="ui gray-text small {{if ticket.discountedTicketTax 'strike text'}}">
+                            + <CurrencyAmount @currency={{this.model.event.paymentCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                          </small>
+                        {{/if}}
+                        {{#if ticket.discountedTicketTax}}
+                          {{#if this.taxInfo.isTaxIncludedInPrice}}
+                            <small class="ui gray-text small">
+                              <br>{{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                            </small>
+                          {{else}}
+                            <small class="ui gray-text small">
+                              <br>+ <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                            </small>
+                          {{/if}}
+                        {{/if}}
+                        <span>
+                          <small class="ui gray-text tiny aligned right">({{this.model.tax.name}})</small>
+                        </span>
+                      </p>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+           </div>
+         </div>
+       {{/if}}
+      {{/each}}
+      {{#if this.enterPromotionalCode}}
+        <div class="ui action fluid input" style="max-width:{{if device.isMobile '100%' '50%'}}" {{did-insert this.applyPromotionalCode}}>
+          <Input 
+          @type="text" 
+          @name="promotional_code"
+          @value={{this.promotionalCode}}
+          placeholder={{t "Promotional Code"}}
+          @readonly={{this.promotionalCodeApplied}}
+          @key-up={{action handleKeyPress}}
+          @id="promotionalCode" />
+          {{#unless this.promotionalCodeApplied}}
+            <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
+            {{t 'Apply code'}}
+            </div>
+          {{/unless}}
+          <div role="button" class="ui black icon button p-4" {{action 'removePromotionalCode'}}>
+            <i class="remove icon"></i>
+          </div>
+        </div>
+      {{else}}
+        {{#unless this.hasOnlyFreeTickets}}
+          <div class="ui action fluid" style="max-width:{{if device.isMobile '100%' '50%'}}">
+            <a href="#" {{action 'removePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+          </div>
+        {{/unless}}
+      {{/if}}
+    <br/>
+    <button class="ui blue button {{if (not this.selectedRegistration) 'disabled'}}" style="height:50px;width:{{if device.isMobile '100%' '50%'}}" onclick={{pipe-action (action "oneClickSignup" this.selectedRegistration) (action this.placeOrder 0)}}> {{t 'Register Now'}} </button>
+    <Modals::LoginSignupModal
+      @isOpen={{this.isLoginModalOpen}}
+      @isLoading={{this.isLoading}}
+      @createNewUserViaEmail={{this.createNewUserViaEmail}}
+      @loginExistingUser={{this.loginExistingUser}}
+      @userExists={{this.userExists}}
+      @errorMessage={{this.errorMessage}} />
+    
+  {{else}}
+    {{#if (or this.model.event.ticketUrl this.model.tickets)}}
+      <div class="tickets mt-16" id="tickets">
+        <div class="ui segments ticket-list">
+          <div class="ui segment">
+            <h2 class="ui header">{{t 'Tickets'}}</h2>
+          </div>
+          <div class="ui segment">
+            <Public::TicketList
+              @eventCurrency={{this.model.event.paymentCurrency}}
+              @ticketUrl={{this.model.event.ticketUrl}}
+              @data={{this.model.tickets}}
+              @order={{this.model.order}}
+              @event={{this.model.event}}
+              @attendees={{this.model.attendees}}
+              @code={{code}}
+              @taxInfo={{this.model.tax}}
+              @currentEventIdentifier={{this.model.event.identifier}}
+              @createNewUserViaEmail={{action "createNewUserViaEmail"}}
+              @loginExistingUser={{action "loginExistingUser"}}
+              @openContactOrganizerModal={{action "openContactOrganizerModal"}}
+              @isLoginModalOpen={{this.isLoginModalOpen}}
+              @isContactOrganizerModalOpen={{this.isContactOrganizerModalOpen}}
+              @placeOrder={{action "placeOrder"}}
+              @isLoading={{this.isLoading}}
+              @userExists={{this.userExists}}
+              @errorMessage={{this.errorMessage}}
+              @hasOnlyFreeTickets={{this.hasOnlyFreeTickets}}
+              @save="save" />
+          </div>
+          <UnverifiedUserMessage class="m-2" @padless={{true}} @extraMessage={{t 'To place a ticket order: '}} />
+        </div>
+      </div>
+      <div class="ui hidden divider"></div>
+    {{/if}}
+  {{/if}}
+  {{#if this.model.featuredSpeakers}}
+    <div class="featured-speakers" id="speakers">
+      <div class="row">
+        <Public::FeaturedSpeakerList
+          @speakers={{this.model.featuredSpeakers}} @timezone={{this.model.event.timezone}} @event={{this.model.event}} />
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if (and this.model.event.isSponsorsEnabled this.model.sponsors)}}
+    <h2 class="ui header mt-16" id="sponsor">
+      {{t 'Supported By'}}
+    </h2>
+    <div class="sponsors">
+      <div class="row">
+        <Public::SponsorList
+          @sponsors={{this.model.sponsors}} />
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  {{#if this.model.event.hasOwnerInfo}}
+    <h2 class="ui header mt-16" id="organizer">
+      {{t 'Organized  by'}} {{this.model.event.ownerName}}
+    </h2>
+    {{sanitize this.model.event.ownerDescription}}
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  <div class="location" id="getting-here">
+    {{#if this.model.event.locationName}}
+      <Public::EventMap
+        @event={{this.model.event}}
+        @mapConfig={{this.model.mapConfig}} />
+    {{/if}}
+    {{#if this.model.event.online}}
+      <h2 class="mt-16">{{t 'Online Event'}}</h2>
+      <Public::Stream::StreamInfo
+        @showButton={{true}}
+        @event={{this.model.event}}
+        @videoStream={{this.model.event.videoStream}} />
+    {{/if}}
+    {{#if (not (or this.model.event.online this.model.event.locationName))}}
+      <h2 class="mt-16">{{t 'Location to be announced'}}</h2>
+    {{/if}}
+  </div>
+  <div class="ui hidden divider"></div>
+  {{#if this.model.event.copyright}}
+    <div class="copyright">
+      <Public::CopyrightItem
+        @copyright={{this.model.event.copyright}} />
+    </div>
+  {{/if}}
+</div>

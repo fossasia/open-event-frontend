@@ -1,0 +1,5 @@
+<div class="ui ordered list">
+  {{#each @record as |role|}}
+    <div class="item word-break">{{role.user.email}} ({{t-var role.role.titleName}})</div>
+  {{/each}}
+</div>

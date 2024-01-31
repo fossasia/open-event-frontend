@@ -1,0 +1,99 @@
+<h3 class="ui header text-cursor">
+  {{t 'Google Tokens'}}
+  <div class="sub header">
+    {{t 'See'}}
+    <a href="https://auth0.com/docs/connections/social/google" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these tokens.'}}
+  </div>
+</h3>
+<div class="field">
+  <label>
+    {{t 'Client ID'}}
+  </label>
+  <Input @type="text" @name="google_client_id" @value={{this.settings.googleClientId}} />
+</div>
+<div class="field">
+  <label>
+    {{t 'Client secret'}}
+  </label>
+  <Input @type="text" @name="google_client_secret" @value={{this.settings.googleClientSecret}} />
+</div>
+
+<div class="ui hidden divider"></div>
+
+<h3 class="ui header text-cursor">
+  {{t 'Facebook Tokens'}}
+  <div class="sub header">
+    {{t 'See'}}
+    <a href="https://developers.facebook.com/docs/apps/register" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these tokens.'}}
+  </div>
+</h3>
+<div class="field">
+  <label>
+    {{t 'Client ID'}}
+  </label>
+  <Input @type="text" @name="facebook_client_id" @value={{this.settings.fbClientId}} />
+</div>
+<div class="field">
+  <label>
+    {{t 'Client Secret'}}
+  </label>
+  <Input @type="text" @name="facebook_client_secret" @value={{this.settings.fbClientSecret}} />
+</div>
+
+<div class="ui hidden divider"></div>
+
+<h3 class="ui header text-cursor">
+  {{t 'Twitter Tokens'}}
+  <div class="sub header">
+    {{t 'See'}}
+    <a href="https://dev.twitter.com/docs" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these tokens.'}}
+  </div>
+</h3>
+<div class="field">
+  <label>
+    {{t 'Consumer ID'}}
+  </label>
+  <Input @type="text" @name="twitter_consumer_id" @value={{this.settings.twConsumerKey}} />
+</div>
+<div class="field">
+  <label>
+    {{t 'Consumer Secret'}}
+  </label>
+  <Input @type="text" @name="twitter_consumer_secret" @value={{this.settings.twConsumerSecret}} />
+</div>
+
+<div class="ui hidden divider"></div>
+
+<h3 class="ui header text-cursor">
+  {{t 'Instagram Tokens'}}
+  <div class="sub header">
+    {{t 'See'}}
+    <a href="https://www.instagram.com/developer/authentication/" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these tokens.'}}
+  </div>
+</h3>
+<div class="field">
+  <label>
+    {{t 'Client ID'}}
+  </label>
+  <Input @type="text" @name="instagram_client_id" @value={{this.settings.inClientId}} />
+</div>
+<div class="field">
+  <label>
+    {{t 'Client Secret'}}
+  </label>
+  <Input @type="text" @name="instagram_client_secret" @value={{this.settings.inClientSecret}} />
+</div>
+
+<div class="ui hidden divider"></div>

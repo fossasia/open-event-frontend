@@ -1,0 +1,20 @@
+<GroupNav @group={{this.model.group}} />
+<div class="sixteen wide column">
+  <div class="mb-4 d-flex items-center space-between">
+    <h2 class="header mb-0 pb-0">{{t 'Followers'}}</h2>
+    <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export' this.router.currentRoute.params.group_id}} >{{t 'Export as CSV'}}</button>
+  </div>
+  <div class="mx-4">
+    <Tables::Default
+      @columns={{this.followersColumn}}
+      @rows={{this.model.followers.data}}
+      @currentPage={{this.page}}
+      @searchQuery={{this.search}}
+      @pageSize={{this.per_page}}
+      @metaData={{this.model.followers.meta}}
+      @filterOptions={{this.filterOptions}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column" />
+  </div>
+</div>

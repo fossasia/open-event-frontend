@@ -1,0 +1,9 @@
+{{#if this.device.isMobile}}
+  <div role="button" class="ui segment center aligned" {{action 'toggleMenu'}}>
+    {{this.currentRoute}}
+    <i class="dropdown icon"></i>
+  </div>
+{{/if}}
+<div role="button" class="text-cursor mobile hidden ui fluid stackable {{unless this.isNonPointing (unless this.device.isMobile 'pointing')}} {{unless this.device.isMobile (if this.isTabbed 'tabular' (if this.isVertical 'vertical' 'secondary'))}} menu" {{action 'toggleMenu' 'reset'}}>
+  {{yield}}
+</div>

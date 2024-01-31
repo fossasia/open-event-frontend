@@ -1,0 +1,10 @@
+<TabbedNavigation>
+  <LinkTo @route="admin.sales.index" @model="live" class={{if (eq this.session.currentRouteName 'admin.sales.index') 'active item' 'item'}}>
+    {{t 'Orders'}}
+  </LinkTo>
+  <LinkTo @route="admin.sales.invoices" class="item">
+    {{t 'Invoices'}}
+  </LinkTo>
+</TabbedNavigation>
+<br>
+{{outlet}}

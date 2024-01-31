@@ -1,0 +1,18 @@
+<div class="sixteen column wide">
+  <Tables::Default
+    @tags={{this.model.tags}}
+    @selectTag={{this.selectTag}}
+    @columns={{this.columns}}
+    @rows={{this.model.attendees.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @selectAll={{this.selectAll}}
+    @metaData={{this.model.attendees.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
+</div>

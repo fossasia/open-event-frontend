@@ -1,0 +1,35 @@
+<div class="ui segments">
+  <div class="ui {{if (eq @data.status 'paid') 'green' 'violet'}} inverted segment center aligned">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t-var @data.status}}
+      </div>
+      <div class="label">
+        {{t 'Your invoice payment completed successfully.'}}
+        <br>
+        {{t 'Find all the details related to your invoice below.'}}
+      </div>
+    </div>
+  </div>
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'Invoice Details'}}</h3>
+  </div>
+  <table class="ui very basic tablet stackable table order-summary center aligned">
+    <thead>
+      <tr>
+        <th class="four wide">{{t 'Event Name'}}</th>
+        <th class="four wide">{{t 'Date Issued'}}</th>
+        <th class="four wide">{{t 'Date Completed'}}</th>
+        <th class="ui aligned two wide">{{t 'Amount Payable'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{this.event.name}}</td>
+        <td>{{general-date this.data.issuedAt 'date-short'}}</td>
+        <td>{{general-date this.data.completedAt 'date-short'}}</td>
+        <td>{{currency-symbol this.eventCurrency}} {{format-money this.data.amount}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,57 @@
+.event.card {
+  height: auto;
+
+  .header {
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .description {
+    height: 28px;
+    overflow: hidden;
+  }
+
+  img {
+    height: 179px !important;
+    object-fit: cover;
+  }
+}
+
+.extra.content {
+
+  .hashtags {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90%;
+  }
+
+  .link.item {
+    color: #555 !important;
+  }
+}
+
+.event.wide {
+  border-radius: 0 !important;
+  margin: 0 !important;
+
+  .column {
+    margin: 0;
+    padding: 0 !important;
+  }
+
+  img {
+    height: 190px !important;
+    object-fit: cover;
+  }
+
+  .main.content {
+    display: block;
+    min-height: 130px;
+  }
+}
+
+.order.card {
+  height: 100px !important;
+}

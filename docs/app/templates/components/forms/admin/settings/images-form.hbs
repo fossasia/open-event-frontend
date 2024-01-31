@@ -1,0 +1,134 @@
+<form class="ui form {{if this.isLoading 'loading'}} text-cursor" {{action 'submit' on='submit'}}>
+  <h2 class="ui header">{{t 'Event Images'}}</h2>
+  <h3 class="ui header">{{t 'Large Size'}}</h3>
+  <div class="three fields">
+    <div class="field">
+      <label>{{t 'Width (in px)'}}</label>
+      <Input @type="number" @name="large_width" @value={{this.image.eventImageSize.fullWidth}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Height (in px)'}}</label>
+      <Input @type="number" @name="large_height" @value={{this.image.eventImageSize.fullHeight}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Quality (in %)'}}</label>
+      <Input @type="number" @name="large_quality" @value={{this.image.eventImageSize.fullQuality}} @min={{1}} />
+    </div>
+  </div>
+  <div class="field">
+    <UiCheckbox @label={{t "Standard aspect ratio is 13:5. Tick to maintain aspect ratio."}} @class="checkbox" @name="large_ratio" @checked={{this.image.eventImageSize.fullAspect}} @onChange={{action (mut this.image.eventImageSize.fullAspect)}} />
+  </div>
+  {{t 'Standard Size of the available area is 1300px X 500px'}}
+  <p>{{t 'Found in :'}}</p>
+  <div class="ui bulleted list">
+    <div class="item">{{t 'Background Header Image in Public Event Page'}}</div>
+  </div>
+  <h3 class="ui header">{{t 'Thumbnail Size'}}</h3>
+  <div class="three fields">
+    <div class="field">
+      <label>{{t 'Width (in px)'}}</label>
+      <Input @type="number" @name="thumb_width" @value={{this.image.eventImageSize.thumbnailWidth}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Height (in px)'}}</label>
+      <Input @type="number" @name="thumb_height" @value={{this.image.eventImageSize.thumbnailHeight}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Quality (in %)'}}</label>
+      <Input @type="number" @name="thumb_quality" @value={{this.image.eventImageSize.thumbnailQuality}} @min={{1}} />
+    </div>
+  </div>
+  <div class="field">
+    <UiCheckbox @label={{t "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."}} @class="checkbox" @name="thumb_ratio" @checked={{this.image.eventImageSize.thumbnailAspect}} @onChange={{action (mut this.image.eventImageSize.thumbnailAspect)}} />
+  </div>
+  {{t 'Standard Size of the available area is 500px X 200px'}}
+  <p>{{t 'Found in :'}}</p>
+  <div class="ui bulleted list">
+    <div class="item">{{t 'Home Page Event Images'}}</div>
+    <div class="item">{{t 'My Session Page Event Images'}}</div>
+    <div class="item">{{t 'My Ticket Page Event Images'}}</div>
+  </div>
+  <h3 class="ui header">{{t 'Icon Size'}}</h3>
+  <div class="three fields">
+    <div class="field">
+      <label>{{t 'Width (in px)'}}</label>
+      <Input @type="number" @name="event_icon_width" @value={{this.image.eventImageSize.iconWidth}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Height (in px)'}}</label>
+      <Input @type="number" @name="event_icon_height" @value={{this.image.eventImageSize.iconHeight}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Quality (in %)'}}</label>
+      <Input @type="number" @name="event_icon_quality" @value={{this.image.eventImageSize.iconQuality}} @min={{1}} />
+    </div>
+  </div>
+  <div class="field">
+    <UiCheckbox @label={{t "Standard aspect ratio is 5:2. Tick to maintain aspect ratio."}} @class="checkbox" @name="icon_ratio" @checked={{this.image.eventImageSize.iconAspect}} @onChange={{action (mut this.image.eventImageSize.iconAspect)}} />
+  </div>
+  {{t 'Standard Size of the available area is 75px X 30px'}}
+  <h3 class="ui header">{{t 'Logo Size (Event Wizard)'}}</h3>
+  <div class="three fields">
+    <div class="field">
+      <label>{{t 'Width (in px)'}}</label>
+      <Input @type="number" @name="logo_width" @value={{this.image.eventImageSize.logoWidth}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Height (in px)'}}</label>
+      <Input @type="number" @name="logo_height" @value={{this.image.eventImageSize.logoHeight}} @min={{1}} />
+    </div>
+  </div>
+  {{t 'Standard Size of the available area is 500px X 200px'}}
+  <div class="ui divider"></div>
+  <h2 class="ui header">{{t 'Profile/Speaker Images'}}</h2>
+  <h3 class="ui header">{{t 'Thumbnail Size'}}</h3>
+  <div class="two fields">
+    <div class="field">
+      <label>{{t 'Width & Height (in px)'}}</label>
+      <Input @type="number" @name="profile_small_size" @value={{this.image.speakerImageSize.thumbnailSizeWidthHeight}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Quality (in %)'}}</label>
+      <Input @type="number" @name="profile_small_quality" @value={{this.image.speakerImageSize.thumbnailSizeQuality}} @min={{1}} />
+    </div>
+  </div>
+  {{t 'Standard Size of the available area is 150px X 150px'}}
+  <p>{{t 'Found in :'}}</p>
+  <div class="ui bulleted list">
+    <div class="item">{{t 'Event Public Page'}}</div>
+  </div>
+  <h3 class="ui header">{{t 'Small Size'}}</h3>
+  <div class="two fields">
+    <div class="field">
+      <label>{{t 'Width & Height (in px)'}}</label>
+      <Input @type="number" @name="profile_thumb_size" @value={{this.image.speakerImageSize.smallSizeWidthHeight}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Quality (in %)'}}</label>
+      <Input @type="number" @name="profile_thumb_quality" @value={{this.image.speakerImageSize.smallSizeQuality}} @min={{1}} />
+    </div>
+  </div>
+  {{t 'Standard Size of the available area is 50px X 50px'}}
+  <p>{{t 'Found in :'}}</p>
+  <div class="ui bulleted list">
+    <div class="item">{{t 'Speaker Tab in Event Dashboard'}}</div>
+  </div>
+  <h3 class="ui header">{{t 'Icon Size'}}</h3>
+  <div class="two fields">
+    <div class="field">
+      <label>{{t 'Width & Height (in px)'}}</label>
+      <Input @type="number" @name="profile_icon_size" @value={{this.image.speakerImageSize.iconSizeWidthHeight}} @min={{1}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Quality (in %)'}}</label>
+      <Input @type="number" @name="profile_icon_quality" @value={{this.image.speakerImageSize.iconSizeQuality}} @min={{1}} />
+    </div>
+  </div>
+  {{t 'Standard Size of the available area is 35px X 35px'}}
+  <p>{{t 'Found in :'}}</p>
+  <div class="ui bulleted list">
+    <div class="item">{{t 'Top Bar Right Corner'}}</div>
+  </div>
+  <div class="ui hidden divided"></div>
+  <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
+</form>

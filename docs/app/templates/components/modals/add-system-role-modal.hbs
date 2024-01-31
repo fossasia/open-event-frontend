@@ -1,0 +1,46 @@
+<div class="header">
+  {{#if this.isNew}}
+    {{t 'Add New System Role'}}
+  {{else}}
+    {{t 'Edit System Role'}}
+  {{/if}}
+</div>
+<div class="content">
+  <form class="ui {{if this.isLoading 'loading'}} form" id="add-system-role-form" autocomplete="off" {{action 'addRole' on='submit' preventDefault=true}}>
+    <div class="field">
+      <label class="required">
+        {{t 'Name'}}
+      </label>
+      <Input @type="text" @name="role_name" @value={{this.role.name}} placeholder={{t "Enter Role name"}} />
+    </div>
+    <div class="field">
+      <label class="required">
+        {{t 'Panels'}}
+      </label>
+      <div class="inline field">
+        <div class="ui stackable grid container">
+          {{#each this.panelPermissions as |permission|}}
+            <div class="five wide column">
+              <div class="item" data-value={{permission}}>
+                <UiCheckbox @label={{concat permission.panelName " panel"}} @checked={{permission.isChecked}} @onChange={{action "toggleCheckbox" permission}} />
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="add-system-role-form" class="ui green right labeled icon button">
+    {{#if this.isNew}}
+      {{t 'Add Team Member'}}
+    {{else}}
+      {{t 'Edit Team Member'}}
+    {{/if}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>

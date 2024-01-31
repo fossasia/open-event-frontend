@@ -1,0 +1,30 @@
+<div class="header">
+  {{t 'You are transferring this event. This action cannot be undone.'}}
+  <div class="muted small text">
+    {{t 'All the event rights will be transferred to another user.'}}
+  </div>
+  <div class="muted small text">
+    {{t 'Transfering event to another user will void all previous owner invites.'}}
+  </div>
+</div>
+<div class="content">
+  <form class="ui {{if this.isLoading 'loading'}} form" id="eventTransferForm" autocomplete="off" {{action 'submit' on='submit' preventDefault=true}}>
+    <div class="field">
+      <label class="required">
+        {{t 'User Email'}}
+      </label>
+      <Input @type="text" @name="user_email" @value={{this.currentInvite.email}} />
+    </div>
+    <div class="field">
+      <UiCheckbox @label={{t "Please tick the box to agree and press TRANSFER"}} @type="checkbox" @checked={{this.checked}} @onChange={{action (mut this.checked)}} />
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="eventTransferForm" class="ui red button {{if (not this.checked) 'disabled'}}">
+    {{t 'Transfer'}}
+  </button>
+</div>

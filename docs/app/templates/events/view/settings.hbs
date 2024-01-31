@@ -1,0 +1,18 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="{{if this.device.isMobile 'sixteen' 'three'}} wide column">
+      <TabbedNavigation @isVertical={{true}}>
+        <LinkTo @route="events.view.settings.export" class="item">
+          {{t 'Export'}}
+        </LinkTo>
+        <LinkTo @route="events.view.settings.options" class="item">
+          {{t 'Options'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+    <div class="{{if this.device.isMobile 'sixteen' 'thirteen'}} wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>
+

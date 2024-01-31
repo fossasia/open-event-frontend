@@ -1,0 +1,20 @@
+<div class="ui tiny header">
+  <LinkTo @route="orders.view" @model={{this.record.identifier}}>{{this.record.identifier}}</LinkTo>
+  <div class="ui basic mini {{order-color this.record.status}} label attendees-margin">
+    {{this.record.status}}
+  </div>
+  <div class="sub header">
+    {{#if this.record.paidVia}}
+      <span class="weight-800">
+        {{t 'Payment via'}} {{this.record.paidVia}}
+      </span>
+    {{/if}}
+    {{#if (eq this.record.status 'completed')}}
+      {{general-date this.record.completedAt 'date-time-short'}}
+      {{moment-from-now this.record.completedAt}}
+    {{else}}
+      {{general-date this.record.createdAt 'date-time-short'}}
+      {{moment-from-now this.record.createdAt}}
+    {{/if}}
+  </div>
+</div>

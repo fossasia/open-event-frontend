@@ -1,0 +1,42 @@
+<div class="ui basic {{if this.isLoading 'loading'}} segment">
+  <div class="ui one column container stackable doubling left grid">
+    <h1 class="ui header">{{t 'Review Order Confirmation'}}</h1>
+    <div class="row">
+      <div class="sixteen wide column">
+        <EventInvoice::BillingInfo
+          @user={{this.model.user}} />
+        <div class="ui segments">
+          <div class="ui secondary segment">
+            <h3 class="weight-400">{{t 'Invoice Details'}}</h3>
+          </div>
+          <div class="ui padded segment">
+            <div class="ui list">
+              <div class="item">
+                <strong>{{t 'Event Name'}}:</strong> {{this.model.event.name}}
+              </div>
+              <div class="item">
+                <strong>{{t 'Date Issued'}}:</strong> {{general-date this.model.issuedAt 'date-short' tz='UTC'}} 
+              </div>
+              <div class="item">
+                <strong>{{t 'Due Date'}}:</strong> {{general-date this.model.dueAt 'date-short' tz='UTC'}} 
+              </div>
+              <div class="item">
+                <strong>{{t 'Total Invoice Amount'}}:</strong> {{currency-symbol this.model.event.paymentCurrency}} {{format-money this.model.amount}}
+              </div>
+              <div class="item">
+                <a href="{{ this.model.invoicePdfUrl }}" target="_blank" rel="noopener"
+                  class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} button">
+                  <i class="download icon"></i>
+                  {{t 'Download Order Confirmation'}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='paypal-button'>
+          <PaypalButton @data={{this.model.data}} @paymentFor="invoice" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

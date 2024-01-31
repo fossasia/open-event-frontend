@@ -1,0 +1,66 @@
+<div class="ui container">
+  {{#if (not @group.id)}}
+    <div class="column sixteen wide center aligned mb-8">
+      <h2 class="ui header center aligned">
+          {{t 'Create a Group'}}
+      </h2>
+    </div>
+  {{/if}}
+
+  <form class="ui form {{if this.isLoading 'loading'}}" >
+    <div class="d-flex space-between items-center mb--8">
+      <div></div>
+      <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    </div>
+    {{#if @groupEvents}}
+      <div class="mb-4">
+        <h2 class="main-heading mb-4">{{t 'Group Events'}}</h2>
+        <div class="ui stackable three column grid">
+          {{#each @groupEvents as |event|}}
+            <EventCard
+              @event={{event}}
+              @shareEvent={{action "shareEvent"}}
+              @removeFromGroup={{true}}
+              @isSavedEvent={{if (includes this.savedEvents event.id) true false}}
+              @removeEvent={{action "removeEvent"}}
+              @announceEvent={{action "announceEvent"}} />
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+    <div class="mb-4">
+      {{#if this.upcomingEvents}}
+        <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
+        <div class="ui stackable three column grid">
+          {{#each this.upcomingEvents as |event|}}
+            <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
+          {{/each}}
+        </div>
+        <div class="sixteen wide column">
+          <InfinityLoader @infinityModel={{this.upcomingEvents}} @triggerOffset={{1000}} @eventDebounce={{50}}>
+            <div class="ui loading very padded basic segment">
+            </div>
+            {{this.infintyModel.reachedInfinity}}
+          </InfinityLoader>
+        </div>
+      {{/if}}
+      {{#if this.pastEvents}}
+        <div class="ui hidden divider"></div>
+        <h2 class="main-heading">{{t 'Past Events'}}</h2>
+        <div class="ui stackable three column grid">
+          {{#each this.pastEvents as |event|}}
+            <EventCard @event={{event}} @shareEvent={{action "shareEvent" event}} @addToGroup={{true}} @addEvent={{action "addEvent"}}/>
+          {{/each}}
+        </div>
+        <div class="sixteen wide column">
+          <InfinityLoader @infinityModel={{this.pastEvents}} @triggerOffset={{1000}} @eventDebounce={{50}}>
+            <div class="ui loading very padded basic segment">
+            </div>
+            {{this.infintyModel.reachedInfinity}}
+          </InfinityLoader>
+        </div>
+      {{/if}}
+    </div>
+  </form>
+  <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
+</div>

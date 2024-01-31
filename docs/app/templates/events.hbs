@@ -1,0 +1,29 @@
+{{#if (and (not-includes this.session.currentRouteName 'events.view') (not-includes this.session.currentRouteName 'events.my-sessions'))}}
+  <UnverifiedUserMessage />
+  <div class="row">
+    <div class="sixteen wide column">
+      <TabbedNavigation>
+        <LinkTo @route="events.list" @model="live" class="item">
+          {{t 'Live'}}
+        </LinkTo>
+        <LinkTo @route="events.list" @model="draft" class="item">
+          {{t 'Draft'}}
+        </LinkTo>
+        <LinkTo @route="events.list" @model="past" class="item">
+          {{t 'Past'}}
+        </LinkTo>
+        {{#if (or this.authManager.currentUser.isAdmin this.authManager.currentUser.isSuperAdmin)}}
+          <LinkTo @route="events.import" class="item">
+            {{t 'Import'}}
+          </LinkTo>
+        {{/if}}
+      </TabbedNavigation>
+    </div>
+  </div>
+  <div class="ui basic segment" style="padding-top: 0">
+    {{outlet}}
+  </div>
+{{else}}
+  {{!-- the event specific view pages will be rendered without any of the above tabs --}}
+  {{outlet}}
+{{/if}}

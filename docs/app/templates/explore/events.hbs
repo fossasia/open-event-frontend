@@ -1,0 +1,82 @@
+<div class="ui stackable grid">
+  <div class="three wide column">
+    <Explore::SideBar @model={{this.model}} @clearQueryParams={{this.clearAllFilters}} @category={{this.category}} @sub_category={{this.sub_category}} @event_type={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @is_past={{this.is_past}} @is_online={{this.is_online}} @is_location={{this.is_location}} @is_mixed={{this.is_mixed}} @has_logo={{this.has_logo}} @has_image={{this.has_image}} @location={{this.location}} @ticket_type={{this.ticket_type}} @cfs={{this.cfs}} />
+  </div>
+  <div class="thirteen wide column">
+    <div>
+      <div class="ui icon input" style="width: 100%;">
+          <Input
+            @name="name"
+            @value={{this.name}}
+            @type="text"
+            @placeholder={{t "Enter Event Name"}} />
+          <i class="search icon"></i>
+      </div>
+    </div>
+    <TabbedNavigation>
+      <LinkTo @route="explore.events" @query={{hash name=this.name}} class="item">
+        {{t 'Events'}}
+      </LinkTo>
+      <LinkTo @route="explore.groups" @query={{hash name=this.name}} class="item">
+        {{t 'Groups'}}
+      </LinkTo>
+    </TabbedNavigation>
+    <h1 class="ui header">{{t 'Events'}}</h1>
+    <div class="ui labels">
+      {{#if this.filters.category}}
+        <div class="ui mini label">
+          {{this.filters.category}}
+          <a href="#" role="button" {{action 'clearFilter' 'category'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.sub_category}}
+        <div class="ui mini label">
+          {{this.filters.sub_category}}
+          <a href="#" role="button" {{action 'clearFilter' 'sub_category'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.event_type}}
+        <div class="ui mini label">
+          {{this.filters.event_type}}
+          <a href="#" role="button" {{action 'clearFilter' 'event_type'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if (and this.filters.start_date (not-eq this.filters.start_date "all_date"))}}
+        <div class="ui mini label">
+          {{general-date this.filters.start_date 'date-short'}}
+          <a href="#" role="button" {{action 'clearFilter' 'start_date'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.end_date}}
+        <div class="ui mini label">
+          {{general-date this.filters.end_date 'date-short'}}
+          <a href="#" role="button" {{action 'clearFilter' 'end_date'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.ticket_type}}
+        <div class="ui mini label">
+          {{this.ticket_type}}
+          <a href="#" role="button" {{action 'clearFilter' 'ticket_type'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+      {{#if this.filters.cfs}}
+        <div class="ui mini label">
+          {{this.filters.cfs}}
+          <a href="#" role="button" {{action 'clearFilter' 'cfs'}}><i class="icon close"></i></a>
+        </div>
+      {{/if}}
+    </div>
+    {{#each this.filteredEvents as |event|}}
+      <EventCard @event={{event}} @isWide={{true}} @filterByTags={{true}} @category={{this.category}} @subCategory={{this.sub_category}} @eventType={{this.event_type}} @startDate={{this.start_date}} @endDate={{this.end_date}} @eventName={{this.name}} @isPast={{this.is_past}} @isOnline={{this.is_online}} @hasLogo={{this.has_logo}} @hasImage={{this.has_image}} @location={{this.location}} @ticketType={{this.ticket_type}} @cfs={{this.cfs}} @shareEvent={{action "shareEvent"}} />      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+    {{else}}
+      <div class="ui disabled header">{{t 'No events found for selected filters'}}</div>
+    {{/each}}
+    <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
+    <InfinityLoader @infinityModel={{this.filteredEvents}}>
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+{{#if this.model.isSessionsSpeakersEnabled}}
+  <div class="ui grid stackable">
+    {{#if this.onSessionRoute}}
+      <div class="row">
+        <div class="{{if this.device.isTablet 'sixteen' 'twelve'}} wide column">
+          <TabbedNavigation @isNonPointing={{true}}>
+            <LinkTo @route="events.view.sessions.list" @model="all" class="item">
+              {{t 'All'}}
+            </LinkTo>
+            {{#each this.sessionStates as |state|}}
+              <LinkTo @route="events.view.sessions.list" @model={{state}} class="item">
+                {{t-var (capitalize state)}}
+              </LinkTo>
+            {{/each}}
+          </TabbedNavigation>
+        </div>
+        <div class="{{if this.device.isTablet 'sixteen' 'four'}} wide right aligned column">
+          <div class="ui labeled input">
+            <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export' this.router.currentRoute.params.session_status}}>{{t 'Export as CSV'}}</button>
+            <LinkTo @route="events.view.sessions.create" class="ui blue button right floated">
+              {{t 'Create Session'}}
+            </LinkTo>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  <div class="sixteen wide column">
+    <h3 class="centered text">{{t 'In order to use this feature please activate "Sessions and Speakers" for the event.'}}</h3>
+    <h4 class="centered text">{{t 'Please click '}}<a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'here'}}</a>{{t ' to activate this module.'}}</h4>
+  </div>
+{{/if}}

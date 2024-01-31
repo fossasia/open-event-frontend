@@ -1,0 +1,43 @@
+<div class="ui one column container stackable doubling left grid">
+  <div class="row print">
+    <div class="column">
+      <h2>{{this.model.event.name}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ten wide column print">
+      <EventInvoice::InvoiceSummary
+        @data={{this.model}}
+        @event={{this.model.event}}
+        @eventCurrency={{this.model.event.paymentCurrency}} />
+    </div>
+    <div class="mobile hidden six wide column">
+      <EventInvoice::EventInfo
+        @event={{this.model.event}} />
+    </div>
+  </div>
+  <div class="row">
+    <div class="column right aligned">
+      <a href="{{ this.model.invoicePdfUrl }}" target="_blank" rel="noopener"
+        class="ui labeled icon blue {{if this.isLoadingInvoice 'loading'}} button">
+        <i class="download icon"></i>
+        {{t 'Download Order Confirmation'}}
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ten wide column">
+      <EventInvoice::BillingInfo
+        @user={{this.model.user}} />
+    </div>
+    <div class="six wide column">
+      <div class="row">
+        <div class="mobile hidden row">
+          <EventInvoice::PayeeInfo
+            @data={{this.model}}
+            @payer={{this.model.user}} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

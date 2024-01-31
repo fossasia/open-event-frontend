@@ -1,0 +1,25 @@
+<div id="{{this.textareaIdGenerated}}-toolbar">
+  <div class="{{if this.device.isMobile 'compact'}} ui icon buttons">
+    <a href="#" class="ui button" data-content="{{t 'Bold (Ctrl+B)'}}" data-wysihtml5-command="bold"><i class="bold icon"></i></a>
+    <a href="#" class="ui button" data-content="{{t 'Italic (Ctrl+I)'}}" data-wysihtml5-command="italic"><i class="italic icon"></i></a>
+    <a href="#" class="ui button" data-content="{{t 'Underline (Ctrl+U)'}}" data-wysihtml5-command="underline"><i class="underline icon"></i></a>
+  </div>
+  <div class="{{if this.device.isMobile 'compact'}} ui icon buttons">
+    <a href="#" class="ui button" data-content="{{t 'Numbered List'}}" data-wysihtml5-command="insertOrderedList"><i class="ordered list icon"></i></a>
+    <a href="#" class="ui button" data-content="{{t 'Bullet List'}}" data-wysihtml5-command="insertUnorderedList"><i class="unordered list icon"></i></a>
+  </div>
+  <div class="{{if this.device.isMobile 'compact'}} ui icon buttons">
+    <a href="#" class="ui button" data-content="{{t 'Undo (Ctrl+Z)'}}" data-wysihtml5-command="undo"><i class="undo icon"></i></a>
+    <a href="#" class="ui button" data-content="{{t 'Redo (Ctrl+Y)'}}" data-wysihtml5-command="redo"><i class="repeat icon"></i></a>
+    <a href="#" class="ui button" data-content="{{t 'Line Break'}}" data-wysihtml5-command="insertLineBreak"><i class="level down icon"></i></a>
+    <a href="#" class="ui button" data-wysihtml5-command="createLink" data-content="{{t 'Insert Link'}}" ><i class="linkify icon"></i></a>
+  </div>
+    <div data-wysihtml5-dialog="createLink" class="mb-8" style={{css display='none'}}>
+      <label>
+        <input data-wysihtml5-dialog-field="href" value="https://">
+      </label>
+      <a href="#" class="ui button" data-wysihtml5-dialog-action="save">Insert</a>
+      <a href="#" class="ui button" data-wysihtml5-dialog-action="cancel">Cancel</a>
+    </div>
+</div>
+<Textarea @id={{this.textareaIdGenerated}} @value={{value}} placeholder={{this.placeholder}} @name={{name}} />

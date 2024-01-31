@@ -1,0 +1,6 @@
+<h3 class="ui header">{{t 'Speakers'}}</h3>
+<div class="speaker-list ui three column grid">
+  {{#each this.speakers as |speaker|}}
+    <Public::SpeakerItem @speaker={{speaker}} />
+  {{/each}}
+</div>

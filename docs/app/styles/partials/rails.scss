@@ -1,0 +1,62 @@
+@media screen and (min-width: 1200px) and (max-width: 1600px) {
+  .ui .rail.left {
+    left: auto;
+    margin: 0 2rem 0 0;
+    padding: 0 2rem 0 0;
+    right: 80%;
+  }
+
+  .rail.left + div {
+    margin-left: 20%;
+    width: 65%;
+  }
+
+  .rail.left + div + .rail.right {
+    left: auto;
+    left: 85%; // sass-lint:disable-line no-duplicate-properties
+    margin: 0 2rem 0 0;
+    padding: 0 2rem 0 0;
+  }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .ui .rail.left {
+    left: auto;
+    margin: 0 2rem 0 0;
+    padding: 0 2rem 0 0;
+    right: 80%;
+    width: 20%;
+  }
+
+  .rail.left + div {
+    margin-left: 25%;
+    width: 55%;
+  }
+
+  .rail.left + div + .rail.right {
+    left: auto;
+    left: 80%; // sass-lint:disable-line no-duplicate-properties
+    margin: 0 2rem 0 0;
+    padding: 0 2rem 0 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .ui .rail.left {
+    left: auto;
+    margin: 0 2rem 0 0;
+    padding: 0 2rem 0 0;
+    right: 70%;
+  }
+
+  .rail.left + div {
+    margin-left: 30%;
+    width: 50%;
+  }
+
+  .rail.left + div + .rail.right {
+    left: 80%;
+    margin: 0 2rem 0 0;
+    padding: 0 2rem 0 0;
+  }
+}

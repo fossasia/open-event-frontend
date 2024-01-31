@@ -1,0 +1,85 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Notify Speakers'}}
+</div>
+<div class="content y-scrollable" style="height:400px">
+  {{#if this.loading}}
+    <div class="ui active inverted dimmer">
+      <div class="ui text loader"></div>
+    </div>
+  {{/if}}
+  {{#if this.mail}}
+    <form class="ui form">
+      <div class="field">
+        <label>{{t 'From'}}</label>
+        <Input
+          type="text"
+          name="from"
+          @value={{this.mailFrom}} 
+          disabled />
+      </div>
+      <div class="field">
+        <label>{{t 'To'}}</label>
+        <Input
+          type="text"
+          name="to"
+          @value={{this.speakerEmails}} 
+          disabled />
+      </div>
+      <div class="field">
+        <label>{{t 'Reply-to'}}</label>
+        <Input
+          type="text"
+          name="reply to"
+          class="truncate"
+          @value={{this.ownerEmail}} 
+          readonly />
+      </div>
+      <div class="field">
+        <label>CC</label>
+        <Input
+          type="text"
+          name="cc"
+          @value={{this.bccString}} />
+      </div>     
+      <div class="field">
+        <label>{{t "Subject"}}</label>
+        <Input
+          type="text"
+          name="subject"
+          @value={{this.subject}} />
+      </div>
+      <div class="field">
+        <label>{{t "Message"}}</label>
+        <Textarea
+          name="message"
+          @rows="15"
+          @value={{this.message}} />
+      </div>
+    </form>
+    <p class="m-2">
+      {{t 'You can use these identifiers as placeholders for actual details sent in the email:'}}
+      <div class="ui bulleted list">
+        <div class="item"><code>{session_name}</code> - Name of the Session</div>
+        <div class="item"><code>{session_link}</code> - Link of the Session</div>
+        <div class="item"><code>{session_state}</code> - Current state of the Session</div>
+        <div class="item"><code>{event_name}</code> - Name of the Event</div>
+        <div class="item"><code>{event_link}</code> - Link of the Event</div>
+        <div class="item"><code>{app_name}</code> - Name of the App (Site)</div>
+        <div class="item"><code>{frontend_link}</code> - Link of the Frontend Site</div>
+      </div>
+    </p>
+    <br/>
+    <p>
+      {{t 'A copy of this email will be send to all organizers of this event.'}}
+    </p>
+  {{/if}}
+</div>
+<div class="actions">
+  <button type="button" class="ui green button" {{action "notifySession"}}>
+    {{t 'Notify'}}
+  </button>
+  <button type="button" class="ui button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+</div>

@@ -1,0 +1,72 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noEmitOnError": false,
+    "noEmit": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "baseUrl": ".",
+    "module": "es6",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "paths": {
+      "open-event-frontend/tests/*": [
+        "tests/*"
+      ],
+      "open-event-frontend/*": [
+        "app/*",
+        "lib/cache-updater/app/*",
+        "lib/start-title/app/*"
+      ],
+      "cache-updater": [
+        "lib/cache-updater/addon"
+      ],
+      "cache-updater/*": [
+        "lib/cache-updater/addon/*"
+      ],
+      "cache-updater/test-support": [
+        "lib/cache-updater/addon-test-support"
+      ],
+      "cache-updater/test-support/*": [
+        "lib/cache-updater/addon-test-support/*"
+      ],
+      "start-title": [
+        "lib/start-title/addon"
+      ],
+      "start-title/*": [
+        "lib/start-title/addon/*"
+      ],
+      "start-title/test-support": [
+        "lib/start-title/addon-test-support"
+      ],
+      "start-title/test-support/*": [
+        "lib/start-title/addon-test-support/*"
+      ],
+      "fetch": [
+        "node_modules/ember-fetch"
+      ],
+      "*": [
+        "types/*"
+      ]
+    }
+  },
+  "include": [
+    "app/**/*",
+    "tests/**/*",
+    "types/**/*",
+    "lib/cache-updater/**/*",
+    "lib/start-title/**/*"
+  ]
+}

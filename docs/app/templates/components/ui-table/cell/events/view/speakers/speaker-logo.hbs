@@ -1,0 +1,5 @@
+<div class="ui">
+  <LinkTo @route="events.view.speaker.view" @model={{@extraRecords.id}}>
+    <img alt="Speaker" class="ui middle aligned tiny circular image" src="{{if this.record this.record (if this.extraRecords.photoUrl this.extraRecords.photoUrl '/images/placeholders/avatar.png')}}">
+  </LinkTo>
+</div>

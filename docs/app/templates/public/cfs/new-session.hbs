@@ -1,0 +1,21 @@
+<div class="ui container">
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'Session Details'}}
+    </h2>
+    <div class="ui container">
+      {{#each this.model.speaker as |speaker|}}
+        {{#if speaker.id}}
+          <Forms::SessionSpeakerForm
+            @fields={{this.model.forms}}
+            @data={{this.model}}
+            @isLoading={{this.isLoading}}
+            @save={{action "save" speaker}}
+            @isSession={{true}}
+            @isCfsPage={{true}}
+            @includeSession={{true}} />
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>

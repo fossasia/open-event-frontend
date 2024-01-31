@@ -1,0 +1,47 @@
+<div class="content">
+  <div class="header">{{t 'Tickets'}}</div>
+</div>
+<div class="content">
+  <h4 class="ui header">{{t 'Summary'}}</h4>
+  <table class="ui very basic compact unstackable table">
+    <tbody>
+      <tr>
+        <td>{{t 'Total tickets sold'}}</td>
+        <td>{{tickets}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'No. of orders'}}</td>
+        <td>{{this.orders}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'Sales (amount)'}}</td>
+        <td><CurrencyAmount @currency={{this.data.event.paymentCurrency}} @amount={{this.sales}}/></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 class="ui header">{{t 'Details'}}</h4>
+  <table class="ui very basic compact unstackable table">
+    <thead>
+      <tr>
+        <th>{{t 'Type'}}</th>
+        <th>{{t 'Sold'}}</th>
+        <th>{{t 'Total'}}</th>
+        <th>{{t 'Available'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.data.tickets as |ticket|}}
+        <tr>
+          <td>{{ticket.name}}</td>
+          <td>{{add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed}}</td>
+          <td>{{ticket.quantity}}</td>
+          <td>{{sub ticket.quantity (add ticket.orderStatistics.tickets.completed ticket.orderStatistics.tickets.placed)}}</td>
+        </tr>
+      {{else}}
+        <div class="ui basic segment">
+          {{t 'There are no tickets for this event'}}
+        </div>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

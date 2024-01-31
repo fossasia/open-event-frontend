@@ -1,0 +1,11 @@
+{{#if this.record.sessions}}
+  <div class="ui list">
+    <div class="item">{{t 'Submitted'}}: {{this.record.sessions}}</div>
+    <div class="item">{{t 'Accepted'}}: {{this.record.sessionsAccepted}}</div>
+    <div class="item">{{t 'Confirmed'}}: {{this.record.sessionsConfirmed}}</div>
+    <div class="item">{{t 'Pending'}}: {{this.record.sessionsPending}}</div>
+    <div class="item">{{t 'Rejected'}}: {{this.record.sessionsRejected}}</div>
+  </div>
+{{else}}
+  {{t 'No Session Information Added Yet'}}
+{{/if}}

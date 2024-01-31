@@ -1,0 +1,34 @@
+files:
+  include: 'app/styles/**/*.scss'
+
+options:
+  formatter: stylish
+  merge-default-rules: true
+
+rules:
+  no-important: 0
+  force-element-nesting: 0
+  hex-length: 2
+  no-color-literals: 0
+  leading-zero: 2
+  space-after-comma: 2
+  hex-notation: 2
+  force-pseudo-nesting: 2
+  quotes: 2
+  empty-line-between-blocks: 2
+  space-before-brace: 2
+  no-ids: 2
+  no-duplicate-properties: 2
+  shorthand-values: 2
+  variable-name-format: 2
+  no-vendor-prefixes: 2
+  nesting-depth:
+    - 2
+    -
+      max-depth: 4
+  no-qualifying-elements:
+    - 1
+    -
+      allow-element-with-attribute: true
+      allow-element-with-class: true
+  property-sort-order: 0

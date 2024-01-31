@@ -1,0 +1,26 @@
+<div class="ui unstackable grid">
+  <div class="row">
+    <div class="column">
+      <h2 class="ui header">
+        {{t 'Invoices'}}
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <Tables::Default
+        @columns={{this.columns}}
+        @rows={{this.model.data}}
+        @currentPage={{this.page}}
+        @pageSize={{this.per_page}}
+        @searchQuery={{this.search}}
+        @sortBy={{this.sort_by}}
+        @sortDir={{this.sort_dir}}
+        @metaData={{this.model.meta}}
+        @filterOptions={{this.filterOptions}}
+        @widthConstraint="eq-container"
+        @resizeMode="fluid"
+        @fillMode="equal-column" />    
+    </div>
+  </div>
+</div>

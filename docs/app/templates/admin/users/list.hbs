@@ -1,0 +1,18 @@
+<div class="sixteen wide column">
+  <Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.model.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.model.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />
+</div>
+<Modals::EditUserModal
+  @isOpen={{this.isEditUserModalOpen}}
+  @data={{this.data}} />

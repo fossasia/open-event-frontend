@@ -1,0 +1,18 @@
+<div class="ui container">
+  <h1 class="ui header">{{t 'My Sessions'}}</h1>
+  <div class="ui grid">
+    <div class="row">
+      <div class="twelve wide column">
+        <TabbedNavigation>
+          <LinkTo @route="admin.users.view.sessions.list" @model="upcoming" class="item">
+            {{t 'Upcoming Sessions'}}
+          </LinkTo>
+          <LinkTo @route="admin.users.view.sessions.list" @model="past" class="item">
+            {{t 'Past Sessions'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
+    </div>
+    {{outlet}}
+  </div>
+</div>

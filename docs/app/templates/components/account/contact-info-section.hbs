@@ -1,0 +1,11 @@
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
+  <div class="field">
+    <label class="required">{{t 'Email'}}</label>
+    <Input @type="email" @name="email" @value={{this.data.email}} />
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Phone'}}</label>
+    <Input @type="text" @name="phone" @value={{this.data.contact}} />
+  </div>
+  <button class="ui teal button" type="submit">{{t 'Save'}}</button>
+</form>

@@ -1,0 +1,105 @@
+<div class="public-event ui relaxed grid">
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}" style = "height:200px;">
+    <Widgets::SafeImage class="background" @src="/images/app-landing-header.jpg" />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          <div>
+            <h1 class="event name">{{t 'Organizer App'}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui thirteen column center aligned container mt-8 mb-8">
+  <h1 class="weight-500 ui huge center aligned header">
+    {{t 'Open Event Organizer App'}}
+  </h1>
+  <div class="ui grid">
+    {{#if this.device.isMobile}}
+      <div class="eight wide column">
+        <a class="store" href='https://play.google.com/store/apps/details?id=com.eventyay.organizer'><img alt='Get it on Google Play' src='/images/google-play.png' height="50"></a>
+      </div>
+      <div class="eight wide column">
+        <a class="store" href='https://f-droid.org/en/packages/com.eventyay.organizer/'><img alt='Get it on F-Droid' src='/images/fdroid.png' height="50"></a>
+      </div>
+    {{else}}
+      <div class="five wide column">
+      </div>
+      <div class="three wide column">
+        <a class="store" href='https://play.google.com/store/apps/details?id=com.eventyay.organizer'><img alt='Get it on Google Play' src='/images/google-play.png' height="60"></a>
+      </div>
+      <div class="three wide column">
+        <a class="store" href='https://f-droid.org/en/packages/com.eventyay.organizer/'><img alt='Get it on F-Droid' src='/images/fdroid.png' height="60"></a>
+      </div>
+      <div class="five wide column">
+      </div>
+    {{/if}}
+  </div>
+  {{#if this.device.isMobile}}
+    <img class="ui fluid image" src="images/organizer-android.jpg" alt="{{t 'Organizer Android App'}}">
+  {{else}}
+    <div class="ui grid">
+      <div class="ten wide column">   
+        <h1 class="weight-900">
+          {{t 'Make your event success with Orga App'}}
+        </h1>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600">
+            {{t 'Hassle-free checkin'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Scan the QR Code and Check-in/Check-out Attendees and Ticket Holder on the go.'}} 
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600"> {{t 'Easy Communication'}}</h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Sync your app data with Organizer Server on the go.'}}
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600"> 
+            {{t 'Manage Efficiently'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Get Order, Event, Sales Statistics with Orga App on the go.'}} 
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600">
+            {{t 'Ticket and Event'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Manage and Create new Tickets or Events with the power of your touch on your phone'}} 
+          </h3>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="content">
+          <h2 class="weight-600">
+            {{t 'Communication on the Go'}}
+          </h2>
+          <h3 class="weight-400 ui muted text">
+            {{t 'Get Push Notification about new attendees or Ticket Holders on your phone.'}} 
+          </h3>
+        </div>
+      </div>
+      <div class="six wide column">
+        <img class="ui medium image" src="/images/organizer-android.jpg" alt="Android Pic">
+      </div>
+    </div>
+  {{/if}}
+</div>
+<div class="ui center aligned muted text mb-8">
+  {{t 'Please Check-Out our Attendee App'}}
+  <a class="item" href="{{href-to 'attendee-app'}}" rel="noopener noreferrer">{{t 'Here'}}</a>
+  <div class="ui hidden divider"></div>
+</div>
+<div class="ui center aligned large secondary segment mt-8" style="margin-bottom:-10px;border:none">
+  {{t 'Still have questions?'}} <a href="https://support.eventyay.com/">{{t 'Visit our FAQ to find answers.'}}</a>
+</div>

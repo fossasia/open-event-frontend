@@ -1,0 +1,24 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Update System Roles'}}
+</div>
+<div class="content">
+  <div class="ui form">
+    <h4 class="ui header">{{t 'Provide admin access?'}}</h4>
+    <div class="grouped inline fields">
+      <div class="field">
+        <UiRadio @name="isAdmin" @label={{t "No"}} @value={{false}} @onChange={{action "createAdmin" this.data false}} @current={{this.data.isAdmin}} />
+        <UiRadio @name="isAdmin" @label={{t "Yes"}} @value={{true}} @onChange={{action "createAdmin" this.data true}} @current={{this.data.isAdmin}} />
+      </div>
+    </div>
+    <h4 class="ui header">{{t 'Custom system roles'}}</h4>
+    <div class="field">
+      <UiCheckbox @label={{t "Sales Admin"}} @class="toggle" @checked={{this.data.isSalesAdmin}} @onChange={{action "toggleSalesAdmin" this.data}} />
+      <UiCheckbox @label={{t "Marketer"}} @class="toggle" @checked={{this.data.isMarketer}} @onChange={{action "toggleMarketer" this.data}} />
+    </div>
+  </div>
+  <button class="ui teal right floated submit button update-changes" {{action 'saveRole' this.data.id}}>
+    {{t 'Save'}}
+  </button>
+  <div class="ui hidden divider"></div>
+</div>

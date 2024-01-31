@@ -1,0 +1,19 @@
+<LinkTo @route="events.view.session.view" @model={{this.extraRecords.id}} @class="light-gray-link">{{this.record}}</LinkTo>
+<br><br>
+<div class="ui horizontal compact basic buttons">
+  <LinkTo @route="events.view.session.view" @model={{@extraRecords.id}} @class="ui icon button">
+    <UiPopup @content={{t "View Session"}} @click={{action this.props.actions.viewSession this.extraRecords.id}} @position="left center">
+      <i class="unhide icon"></i>		
+    </UiPopup>
+  </LinkTo>
+  {{#if (not this.extraRecords.isLocked)}}
+  <LinkTo @route="events.view.session.edit" @model={{@extraRecords.id}} @class="ui icon button">
+    <UiPopup @content={{t "Edit Session"}} @click={{action this.props.actions.editSession this.extraRecords.id}} @position="left center">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
+  {{/if}}
+  <UiPopup @content={{t "Delete Session"}} @click={{action (confirm (t "Are you sure you would like to delete this Session?") (action this.props.actions.deleteSession this.extraRecords.id))}} @class="ui icon button" @position="left center">
+    <i class="trash icon"></i>
+  </UiPopup>
+</div>

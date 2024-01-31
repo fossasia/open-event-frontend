@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="sixteen wide column">
+    <TabbedNavigation @isNonPointing={{true}}>
+      <LinkTo @route="my-tickets.past" @model="completed" class="item">
+        {{t 'Completed Orders'}}
+      </LinkTo>
+    </TabbedNavigation>
+    <br>
+    {{#each this.model as |order|}}
+      <OrderCard @order={{order}} @restrictTicketCancellation={{true}}>
+      </OrderCard>
+      <div class="ui hidden divider"></div>
+    {{else}}
+      <div class="ui disabled header">{{t 'No tickets found'}}</div>
+    {{/each}}
+    <InfinityLoader @infinityModel={{this.model}}>
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
+  </div>
+</div>

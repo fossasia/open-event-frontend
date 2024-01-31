@@ -1,0 +1,17 @@
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+  <div class="field">
+    <label>{{t 'Title'}}</label>
+    <Input @type="text" @id="title" @value={{this.data.title}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Short Abstract'}}</label>
+    <Widgets::Forms::RichTextEditor @value={{this.data.shortAbstract}} @name="shortAbstract" />
+  </div>
+  <div class="field">
+    <label>{{t 'Comments'}}</label>
+    <Widgets::Forms::RichTextEditor @value={{this.data.comments}} @name="comments" />
+  </div>
+  <button type="submit" class="ui teal submit button update-changes">
+    {{t 'Save Session'}}
+  </button>
+</form>

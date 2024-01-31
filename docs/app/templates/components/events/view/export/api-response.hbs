@@ -1,0 +1,46 @@
+<h3 class="ui header">
+  <div class="content">
+    {{t 'Access event information via REST API'}}
+  </div>
+</h3>
+<div class="ui hidden divider">
+</div>
+<div class="ui form">
+  <div class="field">
+    <UiCheckbox @class="toggle disabled" @label={{t "Basic Event Details"}} @checked={{true}} @onChange={{action "checkboxChange" "basicEventDetails"}} />
+  </div>
+  <div class="field">
+    <UiCheckbox @class="toggle" @label={{t "Sessions"}} @checked={{this.toggleSwitches.sessions}} @onChange={{action "checkboxChange" "sessions"}} />
+  </div>
+  <div class="field">
+    <UiCheckbox @class="toggle" @label={{t "Microlocations"}} @checked={{this.toggleSwitches.microlocations}} @onChange={{action "checkboxChange" "microlocations"}} />
+  </div>
+  <div class="field">
+    <UiCheckbox @class="toggle" @label={{t "Tracks"}} @checked={{this.toggleSwitches.tracks}} @onChange={{action "checkboxChange" "tracks"}} />
+  </div>
+  <div class="field">
+    <UiCheckbox @class="toggle" @label={{t "Speakers"}} @checked={{this.toggleSwitches.speakers}} @onChange={{action "checkboxChange" "speakers"}} />
+  </div>
+  <div class="field">
+    <UiCheckbox @class="toggle" @label={{t "Supporters"}} @checked={{this.toggleSwitches.sponsors}} @onChange={{action "checkboxChange" "sponsors"}} />
+  </div>
+  <div class="field">
+    <UiCheckbox @class="toggle" @label={{t "Tickets"}} @checked={{this.toggleSwitches.tickets}} @onChange={{action "checkboxChange" "tickets"}} />
+  </div>
+</div>
+<div class="ui secondary header">
+  {{t 'You can make a GET request to the following endpoint to access the selected information'}}
+</div>
+<UiPopup @on="click" @content={{t "Link copied to clipboard"}} @position="bottom right">
+  <div class="ui secondary segment url text aligned center">
+    <CopyButton @clipboardText={{this.displayUrl}} @tagName={{null}} class="x-scrollable ui basic segments">
+      <pre>{{this.displayUrl}}</pre>
+    </CopyButton>
+  </div>
+</UiPopup>
+<div class="ui secondary header">
+  {{t 'Response'}}
+</div>
+<div class="ui {{if this.isLoading 'loading'}} secondary segment response x-scrollable y-scrollable">
+  <pre class="api-response">{{this.json}}</pre>
+</div>

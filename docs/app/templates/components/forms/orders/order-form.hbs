@@ -1,0 +1,144 @@
+<form class="ui form" {{action 'submit' this.data on='submit' }}>
+  <div class="ui segments">
+    <div class="ui aligned secondary segment">
+      <h3 class="weight-400">{{t 'Registration Information'}}</h3>
+    </div>
+    <div class="ui yellow inverted segment">
+      <div class="ui inverted small horizontal statistic">
+        <div class="value">
+          {{this.getRemainingTime}}
+        </div>
+        <div class="label">
+          {{t 'Please complete registration within {{time}} minutes.' time=this.settings.orderExpiryTime}}
+          <br>
+          {{t 'After {{time}} minutes, the reservation we\'re holding will be released to others.' time=this.settings.orderExpiryTime}}
+        </div>
+      </div>
+    </div>
+    <div class="ui padded segment">
+      <h4 class="ui horizontal divider header">
+        <i class="dollar icon"></i>
+        {{#if this.event.isOneclickSignupEnabled}}
+          {{t 'Registrant'}}
+        {{else}}
+          {{t 'Ticket Buyer'}}
+        {{/if}}
+      </h4>
+      <div class="field {{if this.buyerHasFirstName 'disabled'}}">
+        <label for="firstname">{{t 'First Name'}}</label>
+        <Input
+          @type="text"
+          @name="first_name"
+          @value={{this.buyerFirstName}} />
+      </div>
+      <div class="field {{if this.buyerHasLastName 'disabled'}}">
+        <label for="lastname">{{t 'Last Name'}}</label>
+        <Input
+          @type="text"
+          @name="last_name"
+          @value={{this.buyerLastName}} />
+      </div>
+      <div class="field disabled">
+        <label class="required" for="email">{{t 'Email'}}</label>
+        <Input
+          @type="text"
+          @name="email"
+          readonly
+          disabled
+          @value={{this.buyer.email}} />
+      </div>
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{#if this.event.isOneclickSignupEnabled}}
+          {{t 'Registration Holder\'s Information'}}
+        {{else}}
+          {{t 'Ticket Holder\'s Information'}}
+        {{/if}}
+      </h4>
+      {{#each this.holders as |holder indexHolder|}}
+        <div class="inline field">
+          <i class="user icon"></i>
+          <label>
+            {{#if this.event.isOneclickSignupEnabled}}
+              {{t 'Registration Holder'}}
+            {{else}}
+              {{t 'Ticket Holder'}}
+            {{/if}}
+            {{inc indexHolder}}{{t ' -for- '}}{{holder.ticket.name}}
+          </label>
+        </div>
+        <div class="field">
+          <UiCheckbox
+            @label={{t "Ticket holder is the same person as ticket buyer"}}
+            @checked={{holder.sameAsBuyer}}
+            @onChange={{action "triggerSameAsBuyerOption" holder}} />
+        </div>
+        {{#each this.allFields.attendee as |field index|}}
+          {{#if field.isIncluded }}
+            {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
+              <div class="field">
+                <Forms::Orders::EditableFields 
+                  @field={{field}}
+                  @fields={{this.allFields.attendee}}
+                  @data={{this.data}}
+                  @holder={{holder}}
+                  @index={{index}}
+                  @countries={{this.countries}} 
+                  @nativeLanguage={{nativeLanguage}}
+                  @fluentLanguage={{fluentLanguage}}
+                  @homeWikis={{this.homeWikis}}
+                  @ageGroups={{this.ageGroups}}
+                  @genders={{this.genders}}
+                  @wikiScholarship={{this.wikiScholarship}}
+                  @booleanComplex={{this.booleanComplex}}
+                  @updateGendersSelection={{action 'updateGendersSelection'}}
+                  @updateLanguageFormsSelection={{action "updateLanguageFormsSelection"}}
+                  @editFields={{true}}
+                />
+              </div>
+            {{/if}}
+          {{/if}}
+        {{/each}}
+      {{/each}}
+
+      {{#if this.isPaidOrder}}
+        <h4 class="ui horizontal divider header">
+          <i class="address card icon"></i>
+          {{t 'Billing Information'}}
+        </h4>
+        {{#unless this.event.isBillingInfoMandatory}}
+          <div class="ui center aligned field">
+            <UiCheckbox
+              @label={{t "Enable Billing Information"}}
+              @checked={{this.data.isBillingEnabled}}
+              @onChange={{action (mut this.data.isBillingEnabled)}} />
+          </div>
+        {{/unless}}
+        {{#if this.isBillingInfoNeeded}}
+          <Widgets::Forms::BillingInfo
+            @data={{this.data}}
+            @event={{this.event}} />
+        {{/if}}
+      {{/if}}
+      <h4 class="ui horizontal divider header">
+        <i class="tasks icon"></i>
+        {{t 'Acknowledgement'}}
+      </h4>
+      <p>
+        <GetText
+          @message = {{t 'By clicking "{{orderState}}", I acknowledge that I have read and that I agree with the {{terms}} and {{privacy}} on this website.' 
+          orderState=(if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now"))}} as |text placeholder|>
+          {{~#if (eq placeholder 'terms')}}<a href="/terms">{{t 'terms of services'}}</a>{{~/if~}}
+          {{~#if (eq placeholder 'privacy')}}<a href="/privacy">{{t 'privacy policy'}}</a>{{~/if~}}
+        </GetText>
+      </p>
+      <div class="center aligned">
+        {{#if this.data.event.isOneclickSignupEnabled}}
+          <button type="submit" class="ui blue submit button">{{t 'One Click Signup'}}</button>
+        {{else}}
+          <button type="submit" class="ui teal submit button">{{if this.isPaidOrder (t "Proceed to Checkout") (t "Order Now") }}</button>
+        {{/if}}
+      </div>
+     </div>
+  </div>
+</form>

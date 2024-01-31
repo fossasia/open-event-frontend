@@ -1,0 +1,44 @@
+<i class="mail outline icon {{unless this.unreadNotifications.length 'ui no right margin'}}"></i>
+{{#if this.unreadNotifications.length}}
+  <div class="floating ui teal circular mini label {{if this.device.isMobile 'tiny text'}}">{{this.unreadNotifications.length}}</div>
+{{/if}}
+<div class="ui wide notification popup bottom left transition">
+  {{#if this.unreadNotifications}}
+    <div class="ui basic inverted horizontal segments">
+      <div class="ui basic left aligned segment weight-600">
+        <LinkTo @route="notifications">
+          {{t 'Notifications'}}
+        </LinkTo>
+      </div>
+      <div class="ui basic right aligned segment weight-400">
+        <a href="#" {{action 'markAllRead'}}>{{t 'Mark all as Read'}}</a>
+      </div>
+    </div>
+    <div class="ui fluid link celled selection list">
+      {{#each this.unreadNotifications as |notification|}}
+        <div class="item {{unless notification.isRead 'active'}}">
+          <div class="header">
+            <LinkTo @route="notifications" @invokeAction={{action "markRead" notification}}>
+              {{notification.title}}
+            </LinkTo>
+          </div>
+          <div class="content weight-400">
+            {{sanitize notification.message}}
+          </div>
+          <div class="left floated content">
+            {{moment-from-now notification.receivedAt}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="ui segment empty-message">
+      <a href="{{href-to 'notifications'}}">{{t 'Go to notifications panel'}}</a>
+    </div>
+    <div class="ui fluid list {{if this.unreadNotifications 'link celled selection' ''}}">
+      <div class="item active">
+        {{t 'No new notifications'}}
+      </div>
+    </div>
+  {{/if}}
+</div>

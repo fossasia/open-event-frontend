@@ -1,0 +1,17 @@
+<h3 class="ui header">
+  <div class="content">
+    {{t 'Download Event as {{file}}' file=this.downloadType}}
+  </div>
+  <div class="sub header">
+    {{t 'Once the event is live and the schedule is published, {{file}} version of the schedule will be available at:' file=this.downloadType}}
+  </div>
+</h3>
+<div class="ui secondary segment url x-scrollable">
+  <pre>{{this.displayUrl}}</pre>
+</div>
+<a class="ui link" href="#" onclick={{action 'startExportTask'}}> {{t 'Alternatively, you can download the {{file}} here' file=this.downloadType}}</a>
+<div class="ui basic segment no left padding">
+  <a href="{{this.eventDownloadUrl}}" class="ui blue button {{if this.isDownloadDisabled 'disabled' ''}} {{if this.isLoading 'loading'}}">
+    {{t 'Download'}} {{this.downloadType}}
+  </a>
+</div>

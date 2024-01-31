@@ -1,0 +1,19 @@
+{{#if this.record}}
+  {{#if this.extraRecords.endsAt}}
+    <div>
+      {{general-date this.record 'date-time-tz-long' tz=this.extraRecords.timezone}}
+    </div>
+    ({{t 'to'}})
+    <div>
+      {{general-date this.extraRecords.endsAt 'date-time-tz-long' tz=this.extraRecords.timezone}}
+    </div>
+  {{else}}
+    <span>
+      {{t 'No dates available.'}}
+    </span>
+  {{/if}}
+{{else}}
+  <span>
+    {{t 'No dates available.'}}
+  </span>
+{{/if}}

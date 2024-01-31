@@ -1,0 +1,18 @@
+<div class="ui container">
+  <h1 class="ui header">{{t 'My Tickets'}}</h1>
+  <div class="ui grid">
+    <div class="row">
+      <div class="sixteen wide column">
+        <TabbedNavigation>
+          <LinkTo @route="admin.users.view.tickets.list" @model="upcoming" class="item">
+            {{t 'Upcoming Events'}}
+          </LinkTo>
+          <LinkTo @route="admin.users.view.tickets.list" @model="past" class="item">
+            {{t 'Past Events'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
+    </div>
+    {{outlet}}
+  </div>
+</div>

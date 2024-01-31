@@ -1,0 +1,33 @@
+{{#if this.render}}
+  <FullCalendar
+    {{did-update this.timezoneUpdated @timezone}}
+    @events={{this.events}}
+    @aspectRatio={{if this.device.isMobile 0.7 1.8}}
+    @editable={{@editable}}
+    @droppable={{@droppable}}
+    @resources={{this.resources}}
+    @groupByResource={{true}}
+    @allDaySlot={{false}}
+    @resourceLabelText="Rooms"
+    @header={{this.header}}
+    @timezone={{this.timezone}}
+    @views={{this.views}}
+    @viewName="timelineThreeDays"
+    @defaultView="timelineDay"
+    @validRange={{this.validRange}}
+    @now={{moment-format (now) "YYYY-MM-DD"}}
+    @scrollTime="0:00:00"
+    @slotDuration="00:05:00"
+    @slotLabelFormat="HH:mm"
+    @defaultTimedEventDuration={{@defaultTimedEventDuration}}
+    @drop={{@drop}}
+    @eventResize={{@eventResize}}
+    @eventDrop={{@eventDrop}}
+    @eventRender={{@eventRender}}
+    @height={{@height}}
+    @viewRender={{action "renderCallback"}} />
+{{else}}
+  <div class="ui active inverted dimmer">
+    <div class="ui text loader"></div>
+  </div>
+{{/if}}

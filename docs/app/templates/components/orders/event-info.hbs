@@ -1,0 +1,72 @@
+<div class="ui segments">
+  {{#if this.showBanner}}
+    <div class="ui orange inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          {{t 'Event Information'}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  {{#if @redirectStartPgEvent}}
+   <div class="ui secondary segment">
+      <h3 class="weight-400" role="button" {{action @redirectStartPgEvent this.data.event.identifier}}>
+        {{t 'When & Where'}}
+      </h3>
+  </div>
+  <div class="ui padded segment" role="button" {{action @redirectStartPgEvent this.data.event.identifier}}>
+    {{#if this.data.event.online}}
+      {{#if this.data.event.locationName}}
+        <strong>{{t 'Event taking place online and at'}} {{this.data.event.locationName}}</strong>
+      {{else}}
+        <strong>{{t 'Online Event'}}</strong>
+      {{/if}}
+    {{else if this.data.event.locationName}}
+      <strong>{{t 'At'}} {{this.data.event.locationName}}</strong>
+    {{else}}
+      <strong>{{t 'Location or online event details to be announced'}}</strong>
+    {{/if}}
+    <br>
+    <strong>{{t 'From'}}:</strong> {{general-date this.data.event.startsAt 'date-time-long'}} {{general-date this.data.event.startsAt 'tz'}}
+    <br>
+    <strong>{{t 'To'}}:</strong> {{general-date this.data.event.endsAt 'date-time-long'}} {{general-date this.data.event.startsAt 'tz'}}
+    {{#if this.data.event.ownerName}}
+      <br>
+      <strong>{{t 'Organized By'}}:</strong> {{this.data.event.ownerName}}
+    {{/if}}
+  </div>
+  {{else}}
+    <div class="ui secondary segment">
+        <h3 class="weight-400">
+          {{t 'When & Where'}}
+        </h3>
+    </div>
+    <div class="ui padded segment" >
+    {{#if this.data.event.online}}
+      {{#if this.data.event.locationName}}
+        <strong>{{t 'Event taking place online and at'}} {{this.data.event.locationName}}</strong>
+      {{else}}
+        <strong>{{t 'Online Event'}}</strong>
+      {{/if}}
+    {{else if this.data.event.locationName}}
+      <strong>{{t 'At'}} {{this.data.event.locationName}}</strong>
+    {{else}}
+      <strong>{{t 'Location or online event details to be announced'}}</strong>
+    {{/if}}
+    <br>
+    <strong>{{t 'From'}}:</strong> {{general-date this.data.event.startsAt 'date-time-long'}} {{general-date this.data.event.startsAt 'tz'}}
+    <br>
+    <strong>{{t 'To'}}:</strong> {{general-date this.data.event.endsAt 'date-time-long'}} {{general-date this.data.event.startsAt 'tz'}}
+    {{#if this.data.event.ownerName}}
+      <br>
+      <strong>{{t 'Organized By'}}:</strong> {{this.data.event.ownerName}}
+    {{/if}}
+    </div>
+  {{/if}}
+  {{#if (or (eq this.data.status 'expired') (eq this.data.status 'completed') (eq this.data.status 'placed'))}}
+    <div class="ui padded segment">
+      <i class="globe icon"></i>
+      <a href="{{this.data.event.url}}">{{t 'Go to event page'}}</a>
+    </div>
+  {{/if}}
+</div>

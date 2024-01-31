@@ -1,0 +1,85 @@
+<form class="ui form {{if this.isLoading 'loading'}}" {{action 'submit' on='submit'}} novalidate>
+  <div class="field">
+    <label>{{t 'Blog'}}</label>
+    <Widgets::Forms::LinkField
+      @inputId='support'
+      @value={{this.socials.supportUrl}}
+      @onChange={{action (mut this.socials.supportUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Twitter'}}</label>
+    <Widgets::Forms::SocialLinkField
+      @fixed={{true}}
+      @inputId='twitter'
+      @site='twitter'
+      @value={{this.socials.twitterUrl}}
+      @onChange={{action (mut this.socials.twitterUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Facebook'}}</label>
+    <Widgets::Forms::SocialLinkField
+      @fixed={{true}}
+      @inputId='facebook'
+      @site='facebook'
+      @value={{this.socials.facebookUrl}}
+      @onChange={{action (mut this.socials.facebookUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Instagram'}}</label>
+    <Widgets::Forms::SocialLinkField
+      @fixed={{true}}
+      @inputId='instagram'
+      @site='instagram'
+      @value={{this.socials.instagramUrl}}
+      @onChange={{action (mut this.socials.instagramUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Google Group'}}</label>
+    <Widgets::Forms::SocialLinkField
+      @fixed={{true}}
+      @inputId='google_group'
+      @site='groups.google'
+      @value={{this.socials.googleUrl}}
+      @onChange={{action (mut this.socials.googleUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'YouTube'}}</label>
+    <Widgets::Forms::SocialLinkField
+      @fixed={{true}}
+      @inputId='youtube'
+      @site='youtube'
+      @value={{this.socials.youtubeUrl}}
+      @onChange={{action (mut this.socials.youtubeUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'GitHub'}}</label>
+    <Widgets::Forms::SocialLinkField
+      @fixed={{true}}
+      @inputId='github'
+      @site='github'
+      @value={{this.socials.githubUrl}}
+      @onChange={{action (mut this.socials.githubUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Patreon'}}</label>
+    <Widgets::Forms::SocialLinkField
+      @fixed={{true}}
+      @inputId='patreon'
+      @site='patreon'
+      @value={{this.socials.patreonUrl}}
+      @onChange={{action (mut this.socials.patreonUrl)}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Gitter'}}</label>
+    <Input type="url" @value={{this.socials.gitterUrl}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Telegram'}}</label>
+    <Input type="url" @value={{this.socials.telegramUrl}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Weblate'}}</label>
+    <Input type="url" @value={{this.socials.weblateUrl}} />
+  </div>
+  <button class="ui teal button" type="submit">{{t 'Save'}}</button>
+</form>

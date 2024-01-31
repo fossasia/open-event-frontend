@@ -1,0 +1,100 @@
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
+
+  <div class="ui centered grid">
+    <div class="column">
+      <div class="ui {{if this.data.sponsors.length 'basic'}} segment">
+        <div class="center aligned text">
+          <div class=" field">
+            <div class="d-flex" style="justify-content: center;">
+              <UiCheckbox
+                @class="ui slider"
+                @checked={{if this.data.sponsors.length 'active'}}
+                @onChange={{action "toggleSponsors"}} />
+              <label class="weight-300" style="font-size: large">
+                {{if this.data.sponsors.length (t 'Turn off') (t 'Turn on')}}
+                {{t 'Supporters'}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{#if this.data.sponsors.length}}
+    {{#each this.sponsors as |sponsor index|}}
+      <h4>
+        {{t 'Supporter'}} #{{inc index}}
+        {{#if this.sponsors.length}}
+          <button type="button" class="ui mini red button right floated" {{action 'removeSponsor' sponsor}}>
+            <i class="trash icon"></i>
+            {{t 'Remove'}}
+          </button>
+        {{/if}}
+      </h4>
+      <br>
+      <div class="fields">
+        <div class="five wide field">
+          <label class="required">{{t 'Name'}}</label>
+          <Input
+            @type="text"
+            @value={{sponsor.name}}
+            @name="name" />
+        </div>
+        <div class="two wide field">
+          <label>{{t 'Level'}}</label>
+          <Input
+            @type="number"
+            @value={{sponsor.level}}
+            @name="level"
+            @min={{0}} />
+        </div>
+        <div class="three wide field">
+          <label>{{t 'Type'}}</label>
+          <Input
+            @type="text"
+            @value={{sponsor.type}}
+            @name="type" />
+        </div>
+        <div class="six wide field">
+          <label>{{t 'URL'}}</label>
+          <Widgets::Forms::LinkField
+            @value={{sponsor.url}}
+            @onChange={{action (mut sponsor.url)}} />
+        </div>
+      </div>
+      <div class="fields">
+        <div class="five wide computer eight wide tablet field">
+          <label>{{t 'Description'}}</label>
+          <Widgets::Forms::RichTextEditor
+            @value={{sponsor.description}}
+            @name="description" />
+        </div>
+        <div class="sponsors-step eight wide computer eight wide tablet field {{if this.device.isMobile 'less padding'}}">
+          <Widgets::Forms::ImageUpload
+            @label={{t "Logo"}}
+            @imageUrl={{sponsor.logoUrl}}
+            @icon="image"
+            @hint={{t "Select Logo"}}
+            @maxSizeInKb={{this.settings.logoSize}} />
+        </div>
+      </div>
+      {{#if (not-eq (inc index) this.data.event.sponsors.length)}}
+        <div class="ui section divider"></div>
+      {{/if}}
+    {{/each}}
+    <button type="button" class="ui primary {{if this.device.isMobile 'small'}} button" {{action 'addSponsor'}}>{{if this.sponsors.length (t 'Add another supporter') (t 'Add supporter')}}</button>
+    <div class="spacer-50"></div>
+  {{else}}
+    <div class="spacer-50"></div>
+  {{/if}}
+
+</form>
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @device={{this.device}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}} />
+  

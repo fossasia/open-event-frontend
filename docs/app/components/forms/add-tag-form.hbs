@@ -1,0 +1,46 @@
+<div class="d-flex align-center mb-4">
+  <h2 class="header m-0">
+    {{t 'Tags'}}
+  </h2>
+</div>
+<div class="ui form">
+  <div class="field">
+    {{#each this.tagList as |tag index|}}
+      <div class="{{if this.device.isMobile 'grouped'}} fields">
+        <div class="{{unless this.device.isMobile 'three wide'}} field">
+          <Input 
+            @type="text" 
+            @name="tag" 
+            @value={{tag.name}} 
+            placeholder={{t "Name" }} 
+            @readonly={{tag.isReadOnly}}
+            required
+          />
+        </div>
+        <div class="{{unless this.device.isMobile 'four wide'}} field tag-form">
+          <Widgets::Forms::ColorPicker @value={{tag.color}} @fontColor={{tag.fontColor}} required>
+            {{#unless tag.isReadOnly}}
+              <button class="ui icon red button remove-tag" type="button" {{action 'removeItem' tag}}>
+                <i class="minus icon"></i>
+              </button>
+            {{/unless}}
+            {{#if (eq index ( sub this.tagList.length 1 ) ) }}
+            <button class="ui icon primary button add-tag" type="button" {{action 'addItem' 'tag' }}>
+              <i class="plus icon"></i>
+            </button>
+            {{/if}}
+          </Widgets::Forms::ColorPicker>
+        </div>
+        <div class="{{unless this.device.isMobile 'two wide'}} field">
+          <input title="Preview" class="preview" value="{{if tag.name tag.name (t 'Preview Text')}}" readonly
+            style={{css background-color=tag.color color=(text-color tag.color)}}>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <button type="submit" class="ui teal submit button update-changes mt-4" {{action 'submit'}}>
+    {{t 'Submit'}}
+  </button>
+  <br>
+  <p>{{t 'You need to hit "Submit" to save your changes.'}}</p>
+</div>

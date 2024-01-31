@@ -1,0 +1,51 @@
+.paper-snackbar {
+  align-items: center;
+  background-color: #323232;
+  bottom: -100px;
+  color: #fff;
+  display: flex;
+  font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  justify-content: space-between;
+  left: 0;
+  line-height: 22px;
+  min-height: 14px;
+  opacity: 0;
+  padding: 18px 24px;
+  position: fixed;
+  transition-duration: .5s;
+  transition-property: opacity, bottom, left, right, width, margin, border-radius;
+  transition-timing-function: ease;
+  z-index: 99999999;
+
+  .action {
+    background: inherit;
+    border: 0;
+    color: #ffeb3b;
+    display: inline-block;
+    font-size: inherit;
+    margin: 0 0 0 24px;
+    min-width: min-content;
+    padding: 0;
+    text-transform: uppercase;
+  }
+
+}
+
+@media (min-width: 640px) {
+  .paper-snackbar {
+    border-radius: 2px;
+    display: inline-flex;
+    margin: 24px;
+    max-width: 568px;
+    min-width: 288px;
+  }
+}
+
+@media (max-width: 640px) {
+  .paper-snackbar {
+    left: 0;
+    right: 0;
+  }
+}

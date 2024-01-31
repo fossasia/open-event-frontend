@@ -1,0 +1,10 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h2 class="ui header column">{{t 'Create a new Discount Code'}}</h2>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <Forms::Events::View::CreateDiscountCode @save="saveCode" @data={{this.model.discountCode}} @event={{this.model.event}} @tickets={{this.model.tickets}} />
+    </div>
+  </div>
+</div>

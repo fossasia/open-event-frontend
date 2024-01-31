@@ -1,0 +1,96 @@
+<form class="ui form" {{action 'submit' this.data on='submit'}}>
+  <div class="field">
+    <label class="required">{{t 'Access Code'}}</label>
+    <Input
+      @type="text"
+      @name="access_code"
+      @value={{this.data.code}} />
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Number of Access Tickets'}}</label>
+    <Input
+      @type="number"
+      @name="number_of_access_tickets"
+      @value={{this.data.ticketsNumber}} 
+      @min="0" />
+  </div>
+  {{#if this.hiddenTickets}}
+    <div class="inline field">
+      <label class="required">{{t 'Select Ticket(s) applied to the access code'}}</label>
+      <div class="ui hidden divider"></div>
+      <UiCheckbox
+        @label={{t "Select all Ticket types"}}
+        @name="all_ticket_types"
+        @value="tickets"
+        @checked={{this.allTicketTypesChecked}}
+        @onChange={{action "toggleAllSelection"}} />
+    </div>
+  {{else}}
+    <div class="inline field">
+      <label>{{t 'No hidden tickets available for this event to select from'}}</label>
+    </div>
+  {{/if}}
+  <div class="ui list field">
+    {{#each this.hiddenTickets as |ticket|}}
+      <UiCheckbox
+        @label={{ticket.name}}
+        @checked={{ticket.isChecked}}
+        @onChange={{action "updateTicketsSelection" ticket}} />
+      <br>
+    {{/each}}
+  </div>
+  <div>
+      <div class="field">
+        <label>{{t 'Access valid from'}}</label>
+        <div class="wide field {{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
+            @id="start_date"
+            @value={{this.data.validFromDate}}
+            @rangePosition="start" />
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
+            @id="start_time"
+            @value={{this.data.validFromTime}}
+            @rangePosition="start" />
+          </div>
+        </div>
+      </div>
+      <div class='field'>
+        <label>{{t 'Access expires on'}}</label>
+        <div class="wide field {{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
+            @id="end_date"
+            @value={{this.data.validTillDate}}
+            @rangePosition="end" />
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
+            @id="end_time"
+            @value={{this.data.validTillTime}}
+            @rangePosition="end" />
+          </div>
+        </div>
+      </div>
+    <div class="field">
+      <label>{{t 'Access Link'}}</label>
+      <div class="ui action input fluid">
+        <input type="text" value="{{this.accessLink}}" placeholder="{{this.accessLink}}" readonly>
+        <CopyButton
+          @class="ui black right labeled icon copy button"
+          @clipboardText={{this.accessLink}}
+          @success={{action "copiedText"}}>
+          <i class="copy icon"></i>
+          {{t 'Copy'}}
+        </CopyButton>
+      </div>
+    </div>
+    {{#if this.isLinkSuccess}}
+      <div><span style="float:right;color:green;">Link copied to clipboard</span></div>
+    {{/if}}
+  </div>
+  <div class="ui hidden divider"></div>
+  <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+</form>

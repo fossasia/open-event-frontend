@@ -1,0 +1,14 @@
+<TabbedNavigation @isNonPointing={{true}} @isTabbed={{true}}>
+  <LinkTo @route="admin.reports.system-logs.activity-logs" class="item">
+    {{t 'Activity'}}
+  </LinkTo>
+  <LinkTo @route="admin.reports.system-logs.mail-logs" class="item">
+    {{t 'Mails'}}
+  </LinkTo>
+  <LinkTo @route="admin.reports.system-logs.notification-logs" class="item">
+    {{t 'Notifications'}}
+  </LinkTo>
+</TabbedNavigation>
+<div class="ui basic segment">
+  {{outlet}}
+</div>

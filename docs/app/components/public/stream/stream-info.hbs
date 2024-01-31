@@ -1,0 +1,34 @@
+{{#if @showButton}}
+  <Public::Stream::JoinVideo
+    @showVideo={{true}}
+    @event={{@event}}
+    @videoStream={{@videoStream}} />
+{{else if @videoStream}}
+  <div>
+    <a class="mt-2" href="{{href-to 'public.stream.view' @event @videoStream.slugName @videoStream}}" target="{{if @videoStream.videoChannel.isInternalStream '' '_blank'}}" rel="noopener">{{t 'Join Video Channel'}}</a>
+  </div>
+{{/if}}
+{{#if @videoStream}}
+  {{#if @videoStream.password}}
+    <div class="d-flex items-center mt-4">
+      <span>{{t 'Room Password'}}: </span>
+      <UiPopup @on="click" @content={{t "Copied to clipboard"}} @position="bottom right" style="white-space: normal;">
+        <CopyButton @clipboardText={{@videoStream.password}} class="ui basic segments">
+          <div class="ui left labeled button">
+            <div class="ui basic label">
+              {{@videoStream.password}}
+            </div>
+            <div class="ui icon button">
+              <i class="copy icon"></i>
+            </div>
+          </div>
+        </CopyButton>
+      </UiPopup>
+    </div>
+  {{/if}}
+  {{#if @videoStream.additionalInformation}}
+    <p class="pre-line">
+      {{@videoStream.additionalInformation}}
+    </p>
+  {{/if}}
+{{/if}}

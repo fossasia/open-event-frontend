@@ -1,0 +1,95 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Add tax information'}}
+</div>
+<div class="y-scrollable scrollable-modal content">
+  <form class="ui form" autocomplete="off" {{action 'updateTaxInfo' on='submit' preventDefault=true}}>
+    <CountryDropdown
+      @placeholder={{t 'Choose country'}}
+      @val={{this.tax.country}}
+      @id="tax_country" />
+    <div class="field">
+      <label>{{t 'Tax name'}}</label>
+      <Input @type="text" @id="tax_name" @value={{this.tax.name}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Tax rate'}}</label>
+      <Input @type="number" @id="tax_rate" @min={{0}} @max={{100}} @value={{this.tax.rate}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Tax ID'}}</label>
+      <Input @type="text" @id="tax_id" @value={{this.tax.taxId}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Tax Invoices'}}</label>
+      <div class="ui checkbox">
+        <Input @type="checkbox" @id="send_tax_invoices" @name="send_tax_invoices" @checked={{this.tax.shouldSendInvoice}} />
+        <label for="send_tax_invoices">
+          <strong>{{t 'Send tax invoice to attendees'}} : </strong>
+          <span class="text muted">
+            {{t 'Tax Invoices are sent to your attendees when you select this feature.
+            Enter your registered business organisation name and address to be included on the tax invoice.'}}
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <label>{{t 'Registered Organisation'}}</label>
+      <Input @type="text" @id="tax_invoice_company" @value={{this.tax.registeredCompany}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Contact Name'}}</label>
+      <Input @type="text" @id="tax_invoice_contact" @value={{this.tax.contactName}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Email'}}</label>
+      <Input @type="text" @id="tax_invoice_email" @value={{this.tax.email}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Phone'}}</label>
+      <Input @type="text" @id="tax_invoice_phone" @value={{this.tax.phone}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Business Address'}}</label>
+      <Textarea @rows={{3}} @id="tax_invoice_address" @value={{this.tax.address}} />    </div>
+    <div class="field">
+      <label>{{t 'City'}}</label>
+      <Input @type="text" @id="tax_invoice_city" @value={{this.tax.city}} />
+    </div>
+    <div class="field">
+      <label>{{t 'State'}}</label>
+      <Input @type="text" @id="tax_invoice_state" @value={{this.tax.state}} />
+    </div>
+    <div class="field">
+      <label>{{t 'ZIP Code'}}</label>
+      <Input @type="text" @id="tax_invoice_zipcode" @value={{this.tax.zip}} />
+    </div>
+    <div class="field">
+      <label>{{t 'Text for invoice footer (optional)'}}</label>
+      <Textarea @rows={{3}} @id="tax_invoice_footer" @value={{this.tax.invoiceFooter}} />    </div>
+    <div class="grouped fields">
+      <label for="privacy">{{t 'Add or Include Tax Fee'}}</label>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <Widgets::Forms::RadioButton @name="tax_add_include" @id="add_tax" @value="add" @checked={{this.isTaxIncludedInPrice}} />
+          <label for="add_tax">{{t 'Add tax as separate fee on top of the price'}}</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <Widgets::Forms::RadioButton @name="tax_add_include" @id="include_tax" @value="include" @checked={{this.isTaxIncludedInPrice}} />
+          <label for="include_tax">{{t 'Include tax in ticket price'}}</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="button" class="ui green right labeled icon button" {{action 'updateTaxInfo'}}>
+    {{t 'Update tax information'}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>

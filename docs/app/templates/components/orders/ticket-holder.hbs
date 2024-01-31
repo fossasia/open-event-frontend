@@ -1,0 +1,125 @@
+<form class="ui form">
+  <div class="ui segments">
+    <div class="ui aligned secondary segment">
+      <h3 class="weight-400">{{t 'Payment Information'}}</h3>
+    </div>
+    <div class="ui padded segment">
+      <h4 class="ui horizontal divider header">
+        <i class="dollar icon"></i>
+        {{t 'Ticket Buyer'}}
+      </h4>
+      <h4 class="weight-300">
+        {{t 'Name'}}
+      </h4>
+      <span>
+        {{this.buyer.firstName}} {{this.buyer.lastName}}
+      </span>
+      <div class="ui divider"></div>
+
+      <h4 class="weight-300">
+        {{t 'Email'}}
+      </h4>
+      <span class="word-break">
+        {{this.buyer.email}}
+      </span>
+      {{#if (not-eq this.data.paymentMode 'free')}}
+        <div class="ui divider"></div>
+        {{#if (eq this.data.paymentMode 'paypal')}}
+          <h3 class="ui header">
+            <div class="content">
+              {{t 'Payment Mode'}}
+            </div>
+          </h3>
+          <img src="/images/payment-logos/paypal.png" alt="paypal" class="ui tiny image">
+          {{#if (eq this.data.status 'completed')}}
+            <div class="ui very relaxed divided list">
+              <div class="item">
+                <div class="content">
+                  <div class="header">
+                    {{t 'Transaction ID'}}
+                  </div>
+                  <div class="description">
+                    {{this.data.transactionId}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+        {{else if (eq this.data.paymentMode 'stripe')}}
+          <h3 class="ui header">
+            <div class="content">{{t 'Payment Mode'}}</div>
+            <i class="big stripe icon"></i>
+
+          </h3>
+          {{#if (eq this.data.status 'completed')}}
+            <div class="ui very relaxed divided list">
+              <div class="item">
+                <div class="content">
+                  <div class="header">{{t 'Card Type'}}</div>
+                  <div class="description">
+                    {{#if (payment-icon this.data.brand)}}
+                      <i class="{{payment-icon this.data.brand}}"></i>
+                    {{else}}
+                      {{this.data.brand}}
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content">
+                  <div class="header">{{t 'Card Number'}}</div>
+                  <div class="description">**** {{this.data.last4}}</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content">
+                  <div class="header">{{t 'Expiry Date'}}</div>
+                  <div class="description">{{this.data.expMonth}}/{{this.data.expYear}}</div>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+        {{else}}
+          <h4 class="weight-300">
+            {{t 'Paid via'}}
+          </h4>
+          {{t-var (capitalize this.data.paymentMode)}}
+        {{/if}}
+        {{#if (eq this.data.paymentMode 'cheque')}}
+          <div class="ui divider"></div>
+          <h4 class="weight-300">
+            {{t 'Cheque Details '}}
+          </h4>
+          <span>
+            {{t-var this.data.event.chequeDetails}}
+          </span>
+        {{else if (eq this.data.paymentMode 'onsite')}}
+          <div class="ui divider"></div>
+          <h4 class="weight-300">
+            {{t 'Onsite Instructions'}}
+          </h4>
+          <span>
+            {{t-var this.data.event.onsiteDetails}}
+          </span>
+        {{else if (eq this.data.paymentMode 'cheque')}}
+          <div class="ui divider"></div>
+          <h4 class="weight-300">
+            {{t 'Bank Details'}}
+          </h4>
+          <span>
+            {{t-var this.data.event.bankDetails}}
+          </span>
+        {{else if (eq this.data.paymentMode 'invoice')}}
+          <div class="ui divider"></div>
+          <h4 class="weight-300">
+            {{t 'Invoice Details'}}
+          </h4>
+          <span>
+            {{t-var this.data.event.invoiceDetails}}
+          </span>
+				
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</form>

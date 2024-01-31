@@ -1,0 +1,13 @@
+{{#if this.record.speakers.total}}
+  <div class="ui list">
+    <div class="item">{{t 'Total'}}: {{this.record.speakers.total}}</div>
+    <div class="item">{{t 'Accepted'}}: {{this.record.speakers.accepted}}</div>
+    <div class="item">{{t 'Confirmed'}}: {{this.record.speakers.confirmed}}</div>
+    <div class="item">{{t 'Pending'}}: {{this.record.speakers.pending}}</div>
+    <div class="item">{{t 'Rejected'}}: {{this.record.speakers.rejected}}</div>
+    <div class="item">{{t 'Withdrawn'}}: {{this.record.speakers.withdrawn}}</div>
+    <div class="item">{{t 'Canceled'}}: {{this.record.speakers.canceled}}</div>
+  </div>
+{{else}}
+  {{t 'No Speaker Added Yet'}}
+{{/if}}

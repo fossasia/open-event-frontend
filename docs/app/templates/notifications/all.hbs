@@ -1,0 +1,63 @@
+<h1 class="ui header">{{t 'Notifications'}}</h1>
+<div class="ui divider"></div>
+<div class="row">
+  <LinkTo @route="notifications.all" @model="unread">
+    <button class="ui button">{{t 'Unread'}}</button>
+  </LinkTo>
+  <LinkTo @route="notifications.all" @model="all">
+    <button class="ui button">{{t 'All'}}</button>
+  </LinkTo>
+  {{#if this.showMarkAllRead}}
+    <button class="ui button right floated" {{action 'markAllAsRead' this.model.notifications}}>{{t 'Mark all as read'}}</button>
+  {{/if}}
+</div>
+{{#each this.model.notifications as |notification|}}
+  <div class="ui segment {{unless notification.isRead 'blue'}}">
+    <div class="ui grid">
+      <div class="row">
+        <div class="eight wide column">
+          <h4 class="ui header">{{notification.title}}</h4>
+          <p>{{sanitize notification.message}}</p>
+        </div>
+        <div class="eight wide column right aligned">
+          {{#if notification.isRead}}
+            <i class="checkmark box icon"></i>
+          {{else}}
+            <button class="tiny ui button" {{action 'markAsRead' notification}}>
+              {{t 'Mark as read'}}
+            </button>
+          {{/if}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="ten wide column">
+          {{#each notification.notificationActions as |action|}}
+            {{#if action.buttonRoute}}
+              <LinkTo @route={{action.buttonRoute}} @model={{action.subjectId}} @tagName="button" class="ui blue button">
+                {{action.buttonTitle}}
+              </LinkTo>
+            {{else}}
+              <a href={{action.link}} class="ui blue button">
+                {{action.buttonTitle}}
+              </a>
+            {{/if}}
+          {{/each}}
+        </div>
+        <div class="six wide column right aligned">
+          <p>{{moment-from-now notification.receivedAt}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  {{#if this.model.unread}}
+    <div class="ui disabled header">{{t 'No Unread Notifications'}}</div>
+  {{else}}
+    <div class="ui disabled header">{{t 'No Notifications'}}</div>
+  {{/if}}
+{{/each}}
+<InfinityLoader @infinityModel={{this.model.notifications}}>
+  <div class="ui loading very padded basic segment">
+  </div>
+  {{this.infintyModel.reachedInfinity}}
+</InfinityLoader>

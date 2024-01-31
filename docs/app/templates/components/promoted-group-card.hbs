@@ -1,0 +1,31 @@
+<div class="{{if this.isWide 'event wide ui grid row'}}" style="height: 400px;">
+  <div class="ui card {{this.groupClass}} {{if this.isWide 'h-auto' 'h-full'}}">
+    <a class="image" href={{href-to 'group-public' @group.id}}>
+      <Widgets::SafeImage @src={{if @group.thumbnailImageUrl  @group.thumbnailImageUrl (if @group.bannerUrl @group.bannerUrl "/images/group.png")}} />
+    </a>
+    <span class="main content">
+      <SmartOverflow @class="header">
+        {{@group.name}}
+      </SmartOverflow>
+      <div class="meta mb-2">
+        <span class="date">
+          {{sanitize this.about}}
+        </span>
+      </div>
+    </span>
+    <button class="blue {{if (not this.authManager.currentUser.email) 'blur-blue-btn'}} {{if this.device.isMobile 'mt-2' 'mt-4'}} ui fluid button" {{action 'follow'}}>
+        <i class="large icons basic-details">
+        <i class="users icon"></i>
+        <i class="inverted corner add icon"></i>
+        </i>
+        {{#if this.isFollowed}}
+            {{t 'Following'}}
+        {{else}}
+            {{t 'Follow Group'}}         
+        {{/if}}
+        <div class="ui blue basic left pointing label">
+            {{@group.followerCount}}
+        </div>
+    </button>
+  </div>
+</div>

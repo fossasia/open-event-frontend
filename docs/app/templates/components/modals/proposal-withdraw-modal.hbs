@@ -1,0 +1,21 @@
+<div class="header">
+  {{t 'Are you sure you would like to withdraw this proposal?'}}
+  <div class="muted small text">
+    {{t 'This action is final and cannot be reverted.'}}
+  </div>
+</div>
+<div class="content">
+  <div class="field">
+    <div class="label">
+      {{t 'Proceeding forward will withdraw the proposal titled:'}} {{this.proposalName}}
+    </div>
+  </div>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="button" class="ui red button" {{action this.withdrawProposal}}>
+    {{t 'Withdraw Proposal'}}
+  </button>
+</div>

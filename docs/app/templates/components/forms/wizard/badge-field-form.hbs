@@ -1,0 +1,248 @@
+<div class="badge-form-body">
+
+  <div class="row-field">
+    <h3 class="lh-2r">
+      {{t 'Row'}} {{inc @index}}
+      {{#if @data.custom_field }}
+        {{#if this.getFieldComplex}}
+          - {{rich-text-link @data.custom_field}}
+        {{else}}
+          - {{t-var @data.custom_field}}
+        {{/if}}
+      {{/if}}
+      
+    </h3>
+    <div class="btn-row">
+      <button type="button" class="ui compact icon button right floated" {{action 'toggleSetting' }}>
+      {{#if @data.is_field_expanded }}
+        <i class="angle up icon" />
+      {{else}}
+        <i class="angle down icon" />
+      {{/if}}
+      </button>
+      <button type="button" class="ui compact icon negative button right floated remove-icon" {{action 'removeForm' }}>
+        <i class="trash box icon pr-0"></i>
+      </button>
+    </div>
+  </div>
+
+  {{#if @data.is_field_expanded }}
+  <div class="badge-form-body-field">
+    <h3 class="background-color-title padding-left-1rem margin-left-revert-1rem">
+      {{t 'Setting'}}
+    </h3>
+    <div class="ui stackable grid padding-left-1rem ">
+      <div class="field twelve wide column">
+        <label>{{t 'Custom Field'}}</label>
+        <UiDropdown @class="search selection min-width-0" @selected={{this.data.custom_field}}
+          @onChange={{action 'onChangeCustomField'}}>
+          <Input @type="hidden" @autocomplete="no" @name={{concat "custom_field_" @data.badge_id "_" @index}}/>
+          <i class="dropdown icon"></i>
+            {{#if this.data.custom_field}}
+            <div class="default">
+              {{value-field-link (t-var this.data.custom_field)}}
+              </div>
+            {{else}}
+            <div class="default text">
+              {{t 'Custom Field'}}
+              </div>
+            {{/if}}
+          <div class="menu">
+            {{#each this.getCustomFields as |cfield|}}
+              {{#if cfield.isFixed}}
+                <div class=" item fixed-item" data-value="{{cfield.isFixed}}">
+                  {{cfield.isFixed}}
+                </div>
+              {{else}}
+                {{#if cfield.isComplex}}
+                  <div class=" item complex-item" data-value="{{value-field-link cfield.isComplex}}">
+                    {{value-field-link cfield.isComplex}}
+                  </div>
+                {{/if}}
+              {{/if}}
+            {{/each}}
+          </div>
+        </UiDropdown>
+          {{#if this.getWarningFields}}
+            {{#each this.getWarningFields as |warning|}}
+            <label class="warning">{{warning-badge-ticket  warning.field  warning.ticket}}</label>
+            {{/each}}
+          {{/if}}
+      </div>
+    </div>
+    {{#if (eq @data.custom_field 'QR') }}
+    <div class="ui stackable grid padding-left-1rem">
+      <div class="row">
+        <div class="field twelve wide column">
+          <label>{{t 'Fields To Be Included'}}</label>
+          <UiDropdown @class="fluid multiple search selection" @selected={{ this.data.qr_custom_field }} 
+            @onChange={{action (mut data.qr_custom_field) }} as | execute mapper |>
+            <i class="dropdown icon"></i>
+            <div class="default text">
+              {{t 'Select Fields'}}
+            </div>
+            <div class="menu">
+              {{#each this.getQrFields as |field|}}
+              {{#if field}}
+              <div data-value="{{map-value mapper field.fieldIdentifier}}" class="item">
+                {{value-field-link field.name}}
+              </div>
+              {{/if}}
+              {{/each}}
+            </div>
+          </UiDropdown>
+          {{#if this.getWarningQRFields}}
+            {{#each this.getWarningQRFields as |warning|}}
+            <label class="warning">{{concat '\'' warning.field '\' is not available in ticket \'' warning.ticket '\''}}</label>
+            {{/each}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{#if (not-eq @data.custom_field 'QR') }}
+    <div class="ui stackable grid padding-left-1rem">
+      <div class="row">
+        <div class="field twelve wide column">
+          <label>{{t 'Sample Text'}}</label>
+          <Input @type='text' @placeholder="Sample text" @value={{mut @data.sample_text}} @name={{concat "sample_text_"
+            @data.badge_id "_" @index}} />
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    <div class="ui stackable grid">
+      <div class="field twelve wide">
+        <h4>{{t 'Position'}}</h4>
+      </div>
+    </div>
+    <div class="ui stackable grid padding-left-1rem">
+      <div class="row pt-0">
+        <div class="field four wide column mr--4">
+          <label>{{t 'Top (mm)'}}</label>
+          <Input @type='number' @placeholder="Top" @value={{mut @data.margin_top}} @name={{concat "margin_top_"
+            @data.badge_id "_" @index}} />
+        </div>
+        <div class="field four wide column mr--4">
+          <label>{{t 'Left (mm)'}}</label>
+          <Input @type='number' @placeholder="Left" @value={{mut @data.margin_left}} @name={{concat "margin_left_"
+            @data.badge_id "_" @index}} />
+        </div>
+        <div class="field four wide column mr--4">
+          <label>{{t 'Right (mm)'}}</label>
+          <Input @type='number' @placeholder="Right" @value={{mut @data.margin_right}} @name={{concat "margin_right_"
+            @data.badge_id "_" @index}} />
+        </div>
+        <div class="field four wide column mr--4">
+          <label>{{t 'Bottom (mm)'}}</label>
+          <Input @type='number' @placeholder="Bottom" @value={{mut @data.margin_bottom}} @name={{concat "margin_bottom_"
+            @data.badge_id "_" @index}} />
+        </div>
+      </div>
+    </div>
+    {{#if (not-eq @data.custom_field 'QR') }}
+    <div class="ui stackable grid padding-left-1rem">
+      <div class="field twelve wide">
+        <h4>{{t 'Font'}}</h4>
+      </div>
+    </div>
+    <div class="ui stackable grid padding-left-1rem">
+      <div class="row pt-0">
+        <div class="field six wide column">
+          <label>{{t 'Font Name'}}</label>
+          <UiDropdown @class="search selection min-width-0" @selected={{@data.font_name}}
+            @onChange={{action 'onChangeFontName' }}>
+            <Input @type="hidden" @autocomplete="no" @name={{concat "font_name_" @data.badge_id "_" @index}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Font Name'}}</div>
+            <div class="menu">
+              {{#each this.fieldFont as |item|}}
+              <div class="item" data-value="{{item.name}}">
+                {{t-var item.name}}
+              </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+        <div class="field six wide column">
+          <label>{{t 'Font size (px)'}}</label>
+          <UiDropdown @class="search selection min-width-0" @selected={{@data.font_size}}
+            @onChange={{action (mut @data.font_size) }}
+            @allowAdditions={{true}} >
+            <Input @type="number" @name={{concat "font_size_" @data.badge_id "_" @index}} @value={{mut @data.font_size}}/>
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Font size'}}</div>
+            <div class="menu">
+              {{#each this.badgeFieldFontSize as |item|}}
+              <div class="item" data-value="{{item.value}}">
+                {{item.value}}
+              </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+      </div>
+    </div>
+    <div class="ui stackable grid padding-left-1rem">
+      <div class="row pt-0">
+        <div class="field six wide column">
+          <label>{{t 'Font Style'}}</label>
+          <UiDropdown @class="search selection min-width-0">
+            <div class="default">
+              {{this.fontStyleSelected}}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              {{#each this.badgeFieldFontWeight as |item|}}
+                <UiCheckbox @class="item" @label={{item.name}} @checked={{if (includes this.fontStyle item.name) 'active'}} @onChange={{action 'onChangeTextFontWeight' item }} />
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+        <div class="field six wide column">
+          <label>{{t 'Text Transform'}}</label>
+          <UiDropdown @class="search selection min-width-0" @selected={{@data.text_type}}
+            @onChange={{action 'onChangeTextTransform' }}>
+            <Input @type="hidden" @autocomplete="no" @name={{concat "text_transform_" @data.badge_id "_" @index}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Text Transform'}}</div>
+            <div class="menu">
+              {{#each this.booleanTextType as |item|}}
+              <div class="item" data-value="{{item.name}}">
+                {{t-var item.name}}
+              </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+      </div>
+    </div>
+    <div class="ui stackable grid padding-left-1rem">
+      <div class="row pt-0 pb-0">
+        <div class="field six wide column">
+          <label>{{t 'Text Rotate (deg)'}}</label>
+          <UiDropdown @class="search selection min-width-0" @selected={{@data.text_rotation}}
+            @onChange={{action 'onChangeTextRotate' }}>
+            <Input @type="hidden" @autocomplete="no" @name={{concat "text_rotate_" @data.badge_id "_" @index}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Text Rotate'}}</div>
+            <div class="menu">
+              {{#each this.badgeFieldRotate as |item|}}
+              <div class="item" data-value="{{item.value}}">
+                {{item.value}}
+              </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+        <div class="field six wide column font-color">
+          <label>{{t 'Font Color'}}</label>
+          <SpectrumColorPicker @color={{@data.font_color}} @allowEmpty={{true}} @preferredFormat={{"hex"}}/>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    <div class="ui hidden divider"></div>
+  </div>
+  {{/if}}
+</div>

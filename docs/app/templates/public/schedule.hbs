@@ -1,0 +1,29 @@
+{{#if this.model.event.isSchedulePublished}}
+  <div class="{{if this.device.isMobile 'mt--8'}} d-flex items-center">
+      <div class="d-flex items-center wrap mb-4">
+    <h1 class="m-0 mr-4 ui header" id="session-heading">{{t 'Schedule'}}</h1>
+    <div>
+      <LinkTo @route="public.sessions" class="ui button">
+        {{t 'List View'}}
+      </LinkTo>
+    </div>
+  </div>
+    <Widgets::TimeZonePicker
+      class="mb-2 ml-auto"
+      @defaultLocal={{this.model.event.online}}
+      @eventTimezone={{this.model.event.timezone}}
+      @timezone={{this.timezone}} />
+    <button class="ui icon button mb-2 ml-2" {{action 'fullScreen'}}><i class="expand large icon"></i></button>
+  </div>
+  <div id="fullscreen" style="background-color: white;overflow-y: scroll;">
+    <Schedule
+      @timezone={{this.timezone}}
+      @event={{this.model.event}}
+      @sessions={{this.model.sessions}}
+      @rooms={{this.microlocations}} 
+      @height="auto"
+      @isPublic={{true}}/>
+  </div>
+{{else}}
+  <div class="ui disabled header">{{t 'Schedule for the event is currently unavailable'}}</div>
+{{/if}}

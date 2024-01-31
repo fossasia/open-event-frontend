@@ -1,0 +1,40 @@
+<div class="hidden ui divider"></div>
+<div>
+  <h3 class="ui left aligned header">
+    {{t 'Event Roles'}}
+  </h3>
+  <div class="ui divider"></div>
+</div>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>{{t 'Event Role/Service'}}</th>
+      {{#each this.services as |service|}}
+        <th>{{service.name}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model.roles as |role|}}
+      <tr>
+        <td>{{role}}</td>
+        {{#each this.permissions as |permission|}}
+          {{#if (eq permission.role.titleName role)}}
+            <td>
+              <UiCheckbox @label={{t "Create"}} @checked={{permission.canCreate}} @onChange={{action (mut permission.canCreate)}} />
+              <br>
+              <UiCheckbox @label={{t "Read"}} @checked={{permission.canRead}} @onChange={{action (mut permission.canRead)}} />
+              <br>
+              <UiCheckbox @label={{t "Update"}} @checked={{permission.canUpdate}} @onChange={{action (mut permission.canUpdate)}} />
+              <br>
+              <UiCheckbox @label={{t "Delete"}} @checked={{permission.canDelete}} @onChange={{action (mut permission.canDelete)}} />
+            </td>
+          {{/if}}
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<div>
+  <button type="submit" class="ui teal button" {{action 'updatePermissions'}}>{{t 'Save'}}</button>
+</div>

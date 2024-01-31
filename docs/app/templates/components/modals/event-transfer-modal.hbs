@@ -1,0 +1,27 @@
+<div class="header">
+  {{t 'Are you sure you would like to transfer this event?'}}
+  <div class="muted small text">
+    {{t 'Transferring the event to another user will lead to you losing all the owner rights.'}}
+  </div>
+  <div class="muted small text">
+    {{t 'On successful transfer of event you will be downgraded to Organizer.'}}
+  </div>
+</div>
+<div class="content">
+  <div class="ui {{if this.isLoading 'loading'}} form" autocomplete="off">
+    <div class="field">
+      <div class="label">
+        {{t 'Please enter the event-name to confirm that you want to transfer the event.'}}
+      </div>
+      <Input @type="text" @name="confirm_name" @value={{this.confirmEventName}} required={{true}} />
+    </div>
+  </div>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button {{action this.openConfirmEventTransferModal}} class="ui red button {{if this.isNameDifferent 'disabled'}}">
+    {{t 'Proceed'}}
+  </button>
+</div>

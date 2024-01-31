@@ -1,0 +1,22 @@
+<div class="header">
+  {{t 'Add New Event Type'}}
+</div>
+<div class="content">
+  <form class="ui {{if this.isLoading 'loading'}} form" id="add-event-type-form" autocomplete="off" {{action 'addEventProperty' this.eventType on='submit' preventDefault=true}}>
+    <div class="field">
+      <label class="required">
+        {{t 'New Event Type'}}
+      </label>
+      <Input @type="text" @name="type_name" @value={{name}} placeholder={{t "Enter New Event Type"}} />
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button type="submit" form="add-event-type-form" class="ui green right labeled icon button">
+    {{t 'Add Event Type'}}
+    <i class="checkmark icon"></i>
+  </button>
+</div>

@@ -1,0 +1,141 @@
+<form class="ui form" {{action 'submit' this.data on='submit'}}>
+  <div class="field">
+    <label class="required">{{t 'Discount Code'}}</label>
+    <Input
+      @type="text"
+      @name="discount_code"
+      @value={{this.data.code}} />
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Enter Discount'}}</label>
+    <UiRadio
+      @label={{this.amountLabel}}
+      @name="discount_type"
+      @value="amount"
+      @current={{this.data.type}}
+      @onChange={{action (mut this.data.type)}} />
+  </div>
+  {{#if (not-eq this.data.type 'percent')}}
+    <div class="field">
+      <Input
+        @type="number"
+        @name="discount_amount"
+        @min={{1}}
+        @step={{0.1}}
+        @value={{this.data.value}} />
+    </div>
+  {{/if}}
+  <div class="field">
+    <UiRadio
+      @label={{t "Percent (%)"}}
+      @name="discount_type"
+      @value="percent"
+      @current={{this.data.type}}
+      @onChange={{action (mut this.data.type)}} />
+  </div>
+  {{#if (eq this.data.type 'percent')}}
+    <div class="field">
+      <Input
+        @type="number"
+        @name="discount_percent"
+        @min={{1}}
+        @max={{100}}
+        @step={{0.1}}
+        @value={{this.data.value}} />
+    </div>
+  {{/if}}
+  <div class="field">
+    <label class="required">{{t 'Number of Discount Tickets'}}</label>
+    <Input
+      @name="number_of_discount_tickets"
+      @type="number"
+      @value={{this.data.ticketsNumber}}
+      @min="0" />
+  </div>
+  {{#if this.eventTickets}}
+    <div class="inline field">
+      <label class="required">{{t 'Select Ticket(s) applied to the discount code'}}</label>
+      <div class="ui hidden divider"></div>
+      <UiCheckbox
+        @label={{t "Select all Ticket types"}}
+        @name="all_ticket_types"
+        @value="tickets"
+        @checked={{this.allTicketTypesChecked}}
+        @onChange={{action "toggleAllSelection"}} />
+    </div>
+  {{else}}
+    <div class="inline field">
+      <label>{{t 'No event tickets to select from'}}</label>
+    </div>
+  {{/if}}
+  <div class="ui list field">
+    {{#each this.eventTickets as |ticket|}}
+      <UiCheckbox
+        @name="ticket_name"
+        @label={{ticket.name}}
+        @checked={{ticket.isChecked}}
+        @onChange={{action "updateTicketsSelection" ticket}} />
+      <br>
+    {{/each}}
+  </div>
+  <div>
+    <div class="field">
+      <label>{{t 'Discount valid from'}}</label>
+        <div class="{{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
+              @name="start_date"
+              @value={{this.data.validFromDate}}
+              @rangePosition="start"
+              @onChange={{action "onChange"}} />
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
+              @name="start_time"
+              @value={{this.data.validFromTime}}
+              @onChange={{action "onChange"}} />
+          </div>
+        </div>
+    </div>
+    <div class="field">
+      <label>{{t 'Discount expires on'}}</label>
+        <div class="{{if this.device.isMobile 'grouped'}} fields">
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::DatePicker
+              @type="text"
+              @name="end_date"
+              @value={{this.data.validTillDate}}
+              @rangePosition="end"
+              @onChange={{action "onChange"}} />
+          </div>
+          <div class="{{unless this.device.isMobile 'four wide'}} field">
+            <Widgets::Forms::TimePicker
+              @type="text"
+              @name="end_time"
+              @value={{this.data.validTillTime}}
+              @onChange={{action "onChange"}} />
+          </div>
+        </div>
+    </div>
+    <div class="field">
+      <label>{{t 'Discount Link'}}</label>
+      <div class="ui action input fluid">
+        <input type="text" value="{{this.discountLink}}" readonly>
+        <CopyButton
+          @class="ui black right labeled icon copy button"
+          @clipboardText={{this.discountLink}}
+          @success={{action "copiedText"}}>
+          <i class="copy icon"></i>
+          {{t 'Copy'}}
+        </CopyButton>
+      </div>
+    </div>
+    {{#if this.isLinkSuccess}}
+      <div><span style="float:right;color:green;">Link copied to clipboard</span></div>
+    {{/if}}
+  </div>
+  <div class="ui hidden divider"></div>
+  <button class="ui teal button" name="submit" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

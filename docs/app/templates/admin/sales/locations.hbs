@@ -1,0 +1,51 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h2 class="ui header column">{{t 'Tickets Summary'}}</h2>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <table class="ui stackable structured celled compact table">
+        <thead>
+          <tr>
+            <th rowspan="2">{{t 'Location'}}</th>
+            <th colspan="2" class="ui green inverted segment center aligned">{{t 'Completed Orders'}}</th>
+            <th colspan="2" class="ui blue inverted segment center aligned">{{t 'Placed Orders'}}</th>
+            <th colspan="2" class="ui yellow inverted segment center aligned">{{t 'Pending Orders'}}</th>
+          </tr>
+          <tr>
+            <th class="right aligned">{{t 'Tickets'}}</th>
+            <th class="right aligned">{{t 'Sales'}}</th>
+            <th class="right aligned">{{t 'Tickets'}}</th>
+            <th class="right aligned">{{t 'Sales'}}</th>
+            <th class="right aligned">{{t 'Tickets'}}</th>
+            <th class="right aligned">{{t 'Sales'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.model as |entry|}}
+            <tr>
+              <td>{{entry.locationName}}</td>
+              <td class="right aligned">{{entry.sales.completed.ticket_count}}</td>
+              <td class="right aligned">US$ {{format-money entry.sales.completed.sales_total}}</td>
+              <td class="right aligned">{{entry.sales.placed.ticket_count}}</td>
+              <td class="right aligned">US$ {{format-money entry.sales.placed.sales_total}}</td>
+              <td class="right aligned">{{entry.sales.pending.ticket_count}}</td>
+              <td class="right aligned">US$ {{format-money entry.sales.pending.sales_total}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+        {{!-- <tfoot>
+          <tr>
+            <th><span class="weight-600">{{t 'Total'}}</span></th>
+            <th class="right aligned">{{totalCompletedTickets}}</th>
+            <th class="right aligned">US$ {{format-money totalCompletedSales}}</th>
+            <th class="right aligned">{{totalPlacedTickets}}</th>
+            <th class="right aligned">US$ {{format-money totalPlacedSales}}</th>
+            <th class="right aligned">{{totalPendingTickets}}</th>
+            <th class="right aligned">US$ {{format-money totalPendingSales}}</th>
+          </tr>
+        </tfoot> --}}
+      </table>
+    </div>
+  </div>
+</div>

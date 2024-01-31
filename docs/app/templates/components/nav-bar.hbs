@@ -1,0 +1,172 @@
+<div class="mobile hidden row">
+  <div class="ui menu">
+    {{#if (eq this.settings.startPgEnabled 'event')}}
+      <LinkTo
+        @route="public.index" class="header item" @model={{this.settings.startPgEventId}} @activeClass="">
+        <h3>{{this.settings.appName}}</h3>
+      </LinkTo>
+    {{else}}
+      <LinkTo
+        @route="index" class="header item" @activeClass="">
+        <h3>{{this.settings.appName}}</h3>
+      </LinkTo>
+    {{/if}}
+    <div class="right menu nav-bar">
+    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
+      <div class="search-bar d-flex items-center space-between m-2 p-2">
+        <Input @class="prompt" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
+        <i class="search icon"></i>
+      </div>
+    {{/if}}
+    {{#if (and (not this.session.isAuthenticated) this.isNotEventPageRoute)}}
+      <LinkTo
+        @route="pricing" class="item"
+        @activeClass="">{{t 'Pricing'}}</LinkTo>
+    {{/if}}
+      {{!-- {{#if this.session.isAuthenticated}}
+        <NotificationDropdown />
+      {{/if}} --}}
+      {{#if this.session.isAuthenticated}}
+        <UiDropdown
+          @class="item"
+          @action="hide">
+          <Widgets::SafeImage
+            @isAvatar={{true}}
+            @class="ui avatar round image nav-bar-image"
+            @src={{if this.authManager.currentUser.avatarUrl this.authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"}} />
+          {{if this.authManager.currentUser
+               (if this.authManager.currentUser.firstName this.authManager.currentUser.firstName this.authManager.currentUser.email)
+               'Welcome'}}
+          <i class="dropdown icon"></i>
+          <div class="menu profile-dropdown-menu">
+            <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
+            <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
+            <a href="{{href-to 'my-groups.list'}}" class="item">{{t 'Groups'}}</a>
+            <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
+            <div class="divider"></div>
+            <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>
+            {{#if this.authManager.currentUser.isAnAdmin}}
+              <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+            {{/if}}
+            <div class="divider"></div>
+            <a href="#" role="button" class="item logout-button" {{action 'logout'}}><div class="d-flex">{{t 'Logout'}}<i
+                  class="ui sign out icon" style="margin-left: auto !important"></i></div></a>
+          </div>
+        </UiDropdown>
+      {{else}}
+        <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+      {{/if}}
+      {{#if (and this.isNotWizardPageRoute this.isNotEventPageRoute)}}
+        <LinkTo
+          @route="create" class="item ui blue text">
+          <div>
+            {{t 'Create Event'}}
+          </div>
+        </LinkTo>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+
+<div class="mobile only row header-mobile">
+  <div class="ui six column grid navbar menu  layout-header-mobile">
+  <div class="row reset-pd">
+    <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
+      <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
+      <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
+    </div>
+    <div class="three wide column reset-pd bl-one ">
+        <a href="#" class="menu item open sidebar reset-pd item-bl-one">
+          <i class="large content icon"></i>
+        </a>
+    </div>
+    <div class="four wide column reset-pd bl-two" >
+      <div class="item-bl-two-login">
+        {{#if this.session.isAuthenticated}}
+          {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+          <LinkTo
+            @route="index" class="item reset-pd" @activeClass="">
+            <div class="ui header small text reset-pd">{{this.settings.appName}}</div>
+          </LinkTo>
+          {{else }}
+              {{#if this.globalData.logoUrl}}
+                <button class="item btn-un-bd reset-pd " {{on "click" this.handleClick}} >
+                    <img src="{{this.globalData.logoUrl}}" class="logo-event " style="width: 80%;"/>
+                </button>
+              {{else}}
+              <button class="item btn-un-bd reset-pd" {{on "click" this.handleClick}} >
+                <div class="ui header small text item-padding">Home</div>
+              </button>
+              {{/if}}
+          {{/if}}
+        {{else}}
+            {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+              <LinkTo
+                @route="index" class="item reset-pd" @activeClass="">
+                <div class="ui header small text reset-pd">{{this.settings.appName}}</div>
+              </LinkTo>
+            {{else}}
+                {{#if this.globalData.logoUrl}}
+                  <button class="item btn-un-bd reset-pd" {{on "click" this.handleClick}} >
+                      <img src="{{this.globalData.logoUrl}}" class="logo-event "/ style="width: 80%;">
+                  </button>
+                {{else}}
+                <button class="item btn-un-bd reset-pd " {{on "click" this.handleClick}}>
+                  <div class="ui header small text item-padding">Home</div>
+                </button>
+                {{/if}}
+              {{/if}}
+          {{/if}}
+      </div>
+    </div>
+    <div class="two wide column reset-pd bl-three {{if (and (not this.isNotPublicPageRoute) this.showSessions) 'bl-three-border' ''}}">
+      {{#if (not this.isNotPublicPageRoute)}}
+        {{#if this.showSessions}}
+        <div role="button" class="item menu-item-public menu-schedule" {{on "click" (fn this.redirectToPage 'schedule')}}>Schedule</div>
+        {{/if}}
+      {{/if}}
+    </div>
+    <div class="two wide column reset-pd bl-four">
+      	{{#if (not this.isNotPublicPageRoute)}}
+        {{#if this.showSpeakers}}
+        <div  role="button" class="item menu-item-public menu-speakers " {{on "click" (fn this.redirectToPage 'speakers')}}>Speakers</div>
+        {{/if}}
+      {{/if}}
+    </div>
+    <div class="{{if this.session.isAuthenticated 'bl-six-login two' 'three'}} wide column reset-pd bl-six {{if (and (not this.isNotPublicPageRoute) this.showExhibitors) 'bl-six-border'  ''}}">
+      {{#if (not this.isNotPublicPageRoute)}}
+        {{#if this.showExhibitors}}
+        <div role="button" class="item menu-item-public item-exhibition {{checkShowClassCssPublic}}" {{on "click" (fn this.redirectToPage 'exhibition')}}>Exhibition</div>
+        {{/if}}
+    {{/if}}
+    {{#if (and this.isNotEventPageRoute this.isNotExplorePageRoute this.isNotWizardPageRoute)}}
+        <div role="button" class="item ui" {{action "toggleMobileSearchBar"}} >
+          <i class="search icon"></i>
+        </div>
+      {{/if}}
+    </div>
+    {{#if this.session.isAuthenticated}}
+      <div class="{{if (not this.isNotPublicPageRoute) 'three'  'four set-bd-home'}}  wide right floated reset-pd column bl-seven bl-seven-{{checkShowClassCssPublic}} " >
+          {{#if (and this.isNotPublicPageRoute this.isNotWizardPageRoute this.isNotEventPageRoute this.isNotOrderPageRoute  this.isNotEventDetailPageRoute)}}
+            <LinkTo
+              @route="create" class="item ui blue button-text small text reset-pd text-home-page">
+              <div style="font-size: 11.4286px !important;">
+                {{t 'Create Event'}}
+              </div>
+            </LinkTo>
+          {{else}}
+            <LinkTo
+              @route="index" class="item reset-pd {{checkShowClassCssPublic}}-text" @activeClass="" >
+              <div class="ui header small text reset-pd" style="font-size: 11.4286px !important;">{{this.settings.appName}}</div>
+            </LinkTo>
+          {{/if}}
+      </div>
+      {{else}}
+      <div class="two wide right floated column reset-pd bl-seven">
+          <a href="{{href-to 'login'}}" class="item {{if (not this.isNotPublicPageRoute) 'a-login-public' 'tag-a-not-login'}}">{{t 'Login'}}</a>
+       </div>
+      {{/if}}
+  </div>
+  </div>
+</div>

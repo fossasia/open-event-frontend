@@ -1,0 +1,24 @@
+{{#if this.shouldShowMessage}}
+  <div class="{{unless @padless 'mb-8'}}">
+    <div class="ui icon {{if this.isMailSent 'info' 'error'}} message eight wide column center aligned">
+      <i class="close icon" onclick={{action (mut this.isMessageVisible) false}} role="button"></i>
+      <i class="info icon"></i>
+      <div class="content">
+        {{#if this.isMailSent}}
+          <div class="header">
+            {{t 'Confirmation mail has been sent again successfully!'}}
+          </div>
+        {{else}}
+          <div class="header">
+            {{#if (eq this.session.currentRouteName 'events.view.index')}}
+              {{t 'To make your event live, please verify your account by clicking on the confirmation link that has been emailed to you.'}}
+            {{else}}
+              {{t 'Your account functionality is limited.'}} {{@extraMessage}} {{t 'To get full access to all features you need to verify your email by clicking on the confirmation link that has been emailed to you.'}}
+            {{/if}}
+          </div>
+          <p>{{t 'Did not get the email?'}} <a href="#" onclick={{action 'sendConfirmationMail'}}>{{t 'Please click here to resend the confirmation mail.'}}</a></p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/if}}

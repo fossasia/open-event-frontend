@@ -1,0 +1,6 @@
+<form class="ui form" {{action 'submit' on='submit'}} novalidate>
+  <Forms::Admin::Settings::System::SocialMediaToken @settings={{this.model}} />
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

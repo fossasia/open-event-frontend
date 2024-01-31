@@ -1,0 +1,33 @@
+label.required {
+  &::after {
+    color: #db2828;
+    content: ' *';
+  }
+}
+
+.styled.input {
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: .1px;
+  z-index: -1;
+}
+
+input.preview {
+  text-overflow: ellipsis !important;
+}
+
+.ui.stackable .ui.segment .text.muted {
+  &:hover {
+    color: #737373 !important;
+  }
+}
+
+.ui.stackable .ui.segments .ui.secondary.segment {
+  color: #555 !important;
+
+  &:hover {
+    color: #737373 !important;
+  }
+}

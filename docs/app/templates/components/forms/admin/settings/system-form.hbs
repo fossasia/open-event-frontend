@@ -1,0 +1,124 @@
+<form class="ui form text-cursor" {{action 'submit' on='submit'}} novalidate>
+  <h3 class="ui header">
+    {{t 'App Environment'}}
+    <div class="sub header">
+      {{t 'Where is the application running ?'}}
+    </div>
+  </h3>
+  <div class="field">
+    <UiRadio @label={{t "Development"}} @current={{this.settings.appEnvironment}} @name="environment" @value="development" @onChange={{action (mut this.settings.appEnvironment)}} />
+  </div>
+  <div class="field">
+    <UiRadio @label={{t "Staging"}} @current={{this.settings.appEnvironment}} @name="environment" @value="staging" @onChange={{action (mut this.settings.appEnvironment)}} />
+  </div>
+  <div class="field">
+    <UiRadio @label={{t "Production"}} @current={{this.settings.appEnvironment}} @name="environment" @value="production" @onChange={{action (mut this.settings.appEnvironment)}} />
+  </div>
+  <h3 class="ui header">
+    {{t 'App Name'}}
+    <div class="sub header">
+      {{t 'The name of your deployment. This will be used throughout this application.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'App Name'}}
+    </label>
+    <Input @type="text" @name="app_name" @value={{this.settings.appName}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Tagline'}}
+    </label>
+    <Input @type="text" @name="tag_line" @value={{this.settings.tagline}} />
+  </div>
+  <h3 class="ui header">
+    {{t 'API server details'}}
+    <div class="sub header">
+      {{t 'The URL of the API that this frontend will make use of as the backend.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Url'}}
+    </label>
+    <Widgets::Forms::LinkField
+      @inputId="api_url"
+      @value={{this.settings.staticDomain}}
+      @onChange={{action (mut this.settings.staticDomain)}} />
+  </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Cookie Policy'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Cookie Policy URL'}}
+    </label>
+    <Input type="url" @value={{this.settings.cookiePolicyLink}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Cookie Policy'}}</label>
+    <Textarea
+      @rows="3"
+      @value={{this.settings.cookiePolicy}} />
+  </div>
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::CaptchaForm @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::StartPage @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::StorageOption @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::MailSettings @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <Forms::Admin::Settings::System::OrderExpiryForm @settings={{this.settings}} />
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Upload Size'}}
+    <div class="sub header">
+      {{t 'Set maximum upload size in KB.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Logo Size'}}
+    </label>
+    <Input @type="number" @name="logo_size" @value={{this.settings.logoSize}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Image Size'}}
+    </label>
+    <Input @type="number" @name="image_size" @value={{this.settings.imageSize}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Slide Size'}}
+    </label>
+    <Input @type="number" @name="slide_size" @value={{this.settings.slideSize}} />
+  </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Rocket Chat Integration'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Rocket Chat URL'}}
+    </label>
+    <Widgets::Forms::LinkField
+      @inputId="rocket_chat_url"
+      @value={{this.settings.rocketChatUrl}}
+      @onChange={{action (mut this.settings.rocketChatUrl)}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Registration Secret'}}
+    </label>
+    <Input @type="text" @value={{this.settings.rocketChatRegistrationSecret}} />
+  </div>
+  <div class="ui hidden divider"></div>
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

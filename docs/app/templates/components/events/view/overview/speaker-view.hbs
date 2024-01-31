@@ -1,0 +1,33 @@
+<div class="ui grid container">
+    {{#each @fields as |field|}}
+        {{#if field.isIncluded}}
+            <div class="column four wide">
+                <div class="d-flex space-between" style="align-items: flex-start">
+                    <label class="{{if field.isRequired 'required'}} weight-600" for="name">{{t-var field.name}}</label> 
+                    {{#if field.isPublic}}
+                        <div class="ui green horizontal label">{{t 'Public'}}</div>
+                    {{else}}
+                        <div class="ui red horizontal label">{{t 'Private'}}</div>
+                    {{/if}}
+                </div>
+            </div> 
+            <div class="column twelve wide">
+                {{#if (eq field.type 'image')}}
+                    <div class="ui card">
+                        <img alt="speaker" class="ui rounded image" src="{{if @speaker.thumbnailImageUrl @speaker.thumbnailImageUrl (if @speaker.photoUrl @speaker.photoUrl '/images/placeholders/avatar.png')}}">
+                    </div>
+                {{else if field.isLongText}}
+                    {{sanitize (get @speaker field.fieldIdentifier)}}
+                {{else if (eq field.fieldIdentifier 'gender')}}
+                    {{@speaker.gender}}
+                {{else if (or (eq field.fieldIdentifier 'website') (eq field.fieldIdentifier 'github') (eq field.fieldIdentifier 'facebook') (eq field.fieldIdentifier 'twitter') (eq field.fieldIdentifier 'instagram') (eq field.fieldIdentifier 'linkedin'))}}
+                    <a class="truncate" href={{get @speaker field.fieldIdentifier}} target="_blank" rel="noopener">{{get @speaker field.fieldIdentifier}}</a>
+                {{else if (get @speaker.complexFieldValues field.fieldIdentifier)}}
+                    {{get @speaker.complexFieldValues field.fieldIdentifier}}
+                {{else}}
+                    {{get @speaker field.fieldIdentifier}}
+                {{/if}}
+            </div>
+        {{/if}}
+    {{/each}}
+</div>

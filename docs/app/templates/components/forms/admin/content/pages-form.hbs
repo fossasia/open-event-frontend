@@ -1,0 +1,55 @@
+<form class="ui form" {{action 'submit' this.data on='submit'}}>
+  <div class="field">
+    <label class="required">{{t 'Name'}}</label>
+    <Input @name="name" @type="text" @value={{this.data.name}} placeholder={{t "Page Name"}} />
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Title'}}</label>
+    <Input @type="text" @name="title" @value={{this.data.title}} placeholder={{t "Title of the Page"}} />
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Path'}}</label>
+    <Input @type="text" @name="url" @value={{this.data.url}} placeholder={{t "URL for the Page"}} />
+  </div>
+  <div class="field">
+    <label>{{t 'Description'}}</label>
+    <Widgets::Forms::RichTextEditor @value={{this.data.description}} />
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Place'}}</label>
+    <UiDropdown @class="selection" @selected={{this.data.place}} @onChange={{action (mut this.data.place)}}>
+      <Input @type="hidden" @name="place" @value={{this.data.place}} />
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select Page Place'}}</div>
+      <div class="menu">
+        <div class="item" data-value="event">{{t 'Event'}}</div>
+        <div class="item" data-value="footer">{{t 'Footer'}}</div>
+      </div>
+    </UiDropdown>
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Position'}}</label>
+    <Input @type="number" @name="position" @value={{this.data.index}} @min={{1}} placeholder={{t "Position"}} />
+  </div>
+  <div class="field">
+    <label class="required">{{t 'Language'}}</label>
+    <UiDropdown @class="search selection" @selected={{this.data.language}} @onChange={{action (mut this.data.language)}}>
+      <Input @type="hidden" @name="language" @value={{this.data.language}} />
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select Language'}}</div>
+      <div class="menu">
+        {{#each-in this.l10n.availableLocales as |code language|}}
+          <div class="item" data-value="{{code}}">{{language}}</div>
+        {{/each-in}}
+      </div>
+    </UiDropdown>
+  </div>
+  <div class="ui buttons">
+    <button class="ui teal button" type="submit">{{if this.isCreate 'Save' 'Update'}}</button>
+    {{#if this.isCreate}}
+      <button class="ui red button" {{action 'close'}}>{{t 'Cancel'}}</button>
+    {{else}}
+      <button class="ui red button" {{action (confirm (t 'Are you sure you would like to delete this page?') (action 'deletePage' this.data))}}>{{t 'Delete'}}</button>
+    {{/if}}
+  </div>
+</form>

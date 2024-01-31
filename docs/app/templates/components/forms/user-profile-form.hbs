@@ -1,0 +1,110 @@
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'submit' on='submit'}}>
+  <div class="ui stackable grid">
+    <div class="three wide column">
+      <div class="ui left floated eight wide column">
+        <Widgets::Forms::ImageUpload
+          @user={{this.user}}
+          @imageUrl={{this.user.avatarUrl}}
+          @needsCropper={{true}}
+          @label={{t "User Image"}}
+          @id="user_image"
+          @icon="photo"
+          @hint={{t "Select User Image"}}
+          @maxSizeInKb={{this.settings.imageSize}}
+          @aspectRatio={{array 1 1}}
+          @helpText={{t "We recommend using at least a 1000x1000px (1:1 ratio) image"}} />
+      </div>
+      <div class="ui hidden divider"></div>
+      <div class="field">
+        <h3>
+          {{this.user.firstName}} {{this.user.lastName}}
+          {{#if this.user.publicName}}
+            ({{this.user.publicName}})
+          {{/if}}
+        </h3>
+      </div>
+      <div class="field">
+        <h4>{{this.user.email}}</h4>
+      </div>
+    </div>
+    <div class="thirteen wide column">
+      <div class="field">
+        <label class="required" for="name">{{t 'Name'}}</label>
+        <Input
+          @type="text"
+          @id="name"
+          @value={{this.user.firstName}} />
+      </div>
+      <div class="field">
+        <label class="required" for="last_name">{{t 'Family Name'}}</label>
+        <Input
+          @type="text"
+          @id="last_name"
+          @value={{this.user.lastName}} />
+      </div>
+      <div class="field">
+        <label for="public_name">
+          {{t 'Public Profile Name'}}
+          <UiPopup
+            @tagName="i"
+            @class="info circle icon"
+            @content={{'Public profile name, if set, is displayed to other users on profiles and video sessions instead of a fantasy name.'}} />
+        </label>
+        <Input
+          @type="text"
+          @id="public_name"
+          @value={{this.user.publicName}} />
+      </div>
+      <div class="field">
+        <label for="details">{{t 'Bio'}}</label>
+        <Widgets::Forms::RichTextEditor
+          @id="details"
+          @value={{this.user.details}} />
+      </div>
+      <div class="field">
+        <label class="required">{{t 'Email'}}</label>
+        <Input
+          @type="email"
+          @name="email"
+          @value={{this.user.email}} />
+      </div>
+      <div class="field">
+        <label class="details">{{t 'Phone'}}</label>
+        <Input
+          @type="text"
+          @name="phone"
+          @value={{this.user.contact}} />
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Language Preference'}}
+        </label>
+        <UiDropdown @class="fluid search selection" @selected={{this.user.languagePrefrence}} @forceSelection={{false}} @onChange={{action (mut this.user.languagePrefrence)}}>
+          <i class="dropdown icon"></i>
+          <span class="text">{{this.user.languagePrefrence}}</span>
+          <div class="ui language menu">
+            {{#each-in this.l10n.availableLocales as |key value|}}
+              <div class="item" data-value="{{key}}">{{value}}</div>
+            {{/each-in}}
+          </div>
+        </UiDropdown>
+      </div>
+      <div class="field d-flex">
+        <label for="public_name">
+           {{t 'Make Profile Public'}}
+          <UiPopup
+            @tagName="i"
+            @class="info circle icon"
+            @content={{'Making profile public will show your name, avatar and favourite sessions to other users.'}} />
+        </label>
+        <UiCheckbox 
+          @class="toggle ml-2 weight-600"
+          @checked={{this.user.isProfilePublic}}
+          @onChange={{action (mut this.user.isProfilePublic)}} />
+      </div>
+      <button type="submit" class="ui teal submit button update-changes">
+        {{t 'Update Changes'}}
+      </button>
+    </div>
+  </div>
+</form>

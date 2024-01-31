@@ -1,0 +1,30 @@
+<UnverifiedUserMessage @padless="true" />
+<div class="row">
+  <div class="sixteen wide column">
+    <TabbedNavigation>
+      <LinkTo @route="account.profile" class="item">
+        {{t 'Profile'}}
+      </LinkTo>
+      <LinkTo @route="account.billing" class="item">
+        {{t 'Billing'}}
+      </LinkTo>
+      <LinkTo @route="account.password" class="item">
+        {{t 'Password'}}
+      </LinkTo>
+      {{#if (or this.authManager.currentUser.isAdmin this.authManager.currentUser.isSuperAdmin)}}
+        <LinkTo @route="account.email-preferences" class="item">
+          {{t 'Email-Preferences'}}
+        </LinkTo>
+        <LinkTo @route="account.applications" class="item">
+          {{t 'Applications'}}
+        </LinkTo>
+      {{/if}}
+      <LinkTo @route="account.danger-zone" class="item">
+        {{t 'Danger Zone'}}
+      </LinkTo>
+    </TabbedNavigation>
+  </div>
+</div>
+<div class="ui segment">
+  {{outlet}}
+</div>

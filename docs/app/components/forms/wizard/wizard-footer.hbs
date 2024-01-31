@@ -1,0 +1,53 @@
+<div class="ui grid">
+  <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}}">
+    {{#if @event.identifier}}
+      <LinkTo @route="events.view.index" @model={{@event.identifier}} class="ui red button right labeled icon small right aligned mt-4 {{if @loading 'disabled'}} {{if this.isUserUnverified 'disabled'}} button">
+        {{t 'Cancel'}} <i class="close icon"></i>
+      </LinkTo>
+    {{else}}
+      <LinkTo @route="events.list" @model="live" class="ui orange button right labeled icon small mt-4 {{if this.isUserUnverified 'disabled'}}">
+        {{t 'Discard'}} <i class="close icon"></i>
+      </LinkTo>
+    {{/if}}
+    {{#if (not @first)}}
+      <button class="ui left labeled small icon button {{if @loading 'disabled'}}" type="button" {{action @move 'backwards'}}>
+        {{t 'Previous'}}
+        <i class="left chevron icon"></i>
+      </button>
+    {{/if}}
+    {{#if (not @last)}}
+      <button class="ui button right labeled icon small {{if @loading 'disabled'}} right aligned mt-4" type="button" {{action @move 'forwards'}}>
+        {{t 'Next'}}
+        <i class="right chevron icon"></i>
+      </button>
+    {{/if}}
+    {{#if (eq @event.state 'draft')}}
+      <button class="ui blue button right labeled icon small right aligned {{if @loading 'disabled'}} mt-4" type="button" {{action @onSaveDraft}}>
+        {{t 'Save as draft'}} <i class="save icon"></i>
+      </button>
+    {{else}}
+      <button class="ui blue button right labeled icon small right aligned {{if @loading 'disabled'}}" type="button" {{action @onSaved}}>
+        {{t 'Save'}} <i class="save icon"></i>
+      </button>
+    {{/if}}
+  </div>
+</div>
+<div class="ui grid">
+  <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}}">
+    {{#if @event.identifier}}
+      {{#if (eq @event.state 'draft')}}
+        <p>{{t 'This event is currently not published. It is in draft mode and it is not visible publicly.'}}</p>
+      {{else}}
+        <p>{{t 'This event is published. Any changes you make will appear on your live event.'}}</p>
+      {{/if}}
+    {{else}}
+      <p>{{t 'You can preview the event after you have saved it as a draft. You can publish the event after filling in the required fields.'}}</p>
+    {{/if}}
+  </div>
+</div>
+<div class="ui divider"></div>
+<div class="ui grid">
+  <div class="sixteen wide column {{unless @device.isMobile 'right aligned'}} {{if this.isUserUnverified 'disabled'}}">
+    <Events::View::PublishBar @event={{@event}} @hideOnInvalid={{true}} @onSaved={{@onSaved}} @onValidate={{@onValidate}} @paidTickets={{@paidTickets}} @paymentMode={{@paymentMode}} />
+  </div>
+</div>

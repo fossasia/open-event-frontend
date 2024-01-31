@@ -1,0 +1,76 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h2 class="ui header column">
+      {{t 'Revenue Summary'}}
+    </h2>
+  </div>
+  <div class="row">
+    <div class="column">
+      <table class="ui stackable structured celled compact table">
+        <thead>
+          <tr>
+            <th rowspan="2">
+              {{t 'Events'}}
+            </th>
+            <th rowspan="2">
+              {{t 'Event Date'}}
+            </th>
+            <th colspan="3" class="ui green inverted segment center aligned">
+              {{t 'Completed Orders'}}
+            </th>
+          </tr>
+          <tr>
+            <th class="right aligned">
+              {{t 'Tickets'}}
+            </th>
+            <th class="right aligned">
+              {{t 'Fee'}}
+            </th>
+            <th class="right aligned">
+              {{t 'Revenue'}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.model as |order|}}
+            <tr>
+              <td>
+                {{order.name}}
+              </td>
+              <td>
+                {{general-date order.eventDate 'date-short'}} 
+              </td>
+              <td class="right aligned">
+                {{order.ticketCount}}
+              </td>
+              <td class="right aligned">
+                {{format-money order.feePercentage}}%
+                {{#if order.maximumFee}}
+                  <span class="item muted text">[{{t 'Max.'}} {{currency-symbol order.paymentCurrency}} {{order.maximumFee}}]</span>
+                {{/if}}
+              </td>
+              <td class="right aligned">
+                {{currency-symbol order.paymentCurrency}} {{format-money order.revenue}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+        {{!-- <tfoot>
+          <tr>
+            <th>
+              <span class="weight-600">
+                {{t 'Total'}}
+              </span>
+            </th>
+            <th class="right aligned">
+              {{ticketsTotal}}
+            </th>
+            <th colspan="2" class="right aligned">
+              US$ {{format-money revenueTotal}}
+            </th>
+          </tr>
+        </tfoot> --}}
+      </table>
+    </div>
+  </div>
+</div>

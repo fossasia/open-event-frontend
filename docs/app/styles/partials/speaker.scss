@@ -1,0 +1,45 @@
+.speaker-item {
+  margin: 0;
+
+  .speaker-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .social-links {
+    margin-top: 5px;
+
+    i {
+      margin: 0;
+    }
+  }
+}
+
+.speaker-description {
+  display: none;
+  max-height: 240px;
+  overflow: hidden;
+  padding-right: 0;
+  word-wrap: break-word;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
+
+.show {
+  display: block;
+}
+
+.featured-speaker {
+  margin-bottom: 10px;
+}
+
+.speaker-card {
+  flex: 1 1 250px;
+}
+
+.speaker-details {
+  font-size: .9rem;
+  opacity: .8;
+}

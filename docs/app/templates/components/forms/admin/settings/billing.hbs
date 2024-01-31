@@ -1,0 +1,92 @@
+<form class="ui form"> 
+  <h3 class="ui header">
+    {{t 'Invoice Handling'}}
+  </h3>
+  <div class="two fields">
+    <UiDropdown @class="selection" @selected={{this.model.invoiceSendingDay}} @onChange={{action (mut this.model.invoiceSendingDay)}}>
+      <Input @type="hidden" @id="invoiceSendingDay" @value={{this.model.invoiceSendingDay}} />
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Invoices Sent Out'}}</div>
+      <div class="menu">
+        <div class="item" data-value="1">{{t 'First of every month'}}</div>
+        <div class="item" data-value="2">{{t 'Second of every month'}}</div>
+        <div class="item" data-value="3">{{t 'Third of every month'}}</div>
+      </div>
+    </UiDropdown>
+    <div class="ui hidden divider"></div>
+    <UiDropdown @class="selection" @selected={{this.model.invoiceSendingTimezone}} @onChange={{action (mut this.model.invoiceSendingTimezone)}}>
+      <Input @type="hidden" @id="invoiceSendingTimezone" @value={{this.model.invoiceSendingTimezone}} />
+      <i class="dropdown icon"></i>
+      <div class="default text">{{t 'Select timezone'}}</div>
+      <div class="menu">
+        {{#each this.timezones as |timezone|}}
+          <div class="item" data-value="{{timezone}}">{{timezone}}</div>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui header">
+    {{t 'Invoice Contact'}}
+  </h3>
+  <div class="field">
+    <label for="adminBillingContactName">{{t 'Contact Name'}}</label>
+    <Input @type="text" @id="adminBillingContactName" @value={{this.model.adminBillingContactName}} />
+  </div>
+  <div class="field">
+    <label for="adminBillingPhone">{{t 'Phone'}}</label>
+    <Input @type="text" @id="adminBillingPhone" @value={{this.model.adminBillingPhone}} />
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingEmail">{{t 'Email'}}</label>
+    <Input @type="email" @id="adminBillingEmail" @value={{this.model.adminBillingEmail}} />
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingPaypalEmail">{{t 'Paypal Email'}}</label>
+    <Input @type="email" @id="adminBillingPaypalEmail" @value={{this.model.adminBillingPaypalEmail}} />
+  </div>
+  <CountryDropdown
+    @required={{true}}
+    @placeholder={{t 'Country'}}
+    @val={{this.model.adminBillingCountry}}
+    @id="adminBillingCountry" />
+  <div class="field">
+    <label for="adminBillingTaxInfo">{{t 'Tax ID'}}</label>
+    <Input @type="text" @id="adminBillingTaxInfo" @value={{this.model.adminBillingTaxInfo}} />
+  </div>  
+  <div class="field">
+    <label class="required" for="adminCompany">{{t 'Organisation'}}</label>
+    <Input @type="text" @id="adminCompany" @value={{this.model.adminCompany}} />
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingAddress">{{t 'Address'}}</label>
+    <Textarea @rows="2" @id="adminBillingAddress" @value={{this.model.adminBillingAddress}} />  </div>
+  <div class="field">
+    <label class="required" for="adminBillingCity">{{t 'City'}}</label>
+    <Input @type="text" @id="adminBillingCity" @value={{this.model.adminBillingCity}} />
+  </div>
+  <div class="field">
+    <label for="adminBillingState">{{t 'State'}}</label>
+    <Input @type="text" @id="adminBillingState" @value={{this.model.adminBillingState}} />
+  </div>
+  <div class="field">
+    <label class="required" for="adminBillingZip">{{t 'ZIP Code'}}</label>
+    <Input @type="text" @id="adminBillingZip" @value={{this.model.adminBillingZip}} />
+  </div>
+  <div class="field">
+    <label for="adminBillingAdditionalInfo">{{t 'Additional Info'}}</label>
+    <Input @type="text" @id="adminBillingAdditionalInfo" @value={{this.model.adminBillingAdditionalInfo}} />
+  </div>
+  <div class="field">
+    <label for="event_invoice_logo">{{t 'Organisation Logo'}}</label>
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.model.adminBillingLogo}}
+        @label={{t "Logo"}}
+        @id="event_invoice_logo"
+        @icon="image"
+        @hint={{t "Select Organisation Logo"}}
+        @imageText={{t "Logo"}}
+        @maxSizeInKb={{this.settings.logoSize}} />
+  </div>
+  <button class="ui teal button" type="submit" name="submit">{{t 'Save'}}</button>
+</form>

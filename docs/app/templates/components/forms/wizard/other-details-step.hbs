@@ -1,0 +1,168 @@
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forward' on='submit' preventDefault=true}} novalidate>
+  <div class="ui section divider"></div>
+  <div class="grouped fields" id="social-links">
+    <div class="ui header">
+      <label>{{t 'Links & Social Media'}}</label>
+    </div>
+
+    <h4>
+      {{t 'Social Media'}}
+      <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button ml-2" style="margin-left: 1rem !important;" @click={{action "addItem" "socialLinks" "social-link"}} @position="top center">
+        <i class="plus icon"></i>
+      </UiPopup>
+    </h4>
+
+    {{#each this.socialMediaLinks as |socialLink|}}
+      <Widgets::Forms::SocialLinkField
+        @site={{socialLink.site}}
+        @onSiteChange={{action (mut socialLink.name)}}
+        @value={{socialLink.link}}
+        @onChange={{action (mut socialLink.link)}}>
+        <div class="ui icon buttons">
+          <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action "removeItem" socialLink "socialLinks"}} @position="top center">
+            <i class="minus icon"></i>
+          </UiPopup>
+        </div>
+      </Widgets::Forms::SocialLinkField>
+    {{/each}}
+
+    <h4>
+      {{t 'Extra Links'}}
+      <UiPopup @content={{t "Add custom link"}} @class="ui compact icon blue circular button" style="margin-left: 1rem !important;" @click={{action "addItem" "customLink" "social-link"}} @position="top center">
+        <i class="plus icon"></i>
+      </UiPopup>
+    </h4>
+
+    {{#each this.customLinks as |socialLink|}}
+      <Widgets::Forms::SocialLinkField
+        @custom={{true}}
+        @site={{socialLink.name}}
+        @onSiteChange={{action (mut socialLink.name)}}
+        @value={{socialLink.link}}
+        @onChange={{action (mut socialLink.link)}}>
+        <div class="ui icon buttons">
+          <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action "removeItem" socialLink "socialLinks"}} @position="top center">
+            <i class="minus icon"></i>
+          </UiPopup>
+        </div>
+      </Widgets::Forms::SocialLinkField>
+    {{/each}}
+  </div>
+  
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui header">
+      <label for="refund_policy">{{t 'Refund Policy'}}</label>
+      <div class="sub header">
+        {{t 'Refunds to be processed by the organizer through payment provider. Refund payments to attendees cannot be made on the {{appName}} platform. Please go to your payment provider, make a refund and mark the ticket as refunded in the {{appName}} platform.' appName=this.settings.appName }}
+      </div>
+    </div>
+    <Widgets::Forms::RichTextEditor
+      @textareaId="refunduct"
+      @value={{this.data.event.refundPolicy}}
+    />
+  </div>
+
+  <div class="ui section divider"></div>
+  <div class="grouped fields">
+    <label for="privacy">{{t 'Listing Privacy'}}</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        {{widgets/forms/radio-button this.value name='privacy' id='privacy_public' value='public' checked=this.data.event.privacy}}
+        <label for="privacy_public">
+          <strong>{{t 'Public event'}}:</strong>
+          {{t 'list this event on this site and search engines'}}
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        {{widgets/forms/radio-button this.value name='privacy' id='privacy_private' value='private' checked=this.data.event.privacy}}
+        <label for="privacy_private">
+          <strong>{{t 'Private event'}}:</strong>
+          {{t 'do not list this event publicly'}}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui section divider"></div>
+  <div class="field">
+    <div class="ui slider checkbox">
+      <Input
+        @type="checkbox"
+        @checked={{this.hasCodeOfConduct}}
+        @id="add_code_of_conduct" />
+      <label for="add_code_of_conduct">{{t 'Add Code of Conduct'}}</label>
+    </div>
+  </div>
+
+  {{#if this.hasCodeOfConduct}}
+    <div class="field">
+      <label for="code_of_conduct">{{t 'Code of Conduct'}}</label>
+      <Widgets::Forms::RichTextEditor
+        @textareaId="code_of_conduct"
+        @value={{this.data.event.codeOfConduct}}
+      />
+    </div>
+  {{/if}}
+  <div class="ui section divider"></div>
+  <div class="field">
+    <label for="license">
+      {{t 'License of Event Data & Content'}}
+      ( <i class="fitted help icon link has popup"></i> )
+      <div class="ui flowing popup top left transition hidden">
+        <div class="ui one column divided grid">
+          <div class="column">
+            <strong>{{t 'Licenses'}}</strong>
+            <div class="ui bulleted list">
+              {{#each this.licenses as |license|}}
+                <div class="item">
+                  <a href="{{license.link}}" target="_blank" rel="noopener noreferrer">
+                    {{t-var license.name}}
+                  </a>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+    <div class="ui labeled input">
+      <UiDropdown
+        @class="fluid search selection"
+        @selected={{this.data.event.copyright.licence}}
+        @onChange={{action "updateCopyright"}}
+        @forceSelection={{false}}
+        @fullTextSearch={{true}}>
+        <Input
+          @type="hidden"
+          @id="license"
+          @value={{this.data.event.copyright.licence}} 
+        />
+        <i class="dropdown icon"></i>
+        <div class="default text">{{t 'Select License'}}</div>
+        <div class="menu">
+          {{#each this.licenses as |license|}}
+            <div class="item" data-value="{{license.name}}">{{t-var license.name}}</div>
+          {{/each}}
+        </div>
+      </UiDropdown>
+      {{#if data.event.copyright.licence}}
+        <button type="button" class="ui icon button" {{action 'clearLicense'}}>
+          <i class="remove icon"></i>
+        </button>
+      {{/if}}
+    </div>
+  </div>
+  <br>
+
+</form>
+
+<Forms::Wizard::WizardFooter
+  @event={{this.data.event}}
+  @loading={{this.loading}}
+  @device={{this.device}}
+  @onSaved={{action 'saveForm'}}
+  @onSaveDraft={{action 'saveDraft'}}
+  @move={{action 'move'}} />

@@ -1,0 +1,19 @@
+<Tables::Utilities::SearchBox
+  class="mb-2 mr-2"
+  @searchQuery={{this.search}}
+  @size="large"
+/>
+<div class="ui grid container {{if this.device.isMobile 'one' 'three'}} column">
+  {{#each this.model.speakers as |speaker|}}
+    <div class="column speaker-column">
+      <Public::SpeakerItem @event={{this.model.event}} @speaker={{speaker}} @timezone={{this.model.event.timezone}} />
+    </div>
+  {{/each}}
+  <div class="sixteen wide column">
+    <InfinityLoader @infinityModel={{this.model.speakers}} @triggerOffset={{100}} @eventDebounce={{50}}>
+      <div class="ui loading very padded basic segment">
+      </div>
+      {{this.infintyModel.reachedInfinity}}
+    </InfinityLoader>
+  </div>
+</div>

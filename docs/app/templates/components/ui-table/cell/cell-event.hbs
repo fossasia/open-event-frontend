@@ -1,0 +1,25 @@
+<div class="ui header weight-400">
+  <img src="{{if this.extraRecords.logoUrl this.extraRecords.logoUrl '/images/placeholders/Other.jpg'}}" alt="Event Logo" class="ui image"> <br> {{this.record}}
+</div>
+
+<div class="ui horizontal compact basic buttons">
+  <LinkTo @route="events.view" @model={{this.extraRecords.identifier}}>
+    <UiPopup @content={{t "View"}} @class="ui icon button" @position="left center">
+      <i class="unhide icon"></i>
+    </UiPopup>
+  </LinkTo>
+  <LinkTo @route="events.view.edit.basic-details" @model={{this.extraRecords.identifier}}>
+    <UiPopup @content={{t "Edit"}} @class="ui icon button" @position="left center">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
+  {{#if (and this.props.options.hasRestorePrivileges this.extraRecords.deletedAt)}}
+    <UiPopup @content={{t "Restore"}} @click={{action this.props.actions.restoreEvent this.extraRecords.identifier}} @class="ui icon button" @position="left center">
+      <i class="undo icon"></i>
+    </UiPopup>
+  {{else}}
+    <UiPopup @content={{t "Delete"}} @click={{action this.props.actions.deleteEvent this.extraRecords.identifier}} @class="ui icon button" @position="left center">
+      <i class="trash icon"></i>
+    </UiPopup>
+  {{/if}}
+</div>

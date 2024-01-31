@@ -1,0 +1,78 @@
+<div class="ui grid">
+  <div class="ui no bottom padding row items-center">
+    {{#unless @hidePageSize}}
+      <div class="left aligned eight wide column">
+        <Tables::Utilities::PageSizeInput
+          @pageSize={{this.pageSize}} />
+      </div>
+    {{/unless}}
+    <div class="eight wide right aligned column pr-0">
+      {{#unless @hideSearchBox}}
+        <Tables::Utilities::SearchBox
+          @searchQuery={{this.searchQuery}}
+          @filterOptions={{this.filterOptions}} />
+      {{/unless}}
+      {{#if @tags}}
+        <Tables::Utilities::AddTag @tags={{@tags}} @selectTag={{@selectTag}}/>
+      {{/if}}
+    </div>
+  </div>
+  <div class="ui no bottom padding row z-index-0 {{this.classEvent}}">
+    <EmberTable @tableColor={{@color}} as |t|>
+      <t.head
+        @sortFunction={{null}}
+        @columns={{this.columns}}
+        @enableReorder={{true}}
+        @sorts={{this.sorts}}
+        @onUpdateSorts={{action (mut this.sorts)}} as |h|>
+        <h.row as |r|>
+          <r.cell as |column|>
+            {{#if column.headerComponent}}
+              {{#component
+                column.headerComponent
+                sorts=this.sorts column=column sortBy=this.sortBy sortDir=this.sortDir
+              }}
+                {{column.name}}
+              {{/component}}
+            {{else}}
+              {{column.name}}
+            {{/if}}
+            {{#if column.helperInfo}}
+              <UiPopup
+                @tagName="i"
+                @class="info circle icon"
+                @content={{t-var column.helperInfo}} />
+            {{/if}}
+          </r.cell>
+        </h.row>
+      </t.head>
+      <t.body
+        @rows={{this.rows}} as |b|>
+        <b.row as |r|>
+          <r.cell as |cell column row|>
+            {{#if column.cellComponent}}
+              {{#component column.cellComponent
+                           record=(get row (t-var column.valuePath))
+                           extraRecords=(get-properties row column.extraValuePaths)
+                           props=(hash options=column.options actions=column.actions row=row)
+              }}
+                {{cell}}
+              {{/component}}
+            {{else}}
+              {{cell}}
+            {{/if}}
+          </r.cell>
+        </b.row>
+      </t.body>
+    </EmberTable>
+  </div>
+
+  {{#unless @hidePagination}}
+    <div class="ui no top padding row">
+      <Tables::Utilities::Pagination
+        @currentPage={{this.currentPage}}
+        @pageSize={{this.pageSize}}
+        @metaData={{this.metaData}} />
+    </div>
+  {{/unless}}
+</div>

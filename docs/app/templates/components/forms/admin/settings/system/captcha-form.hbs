@@ -1,0 +1,61 @@
+<h3 class="ui header">
+  <div class="inline field">
+  {{t 'Captcha Options'}}
+  <i class="small info circular icon link has popup"></i> 
+      <div class="ui flowing popup top left transition hidden">
+        <table class="ui fluid celled table">
+          <thead>
+            <tr><th> {{t 'Page'}}</th>
+            <th>{{t 'Functionality'}}</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td>{{t 'User Register Page'}}</td>
+              <td>{{t 'HCaptcha is enabled if new user is creating account.'}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'Login Page'}}</td>
+              <td>{{t 'HCaptcha is enabled if user try to login more than 2 times with wrong credentials.'}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'Forgot Password page'}}</td>
+              <td>{{t 'HCaptcha is always enabled.'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div class="sub header">
+    {{t 'Captcha settings for sensitive actions in app.'}}
+  </div>
+</h3>
+<div class="inline field">
+  <label>
+    {{t 'Enable Google reCAPTCHA'}}
+  </label>
+  <UiCheckbox @class="toggle disabled" @checked={{this.settings.isGoogleRecaptchaEnabled}} @onChange={{action (mut this.settings.isGoogleRecaptchaEnabled)}} />
+</div>
+{{#if this.settings.isGoogleRecaptchaEnabled}}
+  <h3 class="ui header">
+    {{t 'Google reCaptcha'}}
+    <div class="sub header">
+      {{t 'See'}}
+      <a href="https://www.google.com/recaptcha/intro/v3.html" target="_blank" rel="noopener nofollow">
+        {{t 'here'}}
+      </a>
+      {{t 'on how to obtain these keys.'}}
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Google reCAPTCHA Site Key'}}
+    </label>
+    <Input @type="text" @name="google_recaptcha_sitekey" @value={{this.settings.googleRecaptchaSite}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Google reCAPTCHA Secret Key'}}
+    </label>
+    <Input @type="text" @name="google_recaptcha_secretkey" @value={{this.settings.googleRecaptchaSecret}} />
+  </div>
+{{/if}}

@@ -1,0 +1,153 @@
+{{#if (eq this.session.currentRouteName 'public.index')}}
+  <a href='#info' {{action "scrollToTarget" 'info' }} class='item active scroll'>
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} info icon"></i>
+      {{/unless}}
+      {{t 'Info'}}</div>
+  </a>
+  {{#if this.event.tickets.length}}
+    <a href='#tickets' {{action "scrollToTarget" 'tickets' }} class='item scroll'>
+      <div>
+        {{#unless this.hideIcon}}
+          <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} ticket icon"></i>
+        {{/unless}}
+        {{t 'Tickets'}}</div>
+    </a>
+  {{/if}}
+
+{{else}}
+  <LinkTo class="item" @route="public.index"  @models={{array this.event.id}} {{action 'goToSection' 'info' }}>
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} info icon"></i>
+      {{/unless}}
+      {{t 'Info'}}</div>
+  </LinkTo>
+  {{#if this.event.tickets.length}}
+    <LinkTo class="item" @route="public.index"  @models={{array this.event.id}} {{action 'goToSection' 'tickets' }}>
+      <div>
+        {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} ticket icon"></i>
+        {{/unless}}
+        {{t 'Tickets'}}</div>
+    </LinkTo>
+  {{/if}}
+
+{{/if}}
+
+{{#if (and this.event.isSchedulePublished this.showSessions)}}
+  <LinkTo 
+  @route="public.sessions"  
+  @models={{array this.event.id}}
+  {{action 'hideSidebar'}}
+  @query={{hash sort='starts-at' date=null search=null track=null sessionType=null room=null my_speaker_sessions=null my_schedule=null}} class="item">
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} book icon"></i>
+      {{/unless}}
+      {{t 'Schedule'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if this.showSpeakers}}
+  <LinkTo @route="public.speakers" 
+  @models={{array this.event.id}} 
+  {{action 'hideSidebar'}}
+  @query={{hash earch=null}} class="item">
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} bullhorn icon"></i>
+      {{/unless}}
+      {{t 'Speakers'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if (and this.isSchedulePublished this.showSessions)}}
+  <LinkTo @route="public.schedule" @models={{array this.event.id}} {{action 'hideSidebar'}} class="item">
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} calendar icon"></i>
+      {{/unless}}
+      {{t 'Calendar'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if (and this.event.isSponsorsEnabled this.event.sponsors)}}
+ {{#if (eq this.session.currentRouteName 'public.index')}}
+   <a href='#sponsor' {{action "scrollToTarget" 'sponsor' }} class='item scroll'>
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>
+      {{/unless}}
+      {{t 'Supporters'}}</div>
+   </a>
+ {{else}}
+   <LinkTo class="item" @route="public.index" @models={{array this.event.id}} {{action 'goToSection' 'sponsor' }}>
+      <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} dollar icon"></i>
+      {{/unless}}
+      {{t 'Supporters'}}</div>
+   </LinkTo>
+ {{/if}}
+{{/if}}
+{{#if this.showExhibitors}}
+  <LinkTo @route="public.exhibition"  @models={{array this.event.id}} {{action 'hideSidebar'}} class="item">
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} users icon"></i>
+      {{/unless}}
+      {{t 'Exhibition'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if this.event.hasOwnerInfo}}
+ {{#if (eq this.session.currentRouteName 'public.index')}}
+   <a href='#organizer' {{action "scrollToTarget" 'organizer' }} class='item scroll'>
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} users icon"></i>
+      {{/unless}}
+      {{t 'Organizer'}}</div>
+   </a>
+ {{else}}
+   <LinkTo class="item" @route="public.index" @models={{array this.event.id}} {{action 'goToSection' 'organizer' }}>
+    <div>{{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} users icon"></i>
+      {{/unless}}
+      {{t 'Organizer'}}</div>
+   </LinkTo>
+ {{/if}}
+{{/if}}
+{{#if this.shouldShowCallforSpeakers }}
+  <LinkTo @route="public.cfs" @models={{array this.event.id}} {{action 'hideSidebar'}} class="item">
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} bullhorn icon"></i>
+      {{/unless}}
+      {{t 'Call for Speakers'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if (eq this.session.currentRouteName 'public.index')}}
+  <a href='#getting-here' {{action "scrollToTarget" 'getting-here' }} class='item scroll'>
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} icon map marker alternate"></i>
+      {{/unless}}
+      {{t 'Getting here'}}</div>
+  </a>
+{{else}}
+  <LinkTo class="item" @route="public.index" @models={{array this.event.id}} {{action 'goToSection' 'getting-here' }}>
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} icon map marker alternate"></i>
+      {{/unless}}
+      {{t 'Getting here'}}</div>
+  </LinkTo>
+{{/if}}
+{{#if this.event.codeOfConduct}}
+  <LinkTo @route="public.coc" @models={{array this.event.id}} {{action 'hideSidebar'}} class="item">
+    <div>
+      {{#unless this.hideIcon}}
+        <i class="mr-4 {{unless this.device.isMobile 'hidden-item'}} icon book"></i>
+      {{/unless}}
+      {{t 'Code of Conduct'}}</div>
+  </LinkTo>
+{{/if}}

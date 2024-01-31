@@ -1,0 +1,86 @@
+{{#if this.addressViewIsShown}}
+  <div class="ui two column grid stackable">
+    <div class="column">
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_vaue"
+          @value={{this.address.venue}}
+          placeholder={{t "Venue Name"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_line"
+          @value={{this.address.line}}
+          placeholder={{t "Street Address"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_city"
+          @value={{this.address.city}}
+          placeholder={{t "City"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_state"
+          @value={{this.address.state}}
+          placeholder={{t "State"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_zip_code"
+          @value={{this.address.zipCode}}
+          placeholder={{t "ZIP Code"}} />
+      </div>
+      <div class="field">
+        <Input
+          @type="text"
+          @name="address_country"
+          @value={{this.address.country}}
+          placeholder={{t "Country"}} />
+      </div>
+      <div class="ui two column grid">
+        <div class="left floated column">
+          <a href="#" {{action 'showAddressView' false}}>{{t 'Reset Map'}}</a>
+        </div>
+        <div class="right floated column" style="text-align: right">
+          {{yield}}
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <LeafletMap @lat={{20}} @lng={{80}} @zoom={{10}} as |layers|>
+        <layers.tile @url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
+        <layers.marker @location={{array 20 80}} @draggable={{true}} @onDragend={{action "updateLocation"}} as |marker|>
+          <marker.popup>
+            {{this.location}}
+          </marker.popup>
+        </layers.marker>
+      </LeafletMap>
+    </div>
+  </div>
+{{else}}
+  <div class="ui action input">
+    <Input
+        @type="text"
+        @name={{name}}
+        @value={{this.placeName}}
+        placeholder={{this.placeholder}}
+        oninput={{action 'suggestionsTrigger' this.placeName}} />
+    <button class="ui left {{unless this.device.isMobile 'labeled'}} icon button" type="button" {{action 'showAddressView'}}>
+      <i class="icon map marker alternate"></i>
+      {{unless this.device.isMobile (t 'Enter address')}}
+    </button>
+  </div>
+  <div class="menu">
+    {{#each this.suggestions as |place|}}
+      <div class="item mb-2"  role="button" {{action "setAutocomplete" place.display_name}}>
+        <i class="map alternate marker icon"></i> {{place.display_name}}
+      </div>    
+    {{/each}}
+  </div>
+{{/if}}

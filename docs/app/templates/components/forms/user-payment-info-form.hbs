@@ -1,0 +1,79 @@
+<form class="ui form {{if this.isLoading 'loading'}}">
+  <h3 class="ui header">
+    {{t 'Payment Information'}}
+  </h3>
+  <h5 class="ui header">
+    {{t 'The information you provide here will be added to your invoices. Please ensure you have the correct information added here as it is not possible to regenerate invoices with different information at a later time.'}}
+  </h5>
+  <div class="field">
+    <label for="company">{{t 'Organisation'}}</label>
+    <Input
+      @type="text"
+      @id="company"
+      @value={{this.userBillingInfo.company}} />
+  </div>
+  <div class="field">
+    <label for="contactName">{{t 'Contact Name'}}</label>
+    <Input
+      @type="text"
+      @id="contactName"
+      @value={{this.userBillingInfo.billingContactName}} />
+  </div>
+  <div class="field">
+    <label for="phone">{{t 'Phone'}}</label>
+    <Input
+      @type="text"
+      @id="phone"
+      @value={{this.userBillingInfo.billingPhone}} />
+  </div>
+  <div class="field">
+    <label for="address">{{t 'Address'}}</label>
+    <Textarea
+      @rows="2"
+      @id="address"
+      @value={{this.userBillingInfo.billingAddress}} />
+  </div>
+  <div class="field">
+    <label for="zip">{{t 'ZIP Code'}}</label>
+    <Input
+      @type="text"
+      @id="zip"
+      @value={{this.userBillingInfo.billingZipCode}} />
+  </div>
+  <div class="field">
+    <label for="city">{{t 'City'}}</label>
+    <Input
+      @type="text"
+      @id="city"
+      @value={{this.userBillingInfo.billingCity}} />
+  </div>
+  <div class="field">
+    <label for="state">{{t 'State'}}</label>
+    <Input
+      @type="text"
+      @id="state"
+      @value={{this.userBillingInfo.billingState}} />
+  </div>
+  <CountryDropdown
+    @placeholder={{t 'Country'}}
+    @val={{this.userBillingInfo.billingCountry}}
+    @id="country" />
+  <div class="field">
+    <label for="taxID">{{t 'Tax ID or Business ID'}}</label>
+    <Input
+      @type="text"
+      @id="taxID"
+      @value={{this.userBillingInfo.billingTaxInfo}} />
+  </div>
+  <div class="field">
+    <label for="additionalInfo">{{t 'Additional Information'}}</label>
+    <Textarea
+      @rows="4"
+      @id="additionalInfo"
+      @value={{this.userBillingInfo.billingAdditionalInfo}} />  
+  </div>
+
+  <button type="submit" class="ui teal submit button">
+    {{t 'Submit'}}
+  </button>
+</form>

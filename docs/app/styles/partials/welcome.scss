@@ -1,0 +1,36 @@
+.welcome-header {
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('/images/landing.jpg');
+  background-position: center;
+  color: #fff;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+
+  .content {
+
+    left: 20%;
+    position: absolute;
+    right: 20%;
+    top: 150px;
+
+    .lead {
+      font-size: 50px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    }
+
+    .button {
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.main-heading {
+  color: #2185d0;
+}
+
+.blur-blue-btn {
+  background-color: rgba(65, 150, 214, .4) !important;
+}

@@ -1,0 +1,48 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h2 class="ui header column">{{t 'Tickets Summary'}}</h2>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <table class="ui stackable structured celled compact table">
+        <thead>
+          <tr>
+            <th rowspan="2">{{t 'Marketers'}}</th>
+            <th colspan="3" class="ui green inverted segment center aligned">{{t 'Completed Orders'}}</th>
+          </tr>
+          <tr>
+            <th class="right aligned">{{t 'Tickets'}}</th>
+            <th class="right aligned">{{t 'Sales (discounted)'}}</th>
+            <th class="right aligned">{{t 'Discounted amount'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.model as |entry|}}
+            <tr>
+              <td>{{entry.fullname}}</td>
+              <td class="right aligned">{{entry.tickets}}</td>
+              <td class="right aligned">
+                {{entry.sales.completed.ticket_count}}
+              </td>
+              <td class="right aligned">
+                US$ {{format-money entry.sales.completed.sales_total}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+        {{!-- <tfoot>
+          <tr>
+            <th>
+              <span class="weight-600">
+                {{t 'Total'}}
+              </span>
+            </th>
+            <th class="right aligned">{{ticketsTotal}}</th>
+            <th class="right aligned">US$ {{format-money salesTotal}}</th>
+            <th class="right aligned">US$ {{format-money discountsTotal}}</th>
+          </tr>
+        </tfoot> --}}
+      </table>
+    </div>
+  </div>
+</div>

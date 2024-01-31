@@ -1,0 +1,11 @@
+<GroupNav @group={{this.model.group}} />
+<div class="row">
+  <div class="sixteen wide column">
+    <Forms::group::GroupEventsForm
+      @group={{this.model.group}}
+      @groupEvents={{this.model.groupEvents}}
+      @upcomingEvents={{this.model.upcomingEvents}}
+      @pastEvents={{this.model.pastEvents}}
+      @isLoading={{this.isLoading}} />
+  </div>
+</div>

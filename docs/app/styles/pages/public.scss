@@ -1,0 +1,214 @@
+.public {
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+.side-menu {
+  position: sticky;
+  top: 14px;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mobile-public {
+  margin: unset !important;
+
+  .item-schedule {
+    display: flex !important;
+    align-items: center;
+    padding-right: unset !important;
+    padding-left: unset !important;
+
+    div {
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+
+  .item-calendar {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding-right: 3.5px !important;
+    padding-left: unset !important;
+
+    a {
+      padding-right: 12px !important;
+      padding-bottom: 12px !important;
+      padding-top: 12px !important;
+      width: 100%;
+      margin-right: unset !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #000;
+    }
+  }
+
+  .item-sort-by {
+    padding-right: unset !important;
+    padding-left: unset !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-clear-filter {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding-left: unset !important;
+
+    a {
+      padding-top: 7.8px !important;
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+      margin: unset !important;
+    }
+  }
+}
+
+.row-two-my-schedule {
+  margin-top: unset !important;
+  margin-bottom: 1rem !important;
+
+  .item-public {
+    padding: unset !important;
+
+    a {
+      margin-right: unset !important;
+    }
+  }
+
+  .item-my-schedule {
+    padding: unset !important;
+
+    a {
+      margin-right: unset !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .item-my-speaker {
+    padding: unset !important;
+
+    a {
+      width: 100% !important;
+      margin: unset !important;
+      padding: unset !important;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    div {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+  }
+}
+
+.row-dropdown-public {
+  margin-bottom: unset !important;
+
+  @media only screen and (max-width: 767px) {
+    .ui.search.dropdown .menu {
+      max-height: 13rem !important;
+    }
+  }
+
+  .ic-ddown {
+    right: 6px !important;
+  }
+
+  .dropdown {
+    min-width: unset !important;
+  }
+
+  .item-track {
+    padding-right: 5px !important;
+    padding-left: unset !important;
+    padding-bottom: unset !important;
+
+    .menu-track {
+      padding-left: 8px !important;
+
+      .menu.transition.visible {
+        border-top: 1px solid #96c8da !important;
+        max-height: 27rem !important;
+      }
+
+      .menu {
+        width: 240px !important;
+      }
+    }
+  }
+
+  .item-room {
+    padding-right: unset !important;
+    padding-left: unset !important;
+    padding-bottom: unset !important;
+
+    .menu-room {
+      padding-left: 8px !important;
+    }
+
+    .menu.transition.visible {
+      border-top: 1px solid #96c8da !important;
+      max-height: 27rem !important;
+    }
+
+    .menu {
+      width: 240px !important;
+    }
+  }
+
+  .item-session-type {
+    padding-right: unset !important;
+    padding-left: 5px !important;
+    padding-bottom: unset !important;
+
+    .ui.active.selection.dropdown {
+      border-bottom: unset !important;
+    }
+
+    .menu-type {
+      padding-left: 8px !important;
+    }
+
+    .menu {
+      width: 240px !important;
+      border-bottom: 1px solid #96c8da !important;
+    }
+
+    .menu.transition.visible {
+      border-top: 1px solid #96c8da !important;
+      max-height: 27rem !important;
+    }
+  }
+
+  .item-session-level {
+    padding-left: 5px !important;
+    padding-right: unset !important;
+    padding-bottom: unset !important;
+
+    .menu-level {
+      padding-left: 8px !important;
+    }
+
+    .menu.transition.visible {
+      border-top: 1px solid #96c8da !important;
+      max-height: 27rem !important;
+    }
+
+    .menu {
+      width: 240px !important;
+    }
+  }
+}

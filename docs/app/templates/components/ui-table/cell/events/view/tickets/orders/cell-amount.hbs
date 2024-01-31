@@ -1,0 +1,8 @@
+<div class="center aligned weight-400">
+  <CurrencyAmount @currency={{this.extraRecords.event.paymentCurrency}} @amount={{this.record}}/>
+</div>
+{{#if this.extraRecords.discountCode.code}}
+  <div class="ui mini yellow label">
+    {{this.extraRecords.discountCode.code}}
+  </div>
+{{/if}}

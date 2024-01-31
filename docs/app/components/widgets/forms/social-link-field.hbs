@@ -1,0 +1,28 @@
+<div class="{{unless @fixed 'fields'}}">
+  {{#unless @fixed}}
+    <div class="field pr-2">
+      <div class="ui labeled input">
+        {{#if @custom}}
+          <Input @type="text" value={{@site}} {{on 'input' (action @onSiteChange value="target.value")}} />
+        {{else}}
+          <UiDropdown @class='selection' @selected={{@site}} @onChange={{@onSiteChange}}>
+            <div class="default text">Select</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              {{#each this.sites as |site|}}
+                <div class="item" data-value='{{site.identifier}}' >{{t-var site.name}}</div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        {{/if}}
+      </div>
+    </div>
+  {{/unless}}
+  <Widgets::Forms::LinkField
+    @prefix={{this.prefix}}
+    @value={{@value}}
+    @onChange={{@onChange}}
+    @inputId={{@inputId}}>
+      {{yield}}
+  </Widgets::Forms::LinkField>
+</div>

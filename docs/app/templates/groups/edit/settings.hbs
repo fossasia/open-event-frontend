@@ -1,0 +1,9 @@
+<GroupNav @group={{this.model.group}} />
+<div class="row">
+  <div class="sixteen wide column">
+    <Forms::group::GroupSettingsForm
+      @group={{this.model.group}}
+      @events={{this.model.filteredEvents}}
+      @isLoading={{this.isLoading}} />
+  </div>
+</div>

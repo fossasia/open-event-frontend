@@ -1,0 +1,21 @@
+{{#if (and (not-includes this.session.currentRouteName 'my-sessions.view'))}}
+  <UnverifiedUserMessage />
+  <h1 class="ui header">{{t 'My Sessions'}}</h1>
+  <div class="ui grid">
+    <div class="row">
+      <div class="sixteen wide column">
+        <TabbedNavigation>
+          <LinkTo @route="my-sessions.list" @model="upcoming" class="item">
+            {{t 'Upcoming Sessions'}}
+          </LinkTo>
+          <LinkTo @route="my-sessions.list" @model="past" class="item">
+            {{t 'Past Sessions'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
+    </div>
+    {{outlet}}
+  </div>
+{{else}}
+  {{outlet}}
+{{/if}}

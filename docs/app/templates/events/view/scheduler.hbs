@@ -1,0 +1,39 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide mobile three wide computer column">
+      {{#if this.model.event.isSchedulePublished}}
+        <button class="ui orange {{if this.isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Unpublish Schedule'}}</button>
+      {{else}}
+        <button class="ui green {{if this.isLoading 'loading'}} fluid button" {{action 'togglePublishState'}}>{{t 'Publish Schedule'}}</button>
+      {{/if}}
+      <div class="ui fluid icon input m-2">
+        <Input type="text" placeholder={{t "Search"}} @value={{this.filter}} />
+        <i class="search icon"></i>
+      </div>
+      <h3 class="ui header">{{t 'Unscheduled Sessions'}}</h3>
+      <div class="ui raised segments" style="overflow: auto; height: 750px">
+        {{#each this.unscheduledSessions as |session|}}
+          {{#if (or (eq session.state 'accepted') (eq session.state 'confirmed'))}}
+            <Scheduler::UnscheduledSession @session={{session}} />
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="sixteen wide mobile thirteen wide computer column">
+      {{#if this.device.isMobile}}
+        <div class="ui hidden divider"></div>
+      {{/if}}
+      <Schedule
+        @event={{this.model.event}}
+        @sessions={{this.model.scheduled}}
+        @rooms={{this.microlocations}}
+        @editable={{true}}
+        @droppable={{true}}
+        @defaultTimedEventDuration={{this.model.defaultDuration}}
+        @drop={{action "drop"}}
+        @eventResize={{action "eventResize"}}
+        @eventDrop={{action "eventDrop"}}
+        @eventRender={{action "eventRender"}} />
+    </div>
+  </div>
+</div>

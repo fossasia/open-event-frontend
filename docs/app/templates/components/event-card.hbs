@@ -1,0 +1,90 @@
+<div class="{{if this.isWide 'event wide ui grid row'}}" style="height: 100%;">
+  {{#if this.isWide}}
+    {{#unless this.device.isMobile}}
+      <div class="ui card rounded-r-none three wide computer six wide tablet column">
+        <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
+          <Widgets::SafeImage
+            @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
+        </a>
+      </div>
+    {{/unless}}
+  {{/if}}
+  <div class="ui card {{this.eventClass}} {{if this.isWide 'h-auto' 'h-full'}}">
+    {{#unless this.isWide}}
+      <a class="image" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
+        <Widgets::SafeImage
+          @src={{if this.event.thumbnailImageUrl this.event.thumbnailImageUrl this.event.originalImageUrl}} />
+      </a>
+    {{/unless}}
+    <a class="main content {{if this.isWide (unless this.device.isMobile 'h-80perc')}}" href="{{href-to (if this.isCFS 'public.cfs' 'public') this.event.id}}">
+      <SmartOverflow @class="header">
+        {{this.event.name}}
+      </SmartOverflow>
+      <div class="meta mb-2">
+        <span class="date">
+          <Public::EventDateTime @event={{@event}} @noBreak={{true}} />
+        </span>
+      </div>
+      <Public::EventVenue @event={{@event}} />
+    </a>
+    <div class="extra content small text">
+      <span class="right floated">
+        <i role="button" class="share alternate link icon" {{action this.shareEvent this.event}}></i>
+      </span>
+      <span class="hashtags">
+        {{#if hasBlock}}
+          {{yield}}
+        {{else}}
+          {{#if this.filterByTags}}
+            <a href="#"
+              class="link item {{if (eq this.category this.event.topic.name) 'active'}}"
+              {{action 'selectCategory' this.event.topic.name}}>
+              {{t-var this.tags.[0]}}
+            </a>
+            <a href="#"
+              class="link item {{if (eq this.eventType this.event.type.name) 'active'}}"
+              {{action 'selectEventType' this.event.type.name}}>
+              {{t-var this.tags.[1]}}
+            </a>
+            <a href="#"
+              class="link item {{if (eq this.subCategory this.event.subTopic.slug) 'active'}}"
+              {{action 'selectCategory' this.event.topic.name this.event.subTopic.slug}}>
+              {{t-var this.tags.[2]}}
+            </a>
+          {{else}}
+            <a href="{{href-to 'explore.events' (query-params category=this.event.topic.name event_type=null sub_category=null)}}"
+              class="link item">
+              {{t-var this.tags.[0]}}
+            </a>
+            <a href="{{href-to 'explore.events' (query-params category=null event_type=this.event.type.name sub_category=null)}}"
+              class="link item">
+              {{t-var this.tags.[1]}}
+            </a>
+            <a href="{{href-to 'explore.events' (query-params category=this.event.topic.name event_type=null sub_category=this.event.subTopic.slug)}}"
+              class="link item">
+              {{t-var this.tags.[2]}}
+            </a>
+          {{/if}}
+        {{/if}}
+      </span>
+      {{#if this.addToGroup}}
+        <button class="fluid ui blue button" {{action this.addEvent this.event}}>{{t 'Add event to group.'}}</button>
+      {{/if}}
+      {{#if this.removeFromGroup}}
+        {{#if (eq this.isSavedEvent false)}}
+          <button class="fluid ui red disabled button">{{t 'Cannot announce unsaved event!'}}</button>
+        {{else if this.isPastEvent}}
+          <button class="fluid ui red disabled button">{{t 'Cannot announce past event!'}}</button>
+        {{else if (not-eq @event.state 'published')}}
+          <button class="fluid ui red disabled button">{{t 'Cannot announce unpublished event!'}}</button>
+        {{else if this.event.isAnnounced}}
+          <button class="fluid ui green disabled button">{{t 'Event has been announced.'}}</button>
+        {{else}}
+          <button class="fluid ui teal button" {{action this.announceEvent this.event}}>{{t 'Announce event'}}</button>
+        {{/if}}
+        <div class="ui hidden divider m-0" style="height: .4rem !important;"></div>
+        <button class="fluid ui red button" {{action this.removeEvent this.event}}>{{t 'Remove event from group.'}}</button>
+      {{/if}}
+    </div>
+  </div>
+</div>

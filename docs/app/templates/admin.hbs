@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="x-scrollable sixteen wide column">
+    <TabbedNavigation>
+      <LinkTo @route="admin.index" class="item">
+        {{t 'Admin'}}
+      </LinkTo>
+      <LinkTo @route="admin.events" class="item">
+        {{t 'Events'}}
+      </LinkTo>
+      <LinkTo @route="admin.sales" @model="live" class="item">
+        {{t 'Sales'}}
+      </LinkTo>
+      <LinkTo @route="admin.sessions" class="item">
+        {{t 'Sessions'}}
+      </LinkTo>
+      <LinkTo @route="admin.users" class="item">
+        {{t 'Users'}}
+      </LinkTo>
+      <LinkTo @route="admin.groups" class="item">
+        {{t 'Groups'}}
+      </LinkTo>
+      <LinkTo @route="admin.video" class="item">
+        {{t 'Video'}}
+      </LinkTo>
+      <LinkTo @route="admin.permissions" class="item">
+        {{t 'Permissions'}}
+      </LinkTo>
+      <LinkTo @route="admin.messages" class="item">
+        {{t 'Messages'}}
+      </LinkTo>
+      <LinkTo @route="admin.reports" class="item">
+        {{t 'Reports'}}
+      </LinkTo>
+      <LinkTo @route="admin.settings" class="item">
+        {{t 'Settings'}}
+      </LinkTo>
+      <LinkTo @route="admin.content" class="item">
+        {{t 'Content'}}
+      </LinkTo>
+    </TabbedNavigation>
+  </div>
+</div>
+<div class="ui basic segment">
+  {{outlet}}
+</div>

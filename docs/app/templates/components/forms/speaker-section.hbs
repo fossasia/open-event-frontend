@@ -1,0 +1,122 @@
+{{#each this.fields as |field|}}
+  {{#if field.isIncluded}}
+    <form class="field">
+      <div class="inline">
+        <label class="{{if field.isRequired 'required'}}" for="name">{{field.name}}</label>
+        {{#if field.isPublic}}
+          <div class="ui green horizontal label m-1">{{t 'Public'}}</div>
+        {{else}}
+          <div class="ui red horizontal label m-1">{{t 'Private'}}</div>
+        {{/if}}
+      </div>
+      {{#if (is-input-field field.type) }}
+        {{#if field.isLongText}}
+          <Widgets::Forms::RichTextEditor
+            @value={{mut (get this.data.speaker field.fieldIdentifier)}}
+            @textareaId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
+        {{else if (eq field.fieldIdentifier 'email')}}
+          {{#if (or this.isUserOwnerOrAdmin this.isUserOrganiser)}}
+            <UiCheckbox
+              @label={{t "Do not require email for this speaker."}}
+              @checked={{this.data.speaker.isEmailOverridden}}
+              @onChange={{action (mut this.data.speaker.isEmailOverridden)}} />
+          {{/if}}
+          {{#if (not this.data.speaker.isEmailOverridden)}}
+            <Input
+              @type={{field.type}}
+              @value={{mut (get this.data.speaker field.identifierPath)}}
+              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
+          {{/if}}
+        {{else}}
+          {{#if field.isUrlField}}
+            <Widgets::Forms::SocialLinkField
+              @fixed={{true}}
+              @inputId={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+              @site={{field.fieldIdentifier}}
+              @value={{get this.data.speaker field.identifierPath}}
+              @onChange={{action (mut (get this.data.speaker field.identifierPath))}} />
+          {{else}}
+            <Input
+              @type={{field.type}}
+              @value={{mut (get this.data.speaker field.identifierPath)}}
+              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
+          {{/if}}
+        {{/if}}
+      {{/if}}
+      {{#if (eq field.type 'image')}}
+        <Widgets::Forms::ImageUpload
+          @imageUrl={{mut (get this.data.speaker field.fieldIdentifier)}}
+          @needsCropper={{true}}
+          @label={{t "Speaker Image"}}
+          @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+          @icon="image"
+          @aspectRatio={{array 2 2}}
+          @hint={{t "Select an image"}}
+          @maxSizeInKb={{this.settings.logoSize}}
+          @helpText={{t "We recommend using a 1:1 ratio image"}}
+          @requiresDivider={{true}} />
+      {{/if}}
+      {{#if (eq field.type 'select')}}
+        {{#if (eq field.fieldIdentifier 'country')}}
+          <UiDropdown
+            @class="search selection"
+            @selected={{this.data.speaker.country}}
+            @forceSelection={{false}}
+            @fullTextSearch={{true}}>
+            <Input
+              @type="hidden"
+              @autocomplete="no"
+              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}}
+              @value={{this.data.speaker.country}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{get this.data 'selectedCountry'}}</div>
+            <div class="menu">
+              {{#each this.countries as |country|}}
+                <div class="item" data-value="{{country.name}}">
+                  <i class="{{lowercase country.code}} flag"></i>
+                  {{t-var country.name}}
+                </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        {{else if (eq field.fieldIdentifier 'gender')}}
+          <UiDropdown
+            @class="search selection"
+            @selected={{this.data.speaker.gender}}
+            @onChange={{action (mut this.data.speaker.gender)}} as |execute mapper|>
+            <Input
+              @type="hidden"
+              @id={{if field.isRequired (concat "speaker_" field.fieldIdentifier "_required") (concat "speaker_" field.fieldIdentifier)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your gender'}}</div>
+            <div class="menu">
+              {{#each this.genders as |gender|}}
+                <div class="item" data-value="{{map-value mapper gender.name}}">
+                  {{gender.name}}
+                </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        {{else}}
+          <UiDropdown
+            @class="search selection"
+            @onChange={{action (mut (get this.data.speaker field.fieldIdentifier))}} as |execute mapper|>
+            <i class="dropdown icon"></i>
+            <div class="default text">
+              {{if (get this.data.speaker field.fieldIdentifier) (get this.data.speaker field.fieldIdentifier) (concat 'Select a ' field.name)}}
+            </div>
+            <div class="menu">
+              {{#each (get this.data field.fieldIdentifier) as |item|}}
+                <div class="item" data-value="{{map-value mapper item}}">{{item.name}}</div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        {{/if}}
+      {{/if}}
+    </form>
+  {{/if}}
+{{else}}
+  <div class="sixteen wide column">
+    <h3 class="centered text">{{t 'Please enable session/speaker form to create a session/speaker.'}}</h3>
+  </div>
+{{/each}}

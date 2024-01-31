@@ -1,0 +1,20 @@
+<div class="public-event ui relaxed grid">
+	<div class="sixteen wide column lead {{if this.smallLead 'small'}}" style = "height:200px">
+    <Widgets::SafeImage class="background" @src="/images/landing.jpg" />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          <div>
+            <h1 class="event name">{{this.model.title}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui thirteen column container mt-8 mb-8">
+  <div>{{sanitize this.model.description}}</div>
+</div>
+<div class="ui center aligned secondary large segment mt-8" style="margin-bottom:-10px;border:none">
+  {{t 'Still have questions?'}} <a href="https://support.eventyay.com/">{{t 'Visit our FAQ to find answers.'}}</a>
+</div>

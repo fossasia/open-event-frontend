@@ -1,0 +1,27 @@
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="eight wide column">
+      <Events::View::Overview::EventSetupChecklist @data={{this.model}} />
+      {{#if (and this.model.event.isSponsorsEnabled this.model.event.sponsors)}}
+        <Events::View::Overview::EventSponsors
+          @data={{this.model.sponsors}}
+          @columns={{this.columns}}
+          @page={{this.page}}
+          @per_page={{this.per_page}}
+          @search={{this.search}}
+          @sort_by={{this.sort_by}}
+          @sort_dir={{this.sort_dir}}
+          @filterOptions={{this.filterOptions}} />
+        {{/if}}
+      <Events::View::Overview::EventApps @eventId={{this.model.event.id}} />
+    </div>
+    <div class="eight wide column">
+      <Events::View::Overview::GeneralInfo @data={{this.model}} />
+      <Events::View::Overview::EventTickets @data={{this.model}} />
+      {{#if this.model.event.isSessionsSpeakersEnabled}}
+        <Events::View::Overview::SpeakerSession @data={{this.model}} />
+      {{/if}}
+      <Events::View::Overview::ManageRoles @data={{this.model}} @showLink={{true}} />
+    </div>
+  </div>
+</div>

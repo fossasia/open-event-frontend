@@ -1,0 +1,92 @@
+<h3 class="ui header">
+  {{t 'Storage'}}
+  <div class="sub header">
+    {{t 'Where to store data ?'}}
+  </div>
+</h3>
+<div class="field">
+  <UiRadio @label={{t "Local"}} @current={{this.settings.storagePlace}} @name="storage" @value="local" @onChange={{action (mut this.settings.storagePlace)}} />
+  <span class="small text">
+    ({{t 'stored in'}} /static/media/folder)
+  </span>
+</div>
+<div class="field">
+  <UiRadio @label={{t "Google Storage"}} @current={{this.settings.storagePlace}} @name="storage" @value="gs" @onChange={{action (mut this.settings.storagePlace)}} />
+  <span class="small text">
+    ({{t 'See'}}
+    <a href="https://cloud.google.com/storage/docs/migrating#defaultproj" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these keys.'}})
+  </span>
+</div>
+{{#if (eq this.settings.storagePlace 'gs')}}
+  <div class="field">
+    <label>
+      {{t 'Bucket name'}}
+    </label>
+    <Input @type="text" @name="google_storage_bucket_name" @value={{this.settings.gsBucketName}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Interoperable access key'}}
+    </label>
+    <Input @type="text" @name="google_storage_access_key" @value={{this.settings.gsKey}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Interoperable access secret'}}
+    </label>
+    <Input @type="text" @name="google_storage_access_secret" @value={{this.settings.gsSecret}} />
+  </div>
+  <div class="ui hidden divider"></div>
+{{/if}}
+<div class="field">
+  <UiRadio @label={{t "Amazon S3"}} @name="storage" @value="s3" @current={{this.settings.storagePlace}} @onChange={{action (mut this.settings.storagePlace)}} />
+  <span class="small text">
+    ({{t 'See'}}
+    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-getting-started.html" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to obtain these keys.'}})
+  </span>
+</div>
+{{#if (eq this.settings.storagePlace 's3')}}
+  <div class="less padding field">
+    <label>
+      {{t 'Region'}}
+    </label>
+    <UiDropdown @class="fluid selection" @selected={{this.settings.awsRegion}} @onChange={{action (mut this.settings.awsRegion)}}>
+      <Input @type="hidden" @name="amazon_s3_region" @value={{this.settings.awsRegion}} />
+      <div class="default text">
+        {{t 'Select S3 Region'}}
+      </div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {{#each this.regions as |region|}}
+          <div class="item" data-value="{{region}}">
+            {{region}}
+          </div>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Bucket name'}}
+    </label>
+    <Input @type="text" @name="amazon_s3_bucket_name" @value={{this.settings.awsBucketName}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Key'}}
+    </label>
+    <Input @type="text" @name="amazon_s3_key" @value={{this.settings.awsKey}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Secret'}}
+    </label>
+    <Input @type="text" @name="amazon_s3_secret" @value={{this.settings.awsSecret}} />
+  </div>
+{{/if}}

@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  push:
+    branches: [ development, master, testing ]
+  pull_request:
+    branches: [ development, master, testing ]
+
+jobs:
+  install:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
+      id: cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      if: steps.cache.outputs.cache-hit != 'true'
+      with:
+        node-version: 14.x
+    - run: yarn
+      if: steps.cache.outputs.cache-hit != 'true'
+  
+  
+  lint:
+    name: Lint
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          # no restore-keys here, so we only accept this exact version
+      - run: yarn lint
+
+
+  test:
+    name: Test
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Copy .env
+        run:  cp '.env.example' '.env'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          # no restore-keys here, so we only accept this exact version
+      - run: yarn l10n:generate
+      - run: COVERAGE=true yarn test
+      - name: Code Coverage
+        uses: codecov/codecov-action@v1
+
+
+  build:
+    name: Build
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          # no restore-keys here, so we only accept this exact version
+      - run: yarn l10n:extract
+      - run: yarn l10n:update
+      - run: yarn l10n:generate
+      - run: ROOT_URL=open-event-frontend yarn build -prod
+        env:
+          API_HOST: https://open-event.dokku.fossasia.org
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/development' && github.event_name == 'push'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true

@@ -1,0 +1,23 @@
+<div class="ui segments">
+  <div class="ui orange inverted segment center aligned">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Event Information'}}
+      </div>
+    </div>
+  </div>
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'When & Where'}}</h3>
+  </div>
+  <div class="ui padded segment">
+    <strong>{{t 'At'}} {{this.event.locationName}}</strong>
+    <br>
+    <strong>{{t 'From'}}:</strong> {{general-date this.event.startsAt 'date-time-long'}}
+    <br>
+    <strong>{{t 'To'}}:</strong> {{general-date this.event.endsAt 'date-time-long'}}
+    {{#if this.event.ownerName}}
+      <br>
+      <strong>{{t 'Organized By'}}:</strong> {{this.event.ownerName}}
+    {{/if}}
+  </div>
+</div>

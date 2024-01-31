@@ -1,0 +1,15 @@
+<div class="ui grid segment">
+  {{#each this.data as |subTopic|}}
+    <div class="eight wide column">
+      <h4>{{subTopic.name}}</h4>
+      <Widgets::SafeImage @isAvatar={{true}} @class="ui big image" @src={{if subTopic.placeholder.originalImageUrl subTopic.placeholder.originalImageUrl "/images/placeholders/avatar.png"}} />
+      <div class="ui hidden divider"></div>
+      <button class="ui button primary" {{action 'openModal' subTopic.placeholder}} id="changebutton">{{t 'Change'}}</button>
+    </div>
+  {{else}}
+    <div class="ui disabled header">
+      {{t 'No images to show'}}
+    </div>
+  {{/each}}
+</div>
+<Modals::ChangeImageModal @isOpen={{this.isModalOpen}} @placeholder={{this.selectedPlaceholder}} />

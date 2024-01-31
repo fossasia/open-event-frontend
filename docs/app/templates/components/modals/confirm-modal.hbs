@@ -1,0 +1,40 @@
+<div class="header">
+  {{if this.confirm.promptText this.confirm.promptText (t 'Are you sure ?')}}
+</div>
+{{#if this.confirm.options.extra}}
+  <div class="content">
+    {{sanitize this.confirm.options.extra}}
+  </div>
+{{/if}}
+{{#if this.confirm.options.publicName}}
+  <div class="content">
+    <div class="field ui fluid input">
+      <Input type="text" @id="public_name" placeholder={{t "Public Profile Name"}}  @value={{this.authManager.currentUser.publicName}}/>
+    </div>
+  </div>
+  <div class="actions">
+    <button type="button" class="ui green button" {{action 'savePublicName'}}>
+      {{t 'Save'}}
+    </button>
+    <button type="button" class="ui black button" {{action 'deny'}}>
+      {{t 'Cancel'}}
+    </button>
+  </div>
+{{else}}
+  <div class="actions">
+    {{#if this.confirm.options.infoModal}}
+      <button type="button" class="ui blue button" {{action 'deny'}}>
+        {{t 'Ok'}}
+      </button>
+    {{else}}
+      {{#unless this.confirm.options.hideDeny}}
+        <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.denyColor 'black'}} button" {{action 'deny'}}>
+          {{if this.confirm.options.denyText this.confirm.options.denyText (t 'No')}}
+        </button>
+      {{/unless}}
+      <button type="button" class="ui {{if this.confirm.options.denyText this.confirm.options.approveColor 'green'}} button" {{action 'confirm'}}>
+        {{if this.confirm.options.approveText this.confirm.options.approveText (t 'Yes')}}
+      </button>
+    {{/if}}
+  </div>
+{{/if}}

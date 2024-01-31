@@ -1,0 +1,17 @@
+<div class="ui small pagination menu">
+  <a href="#" role="button" class="item {{if this.moveToPreviousPageDisabled 'disabled'}}" {{action 'moveToFirstPage'}}>
+    <i class="angle double left icon"></i>
+  </a>
+  <a href="#" role="button" class="item {{if this.moveToPreviousPageDisabled 'disabled'}}" {{action 'moveToPreviousPage'}}>
+    <i class="angle left icon"></i>
+  </a>
+  <a href="#" role="button" class="item {{if this.moveToNextPageDisabled 'disabled'}}" {{action 'moveToNextPage'}}>
+    <i class="angle right icon"></i>
+  </a>
+  <a href="#" role="button" class="item {{if this.moveToNextPageDisabled 'disabled'}}" {{action 'moveToLastPage'}}>
+    <i class="angle double right icon"></i>
+  </a>
+</div>
+<div class="ui right floated no padding basic segment">
+  {{t 'Showing'}} {{this.currentRange}} {{t 'of'}}  {{this.totalContentLength}} {{t 'entries'}}
+</div>

@@ -1,0 +1,9 @@
+{{#if this.record}}
+  <div>
+    {{general-date this.record 'date-time-short'}}
+  </div>
+{{else}}
+  <div>
+    {{general-date this.extraRecords.createdAt 'date-time-short'}}
+  </div>
+{{/if}}

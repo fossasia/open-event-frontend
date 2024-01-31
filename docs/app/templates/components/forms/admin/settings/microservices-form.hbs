@@ -1,0 +1,29 @@
+<form class="ui form text-cursor" {{action 'submit' on='submit'}}>
+  <h3 class="ui header text">
+    {{t 'Android App Generator'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Server'}}
+    </label>
+    <Widgets::Forms::LinkField
+      @inputId="android_app"
+      @value={{this.settings.androidAppUrl}}
+      @onChange={{action (mut this.settings.androidAppUrl)}} />
+  </div>
+  <h3 class="ui header">
+    {{t 'Web App Generator'}}
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'API Server'}}
+    </label>
+    <Widgets::Forms::LinkField
+      @inputId="web_app"
+      @value={{this.settings.webAppUrl}}
+      @onChange={{action (mut this.settings.webAppUrl)}} />
+  </div>
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

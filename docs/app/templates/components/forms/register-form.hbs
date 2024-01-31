@@ -1,0 +1,53 @@
+<form class="ui large form" autocomplete="off" {{action 'submit' on='submit'}} novalidate>
+  <div class="ui aligned segment basic no margin no padding">
+    <h3 class="weight-400">{{t 'Register'}}</h3>
+  </div>
+  <div class="ui segments">
+    <div class="ui segment {{if this.isLoading 'loading' ''}}">
+      {{#if this.errorMessage}}
+        <div class="ui negative message">
+          <p>{{this.errorMessage}}</p>
+        </div>
+      {{/if}}
+      <div class="{{if this.inviteEmail 'disabled' }} field">
+        <div class="ui left icon input">
+          <i class="mail icon"></i>
+          <Input @name="email" @type="email" placeholder={{t "Email"}} @value={{this.data.email}} />
+        </div>
+      </div>
+      <div class="field required">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <Input class="rounded-r-none w-30" @type="{{if this.showSignupPass 'text' 'password'}}" @name="password" placeholder={{t "Password"}} @value={{this.data.password}} />
+          <div class="ui small basic icon buttons rounded-l-none">
+            <button type="button" class="ui button" {{action 'showSignupPassword'}}>
+              <i class="{{if this.showSignupPass 'hide' 'unhide'}} basic icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="field required">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <Input class="rounded-r-none w-30" @type="{{if this.showConfirmPass 'text' 'password'}}" @name="password_repeat" placeholder={{t "Re-enter Password"}} @value={{this.data.password_repeat}} />
+          <div class="ui small basic icon buttons rounded-l-none">
+            <button type="button" class="ui button" {{action 'showConfirmPassword'}}>
+              <i class="{{if this.showConfirmPass 'hide' 'unhide'}} basic icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      {{#if this.showHcaptcha}}
+        <HCaptcha @onSuccess={{action (mut this.captcha)}} @onExpired={{action (mut this.captcha)}} @onRender={{action (mut this.captchaRendered)}} />
+      {{/if}}
+      <div class="ui center aligned segment basic">
+        <button type="submit" class="ui fluid large teal submit button register {{if (and (not this.captcha) this.showHcaptcha this.captchaRendered) 'disabled'}}">
+          {{t 'Register'}}
+        </button>
+      </div>
+    </div>
+    <a href="{{href-to 'login'}}" class="ui secondary segment center aligned text muted weight-800">
+      {{t 'Already have an account? Login'}}
+    </a>
+  </div>
+</form>

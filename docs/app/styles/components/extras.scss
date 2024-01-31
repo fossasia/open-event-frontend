@@ -1,0 +1,86 @@
+a.link-item,
+p.link-item {
+  color: #333;
+  display: table;
+
+  &.active {
+    background-color: rgba(0, 0, 0, .1);
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .05);
+  }
+}
+
+.leaflet-container {
+  height: 300px;
+}
+
+.sub.header {
+  color: #555 !important;
+}
+
+.meta {
+  color: #555 !important;
+}
+
+@media screen and (max-width: 467px) {
+  a.link-item {
+    font-size: .9rem;
+  }
+}
+
+.description {
+  span {
+    color: #5d6975 !important;
+    text-align: right !important;
+    width: 90px !important;
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+    font-size: .8em !important;
+    vertical-align: top !important;
+    padding-top: 2px !important;
+  }
+}
+
+.field {
+  textarea {
+    width: 100%;
+    margin: 0;
+    appearance: none;
+    padding: .6em .8em;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(34, 36, 38, .15);
+    outline: 0;
+    color: rgba(0, 0, 0, .87);
+    border-radius: .28rem;
+    box-shadow: transparent 0 0 0 0 inset;
+    transition: color .1s ease 0, border-color .1s ease 0;
+    font-size: 1em;
+    line-height: 1.2857;
+    resize: vertical;
+    height: 165px;
+  }
+
+  .radio {
+    padding-bottom: .5em;
+    padding-top: .5em;
+  }
+
+  .channel-button {
+    margin-top: 0;
+    height: 3.1em;
+  }
+
+  .channel-dropbox {
+    width: 10em;
+    margin-top: 0;
+    height: 3.4em;
+  }
+}
+
+.translate-channel {
+  .field {
+    width: 40%;
+  }
+}

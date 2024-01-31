@@ -1,0 +1,12 @@
+{{#if this.device.isMobile}}
+  <div class="ui {{if (eq @size 'large') '' 'small'}} icon input search-box-mobile w-full relative h-full mt-0">
+  <Input @type="text" @value={{readonly this.searchQuery}} @keyUp={{action "setSearchQuery" value="target.value"}} placeholder="{{t 'Search'}} ..." />
+  <i class="search icon"></i>
+  </div>
+{{else}}
+  <div class="ui {{if (eq @size "large") '' 'small'}} icon input search-box">
+    <Input @type="text" @value={{readonly this.searchQuery}} @keyUp={{action 'setSearchQuery' value="target.value"}} placeholder="{{t "Search"}} ..." />
+    <i class="search icon"></i>
+  </div>
+{{/if}}
+

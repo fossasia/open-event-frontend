@@ -1,0 +1,34 @@
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="six wide column left aligned">
+      <h2 class="ui header column">{{t 'Tickets Summary'}}</h2>
+    </div>
+    <div class="ten wide column right aligned">
+      <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export' this.router.currentRoute.params.event_status}} >{{t 'Export as CSV'}}</button>
+      <UiDropdown class="labeled icon button mb-2 mr-2">
+        <i class="sort amount down icon"></i>
+        <span class="default text" style="text-transform: capitalize">{{this.router.currentRoute.params.event_status}}</span>
+        <div class="menu">
+          <LinkTo @route="admin.sales.index" @model="live" class="item">{{t 'Live'}}</LinkTo>
+          <LinkTo @route="admin.sales.index" @model="past" class="item">{{t 'Past'}}</LinkTo>
+          <LinkTo @route="admin.sales.index" @model="all" class="item">{{t 'All'}}</LinkTo>
+        </div>
+      </UiDropdown>
+    </div>
+  </div>
+</div>
+
+<br>
+<Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.model.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.model.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column" />

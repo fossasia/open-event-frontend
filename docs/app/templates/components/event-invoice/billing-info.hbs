@@ -1,0 +1,49 @@
+<div class="ui segments">
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'Billing Info'}}</h3>
+  </div>
+  <div class="ui padded segment">
+    <div class="ui list">
+      <div class="item">
+        <strong>{{t 'From'}}:</strong> {{this.settings.adminBillingContactName}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Organisation'}}:</strong> {{this.settings.adminCompany}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Phone'}}:</strong> {{this.settings.adminBillingPhone}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Email'}}:</strong> {{this.settings.adminBillingEmail}}
+      </div>
+      <div class="item">
+        <strong>{{t 'ZIP Code'}}:</strong> {{this.settings.adminBillingZip}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Country'}}:</strong> {{this.settings.adminBillingCountry}}
+      </div>
+    </div>
+  </div>
+  <div class="ui padded segment">
+    <div class="ui list">
+      <div class="item">
+        <strong>{{t 'To'}}:</strong> {{or this.user.billingContactName this.user.fullName}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Phone'}}:</strong> {{this.user.billingPhone}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Email'}}:</strong> {{this.user.email}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Billing Address'}}:</strong> {{this.user.billingAddress}}
+      </div>
+      <div class="item">
+        <strong>{{t 'ZIP Code'}}:</strong> {{this.user.billingZipCode}}
+      </div>
+      <div class="item">
+        <strong>{{t 'Country'}}:</strong> {{this.user.billingCountry}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="d-flex wrap">
+  {{@record}}
+  <div>
+    {{#if (not @extraRecords.videoStream.id)}}
+      <LinkTo @route="events.view.videoroom.create" @query={{if (eq @extraRecords.constructor.modelName 'event') (hash event=true) (hash room=@extraRecords.id)}} class="ml-2">
+        <UiPopup @content={{t "Add Video Channel"}} @class="ui circular icon button compact blue" @position="left center">
+          <i class="video icon"></i>
+        </UiPopup>
+      </LinkTo>
+    {{else}}
+      <LinkTo @route="events.view.videoroom.edit" @model={{@extraRecords.videoStream.id}}>
+        <UiPopup @content={{t "Edit"}} @class="ml-2 ui circular icon button compact positive" @position="left center">
+          <i class="edit icon"></i>
+        </UiPopup>
+      </LinkTo>
+      <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this stream?") (action @props.actions.delete @extraRecords.videoStream.id))}} @class="ui circular icon button compact negative ml-2" @position="left center">
+        <i class="trash icon"></i>
+      </UiPopup>
+    {{/if}}
+  </div>
+</div>

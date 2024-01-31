@@ -1,0 +1,165 @@
+<form class="ui form">
+  <div class="ui segments">
+    <div class="ui aligned secondary segment">
+      <h3 class="weight-400">{{t 'Attendee Information'}}</h3>
+    </div>
+    <div class="ui padded segment">
+      <h4 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        {{#if @event.isOneclickSignupEnabled}}
+          {{t 'Registration Holder\'s Information'}}
+        {{else}}
+          {{t 'Ticket Holder\'s Information'}}
+        {{/if}}
+      </h4>
+      {{#each this.holders as |holder|}}
+        <div class="field">
+          <div class="inline field">
+            <i class="user icon"></i>
+            <label>
+              {{#if @event.isOneclickSignupEnabled}}
+                {{t 'Registration Holder -for- {{ticketName}}' ticketName=holder.ticket.name}}
+              {{else}}
+                {{t 'Ticket Holder -for- {{ticketName}}' ticketName=holder.ticket.name}}
+              {{/if}}
+            </label>
+            {{#if (eq this.data.status 'completed')}}
+             <button class="ui right floated button {{if this.device.isMobile 'fluid'}} button"
+                {{action this.downloadTicketForAttendee @event.name holder.order.id holder.id }}>
+                <i class="ticket icon"></i>
+                {{t 'Download Ticket'}}
+            </button>
+            {{/if}}
+          </div>
+         
+          {{#each this.allFields.attendee as |field|}}
+            {{#if field.isIncluded}}
+              {{#if (or field.isFixed (and this.event.isTicketFormEnabled (or (eq holder.ticket.formID null) (eq holder.ticket.formID field.formID))))}}
+                {{#if (not this.editFields)}}
+                  <div class="field">
+                    <h4 class="weight-300">
+                      {{#if field.isComplex}}
+                          {{rich-text-link field.transName}}
+                      {{else}}
+                        {{t-var field.transName}}
+                      {{/if}}
+                    </h4>
+                    {{#if (is-input-field field.type)}}
+                      {{#if (is-url-field field.fieldIdentifier)}}
+                        <a href="{{get holder field.identifierPath}}">{{get holder field.identifierPath}}</a>
+                      {{else}}
+                        <span class="word-break">{{get holder field.identifierPath}}</span>
+                      {{/if}}
+                    {{else if (eq field.type 'paragraph')}}
+                      <span class="line-break">{{get holder field.identifierPath}}</span>
+                    {{else if (eq field.type 'select')}}
+                      <span class="word-break">{{t-var (get holder field.identifierPath)}}</span>
+                    {{else if (eq field.type 'checkbox')}}
+                      {{#if (or (eq field.fieldIdentifier "native_language") (eq field.fieldIdentifier "fluent_language") (eq field.fieldIdentifier "language_form_1") (eq field.fieldIdentifier "language_form_2") (eq field.fieldIdentifier "gender"))}}
+                        <span class="word-break">{{t-var (get holder (concat field.fieldIdentifier '_name_mapping'))}}</span>
+                      {{else}}
+                        <span class="word-break">
+                          {{#if (get holder field.identifierPath)}}
+                            {{t 'Yes'}}
+                          {{else}}
+                            {{t 'No'}}
+                          {{/if}}
+                        </span>
+                      {{/if}}
+                    {{else}}
+                      {{#if (not field.isComplex)}}
+                        <span class="word-break">{{ sanitize (get holder field.identifierPath)}}</span>
+                      {{else}}
+                        <span class="word-break">{{t-var (get holder field.identifierPath)}}</span>
+                      {{/if}}
+                    {{/if}}
+                  </div>
+                {{else}}
+                  <div class="field">
+                    <Forms::Orders::EditableFields 
+                      @field={{field}}
+                      @fields={{this.allFields.attendee}}
+                      @data={{this.data}}
+                      @holder={{holder}}
+                      @index={{index}}
+                      @countries={{this.countries}} 
+                      @nativeLanguage={{nativeLanguage}}
+                      @fluentLanguage={{fluentLanguage}}
+                      @homeWikis={{this.homeWikis}}
+                      @ageGroups={{this.ageGroups}}
+                      @wikiScholarship={{this.wikiScholarship}}
+                      @genders={{this.genders}}
+                      @booleanComplex={{this.booleanComplex}}
+                      @updateGendersSelection={{action 'updateGendersSelection'}}
+                      @updateLanguageFormsSelection={{action "updateLanguageFormsSelection"}}
+                      @editFields={{field.isAllowEdit}}
+                    />
+                  </div>
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          {{/each}}
+          <div class="ui divider"></div>
+        </div>
+      {{/each}}
+      {{#if this.editFields}}
+        <button class="ui floated button"
+          {{action 'saveHolder'}}>
+          {{t 'Save'}}
+        </button>
+      {{else}}
+        <button class="ui floated button"
+          {{action 'toggleEditFields'}}>
+          {{t 'Edit'}}
+        </button>
+      {{/if}}
+      {{#if this.showBillingInfo}}
+        <div class="print">
+          <h4 class="ui horizontal divider header">
+            <i class='address card icon'></i>
+            {{t 'Billing Information'}}
+          </h4>
+          <div class="ui two column divided relaxed stackable grid ">
+            <div class="row">
+              <div class="column">
+                <h4 class="weight-300">
+                  {{t 'Organisation'}}
+                </h4>
+                <p>{{this.data.company}}</p>
+                {{#if this.data.taxBusinessInfo}}
+                  <h4 class="weight-300">
+                    {{t 'Tax ID or Business ID'}}
+                  </h4>
+                  <p> {{this.data.taxBusinessInfo}}</p>
+                {{/if}}
+              </div>
+
+              <div class="column">
+                <h4 class="weight-300">
+                  {{t 'Address'}}
+                </h4>
+                <div class="ui list">
+                  <div class="item word-break">
+                    {{this.data.address}}
+                  </div>
+                  <div class="item">
+                    {{this.data.city}}
+                  </div>
+                  <div class="item">
+                    {{this.data.state}}
+                  </div>
+                  <div class="item">
+                    {{this.data.country}}
+                  </div>
+                  <div class="item">
+                    {{this.data.zipcode}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</form>

@@ -1,0 +1,22 @@
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="sixteen wide column">
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.sessions.list" @model="all" class="item">
+          {{t 'All'}}
+        </LinkTo>
+        {{#each this.model.sessionStates as |state|}}
+          <LinkTo @route="admin.sessions.list" @model={{state}} class="item">
+            {{t-var (capitalize state)}}
+          </LinkTo>
+        {{/each}}
+        <LinkTo @route="admin.sessions.list" @model="deleted" class="item">
+          {{t 'Deleted'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  <div class="row">
+    {{outlet}}
+  </div>
+</div>

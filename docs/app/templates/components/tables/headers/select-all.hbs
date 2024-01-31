@@ -1,0 +1,6 @@
+<div class="{{if this.column.color (concat 'ui inverted segment ' this.column.color)}}">
+  {{yield}}
+  <UiCheckbox class=""
+    @checked={{@selectAll}}
+    @onChange={{action 'toggleSelectAll'}}/>
+</div>

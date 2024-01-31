@@ -1,0 +1,45 @@
+<div id="video-root" style="position: relative" class="video-root" {{did-insert this.setup}} {{did-update this.setup @videoStream}}>
+
+  {{#if this.loading}}
+    <div class="ui active centered inline loader"></div>
+  {{/if}}
+
+  {{#if this.iframeUrl}}
+    <iframe style="position: absolute;width: 100%; height: 100%; border: 0px;" src="{{this.iframeUrl}}" title="{{this.iframeTitle}}" allow="camera; microphone; display-capture" allowfullscreen="true"/>
+  {{/if}}
+
+  {{#if (eq @videoStream.videoChannel.provider 'jitsi')}}
+    <Public::Stream::JitsiStream @videoStream={{@videoStream}} />
+  {{/if}}
+  {{#if this.selectingLanguage.selectingLanguage}}
+    <iframe
+      style="position: absolute;width: 50%; height: 100%; z-index: -1"
+      id="video-player-translation"
+      frameborder="0" 
+      title="YouTube Live Stream Translation"
+      src="https://www.youtube.com/embed/{{this.selectingLanguage.translationYoutubeId}}?enablejsapi=1&mute=0&autoplay=1&modestbranding=1&loop=1&controls=0&disablekb=1"
+      gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+  {{/if}}
+  {{#if (eq this.provider 'youtube')}}
+    <iframe 
+      style="position: absolute; width: 100%; height: 100%;" 
+      id="video-player" 
+      frameborder="0" 
+      title="YouTube Live Stream"
+      src="https://www.youtube.com/embed/{{this.youtubeId}}?enablejsapi=1&playlist={{this.youtubeId}}&autoplay=1&modestbranding=1&loop={{if @videoStream.extra.loop 1 0}}&mute={{if this.selectingLanguage.selectingLanguage 1 0}}&controls=0&disablekb=1"
+      gesture="media" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+  {{/if}}
+  {{#if (and (eq @videoStream.videoChannel.provider 'vimeo') this.vimeoId)}}
+    <iframe style="position: absolute" src="https://player.vimeo.com/video/{{this.vimeoId}}?autoplay={{if @videoStream.extra.autoplay 1 0}}&loop={{if @videoStream.extra.loop 1 0}}" width="50%" height="50%" frameborder="0" allow="autoplay" title="StreamYard Live Stream" allowfullscreen="true"></iframe>
+  {{/if}}
+
+</div>
+<Public::Stream::SidePanel @event={{@event}} @videoStream={{@videoStream}} @selectingLanguage={{this.selectingLanguage}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @setupRoomChat={{action 'setupRoomChat'}} @currentRoom={{this.currentRoom}} @streamId={{@streamId}}/>
+
+{{#if this.isRocketChatEnabled}}
+  {{#if this.shown}}
+    <Public::Stream::ChatPanel @event={{@event}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @currentRoom={{this.currentRoom}}/>
+  {{else}}
+    <Public::Stream::ChatPanel @event={{@event}} @shown={{false}} @showChatPanel={{this.showChatPanel}} @currentRoom={{this.currentRoom}}/>
+  {{/if}}
+{{/if}}

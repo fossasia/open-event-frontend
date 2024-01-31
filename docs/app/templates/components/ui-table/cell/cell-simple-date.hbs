@@ -1,0 +1,9 @@
+{{#if this.extraRecords.timezone}}
+  <span>
+    {{general-date this.record 'date-time-tz-short' tz=this.extraRecords.timezone}}
+  </span>
+{{else if this.record}}
+  <span>
+    {{general-date this.record (if this.props.options.dateFormat this.props.options.dateFormat 'date-time-short')}}
+  </span>
+{{/if}}

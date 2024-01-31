@@ -1,0 +1,64 @@
+<div class="field">
+  <label class="required" for="company">{{t 'Organisation'}}</label>
+  <Input
+    @type="text"
+    @id="company"
+    @value={{this.data.company}} />
+</div>
+<div class="field">
+  <label for="taxBusinessInfo">{{t 'Tax ID or Business ID'}}</label>
+  <Input
+    @type="text"
+    @id="taxBusinessInfo"
+    @value={{this.data.taxBusinessInfo}} />
+</div>
+<div class="field">
+  <label class="required" for="address">{{t 'Address'}}</label>
+  <Textarea
+    @rows="2"
+    @id="address"
+    @value={{this.data.address}} />  </div>
+<div class="field">
+  <label class="required" for="city">{{t 'City'}}</label>
+  <Input
+@type="text"
+@id="city"
+@value={{this.data.city}} />
+</div>
+<div class="field">
+  <label for="state">{{t 'State/Province'}}</label>
+  <Input
+@type="text"
+@id="state"
+@value={{this.data.state}} />
+</div>
+<div class="field">
+  <label class="required" for="zipcode">{{t 'ZIP Code'}}</label>
+  <Input
+@type="text"
+@id="zip_code"
+@value={{this.data.zipcode}} />
+</div>
+<form class="field">
+  <label class="required">{{t 'Select country'}}</label>
+  <UiDropdown
+@class="search selection"
+@selected={{this.data.country}}
+@onChange={{action (mut this.data.country)}} as |execute mapper|>
+    <Input
+@type="hidden"
+@autocomplete="no"
+@id="country"
+@value={{this.data.country}} />
+    <div class="default text">{{t 'Select country'}}</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each this.countries as |country|}}
+        <div data-value="{{map-value mapper country.name}}" class="item">
+          <i class="{{lowercase country.code}} flag"></i>
+          {{t-var country.name}}
+        </div>
+      {{/each}}
+    </div>
+  </UiDropdown>
+</form>

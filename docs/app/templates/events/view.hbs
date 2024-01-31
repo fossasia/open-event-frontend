@@ -1,0 +1,73 @@
+{{#if (and (or (eq this.session.currentRouteName 'events.view.index') (eq this.session.currentRouteName 'events.view.settings.export')) (gt this.unverified-user-message.length 0))}} 
+  {{#if (eq this.model.state 'draft')}}
+    <UnverifiedUserMessage />
+  {{/if}}
+{{/if}}
+{{#if (not-includes this.session.currentRouteName 'events.view.edit')}}
+  <div class="ui grid stackable">
+    <div class="row">
+      <div class="ten wide column">
+        <h2 class="ui header">
+          {{this.model.name}}
+        </h2>
+      </div>
+      <div class="six wide column {{unless this.device.isMobile 'right aligned'}}">
+        <div class="{{ if this.device.isMobile 'ui icon fluid buttons'}}">
+          <Events::View::PublishBar @event={{this.model}} @showOnInvalid={{true}} />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top: 15px">
+    <div class="sixteen wide column">
+      <TabbedNavigation>
+        <LinkTo @route="events.view.index" class="item">
+          {{t 'Overview'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tickets" class="item">
+          {{t 'Tickets'}}
+        </LinkTo>
+        <LinkTo @route="events.view.speakers" class="item">
+          {{t 'Speakers'}}
+        </LinkTo>
+        <LinkTo @route="events.view.sessions" class="item">
+          {{t 'Sessions'}}
+        </LinkTo>
+        <LinkTo @route="events.view.scheduler" class="item">
+          {{t 'Scheduler'}}
+        </LinkTo>
+        <LinkTo @route="events.view.videoroom" class="item">
+          {{t 'Video'}}
+        </LinkTo>
+        <LinkTo @route="events.view.documents" class="item">
+          {{t 'Documents'}}
+        </LinkTo>
+        <LinkTo @route="events.view.chat" class="item">
+          {{t 'Chat'}}
+        </LinkTo>
+        <LinkTo @route="events.view.exhibitors" class="item">
+          {{t 'Exhibitors'}}
+        </LinkTo>
+        <LinkTo @route="events.view.team" class="item">
+          {{t 'Team'}}
+        </LinkTo>
+        <LinkTo @route="events.view.tags" class="item">
+          {{t 'Tags'}}
+        </LinkTo>
+        {{#if (or this.authManager.currentUser.isAnAdmin (eq this.model.owner.email this.authManager.currentUser.email))}}
+          <LinkTo @route="events.view.settings" class="item">
+            {{t 'Settings'}}
+          </LinkTo>
+        {{/if}}
+      </TabbedNavigation>
+    </div>
+  </div>
+
+  <div class="ui {{if this.isLoading 'loading'}} basic segment">
+    {{outlet}}
+  </div>
+{{else}}
+  {{!-- the edit page will be rendered without any of the above tabs --}}
+  {{outlet}}
+{{/if}}

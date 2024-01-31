@@ -1,0 +1,15 @@
+<h2 class="mt-16">{{t 'Featured Speakers'}}</h2>
+<div class="speaker-list ui {{unless device.isMobile 'three column grid'}}">
+  {{#each this.speakers as |speaker|}}
+    <Public::SpeakerItem @speaker={{speaker}} @timezone={{@timezone}} @class="column" @isFeatured={{true}} />
+  {{/each}}
+  {{#if (gt (sub this.allSpeakers this.speakers.meta.count) 0)}}
+    <div class="ui container">
+      <div class="ui centered grid">
+        <div class="row">
+          <LinkTo @route="public.speakers" class="ui blue button">{{t 'More Speakers'}}</LinkTo>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</div>

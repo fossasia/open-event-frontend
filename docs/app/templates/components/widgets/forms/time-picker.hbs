@@ -1,0 +1,6 @@
+<div class="ui {{if this.icon 'left icon'}} input">
+  {{#if this.icon}}
+    <i class="time icon"></i>
+  {{/if}}
+  <Input @type="text" @value={{value}} placeholder={{this.placeholder}} @name={{name}} @focus-out={{action "onChange"}} />
+</div>

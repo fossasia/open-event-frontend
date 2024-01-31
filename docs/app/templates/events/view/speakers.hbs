@@ -1,0 +1,55 @@
+{{#if this.model.isSessionsSpeakersEnabled}}
+  <div class="ui grid stackable">
+    {{#if (and (not-eq this.session.currentRouteName 'events.view.speakers.edit') (not-eq this.session.currentRouteName 'events.view.speakers.create'))}}
+      <div class="row">
+        <div class="{{if this.device.isTablet 'sixteen' 'ten'}} wide column">
+          <TabbedNavigation @isNonPointing={{true}}>
+            <LinkTo @route="events.view.speakers.list" @model="all" class="item">
+              {{t 'All'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="pending" class="item">
+              {{t 'Pending'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="accepted" class="item">
+              {{t 'Accepted'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="confirmed" class="item">
+              {{t 'Confirmed'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="rejected" class="item">
+              {{t 'Rejected'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="withdrawn" class="item">
+              {{t 'Withdrawn'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="canceled" class="item">
+              {{t 'Canceled'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.list" @model="without_session" class="item">
+              {{t 'Without Session'}}
+            </LinkTo>
+          </TabbedNavigation>
+        </div>
+        <div class="{{if this.device.isTablet 'sixteen' 'six'}} wide right aligned column">
+          <div class="ui labeled input">
+            <button class="ui blue button right-floated {{if this.isLoading 'loading'}}" {{action 'export' this.router.currentRoute.params.speakers_status}}>{{t 'Export as CSV'}}</button>
+            <LinkTo @route="events.view.speakers.reorder" class="ui blue button right floated">
+              {{t 'Reorder Speakers'}}
+            </LinkTo>
+            <LinkTo @route="events.view.speakers.create" class="ui blue button right floated">
+              {{t 'Add Speaker'}}
+            </LinkTo>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  <div class="sixteen wide column">
+    <h3 class="centered text">{{t 'In order to use this feature please activate "Sessions and Speakers" for the event.'}}</h3>
+    <h4 class="centered text">{{t 'Please click '}}<a href="{{href-to 'events.view.edit.sessions-speakers'}}">{{t 'here'}}</a>{{t ' to activate this module.'}}</h4>
+  </div>
+{{/if}}

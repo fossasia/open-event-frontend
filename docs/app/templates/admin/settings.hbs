@@ -1,0 +1,40 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.settings.index" class="item">
+          {{t 'System'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.social-media" class="item">
+          {{t 'Social Media'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.microservices" class="item">
+          {{t 'Microservices'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.images" class="item">
+          {{t 'Images'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.analytics" class="item">
+          {{t 'Analytics'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.payment-gateway" class="item">
+          {{t 'Payment Gateways'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.ticket-fees" class="item">
+          {{t 'Ticket Fees'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.billing" class="item">
+          {{t 'Billing'}}
+        </LinkTo>
+        <LinkTo @route="admin.settings.frontpage" class="item">
+          {{t 'Front Page'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>

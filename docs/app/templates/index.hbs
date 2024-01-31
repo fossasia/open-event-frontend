@@ -1,0 +1,58 @@
+<div class="ui container">
+  {{#if this.featuredEvents}}
+    <h2 class="main-heading mb-4">{{t 'Featured Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each this.featuredEvents as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+      {{/each}}
+    </div>
+  {{/if}}
+  {{#if this.filteredEvents}}
+    <h2 class="main-heading mb-4">{{t 'Upcoming Events'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each this.promotedEvents as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+      {{/each}}
+      {{#each this.upcomingEvents as |event|}}
+        <EventCard @event={{event}} @shareEvent={{action "shareEvent"}} />
+      {{/each}}
+    </div>
+  {{else}}
+    <h2 class="main-heading mb-4">{{t 'No Upcoming Events Found'}}</h2>
+  {{/if}}
+  {{#if this.model.callForSpeakersEvents}}
+    <h2 class="main-heading mb-4">{{t 'Call for speakers'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each this.model.callForSpeakersEvents as |event|}}
+        <EventCard @event={{event}} @isCFS={{true}} @shareEvent={{action "shareEvent"}} />
+      {{/each}}
+    </div>
+    <div class="ui hidden divider"></div>
+    {{#if (gt this.model.callForSpeakersEvents.length 3)}}
+      <div class="ui centered grid">
+        <div class="row">
+          <LinkTo @route="explore" @query={{hash cfs='open'}} class="ui blue button">{{t 'Show more calls for speakers'}}</LinkTo>
+        </div>
+      </div>
+    {{/if}}
+  {{/if}}
+  {{#if this.model.promotedGroup}}
+    <h2 class="main-heading mb-4">{{t 'Popular Groups'}}</h2>
+    <div class="ui stackable three column grid">
+      {{#each this.model.promotedGroup as |group|}}
+        {{#if (and group.isPromoted (not group.deletedAt))}}
+          <div class="column">
+            <PromotedGroupCard @group={{group}} @followedGroups={{this.model.followedGroups}} />
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+    <div class="ui centered grid">
+      <div class="row">
+        <LinkTo @route="explore.groups" class="ui blue button">{{t 'Show more groups'}}</LinkTo>
+      </div>
+    </div>
+  {{/if}}
+  
+  <Modals::EventShareModal @isOpen={{this.isShareModalOpen}} @event={{this.eventToShare}} />
+</div>

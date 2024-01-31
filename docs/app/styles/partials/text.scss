@@ -1,0 +1,38 @@
+.small.text {
+  font-size: smaller !important;
+}
+
+.tiny.text {
+  font-size: .55em !important;
+}
+
+.count.text {
+  font-size: .75em !important;
+}
+
+.centered.text {
+  text-align: center !important;
+}
+
+.gray-text {
+  color: #555 !important;
+}
+
+.light-gray-link {
+  color: rgba(0, 0, 0, .87);
+
+  &:hover,
+  &:active {
+    color: rgba(0, 0, 0, .87);
+  }
+}
+
+.strike.text {
+  text-decoration: line-through;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

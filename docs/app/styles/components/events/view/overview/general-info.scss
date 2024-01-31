@@ -1,0 +1,23 @@
+.public-url {
+  align-items: baseline;
+
+  &--text {
+    margin-right: 5px !important;
+    margin-bottom: 6px !important;
+    padding-left: .5em !important;
+  }
+
+  &--box {
+    flex-grow: 1;
+    margin-left: 5px !important;
+
+    @media screen and (max-width: 395px) {
+      width: 99%;
+    }
+  }
+}
+
+
+.mr-radio {
+  margin-right: 30px !important;
+}

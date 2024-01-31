@@ -1,0 +1,77 @@
+<UiAccordion>
+  <div class="title">
+    <div class="ui">
+      <div class="featured-speaker">
+        <img alt="speaker" class="ui rounded image" src="{{speaker.image}}">
+      </div>
+      <h3 class="ui centered header no margin">
+        {{this.speaker.name}}
+      </h3>
+      <p class="ui small centered header no padding" style="font-weight: normal;">
+        {{this.speaker.positionOrganisation}}
+      </p>
+    </div>
+  </div>
+  <div class="ui vertical fluid menu content padded {{if @preExpanded 'active'}}">
+    <div class="item" style={{css user-select='text'}}>
+      <p class="word-break">
+        {{#if this.speaker.shortBiography}}
+          {{sanitize this.speaker.shortBiography}}
+        {{else if this.speaker.longBiography}}
+          {{sanitize this.speaker.longBiography}}
+        {{else if this.speaker.speakingExperience}}
+          {{sanitize this.speaker.speakingExperience}}
+        {{/if}}
+      </p>
+      {{#if this.hasSocialLinks}}
+        <div class="social-icons">
+          {{#if this.speaker.facebook}}
+            <a href={{this.speaker.facebook}} target="_blank" rel="noopener noreferrer"><i class="facebook f icon"></i></a>
+          {{/if}}
+          {{#if this.speaker.linkedin}}
+            <a href={{this.speaker.linkedin}} target="_blank" rel="noopener noreferrer"><i class="linkedin f icon"></i></a>
+          {{/if}}
+          {{#if this.speaker.twitter}}
+            <a href={{this.speaker.twitter}} target="_blank" rel="noopener noreferrer"><i class="twitter icon"></i></a>
+          {{/if}}
+          {{#if this.speaker.github}}
+            <a href={{this.speaker.github}} target="_blank" rel="noopener noreferrer"><i class="github icon"></i></a>
+          {{/if}}
+          {{#if this.speaker.website}}
+            <a href={{this.speaker.website}} target="_blank" rel="noopener noreferrer"><i class="globe icon"></i></a>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{#if (or this.event.isSchedulePublished this.speaker.event.isSchedulePublished)}}
+        <div class="ui divider"></div>
+        <h3 class="ui header">
+          {{t 'Sessions'}}
+        </h3>
+        {{#each this.speaker.sessions as |session|}}
+          {{#if (and (eq session.deletedAt null) (or (eq session.state 'confirmed') (eq session.state 'accepted')))}}
+            {{#if session.startsAt}}
+              <p>
+                <strong>
+                  {{general-date session.startsAt tz=@timezone}}
+                </strong>
+              </p>
+            {{/if}}
+            <a href="{{href-to this.sessionRoute (or @event @speaker.event) session.id}}">
+              <div class="ui fluid rounded-default p-4" style={{css color=(text-color session.track.color) background-color=session.track.color}}>
+                <div style={{css opacity=0.9}}>
+                  {{#if (and session.startsAt session.endsAt)}}
+                    <strong>{{general-date session.startsAt 'HH:mm' tz=@timezone}} - {{general-date session.endsAt 'HH:mm' tz=@timezone}}</strong>
+                  {{/if}}
+                  <h3 class="m-0" style={{css user-select='text'}}>
+                    {{session.title}}
+                  </h3>
+                </div>
+              </div>
+            </a>
+            <br/>
+          {{/if}}
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+</UiAccordion>

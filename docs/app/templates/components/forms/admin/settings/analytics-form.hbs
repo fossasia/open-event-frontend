@@ -1,0 +1,21 @@
+<form class="ui form text-cursor" {{action 'submit' on='submit'}}>
+  <h3 class="ui header">
+    {{t 'Google Analytics'}}
+    <div class="sub header">
+      ({{t 'See'}}
+      <a href="https://support.google.com/analytics/answer/1008080" target="_blank" rel="noopener nofollow">
+        {{t 'here'}}
+      </a>
+      {{t 'on how to get this tracking ID.'}})
+    </div>
+  </h3>
+  <div class="field">
+    <label>
+      {{t 'Tracking ID'}}
+    </label>
+    <Input @type="text" @name="google_analytics_id" @value={{this.settings.analyticsKey}} />
+  </div>
+  <button class="ui teal wide button" type="submit">
+    {{t 'Save'}}
+  </button>
+</form>

@@ -1,0 +1,43 @@
+<div class="flash-messages m-2">
+    {{#each flashMessages.queue as |flash|}}
+      <div class="ui {{flash.type}} message">
+       <div>
+           <FlashMessage @flash = {{flash}}/>
+        </div>
+      </div>
+  {{/each}}
+</div>
+{{#if (eq this.session.currentRouteName 'public.cfs.index')}}
+  <i class="black close icon"></i>
+  <div class="header">
+    {{t 'Login or Signup'}}
+  </div>
+  <div class="content">
+    <h4 class="ui header">{{t 'Please Login or Signup before you can submit a proposal.'}}</h4>
+    <div>
+      <LinkTo
+        @route="login" class="ui teal button"
+        @invokeAction={{action "toggleView"}}>
+        {{t 'Login'}}
+      </LinkTo>
+      <LinkTo
+        @route="register" class="ui blue button"
+        @invokeAction={{action "toggleView"}}>
+        {{t 'Signup'}}
+      </LinkTo>
+    </div>
+  </div>
+{{else if (eq this.session.currentRouteName 'public.index')}}
+  <i class="black close icon"></i>
+  <div class="ui basic segment">
+    <div class="content">
+      <Forms::Orders::GuestOrderForm
+        @isLoading={{this.isLoading}}
+        @errorMessage={{this.errorMessage}}
+        @userExists={{this.userExists}}
+        @loginExistingUser={{this.loginExistingUser}}
+        @createNewUserViaEmail={{this.createNewUserViaEmail}} />
+
+    </div>
+  </div>
+{{/if}}

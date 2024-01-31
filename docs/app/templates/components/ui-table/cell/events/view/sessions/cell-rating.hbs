@@ -1,0 +1,24 @@
+{{#if (includes this.props.options.ratedSessions this.extraRecords.id)}}
+  {{#each this.extraRecords.feedbacks as |feedback|}}
+    {{#if (eq feedback.user.email this.authManager.currentUser.email)}}
+      <UiRating
+        @initialRating={{feedback.rating}}
+        @rating={{feedback.rating}}
+        @maxRating={{5}}
+        @onRate={{pipe-action (action (mut feedback.rating)) (action this.props.actions.updateRating feedback.rating feedback)}}
+        @clearable={{true}} 
+        @class="mt-8" />
+    {{/if}}
+  {{/each}}
+{{else}}
+  <UiRating
+    @initialRating={{0}}
+    @rating={{this.rating}}
+    @maxRating={{5}}
+    @onRate={{pipe-action (action (mut this.rating)) (action this.props.actions.addRating this.rating this.extraRecords.id)}}
+    @clearable={{true}}
+    @class="mt-8" />
+{{/if}}
+<div class="item text center aligned">
+  {{this.record}} ({{this.extraRecords.feedbacks.length}})
+</div>

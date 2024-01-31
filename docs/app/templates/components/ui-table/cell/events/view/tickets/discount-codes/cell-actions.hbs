@@ -1,0 +1,19 @@
+<div class="ui compact basic buttons">
+  <UiPopup @content={{t "Edit"}} @click={{action this.props.actions.editDiscountCode this.record}} @class="ui icon button" @position="left center">
+    <i class="edit icon"></i>
+  </UiPopup>
+  {{#if (not this.extraRecords.isExpired)}}
+    {{#if this.extraRecords.isActive}}
+      <UiPopup @content={{t "Deactivate"}} @click={{action (confirm (t "Are you sure you would like to deactivate this Discount Code?") (action this.props.actions.toggleStatus this.record))}} @class="ui icon button" @position="left center">
+        <i class="remove icon"></i>
+      </UiPopup>
+    {{else}}
+      <UiPopup @content={{t "Activate"}} @click={{action (confirm (t "Are you sure you would like to activate this Discount Code?") (action this.props.actions.toggleStatus this.record))}} @class="ui icon button" @position="left center">
+        <i class="check icon"></i>
+      </UiPopup>
+    {{/if}}
+  {{/if}}
+  <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this Discount Code?") (action this.props.actions.deleteDiscountCode this.record))}} @class="ui icon button" @position="left center">
+    <i class="trash icon"></i>
+  </UiPopup>
+</div>

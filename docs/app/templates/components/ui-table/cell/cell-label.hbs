@@ -1,0 +1,11 @@
+<span>
+  {{#if this.extraRecords.isExpired}}
+    <a href="#" class="ui red label">{{t 'Expired'}}</a>
+  {{else}}
+    {{#if this.record}}
+      <a href="#" class="ui green label">{{t 'Active'}}</a>
+    {{else}}
+      <a href="#" class="ui yellow label">{{t 'Inactive'}}</a>
+    {{/if}}
+  {{/if}}
+</span>

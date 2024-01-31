@@ -1,0 +1,39 @@
+{{#if (and (not-eq this.session.currentRouteName 'events.view.tickets.access-codes.create') (not-eq this.session.currentRouteName 'events.view.tickets.access-codes.edit'))}}
+  {{#if this.device.isMobile }}
+    <div class="ui hidden divider"></div>
+  {{/if}}
+  <div class="ui stackable grid">
+    <div class="row">
+      <h2 class="ui header {{if this.device.isTablet 'nine' 'eleven'}} wide column left floated">{{t 'Access Codes'}}</h2>
+      <div class="{{if this.device.isTablet 'seven' 'five'}} wide column right floated">
+        <LinkTo @route="events.view.tickets.access-codes.create" @tagName="button" class="ui button blue fluid">
+          <i class="plus icon"></i>
+          {{t 'Create an access code'}}
+        </LinkTo>
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen wide column">
+        <TabbedNavigation @isNonPointing={{true}}>
+          <LinkTo @route="events.view.tickets.access-codes.list" @model="all" class="item">
+            {{t 'All'}}
+          </LinkTo>
+          <LinkTo @route="events.view.tickets.access-codes.list" @model="active" class="item">
+            {{t 'Active'}}
+          </LinkTo>
+          <LinkTo @route="events.view.tickets.access-codes.list" @model="inactive" class="item">
+            {{t 'Inactive'}}
+          </LinkTo>
+          <LinkTo @route="events.view.tickets.access-codes.list" @model="expired" class="item">
+            {{t 'Expired'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
+    </div>
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  {{outlet}}
+{{/if}}

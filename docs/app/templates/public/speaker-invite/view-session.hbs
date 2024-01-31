@@ -1,0 +1,72 @@
+<div class="ui grid container">
+  <div class="column sixteen wide">
+    <LinkTo
+      @route="my-sessions">
+      <button
+        class="ui button {{if this.device.isMobile 'fluid'}}">{{t 'My Sessions'}}</button>
+    </LinkTo>
+    <LinkTo
+      @route="public.cfs">
+      <button
+        class="ui button {{if this.device.isMobile 'fluid' }}">{{this.model.event.name}} {{t 'Call for Speakers'}}</button>
+    </LinkTo>
+  </div>  
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'View Session'}}
+    </h2>
+    <div class="ui divider"></div>
+  </div>
+  <div class="column eight wide">
+  <div class="d-flex wrap space-between">
+    <div class="ui {{ this.model.session.color }} large label">{{capitalize this.model.session.status}}</div>
+    <div class="ui {{ this.model.session.color }} large label">
+      {{#if this.model.session.startsAt}}
+        {{t 'Timing:'}} {{general-date this.model.session.startsAt 'date-time-tz-short' tz=this.model.session.event.timezone}} - {{general-date this.model.session.endsAt 'date-time-tz-short' tz=this.model.session.event.timezone}}
+      {{else}}
+        {{t 'Not yet scheduled'}}
+      {{/if}}
+    </div>
+  </div>
+  </div>
+  <div class="column eight wide">
+    <div class="d-flex wrap" style="justify-content: flex-end;">
+        <button class="ui green button {{if this.device.isMobile 'fluid'}}"
+          {{action 'accept'}}>{{t 'Accept'}}</button>
+        {{#if this.device.isMobile}}
+          <div class="ui hidden fitted divider"></div>
+        {{/if}}
+        <button class="ui red button {{if this.device.isMobile 'fluid'}}"
+          {{action 'reject'}}>{{t 'Reject'}}</button>
+        {{#if this.device.isMobile}}
+          <div class="ui hidden fitted divider"></div>
+        {{/if}}
+      
+    </div>
+  </div>
+  <div class="column sixteen wide">
+    <h3 class="ui header">
+      {{t 'Session details'}}
+    </h3>
+  </div>
+</div>
+<Events::View::Overview::SessionView
+  @fields={{this.allFields}}
+  @session={{this.model.session}} />
+
+<div class="ui grid container mb-4">
+  <div class="weight-600 column five wide">{{t 'Speakers'}}</div>
+    <div class="column eleven wide">
+      {{#each this.model.session.speakers as |speaker|}}
+        {{#if (eq this.authManager.currentUser.email speaker.email)}}
+          <LinkTo
+            @route="public.cfs.view-speaker"
+            @models={{array this.model.session.event.id speaker.id}}>
+            <div>{{speaker.name}}</div>
+          </LinkTo>
+        {{else}}
+          <div>{{speaker.name}}</div>
+        {{/if}}   
+      {{/each}}
+    </div>
+</div>

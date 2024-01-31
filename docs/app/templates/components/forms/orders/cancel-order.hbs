@@ -1,0 +1,10 @@
+<div class="ui segments">
+    <div class="ui secondary segment aligned">
+    <h3 class="weight-400">{{t 'Ticket cancellation'}}</h3>
+    </div>
+    <div class="ui padded segment">
+    {{t 'You can cancel this order with the button below. This will void all tickets in this order.'}}
+    <br>
+    <button class="ui red {{if (eq @order.status 'cancelled') 'disabled'}} button mt-4" {{action (confirm (t "This will void all tickets in this order. Are you sure you want to cancel this order?") (action @cancelOrder @order.id))}}>{{t 'Cancel Order'}}</button>
+    </div>
+</div>

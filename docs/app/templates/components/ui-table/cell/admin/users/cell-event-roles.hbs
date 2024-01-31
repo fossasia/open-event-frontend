@@ -1,0 +1,72 @@
+<div class="ui bulleted list">
+  {{#if (or this.extraRecords.isAdmin this.record)}}
+    {{t 'User has administrative privileges, he has privileges of the following roles for all the events:'}}
+    <div class="item">
+      <span class="ui tiny basic green label">{{t 'Owner'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic orange label">{{t 'Organizer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic yellow label">{{t 'Co organizer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic red label">{{t 'Track Organizer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic olive label">{{t 'Moderator'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic teal label">{{t 'Marketer'}}</span>
+    </div>
+    <div class="item">
+      <span class="ui tiny basic brown label">{{t 'Sales Admin'}}</span>
+    </div>
+  {{else}}
+    {{#if this.extraRecords.isUserOwner}}
+      {{#each this.extraRecords.ownerEvents as |event|}}
+        <div class="item">
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic black label">{{t 'Owner'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+    {{#if this.extraRecords.isUserOrganizer}}
+      {{#each this.extraRecords.organizerEvents as |event|}}
+        <div class="item">
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic orange label">{{t 'Organizer'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+    {{#if this.extraRecords.isUserCoorganizer}}
+      {{#each this.extraRecords.coorganizerEvents as |event|}}
+        <div class="item">
+          {{event.name}} - <span class="ui tiny basic orange label">{{t 'Co organizer'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+    {{#if this.extraRecords.isUserTrackOrganizer}}
+      {{#each this.extraRecords.trackOrganizerEvents as |event|}}
+        <div class="item">
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic yellow label">{{t 'Track Organizer'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+    {{#if this.extraRecords.isUserRegistrar}}
+      {{#each this.extraRecords.registrarEvents as |event|}}
+        <div class="item">
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic purple label">{{t 'Registrar'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+    {{#if this.extraRecords.isUserModerator}}
+      {{#each this.extraRecords.moderatorEvents as |event|}}
+        <div class="item">
+          <LinkTo @route="events.view" @model={{event.identifier}}>{{event.name}}</LinkTo> - <span class="ui tiny basic olive label">{{t 'Moderator'}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+  {{/if}}
+</div>

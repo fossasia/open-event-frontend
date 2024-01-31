@@ -1,0 +1,16 @@
+image:
+  file: .gitpod.dockerfile
+
+tasks:
+  - name: setup
+    init: |
+      nvm install 14
+      nvm use 14
+      yarn
+      cp .env.example .env
+      yarn l10n:generate
+    command: yarn start
+
+ports:
+  - port: 4200
+    onOpen: open-browser

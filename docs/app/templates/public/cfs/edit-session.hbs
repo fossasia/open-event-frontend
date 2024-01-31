@@ -1,0 +1,18 @@
+<div class="ui container mb-4">
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'Edit Session'}}
+    </h2>
+    <div class="ui container">
+      <Forms::SessionSpeakerForm
+        @fields={{this.model.forms}}
+        @data={{this.model}}
+        @isLoading={{this.isLoading}}
+        @save={{action "save"}}
+        @isSession={{true}}
+        @includeSession={{true}}
+        @isCfsPage={{true}}
+        @isSessionSpeaker={{true}} />
+    </div>
+  </div>
+</div>

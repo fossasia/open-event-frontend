@@ -1,0 +1,36 @@
+<div class="event wide ui grid row">
+  {{#unless this.device.isMobile}}
+    <div class="ui card three wide computer six wide tablet column">
+      <a class="image" href="{{href-to 'public.cfs.view-session' this.session.event.id this.session.id}}">
+        <Widgets::SafeImage @src={{if this.session.event.thumbnailImageUrl this.session.event.thumbnailImageUrl "assets/images/landing.jpg"}} />
+      </a>
+    </div>
+  {{/unless}}
+  <div class="ui card thirteen wide computer ten wide tablet sixteen wide mobile column">
+    <a class="main content" href="{{href-to 'public.cfs.view-session' this.session.event.id this.session.id}}">
+      <div class="header">
+        <span>{{this.session.title}}</span>
+        <div class="right floated author">
+          <div class="ui {{session.color}}
+          large label">
+            {{capitalize this.session.state}}
+          </div>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="time">
+          {{#if this.session.startsAt}}
+            {{general-date this.session.startsAt 'date-time-short'}}
+          {{else}}
+            {{t 'Session Not Yet Scheduled'}}
+          {{/if}}
+        </span>
+      </div>
+    </a>
+    <div class="extra content">
+      <div class="weight-600">
+        {{this.session.event.name}}
+      </div>
+    </div>
+  </div>
+</div>

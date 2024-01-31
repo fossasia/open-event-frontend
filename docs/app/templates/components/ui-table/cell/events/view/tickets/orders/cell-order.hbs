@@ -1,0 +1,37 @@
+<div class="ui tiny header">
+  <a class="main content" href="{{href-to 'orders.view' this.record}}">
+    {{this.record}}
+  </a>
+  <div class="ui basic mini {{order-color this.extraRecords.status}} label">
+    {{this.extraRecords.status}}
+  </div>
+  <div class="sub header">
+    {{#if this.extraRecords.paidVia}}
+      <span class="weight-800">
+        {{t 'Payment via'}} {{this.extraRecords.paidVia}}
+      </span>
+    {{/if}}
+    <span class="muted text">
+      {{#if this.extraRecords.completedAt}}
+        {{general-date this.extraRecords.completedAt 'date-time-short'}} {{moment-from-now this.extraRecords.completedAt}}
+      {{else}}
+        {{general-date this.extraRecords.createdAt 'date-time-short'}} {{moment-from-now this.extraRecords.createdAt}}
+      {{/if}}
+    </span>
+  </div>
+</div>
+<div class="ui horizontal compact basic buttons">
+  {{#if (and (eq this.extraRecords.status 'placed') (can-modify-order this.record))}}
+    <UiPopup @content={{t "Mark Completed"}} @click={{action (confirm (t "Are you sure you would like to mark this Order as completed?") (action this.props.actions.completeOrder this.record))}} @class="ui icon button" @position="top center">
+      <i class="check icon"></i>
+    </UiPopup>
+  {{/if}}
+  {{#if (and (not-eq this.extraRecords.status 'cancelled') (not-eq this.extraRecords.status 'expired') (can-modify-order this.record))}}
+    <UiPopup @content={{t "Cancel order"}} @click={{action (confirm (t "Are you sure you would like to cancel this Order?") (action this.props.actions.cancelOrder this.record))}} @class="ui icon button" @position="top center">
+      <i class="delete icon"></i>
+    </UiPopup>
+  {{/if}}
+  <UiPopup @content={{t "Resend order confirmation"}} @click={{action this.props.actions.resendConfirmation this.record}} @class="ui icon button" @position="top center">
+    <i class="mail outline icon"></i>
+  </UiPopup>
+</div>

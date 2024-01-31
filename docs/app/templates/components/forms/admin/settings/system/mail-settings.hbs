@@ -1,0 +1,101 @@
+<h3 class="ui header">
+  {{t 'Mail Settings'}}
+</h3>
+<div class="field">
+  <label>
+    {{t 'From Email'}}
+  </label>
+  <Input @type="email" @name="email_from" @value={{this.settings.emailFrom}} />
+</div>
+<div class="field">
+  <label>
+    {{t 'From Name'}}
+  </label>
+  <Input @type="text" @name="email_from_name" @value={{this.settings.emailFromName}} />
+</div>
+<div class="field">
+  <label>
+    {{t 'Frontend Url'}}
+  </label>
+  <Widgets::Forms::LinkField
+    @inputId="frontend_url"
+    @value={{this.settings.frontendUrl}}
+    @onChange={{action (mut this.settings.frontendUrl)}} />
+</div>
+<div class="ui hidden divider"></div>
+<div class="field">
+  <UiRadio @label={{t "Disable email"}} @name="mail_setting" @value="disable" @current={{this.settings.emailService}} @onChange={{action (mut this.settings.emailService)}} />
+</div>
+<div class="field">
+  <UiRadio @label={{t "SMTP"}} @name="mail_setting" @current={{this.settings.emailService}} @value="smtp" @onChange={{action (mut this.settings.emailService)}} />
+</div>
+{{#if (eq this.settings.emailService 'smtp')}}
+  <div class="field">
+    <label>
+      {{t 'Host'}}
+    </label>
+    <Input @type="text" @name="smtp_host" @value={{this.settings.smtpHost}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Port'}}
+    </label>
+    <Input @type="number" @name="smtp_port" @value={{this.settings.smtpPort}} />
+  </div>
+  <div class="less padding field">
+    <label>{{t 'Encryption'}}</label>
+    <UiDropdown @class="fluid selection" @selected={{this.settings.smtpEncryption}}>
+      <Input @type="hidden" @id="encryption_select" @value={{this.settings.smtpEncryption}} />
+      <div class="default text">
+        {{t 'Choose Encryption type'}}
+      </div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item" data-value="tls">
+          {{t 'TLS'}}
+        </div>
+        <div class="item" data-value="tls-optional">
+          {{t 'TLS (optional)'}}
+        </div>
+        <div class="item" data-value="ssl">
+          {{t 'SSL'}}
+        </div>
+        <div class="item" data-value="no-encryption">
+          {{t 'No Encryption'}}
+        </div>
+      </div>
+    </UiDropdown>
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Username'}}
+    </label>
+    <Input @type="text" @name="smtp_username" @value={{this.settings.smtpUsername}} />
+  </div>
+  <div class="field">
+    <label>
+      {{t 'Password'}}
+    </label>
+    <Input @type="password" @name="smtp_password" @value={{this.settings.smtpPassword}} />
+  </div>
+  <div class="ui hidden divider"></div>
+{{/if}}
+<div class="field">
+  <UiRadio @label={{t "Sendgrid API"}} @name="mail_setting" @current={{this.settings.emailService}} @value="sendgrid" @onChange={{action (mut this.settings.emailService)}} />
+  <span class="small text">
+    ({{t 'See'}}
+    <a href="https://sendgrid.com/docs/User_Guide/Settings/api_keys.html" target="_blank" rel="noopener nofollow">
+      {{t 'here'}}
+    </a>
+    {{t 'on how to get this token.'}})
+  </span>
+</div>
+{{#if (eq this.settings.emailService 'sendgrid')}}
+  <div class="field">
+    <label>
+      {{t 'Sendgrid Token'}}
+    </label>
+    <Input @type="text" @name="sendgrid_token" @value={{this.settings.sendgridKey}} />
+  </div>
+{{/if}}
+<Forms::Admin::Settings::System::MailSettings::TestEmailForm />

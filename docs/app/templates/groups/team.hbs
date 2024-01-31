@@ -1,0 +1,79 @@
+<GroupNav @group={{this.model.group}} />
+<div class="ui grid" style="width: -webkit-fill-available;">
+  <div class="row">
+    <div class="{{if this.device.isMobile 'sixteen' 'three'}} wide column">
+      <TabbedNavigation @isVertical={{true}}>
+        <LinkTo @route="groups.team.index" class="item">
+          {{t 'Team Members'}}
+        </LinkTo>
+        <LinkTo @route="groups.team.permissions" class="item">
+          {{t 'Permissions'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+    <div class="{{if this.device.isMobile 'sixteen' 'thirteen'}} wide column">
+      {{#if (eq this.router.currentRoute.name "groups.team.index")}}
+        <div class="content d-flex" style="align-items: center;">
+          <h2 class="header">{{t 'Team Members'}}</h2>
+          <button class="ui blue button ml-auto" {{action 'openAddUserRoleModal'}}>{{t 'Add People'}}</button>
+        </div>
+        <div class="content">
+          <button class="ui {{if (eq this.roleType 'accepted') 'active'}} button" {{action 'filter' 'accepted'}}>{{t 'Accepted'}}</button>
+          <button class="ui {{if (eq this.roleType 'pending') 'active'}} button" {{action 'filter' 'pending'}}>{{t 'Invited'}}</button>
+        </div>
+        <table class="ui left aligned stackable table">
+          <thead>
+            <tr>
+              <th>{{t 'User (Email)'}}</th>
+              <th>{{t 'Role'}}</th>
+              <th>{{t 'Option'}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each this.roleInvites as |roleDetail|}}
+              <tr>
+                <td>{{roleDetail.email}}</td>
+                <td>{{roleDetail.role.titleName}}</td>
+                {{#if roleDetail.accepted}}
+                  <td>{{t 'Accepted'}}</td>
+                {{else}}
+                  <td>
+                    <div class="ui horizontal compact basic buttons">
+                      <UiPopup
+                        @content={{t "Delete"}}
+                        @class="ui icon button"
+                        @click={{action (confirm (t "Are you sure you would like to cancel this invite?") (action "deleteUserRole" roleDetail))}}>
+                        <i class="trash icon"></i>
+                      </UiPopup>
+                      <UiPopup
+                        @content={{t "Resend invite"}}
+                        @click={{action "resendInvite" roleDetail}}
+                        @class="ui icon button"
+                        @position="top center">
+                        <i class="mail outline icon"></i>
+                      </UiPopup>
+                    </div>
+                  </td>
+        
+                {{/if}}
+              </tr>
+            {{else}}
+              <div class="ui basic segment">
+                {{t 'No records to show'}}
+              </div>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        {{outlet}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<Modals::AddUserRoleModal
+  @currentInvite={{this.currentInvite}}
+  @isLoading={{this.isLoading}}
+  @data={{this.model}}
+  @isOpen={{this.isAddUserRoleModalOpen}}
+  @addUserRoles={{action "addUserRoles"}} />

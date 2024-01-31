@@ -1,0 +1,38 @@
+<i class="black close icon"></i>
+<div class="header">
+  {{t 'Share this event'}}
+</div>
+<div class="content centered text">
+  <div>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/sharer.php?u={{url-encode this.event.url}}">
+      <i class="bordered link inverted colored facebook f large icon"></i>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?url={{url-encode this.event.url}}&text={{url-encode this.event.name}}">
+      <i class="bordered link inverted colored twitter large icon"></i>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/shareArticle?url={{url-encode this.event.url}}&title={{url-encode this.event.name}}">
+      <i class="bordered link inverted colored linkedin large icon"></i>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href="https://reddit.com/submit?url={{url-encode this.event.url}}&title={{url-encode this.event.name}}">
+      <i class="bordered link inverted colored reddit large icon"></i>
+    </a>
+
+  </div>
+  <br>
+  <div>
+    <div class="ui action input fluid">
+      <input type="text" value="{{this.event.url}}" placeholder="{{this.event.url}}" readonly>
+      <UiPopup
+        @on="click"
+        @content={{t "Link copied to clipboard"}}
+        @position="bottom right">
+        <CopyButton
+          @clipboardText={{this.event.url}}
+          @class="ui black right labeled icon copy button" style="height: 100%;">
+          <i class="copy icon"></i>
+          {{t 'Copy'}}
+        </CopyButton>
+      </UiPopup>
+    </div>
+  </div>
+</div>

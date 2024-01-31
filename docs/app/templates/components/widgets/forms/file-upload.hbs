@@ -1,0 +1,27 @@
+<div class="ui {{if this.uploadingFile 'loading'}} basic segment no padding">
+  {{#if this.fileUrl}}
+    <div class="ui action input">
+      <Input @type="url" @readonly="" @value={{this.fileUrl}} />
+      <button class="ui icon red button" {{action (confirm (t 'Are you sure want to remove this slide?') (action 'removeSelection' this.edit))}}>
+        <i class="remove icon"></i>
+        {{t 'Remove file'}}
+      </button>
+    </div>
+  {{else}}
+    <div class="ui grid">
+      <div class="column sixteen wide">
+        <label for="{{this.inputIdGenerated}}" class="ui icon button">
+          <i class="file icon"></i>
+          {{this.hint}}
+        </label>
+        <Input @type="file" @name="file" @id={{this.inputIdGenerated}} class="hidden-item" @change={{action "fileSelected" "file"}} />
+        <span class="text muted">
+          {{#if this.helpText}}
+            {{this.helpText}}<br>
+          {{/if}}
+          ({{t 'Not larger than'}} {{this.maxSize}})
+        </span>
+      </div>
+    </div>
+  {{/if}}
+</div>

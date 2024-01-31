@@ -1,0 +1,338 @@
+<div class="row">
+  <div class="ui grid">
+    <div class="ui left aligned sixteen wide mobile eight wide computer column">
+      <h3 class="ui header">
+        {{t 'Video Channel'}}
+      </h3>
+    </div>
+    <div class="ui right aligned sixteen wide mobile eight wide computer column">
+      <UiDropdown
+        @class="ui floating labeled icon dropdown blue button"
+        @selected={{this.previousVideo}}
+        @onChange={{action this.setChannel}} as |execute mapper|>
+        <i class="video icon"></i>
+        <div class="default text">
+          {{t 'Add Video'}}
+        </div>
+        <div class="menu">
+          {{#each (sort-by 'id' this.channels) as |channel|}}
+            <div data-value="{{map-value mapper channel}}" class="item">
+              {{channel.name}}
+            </div>
+          {{/each}}
+          <div data-value="{{map-value mapper null}}" class="item">
+            {{t 'Custom'}}
+          </div>
+        </div>
+      </UiDropdown>
+    </div>
+  </div>
+</div>
+<br>
+<form class="ui form {{if this.isLoading 'loading'}}">
+  <div class="field">
+    <label class="required">{{t 'Room'}}</label>
+    <Input
+      @value={{this.data.stream.name}} />
+  </div>
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">{{t 'Video Source'}}</label>
+      <input value='Auto-Generated Big Blue Button Video Room' readonly>
+    </div>
+  {{/if}}
+  {{#if (not-eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label class="required">
+        {{t 'Video Source URL'}}
+        <UiPopup
+          @tagName="i"
+          @class="info circle icon"
+          @content={{t 'This column shows the original link of the video. We do not recommend to share this link as users can access it without logging into {{appName}}.' appName=this.settings.appName }} />
+      </label>
+      {{#if (eq this.data.stream.videoChannel.provider 'youtube')}}
+        <Widgets::Forms::SocialLinkField
+          @fixed={{true}}
+          @site="youtube"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
+      {{else if (eq this.data.stream.videoChannel.provider 'youtube_privacy')}}
+        <Widgets::Forms::SocialLinkField
+          @fixed={{true}}
+          @site="youtube privacy"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
+      {{else if (eq this.data.stream.videoChannel.provider 'vimeo')}}
+        <Widgets::Forms::SocialLinkField
+          @fixed={{true}}
+          @site="vimeo"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
+      {{else}}
+        <Widgets::Forms::LinkField
+          @inputId="url"
+          @value={{this.data.stream.url}}
+          @onChange={{action (mut this.data.stream.url)}} />
+      {{/if}}
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Room Password'}}
+        <UiPopup
+          @tagName="i"
+          @class="info circle icon"
+          @content={{t 'The room password field can be used to communicate a password which is necessary to access online video rooms for example for external video services such as Zoom, Teams and Webex. The need for a password entry depends on the configuration of your video channel. The integrated Big Blue Button video solution in  {{appName}} does not need a password as only ticket holders are able to access it. The difference between the password and PIN is that the password option is used for online access while PINs are used to access video rooms through the telephone.' appName=this.settings.appName }} />
+        </label>
+      <Input
+        @value={{this.data.stream.password}} />
+    </div>
+  {{/if}}
+  <div class="field">
+    <label>
+      {{t 'Additional Information'}}
+      <UiPopup
+          @tagName="i"
+          @class="info circle icon"
+          @content={{t 'Additional Information fields can be used to share information such as phone access, PINs and other video room specific information.'}} />
+    </label>
+    <Textarea
+      @value={{this.data.stream.additionalInformation}} />
+  </div>
+  {{#if (or (eq this.data.stream.videoChannel.provider 'youtube_privacy') (or (eq this.data.stream.videoChannel.provider 'youtube') (eq this.data.stream.videoChannel.provider 'vimeo')))}}
+    <div class="field">
+      <label for="public_name">
+        {{t 'Autoplay'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.autoplay}}
+        @onChange={{action (mut this.data.stream.extra.autoplay)}} />
+      <label for="public_name">
+        {{t 'Loop'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.loop}}
+        @onChange={{action (mut this.data.stream.extra.loop)}} />
+    </div>
+  {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'chatmosphere')}}
+    <div class="field">
+      <label>{{t 'Chatmosphere Background Image'}}</label>
+      <Widgets::Forms::ImageUpload
+        @imageUrl={{this.data.stream.bgImgUrl}}
+        @needsCropper={{false}}
+        @label={{t "Chatmosphere Background Image"}}
+        @id="chatmosphere_image"
+        @icon="camera"
+        @hint={{t "Select Chatmosphere Background Image"}}
+        @imageText={{t "Background Image"}}
+        @isHeaderImage={{false}}
+        @maxSizeInKb={{this.settings.imageSize}}
+        @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image."}}
+        @requiresDivider={{true}} />
+    </div>
+  {{/if}}
+  {{#if (eq this.data.stream.videoChannel.provider 'bbb')}}
+    <div class="field">
+      <label>
+          {{t 'Enable Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.record}}
+        @onChange={{action this.toggleRecord}} />
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Auto Start Recording'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.autoStartRecording}}
+        @onChange={{action this.toggleAutoStartRecording}} />
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.bbb_options.muteOnStart}}
+        @onChange={{action this.toggleMuteOnStart}} />
+    </div>
+  {{/if}}
+
+  {{#if (eq this.data.stream.videoChannel.provider 'jitsi')}}
+    <div class="field">
+      <label>
+        {{t 'Mute On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.jitsi_options.muteOnStart}}
+        @onChange={{action this.toggleJitsiMuteOnStart}} />
+    </div>
+    <div class="field">
+      <label>
+        {{t 'Hide Cam On Start'}}
+      </label>
+      <UiCheckbox
+        class="toggle"
+        @checked={{this.data.stream.extra.jitsi_options.hideCamOnStart}}
+        @onChange={{action this.toggleHideCamOnStart}} />
+    </div>
+  {{/if}}
+
+  {{#if (and showUpdateOptions (and this.data.stream.id this.actualBBBExtra))}}
+    <div class="ui divider"></div>
+    <div class="grouped fields">
+        <label for="bbb_update">{{t 'You have changed your video room\'s configurations. Do you want to update these configurations now?'}}</label>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <Widgets::Forms::RadioButton @name="bbb_update_now" @id="update_now" @value={{true}} @checked={{this.endCurrentMeeting}} />
+            <label for="update_now">{{t 'Yes, update it now. End ongoing meetings.'}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <Widgets::Forms::RadioButton @name="bbb_update_later" @id="update_later" @value={{false}} @checked={{this.endCurrentMeeting}} />
+            <label for="update_later">{{t 'Apply changes when a new meeting is started.'}}</label>
+          </div>
+        </div>
+      </div>
+  {{/if}}
+
+  <div class="ui divider"></div>
+  {{#if (and (not-eq this.data.stream.videoChannel.provider 'chatmosphere') (not-eq this.data.stream.videoChannel.provider 'libre'))}}
+    <div class="grouped fields">
+      <label>{{t 'Access'}}</label>
+      <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Organization Team'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Speakers'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @checked={{true}} @label={{t 'Attendees'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'All logged in users'}} /></div>
+      <div class="field"><UiCheckbox class="read-only disabled" @label={{t 'Public (no restriction)'}} /></div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui header">{{t 'Moderators'}}</div>
+    <div class="ui action input">
+      <Input
+        @type="email"
+        @id="email"
+        @value={{this.moderatorEmail}}
+        placeholder={{t 'Add Email of Moderators'}} />
+      <button class="ui blue right labeled icon button" style="font-size: 1rem;" type="button" {{action this.addModerator}}>
+        <i class="add icon"></i>
+        {{t 'Add'}}
+      </button>
+    </div>
+    <div class="mt-2">
+      {{#each this.data.stream.moderators as |moderator|}}
+        <span class="ui label transition visible" style="display: inline-block !important;">{{moderator.email}}
+          <i role="button" class="delete icon" {{action this.deleteModerator moderator}}></i>
+        </span>
+      {{/each}}
+    </div>
+    <p>{{t 'Please ask moderators to get a ticket for the event. Moderators can access an event only after getting a ticket.'}}</p>
+    {{#if this.videoRecordings}}
+      <div class="ui header">{{t 'BBB Recordings'}}</div>
+      <Tables::Default
+        @color='green'
+        @columns={{this.recordingColumns}}
+        @rows={{this.videoRecordings}}
+        @widthConstraint="eq-container"
+        @resizeMode="fluid"
+        @fillMode="equal-column"
+        @hideSearchBox={{true}}
+        @hidePagination={{true}}
+        @hidePageSize={{true}} />
+    {{/if}}
+  {{/if}}
+
+  <div class="ui divider"></div>
+  <div class="ui header">{{t 'Interpretation Channels'}}</div>
+
+  <label>
+    {{t 'Source URL'}}
+    <UiPopup
+      @tagName="i"
+      @class="info circle icon"
+      @content={{t 'Only streams are supported. Please add a streaming link here. Share or embed links of recorded sessions are not supported.'}} />
+  </label>
+
+  {{#each this.translationChannels as |channel index|}}
+    <div class="field">
+      <div class="ui action input translate-channel">
+        <Widgets::Forms::LinkField
+          @value={{channel.url}}
+          @onChange={{action (mut channel.url)}}/>
+        <div class="field">
+          <div class="ui labeled action input">
+            <UiDropdown
+                        @class="channel-dropbox floating labeled icon mini button"
+                        @selected={{channel.name}}
+                        @forceSelection={{false}}
+                        @onChange={{fn this.switchLanguage channel}}>
+              <span class="text">English</span>
+              <div class="ui language menu">
+                {{#each-in this.l10n.availableLocales as |key value|}}
+                  <div class="item" data-value="{{value}}">{{value}}</div>
+                {{/each-in}}
+              </div>
+              <i style="margin-left: 0 !important;text-align: right;"
+                class="dropdown icon"> </i>
+            </UiDropdown>
+            <button class="ml-2 ui icon red button" {{action "removeChannel" index channel.id }}>
+              <i class="remove icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+  {{#each this.translationChannelsNew as |channel index|}}
+    <div class="field">
+      <div class="ui action input translate-channel">
+        <Widgets::Forms::LinkField
+          @value={{channel.url}}
+          @onChange={{action (mut channel.url)}} />
+        <div class="field">
+          <div class="ui labeled action input">
+            <UiDropdown @class="channel-dropbox  floating labeled icon mini button"
+                        @selected={{channel.name}}
+                        @forceSelection={{false}}
+                        @onChange={{fn this.switchLanguage channel}}>
+              <span class="text">English</span>
+              <div class="ui language menu">
+                {{#each-in this.l10n.availableLocales as |key value|}}
+                  <div class="item" data-value="{{value}}">{{value}}</div>
+                {{/each-in}}
+              </div>
+              <i style="margin-left: 0 !important;text-align: right;"
+                 class="dropdown icon"> </i>
+            </UiDropdown>
+            <span class="ml-2"></span>
+            <button class="ui icon red button" {{action "removeChannel" index channel.id}}>
+              <i class="remove icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {{/each}}
+  <div class="field">
+    <button class="ui primary button" {{action "addChannel"}}  >
+      {{t 'Add Channel'}}
+    </button>
+  </div>
+
+
+  <div class="ui hidden divider"></div>
+  <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+  <LinkTo @route="events.view.videoroom.index" class="ui red button">
+    {{t 'Cancel'}}
+  </LinkTo>
+
+</form>

@@ -1,0 +1,24 @@
+<div class="ui one column container stackable doubling left grid">
+  <div class="row">
+    <div class="column">
+      <h2>{{this.model.event.name}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <div class="ui small gray-text">
+        {{general-date this.model.event.startsAt 'date-time-long'}} - {{general-date this.model.event.endsAt 'date-time-long'}}
+        <br>
+        {{this.model.event.locationName}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ten wide column">
+      <Orders::OrderSummary @data={{this.model}} @eventCurrency={{this.model.event.paymentCurrency}} />
+    </div>
+    <div class="mobile hidden six wide column">
+      <Orders::EventInfo @data={{this.model}} />
+    </div>
+  </div>
+</div>

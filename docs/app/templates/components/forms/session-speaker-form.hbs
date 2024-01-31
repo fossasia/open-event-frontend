@@ -1,0 +1,167 @@
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'submit' on='submit'}}>
+  {{#if this.includeSession}}
+    {{#if this.isSessionSpeaker}}
+      <h3 class="ui header">
+        {{t 'Session details'}}
+      </h3>
+    {{/if}}
+    <Forms::SessionSection
+      @fields={{this.allFields.session}}
+      @data={{this.data}} />
+  {{/if}}
+  {{#if this.speakers}}
+    <div class="ui divider"></div>
+    <h2 class="ui header">
+      {{t 'Speaker details'}}
+    </h2>
+    <h4>
+      {{t 'Choose from existing speaker(s)'}}
+    </h4>
+    <UiDropdown
+      @class="fluid multiple search selection {{if this.addNewSpeaker "disabled"}}"
+      @selected={{this.speakersDetails}}
+      @onChange={{action (mut this.speakersDetails)}} as |execute mapper|>
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Speakers'}}
+      </div>
+      <div class="menu">
+        {{#each (sort-by 'name' this.speakers) as |speaker|}}
+          {{#if speaker.name}}
+            <div data-value="{{map-value mapper speaker}}" class="item">
+              {{speaker.name}}
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </UiDropdown>
+    {{#if this.speakersDetails}}
+      <h4>{{t 'Drag speakers to reorder!'}}</h4>
+      <SortableObjects
+        @sortableObjectList={{this.speakersDetails}}
+        @sortEndAction={{action "sortEndAction"}}
+        @overrideClass="ui stackable grid container ten column"
+        @enableSort={{true}}
+        @useSwap={{true}}>
+        {{#each this.speakersDetails as |speaker|}}
+          <DraggableObject @content={{speaker}} @overrideClass="column" @isSortable={{true}}>
+            <div class="ui grey label">
+              <span>{{speaker.name}}</span>
+            </div>
+          </DraggableObject>
+        {{/each}}
+      </SortableObjects>
+    {{/if}}
+    
+    {{#if this.noSpeakerExists}}
+      <div class="ui small disabled header">{{t 'No speaker exists. Add a new speaker.'}}</div>
+    {{/if}}
+    <div class="ui horizontal divider">
+      Or
+    </div>
+    <div class="field">
+      <UiCheckbox
+        @class="toggle"
+        @label={{t "Add a new speaker"}}
+        @checked={{this.addNewSpeaker}}
+        @onChange={{action (mut this.addNewSpeaker)}} />
+    </div>
+    {{#if this.addNewSpeaker}}
+      <Forms::SpeakerSection
+        @fields={{this.allFields.speaker}}
+        @data={{this.data}}
+        @isUserOwnerOrAdmin={{this.isUserOwnerOrAdmin}} 
+        @isUserOrganiser={{this.isUserOrganiser}} />
+    {{/if}}
+  {{/if}}
+  {{#if this.includeSpeaker}}
+    {{#if this.isSessionSpeaker}}
+      <div class="ui divider"></div>
+      <h3 class="ui header">
+        {{t 'Speaker details'}}
+      </h3>
+    {{/if}}
+    <Forms::SpeakerSection
+      @fields={{this.allFields.speaker}}
+      @data={{this.data}}
+      @isUserOwnerOrAdmin={{this.isUserOwnerOrAdmin}} 
+      @isUserOrganiser={{this.isUserOrganiser}} />
+  {{/if}}
+  {{#if this.sessions}}
+    <div class="ui divider"></div>
+    <h2 class="ui header">
+      {{t 'Session details'}}
+    </h2>
+    <h4>
+      {{t 'Choose from an existing session'}}
+    </h4>
+    <UiDropdown
+      @class="fluid search selection {{if this.newSessionSelected "disabled"}}"
+      @selected={{this.sessionDetails}}
+      @onChange={{action (mut this.sessionDetails)}} as |execute mapper|>
+      <i class="dropdown icon"></i>
+      <div class="default text">
+        {{t 'Select Session'}}
+      </div>
+      <div class="menu">
+        {{#each this.getSessions as |session|}}
+          {{#if session.id}}
+            <div data-value="{{map-value mapper session}}" class="item">
+              {{session.title}}
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </UiDropdown>
+    {{#if this.noSessionExists}}
+      <div class="ui small disabled header">{{t 'No session exists. Add a new session proposal.'}}</div>
+    {{/if}}
+    <div class="ui horizontal divider">
+      Or
+    </div>
+    <div class="field">
+      <UiCheckbox
+        @name="sessionDetails"
+        @class="toggle"
+        @checked={{this.newSessionSelected}}
+        @label={{t "Add a new Proposal"}}
+        @onChange={{action "toggleNewSessionSelected" this.newSessionSelected}}/>
+    </div>
+    {{#if this.shouldShowNewSessionDetails}}
+      <Forms::SessionSection
+        @fields={{this.allFields.session}}
+        @data={{this.data}} />
+    {{/if}}
+  {{/if}}
+
+  {{#if this.isCfsPage}}
+    <div class="ui divider"></div>
+    <div class="ui header">{{t 'Speaker Invites'}}</div>
+    <div class="ui action input">
+      <Input
+        @type="email"
+        @id="email"
+        @value={{this.speakerInviteEmail}}
+        placeholder={{t 'Add Email of Speakers'}} />
+      <button class="ui blue right labeled icon button" style="font-size: 1rem;" type="button" {{action "addSpeakerInvite"}}>
+        <i class="add icon"></i>
+        {{t 'Add'}}
+      </button>
+    </div>
+    <div class="mt-2">
+      {{#each this.data.session.speakerInvites as |speakerInvite|}}
+        {{#if (eq speakerInvite.status 'pending')}}
+          <span class="ui label transition visible" style="display: inline-block !important;">{{speakerInvite.email}}
+            <i role="button" class="delete icon" {{action "deleteSpeakerInvite" speakerInvite}}></i>
+          </span>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/if}}
+
+  <button type="submit" class="ui teal submit button update-changes mt-4">
+    {{t 'Submit'}}
+  </button>
+  <br>
+  <p>{{t 'You need to hit "Submit" to save your changes.'}}</p>
+</form>

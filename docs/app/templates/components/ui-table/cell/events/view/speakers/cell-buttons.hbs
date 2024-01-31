@@ -1,0 +1,17 @@
+<LinkTo @route="events.view.speaker.view" @model={{this.extraRecords.id}} @class="light-gray-link">{{this.record}}</LinkTo>
+<br><br>
+<div class="ui horizontal compact basic buttons">
+  <LinkTo @route="events.view.speaker.view" @model={{@extraRecords.id}} @class="ui icon button">
+    <UiPopup @content={{t "View"}} @click={{action this.props.actions.viewSpeaker this.extraRecords.id}} @position="left center">
+      <i class="unhide icon"></i>		
+    </UiPopup>
+  </LinkTo>
+  <LinkTo @route="events.view.speaker.edit" @model={{@extraRecords.id}} @class="ui icon button">
+    <UiPopup @content={{t "Edit"}} @click={{action this.props.actions.editSpeaker this.extraRecords.id}} @position="left center">
+      <i class="edit icon"></i>
+    </UiPopup>
+  </LinkTo>
+  <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this Speaker?") (action this.props.actions.deleteSpeaker this.extraRecords.id))}} @class="ui icon button" @position="left center">
+      <i class="trash icon"></i>
+  </UiPopup>
+</div>

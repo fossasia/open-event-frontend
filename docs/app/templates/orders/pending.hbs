@@ -1,0 +1,237 @@
+<div class="ui basic {{if this.isLoading 'loading'}} segment">
+  <div class="ui one column container stackable doubling left grid">
+    <div class="row">
+      <div class="column">
+        <h2>{{this.model.order.event.name}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui small gray-text">
+          {{general-date this.model.order.event.startsAt 'date-time-long'}} - {{general-date this.model.order.event.endsAt 'date-time-long'}}
+          <br>
+          {{this.model.order.event.locationName}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="nine wide column">
+        <Orders::OrderSummary
+          @tickets={{this.model.tickets}}
+          @data={{this.model.order}}
+          @event={{this.model.event}}
+          @eventCurrency={{this.model.order.event.paymentCurrency}} />
+        <br/>
+        {{#if this.model.event.afterOrderMessage}}
+          <Orders::AfterOrderMessage
+            @event={{this.model.event}} />
+          <br/>
+        {{/if}}
+        <Forms::Orders::AttendeeList
+          @save="save"
+          @data={{this.model.order}}
+          @fields={{this.model.form}}
+          @event={{this.model.event}} />
+      </div>
+      <div class="seven wide column">
+        <Orders::EventInfo
+          @data={{this.model.order}} />
+        <br/>
+        <div class="ui padded segment">
+          
+          <h4 class="ui horizontal divider header">
+          <i class="dollar sign icon"></i>
+          {{t 'Payment Method'}}
+        </h4>
+        <div class="field">
+          <label class="required" for="payment_mode">{{t 'Please choose your payment method'}}</label>
+          <div class="grouped inline fields">
+            {{#if this.model.order.event.isStripeLinked}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Stripe"}}
+                  @value="stripe"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}}
+                  onclick={{action "getPaymentElement"}} />
+                <label for="payment_mode">
+                  <img class="d-inline-block ui small image"src="/images/payment-logos/stripe.png" alt="stripe">
+                </label>
+                {{#if (eq this.model.order.paymentMode 'stripe')}}
+                  <div id="payment-element" class="mb-4 mt-4"></div>
+                {{/if}}
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayByPaypal}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Paypal"}}
+                  @value="paypal"
+                  @current={{this.data.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/paypal.png" alt="paypal"></label>
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayByPaytm}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Paytm"}}
+                  @value="paytm"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/paytm.png" alt="paytm"></label>
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayByOmise}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Omise"}}
+                  @value="omise"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/omise.png" alt="omise"
+                    class="ui tiny image"></label>
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayByAlipay}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "AliPay"}}
+                  @value="alipay"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                <label for="payment_mode"><img src="/images/payment-logos/alipay.png" alt="alipay"
+                    class="ui tiny image"></label>
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayByInvoice}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Pay on Invoice"}}
+                  @value="invoice"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'invoice')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.invoiceDetails}}
+                  @readonly="" />
+                {{/if}}
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayByCheque}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Cheque"}}
+                  @value="cheque"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'cheque')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.chequeDetails}}
+                  @readonly="" />
+                {{/if}}
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayByBank}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Bank"}}
+                  @value="bank"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'bank')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.bankDetails}}
+                  @readonly="" />
+                {{/if}}
+              </div>
+            {{/if}}
+            {{#if this.model.order.event.canPayOnsite}}
+              <div class="field">
+                <UiRadio
+                  @name="payment_mode"
+                  @label={{t "Onsite"}}
+                  @value="onsite"
+                  @current={{this.model.order.paymentMode}}
+                  @onChange={{action (mut this.model.order.paymentMode)}} />
+                {{#if (eq this.model.order.paymentMode 'onsite')}}
+                  <Textarea
+                  @name="payment_details"
+                  @value={{this.model.order.event.onsiteDetails}}
+                  @readonly="" />
+                {{/if}}
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <br/>      
+        <div>
+          {{#if (or (or (or (eq this.model.order.paymentMode 'invoice') (eq this.model.order.paymentMode 'bank')) (eq this.model.order.paymentMode 'onsite')) (eq this.model.order.paymentMode 'cheque'))}}
+            <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.completeOrder}}>
+            {{t 'Pay Now'}}
+            <i class="cart plus icon"></i></button> 
+          {{/if}}
+          {{#if (eq this.model.order.paymentMode 'stripe')}}
+            <button class="ui right labeled icon blue button weight-400 width-full" {{on "click" this.stripePay}}>
+              {{t 'Pay Now'}}
+              <i class="credit card icon"></i>
+            </button>
+          {{/if}}
+          {{#if (eq this.model.order.paymentMode 'paypal')}}
+            <div class='paypal-button ui fluid button'>
+              <PaypalButton
+                @data={{this.model.order}}
+                @paymentFor="order" />
+            </div>
+          {{/if}}
+          {{#if (eq this.model.order.paymentMode 'omise')}}
+            <div>
+              <form class="checkout-form" name="checkoutForm" method='POST' action={{this.omiseFormAction}}>
+                <script type="text/javascript" src="https://cdn.omise.co/omise.js" data-key="{{this.publicKeyOmise}}" data-amount="{{this.paymentAmount}}" data-currency="{{this.model.order.event.paymentCurrency}}" data-default-payment-method="credit_card">
+                </script>
+              </form>
+            </div>
+          {{/if}}
+          {{#if (eq this.model.order.paymentMode 'paytm')}}
+            <button class="ui fluid button primary" {{action "openPaytmModal"}}>{{t 'Pay with PayTM'}}</button>
+          {{/if}}
+          {{#if (eq this.model.order.paymentMode 'alipay')}}
+            <button class="ui fluid button primary"
+              {{action "alipayCheckout" this.model.order.identifier}}>{{t 'Pay with AliPay'}}</button>
+          {{/if}}
+        </div>
+
+        </div>
+        
+        <br/>
+        <Orders::TicketHolder
+          @data={{this.model.order}} />
+      </div>
+    </div>
+  </div>
+</div>
+<Modals::PaytmPaymentOptions
+  @isLoading={{this.isLoading}}
+  @isOpen={{this.isPaytmModalOpen}}
+  @amount={{this.model.order.amount}}
+  @currency={{this.model.order.event.paymentCurrency}}
+  @openOTPController={{action "openOTPController"}}
+  @txnToken={{this.txnToken}} />
+<Modals::PaytmOtp
+  @isLoading={{this.isLoading}}
+  @isOpen={{this.isOTPModalOpen}}
+  @amount={{this.model.order.amount}}
+  @currency={{this.model.order.event.paymentCurrency}}
+  @txnToken={{this.txnToken}}
+  @verifyOtp={{action "verifyOtp"}} />

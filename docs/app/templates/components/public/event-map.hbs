@@ -1,0 +1,24 @@
+<div class="ui stackable grid">
+  {{#if @event.isMapShown}}
+    <div class="eight wide column event-map mt-16">
+      <h2>{{t 'Getting Here'}}</h2>
+      {{#if (and @event.latitude @event.longitude)}}
+        <LeafletMap @lat={{this.latitude}} @lng={{this.longitude}} @zoom={{15}} as |layers|>
+          <layers.tile @url={{this.mapTile}} @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
+          <layers.marker @location={{array this.latitude this.longitude}} as |marker|>
+            <marker.popup>
+              <h3>{{@event.name}}</h3>
+              {{@event.locationName}}
+            </marker.popup>
+          </layers.marker>
+        </LeafletMap>
+      {{else}}
+        <iframe title="Map" class="g-map" src="https://maps.google.com/maps?q={{@event.locationName}}&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no"></iframe>
+      {{/if}}
+    </div>
+  {{/if}}
+  <div class="{{if @event.isMapShown 'eight' 'sixteen'}} wide column address mt-16">
+    <h2>{{t 'Address'}}</h2>
+    <p>{{@event.locationName}}</p>
+  </div>
+</div>

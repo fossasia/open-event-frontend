@@ -1,0 +1,25 @@
+<UiDropdown
+  ...attributes
+  class="search selection"
+  @selected={{this.defaultTimezone}}
+  @forceSelection={{false}}
+  @fullTextSearch={{true}}>
+  <Input
+    @type="hidden"
+    @value={{@timezone}} />
+  <i class="dropdown icon"></i>
+  <div class="default text">{{@timezone}}</div>
+  <div class="menu">
+    <div class="divider"></div>
+    <div class="item" data-value="{{@eventTimezone}}">{{@eventTimezone}} (Event)</div>
+    <div class="item" data-value="{{this.localTimezone}}">{{this.localTimezone}} (Local)</div>
+    <div class="divider"></div>
+    <div class="header">
+      <i class="time icon"></i>
+      {{t "Other Timezones"}}
+    </div>
+    {{#each this.timezones as |timezone|}}
+      <div class="item" data-value="{{timezone}}">{{timezone}}</div>
+    {{/each}}
+  </div>
+</UiDropdown>

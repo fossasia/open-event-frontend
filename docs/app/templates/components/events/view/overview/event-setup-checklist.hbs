@@ -1,0 +1,127 @@
+<div class="content">
+  <div class="header">{{t 'Event Checklist'}}</div>
+</div>
+<div class= "content">
+  <div class="ui fluid segments">
+    <a href="{{href-to 'events.view.edit.basic-details'}}" class="ui segment {{unless this.data.event.name 'secondary'}} grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.name 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Basic Details'}}
+            <div class="sub header">
+              {{t 'Basic information including title, date, venue, ticketing'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.other-details'}}" class="ui segment {{unless this.data.event.socialLinks 'secondary'}} grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.socialLinks 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Additional Information'}}
+            <div class="sub header">
+              {{t 'Links, social media, privacy, code of conduct'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.attendee'}}" class="ui segment {{unless this.data.event.isTicketFormEnabled 'secondary'}} grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.isTicketFormEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Attendee Form'}}
+            <div class="sub header">
+              {{t 'Information to be collected from attendees'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.badge'}}" class="ui segment {{unless this.data.event.isBadgesEnabled 'secondary'}} grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.isBadgesEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Badge Form'}}
+            <div class="sub header">
+              {{t 'Information to be collected from badges'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sponsors'}}" class="ui {{unless this.data.event.isSponsorsEnabled 'secondary'}} segment grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.isSponsorsEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Supporters'}}
+            <div class="sub header">
+              {{t 'Details and logos of supporters'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Session, Tracks & Microlocations'}}
+            <div class="sub header">
+              {{t 'Tracks details and colors, session lengths, room locations'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.isCfsEnabled 'secondary'}} segment grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.isCfsEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Call For Speakers'}}
+            <div class="sub header">
+              {{t 'Call for speakers announcement and dates'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+    <a href="{{href-to 'events.view.edit.sessions-speakers'}}" class="ui {{unless this.data.event.isSessionsSpeakersEnabled 'secondary'}} segment grid no margin">
+      <div class="ui row">
+        <div class="column one wide">
+          <i class="{{if this.data.event.isSessionsSpeakersEnabled 'checkmark green' 'warning black'}} big icon"></i>
+        </div>
+        <div class="column fifteen wide">
+          <h4 class="ui header">
+            {{t 'Session & Speaker forms customization'}}
+            <div class="sub header">
+              {{t 'Customize the session and speaker registration forms'}}
+            </div>
+          </h4>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

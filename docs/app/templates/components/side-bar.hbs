@@ -1,0 +1,47 @@
+<div class="ui left inverted vertical menu sidebar {{if this.sidebarVisible 'visible'}}">
+  {{#if (not this.isEventPageRoute)}}
+  <div class="search-bar d-flex items-center space-between m-2 p-2">
+      <Input @class="prompt" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
+    <i class="search icon"></i>
+  </div>
+  {{/if}}
+  {{#if this.session.isAuthenticated}}
+  <UiAccordion>
+  <div class="item ui {{if @needShowEventMenu 'title'}}">
+      <Widgets::SafeImage @isAvatar={{true}} @class="ui avatar round image side-bar" @src={{if
+        this.authManager.currentUser.avatarUrl this.authManager.currentUser.avatarUrl "/images/placeholders/avatar.png"
+        }} />
+      {{if this.authManager.currentUser
+      (if this.authManager.currentUser.firstName this.authManager.currentUser.firstName
+      this.authManager.currentUser.email)
+      'Welcome'}}
+  </div>
+  <div class="{{if @needShowEventMenu 'content sub-menu'}} ui">
+    <a href="{{href-to 'my-tickets'}}" class="item">{{t 'My Tickets'}}</a>
+    <a href="{{href-to 'my-sessions'}}" class="item">{{t 'My Sessions'}}</a>
+    <a href="{{href-to 'my-groups.list'}}" class="item">{{t 'Groups'}}</a>
+    <a href="{{href-to 'events.list' 'live'}}" class="item">{{t 'Manage Events'}}</a>
+    <div class="divider"></div>
+    <a href="{{href-to 'account.profile'}}" class="item">{{t 'Account'}}</a>
+    {{#if this.authManager.currentUser.isAnAdmin}}
+    <a href="{{href-to 'admin'}}" class="item">{{t 'Admin'}}</a>
+    {{/if}}
+    <a class="item logout-button" href="{{href-to 'logout'}}">{{t 'Logout'}}</a>
+  </div>
+  {{#if @needShowEventMenu }}
+
+  <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
+  {{/if}}
+  </UiAccordion>
+  {{else}}
+    {{#if @needShowEventMenu}}
+      <Public::SideMenu @event={{this.evtService.currentEvent}} @hideIcon={{true}} />
+    {{else}}
+      <a href="{{href-to 'pricing'}}" class="item">{{t 'Pricing'}}</a>
+    {{/if}}
+    <a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+  {{/if}}
+</div>
+<div class="pusher">
+  {{yield}}
+</div>

@@ -1,0 +1,25 @@
+<div class="ui grid stackable">
+  <div class="row">
+    <div class="sixteen wide column">
+      <Tables::Default
+        @columns={{this.columns}}
+        @rows={{this.model.data}}
+        @currentPage={{this.page}}
+        @pageSize={{this.per_page}}
+        @searchQuery={{this.search}}
+        @sortBy={{this.sort_by}}
+        @sortDir={{this.sort_dir}}
+        @metaData={{this.model.meta}}
+        @filterOptions={{this.filterOptions}}
+        @hideSearchBox={{true}}
+        @widthConstraint="eq-container"
+        @resizeMode="fluid"
+        @fillMode="equal-column" />
+    </div>
+  </div>
+  <div class="row">
+		<div class="sixteen wide {{if this.device.isMobile 'center aligned'}} column">
+		  <button class="ui blue button left floated {{if this.isLoading 'loading'}}" {{action 'save'}}>{{t 'Save'}}</button>
+		</div>
+	</div>
+</div>

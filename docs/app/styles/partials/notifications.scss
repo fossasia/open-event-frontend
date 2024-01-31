@@ -1,0 +1,152 @@
+$white: #fff;
+$icon-color: rgba(255, 255, 255, .74);
+$error-background: #e74c3c;
+$error-color: #ba2c1d;
+$success-background: #64ce83;
+$success-color: #3da95c;
+$info-background: #3ea2ff;
+$info-color: #067cea;
+$warning-background: #ff7f48;
+$warning-color: #f44e06;
+
+.notification-container {
+  bottom: 10px;
+  position: fixed;
+  right: 10px;
+  z-index: 5000;
+
+  .ember-notify-show {
+    animation: notification-show 180ms cubic-bezier(.175, .885, .32, 1.27499);
+  }
+
+  .ember-notify-hide {
+    animation: notification-hide 250ms cubic-bezier(.33859, -.42, 1, -.22), notification-shrink 250ms 250ms cubic-bezier(.5, 0, 0, 1);
+    animation-fill-mode: forwards;
+  }
+
+  .custom-notify-icon {
+    color: $icon-color;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 30px;
+
+    span {
+      position: relative;
+      top: 10px;
+    }
+  }
+
+  .message {
+    display: inline-block;
+    min-width: 250px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 15px;
+    padding-top: 10px;
+  }
+
+  .close {
+    cursor: pointer;
+    opacity: .3;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  .error {
+    background-color: $error-background;
+
+    .custom-notify-icon {
+      background-color: $error-color;
+    }
+
+    .close {
+      color: $error-color;
+    }
+  }
+
+  .success {
+    background-color: $success-background;
+
+    .custom-notify-icon {
+      background-color: $success-color;
+    }
+
+    .close {
+      color: $success-color;
+    }
+  }
+
+  .info {
+    background-color: $info-background;
+
+    .custom-notify-icon {
+      background-color: $info-color;
+    }
+
+    .close {
+      color: $info-color;
+    }
+  }
+
+  .warning {
+    background-color: $warning-background;
+
+    .custom-notify-icon {
+      background-color: $warning-color;
+    }
+
+    .close {
+      color: $warning-color;
+    }
+  }
+}
+
+@keyframes notification-show {
+  0% {
+    opacity: 0;
+    transform: perspective(450px) translate(0, -30px) rotateX(90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: perspective(450px) translate(0, 0) rotateX(0deg);
+  }
+}
+@keyframes notification-shrink {
+  0% {
+    margin-bottom: 2px;
+    max-height: 800px;
+    opacity: 0;
+    transform: scale(.8);
+  }
+
+  100% {
+    margin-bottom: 0;
+    max-height: 0;
+    opacity: 0;
+    transform: scale(.8);
+  }
+}
+@keyframes notification-hide {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(.8);
+  }
+}

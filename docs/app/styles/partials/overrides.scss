@@ -1,0 +1,84 @@
+.ui.basic.segments {
+  background: none transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.ui.active.search.dropdown input.search {
+  &:focus + .text {
+    color: rgba(177, 176, 176, .87) !important;
+  }
+}
+
+a.ui.segment {
+  display: block !important;
+}
+
+body.dimmable.undetached.dimmed {
+  .pushable {
+    transform: none;
+  }
+
+  .pusher {
+    position: static;
+  }
+}
+
+.ui.fluid.container {
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .ui.fluid.container {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ui.fluid.container {
+    padding: 0;
+  }
+}
+
+.ui {
+  &[class*='no margin'] {
+    margin: 0 !important;
+  }
+
+  &[class*='no padding'] {
+    padding: 0 !important;
+  }
+
+  &.no {
+    &[class*='right margin'] {
+      margin-right: 0 !important;
+    }
+
+    &[class*='top margin'] {
+      margin-top: 0 !important;
+    }
+
+    &[class*='bottom margin'] {
+      margin-bottom: 0 !important;
+    }
+
+    &[class*='right padding'] {
+      padding-right: 0 !important;
+    }
+
+    &[class*='left padding'] {
+      padding-left: 0 !important;
+    }
+
+    &[class*='bottom padding'] {
+      padding-bottom: 0 !important;
+    }
+  }
+}
+
+.centered-modal {
+  left: auto !important;
+  margin-left: auto !important;
+  margin-top: auto !important;
+}

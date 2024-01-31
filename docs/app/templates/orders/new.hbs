@@ -1,0 +1,51 @@
+<div class="ui basic {{if this.isLoading 'loading'}} segment">
+  <div class="ui one column container stackable doubling left grid">
+    <div class="row">
+      <div class="column">
+        <h2>{{this.model.order.event.name}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui small gray-text">
+          {{general-date this.model.order.event.startsAt 'date-time-long'}} - {{general-date this.model.order.event.endsAt 'date-time-long'}} ({{this.model.order.event.timezone}})
+          <br>
+          {{this.model.order.event.locationName}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ten wide column">
+        <Orders::OrderSummary
+          @data={{this.model.order}}
+          @tickets={{this.model.tickets}}
+          @event={{this.model.event}}
+          @eventCurrency={{this.model.order.event.paymentCurrency}} />
+        <br/>
+        <Forms::Orders::OrderForm
+          @save="save"
+          @data={{this.model.order}}
+          @event={{this.model.event}}
+          @fields={{this.model.form}}
+          @settings={{this.settings}} />
+      </div>
+      <div class="six wide column">
+        <Orders::EventInfo
+          @data={{this.model.order}}
+          @showBanner={{false}} />
+        <br/>
+        {{#if this.model.taxDetails}}
+          <Orders::CompanyInfo
+            @tax={{this.model.taxDetails}} />
+          <br/>
+        {{/if}}
+        {{#if this.model.order.event.ownerName}}
+          <div class="mobile hidden row">
+            <Orders::OrganizerInfo
+              @data={{this.model.order}} />
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

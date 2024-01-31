@@ -1,0 +1,26 @@
+<span>{{this.extraRecords.fullName}}</span>
+<div class="ui hidden divider"></div>
+<div class="ui horizontal compact basic buttons">
+  <UiPopup @tagName="a" @click={{action this.props.actions.moveToUserDetails this.extraRecords.id}} @content={{t "View"}} @class="ui icon button">
+    <i class="unhide icon"></i>
+  </UiPopup>
+  {{#unless this.extraRecords.isSuperAdmin}}
+    {{#if (not this.extraRecords.deletedAt)}}
+      <UiPopup @content={{t "Edit"}} @click={{action this.props.actions.openEditModal this.extraRecords.id}} @class="ui icon button">
+        <i class="edit icon"></i>
+      </UiPopup>
+    {{/if}}
+    {{#if (and this.props.options.hasRestorePrivileges this.extraRecords.deletedAt)}}
+      <UiPopup @content={{t "Restore"}} @click={{action this.props.actions.restoreUser this.extraRecords.id}} @class="ui icon button" @position="left center">
+        <i class="undo icon"></i>
+      </UiPopup>
+    {{else}}
+      <UiPopup @content={{t "Delete"}} @click={{action (confirm (t "Are you sure you would like to delete this user?") (action this.props.actions.deleteUser this.extraRecords.id))}} @class="ui icon button">
+        <i class="trash icon"></i>
+      </UiPopup>
+    {{/if}}
+  {{/unless}}
+</div>
+
+
+

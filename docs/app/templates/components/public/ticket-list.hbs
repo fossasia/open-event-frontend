@@ -1,0 +1,258 @@
+{{!-- Removed `Currency Symbol` helper from the `paymentCurrency` since some currency are not getting rendered. Hotfix until a permanent solution found --}}
+<form class="ui form" {{action on='submit' preventDefault=true}}>
+  <table class="ui stackable very basic compact table" style="margin-bottom: 0">
+    <thead class="full-width">
+      {{#unless this.device.isMobile}}
+        <tr>
+          <th>{{t 'Type'}}</th>
+          <th class="ui four wide single line">{{t 'Price'}}</th>
+          <th class="one wide">{{t 'Quantity'}}</th>
+          <th class="ui right aligned two wide">{{t 'Subtotal'}}</th>
+        </tr>
+      {{/unless}}
+    </thead>
+    <tbody>
+      {{#each this.tickets as |ticket|}}
+      {{#if (not (includes ticket.type 'Registration'))}}
+        {{#unless ticket.isHidden}}
+        {{#if (not-eq ticket.type 'registration')}}
+          <tr>
+            <td>
+              <div class="ui small">
+                {{ticket.name}}
+                {{#if (eq ticket.type 'donation')}}
+                  <UiPopup
+                    @tagName="i"
+                    @class="info icon"
+                    @content={{concat "Donation value should be between " ticket.minPrice " " this.eventCurrency " and " ticket.maxPrice " " this.eventCurrency}} />
+                {{/if}}
+              </div>
+              {{#if ticket.isDescriptionVisible}}
+                <small class="ui gray-text tiny">{{ticket.description}}</small>
+              {{/if}}
+              <div>
+                <small class="ui gray-text small">{{t 'Sale ends on'}} {{general-date ticket.salesEndsAt 'date-time-tz-long' tz=@event.timezone}}</small>
+              </div>
+            </td>
+            <td id="{{ticket.id}}_price">
+              {{#if (eq ticket.type 'donation') }}
+                <div class="field m-0">
+                  <div class="ui labeled input">
+                    <label for="i_{{ticket.id}}_price" class="ui label">{{currency-symbol this.eventCurrency}}</label>
+                    <Input
+                      id="i_{{ticket.id}}_price"
+                      @type="number"
+                      @name={{ticket.id}} placeholder={{t "Enter Donation"}}
+                      @min={{ticket.minPrice}}
+                      @max={{ticket.maxPrice}}
+                      @value={{ticket.price}}
+                      @input={{action "onChangeDonation"}} />
+                  </div>
+                </div>
+              {{else}}
+                <div class="{{if ticket.discount 'strike text'}}">
+                  <Orders::TicketPrice
+                    @ticket={{ticket}}
+                    @currency={{this.eventCurrency}}
+                    @amount={{ticket.price}} />
+                </div>
+                {{#if ticket.discount}}
+                  <div>
+                    <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.price ticket.discount}}/>
+                  </div>
+                {{/if}}
+              {{/if}}
+              {{#if (and this.taxInfo (not-eq ticket.type 'free'))}}
+                <p>
+                  {{#if this.taxInfo.isTaxIncludedInPrice}}
+                    <small class="ui gray-text small {{if ticket.discountedTicketTax 'strike text'}}">
+                      {{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.includedTaxAmount}}/>
+                    </small>
+                  {{else}}
+                    <small class="ui gray-text small {{if ticket.discountedTicketTax 'strike text'}}">
+                      + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                    </small>
+                  {{/if}}
+                  {{#if ticket.discountedTicketTax}}
+                    {{#if this.taxInfo.isTaxIncludedInPrice}}
+                      <small class="ui gray-text small">
+                        <br>{{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                      </small>
+                    {{else}}
+                      <small class="ui gray-text small">
+                        <br>+ <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                      </small>
+                    {{/if}}
+                  {{/if}}
+                  <span>
+                    <small class="ui gray-text tiny aligned right">({{this.taxInfo.name}})</small>
+                  </span>
+                </p>
+              {{/if}}
+            </td>
+            <td>
+              {{#if (lte ticket.remaining 0)}}
+                <span class="ui basic small text red label w-content-button">{{t 'Sold Out'}}</span>
+              {{else}}
+                <div class="field">
+                  <UiDropdown
+                    @class="compact selection"
+                    @forceSelection={{false}}
+                    @onChange={{action "updateOrder" ticket}} as |execute mapper|>
+                    <Input
+                      @type="hidden"
+                      @id={{concat ticket.id "_quantity"}}
+                      @value={{ticket.orderQuantity}} />
+                    <i class="dropdown icon"></i>
+                    <div class="default text">{{if (eq this.tickets.length 1) (max ticket.minOrder 1) 0}}</div>
+                    <div class="menu">
+                      <div class="item" data-value="{{map-value mapper 0}}">0</div>
+                      {{#each (range (max ticket.minOrder 1) (add ticket.maxOrder 1)) as |count|}}
+                        <div class="item" data-value="{{map-value mapper count}}">{{count}}</div>
+                      {{/each}}
+                    </div>
+                  </UiDropdown>
+                </div>
+              {{/if}}
+            </td>
+            <td id='{{ticket.id}}_subtotal' class="ui right aligned">
+              {{#if this.device.isMobile}}
+                <span class="ui gray-text">{{t 'Subtotal :' }}</span>
+              {{/if}}
+              <Orders::TicketPrice
+                @ticket={{ticket}}
+                @currency={{this.eventCurrency}}
+                @amount={{ticket.subTotal}} />
+            </td>
+          </tr>
+          {{/if}}
+        {{/unless}}
+      {{/if}}
+      {{/each}}
+    </tbody>
+    <tfoot class="full-width">
+      <tr>
+        {{#unless this.device.isMobile}}
+         <td></td>
+         <td></td>
+        {{/unless}}
+        <td colspan="3">
+            <table class="ui small" style="float: right;">
+              <tbody>
+                {{#if orderAmount.tax}}
+                  <tr><td>{{t 'Total'}}</td><td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.sub_total}}/></td></tr>
+                  <tr>
+                    <td>
+                      <div>{{t 'Tax'}} ({{this.orderAmount.tax.percent}}% {{this.orderAmount.tax.name}})</div>
+                      {{#if orderAmount.tax.included}}
+                        <small class="ui gray-text small">{{t 'Included in Grand Total' }}</small>
+                      {{/if}}
+                    </td>
+                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.tax.amount}}/></td>
+                  </tr>
+                {{/if}}
+                <tr><td>{{t 'Grand Total'}}</td>
+                  {{#if this.amountEditable}}
+                    <td>{{#if this.overridenAmount}}{{currency-symbol this.eventCurrency}}{{/if}}</td><td><Input @value={{this.overridenAmount}} placeholder={{t "Total"}} /></td>
+                  {{else}}
+                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.orderAmount.total}}/></td>
+                  {{/if}}
+                </tr>
+              </tbody>
+            </table>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  {{#unless this.amountEditable}}
+  <div class="ui grid">
+    {{#if this.enterPromotionalCode}}
+      <div class="ui row">
+        <div class="{{if this.device.isBiggerThanTablet 'right floated eight wide'}} column">
+          <div class="field">
+            <div class="ui action fluid input">
+              <Input
+                @type="text"
+                @name="promotional_code"
+                @value={{this.promotionalCode}}
+                placeholder={{t "Promotional Code"}}
+                @readonly={{this.promotionalCodeApplied}}
+                @key-up={{action "handleKeyPress"}}
+                @id="promotionalCode" />
+              {{#unless this.promotionalCodeApplied}}
+                <div role="button" class="ui icon {{if this.promotionalCode '' 'disabled'}} button p-4" {{action 'applyPromotionalCode'}}>
+                {{t 'Apply code'}}
+                </div>
+              {{/unless}}
+              <div role="button" class="ui black icon button p-4" {{action 'togglePromotionalCode'}}>
+                <i class="remove icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      {{#unless this.hasOnlyFreeTickets}}
+        <div class="ui row">
+          <div class="column right aligned">
+            {{#if this.device.isMobile}}
+              <div class="ui hidden divider"></div>
+            {{/if}}
+            <a href="#" {{action 'togglePromotionalCode'}}>{{t 'Enter promotional code'}}</a>
+          </div>
+        </div>
+      {{/unless}}
+    {{/if}}
+  </div>
+  {{/unless}}
+  <div class="ui grid">
+    <div class="ui row stackable grid">
+      <div class="ui no padding thirteen wide computer twelve wide tablet column right aligned floated payment icons">
+        {{#unless this.hasOnlyFreeTickets}}
+          <i class="colored cc amex link icon"></i>
+          <i class="colored credit card alternative link icon"></i>
+          <i class="colored cc diners club link icon"></i>
+          <i class="colored cc discover link icon"></i>
+          <i class="colored cc mastercard link icon"></i>
+          <i class="colored cc paypal card link icon"></i>
+          <i class="colored cc visa link icon"></i>
+        {{/unless}}
+      </div>
+      <div class="ui no padding three wide computer four wide tablet column right aligned floated">
+        <button id="total" class="ui primary small button no right margin" disabled={{and this.shouldDisableOrderButton (not this.hasPaidOrder)}} {{action this.placeOrder this.orderAmountInput}}>
+          {{t 'Order Now'}}
+        </button>
+      </div>
+    </div>
+    <div class="column sixteen wide right floated">
+      {{#if this.event.refundPolicy}}
+        <UiPopup @html={{this.event.refundPolicy}} @class="ui mini labeled teal icon right floated button">
+          <i class="info icon"></i>
+          {{t 'Refund Policy'}}
+        </UiPopup>
+      {{/if}}
+      {{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+        <div>
+          <button class="ui mini labeled blue icon right floated button" {{action (mut this.isContactOrganizerModalOpen) true}} >
+            <i class="envelope icon"></i>
+            {{t 'Contact Organizer'}}
+          </button>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</form>
+
+<Modals::LoginSignupModal
+  @isOpen={{this.isLoginModalOpen}}
+  @isLoading={{this.isLoading}}
+  @createNewUserViaEmail={{this.createNewUserViaEmail}}
+  @loginExistingUser={{this.loginExistingUser}}
+  @userExists={{this.userExists}}
+  @errorMessage={{this.errorMessage}} />
+
+{{#if (and this.session.isAuthenticated this.authManager.currentUser.isVerified)}}
+  <Modals::ContactOrganizer
+    @event={{this.event}}
+    @isOpen={{this.isContactOrganizerModalOpen}} />
+{{/if}}

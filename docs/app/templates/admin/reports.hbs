@@ -1,0 +1,19 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <TabbedNavigation @isNonPointing={{true}}>
+        <LinkTo @route="admin.reports.system-logs" class="item">
+          {{t 'System Logs'}}
+        </LinkTo>
+        <LinkTo @route="admin.reports.kubernetes-server-logs" class="item">
+          {{t 'Kubernetes Server Logs'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<form class="ui {{if this.isLoading 'loading' }} form" {{action 'submit' on='submit'}}>
+  {{#if this.errorMessage}}
+    <div class="ui negative message">
+      <p>{{this.errorMessage}}</p>
+    </div>
+  {{/if}}
+  <h4 class="ui header">{{t 'Please enter your email address to continue.'}}</h4>
+  <div class="field">
+    <div class="ui icon input">
+      <Input @type="text" @name="email" @value={{this.email}} @disabled={{this.nextStep}} placeholder={{t "Email Address"}} />
+      {{#if this.nextStep}}
+        <i class="circular undo link icon" role="button" onclick={{action 'reset'}}></i>
+      {{/if}}
+    </div>
+  </div>
+  {{#if this.userExists}}
+    <div class="ui text muted">{{t 'You have previously registered with this email address.'}}</div>
+    <div class="ui divider hidden"></div>
+    <div class="field">
+      <label class="required" for="password">{{t 'Please enter your password to continue.'}}</label>
+      <Input @type="password" @name="password" @value={{this.password}} />
+    </div>
+    <div class="ui center aligned segment basic">
+      <a href="{{href-to 'reset-password'}}" class="text muted" target="_blank" rel="noopener noreferrer"> {{t 'Forgot your password ?'}}</a>
+    </div>
+    <button type="submit" class="ui blue button">
+      {{t 'Sign In'}}
+    </button>
+  {{else if this.showPasswordForm}}
+    <div class="ui text muted">{{t 'Please set up a password to continue.'}}</div>
+    <div class="ui divider hidden"></div>
+    <div class="field">
+      <label class="required" for="password">{{t 'Password'}}</label>
+      <Input @type="password" @name="password" @value={{this.password}} />
+    </div>
+    <div class="field">
+      <label class="required" for="password_repeat">{{t 'Confirm Password'}}</label>
+      <Input @type="password" @name="password_repeat" />
+    </div>
+    <button type="submit" class="ui blue button">
+      {{t 'Register'}}
+    </button>
+  {{else}}
+    <button type="submit" class="ui green button">
+      {{t 'Continue'}}
+    </button>
+  {{/if}}
+</form>

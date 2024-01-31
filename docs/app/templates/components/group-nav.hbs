@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="sixteen wide column">
+    <div class="ui grid space-between items-center mt-4 mb-4">
+      <h2>
+        {{@group.name}}
+      </h2>
+      {{#if (not @createPage)}}
+        <a
+          href="/g/{{@group.id}}"
+          target="_blank" rel="noopener"
+          class="ui button labeled icon small mr-4 green" >
+          <i class="unhide icon"></i>
+            {{t 'View'}}
+        </a>
+      {{/if}}
+    </div>
+    <TabbedNavigation>
+      {{#if @createPage}}
+        <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
+          {{t 'Settings'}}
+        </LinkTo>
+        {{#if @group.id}}
+          <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
+            {{t 'Events'}}
+          </LinkTo>
+        {{/if}}
+      {{else}}
+        {{#if @group.id}}
+          <LinkTo @route="groups.edit.events" @model={{@group.id}} class="item">
+            {{t 'Events'}}
+          </LinkTo>
+        {{/if}}
+        <LinkTo @route="groups.edit.followers" @model={{@group.id}} class="item">
+          {{t 'Followers'}}
+        </LinkTo>
+        <LinkTo @route="groups.edit.settings" @model={{@group.id}} class="item">
+          {{t 'Settings'}}
+        </LinkTo>
+        <LinkTo @route="groups.team" @model={{@group.id}} class="item">
+          {{t 'Team'}}
+        </LinkTo>
+      {{/if}}
+    </TabbedNavigation>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+<div class="ui container">
+  <div class="sixteen wide column">
+    <Forms::Form
+      @rules={{this.rules}}
+      @onValid={{this.save}}
+      class="{{if this.isLoading 'loading'}}">
+      <div class="field">
+        <label class="required">{{t 'Name'}}</label>
+        <Input type="text" name="name" @value={{@exhibitor.name}} />
+      </div>
+      <div class="field">
+        <label>{{t 'Contact Email'}}</label>
+        <Input type="text" name="contactEmail" @value={{@exhibitor.contactEmail}} />
+      </div>
+      <div class="field">
+        <label>{{t 'Contact URL'}}</label>
+        <Widgets::Forms::LinkField
+          name="contactLink"
+          @value={{@exhibitor.contactLink}}
+          @onChange={{action (mut @exhibitor.contactLink)}} />
+      </div>
+      <div class="field">
+        <label class="required">
+          {{t 'URL'}}
+        </label>
+        <Widgets::Forms::LinkField
+          name="url"
+          @value={{@exhibitor.url}}
+          @onChange={{action (mut @exhibitor.url)}} />
+      </div>
+      <div class="field">
+        <label>{{t 'Description'}}</label>
+        <Widgets::Forms::RichTextEditor
+          @value={{@exhibitor.description}}
+          @name="description" />
+      </div>
+      <div class="fields">
+        <div class="fifteen wide field">
+          <Widgets::Forms::ImageUpload
+            @label={{t "Banner"}}
+            @imageUrl={{@exhibitor.bannerUrl}}
+            @icon="camera"
+            @hint={{t "Select Banner"}}
+            @needsCropper={{true}}
+            @isHeaderImage={{true}}
+            @maxSizeInKb={{this.settings.imageSize}}
+            @aspectRatio={{array 2 1}}
+            @helpText={{t "We recommend using at least a 2160x1080px (2:1 ratio) image"}}
+            @requiresDivider={{true}} />
+        </div>
+        <div class="five wide field">
+          <Widgets::Forms::ImageUpload
+            @label={{t "Logo"}}
+            @imageUrl={{@exhibitor.logoUrl}}
+            @icon="image"
+            @name="logoUrl"
+            @hint={{t "Select Logo"}}
+            @maxSizeInKb={{this.settings.logoSize}} />
+        </div>
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Add a related exhibitor session'}}
+        </label>
+        <UiDropdown
+        @class="fluid multiple search selection"
+        @selected={{@sessionsDetails}}
+        @onChange={{action (mut @sessionsDetails)}} as |execute mapper|>
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          {{t 'Select Sessions'}}
+        </div>
+        <div class="menu">
+          {{#each @sessions as |session|}}
+            {{#if session.title}}
+              <div data-value="{{map-value mapper session}}" class="item">
+                {{session.title}}
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </UiDropdown>
+    </div>
+      <div class="field">
+        <label>
+          {{t 'Video URL'}}
+        </label>
+        <Widgets::Forms::LinkField
+          name="videoUrl"
+          @value={{@exhibitor.videoUrl}}
+          @onChange={{action (mut @exhibitor.videoUrl)}} />
+      </div>
+      <div class="field">
+        <label>
+          {{t 'Slides'}}
+        </label>
+        <Widgets::Forms::FileUpload
+          @fileUrl={{@exhibitor.slidesUrl}}
+          @label={{t "Slides"}}
+          @id="slidesUrl"
+          @icon="file"
+          @hint={{t "Select a file"}}
+          @maxSizeInKb={{this.settings.slideSize}} />
+      </div>
+        <UiCheckbox 
+          @class="toggle mt-2 mb-2 weight-600"
+          @label={{t "Enable Video Room"}}
+          @checked={{@exhibitor.enableVideoRoom}}
+          @onChange={{action (mut @exhibitor.enableVideoRoom)}} />
+      <h4>
+        {{t 'Social Media'}}
+        <UiPopup @content={{t "Add social link"}} @class="ui compact icon blue circular button ml-2" style="margin-left: 1rem !important;" @click={{action this.addSocialLink 'socialLink'}} @position="top center">
+          <i class="plus icon"></i>
+        </UiPopup>
+      </h4>
+      {{#each @exhibitor.socialLinks as |socialLink|}}
+        {{#if (not socialLink.is_custom)}}
+          <Widgets::Forms::SocialLinkField
+            @site={{socialLink.name}}
+            @onSiteChange={{action (mut socialLink.name)}}
+            @value={{socialLink.link}}
+            @onChange={{action (mut socialLink.link)}}>
+            <div class="ui icon buttons">
+              <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action this.removeSocialLink socialLink}} @position="top center">
+                <i class="minus icon"></i>
+              </UiPopup>
+            </div>
+          </Widgets::Forms::SocialLinkField>
+        {{/if}}
+      {{/each}}
+      <h4>
+        {{t 'Extra Links'}}
+        <UiPopup @content={{t "Add custom link"}} @class="ui compact icon blue circular button" style="margin-left: 1rem !important;" @click={{action this.addSocialLink 'customLink'}} @position="top center">
+          <i class="plus icon"></i>
+        </UiPopup>
+      </h4>
+      {{#each @exhibitor.socialLinks as |socialLink|}}
+        {{#if socialLink.is_custom}}
+          <Widgets::Forms::SocialLinkField
+            @custom={{true}}
+            @site={{socialLink.name}}
+            @onSiteChange={{action (mut socialLink.name)}}
+            @value={{socialLink.link}}
+            @onChange={{action (mut socialLink.link)}}>
+            <div class="ui icon buttons">
+              <UiPopup @content={{t "Remove"}} @class="ui icon red button" @click={{action this.removeSocialLink socialLink}} @position="top center">
+                <i class="minus icon"></i>
+              </UiPopup>
+            </div>
+          </Widgets::Forms::SocialLinkField>
+        {{/if}}
+      {{/each}}
+      <div class="ui hidden divider"></div>
+      <button type="submit" class="ui teal submit button" name="submit">{{t 'Save'}}</button>
+    </Forms::Form>
+  </div>
+</div>

@@ -1,0 +1,271 @@
+{{!-- <LeafletMap @lat={{this.latitude}} @lng={{this.longitude}} @zoom={{15}} as |layers|>
+  <layers.tile @url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" @attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" />
+  <layers.marker @location={{array this.latitude this.longitude}} @draggable={{true}} @onDragend={{action "updateLocation"}} as |marker|>
+    <marker.popup>
+      {{this.location}}
+    </marker.popup>
+  </layers.marker>
+</LeafletMap> --}}
+
+
+{{#if this.showFiltersOnMobile}}
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Setting' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Online"}}
+                @class="ui checkbox"
+                @checked={{if (or this.is_online (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
+                @onChange={{action "setSettingFilter" "is_online"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Location"}}
+                @class="ui checkbox"
+                @checked={{if (or this.is_location (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
+                @onChange={{action "setSettingFilter" "is_location"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Hybrid"}}
+                @class="ui checkbox"
+                @checked={{if (or this.is_mixed (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null))) "active"}}
+                @onChange={{action "setSettingFilter" "is_mixed"}} />
+            </div>
+            {{#if (or this.is_location this.is_mixed (and (eq this.is_online null) (eq this.is_location null) (eq this.is_mixed null)))}}
+                <div class="explore sub menu">
+                  <div class="ui input">
+                    <Input
+                      @name="location"
+                      @value={{this.location}}
+                      @type="text"
+                      @placeholder={{t "Enter Location"}} 
+                      oninput={{action 'suggestionsTrigger' this.location}}/>
+                  </div>
+                  <div class="menu">
+                    {{#each this.suggestions as |place|}}
+                      <div class="item"  role="button" {{action "setAutocomplete" place.display_name}}>
+                        <i class="map alternate marker icon"></i> {{place.display_name}}
+                      </div>
+                    {{/each}}
+                  </div>
+                </div>
+              {{/if}}
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Date'}}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            {{#each this.dateRanges as |dateRange|}}
+              <div class="field">
+                <UiCheckbox
+                  @label={{dateRange.name}}
+                  @class="ui checkbox"
+                  @checked={{if (eq this.dateType dateRange.key) "active"}}
+                  @onChange={{action "selectDateFilter" dateRange.key}} />
+              </div>
+              {{#if (and (eq dateRange.key 'custom_dates') (eq this.dateType 'custom_dates'))}}
+                <div class="explore sub menu">
+                  <div class="ui form">
+                    <div class="grouped fields">
+                      <div class="item field">
+                        <label class="required" for="start_date">{{t 'Starts'}}</label>
+                        <Widgets::Forms::DatePicker
+                          @type="text"
+                          @value={{this.customStartDate}}
+                          @rangePosition="start"
+                          @onChange={{action "dateValidate"}} />
+                      </div>
+                      <div class="item field">
+                        <label class="required" for="end_date">{{t 'Ends'}}</label>
+                        <Widgets::Forms::DatePicker
+                          @type="text"
+                          @value={{this.customEndDate}}
+                          @rangePosition="end"
+                          @onChange={{action "onDateChange"}} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/if}}
+            {{/each}}
+            <UiCheckbox
+              @label={{t "Past"}}
+              @class="ui checkbox"
+              @checked={{if (eq this.is_past "true") true}}
+              @onChange={{action "enablePastEvents" "true"}} />
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="right floated dropdown icon"></i>
+        {{t 'Categories'}}
+      </span>
+      <div class="content menu">
+        <a href="#" class="link item {{if this.showAllCategories 'active'}}" {{action 'clearFilterCategory'}}>
+          <i class="caret right icon"></i>
+          {{t 'All Categories'}}
+        </a>
+        {{#each this.model.eventTopics as |Category| }}
+          <a href="#"
+            class="link item {{if (eq this.category Category.name) 'active'}}"
+            {{action 'selectCategory' Category.name}}>
+            <i class="caret {{if (eq this.category Category.name) 'down' 'right'}} icon"></i>
+            {{Category.name}}
+          </a>
+          {{#if (eq this.category Category.name)}}
+            <div class="ui form">
+              <div class="grouped fields">
+                {{#each Category.subTopics as |subCategory|}}
+                  <div class="field inner item">
+                    <UiCheckbox
+                      @label={{subCategory.name}}
+                      @class="ui checkbox"
+                      @checked={{if (eq this.sub_category subCategory.slug) "active"}}
+                      @onChange={{action "selectCategory" Category.name subCategory.slug}} />
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Event Type' }}
+      </span>
+      <div class="content menu">
+        <UiCheckbox
+          @label={{t "All Types"}}
+          @class="ui checkbox"
+          @checked={{if this.showAllTypes "active"}}
+          @onChange={{action "clearFilterTypes"}} />
+        <div class="ui form">
+          <div class="grouped fields">
+            {{#each this.model.eventTypes as |eventType|}}
+              <div class="field">
+                <UiCheckbox
+                  @label={{eventType.name}}
+                  @class="ui checkbox"
+                  @checked={{if (eq this.event_type eventType.name) "active"}}
+                  @onChange={{action "selectEventType" eventType.name}} />
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Ticket Type' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Free"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.ticket_type "free") true}}
+                @onChange={{action "selectTicketType" "free"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Paid"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.ticket_type "paid") true}}
+                @onChange={{action "selectTicketType" "paid"}} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Call For Speakers' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Open"}}
+                @checked={{if (eq this.cfs "open") "active"}}
+                @onChange={{action "selectEventCfs" "open"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Closed"}}
+                @class="ui checkbox"
+                @checked={{if (eq this.cfs "closed") "active"}}
+                @onChange={{action "selectEventCfs" "closed"}} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+  <div class="item">
+    <UiAccordion>
+      <span class="title">
+        <i class="dropdown icon"></i>
+        {{t 'Images' }}
+      </span>
+      <div class="content menu">
+        <div class="ui form">
+          <div class="grouped fields">
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Image"}}
+                @checked={{if this.has_image "active"}}
+                @onChange={{action "selectImages" "true"}} />
+            </div>
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Logo"}}
+                @class="ui checkbox"
+                @checked={{if this.has_logo "active"}}
+                @onChange={{action "selectLogos" "true"}} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </UiAccordion>
+  </div>
+{{/if}}
+<div class="item">
+  <button class="ui red button {{if this.hideDefaultFilters 'disabled'}}" {{action 'clearFilters'}}>{{t 'Default Filters'}}</button>
+  {{#if this.device.isMobile}}
+    <button class="ui blue button" {{action 'toggleFilters'}}>{{if this.showFiltersOnMobile 'Hide Filters' 'Show Filters'}}</button>
+  {{/if}}
+</div>

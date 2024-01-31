@@ -1,0 +1,9 @@
+{{#if this.success}}
+  <div class="ui {{if this.isLoading 'loading'}} icon info message eight wide column center aligned">
+    <p>{{t 'Thank you, your email has been verified successfully! You now have full access to all features.'}} {{#if (not this.session.isAuthenticated)}} {{t 'Please login to continue.'}} {{/if}}</p>
+  </div>
+{{else}}
+  <div class="ui {{if this.isLoading 'loading'}} icon error message eight wide column center aligned">
+    <p>{{t 'Error'}}: {{this.error}}</p>
+  </div>
+{{/if}}

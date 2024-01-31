@@ -1,0 +1,21 @@
+<div class="ui container">
+  <div class="row">
+    <div class="sixteen wide column">
+      <TabbedNavigation>
+        <LinkTo @route="admin.users.view.events.list" @model="live" class="item">
+          {{t 'Live'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.events.list" @model="draft" class="item">
+          {{t 'Draft'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.events.list" @model="past" class="item">
+          {{t 'Past'}}
+        </LinkTo>
+        <LinkTo @route="admin.users.view.events.list" @model="deleted" class="item">
+          {{t 'Deleted'}}
+        </LinkTo>
+      </TabbedNavigation>
+    </div>
+  </div>
+  {{outlet}}
+</div>

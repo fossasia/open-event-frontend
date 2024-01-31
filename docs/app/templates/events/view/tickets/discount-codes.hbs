@@ -1,0 +1,36 @@
+{{#if (or (eq this.session.currentRouteName 'events.view.tickets.discount-codes.create') (eq this.session.currentRouteName 'events.view.tickets.discount-codes.edit'))}}
+  {{outlet}}
+{{else}}
+  <div class="ui grid stackable">
+    <div class="row">
+      <h2 class="ui header {{if this.device.isTablet 'nine' 'eleven'}} wide column left floated">{{t 'Discount Codes'}}</h2>
+      <div class="{{if this.device.isTablet 'seven' 'five'}} wide column right floated">
+        <LinkTo @route="events.view.tickets.discount-codes.create" @tagName="button" class="ui blue button fluid">
+          <i class="plus icon"></i>
+          {{t 'Create a discount'}}
+        </LinkTo>
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight wide column">
+        <TabbedNavigation @isNonPointing={{true}}>
+          <LinkTo @route="events.view.tickets.discount-codes.list" @model="all" class="item">
+            {{t 'All'}}
+          </LinkTo>
+          <LinkTo @route="events.view.tickets.discount-codes.list" @model="active" class="item">
+            {{t 'Active'}}
+          </LinkTo>
+          <LinkTo @route="events.view.tickets.discount-codes.list" @model="inactive" class="item">
+            {{t 'Inactive'}}
+          </LinkTo>
+          <LinkTo @route="events.view.tickets.discount-codes.list" @model="expired" class="item">
+            {{t 'Expired'}}
+          </LinkTo>
+        </TabbedNavigation>
+      </div>
+    </div>
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,10 @@
+<div class="ui segment">
+  <span class="text">
+    {{this.session.title}} |
+  </span>
+  {{#each this.session.speakers as |speaker|}}
+    <span class="text speaker">
+      {{speaker.name}}
+    </span>
+  {{/each}}
+</div>

@@ -1,0 +1,15 @@
+  <div class="sixteen wide column">
+    <div class="mb-4">
+      <h2 class="header">{{t 'Video Recordings'}}</h2>
+    </div>
+    <Tables::Default
+      @columns={{this.recordingColumns}}
+      @rows={{this.model.data}}
+      @currentPage={{this.page}}
+      @hideSearchBox={{true}}
+      @pageSize={{this.per_page}}
+      @metaData={{this.model.meta}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column" />
+  </div>

@@ -1,0 +1,27 @@
+<div class="ui container">
+  <Public::SessionItem
+    @session={{this.model}}
+    @timezone={{this.model.event.timezone}}
+    @expanded={{true}}
+    @hideSessionLink={{true}} />
+  <div class="ui divider"></div>
+  {{#if this.model.slides}}
+    <Public::SessionDocuments
+      @session={{this.model}} />
+  {{/if}}
+  {{#if this.model.favourites}}
+    <div class="ui divider"></div>
+    <div class="ui header">{{t 'Attendees'}} ({{this.model.favourites.length}})</div>
+    <div class="d-flex wrap">
+      {{#each this.model.favourites as |fav|}}
+        <a href={{if fav.user.isProfilePublic (href-to 'public.sessions.user.view' fav.user.id) '#'}}
+          class="pointer"
+          data-tooltip={{fav.user.resolvedName}}>
+          <img
+            class="ui tiny avatar image mr-2 mb-2"
+            src={{or fav.user.thumbnailImageUrl fav.user.avatarUrl '/images/placeholders/avatar.png'}} />
+        </a>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,10 @@
+<div class="ui stackable grid">
+  <div class="row">
+    <h2 class="ui header column">{{t 'Create a New Access code'}}</h2>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      <Forms::Events::View::CreateAccessCode @save="save" @data={{this.model.accessCode}} @tickets={{this.model.tickets}} />
+    </div>
+  </div>
+</div>

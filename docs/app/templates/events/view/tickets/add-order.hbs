@@ -1,0 +1,11 @@
+<h2 class="ui header">{{t 'Add Order'}}</h2>
+<Public::TicketList 
+    @eventCurrency={{this.model.store.paymentCurrency}}
+    @data={{this.model.tickets}}
+    @event={{this.model.order.event}}
+    @attendees={{this.model.attendees}}
+    @order={{this.model.order}}
+    @placeOrder={{action "placeOrder"}}
+    @save='save'
+    @amountEditable={{true}}
+/>

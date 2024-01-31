@@ -1,0 +1,223 @@
+<div class="ui stackable grid" {{did-insert this.setup}}>
+  <div class="row">
+    <div class="five wide column">
+      <div class="ui center aligned fluid segment">
+        <h3 class="ui left aligned header">
+          {{t 'Sessions'}}
+        </h3>
+        <div class="ui divider"></div>
+        <h3 class="ui header">
+          {{t 'Number of Sessions'}}
+        </h3>
+        <div class="ui small statistic">
+          <div class="label">
+            {{t 'Accepted'}}
+          </div>
+          <div class="value">
+            <div class="ui teal label">
+              {{this.model.sessions.accepted}}
+            </div>
+          </div>
+        </div>
+        <div class="ui small statistic">
+          <div class="label">
+            {{t 'Draft'}}
+          </div>
+          <div class="value">
+            <div class="ui yellow label">
+              {{this.model.sessions.pending}}
+            </div>
+          </div>
+        </div>
+        <div class="ui small statistic">
+          <div class="label">
+            {{t 'Rejected'}}
+          </div>
+          <div class="value">
+            <div class="ui red label">
+              {{this.model.sessions.rejected}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui center aligned fluid segment">
+        <h3 class="ui left aligned header">
+          {{t 'Groups'}}
+        </h3>
+        <div class="ui divider">
+        </div>
+        <table class="ui celled table">
+          <tbody>
+            <tr>
+              <td>{{t 'No. of Groups'}}</td>
+              <td class="right aligned">{{this.model.groups.groups}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Group Events'}}</td>
+              <td class="right aligned">{{this.model.groups.groupEvents}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of All Followers'}}</td>
+              <td class="right aligned">{{this.model.groups.followers}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="six wide column">
+      <div class="ui center aligned fluid segment">
+        <h3 class="ui left aligned header">
+          {{t 'Events'}}
+        </h3>
+        <div class="ui divider"></div>
+        <h3 class="ui header">
+          {{t 'Number of Events'}}
+        </h3>
+        <div class="ui small statistic">
+          <div class="label">
+            {{t 'Live'}}
+          </div>
+          <div class="value">
+            <div class="ui teal label">
+              {{this.model.events.published}}
+            </div>
+          </div>
+        </div>
+        <div class="ui small statistic">
+          <div class="label">
+            {{t 'Draft'}}
+          </div>
+          <div class="value">
+            <div class="ui yellow label">
+              {{this.model.events.draft}}
+            </div>
+          </div>
+        </div>
+        <div class="ui small statistic">
+          <div class="label">
+            {{t 'Past'}}
+          </div>
+          <div class="value">
+            <div class="ui red label">
+              {{this.model.events.past}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui fluid center aligned segment">
+        <h3 class="ui left aligned header">
+          {{t 'Messages'}}
+        </h3>
+        <div class="ui divider"></div>
+        <h3 class="ui header">
+          {{t 'No. of Sent Mails'}}
+        </h3>
+        <table class="ui celled table">
+          <tbody>
+            <tr>
+              <td>{{t 'In last 24 hours'}}</td>
+              <td class="right aligned">
+                {{this.model.mails.oneDay}}
+              </td>
+            </tr>
+            <tr>
+              <td>{{t 'In last 3 days'}}</td>
+              <td class="right aligned">
+                {{this.model.mails.threeDays}}
+              </td>
+            </tr>
+            <tr>
+              <td>{{t 'In last 7 days	'}}</td>
+              <td class="right aligned">
+                {{this.model.mails.sevenDays}}
+              </td>
+            </tr>
+            <tr>
+              <td>{{t 'In last 1 month	'}}</td>
+              <td class="right aligned">
+                {{this.model.mails.thirtyDays}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="five wide column">
+      <div class="ui center aligned fluid segment">
+        <h3 class="ui left aligned header">
+          {{t 'Users'}}
+        </h3>
+        <div class="ui divider">
+        </div>
+        <h3 class="ui header">
+          {{t 'System Roles'}}
+        </h3>
+        <table class="ui celled table">
+          <tbody>
+            <tr>
+              <td>{{t 'No. of Super Admins'}}</td>
+              <td class="right aligned">{{this.model.users.superAdmin}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Admins'}}</td>
+              <td class="right aligned">{{this.model.users.admin}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Registered Users'}}</td>
+              <td class="right aligned">{{this.model.users.verified}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Unverified Users'}}</td>
+              <td class="right aligned">{{this.model.users.unverified}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Total Users'}}</td>
+              <td class="right aligned">{{this.model.users.total}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 class="ui header">
+          {{t 'Event Roles'}}
+        </h3>
+        <table class="ui celled table">
+          <tbody>
+            <tr>
+              <td>{{t 'No. of Owners'}}</td>
+              <td class="right aligned">{{this.model.users.owner}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Organizers'}}</td>
+              <td class="right aligned">{{this.model.users.organizer}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Co-Organizers'}}</td>
+              <td class="right aligned">{{this.model.users.coorganizer}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Track Organizers'}}</td>
+              <td class="right aligned">{{this.model.users.trackOrganizer}}</td>
+            </tr>
+            <tr>
+              <td>{{t 'No. of Attendees'}}</td>
+              <td class="right aligned">{{this.model.users.attendee}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="center aligned column">
+      <h5 class="m-0 ui sub header">
+        {{t 'Frontend Production Version: '}}<a href="https://github.com/fossasia/open-event-frontend/tree/{{this.frontendProductionVersion}}" target="_blank" rel="noopener">{{this.frontendProductionVersion}}</a> <br>
+        {{t 'Server Production Version: '}}<a href="https://github.com/fossasia/open-event-server/tree/{{this.serverProductionVersion}}" target="_blank" rel="noopener">{{this.serverProductionVersion}}</a>
+      </h5>
+      <h5 class="m-0 ui sub header">
+        {{t 'Frontend Testing Version: '}}<a href="https://github.com/fossasia/open-event-frontend/tree/{{this.frontendTestingVersion}}" target="_blank" rel="noopener">{{this.frontendTestingVersion}}</a> <br>
+        {{t 'Server Testing Version: '}}<a href="https://github.com/fossasia/open-event-server/tree/{{this.serverTestingVersion}}" target="_blank" rel="noopener">{{this.serverTestingVersion}}</a>
+      </h5>
+    </div>
+  </div>
+  
+</div>

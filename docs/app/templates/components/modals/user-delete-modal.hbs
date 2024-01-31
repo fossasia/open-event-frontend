@@ -1,0 +1,24 @@
+<div class="header">
+  {{t 'Are you sure you would like to delete your account?'}}
+  <div class="muted small text">
+    {{t 'Deleting the account will delete all the data associated with it.'}}
+  </div>
+</div>
+<div class="content">
+  <div class="ui {{if this.isLoading 'loading'}} form" autocomplete="off">
+    <div class="field">
+      <div class="label">
+        {{t 'Please enter your Email ID to confirm that you want to delete the account.'}}
+      </div>
+      <Input @type="text" @name="confirm_email" @value={{this.confirmEmail}} required={{true}} />
+    </div>
+  </div>
+</div>
+<div class="actions">
+  <button type="button" class="ui black button" {{action 'close'}}>
+    {{t 'Cancel'}}
+  </button>
+  <button {{action this.openConfirmDeleteUserModal}} class="ui red button {{if this.isEmailDifferent 'disabled'}}">
+    {{t 'Proceed'}}
+  </button>
+</div>

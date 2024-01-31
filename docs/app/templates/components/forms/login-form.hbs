@@ -1,0 +1,84 @@
+<div class="ui stackable {{unless this.noSocial 'three' 'one'}} column doubling centered grid mt-4">
+  <div class="flash-messages ui container">
+    {{#each flashMessages.queue as |flash|}}
+        <div class="ui {{flash.type}} message">
+         <div>
+           <FlashMessage @flash = {{flash}}/>
+          </div>
+        </div>
+    {{/each}}
+  </div>
+  <div class="column">
+    <form class="ui large form" autocomplete="off">
+      <div class="ui aligned segment basic no margin no padding">
+        <h3 class="weight-400">{{t 'Login'}}</h3>
+      </div>
+      <div class="ui segments">
+        <div class="ui segment {{if this.isLoading 'loading' ''}}">
+          {{#if this.errorMessage}}
+            <div class="ui negative message">
+              <p>{{this.errorMessage}}</p>
+            </div>
+          {{/if}}
+          {{#if this.newUser}}
+            <div class="ui info message">
+              <p>{{t 'You have been registered successfully. Please login to continue.'}}</p>
+            </div>
+          {{/if}}
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="mail icon"></i>
+              <Input @name="email" placeholder={{t "Email ID"}} @value={{this.identification}} />
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <Input class="rounded-r-none w-30" @type="{{if this.showPass 'text' 'password'}}" @name="password" placeholder={{t "Password"}} @value={{this.password}} />
+              <div class="ui small basic icon buttons rounded-l-none">
+                <button type="button" class="ui button" {{action 'showPassword'}}>
+                  <i class="{{if this.showPass 'hide' 'unhide'}} basic icon"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="ui center aligned segment basic">
+            {{#if (and (gt this.counter 1) this.showHcaptcha)}}
+              <HCaptcha @onSuccess={{action (mut this.captchaValidated)}} @onExpired={{action (mut this.captchaValidated)}}/>
+            {{/if}}
+            <div class="field">
+              <UiCheckbox
+                @label={{t "Remember me"}}
+                @class="ui checkbox"
+                @checked={{if this.rememberMe "active"}}
+                @onChange={{action "toggleRememberMe"}}
+                />
+            </div>
+            <div class="ui vertical buttons">
+              <button type="submit" class="ui fluid teal submit button register {{if (and (and (gt this.counter 1) (not this.captchaValidated)) this.showHcaptcha) 'disabled'}}">
+                {{t 'Login'}}
+              </button>
+              <div class="ui center aligned segment basic">
+                <a href="{{href-to 'reset-password'}}" class="text muted"> {{t 'Forgot your password ?'}}</a>
+              </div>
+              {{!--
+              {{#unless noSocial}}
+                <div class="ui horizontal divider">
+                  Or
+                </div>
+                <button type="button" class="ui facebook button" {{action 'auth' 'facebook'}}>
+                  <i class="facebook icon"></i>
+                  {{t 'Login with Facebook'}}
+                </button>
+              {{/unless}}
+              --}}
+            </div>
+          </div>
+        </div>
+        <a href="{{href-to 'register'}}" class="ui secondary segment center aligned text muted weight-800">
+          {{t 'New to site? Create Account'}}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

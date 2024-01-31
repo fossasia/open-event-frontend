@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="sixteen wide column">
+    {{#each this.model.orders as |order|}}
+      <OrderCard @order={{order}}>
+      </OrderCard>
+      <div class="ui hidden divider"></div>
+    {{else}}
+      <div class="ui disabled header">{{t 'No tickets found for this user'}}</div>
+    {{/each}}
+  </div>
+</div>

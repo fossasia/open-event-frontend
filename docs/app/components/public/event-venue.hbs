@@ -1,0 +1,14 @@
+{{#if @event.online}}
+  <div style="color: #000000AD">
+    <i class="wifi icon"></i>
+    {{t 'Online Event'}}
+  </div>
+{{/if}}
+{{#if @event.shortLocationName}}
+    <span style="color: #000000AD">
+      <i class="map marker alternate icon"></i>
+    </span>
+    <SmartOverflow @class="d-inline description">
+      {{@event.shortLocationName}}
+    </SmartOverflow>
+{{/if}}

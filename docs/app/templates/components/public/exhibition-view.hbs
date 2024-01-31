@@ -1,0 +1,121 @@
+<div {{did-insert this.initialise}}>
+    {{#if this.exhibitorsLoaded}}
+        <div class="d-flex space-between wrap {{if this.device.isMobile 'mb-4 mt--8' 'mb-8'}}">
+            <button class="ui primary basic button mr-2" {{action "changeExhibitor" -1}}>
+                <i class="left chevron icon"></i>
+                {{t 'Previous'}}
+            </button>
+            <button class="ui primary basic button ml-2" {{action "changeExhibitor" 1}}>
+                {{t 'Next'}}
+                <i class="right chevron icon"></i>
+            </button>
+        </div>
+    {{/if}}
+    <div class="ui">
+        <div class="featured-speaker">
+            <img alt="exhibitor" class="ui rounded image" src="{{if this.data.exhibitor.bannerUrl this.data.exhibitor.bannerUrl '/images/placeholders/Other.jpg'}}">
+        </div>
+        {{#if this.data.exhibitor.enableVideoRoom}}
+            <div class="content d-flex p-2" style="align-items: center;background-color: #555; color:white;margin-top:-10px">
+            <div class="header"> {{t 'Meet us in our exhibitor video room!'}}</div>
+                <button {{action this.openVideo}} class="ui blue button ml-auto">
+                {{t 'Join Exhibitor Video Room'}}
+                </button>
+            </div>
+        {{/if}}
+        <br/><br/>
+        <div class="d-flex" style="justify-content: center; max-height: 150px;">
+            <img class="ui rounded medium image m-0 mb-1" style="object-fit: scale-down;" src="{{or this.data.exhibitor.logoUrl '/images/placeholders/Other.jpg'}}" alt="Logo">
+        </div>
+        <br/>
+        <h1 class="ui centered header no margin">
+            {{this.data.exhibitor.name}}
+        </h1>
+        <br/>
+        {{#if this.data.exhibitor.description}}
+            <p>
+                {{sanitize this.data.exhibitor.description}}
+            </p>
+            <br/><br/>
+        {{/if}}
+        <div class="social-icons d-flex wrap" style="justify-content: center;">
+            {{#each this.links as |socialLink|}}
+                {{#if (eq socialLink.name 'website')}}
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="globe big icon"></i></a>
+                {{else if (eq socialLink.name 'groups.google')}}
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="google big icon"></i></a>
+                {{else if (eq socialLink.name 'mastodon')}}
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><Icons::Mastodon /></a>
+                {{else if socialLink.is_custom}}
+                    <UiPopup @content={{t-var socialLink.name}}>
+                        <a class="m-1 ml-0" href="{{socialLink.link}}" target="_blank" rel="noopener nofollow"><i style="font-size: 1.5rem;" class="external alternate icon"></i></a>
+                    </UiPopup>
+                {{else}}
+                    <a class="m-1 ml-0" href={{socialLink.link}} target="_blank" rel="noopener noreferrer"><i class="{{socialLink.name}} {{socialLink.color}} big icon"></i></a>
+                {{/if}}
+            {{/each}}
+        </div>
+
+        {{#if this.contactExhibitor}}
+        <br/><br/>
+        <div class="d-flex content-center mt-8 flex-column items-center">
+            <h2>{{t 'Get in touch'}}</h2>
+            <div>
+                {{#if (and this.data.exhibitor.contactEmail this.data.exhibitor.contactLink)}}
+                    <a target="_blank" href="mailto:{{this.data.exhibitor.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+                    <a target="_blank" href="{{this.data.exhibitor.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+                {{else if this.data.exhibitor.contactEmail}}
+                        <a target="_blank" href="mailto:{{this.data.exhibitor.contactEmail}}" class="ui red button mr-2" rel="noopener">{{t 'Email'}}</a>
+                {{else if this.data.exhibitor.contactLink}}
+                        <a target="_blank" href="{{this.data.exhibitor.contactLink}}" class="ui red button ml-2" rel="noopener">{{t 'Contact'}}</a>
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+        {{#if this.data.exhibitor.sessions}}
+            <br/><br/>
+            <div class="d-flex mt-8 flex-column items-center content-center"><h2>{{t 'Related Sessions'}}</h2></div>
+            {{#each this.exhibitorSessions as |session|}}
+                <Public::SessionItem @session={{session}} @event={{this.data.event}} @timezone={{this.data.event.timezone}} />
+            {{/each}}
+        {{/if}}
+        <br/><br/>
+        {{#each this.links as |socialLink|}}
+            {{#if (eq socialLink.name 'twitter')}}
+                <div class="p-4 twitter content">
+                    <Widgets::TwitterTimeline @handleOrProfile={{socialLink.link}} />
+                </div>
+            {{/if}}
+        {{/each}}
+        {{#if (or this.data.exhibitor.slidesUrl this.data.exhibitor.videoUrl)}}
+            <div class="p-4">
+                <div style={{css display='flex' align-items='center' flex-direction='column'}}>
+                    {{#if this.youtubeLink}}
+                        <h2 class="ui centered header no margin">{{t 'Exhibitor Video'}}</h2><br/>
+                        <iframe title="youtube-session-video" class="video-iframe" width="100%" style="max-width: 1200px; height: 610px;" src="https://www.youtube.com/embed/{{ this.youtubeLink }}?enablejsapi=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                    {{else if this.data.exhibitor.videoUrl}}
+                        <a class="mb-2" href={{ this.data.exhibitor.videoUrl }} target="_blank" rel="noopener noreferrer">
+                            <div class="ui labeled icon button">
+                                <i class="video icon"></i>
+                                {{t 'Video'}}
+                            </div>
+                        </a>
+                    {{/if}}
+                    <br/><br/>
+                    {{#if (or this.pdfLink this.pptLink)}}
+                        <br/>
+                        <h2 class="ui centered header no margin">{{t 'Exhibitor Slides'}} <span><i class="sync small icon ml-2" role="button" {{action this.refreshSlide}}></i></span></h2><br/>
+                        <iframe title="session-slides" id="googleFrame" class="slide-iframe mb-2" width="100%" style="max-width: 1200px; height: 600px;" frameborder="0" src="https://docs.google.com/gview?url={{ this.data.exhibitor.slidesUrl }}&embedded=true"></iframe>
+                    {{else if this.data.exhibitor.slidesUrl}}
+                        <a class="mb-2" href={{ this.data.exhibitor.slidesUrl }} target="_blank" rel="noopener noreferrer">
+                            <div class="ui labeled icon button">
+                                <i class="file powerpoint icon"></i>
+                                {{t 'Slides'}}
+                            </div>
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>

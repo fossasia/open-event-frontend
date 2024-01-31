@@ -1,0 +1,96 @@
+<form class="ui form {{if this.isLoading 'loading'}}" autocomplete="off" {{action 'move' 'forwards' on='submit' preventDefault=true}}>
+
+  <div class="ui centered grid">
+    <div class="column">
+      <div class="ui {{if this.data.event.isTicketFormEnabled 'basic'}} segment">
+        <div class="center aligned text">
+          <div class=" field">
+            <div class="ui slider checkbox">
+              <Input
+                @type="checkbox"
+                @checked={{this.data.event.isTicketFormEnabled}} />
+              <label class="weight-300" style="font-size: large">
+                {{if this.data.event.isTicketFormEnabled (t 'Turn off') (t 'Turn on')}}
+                {{t 'Attendee Form'}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui center aligned header">
+        {{t 'Information About Attendee Form'}}
+      </div>
+      <div class="ui muted text">
+        {{t 'The attendee form by default collects the name and email of an attendee. You also have the option to collect additional information such as contact data, position, organization and more. This information will be available together with the ticket information in a CSV file in the ticket section of your event.'}}
+      </div>
+    </div>
+  </div>
+  <div class="ui hidden divider"></div>
+  <h3 class="ui dividing header">
+    <i class="checkmark box icon"></i>
+    <div class="content">
+      {{t 'Required Form Fields'}}
+    </div>
+  </h3>
+  <div class="ui two column stackable grid">
+    <div class="w-full column">
+      <Forms::Wizard::CustomForms::Table
+        @fields={{this.fixedFields}} />
+    </div>
+  </div>
+  {{#if this.data.event.isTicketFormEnabled}}
+    {{#if this.isOldFormMode}}
+      <h3 class="ui dividing header">
+      <i class="checkmark box icon"></i>
+      <div class="content">
+        {{t 'Information to Collect'}}
+      </div>
+    </h3>
+    <div class="ui two column stackable grid">
+      <div class="w-full column">
+        <Forms::Wizard::CustomForms::Table
+          @fields={{this.editableFields}}
+          @form={{"attendee"}}
+          @removeField={{action "removeField"}}
+          @updateField={{action (mut this.field)}} 
+        />
+      </div>
+    </div>
+    <Forms::Wizard::CustomFormInput
+      @customForms={{this.data.customForms}}
+      @event={{this.data.event}}
+      @form="attendee"
+      @field={{this.field}}
+      @setEditingField={{action (mut this.field) null}}
+      @onSave={{action (mut this.field) null}} />
+    {{else}}
+      <div class="ui hidden divider"></div>
+      {{#each this.data.forms as |_form|}}
+        <Forms::Wizard::CustomFormTicket 
+          @data={{_form}} 
+          @event={{this.data.event}}
+          @move="move" 
+          @save="save" 
+          @tickets={{this.selectableTickets}}    
+          @onFormUpdateTicket={{action 'onFormUpdateTicket'}}
+          @id={{_form.formID}}
+          @onRemoveForm={{action 'onRemoveForm'}}
+          @isLoading={{this.isLoading}} ></Forms::Wizard::CustomFormTicket>
+      
+      {{/each}}
+      {{#if this.selectableTickets.length}}
+        <button class="ui blue button icon small right aligned" type="button" {{action 'addMoreForm'}} >
+            {{t 'Add Attendee Form'}}
+        </button>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+  <div class="spacer-50"></div>
+</form>
+<Forms::Wizard::WizardFooter
+    @event={{this.data.event}}
+    @loading={{this.loading}}
+    @device={{this.device}}
+    @onSaved={{action 'saveForm'}}
+    @onSaveDraft={{action 'saveDraft'}}
+    @move={{action 'move'}} />

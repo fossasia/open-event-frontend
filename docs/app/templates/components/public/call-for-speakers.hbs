@@ -1,0 +1,106 @@
+<CreateSessionMessage @isNewSpeaker={{this.isNewSpeaker}} @isNewSession={{this.isNewSession}} @data={{this.data}} />
+<h1 class="ui header">
+  {{t 'Call for Speakers'}}
+  {{#if this.data.speakersCall.isOpen}}
+    <a href="#" class="ui basic green label">{{t 'Open'}}</a>
+    <div class="sub header">
+      {{#if this.data.speakersCall.softEndsAt}}
+        {{t 'Call for Speakers will softly close on {{softCloseDate}} and will be finally closed on {{closeDate}}.'
+          softCloseDate=(general-date this.data.speakersCall.softEndsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+          closeDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
+      {{else}}
+        {{t 'Call for Speakers will close on {{closeDate}}.'
+          closeDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
+      {{/if}}
+    </div>
+  {{else}}
+    <a href="#" class="ui basic red label">{{t 'Closed'}}</a>
+    <div class="sub header">
+      {{#if this.data.speakersCall.isInFuture}}
+        {{t 'Call for Speakers will open at {{openDate}}.'
+          openDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
+      {{else}}
+        {{t 'Call for Speakers was closed at {{closeDate}}.'
+          closeDate=(general-date this.data.speakersCall.endsAt 'date-time-tz-long' tz=this.data.speakersCall.event.timezone)
+        }}
+      {{/if}}
+    </div>
+  {{/if}}
+</h1>
+<div class="ui divider"></div>
+{{sanitize this.data.speakersCall.announcement}}
+<div class="ui hidden divider"></div>
+<h3 class="ui header">{{t 'Submitted Sessions'}}</h3>
+  {{#if this.isNewSession}}
+    {{#if this.authManager.currentUser}}
+      <p>{{t 'You have not submitted any session.'}}</p>
+    {{else}}
+      <p>{{t 'You need to login to view and submit session(s).'}}</p>
+    {{/if}}
+  {{else}}
+    <p>{{t 'You have submitted the following session(s).'}}</p>
+  {{/if}}
+  {{#unless this.isNewSpeaker}}
+    {{#unless this.isNewSession}}
+      <div class="ui very relaxed horizontal divided list">
+        {{#each this.data.userSession as |session|}}
+          {{#if session.id}}
+            <div class="item">
+              <LinkTo @route="public.cfs.view-session" @model={{session.id}}>
+                <a href="#" class="ui very tiny basic blue button">{{session.title}}</a>
+              </LinkTo>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    {{/unless}}
+  {{/unless}}
+
+<h3 class="ui header">{{t 'Invitation for Sessions'}}</h3>
+  {{#if this.haveNoSpeakerInvite}}
+    {{#if this.authManager.currentUser}}
+      <p>{{t 'You have not been invited for any session.'}}</p>
+    {{else}}
+      <p>{{t 'You need to login to view and accept invite(s).'}}</p>
+    {{/if}}
+  {{else}}
+    <p>{{t 'You have been invited for the following session(s).'}}</p>
+  {{/if}}
+  {{#unless this.haveNoSpeakerInvite}}
+    <div class="ui very relaxed horizontal divided list">
+      {{#each this.userSpeakerInvite as |speakerInvite|}}
+        {{#if speakerInvite.session.id }}
+          <div class="item">
+              <button class="ui very tiny basic blue button" {{action 'viewInvitedSession' speakerInvite.id}}>
+                {{speakerInvite.session.title}}
+              </button>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/unless}}
+
+<div class="ui hidden divider"></div>
+
+{{#if (and this.data.speakersCall.isOpen this.isNewSpeaker)}}
+  <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSpeaker'}}>
+    {{t 'Add Speaker Details'}}
+  </button>
+{{else}}
+  {{#each this.data.userSpeaker as |speaker|}}
+    {{#if speaker.id}}
+      <LinkTo @route="public.cfs.edit-speaker" @model={{speaker.id}}>
+        <button class="ui teal {{if this.device.isMobile 'tiny'}} button">{{t 'Edit Speaker Details'}}</button>
+      </LinkTo>
+    {{/if}}
+  {{/each}}
+{{/if}}
+{{#if this.data.speakersCall.isOpen}}
+  <button class="ui teal {{if this.device.isMobile 'tiny'}} button" {{action 'addSession'}}>
+    {{t 'Add New Session'}}
+  </button>
+{{/if}}
+<Modals::LoginSignupModal @isOpen={{this.isLoginModalOpen}} />

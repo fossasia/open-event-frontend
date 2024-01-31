@@ -1,0 +1,27 @@
+{{#unless this.isEventUnsaved}}
+  <a
+    href="{{@event.url}}"
+    target="_blank" rel="noopener"
+    class="ui button labeled icon small {{if (eq @event.state 'published') 'green'}}" >
+    <i class="unhide icon"></i>
+    {{#if (eq @event.state 'published')}}
+      {{t 'View'}}
+    {{else}}
+      {{t 'Preview'}}
+    {{/if}}
+  </a>
+{{/unless}}
+
+{{#if (or this.isEventPublishable @showOnInvalid)}}
+  <button class="ui button labeled icon small {{if (eq @event.state 'published') 'orange' 'green'}}" {{action 'openModal'}}>
+    {{#if (eq @event.state 'published')}}
+      <i class="ban icon"></i>
+      {{t 'Unpublish'}}
+    {{else}}
+      <i class="check icon"></i>
+      {{t 'Publish'}}
+    {{/if}}
+  </button>
+{{/if}}
+
+<Modals::PublishUnpublishModal @isOpen={{this.isModalOpen}} @state={{@event.state}} @isEventPublishable={{this.isEventPublishable}} @togglePublishState={{action 'togglePublishState'}} />

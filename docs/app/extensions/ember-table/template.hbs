@@ -1,0 +1,9 @@
+
+<table class="ui unstackable table {{@tableColor}}">
+  {{yield (hash
+           api=this.api
+           head=(component "ember-thead" api=this.api)
+           body=(component "ember-tbody" api=this.api)
+           foot=(component "ember-tfoot" api=this.api)
+         )}}
+</table>

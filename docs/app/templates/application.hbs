@@ -1,0 +1,27 @@
+<HeadLayout />
+<div id='device-type-identifier' {{did-insert this.setup}}></div>
+{{#if this.showCookie}}
+  <div class="ui inline warning large message">
+    <i class="close icon" onclick={{action 'hideCookieMessage'}} role="button"></i>
+    {{t 'This website, and certain approved third parties, use functional and analytical cookies (or similar technologies) to provide account functionalities and provide you with a customized experience. By closing this banner or by continuing to use the site, you agree with the usage. For more information please review our privacy policy and terms and conditions.'}}
+    {{#if this.model.cookiePolicyLink}}
+      <p><a href="{{this.model.cookiePolicyLink}}">{{t "Click here for more information."}}</a></p>
+    {{/if}}
+  </div>
+{{/if}}
+<SideBar @search={{action 'search'}} @event_name={{this.event_name}} @needShowEventMenu={{this.needShowEventMenu}}>
+  <div class="footer-pusher">
+    <NavBar @search={{action 'search'}} @event_name={{this.event_name}} @needShowEventMenu={{this.needShowEventMenu}}/>
+
+    {{#if (eq this.routing.currentRouteName 'index')}}
+      <WelcomeHeader @class={{'mb-4'}}/>
+    {{/if}}
+    <div id="main-container"
+      class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
+      {{outlet}}
+    </div>
+    <FooterMain @socialLinks={{this.model.socialLinks}} />
+  </div>
+</SideBar>
+<Modals::ConfirmModal @isOpen={{this.confirm.isOpen}} />
+<EmberNotify @messageStyle="semantic-ui" @defaultClass="notification-container" />

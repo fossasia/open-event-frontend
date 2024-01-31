@@ -1,0 +1,161 @@
+<SortableObjects
+  @sortableObjectList={{@fields}}
+  @sortEndAction={{action this.sortEndAction @fields}}
+  @enableSort={{true}}
+>
+<table class="ui selectable celled table">
+  <thead>
+    {{#if @headerText}}
+      <tr>
+        <th colspan="{{if this.editColumn (if this.complexColumn '6' '5') '4'}}" class="text center aligned">
+          {{@headerText}}
+        </th>
+      </tr>
+    {{/if}}
+    <tr>
+      {{#if this.device.isMobile}}
+        <th class="center aligned">
+          {{t 'Options'}}
+        </th>
+      {{else}}
+        <th class="right aligned">
+          {{t 'Option'}}
+        </th>
+        <th class="center aligned">
+          {{t 'Type'}}
+        </th>
+        {{#if (and this.complexColumn (eq @form 'attendee'))}}
+          <th class="center aligned">
+            {{t 'Range'}}
+          </th>
+        {{/if}}
+        <th class="center aligned">
+          {{t 'Include'}}
+        </th>
+        {{#if (eq @form 'attendee')}}
+          <th class="center aligned">
+            {{t 'Allow Editing'}}
+          </th>
+        {{/if}}
+        <th class="center aligned">
+          {{t 'Require'}}
+        </th>
+        <th class="center aligned">
+          {{t 'Show Public'}}
+        </th>
+        {{#if this.complexColumn}}
+          <th class="center aligned">
+            {{t 'Actions'}}
+          </th>
+        {{/if}}
+      {{/if}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @fields as |field|}}
+      {{#unless field.isDeleted}}
+      <DraggableObject @overrideClass="{{if field.isIncluded 'positive'}} table-row" @content={{field}} @isSortable={{true}}>
+          <td class="{{if this.device.isMobile 'center' 'right'}} border right aligned">
+            <label class="{{if field.isFixed 'required'}}">
+              {{#if field.isComplex}}
+                <div>
+                  {{rich-text-link field.name field.mainLanguage true}}
+                </div>
+                {{#if field.translations}}
+                  {{#each field.translations as |translation|}}
+                    {{#unless translation.isDeleted}}
+                      {{#if (and translation.name translation.language_code)}}
+                        <div>
+                          {{rich-text-link translation.name translation.language_code true}}
+                        </div>
+                      {{/if}}
+                    {{/unless}}
+                  {{/each}}
+                {{/if}}
+              {{else}}
+                {{#if (eq field.fieldIdentifier 'is_consent_form_field')}}
+                  <span>{{ t 'I agree to the terms of the'}} </span>
+                  <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of Conduct'}} </a>
+                  <span> {{t 'and the'}} </span>
+                  <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
+                  <span>.</span>
+                {{else}}
+                  {{t-var field.name}}
+                {{/if}}
+                {{#if field.isComplex}}
+                  <div class="ui icon d-inline" data-tooltip="Custom Field">
+                    <i class="info icon"></i>
+                  </div>
+                {{/if}}
+              {{/if}}
+            </label>
+          </td>
+          <td class="border center aligned">
+            {{t-var field.type}}
+          </td>
+          {{#if (and this.complexColumn (eq @form 'attendee'))}}
+            <td class="border center aligned">
+              {{if (or (eq field.type "number") (eq field.type "year")) (concat field.min " - " field.max) "-"}}
+            </td>
+          {{/if}}
+          <td class="border center aligned">
+            <UiCheckbox
+              @class="slider"
+              @checked={{field.isIncluded}}
+              @disabled={{field.isFixed}}
+              @onChange={{action (mut field.isIncluded)}}
+              @label={{if this.device.isMobile (t "Include")}} />
+          </td>
+          {{#if (eq @form 'attendee')}}
+            <td class="border center aligned">
+              <UiCheckbox
+                @class="slider"
+                @checked={{field.isAllowEdit}}
+                @disabled={{field.isFixed}}
+                @onChange={{action (mut field.isAllowEdit)}}
+                @label={{if this.device.isMobile (t "Allow Editing")}} />
+            </td>
+          {{/if}}
+          <td class="border center aligned">
+            <UiCheckbox
+              @class="slider"
+              @checked={{field.isRequired}}
+              @disabled={{field.isFixed}}
+              @onChange={{action (mut field.isRequired)}}
+              @label={{if this.device.isMobile (t "Require")}} />
+          </td>
+          <td class="border center aligned">
+            <UiCheckbox
+              @class="slider"
+              @checked={{field.isPublic}}
+              @onChange={{action (mut field.isPublic)}}
+              @label={{if this.device.isMobile (t "Public")}} />
+          </td>
+          {{#if this.complexColumn}}
+            <td class="border center aligned">
+              {{#if field.isComplex}}
+              {{#if (eq @form 'attendee')}}
+                <button class="ui compact icon positive circular button" data-tooltip="{{t 'Edit'}}" {{action  @updateField field}} {{action @setEditingField field.name}}>
+                  <i class="pencil icon"></i>
+                </button>
+                <button class="ui compact icon negative circular button" disabled={{if  (eq @getEditingField field.name) true false}} data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action @removeField field))}}>
+                  <i class="trash icon"></i>
+                </button>
+              {{else}}
+                <button class="ui compact icon positive circular button" data-tooltip="{{t 'Edit'}}" {{action  @updateField field}}>
+                  <i class="pencil icon"></i>
+                </button>
+                <button class="ui compact icon negative circular button" data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action @removeField field))}}>
+                  <i class="trash icon"></i>
+                </button>
+              {{/if}}
+                
+              {{/if}}
+            </td>
+          {{/if}}
+      </DraggableObject>
+      {{/unless}}
+    {{/each}}
+  </tbody>
+</table>
+</SortableObjects>

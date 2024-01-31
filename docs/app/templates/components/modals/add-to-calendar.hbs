@@ -1,0 +1,20 @@
+<i class="black close icon"></i>
+<div class="header">
+    {{t 'Please choose a calendar'}}
+</div>
+<div class="ui content">
+    {{#each this.calendars as |calendar|}}
+        <div class="ui link list">
+            <div class="item">
+                <i class="ui {{calendar.icon}} {{calendar.color}} icon"></i>
+                <div class="content">
+                    <div class="header">
+                        <a href={{calendar.url}} class="item active" target="_blank" rel="noreferrer nofollow">
+                            {{calendar.name}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

@@ -1,0 +1,5 @@
+
+{{#if this.icon}}
+  <i class="calendar icon"></i>
+{{/if}}
+<Input @type="text" @value={{value}} autocomplete="off" placeholder={{this.placeholder}} @name={{name}} @focus-out={{action "onChange"}} />

@@ -1,0 +1,24 @@
+<div class="ui container">
+  <div class="column sixteen wide">
+    <h2 class="ui header center aligned">
+      {{t 'Edit Session'}}
+    </h2>
+    <div class="ui divider"></div>
+    <div class="ui container">
+      <Forms::SessionSpeakerForm
+        @addNewSpeaker={{this.addNewSpeaker}}
+        @speakers={{this.model.speakers}}
+        @fields={{this.model.form}}
+        @data={{this.model}}
+        @event={{this.model.event}}
+        @save={{action "save"}}
+        @isSession={{true}}
+        @speakersDetails={{this.model.session.speakers}}
+        @viewSpeakerOrder={{sort-by 'position' this.model.session.speakers}}
+        @includeSession={{true}}
+        @isSessionSpeaker={{true}}
+        @isLoading={{this.isLoading}}
+        @isEditForm={{true}} />
+    </div>
+  </div>
+</div>

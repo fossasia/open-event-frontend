@@ -1,0 +1,50 @@
+language: node_js
+
+node_js:
+  - "14"
+
+env:
+  - CXX=g++-4.8 JOBS=1 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+cache:
+  yarn: true
+
+addons:
+  chrome: stable
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+before_install:
+  - export PATH="$(yarn global bin):$PATH"
+
+install: yarn
+
+script:
+  - touch .env
+  - yarn l10n:generate
+  - yarn lint
+  - COVERAGE=true yarn test
+  - ROOT_URL=open-event-frontend ember build -prod
+  # - bash scripts/test_fastboot.sh # FastBoot is disabled for now
+
+after_success:
+  - 'bash <(curl -s https://codecov.io/bash)'
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: false
+  local-dir: dist/
+  on:
+    branch: development
+
+branches:
+  only:
+    - master
+    - development
+    - testing
+    

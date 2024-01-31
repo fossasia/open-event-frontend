@@ -1,0 +1,219 @@
+<div class="ui segments">
+  {{#if (and (eq this.session.currentRouteName 'orders.view') (not-eq this.data.status 'cancelled'))}}
+    <div class="ui {{order-color this.data.status}} inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          {{#if (eq this.data.status 'completed')}}
+            {{t 'Success'}}
+          {{else}}
+            {{t 'Placed'}}
+          {{/if}}
+        </div>
+        <div class="label">
+          {{#if (eq this.data.status 'completed')}}
+            {{t 'Your order completed successfully.'}}
+          {{else}}
+            {{t 'Your order placed successfully.'}}
+          {{/if}}
+          <br>
+          {{t 'Find all the details related to your order below.'}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  {{#if (eq this.session.currentRouteName 'orders.pending')}}
+    <div class="ui orange inverted segment center aligned">
+      <div class="ui inverted mini statistic horizontal">
+        <div class="value">
+          {{t 'Pending'}}
+        </div>
+        <div class="label">
+          {{t 'Your order has been placed.'}}
+          <br>
+          {{t 'Please pay for your tickets to complete the order now.'}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="ui secondary segment">
+    <h3 class="weight-400">{{t 'Order Summary'}}</h3>
+  </div>
+  {{#if (and (or (eq this.session.currentRouteName 'orders.new') (eq this.session.currentRouteName 'orders.view') (eq this.session.currentRouteName 'orders.pending')) (not-eq this.data.status 'cancelled'))}}
+    <table class="ui very basic unstackable table order-summary center aligned">
+      <thead>
+        <tr>
+          {{#if (eq this.data.amount 0)}}
+            <th class="ui aligned two wide">
+              {{#if this.event.isOneclickSignupEnabled}}
+                {{t 'Registration Type'}}
+              {{else}} 
+                {{t 'Ticket Type'}}
+              {{/if}} 
+            </th>
+            {{#if this.data.discountCode}}
+              <th class="two wide">{{t 'Price'}}</th>
+              <th class=" two wide">{{t 'Discount'}}</th>
+              <th class="ui aligned two wide">{{t 'Subtotal'}}</th>
+            {{/if}}
+            <th class="two wide">{{t 'Quantity'}}</th>
+          {{else}}
+            <th class="four wide">
+              {{#if this.event.isOneclickSignupEnabled}}
+                {{t 'Registration Type'}}
+              {{else}} 
+                {{t 'Ticket Type'}}
+              {{/if}}
+            </th>
+            <th class="four wide">{{t 'Price'}}</th>
+            <th class="three wide">{{t 'Quantity'}}</th>
+            <th class="ui aligned four wide">{{t 'Subtotal'}}</th>
+          {{/if}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.tickets as |ticket|}}
+          {{#each-in (group-by 'id' (map-by 'ticket' this.data.attendees)) as |id tickets|}}
+            {{#if (eq ticket.id id)}}
+              <tr>
+                {{#if (eq this.data.amount 0)}}
+                  <td>
+                    <div class="ui small">
+                      {{ticket.name}}
+                    </div>
+                  </td>
+                  {{#if this.data.discountCode}}
+                    <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.price}}</td>
+                    <td>{{currency-symbol this.eventCurrency}} {{format-money ticket.discount}}</td>
+                    <td>
+                      {{currency-symbol this.eventCurrency}} {{format-money (mult (sub ticket.price ticket.discount) tickets.length)}}
+                    </td>
+                  {{/if}}
+                  <td>
+                    {{tickets.length}}
+                  </td>
+                {{else}}
+                  <td>
+                    <div class="ui small">
+                      {{ticket.name}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="{{if ticket.discountedTicketPrice 'strike text'}}">
+                      <Orders::TicketPrice
+                        @ticket={{ticket}}
+                        @currency={{this.eventCurrency}}
+                        @amount={{ticket.price}} />
+                    </div>
+                    {{#if ticket.discountedTicketPrice}}
+                      <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketPrice}}/>
+                    {{/if}}
+                    <p>
+                      {{#if this.event.tax.isTaxIncludedInPrice}}
+                        <small class="ui gray-text small {{if ticket.discountedTicketTax 'strike text'}}">
+                        {{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.includedTaxAmount}}/>
+                        </small>
+                      {{else}}
+                        {{#if (gt (sub ticket.ticketPriceWithTax ticket.price) 0)}}
+                          <small class="ui gray-text small {{if ticket.discountedTicketTax 'strike text'}}">
+                          + <CurrencyAmount @currency={{this.eventCurrency}} @amount={{sub ticket.ticketPriceWithTax ticket.price}}/>
+                          </small>
+                          {{/if}}
+                      {{/if}}
+                      {{#if ticket.discountedTicketTax}}
+                        {{#if this.event.tax.isTaxIncludedInPrice}}
+                          <small class="ui gray-text small">
+                          <br>{{t 'includes'}} <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                          </small>
+                        {{else}}
+                          {{#if (gt (sub ticket.ticketPriceWithTax ticket.price) 0)}}
+                            <small class="ui gray-text small">
+                            <br>+ <CurrencyAmount @currency={{this.eventCurrency}} @amount={{ticket.discountedTicketTax}}/>
+                            </small>
+                          {{/if}}
+                        {{/if}}
+                      {{/if}}
+                      {{#if (and this.event.tax.name (not-eq ticket.type 'free'))}}
+                        <span>
+                          <small class="ui gray-text tiny aligned right">({{this.event.tax.name}})</small>
+                        </span>
+                      {{/if}}
+                    </p>
+                  </td>
+                  <td>
+                    {{tickets.length}}
+                  </td>
+                  <td>
+                    <Orders::TicketPrice
+                      @ticket={{ticket}}
+                      @currency={{this.eventCurrency}}
+                      @amount={{ticket.subTotal}} />
+                  </td> 
+                {{/if}}   
+              </tr>
+            {{/if}}
+          {{/each-in}}
+        {{/each}}
+      </tbody>
+      {{#if (gt this.data.amount 0)}}
+        <tfoot class="full-width">
+          <tr>
+            <th></th>
+            <th></th>
+            {{#if this.data.discountCode}}
+              <th></th>
+            {{/if}}
+            <th colspan="2" class="pr-4">
+              <table class="ui small left aligned" style="float: right;">
+                <tbody>
+                  {{#if this.event.tax}}
+                    <tr><td>{{t 'Total'}}</td><td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.total}}/></td></tr>
+                    <tr>
+                      <td>
+                        <div>{{t 'Tax'}} ({{this.event.tax.rate}}% {{this.event.tax.name}})</div>
+                        {{#if this.event.tax.isTaxIncludedInPrice}}
+                          <small class="ui gray-text small">{{t 'Included in Total' }}</small>
+                        {{/if}}
+                      </td>
+                      <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.data.includedTaxAmount}}/></td>
+                    </tr>
+                  {{/if}}
+                  <tr><td>{{t 'Grand Total'}}</td>
+                    <td><CurrencyAmount @currency={{this.eventCurrency}} @amount={{this.grandTotal}}/></td>
+                  </tr>
+                </tbody>
+              </table>
+            </th>
+          </tr>
+        </tfoot>
+      {{/if}}
+    </table>
+  {{/if}}
+</div>
+{{#if (eq this.session.currentRouteName 'orders.expired')}}
+  <div class="ui red inverted segment">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Expired'}}
+      </div>
+      <div class="label">
+        {{t 'Your order expired because you did not complete registration in time.'}}
+        <br>
+        {{t 'Please click on event link given on the right to order your tickets again.'}}
+      </div>
+    </div>
+  </div>
+{{/if}}
+{{#if (and (eq this.session.currentRouteName 'orders.view') (eq this.data.status 'cancelled'))}}
+  <div class="ui {{order-color this.data.status}} inverted segment">
+    <div class="ui inverted mini statistic horizontal">
+      <div class="value">
+        {{t 'Cancelled'}}
+      </div>
+      <div class="label">
+        {{t 'Your order has been cancelled due to some unavoidable circumstances.'}}
+        <br>
+        {{t 'Please contact the event organizer for further details.'}}
+      </div>
+    </div>
+  </div>
+{{/if}}

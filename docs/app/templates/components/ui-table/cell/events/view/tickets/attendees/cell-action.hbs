@@ -1,0 +1,18 @@
+{{#if (eq this.extraRecords.order.status 'completed')}}
+  <UiDropdown @class="d-flex items-center pl-4 fluid multiple selection">
+    <div class="default">
+      {{t 'Checkin'}}
+    </div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each this.allDates as |date|}}
+        <UiCheckbox 
+          @class="item"
+          @label={{date}}
+          @checked={{if (includes this.currentlyChecked date) true}}
+          @onChange={{action this.props.actions.toggleCheckIn this.record date (includes this.currentlyChecked date)}}
+        />
+      {{/each}}
+    </div>
+  </UiDropdown>
+{{/if}}

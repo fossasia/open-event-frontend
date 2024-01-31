@@ -1,0 +1,315 @@
+<div>
+    <label class="{{if @field.isRequired 'required'}}" for="name">
+        {{#if @field.isComplex}}
+            {{rich-text-link @field.transName}}
+        {{else}}
+            {{t-var @field.transName}}
+        {{/if}}
+    </label>
+</div>
+{{#if (eq @field.type 'paragraph')}}
+    {{#if @editFields}}
+        <Textarea @id={{this.textareaIdGenerated}} @value={{mut (get holder @field.identifierPath)}}
+            placeholder={{this.placeholder}} @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_" @index)
+            (concat @field.fieldIdentifier "_" @index)}} />
+    {{else}}
+        <span class="line-break">{{get holder field.identifierPath}}</span>
+    {{/if}}
+{{/if}}
+{{#if (eq @field.type 'boolean')}}
+    {{#if @editFields}}
+        {{#each @booleanComplex as |item|}}
+            <div class="ui radio checkbox mr-radio">
+                <Widgets::Forms::RadioButton @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_" @index)
+                    (concat @field.fieldIdentifier "_" @index)}} @value={{item.name}} @checked={{mut (get holder
+                    @field.identifierPath)}} />
+                <label for="yes_include">{{t-var item.name}}</label>
+            </div>
+        {{/each}}
+    {{else}}
+        <span class="word-break">
+            {{#if (get holder field.identifierPath)}}
+                {{t 'Yes'}}
+            {{else}}
+                {{t 'No'}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{/if}}
+{{#if (or (is-input-field @field.type) (eq @field.type 'richtextlink'))}}
+    {{#if (or @field.isLongText (eq @field.type 'richtextlink')) }}
+        {{#if @editFields}}
+            <Widgets::Forms::RichTextEditor @value={{mut (get holder @field.identifierPath)}} @name={{if @field.isRequired (concat
+                @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} />
+        {{else}}
+            <span class="line-break">{{get holder field.identifierPath}}</span>
+        {{/if}}
+    {{else}}
+        {{#if (and @holder.sameAsBuyer (or (eq @field.fieldIdentifier 'firstname') (eq @field.fieldIdentifier 'lastname') (eq
+        @field.fieldIdentifier 'email')))}}
+            {{#if @editFields}}
+                <Input @type={{@field.type}} @value={{mut (get holder @field.identifierPath)}} @name={{if @field.isRequired (concat
+                    @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @readonly="" />
+            {{else}}
+                <span class="word-break">{{get holder field.identifierPath}}</span>
+            {{/if}}
+        {{else if (eq @field.type "number")}}
+            {{#if @editFields}}
+                <Input @type={{@field.type}} @value={{mut (get holder @field.identifierPath)}} @name={{if @field.isRequired (concat
+                    @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @min={{if @field.min
+                    @field.min null}} @max={{if @field.max @field.max null}} />
+            {{else}}
+                <span class="word-break">{{get holder field.identifierPath}}</span>
+            {{/if}}
+        {{else}}
+            {{#if @editFields}}
+                <Input @type={{@field.type}} @value={{mut (get holder @field.identifierPath)}} @name={{if @field.isRequired (concat
+                    @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} />
+            {{else}}
+                {{#if (is-url-field field.fieldIdentifier)}}
+                    <a href="{{get holder field.identifierPath}}">{{get holder field.identifierPath}}</a>
+                {{else}}
+                    <span class="word-break">{{get holder field.identifierPath}}</span>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'gender')}}
+    {{#if @editFields}}
+        <Widgets::Forms::UiCheckboxGroup @options={{genders}} @onChange={{@updateGendersSelection}}
+            @holder={{@holder}} @field={{field}} />
+    {{else}}
+        <span class="word-break">{{get holder field.identifierPath}}</span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'country')}}
+    {{#if @editFields}}
+        <UiDropdown @class="search selection w-full" @selected={{get holder @field.identifierPath}} @onChange={{action (mut
+            @holder.country)}} as |execute mapper|>
+            <Input @type="hidden" @autocomplete="no" @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_"
+                @index) (concat @field.fieldIdentifier "_" @index)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your country'}}</div>
+            <div class="menu">
+                {{#each this.countries as |country|}}
+                <div class="item" data-value="{{map-value mapper country.name}}">
+                    <i class="{{lowercase country.code}} flag"></i>
+                    {{t-var country.name}}
+                </div>
+                {{/each}}
+            </div>
+        </UiDropdown>
+    {{else}}
+        <span class="word-break">{{get holder field.identifierPath}}</span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'ageGroup')}}
+    {{#if @editFields}}
+        <UiDropdown @class="search selection w-full" @selected={{get holder @field.identifierPath}} @onChange={{action (mut
+            @holder.ageGroup)}} as |execute mapper|>
+            <Input @type="hidden" @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_" @index) (concat
+                @field.fieldIdentifier "_" @index)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your age group'}}</div>
+            <div class="menu">
+                {{#each this.ageGroups as |ageGroup|}}
+                <div class="item" data-value="{{map-value mapper ageGroup.age}}">
+                    {{t-var ageGroup.age}}
+                </div>
+                {{/each}}
+            </div>
+        </UiDropdown>
+    {{else}}
+        <span class="word-break">{{get holder field.identifierPath}}</span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'home_wiki')}}
+    {{#if @editFields}}
+        <UiDropdown @class="search selection w-full" @selected={{get holder @field.identifierPath}} @onChange={{action (mut
+            @holder.home_wiki)}} as |execute mapper|>
+            <Input @type="hidden" @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_" @index) (concat
+                @field.fieldIdentifier "_" @index)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your home wiki'}}</div>
+            <div class="menu">
+                {{#each @homeWikis as |homeWiki|}}
+                <div class="item" data-value="{{map-value mapper homeWiki.item}}">
+                    {{t-var homeWiki.item}}
+                </div>
+                {{/each}}
+            </div>
+        </UiDropdown>
+    {{else}}
+        <span class="word-break">{{get holder field.identifierPath}}</span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'wiki_scholarship')}}
+    {{#if @editFields}}
+        <UiDropdown @class="search selection w-full" @selected={{get holder @field.identifierPath}} @onChange={{action (mut
+            @holder.wiki_scholarship)}} as |execute mapper|>
+            <Input @type="hidden" @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_" @index) (concat
+                @field.fieldIdentifier "_" @index)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your answer'}}</div>
+            <div class="menu">
+                {{#each @wikiScholarship as |wikiScholarship|}}
+                <div class="item" data-value="{{map-value mapper wikiScholarship.name}}">
+                    {{t-var wikiScholarship.name}}
+                </div>
+                {{/each}}
+            </div>
+        </UiDropdown>
+    {{else}}
+        <span class="word-break">{{get holder field.identifierPath}}</span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'acceptReceiveEmails')}}
+    {{#if @editFields}}
+        <UiCheckbox
+            @label={{t "We would like to share information with you after the event by email for example through personal emails by our team, newsletters or other electronic communications. You can drop out of this agreement at any time. Do you agree to receive electronic mail?"
+            }} @checked={{@holder.acceptReceiveEmails}} @name={{if @field.isRequired (concat
+            @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut
+            @holder.acceptReceiveEmails)}} />
+    {{else}}
+        <span class="word-break">
+            {{#if (get holder field.identifierPath)}}
+                {{t 'Yes'}}
+            {{else}}
+                {{t 'No'}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'acceptShareDetails')}}
+    {{#if @editFields}}
+        <UiCheckbox
+            @label={{t "We would like to share information among event partners to provide you with the best possible experience and enable partners to contact you with additional information after the event through electronic communications. You can drop out of this agreement at any time. Do you agree to share your information with event partners and receive electronic mail?"
+            }} @checked={{@holder.acceptShareDetails}} @name={{if @field.isRequired (concat @field.fieldIdentifier "_required_"
+            @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut @holder.acceptShareDetails)}} />
+    {{else}}
+        <span class="word-break">
+            {{#if (get holder field.identifierPath)}}
+                {{t 'Yes'}}
+            {{else}}
+                {{t 'No'}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'acceptVideoRecording')}}
+    {{#if @editFields}}
+        <UiCheckbox
+            @label={{t "I agree that the event organizer is allowed to take photo, video and/or audio recordings of me or my profile and also texts created by me in the chats which might be published on the event organizer's websites and/or social media channels."
+            }} @checked={{@holder.acceptVideoRecording}} @name={{if @field.isRequired (concat
+            @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut
+            @holder.acceptVideoRecording)}} />
+    {{else}}
+        <span class="word-break">
+            {{#if (get holder field.identifierPath)}}
+                {{t 'Yes'}}
+            {{else}}
+                {{t 'No'}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'is_consent_form_field')}}
+    {{#if @editFields}}
+        <UiCheckbox @checked={{get holder @field.identifierPath}} @name={{if @field.isRequired (concat
+            @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut
+            (get holder @field.identifierPath))}} />
+        <span>{{t 'I agree to the terms of the'}} </span>
+        <a href="https://foundation.wikimedia.org/wiki/Policy:Universal_Code_of_Conduct">{{t 'Universal Code of
+            Conduct'}}</a>
+        <span> {{t 'and the'}} </span>
+        <a href="https://foundation.wikimedia.org/wiki/Policy:Friendly_space_policy">{{t 'Friendly Space Policy'}}</a>
+        <span>.</span>
+    {{else}}
+        <span class="word-break">
+            {{#if (get holder field.identifierPath)}}
+                {{t 'Yes'}}
+            {{else}}
+                {{t 'No'}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'is_consent_form_field_photo')}}
+    {{#if @editFields}}
+        <UiCheckbox @checked={{get holder @field.identifierPath}} @name={{if @field.isRequired (concat
+            @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut
+            (get holder @field.identifierPath))}} />
+        <span>{{t 'I consent to the Wikimania'}} </span>
+        <a href="https://wikimania.wikimedia.org/wiki/2023:Photography_policy">{{t 'photo policy'}}</a>
+        <span>.</span>
+    {{else}}
+        <span class="word-break">
+            {{#if (get holder field.identifierPath)}}
+                {{t 'Yes'}}
+            {{else}}
+                {{t 'No'}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{else if (eq @field.fieldIdentifier 'is_consent_form_field_email')}}
+    {{#if @editFields}}
+        <UiCheckbox @checked={{get holder @field.identifierPath}} @name={{if @field.isRequired (concat
+            @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut
+            (get holder @field.identifierPath))}} />
+        <span>{{t 'I want to receive email updates about future Wikimania editions.'}} </span>
+    {{else}}
+        <span class="word-break">
+            {{#if (get holder field.identifierPath)}}
+                {{t 'Yes'}}
+            {{else}}
+                {{t 'No'}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{else if (eq @field.type 'checkbox')}}
+    {{#if
+    (and (not-eq @field.fieldIdentifier "native_language") (and (not-eq @field.fieldIdentifier "fluent_language")
+    (and (not-eq @field.fieldIdentifier "language_form_1") (not-eq @field.fieldIdentifier "language_form_2"))))}}
+        {{#if @editFields}}
+            <UiCheckbox @checked={{get holder @field.identifierPath}} @name={{if @field.isRequired (concat
+                @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} @onChange={{action (mut
+                (get holder @field.identifierPath))}} />
+                {{t-var @field.nameConvert}}
+        {{else}}
+            <span class="word-break">
+                {{#if (get holder field.identifierPath)}}
+                    {{t 'Yes'}}
+                {{else}}
+                    {{t 'No'}}
+                {{/if}}
+            </span>
+        {{/if}}
+    {{/if}}
+{{/if}}
+{{#if (eq @field.type 'year')}}
+    {{#if @editFields}}
+        <UiDropdown @class="search selection w-full" @selected={{mut (get @holder @field.identifierPath)}} @onChange={{action (mut
+            @holder.year)}}>
+            <Input @type="hidden" @value={{get @holder @field.identifierPath}} @name={{if @field.isRequired (concat
+                @field.fieldIdentifier "_required_" @index) (concat @field.fieldIdentifier "_" @index)}} />
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your year'}}</div>
+            <div class="menu">
+                {{#each (range @field.min (add @field.max 1)) as |year|}}
+                <div class="item" data-value="{{year}}">
+                    {{year}}
+                </div>
+                {{/each}}
+            </div>
+        </UiDropdown>
+    {{else}}<span class="word-break">{{get holder (concat field.fieldIdentifier '_name_mapping')}}</span>
+        <span class="word-break">{{get holder field.identifierPath}}</span>
+    {{/if}}
+{{/if}}
+{{#if (or (eq @field.fieldIdentifier "language_form_1") (eq @field.fieldIdentifier "native_language"))}}
+    {{#if @editFields}}
+        <Widgets::Forms::UiCheckboxGroup @options={{@nativeLanguage}} @onChange={{@updateLanguageFormsSelection}}
+            @holder={{@holder}} @field={{field}} />
+    {{else}}
+        <span class="word-break">{{get holder (concat field.fieldIdentifier '_name_mapping')}}</span>
+    {{/if}}
+{{/if}}
+{{#if (or (eq @field.fieldIdentifier "language_form_2") (eq @field.fieldIdentifier "fluent_language"))}}
+    {{#if @editFields}}
+        <Widgets::Forms::UiCheckboxGroup @options={{@fluentLanguage}} @onChange={{@updateLanguageFormsSelection}}
+            @holder={{@holder}} @field={{field}} />
+    {{else}}
+        <span class="word-break">{{get holder (concat field.fieldIdentifier '_name_mapping')}}</span>
+    {{/if}}
+{{/if}}

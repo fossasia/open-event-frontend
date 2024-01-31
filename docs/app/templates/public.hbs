@@ -1,0 +1,183 @@
+<UnverifiedUserMessage />
+<div class="public-event ui relaxed grid "{{did-insert this.setup}}>
+  <div class="sixteen wide column lead {{if this.smallLead 'small'}}">
+    <Widgets::SafeImage class="background" @src={{if this.model.largeImageUrl this.model.largeImageUrl this.model.originalImageUrl}} />
+    <div class="content">
+      <div class="ui container">
+        <div class="ui info d-flex">
+          {{#if this.device.isMobile}}
+          <div>
+            <h4 class="event time" style={{this.vietnameseFontFamily}}>{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
+            {{#if this.displayEndDate}}
+              <h5 class="event time ends" style={{this.vietnameseFontFamily}}>{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
+            {{/if}}
+            <LinkTo @route="public">
+              <h1 class="event name text-white">{{this.model.name}}</h1>
+            </LinkTo>
+            <h4 class="event location" style={{this.vietnameseFontFamily}}><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
+          </div>
+          {{else}}
+            {{#if this.model.logoUrl}}
+              <div>
+                <LinkTo @route="public">
+                  <img src="{{this.model.logoUrl}}" class="logo mr-8" />
+                </LinkTo>
+              </div>
+            {{/if}}
+            <div class="event-info">
+              <h4 class="event time" style={{this.vietnameseFontFamily}}>{{general-date this.model.startsAt 'date-time-tz-long' tz=this.model.timezone}}</h4>
+              {{#if this.displayEndDate}}
+                <h5 class="event time ends" style={{this.vietnameseFontFamily}}>{{t 'To'}} {{general-date this.model.endsAt 'date-time-tz-long' tz=this.model.timezone}}</h5>
+              {{/if}}
+              <LinkTo @route="public">
+                <h1 class="event name text-white">{{this.model.name}}</h1>
+              </LinkTo>
+              <h4 class="event location" style={{this.vietnameseFontFamily}}><i class="icon map marker alternate"></i>{{this.headerLocation}}</h4>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sixteen wide column content {{if this.smallLead 'with small lead'}}" id="event-contents">
+    <div class="ui stackable grid">
+      {{#unless this.device.isMobile}}
+        <div class="three wide column" id="public-event-content">
+          {{#if this.displaySideMenu}}
+            <div class="ui fluid side-menu">
+              <Public::SideMenuOuter @event={{this.model}} />
+            </div>
+          {{/if}}
+        </div>
+      {{/unless}}
+      {{#unless this.device.isMobile}}
+        <div class="ten wide column">
+          {{outlet}}
+        </div>
+      {{/unless}}
+      <div class="three wide column">
+        {{#if this.displaySideMenu}}
+          {{#if this.device.isMobile}}
+            <Public::AddToCalenderJoinVideo 
+              @event={{this.model}} 
+              @location={{this.headerLocation}}
+              @showVideo={{false}}
+              @videoStream={{this.model.videoStream}}
+              @canAccess={{this.canAccess}}
+              @hasStreams={{this.hasStreams}}
+              @sameTab={{this.side_panel}}
+              @showSidePanel={{action "showSidePanel"}}
+              class="ui basic segment m-0 p-0 mb-0" 
+            />
+          {{else}}
+            <Public::Stream::JoinVideo
+              @showVideo={{false}}
+              @event={{this.model}}
+              @videoStream={{this.model.videoStream}}
+              @canAccess={{this.canAccess}}
+              @hasStreams={{this.hasStreams}}
+              @sameTab={{this.side_panel}}
+              @showSidePanel={{action "showSidePanel"}}
+              class="ui basic segment m-0 p-0" />
+            <Public::AddToCalender @event={{this.model}} @location={{this.headerLocation}}/>
+          {{/if}}
+          {{#if (and (not-eq this.session.currentRouteName 'public.exhibition.view') (not-eq this.session.currentRouteName 'public.coc'))}}
+            {{#if (not-eq this.router.currentRoute.name 'public.sessions.index')}}
+              <Public::SocialLinks @externalUrl={{this.model.externalEventUrl}} @socialLinks={{this.model.socialLinks}}/>
+            {{/if}}
+            {{#if (and this.device.isMobile this.twitterLink)}}
+                <div class="item">
+                  <div class="twitter content">
+                    <UiAccordion>
+                      <div class="title" >
+                        <i class="dropdown icon"></i>
+                        <span>
+                          Recent tweets
+                        </span>
+                      </div>
+                      <div class="content" >
+                        <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                      </div>
+                    </UiAccordion>
+                  </div>
+                </div>
+            {{/if}}
+          {{/if}}
+          {{#if (and this.device.isMobile this.model.group)}}
+            <button class="{{if this.model.group.follower 'red' 'blue'}} mt-2 ui fluid button" {{action this.follow}}>
+              {{#if this.isFollowed}}
+                {{t 'Unfollow Group'}}
+              {{else}}
+                {{t 'Follow Group'}}            
+              {{/if}}
+              {{this.model.group.name}} ({{this.model.group.followerCount}} {{t 'followers'}})
+            </button>
+          {{/if}}
+          {{#if (eq this.session.currentRouteName 'public.sessions.index')}}
+            <div class="{{if this.device.isMobile 'd-flex'}} filters ui basic segment m-0 pr-0 pl-0 pt-2">
+              {{#if (not this.device.isMobile)}}
+                <Public::ScheduleMenuFilter @event={{this.model}} />
+              {{/if}}
+            </div>
+          {{/if}}
+          {{#if (and (not this.device.isMobile) this.twitterLink (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
+              <div class="item">
+                <div class="twitter content">
+                  <Widgets::TwitterTimeline @handleOrProfile={{this.twitterLink.link}} />
+                </div>
+              </div>
+          {{/if}}
+          {{#if (and (not this.device.isMobile) this.model.group (not-eq this.session.currentRouteName 'public.exhibition.view'))}}
+            <div class="mt-4">
+              <a href={{href-to 'group-public' this.model.group.id}} class="header black-text" target="_blank" rel="noopener">
+                <img class="ui middle aligned tiny right spaced image" src={{this.model.group.logoUrl}}>
+                <span style="font-weight: 700;font-size:20px">{{this.model.group.name}}</span>
+              </a>
+            </div>
+            <button class="blue mt-2 ui labeled fluid button"  tabindex="0" {{action this.follow}}>
+              <div class="ui blue fluid button">
+                <i class="large icons basic-details">
+                <i class="users icon"></i>
+                <i class="inverted corner add icon"></i>
+                </i>
+                {{#if this.model.group.follower}}
+                  <span class="mr-4 ml-4">{{t 'Following'}} </span>            
+                {{else}}
+                  <span class="mr-4 ml-4">{{t 'Follow Group'}}</span>           
+                {{/if}}
+                <div class="ui basic left pointing blue label">
+                  {{this.model.group.followerCount}} 
+                </div>
+              </div>              
+            </button>
+          {{/if}}
+        {{/if}}
+      </div>
+      {{#if this.device.isMobile}}
+        <div class="ten wide column">
+          {{outlet}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+{{#if this.side_panel}}
+  <Public::Stream::SidePanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @currentRoute={{this.session.currentRouteName}} @setupRoomChat={{action 'setupRoomChat'}} @currentRoom={{this.currentRoom}} />  
+{{/if}}
+{{#if (and this.model.isChatEnabled this.canAccess)}}
+  {{#if this.shown}}
+    <Public::Stream::ChatPanel @event={{this.model}} @shown={{true}} @showChatPanel={{this.showChatPanel}} @currentRoom={{this.currentRoom}} />
+  {{else}}
+    <Public::Stream::ChatPanel @event={{this.model}} @shown={{false}} @showChatPanel={{this.showChatPanel}} @currentRoom={{this.currentRoom}} />
+  {{/if}}
+{{/if}}
+{{#if this.video_dialog}}
+  <Modals::SimpleModal
+    @isOpen={{true}}
+    @header={{t 'Login or Buy Tickets'}}
+    @action={{this.toLogin}}
+    @cancel={{this.closeVideoDialog}}>
+    {{t 'You need to login or get a ticket for this event before you can join it online.'}}
+  </Modals::SimpleModal>
+{{/if}}

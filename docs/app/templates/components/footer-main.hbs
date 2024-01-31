@@ -1,0 +1,140 @@
+<div class="ui {{if this.device.isMobile 'center aligned container' 'grid'}} mb-8">
+  {{#if (eq this.device.isMobile false)}}
+    <div class="three wide column"></div>
+  {{/if}}
+  <div class="{{if (eq this.device.isMobile false) 'ten wide column'}}">
+    <div class="ui stackable inverted divided grid">
+      <div class="four wide column">
+        <div class="ui left aligned container inverted link list">
+          <strong class="item">{{t 'Use {{app}}' app=this.settings.appName}}</strong>
+          <a class="item" href="https://support.eventyay.com" target="_blank" rel="noopener noreferrer">{{t 'How it Works'}}</a>
+          <a class="item" href="{{href-to 'pricing'}}"> {{t 'Pricing'}} </a>
+          <a class="item" href="https://blog.eventyay.com/" rel="noopener noreferrer">{{t 'Blog'}}</a>
+        </div>
+      </div>
+      <div class="four wide column">
+        <div class="ui left aligned container inverted link list">
+          <strong class="item">{{t 'Plan Events'}}</strong>
+          <a class="item" href="https://support.eventyay.com/event-setup/How-can-I-create-an-event.html" target="_blank" rel="noopener noreferrer">
+            {{t 'Online Registration'}}
+          </a>
+          <a class="item" href="https://support.eventyay.com/event-setup/How-to-sell-tickets.html" target="_blank" rel="noopener noreferrer">
+            {{t 'Sell Event Tickets'}}
+          </a>
+          <a class="item" href="https://support.eventyay.com/" target="_blank" rel="noopener noreferrer">
+            {{t 'Event Management Software'}}
+          </a>
+        </div>
+      </div>
+      <div class="four wide column">
+        <div class="ui left aligned container inverted link list">
+          <strong class="item">{{t 'Find Events'}}</strong>
+          <a class="item" href="{{href-to 'explore.events'}}">
+            {{t 'Browse Events'}}
+          </a>
+          <a class="item" href="{{href-to 'attendee-app'}}">
+            {{t 'Attendee App'}}
+          </a>
+          <a class="item" href="{{href-to 'organizer-app'}}">
+            {{t 'Organizer App'}}
+          </a>
+        </div>
+      </div>
+      <div class="four wide column">
+        <div class="ui left aligned container inverted link list">
+          <strong class="item">{{t 'Connect With Us'}}</strong>
+          {{#if this.socialLinks.supportUrl}}
+            <a class="item" href="{{this.socialLinks.supportUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="info icon"></i> {{t 'Blog'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.facebookUrl}}
+            <a class="item" href="{{this.socialLinks.facebookUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="facebook f icon"></i> {{t 'Facebook'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.instagramUrl}}
+            <a class="item" href="{{this.socialLinks.instagramUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="instagram icon"></i> {{t 'Instagram'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.twitterUrl}}
+            <a class="item" href="{{this.socialLinks.twitterUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="twitter icon"></i> {{t 'Twitter'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.githubUrl}}
+            <a class="item" href="{{this.socialLinks.githubUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="github icon"></i> {{t 'GitHub'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.youtubeUrl}}
+            <a class="item" href="{{this.socialLinks.youtubeUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="youtube icon"></i> {{t 'YouTube'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.googleUrl}}
+            <a class="item" href="{{this.socialLinks.googleUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="google groups icon"></i> {{t 'Google Groups'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.patreonUrl}}
+            <a class="item" href="{{this.socialLinks.patreonUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="patreon icon"></i> {{t 'Patreon'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.gitterUrl}}
+            <a class="item" href="{{this.socialLinks.gitterUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="gitter icon"></i> {{t 'Gitter'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.telegramUrl}}
+            <a class="item" href="{{this.socialLinks.telegramUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="telegram icon"></i> {{t 'Telegram'}}
+            </a>
+          {{/if}}
+          {{#if this.socialLinks.weblateUrl}}
+            <a class="item" href="{{this.socialLinks.weblateUrl}}" target="_blank" rel="noopener noreferrer">
+              <Icons::Weblate /> {{t 'Weblate'}}
+            </a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    <div class="ui inverted section divider"></div>
+    <div class="ui stackable grid">
+      <div class="thirteen wide computer twelve wide tablet column left aligned">
+        <div class="ui horizontal inverted small divided link list no top margin">
+          <span class="item">{{t 'Maintained by'}} FOSSASIA</span>
+          <span class="item">&copy; {{general-date (now) 'YYYY'}}  {{this.settings.appName}} </span>
+          <span class="hidden-item">
+            {{!-- Possible Page Values --}}
+            {{t 'Terms'}}
+            {{t 'Contact'}}
+            {{t 'Refund Policy'}}
+            {{t 'Privacy'}}
+          </span>
+          {{#each this.footerPages as |page|}}
+            <LinkTo @route="pages" @model={{page.url}} class="item">
+              {{t-var page.name}}
+            </LinkTo>
+          {{/each}}
+        </div>
+      </div>
+      <div class="three wide computer four wide tablet column right aligned">
+        <UiDropdown @class="floating labeled grey search icon mini button" @selected={{this.currentLocale}} @forceSelection={{false}} @onChange={{action "switchLanguage"}}>
+          <i class="world icon"></i>
+          <span class="text">English</span>
+          <div class="ui language menu">
+            {{#each-in this.l10n.availableLocales as |key value|}}
+              <div class="item" data-value="{{key}}">{{value}}</div>
+            {{/each-in}}
+          </div>
+        </UiDropdown>
+      </div>
+    </div>
+  </div>
+  {{#if (eq this.device.isMobile false)}}
+    <div class="three wide column"></div>
+  {{/if}}
+</div>
