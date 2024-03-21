@@ -383,7 +383,7 @@ export default Component.extend(FormMixin, {
 
   languages: orderBy(languages, 'name'),
 
-  genders: orderBy(genders, 'name'),
+  genders: orderBy(genders, 'position'),
 
   levels: orderBy(levels, 'position'),
 
@@ -413,6 +413,10 @@ export default Component.extend(FormMixin, {
   // Clicking on the add speaker button creates a blank record which increases the length of the session's list by 1.
   noSessionExists: computed('sessions', function() {
     return this.sessions.length === 1;
+  }),
+
+  getSessions: computed('sessions', function() {
+    return orderBy(this.sessions.toArray(), 'title');
   }),
 
   shouldShowNewSessionDetails: computed('sessionDetails', 'newSessionSelected', function() {

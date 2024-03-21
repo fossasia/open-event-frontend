@@ -47,7 +47,7 @@ export default Route.extend({
       });
     });
 
-    const microlocations = await eventDetails.query('microlocations', {});
+    const microlocations = await eventDetails.query('microlocations', { 'page[size]': 0 });
 
     /*
     The start hour of the start day is considered the start hour for remaining days as well.

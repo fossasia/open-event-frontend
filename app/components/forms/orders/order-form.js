@@ -4,7 +4,7 @@ import { readOnly, oneWay } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import FormMixin from 'open-event-frontend/mixins/form';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { groupBy, orderBy } from 'lodash-es';
 import {
   compulsoryProtocolValidUrlPattern, validTwitterProfileUrlPattern, validFacebookProfileUrlPattern,
@@ -13,7 +13,11 @@ import {
 import { genders } from 'open-event-frontend/utils/dictionary/genders';
 import { ageGroups } from 'open-event-frontend/utils/dictionary/age-groups';
 import { countries } from 'open-event-frontend/utils/dictionary/demography';
-
+import { nativeLanguage } from 'open-event-frontend/utils/dictionary/native-language';
+import { fluentLanguage } from 'open-event-frontend/utils/dictionary/fluent-language';
+import { homeWikis } from 'open-event-frontend/utils/dictionary/home-wikis';
+import { booleanComplex } from 'open-event-frontend/utils/dictionary/boolean_complex';
+import { wikiScholarship } from 'open-event-frontend/utils/dictionary/wiki-scholarship';
 
 export default Component.extend(FormMixin, {
   router             : service(),
@@ -25,17 +29,6 @@ export default Component.extend(FormMixin, {
   buyerHasFirstName : readOnly('data.user.firstName'),
   buyerHasLastName  : readOnly('data.user.lastName'),
   holders           : computed('data.attendees', 'buyer', function() {
-    this.data.attendees.forEach((attendee, index) => {
-      if (index === 0 && this.buyerFirstName && this.buyerLastName) {
-        attendee.set('firstname', this.buyerFirstName);
-        attendee.set('lastname', this.buyerLastName);
-        attendee.set('email', this.buyer.get('email'));
-      } else {
-        attendee.set('firstname', '');
-        attendee.set('lastname', '');
-        attendee.set('email', '');
-      }
-    });
     return this.data.attendees;
   }),
   isPaidOrder: computed('data', function() {
@@ -44,9 +37,6 @@ export default Component.extend(FormMixin, {
       return false;
     }
     return true;
-  }),
-  sameAsBuyer: computed('data', function() {
-    return (this.buyerHasFirstName && this.buyerHasLastName);
   }),
 
   isBillingInfoNeeded: computed('event', 'data.isBillingEnabled', function() {
@@ -113,7 +103,7 @@ export default Component.extend(FormMixin, {
       rules: [
         {
           type   : 'empty',
-          prompt : this.l10n.t('Please select a gender.')
+          prompt : this.l10n.t('Please select categories that describe your gender identity.')
         }
       ]
     };
@@ -238,6 +228,23 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const homeWikiValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter your home wiki.')
+        }
+      ]
+    };
+    const wikiScholarshipValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter your wiki scholarship.')
+        }
+      ]
+    };
+
     const shippingAddressValidation = {
       rules: [
         {
@@ -274,17 +281,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const websiteValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : compulsoryProtocolValidUrlPattern,
-          prompt : this.l10n.t('Please enter a valid URL.')
-        }
-      ]
-    };
-
     const websiteRequiredValidation = {
       rules: [
         {
@@ -299,16 +295,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const blogValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : compulsoryProtocolValidUrlPattern,
-          prompt : this.l10n.t('Please enter a valid URL.')
-        }
-      ]
-    };
 
     const blogRequiredValidation = {
       rules: [
@@ -324,16 +310,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const twitterValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validTwitterProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Twitter profile URL.')
-        }
-      ]
-    };
 
     const twitterRequiredValidation = {
       rules: [
@@ -349,16 +325,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const facebookValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validFacebookProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Facebook account URL.')
-        }
-      ]
-    };
 
     const facebookRequiredValidation = {
       rules: [
@@ -370,17 +336,6 @@ export default Component.extend(FormMixin, {
           type   : 'regExp',
           value  : validFacebookProfileUrlPattern,
           prompt : this.l10n.t('Please enter a valid Facebook account URL.')
-        }
-      ]
-    };
-
-    const githubValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validGithubProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid GitHub profile URL.')
         }
       ]
     };
@@ -399,17 +354,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const instagramValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validInstagramProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Instagram account URL.')
-        }
-      ]
-    };
-
     const instagramRequiredValidation = {
       rules: [
         {
@@ -424,16 +368,6 @@ export default Component.extend(FormMixin, {
       ]
     };
 
-    const linkedinValidation = {
-      optional : true,
-      rules    : [
-        {
-          type   : 'regExp',
-          value  : validLinkedinProfileUrlPattern,
-          prompt : this.l10n.t('Please enter a valid Linkedin account URL.')
-        }
-      ]
-    };
 
     const linkedinRequiredValidation = {
       rules: [
@@ -449,29 +383,48 @@ export default Component.extend(FormMixin, {
       ]
     };
 
+    const isConsentFormFieldValidation = {
+      rules: [
+        {
+          type   : 'checked',
+          prompt : this.l10n.t('Please enter Code of conduct consent.')
+        }
+      ]
+    };
+
+    const isConsentOfRefundPolicyValidation = {
+      optional : true,
+      rules    : [
+        {
+          type   : 'checked',
+          prompt : this.l10n.t('Please consent to the Refund Policy.')
+        }
+      ]
+    };
+
+    const nativeLanguageValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Language Form.')
+        }
+      ]
+    };
+
+    const fluentLanguageValidation = {
+      rules: [
+        {
+          type   : 'empty',
+          prompt : this.l10n.t('Please enter Language Form.')
+        }
+      ]
+    };
+
     const validationRules = {
       inline : true,
       delay  : false,
       on     : 'blur',
       fields : {
-        firstName: {
-          identifier : 'first_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your first name.')
-            }
-          ]
-        },
-        lastName: {
-          identifier : 'last_name',
-          rules      : [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter your last name.')
-            }
-          ]
-        },
         email: {
           identifier : 'email',
           rules      : [
@@ -493,7 +446,7 @@ export default Component.extend(FormMixin, {
         },
         taxBusinessInfo: {
           identifier : 'taxBusinessInfo',
-          optional: true
+          optional   : true
         },
         address: {
           identifier : 'address',
@@ -533,66 +486,115 @@ export default Component.extend(FormMixin, {
         }
       }
     };
-    this.holders.forEach((value, index) => {
-      validationRules.fields[`firstname_required_${index}`] = firstNameValidation;
-      validationRules.fields[`lastname_required_${index}`] = lastNameValidation;
-      validationRules.fields[`email_required_${index}`] = emailValidation;
-      validationRules.fields[`gender_required_${  index}`] = genderValidation;
-      validationRules.fields[`ageGroup_required_${  index}`] = ageGroupValidation;
-      validationRules.fields[`address_required_${  index}`] = addressValidation;
-      validationRules.fields[`acceptReceiveEmails_required_${  index}`] = acceptReceiveEmailsValidation;
-      validationRules.fields[`acceptVideoRecording_required_${  index}`] = acceptVideoRecordingValidation;
-      validationRules.fields[`acceptShareDetails_required_${  index}`] = acceptShareDetailsValidation;
-      validationRules.fields[`city_required_${  index}`] = cityValidation;
-      validationRules.fields[`state_required_${  index}`] = stateValidation;
-      validationRules.fields[`country_required_${  index}`] = countryValidation;
-      validationRules.fields[`jobTitle_required_${  index}`] = jobTitleValidation;
-      validationRules.fields[`phone_required_${  index}`] = phoneValidation;
-      validationRules.fields[`taxBusinessInfo_required_${  index}`] = taxBusinessInfoValidation;
-      validationRules.fields[`billingAddress_required_${  index}`] = billingAddressValidation;
-      validationRules.fields[`homeAddress_required_${  index}`] = homeAddressValidation;
-      validationRules.fields[`shippingAddress_required_${  index}`] = shippingAddressValidation;
-      validationRules.fields[`company_required_${  index}`] = companyValidation;
-      validationRules.fields[`workAddress_required_${  index}`] = workAddressValidation;
-      validationRules.fields[`workPhone_required_${  index}`] = workPhoneValidation;
-      validationRules.fields[`website_${  index}`] = websiteValidation;
-      validationRules.fields[`website_required_${  index}`] = websiteRequiredValidation;
-      validationRules.fields[`blog_${  index}`] = blogValidation;
-      validationRules.fields[`blog_required_${  index}`] = blogRequiredValidation;
-      validationRules.fields[`twitter_${  index}`] = twitterValidation;
-      validationRules.fields[`twitter_required_${  index}`] = twitterRequiredValidation;
-      validationRules.fields[`facebook_${  index}`] = facebookValidation;
-      validationRules.fields[`facebook_required_${  index}`] = facebookRequiredValidation;
-      validationRules.fields[`github_${  index}`] = githubValidation;
-      validationRules.fields[`github_required_${  index}`] = githubRequiredValidation;
-      validationRules.fields[`instagram_${  index}`] = instagramValidation;
-      validationRules.fields[`instagram_required_${  index}`] = instagramRequiredValidation;
-      validationRules.fields[`linkedin_${  index}`] = linkedinValidation;
-      validationRules.fields[`linkedin_required_${  index}`] = linkedinRequiredValidation;
-      this.allFields.attendee.filter(field => field.isComplex && field.isRequired).forEach(field => {
-        validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
-          rules: [
-            {
-              type   : 'empty',
-              prompt : this.l10n.t('Please enter {{field}}.', { field: field.name })
-            }
-          ]
-        };
-      });
+    const validationMap = {
+      firstname                   : firstNameValidation,
+      lastname                    : lastNameValidation,
+      email                       : emailValidation,
+      gender                      : genderValidation,
+      ageGroups                   : ageGroupValidation,
+      address                     : addressValidation,
+      acceptReceiveEmails         : acceptReceiveEmailsValidation,
+      acceptVideoRecording        : acceptVideoRecordingValidation,
+      acceptShareDetails          : acceptShareDetailsValidation,
+      city                        : cityValidation,
+      state                       : stateValidation,
+      country                     : countryValidation,
+      jobTitle                    : jobTitleValidation,
+      phone                       : phoneValidation,
+      taxBusinessInfo             : taxBusinessInfoValidation,
+      billingAddress              : billingAddressValidation,
+      homeAddress                 : homeAddressValidation,
+      homeWiki                    : homeWikiValidation,
+      wikiScholarship             : wikiScholarshipValidation,
+      shippingAddress             : shippingAddressValidation,
+      company                     : companyValidation,
+      workAddress                 : workAddressValidation,
+      workPhone                   : workPhoneValidation,
+      website                     : websiteRequiredValidation,
+      blog                        : blogRequiredValidation,
+      twitter                     : twitterRequiredValidation,
+      facebook                    : facebookRequiredValidation,
+      github                      : githubRequiredValidation,
+      instagram                   : instagramRequiredValidation,
+      linkedin                    : linkedinRequiredValidation,
+      native_language             : nativeLanguageValidation,
+      fluent_language             : fluentLanguageValidation,
+      is_consent_form_field       : isConsentFormFieldValidation,
+      is_consent_of_refund_policy : isConsentOfRefundPolicyValidation
 
+    };
+    this.allFields.attendee.forEach((field, index) => {
+      const { fieldIdentifier } = field;
+      const validationRuleKey = `${fieldIdentifier}_required_${index}`;
+      if (validationMap[fieldIdentifier]) {
+        validationRules.fields[validationRuleKey] = validationMap[fieldIdentifier];
+      } else {
+        if (field.type === 'checkbox') {
+          validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
+            rules: [
+              {
+                type   : 'checked',
+                prompt : this.l10n.t('Please select your {{field}}.', { field: field.name })
+              }
+            ]
+          };
+        } else {
+          validationRules.fields[`${field.fieldIdentifier}_required_${index}`] = {
+            rules: [
+              {
+                type   : 'empty',
+                prompt : this.l10n.t('Please enter your {{field}}.', { field: field.name })
+              }
+            ]
+          };
+        }
+      }
     });
     return validationRules;
   },
-
   allFields: computed('fields', function() {
     const requiredFixed = this.fields.toArray()?.filter(field => field.isFixed);
-    const customFields =  orderBy(this.fields.toArray()?.filter(field => !field.isFixed), ['position']);
+    const current_locale = this.cookies.read('current_locale');
+
+    const customFields =  orderBy(this.fields.toArray()?.filter(field => {
+      const { isFixed, main_language } = field;
+      field.nameConvert = field.name;
+      if (field.name === 'Consent of refund policy') {
+        field.nameConvert = 'I agree to the terms of the refund policy of the event.';
+      }
+      if ((main_language && main_language.split('-')[0] === current_locale) || !field.translations || !field.translations.length) {
+        field.transName = field.name;
+      } else if (field.translations?.length) {
+        const transName = field.translations.filter(trans => trans.language_code.split('-')[0] === current_locale);
+        if (transName.length) {
+          field.transName = transName[0].name;
+        } else {
+          field.transName = field.name;
+        }
+      } else {
+        field.transName = field.name;
+      }
+      return !isFixed;
+    }), ['position']);
     return groupBy(requiredFixed.concat(customFields), field => field.get('form'));
   }),
 
-  genders   : orderBy(genders, 'name'),
-  ageGroups : orderBy(ageGroups, 'age'),
-  countries : orderBy(countries, 'name'),
+  genders         : orderBy(genders, 'position'),
+  ageGroups       : orderBy(ageGroups, 'position'),
+  countries       : orderBy(countries, 'name'),
+  nativeLanguage  : orderBy(nativeLanguage, 'position'),
+  fluentLanguage  : orderBy(fluentLanguage, 'position'),
+  homeWikis       : orderBy(homeWikis, 'item'),
+  wikiScholarship : orderBy(wikiScholarship, 'position'),
+  booleanComplex  : orderBy(booleanComplex, 'position'),
+
+  currentLocale: computed('cookies.current_locale', function() {
+    return this.cookies.read('current_locale');
+  }),
+
+  getData() {
+    return 'hello';
+  },
 
   actions: {
     submit(data) {
@@ -603,8 +605,9 @@ export default Component.extend(FormMixin, {
         this.sendAction('save', data);
       });
     },
-    modifyHolder(holder) {
-      if (this.sameAsBuyer) {
+    triggerSameAsBuyerOption(holder) {
+      holder.set('sameAsBuyer', !holder.sameAsBuyer);
+      if (holder.sameAsBuyer) {
         holder.set('firstname', this.buyerFirstName);
         holder.set('lastname', this.buyerLastName);
         holder.set('email', this.buyer.content.email);
@@ -613,6 +616,17 @@ export default Component.extend(FormMixin, {
         holder.set('lastname', '');
         holder.set('email', '');
       }
+    },
+    updateLanguageFormsSelection(checked, changed, selectedOptions, holder, field) {
+      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
+    },
+    updateGendersSelection(checked, changed, selectedOptions, holder, field) {
+      holder.set(field.fieldIdentifier, selectedOptions.map(select => select.value).join(','));
     }
+  },
+  willDestroyElement() {
+    clearInterval(this._getRemainingTimeId);
+    this._super(...arguments);
   }
+
 });

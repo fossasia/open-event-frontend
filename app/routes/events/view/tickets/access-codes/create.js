@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import RSVP from 'rsvp';
 
 @classic
@@ -22,7 +22,7 @@ export default class CreateRoute extends Route {
         minQuantity   : 1,
         maxQuantity   : 1
       }),
-      tickets: this.modelFor('events.view').query('tickets', {})
+      tickets: this.modelFor('events.view').query('tickets', { 'page[size]': 0 })
     });
   }
 

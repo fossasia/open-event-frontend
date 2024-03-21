@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import { computed, action } from '@ember/object';
 import Controller from '@ember/controller';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { groupBy } from 'lodash-es';
 
 @classic
@@ -69,6 +69,8 @@ export default class SessionsController extends Controller {
     activeEls.forEach(el => {
       el.classList.remove('active');
     });
+    document.querySelectorAll('input[type="checkbox"]')
+      .forEach(el => el.checked = false);
   }
 
   async loadDates() {

@@ -14,11 +14,9 @@
 
 The front end for the **Open Event Server**
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 **API Documentation:**
 
-- Every installation of the **Open Event Server** project includes API docs, (e.g. here on the test install [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)).
+- Every installation of the **Open Event Server** project includes API docs
 - A hosted version of the API docs is available in the `gh-pages` branch of the **Open Event Server** repository at [http://api.eventyay.com](http://api.eventyay.com)
 
 ## Communication
@@ -35,7 +33,7 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 ## Running / Development
 
-[Click to see installation video](https://asciinema.org/a/370458?speed=5&autoplay=1)
+[Click to see installation video](https://youtu.be/BNi492mJyD4)
 
 **Note**: Please follow [installation steps](/docs/installation/local.md#steps) listed above carefully before running
 
@@ -78,7 +76,7 @@ It consumes the API exposed by master branch deployment of open event server, ho
 #### Development branch
 
 The **development** branch of open-event-frontend gets deployed at [https://open-event-frontend.now.sh/](https://open-event-frontend.now.sh/)
-It consumes the API exposed by development branch of open event server, hosted at [https://open-event.dokku.fossasia.org](https://open-event.dokku.fossasia.org)
+It consumes the API exposed by development branch of open event server, hosted at [https://test.eventyay.com](https://test.eventyay.com)
 
 ### Release Cycle
 
@@ -124,7 +122,7 @@ When you file a feature request or when you are submitting a bug report to the [
 ### Join the development
 
 - Before you join development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.)
-- If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please feel free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
+- If you would like to work on an issue, drop in a comment with the estimated completion date at the issue. If it is already assigned to someone, but there is no sign of any work being done, please feel free to drop in a comment.
 
 ## License
 

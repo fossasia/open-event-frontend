@@ -1,0 +1,101 @@
+.translation.menu {
+  left: -6px !important;
+  width: 9.6rem !important;
+}
+
+.language.icon {
+  font-size: 1.8em;
+  color: #808080;
+}
+
+
+.block-side-panel {
+  display: inline-block;
+  margin-left: auto;
+
+  .translation-dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95px !important;
+    height: 33px !important;
+    margin-left: 10px !important;
+
+    .menu.transition.visible {
+      font-size: small !important;
+      width: 115px !important;
+    }
+
+    .text {
+      font-size: small !important;
+      color: #808080 !important;
+    }
+  }
+
+  .translation-dropdown-button {
+    border-radius: .28571429rem;
+    border-top-left-radius: .285714rem;
+    border-top-right-radius: .285714rem;
+    border-bottom-right-radius: .285714rem;
+    border-bottom-left-radius: .285714rem;
+    font-family: sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-shadow: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    padding: 1px 6px;
+    border-image: initial;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+
+    .translation-dropdown-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex: 1;
+
+      .translation-dropdown-component {
+        display: inline-block;
+
+        .translation-dropdown-icon {
+          margin-left: 0 !important;
+          text-align: right;
+          color: #808080;
+        }
+      }
+
+      .translation-length {
+        font-size: .8em;
+        margin-left: 5px;
+        background-color: #808080;
+        border-radius: 100%;
+        color: #fff;
+        padding: 2px 5px;
+        margin-top: 1px;
+      }
+    }
+
+    .translate-hidden {
+      display: none !important;
+    }
+  }
+
+  .translation-dropdown-container .ui.dropdown .menu > .custom-item {
+    padding: 16px 4px !important;
+  }
+}
+

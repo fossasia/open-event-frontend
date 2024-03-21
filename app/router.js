@@ -39,6 +39,11 @@ Router.map(function() {
   this.route('organizer-app');
   this.route('logout');
   this.route('oauth', { path: '/oauth/callback' });
+  this.route('video-streams', function() {
+    this.route('view', { path: '/:video_stream_id' }, function() {
+      this.route('translation-channels', { path: '/translation-channels' });
+    });
+  });
   this.route('public', { path: '/e/:event_id' }, function() {
     this.route('sessions-index', { path: '/sessions' });
     this.route('sessions', { path: '/schedule' }, function() {
@@ -99,6 +104,7 @@ Router.map(function() {
         this.route('sponsors');
         this.route('sessions-speakers');
         this.route('attendee');
+        this.route('badge');
       });
       this.route('settings', function() {
         this.route('export');
@@ -142,6 +148,7 @@ Router.map(function() {
         this.route('edit', { path: '/:speaker_id/edit' });
       });
       this.route('documents');
+      this.route('tags');
       this.route('chat');
       this.route('videoroom', { path: '/video' }, function() {
         this.route('list', { path: '/:status' });

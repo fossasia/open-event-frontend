@@ -1,0 +1,77 @@
+<div class="badge-setting">
+  <form class="ui form">
+    <div class="field">
+      {{#if @headerText}}
+      <h2 class="badge-setting-title ">
+        {{@headerText}}
+      </h2>
+      {{/if}}
+    </div>
+    <div class="field">
+      <div class="two wide columns">
+        <div class="column">
+          <label class="ml-4">{{t 'Badge Size'}}</label>
+        </div>
+        <div class="column pl-4 pt-2 badge-size">
+          <UiDropdown @class="search selection drop-down-badge" @selected={{@data.badgeSize}} @onChange={{action @changeBadgeSize}} as
+            |execute mapper|>
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your badge size'}}</div>
+            <div class="menu">
+              {{#each this.badgeSize as |size|}}
+              <div class="item" data-value="{{map-value mapper size.name}}">
+                {{t-var size.name}}
+              </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="two wide columns">
+        <div class="column">
+          <label class="ml-4">{{t 'Badge Orientation'}}</label>
+        </div>
+        <div class="column pl-4 pt-2 badge-orientation">
+          <UiDropdown @class="search selection drop-down-badge" @selected={{@data.badgeOrientation}} @onChange={{action
+            (mut @data.badgeOrientation)}} as |execute mapper|>
+            <i class="dropdown icon"></i>
+            <div class="default text">{{t 'Select your badge orientation'}}</div>
+            <div class="menu">
+              {{#each this.badgeOrientation as |size|}}
+              <div class="item" data-value="{{map-value mapper size.name}}">
+                {{size.name}}
+              </div>
+              {{/each}}
+            </div>
+          </UiDropdown>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="two wide columns">
+        <div class="column">
+          <label class="ml-4">{{t 'Background'}}</label>
+        </div>
+        <div class="column pl-4 pt-2 pb-2">
+          <SpectrumColorPicker @color={{@data.badgeColor}} @allowEmpty={{true}} @preferredFormat={{"hex"}} onChange={{action 'onChangeBadgeColor'}}/>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="two wide columns">
+        <div class="column">
+          <label class="ml-4">{{t 'Background Image'}}</label>
+        </div>
+        <div class="column pl-4 pt-2 pb-2">
+          <Forms::Wizard::BadgeForms::BadgeImageUpload @needsCropper={{true}} @icon="image"
+            @hint={{t "Select badge background Image" }} @maxSizeInKb={{this.settings.imageSize}} 
+            @aspectRatio={{array getAspectRatio.width getAspectRatio.height}}
+            @helpText={{t "We recommend using at 240x180px or 240x360px (1:1 ratio) image" }} @data={{@data}}
+            @cropPanel={{array 650 600}}/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

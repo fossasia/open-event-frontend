@@ -1,7 +1,7 @@
 <span>
   {{t 'Show'}}
   <UiDropdown @class="inline" @onChange={{action (mut this.pageSize)}} @forceSelection={{true}}>
-    <div class="default text">{{this.pageSize}}</div>
+    <div class="default text">{{if (eq this.pageSize 0) 'All' this.pageSize}}</div>
     <i class="dropdown icon"></i>
     <div class="menu">
       {{#each this.sizes as |size|}}

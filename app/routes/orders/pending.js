@@ -1,8 +1,9 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-
+import { inject as service } from '@ember/service';
 @classic
 export default class PendingRoute extends Route {
+  @service globalData;
   titleToken(model) {
     const order = model.order.get('identifier');
     return this.l10n.t('Pending Order')  + ' - ' + order;
@@ -21,11 +22,50 @@ export default class PendingRoute extends Route {
       reload  : true
     });
     const eventDetails = await order.query('event', { include: 'tax' });
+    this.globalData.saveIdEvent(eventDetails.data.identifier);
+    this.globalData.setLogoUrl(eventDetails.data.logoUrl);
+    const tickets     = await order.query('tickets', {});
+
+    await tickets.forEach(ticket => {
+      ticket.query('attendees', {
+        filter: [{
+          name : 'order',
+          op   : 'has',
+          val  : {
+            name : 'id',
+            op   : 'eq',
+            val  : order.originalId
+          }
+        }]
+      });
+    });
+
+    const filterOptions = [
+      {
+        or: []
+      }
+    ];
+    tickets.forEach(ticket => {
+      filterOptions[0].or.pushObject({
+        name : 'form_id',
+        op   : 'eq',
+        val  : ticket.formID
+      });
+    });
+
+    filterOptions[0].or.pushObject({
+      name : 'is_required',
+      op   : 'eq',
+      val  : true
+    });
+
     return {
       order,
+      tickets,
       event : eventDetails,
       form  : await eventDetails.query('customForms', {
-        'page[size]' : 70,
+        filter       : filterOptions,
+        'page[size]' : 700,
         sort         : 'id'
       })
     };

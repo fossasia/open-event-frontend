@@ -11,7 +11,7 @@
           <h3>Unable to login to chat. Please contact the administrator</h3>
         {{/if}}
         {{#if this.token}}
-          <Public::Stream::Chat @token={{this.token}} @embedded={{true}} @event={{@event}} />
+          <Public::Stream::Chat @token={{this.token}} @embedded={{true}} @event={{@event}} @currentRoom={{@currentRoom}} />
         {{/if}}
       {{/if}}
     </div>

@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { set } from '@ember/object';
 import ENV from 'open-event-frontend/config/environment';
 import { allSettled } from 'rsvp';
@@ -31,8 +31,9 @@ export default class IndexRoute extends Route {
           ]
         }
       ],
-      cache  : true,
-      public : true
+      cache        : true,
+      public       : true,
+      'page[size]' : 0
     });
     const featuredSpeakersPromise = event.query('speakers', {
       filter: [

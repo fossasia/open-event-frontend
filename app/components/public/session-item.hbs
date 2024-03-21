@@ -1,15 +1,15 @@
 {{!-- template-lint-disable no-nested-interactive  --}}
-<UiAccordion class="segment p-0" style={{css background-color=@session.track.color border-color='lightgray'}}>
+<UiAccordion class="segment p-0" style={{css background-color=@session.track.color border-color='lightgray'}} {{did-insert this.setUpComponent}}>
   <div class="title p-4 pr-1" {{action 'hideSpeakerImage'}} role="button" style={{css color=(text-color @session.track.color)}}>
     <div class="ui">
       <h3 class="ui header d-flex" id="session-id-{{@session.id}}" style={{css color=(text-color @session.track.color)}}>
-        <div>
+        <div style="word-break: break-word;">
           {{@session.title}}
           <div class="sub header" style={{css color=(text-color @session.track.color) opacity=0.6}}>
             {{@session.sessionType.name}}
           </div>
         </div>
-        <div class="d-flex ml-auto" style="height: fit-content;">
+        <div class="d-flex ml-auto mobile-help-buttons" style="height: fit-content;">
           {{#if this.sessionEnded}}
             {{#if @session.videoUrl}}
               <button class="ui basic {{text-color @session.track.color 'basic' 'inverted'}} button no-wrap" style={{css color=(text-color @session.track.color 'grey' 'lightgrey')}} {{action this.goToVideo}}>

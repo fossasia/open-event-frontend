@@ -13,7 +13,7 @@ module('Integration | Component | public/speaker item', function(hooks) {
     photoUrl             : 'https://image.ibb.co/ffRqs5/avatar.png',
     website              : 'https://johndoe.com',
     city                 : 'Delhi',
-    gender               : 'female',
+    gender               : 'Woman',
     country              : 'India',
     positionOrganisation : 'FOSSASIA',
     isFeatured           : false,

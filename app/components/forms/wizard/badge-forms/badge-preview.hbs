@@ -1,0 +1,70 @@
+<div class="badge-setting badge-preview">
+  <div>
+    <form class="ui form form-preview">
+      <div class="field badge-preview-title">
+        {{#if @headerText}}
+        <h2 class="badge-setting-title">
+          {{@headerText}}
+        </h2>
+        {{/if}}
+      </div>
+      <div class="ui grid label-checkbox-sample">
+        <div class="two column row">
+          <div class="left floated column">
+            <UiCheckbox @class="slider mt-2 ml-2 blog-icon-preview" @checked={{@data.isShowingSampleData}} @onChange={{action (mut
+            @data.isShowingSampleData)}} />
+            <label class="ui">{{t 'Show Sample Data.'}}</label>
+          </div>
+          <div class="column floated right">
+            <button type="button" class="ui  blue button right floated mt-1 mr-2" disabled={{this.disableAddBadgeField}}
+              {{action @onPrintPreview @data.badgeID}}>
+              {{t 'Print Badge'}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="ui one column stackable center aligned page grid preview">
+    <div id="badge-image" class="bgImg ui raised segment header-section {{if @badgeHeight (concat 'h-' @badgeHeight)}} {{if @badgeWidth (concat 'w-' @badgeWidth)}}"
+      style={{badgeImgOrColor}}>
+      <div class="ui w-full h-full badge-body">
+          <div class="sample-text">
+              {{#if showSampleData}}
+                {{#each @fields as |_field|}}
+                  {{#if (not _field.is_deleted)}}
+                    {{#if (eq _field.custom_field 'QR')}}
+                    <div style={{_field.getFieldStyle}}>
+                        <QrCode class="badge-qr" @text="https://eventyay.com" @darkColor="#000" />
+                    </div>
+                    {{else}}
+                        <p class="field-style" style={{_field.getFieldStyle}}>
+                            {{_field.sample_text}}
+                        </p>
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
+              {{else}}
+                {{#each @fields as |_field|}}
+                  {{#if (not _field.is_deleted)}}
+                    {{#if (eq _field.custom_field 'QR')}}
+                    <div style={{_field.getFieldStyle}}>
+                        <QrCode class="badge-qr" @text="https://eventyay.com" @darkColor="#000" />
+                    </div>
+                    {{else}}
+                        <p class="field-style" style={{_field.getFieldStyle}}>
+                          {{#if _field.custom_field }}
+                            {{ rich-text-link  _field.custom_field}}
+                          {{/if}}
+                        </p>
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
+              {{/if}}
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>

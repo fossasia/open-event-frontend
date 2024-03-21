@@ -913,6 +913,7 @@ msgstr "Custom"
 
 #: app/components/forms/events/view/videoroom-form.hbs:34:28
 #: app/components/modals/add-room-modal.js:17:14
+#: app/templates/components/public/schedule-menu-filter.hbs:73:12
 msgid "Room"
 msgstr "Room"
 
@@ -1890,16 +1891,16 @@ msgid "If you hide this microlocation you will not be able to schedule sessions 
 msgstr "If you hide this microlocation you will not be able to schedule sessions in it. The location will still be available for online events without scheduled sessions, e.g. break-out or discussion rooms."
 
 #: app/components/forms/wizard/sponsors-step.js:18:23
-msgid "Please give your sponsor a name"
-msgstr "Please give your sponsor a name"
+msgid "Please give your supporter a name"
+msgstr "Please give your supporter a name"
 
 #: app/components/forms/wizard/sponsors-step.js:26:23
-msgid "Please upload sponsor's logo."
-msgstr "Please upload sponsor's logo."
+msgid "Please upload supporter's logo."
+msgstr "Please upload supporter's logo."
 
 #: app/components/forms/wizard/sponsors-step.js:45:26
-msgid "Please fill the required fields for existing sponsor items"
-msgstr "Please fill the required fields for existing sponsor items"
+msgid "Please fill the required fields for existing supporter items"
+msgstr "Please fill the required fields for existing supporter items"
 
 #: app/components/forms/wizard/wizard-footer.hbs:9:8
 msgid "Discard"
@@ -3063,6 +3064,7 @@ msgstr "Your session has been saved"
 
 #: app/controllers/events/view/sessions/list.js:68:26
 #: app/models/custom-form.js:37:18
+#: app/templates/components/public/schedule-menu-filter.hbs:59:12
 msgid "Track"
 msgstr "Track"
 
@@ -3456,12 +3458,12 @@ msgstr "Know your audience"
 #: app/templates/components/forms/wizard/sponsors-step.hbs:15:16
 #: app/templates/components/public/side-menu.hbs:41:87
 #: app/templates/components/public/side-menu.hbs:45:89
-msgid "Sponsors"
-msgstr "Sponsors"
+msgid "Supporters"
+msgstr "Supporters"
 
 #: app/mixins/event-wizard.js:36:22
-msgid "Advertise your sponsors"
-msgstr "Advertise your sponsors"
+msgid "Advertise your supporters"
+msgstr "Advertise your supporters"
 
 #: app/mixins/event-wizard.js:41:22
 #: app/routes/events/view/edit/sessions-speakers.js:9:11
@@ -3569,6 +3571,7 @@ msgid "Subtitle"
 msgstr "Subtitle"
 
 #: app/models/custom-form.js:38:18
+#: app/templates/components/public/schedule-menu-filter.hbs:87:12
 msgid "Session Type"
 msgstr "Session Type"
 
@@ -5475,6 +5478,7 @@ msgstr "Microlocations"
 #: app/templates/components/events/view/export/api-response.hbs:19:39
 #: app/templates/components/events/view/overview/speaker-session.hbs:21:20
 #: app/templates/public.hbs:93:16
+#: app/templates/components/public/schedule-menu-filter.hbs:118:8
 msgid "Tracks"
 msgstr "Tracks"
 
@@ -5529,8 +5533,8 @@ msgid "Website Generator"
 msgstr "Website Generator"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:6:4
-msgid "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
-msgstr "You would like to have a dedicated event website with all details, sponsors listing, speakers and sessions and the entire schedule?"
+msgid "You would like to have a dedicated event website with all details, supporters listing, speakers and sessions and the entire schedule?"
+msgstr "You would like to have a dedicated event website with all details, supporters listing, speakers and sessions and the entire schedule?"
 
 #: app/templates/components/events/view/overview/event-apps.hbs:7:4
 msgid "Simply use the website generator."
@@ -5577,8 +5581,8 @@ msgid "Information to be collected from attendees"
 msgstr "Information to be collected from attendees"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:60:14
-msgid "Details and logos of sponsors"
-msgstr "Details and logos of sponsors"
+msgid "Details and logos of supporters"
+msgstr "Details and logos of supporters"
 
 #: app/templates/components/events/view/overview/event-setup-checklist.hbs:73:12
 msgid "Session, Tracks & Microlocations"
@@ -5688,12 +5692,12 @@ msgid "Click here to add"
 msgstr "Click here to add"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
-msgid "No. of Sponsors"
-msgstr "No. of Sponsors"
+msgid "No. of SupportersSupporters"
+msgstr "No. of SupportersSupporters"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
-msgid "No Sponsor added yet."
-msgstr "No Sponsor added yet."
+msgid "No Supporter added yet."
+msgstr "No Supporter added yet."
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:2:22
 #: app/templates/components/group-card.hbs:45:30
@@ -5757,6 +5761,7 @@ msgstr "Locked"
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
 #: app/templates/public.hbs:121:16
+#: app/templates/components/public/schedule-menu-filter.hbs:147:8
 msgid "Session Types"
 msgstr "Session Types"
 
@@ -7040,6 +7045,7 @@ msgstr "Download Ticket"
 #: app/templates/components/modals/edit-user-modal.hbs:11:40
 #: app/templates/components/modals/publish-unpublish-modal.hbs:31:4
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:3:4
+#: app/utils/dictionary/boolean-complex.ts:5:15
 msgid "Yes"
 msgstr "Yes"
 
@@ -7047,6 +7053,7 @@ msgstr "Yes"
 #: app/templates/components/modals/confirm-modal.hbs:32:75
 #: app/templates/components/modals/edit-user-modal.hbs:10:40
 #: app/templates/components/ui-table/cell/events/view/sessions/cell-is-mail-sent.hbs:5:4
+#: app/utils/dictionary/boolean-complex.ts:9:15
 msgid "No"
 msgstr "No"
 
@@ -7753,16 +7760,16 @@ msgid "Collect Session Details"
 msgstr "Collect Session Details"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:27:8
-msgid "Sponsor"
-msgstr "Sponsor"
+msgid "Supporter"
+msgstr "Supporter"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:86:138
-msgid "Add another sponsor"
-msgstr "Add another sponsor"
+msgid "Add another supporter"
+msgstr "Add another supporter"
 
 #: app/templates/components/forms/wizard/sponsors-step.hbs:86:164
-msgid "Add sponsor"
-msgstr "Add sponsor"
+msgid "Add supporter"
+msgstr "Add supporter"
 
 #: app/templates/components/group-card.hbs:16:39 app/templates/public.hbs:86:76
 msgid "followers"
@@ -8675,8 +8682,8 @@ msgid "No Speaker Added Yet"
 msgstr "No Speaker Added Yet"
 
 #: app/templates/components/ui-table/cell/cell-sponsor-options.hbs:5:60
-msgid "Are you sure you would like to delete this Sponsor?"
-msgstr "Are you sure you would like to delete this Sponsor?"
+msgid "Are you sure you would like to delete this Supporter??"
+msgstr "Are you sure you would like to delete this Supporter??"
 
 #: app/templates/components/ui-table/cell/cell-tickets.hbs:6:9
 #: app/templates/events/view/tickets/index.hbs:25:34
@@ -9116,10 +9123,6 @@ msgstr "Create a New Access code"
 msgid "Edit an access code"
 msgstr "Edit an access code"
 
-#: app/templates/events/view/tickets/attendees.hbs:5:8
-msgid "View Attendees"
-msgstr "View Attendees"
-
 #: app/templates/events/view/tickets/attendees.hbs:13:14
 #: app/templates/events/view/tickets/orders.hbs:13:14
 msgid "Export As"
@@ -9208,6 +9211,7 @@ msgstr "View orders"
 #: app/templates/events/view/tickets/index.hbs:75:12
 #: app/templates/events/view/tickets/index.hbs:92:12
 #: app/templates/events/view/tickets/index.hbs:109:12
+#: app/templates/events/view/tickets/attendees.hbs:5:8
 msgid "View attendees"
 msgstr "View attendees"
 
@@ -9602,8 +9606,8 @@ msgid "Search engine listing"
 msgstr "Search engine listing"
 
 #: app/templates/pricing.hbs:156:12
-msgid "Sponsor listing on public event page"
-msgstr "Sponsor listing on public event page"
+msgid "Supporter listing on public event page"
+msgstr "Supporter listing on public event page"
 
 #: app/templates/pricing.hbs:160:12
 msgid "Attendee social sharing tools"
@@ -9626,6 +9630,7 @@ msgid "Clear Track Filter"
 msgstr "Clear Track Filter"
 
 #: app/templates/public.hbs:108:16
+#: app/templates/components/public/schedule-menu-filter.hbs:132:8
 msgid "Rooms"
 msgstr "Rooms"
 
@@ -9638,10 +9643,12 @@ msgid "Clear Session Type Filter"
 msgstr "Clear Session Type Filter"
 
 #: app/templates/public.hbs:133:18
+#: app/templates/components/public/schedule-menu-filter.hbs:160:12
 msgid "Select Session Type"
 msgstr "Select Session Type"
 
 #: app/templates/public.hbs:148:18
+#: app/templates/components/public/schedule-menu-filter.hbs:172:8
 msgid "Session Levels"
 msgstr "Session Levels"
 
@@ -9650,6 +9657,7 @@ msgid "Clear Session Level Filter"
 msgstr "Clear Session Level Filter"
 
 #: app/templates/public.hbs:160:20
+#: app/templates/components/public/schedule-menu-filter.hbs:185:12
 msgid "Select Session level"
 msgstr "Select Session level"
 
@@ -11595,3 +11603,217 @@ msgstr "Malaysian ringgit"
 #: app/utils/dictionary/payment.ts:261:13
 msgid "Swiss franc"
 msgstr "Swiss franc"
+
+#: app/utils/dictionary/age-groups.ts:5:9
+msgid "Under 18"
+msgstr "Under 18"
+
+#: app/utils/dictionary/age-groups.ts:41:9
+msgid "I prefer not to say"
+msgstr "I prefer not to say"
+
+#: app/utils/dictionary/home-wikis.ts:5:10
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: app/utils/dictionary/home-wikis.ts:8:10
+msgid "Wiktionary"
+msgstr "Wiktionary"
+
+#: app/utils/dictionary/home-wikis.ts:11:10
+msgid "Wikiquote"
+msgstr "Wikiquote"
+
+#: app/utils/dictionary/home-wikis.ts:14:10
+msgid "Wikinews"
+msgstr "Wikinews"
+
+#: app/utils/dictionary/home-wikis.ts:17:10
+msgid "Wikisource"
+msgstr "Wikisource"
+
+#: app/utils/dictionary/home-wikis.ts:20:10
+msgid "Wikibooks"
+msgstr "Wikibooks"
+
+#: app/utils/dictionary/home-wikis.ts:23:10
+msgid "Wikiversity"
+msgstr "Wikiversity"
+
+#: app/utils/dictionary/home-wikis.ts:26:10
+msgid "Wikivoyage"
+msgstr "Wikivoyage"
+
+#: app/utils/dictionary/home-wikis.ts:29:10
+msgid "Wikimedia Commons"
+msgstr "Wikimedia Commons"
+
+#: app/utils/dictionary/home-wikis.ts:32:10
+msgid "Wikidata"
+msgstr "Wikidata"
+
+#: app/utils/dictionary/home-wikis.ts:35:10
+msgid "Wikispecies"
+msgstr "Wikispecies"
+
+#: app/utils/dictionary/home-wikis.ts:38:10
+msgid "Meta-Wiki"
+msgstr "Meta-Wiki"
+
+#: app/models/custom-form.js:110:1
+msgid "What is your home wiki"
+msgstr "What is your home wiki"
+
+#: app/templates/components/forms/orders/order-form.hbs:192:48
+msgid "Select your home wiki"
+msgstr "Select your home wiki"
+
+#: app/models/custom-form.js:110:27
+msgid "What is your native language, or what language are you most fluent in?"
+msgstr "What is your native language, or what language are you most fluent in?"
+
+#: app/models/custom-form.js:111:27
+msgid "Are you fluent in any other of the following languages?"
+msgstr "Are you fluent in any other of the following languages?"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:5:12
+msgid "Filter by Tracks"
+msgstr "Filter by Tracks"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:17:12
+msgid "Filter by Rooms"
+msgstr "Filter by Rooms"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:31:12
+msgid "Filter by Session Types"
+msgstr "Filter by Session Types"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:44:12
+msgid "Filter by Session levels"
+msgstr "Filter by Session levels"
+
+#: app/templates/components/public/schedule-menu-filter.hbs:67:50
+#: app/templates/components/public/schedule-menu-filter.hbs:81:50
+#: app/templates/components/public/schedule-menu-filter.hbs:95:50
+#: app/templates/components/public/schedule-menu-filter.hbs:109:50
+msgid "[Clear Filter]"
+msgstr "[Clear Filter]"
+
+msgid "Consent of refund policy"
+msgstr "Consent of refund policy"
+
+msgid "I agree to the terms of the refund policy of the event."
+msgstr "I agree to the terms of the refund policy of the event."
+
+#: app/components/forms/wizard/custom-forms/table.hbs:56:25
+msgid "I agree to the terms of the"
+msgstr "I agree to the terms of the"
+
+#: app/components/forms/wizard/custom-forms/table.hbs:58:25
+msgid "and the"
+msgstr "and the"
+
+#: app/components/forms/wizard/custom-forms/table.hbs:58:25
+msgid "Universal Code of Conduct"
+msgstr "Universal Code of Conduct"
+
+#: app/components/forms/wizard/custom-forms/table.hbs:59:97
+msgid "Friendly Space Policy"
+msgstr "Friendly Space Policy"
+
+#: app/models/custom-form.js:113:28
+msgid "Code of conduct consent"
+msgstr "Code of conduct consent"
+
+#: app/utils/dictionary/boolean-complex.ts:13:15
+msgid "Not sure yet"
+msgstr "Not sure yet"
+
+#: app/components/forms/orders/order-form.js:256:19
+msgid "Please enter your wiki scholarship."
+msgstr "Please enter your wiki scholarship."
+
+#: app/models/custom-form.js:115:30
+msgid "Have you received a Wikimania scholarship?"
+msgstr "Have you received a Wikimania scholarship?"
+
+#: app/utils/dictionary/wiki-scholarship.ts:5:10
+msgid "No, I haven't"
+msgstr "No, I haven't"
+
+#: app/utils/dictionary/wiki-scholarship.ts:9:10
+msgid "Yes, from the Wikimedia Foundation"
+msgstr "Yes, from the Wikimedia Foundation"
+
+#: app/utils/dictionary/wiki-scholarship.ts:13:10
+msgid "Yes, from a Wikimedia affiliate"
+msgstr "Yes, from a Wikimedia affiliate"
+
+#: app/templates/components/forms/orders/order-form.hbs:209:48
+msgid "Select your answer"
+msgstr "Select your answer"
+
+#: app/models/custom-form.js:116:36
+msgid "Wikimania photo consent"
+msgstr "Wikimania photo consent"
+
+#: app/models/custom-form.js:117:36
+msgid "Wikimania email updates"
+msgstr "Wikimania email updates"
+
+#: app/templates/components/forms/orders/order-form.hbs:251:26
+msgid "I consent to the Wikimania"
+msgstr "I consent to the Wikimania"
+
+#: app/templates/components/forms/orders/order-form.hbs:252:91
+msgid "photo policy"
+msgstr "photo policy"
+
+#: app/templates/components/forms/orders/order-form.hbs:259:26
+msgid "I want to receive email updates about future Wikimania editions."
+msgstr "I want to receive email updates about future Wikimania editions."
+
+#: app/models/custom-form.js:106:27
+msgid "Which of these categories describe your gender identity? (check all that apply)"
+msgstr "Which of these categories describe your gender identity? (check all that apply)"
+
+#: app/utils/dictionary/genders.ts:5:12
+msgid "Man"
+msgstr "Man"
+
+#: app/utils/dictionary/genders.ts:8:12
+msgid "Woman"
+msgstr "Woman"
+
+#: app/utils/dictionary/genders.ts:11:12
+msgid "Transgender"
+msgstr "Transgender"
+
+#: app/utils/dictionary/genders.ts:14:12
+msgid "Non-binary"
+msgstr "Non-binary"
+
+#: app/utils/dictionary/genders.ts:17:12
+msgid "Genderqueer"
+msgstr "Genderqueer"
+
+#: app/utils/dictionary/genders.ts:20:12
+msgid "An identity not listed here"
+msgstr "An identity not listed here"
+
+#: app/templates/events/view/chat.hbs:32:39
+msgid "Activating a room chat adds a chat channel that is only available for the specific room."
+msgstr "Activating a room chat adds a chat channel that is only available for the specific room."
+
+#: app/templates/events/view/chat.hbs:39:39
+msgid "Activating the event chat for a room adds a chat channel that can be used across different rooms."
+msgstr "Activating the event chat for a room adds a chat channel that can be used across different rooms."
+
+#~ msgid "No. of Supporters"
+#~ msgstr "No. of Supporters"
+
+#~ msgid "View Attendees"
+#~ msgstr "View Attendees"
+
+#~ msgid "Are you sure you would like to delete this Supporter?"
+#~ msgstr "Are you sure you would like to delete this Supporter?"

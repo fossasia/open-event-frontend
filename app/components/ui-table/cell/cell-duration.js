@@ -1,7 +1,7 @@
 import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 @classic
 export default class CellButtons extends Component {

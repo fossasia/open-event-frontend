@@ -1,6 +1,6 @@
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import attr from 'ember-data/attr';
 import ModelBase from 'open-event-frontend/models/base';
 import { hasMany, belongsTo } from 'ember-data/relationships';
@@ -50,6 +50,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   isOneclickSignupEnabled   : attr('boolean', { defaultValue: false }),
   isSponsorsEnabled         : attr('boolean', { defaultValue: false }),
   isTicketFormEnabled       : attr('boolean', { defaultValue: false }),
+  isBadgesEnabled           : attr('boolean', { defaultValue: false }),
   isCfsEnabled              : attr('boolean', { defaultValue: false }),
   isVideoroomEnabled        : attr('boolean', { defaultValue: false }),
   isSessionsSpeakersEnabled : attr('boolean', { defaultValue: false }),
@@ -118,10 +119,12 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   location            : belongsTo('event-location'),
   sessions            : hasMany('session'),
   sponsors            : hasMany('sponsor'),
+  badges              : hasMany('badge'),
   exhibitors          : hasMany('exhibitor'),
   microlocations      : hasMany('microlocation'),
   tracks              : hasMany('track'),
   tickets             : hasMany('ticket'),
+  forms               : hasMany('custom-form-tickets'),
   orders              : hasMany('order'),
   socialLinks         : hasMany('social-link'),
   emailNotifications  : hasMany('email-notification'),
@@ -136,6 +139,7 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   user                : belongsTo('user', { inverse: 'events' }),
 
   customForms     : hasMany('custom-form'),
+  badgeForms      : hasMany('badge-form'),
   attendees       : hasMany('attendee'),
   orderStatistics : belongsTo('order-statistics-event'),
   roleInvites     : hasMany('role-invite'),
@@ -166,6 +170,8 @@ export default class Event extends ModelBase.extend(CustomPrimaryKeyMixin, {
   discountCodes: hasMany('discount-code'),
 
   accessCodes: hasMany('access-code'),
+
+  tags: hasMany('tag'),
 
   /**
    * Computed properties

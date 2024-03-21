@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { tracked } from '@glimmer/tracking';
 import { matchPropertyIn } from 'open-event-frontend/utils/text';
 import $ from 'jquery';
@@ -11,7 +11,7 @@ export default class extends Controller {
 
   @computed('model.microlocations')
   get microlocations() {
-    return this.model.microlocations.sortBy('position').filter(x => !x.hiddenInScheduler);
+    return this.model.microlocations?.sortBy('position').filter(x => !x.hiddenInScheduler);
   }
 
   @computed('model.unscheduled', 'filter')

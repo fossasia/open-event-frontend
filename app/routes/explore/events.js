@@ -2,7 +2,7 @@ import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { debounce } from 'lodash-es';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { hash } from 'rsvp';
 
 @classic

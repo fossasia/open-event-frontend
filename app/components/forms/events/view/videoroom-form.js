@@ -34,6 +34,14 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   @tracked previousVideo = '';
   @tracked showUpdateOptions = false;
   @tracked endCurrentMeeting = false;
+  @tracked translationChannels = [];
+  @tracked translationChannelsNew = [];
+  @tracked translationChannelsRemoved = [];
+
+  @computed
+  get currentLocale() {
+    return this.l10n.getLocale();
+  }
 
   get recordingColumns() {
     return [
@@ -83,6 +91,85 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   setRoom(room) {
     this.data.stream.rooms = [room];
     this.data.stream.name = room.name;
+  }
+
+  @action
+  switchLanguage(channel, language) {
+    channel.name = language;
+  }
+
+  async loadTranslationChannels() {
+    const videoStreamId = this.data.stream.get('id'); // Get the current video stream id from the route
+    if (videoStreamId) {
+      const responseData = await this.loader.load(`/video-streams/${videoStreamId}/translation_channels`);
+      this.translationChannels = responseData.data.map(channel => channel.attributes);
+      this.translationChannels = responseData.data.map(channel => ({
+        id: channel.id,
+        ...channel.attributes
+      }));
+    }
+  }
+
+  @action
+  async removeChannel(index, id) {
+    if (id) {
+      this.translationChannels = this.translationChannels.filter((_, i) => i !== index);
+      this.translationChannelsRemoved.push(id);
+    } else {
+      this.translationChannelsNew = this.translationChannelsNew.filter((_, i) => i !== index);
+    }
+  }
+
+  async deletedChannels() {
+    this.translationChannelsRemoved.forEach(id => this.loader.delete(`/translation_channels/${id}`));
+  }
+
+  @action
+  updateChannelName(index, event) {
+    const newChannels = [...this.translationChannels];
+    newChannels[index].name = event.target.value;
+    this.translationChannels = newChannels;
+  }
+
+  @action
+  updateChannelUrl(index, event) {
+    const newChannels = [...this.translationChannels];
+    newChannels[index].url = event.target.value;
+    this.translationChannels = newChannels;
+  }
+
+  @action
+  async updateChannel(index, id) {
+    const channel = this.translationChannels[index];
+    const payload = {
+      data: {
+        type       : 'translation_channel',
+        id         : `${channel.id}`,
+        attributes : {
+          name : channel.name,
+          url  : channel.url
+        },
+        relationships: {
+          video_stream: {
+            data: {
+              type : 'video_stream',
+              id   : this.data.stream.get('id')
+            }
+          },
+          channel: {
+            data: {
+              type : 'video_channel',
+              id   : this.data.stream.videoChannel.get('id')
+            }
+          }
+        }
+      }
+    };
+    try {
+      await this.loader.patch(`/translation_channels/${id}`, payload);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   getValidationRules() {
@@ -220,6 +307,12 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  async addYoutubePrivacy() {
+    this.data.stream.set('extra', { autoplay: true, loop: false });
+    this.data.stream.set('url', 'watch?v=');
+  }
+
+  @action
   async addVimeo() {
     this.data.stream.set('extra', { autoplay: true, loop: false });
     this.data.stream.set('url', '');
@@ -240,6 +333,9 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
       case 'youtube':
         this.addYoutube();
         break;
+      case 'youtube_privacy':
+        this.addYoutubePrivacy();
+        break;
       case 'vimeo':
         this.addVimeo();
         break;
@@ -250,6 +346,11 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
         this.addLibre(channel);
         break;
     }
+  }
+
+  @action
+  addChannel() {
+    this.translationChannelsNew = [...this.translationChannelsNew, { id: '', name: '', url: '' }];
   }
 
   @action
@@ -326,6 +427,37 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   @action
+  addNewChannel(channel) {
+    const payload = {
+      'data': {
+        'type'       : 'translation_channel',
+        'attributes' : {
+          'name' : channel.name,
+          'url'  : channel.url
+        },
+        'relationships': {
+          'video_stream': {
+            'data': {
+              'type' : 'video_stream',
+              'id'   : this.data.stream.get('id')
+            }
+          },
+          'channel': {
+            'data': {
+              'type' : 'video_channel',
+              'id'   : this.data.stream.videoChannel.get('id')
+            }
+          }
+        }
+      }
+    };
+    this.loader.post(
+      '/translation_channels',
+      payload
+    );
+  }
+
+  @action
   async submit(event) {
     event.preventDefault();
     this.onValid(async() => {
@@ -338,6 +470,17 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
             : false;
         }
         await this.data.stream.save();
+        for (const channel of this.translationChannelsNew) {
+          this.addNewChannel(channel);
+        }
+
+        this.translationChannels.forEach((channel, index) => {
+          this.updateChannel(index, channel.id);
+        });
+
+        if (this.translationChannelsRemoved.length > 0) {
+          this.deletedChannels();
+        }
         const saveModerators = this.data.stream.moderators
           .toArray()
           .map(moderator => {
@@ -425,6 +568,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
   }
 
   didInsertElement() {
+    this.loadTranslationChannels();
     if (this.data.stream.videoChannel.get('provider') === 'bbb') {
       if (this.data.stream.extra?.bbb_options) {
         this.set('actualBBBExtra', { ...this.data.stream.extra.bbb_options });
@@ -438,7 +582,7 @@ export default class VideoroomForm extends Component.extend(FormMixin) {
     }
     if (
       this.data.stream.extra === null
-      && ['vimeo', 'youtube'].includes(
+      && ['vimeo', 'youtube', 'youtube_privacy'].includes(
         this.data.stream.videoChannel.get('provider')
       )
     ) {

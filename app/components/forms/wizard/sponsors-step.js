@@ -15,7 +15,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please give your sponsor a name')
+              prompt : this.l10n.t('Please give your supporter a name')
             }
           ]
         },
@@ -23,7 +23,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
           rules: [
             {
               type   : 'empty',
-              prompt : this.l10n.t('Please upload sponsor\'s logo.')
+              prompt : this.l10n.t('Please upload supporter\'s logo.')
             }
           ]
         }
@@ -42,7 +42,7 @@ export default Component.extend(FormMixin, EventWizardMixin, {
         return (!sponsor.get('name'));
       });
       if (incorrect_sponsors.length > 0) {
-        this.notify.error(this.l10n.t('Please fill the required fields for existing sponsor items'), {
+        this.notify.error(this.l10n.t('Please fill the required fields for existing supporter items'), {
           id: 'req_field_sponsor'
         });
         this.set('isLoading', false);

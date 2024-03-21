@@ -1,0 +1,34 @@
+{{#if (eq @type "number")}}
+  <div class="rich-text-type-number" >
+    <Widgets::Forms::RichTextLink
+      @value={{@data.name}}/>
+  </div>
+{{else}}
+  <div class="rich-text-other" >
+    <Widgets::Forms::RichTextLink
+      @value={{@data.name}}/>
+  </div>
+{{/if}}
+<div style="width: 11rem">
+  <div class="ui hidden divider wrapper-button"></div>
+  <UiDropdown class="ui selection dropdown custom-form-dropdown-attendee" 
+    @selected={{@data.selectedLang}} 
+    @onChange={{action 'onChangeLanguage'}}
+    style="line-height: inherit; min-width: 11rem;">
+    <div class="default text">
+      {{ @data.selectedLang }}
+    </div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each this.languageList as |language|}}
+        <div class="item" data-value={{language.code}}>{{language.name}}</div>
+      {{/each}}
+    </div>
+  </UiDropdown>
+</div>
+<div>
+  <div class="ui hidden divider wrapper-button"></div>
+  <button class="ui compact icon negative button btn-delele-lang" data-tooltip="{{t 'Delete'}}" {{action (confirm (t "Are you sure you want to delete this?") (action 'onRemoveForm' ))}}>
+    <i class="trash box icon"></i>  
+  </button>
+</div>

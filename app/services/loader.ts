@@ -73,6 +73,9 @@ export default class Loader extends Service {
           } else if (config.isFile) {
             delete fetchOptions.headers['Content-Type'];
             fetchOptions.body = data;
+          } else if (url.includes('translation_channels')) {
+            fetchOptions.headers['Content-Type'] = 'application/vnd.api+json';
+            fetchOptions.body = JSON.stringify(data);
           } else {
             fetchOptions.headers['Content-Type'] = 'application/json';
             fetchOptions.body = JSON.stringify(data);
@@ -218,6 +221,29 @@ export default class Loader extends Service {
       xhr.onerror = reject;
       if (onProgressUpdate) {xhr.onprogress = onProgressUpdate}
       xhr.send(null);
+    });
+  }
+
+  downloadFileWithPost(urlPath: string,  data = null, config: Config = {}, method = 'POST'): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const { url, fetchOptions } = this.getFetchOptions(urlPath, method, data, config);
+      const xhr = new XMLHttpRequest();
+
+      xhr.responseType = 'blob';
+      xhr.open(method, url);
+      const headers = fetchOptions.headers || {};
+      for (const k in headers) {
+        xhr.setRequestHeader(k, fetchOptions.headers[k]);
+      }
+      xhr.send(fetchOptions.body)
+      xhr.onload =  (e: any) => {
+        if (e.target.response) {
+          resolve(e.target.response);
+        } else {
+          reject('Failed to download file.');
+        }
+      };
+      xhr.onerror = reject;
     });
   }
 }

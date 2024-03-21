@@ -8,6 +8,9 @@ export default class EventService extends Service {
   @service declare loader: Loader;
   @service declare authManager: AuthManagerService;
 
+  @tracked
+  currentEvent:any = null
+
   @tracked eventStreamMap = new Map<string, any>();
 
   async hasStreams(eventId: number): Promise<{exists: boolean; can_access: boolean;}> {
@@ -40,6 +43,41 @@ export default class EventService extends Service {
     return (await this.getSpeakersMeta(eventId)).data.length;
   }
 
+  async hasExhibitors(eventId: string): Promise<number> {
+    const exhibitorFilter = [{
+      name : 'status',
+      op   : 'eq',
+      val  : 'accepted'
+    }];
+    return (await this.loader.load(`/events/${eventId}/exhibitors?page[size]=1&filter=${JSON.stringify(exhibitorFilter)}`)).data.length;
+  }
+
+  async hasSessions(eventId: string): Promise<number> {
+
+    const filters = [{
+      or: [
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'confirmed'
+        },
+        {
+          name : 'state',
+          op   : 'eq',
+          val  : 'accepted'
+        }
+      ]
+    }];
+    return (await this.loader.load(`/events/${eventId}/sessions?cache=true&public=true&fields[session]=id&page[size]=1&filter=${JSON.stringify(filters)}`)).data.length;
+  }
+
+  setCurrentEvent(evt:any) {
+    this.currentEvent = evt;
+  }
+
+  getCurrentEvent() {
+    return this.currentEvent
+  }
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your services.

@@ -1,8 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-import moment from 'moment';
-
-let isDateFilterActive = Boolean(new URLSearchParams(location.search).get('date'));
+import moment from 'moment-timezone';
 
 @classic
 export default class SessionsRoute extends Route {
@@ -14,6 +12,9 @@ export default class SessionsRoute extends Route {
       refreshModel: true
     },
     track: {
+      refreshModel: true
+    },
+    language: {
       refreshModel: true
     },
     room: {
@@ -43,9 +44,10 @@ export default class SessionsRoute extends Route {
   async beforeModel() {
     const event = this.modelFor('public');
     const dates = await this.loader.load('/events/' + event.id + '/sessions/dates');
-    if (moment().isSameOrAfter(event.startsAt) && moment().isSameOrBefore(event.endsAt) && dates.includes(moment().format('YYYY-MM-DD')) && !isDateFilterActive) {
-      isDateFilterActive = true;
-      this.transitionTo('public.sessions', event.get('identifier'), { queryParams: { date: moment().format('YYYY-MM-DD') } });
+    if (new URLSearchParams(location.search).size === 0) {
+      if (moment().isSameOrAfter(event.startsAt) && moment().isSameOrBefore(event.endsAt) && dates.includes(moment().format('YYYY-MM-DD'))) {
+        this.transitionTo('public.sessions', event.get('identifier'), { queryParams: { date: moment().format('YYYY-MM-DD') } });
+      }
     }
   }
 
@@ -90,7 +92,8 @@ export default class SessionsRoute extends Route {
     }
 
     if (params.track) {
-      const tracks = params.track.split(':');
+      const delimiter = this.device.isMobile ? ',' : ':';
+      const tracks = params.track.split(delimiter).map(val => val.trim());
       filterOptions.push({
         name : 'track',
         op   : 'has',
@@ -98,10 +101,39 @@ export default class SessionsRoute extends Route {
           or: tracks.map(val => ({
             name : 'name',
             op   : 'eq',
-            val  : val.charAt(0) === ',' ? val.substring(1) : val
+            val  : val.startsWith(',') ? val.substring(1) : val
           }))
         }
       });
+    }
+
+    if (params.language) {
+      const conditionOr = [];
+      params.language.split(',').map(val => {
+        val = val.trim();
+        conditionOr.push({
+          name : 'language',
+          op   : 'eq',
+          val
+        });
+      });
+      if (conditionOr.length > 0) {
+        filterOptions.push(
+          {
+            and: [
+              {
+                or: conditionOr
+              }
+            ]
+          }
+        );
+      } else {
+        filterOptions.push({
+          name : 'language',
+          op   : 'eq',
+          val  : params.language
+        });
+      }
     }
 
     if (params.sessionType) {
@@ -147,7 +179,9 @@ export default class SessionsRoute extends Route {
     }
 
     if (params.room) {
-      const rooms = params.room.split(':');
+      const delimiter = this.device.isMobile ? ',' : ':';
+      const rooms = params.room.split(delimiter).map(val => val.trim());
+
       filterOptions.push({
         name : 'microlocation',
         op   : 'has',
@@ -155,7 +189,7 @@ export default class SessionsRoute extends Route {
           or: rooms.map(val => ({
             name : 'name',
             op   : 'eq',
-            val  : val.charAt(0) === ',' ? val.substring(1) : val
+            val  : val.startsWith(',') ? val.substring(1) : val
           }))
         }
       });
@@ -217,7 +251,7 @@ export default class SessionsRoute extends Route {
       session : await this.infinity.model('sessions', {
         include      : 'track,speakers,session-type,favourite,microlocation.video-stream',
         filter       : filterOptions,
-        sort         : params.sort || 'starts-at',
+        sort         : params.sort ? params.sort + ',id' : 'starts-at,id',
         perPage      : 6,
         startingPage : 1,
         perPageParam : 'page[size]',

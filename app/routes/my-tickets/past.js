@@ -1,6 +1,6 @@
 import classic from 'ember-classic-decorator';
 import Route from '@ember/routing/route';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 @classic
 export default class PastRoute extends Route {

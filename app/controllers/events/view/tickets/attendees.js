@@ -2,11 +2,18 @@ import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
 import { run } from '@ember/runloop';
+import { tracked } from '@glimmer/tracking';
 
 @classic
 export default class AttendeesController extends Controller {
   isLoadingcsv = false;
   isLoadingpdf = false;
+
+  @tracked
+  start_date = this.router.currentRoute.queryParams?.start_date;
+
+  @tracked
+  end_date = this.router.currentRoute.queryParams?.end_date;
 
   @action
   export(mode) {
@@ -23,6 +30,61 @@ export default class AttendeesController extends Controller {
       });
   }
 
+  @action
+  attendeeFilter(name) {
+    if (name === 'date') {
+      if (!this.start_date || !this.end_date) {
+        this.router.transitionTo('events.view.tickets.attendees.list', {
+          queryParams: {
+            filter: name
+          }
+        });
+        return;
+      }
+      this.router.transitionTo('events.view.tickets.attendees.list', {
+        queryParams: {
+          start_date : this.start_date,
+          end_date   : this.end_date,
+          filter     : name
+        }
+      });
+    } else {
+      this.router.transitionTo('events.view.tickets.attendees.list', {
+        queryParams: {
+          filter: name
+        }
+      });
+    }
+  }
+
+  @action
+  onChangeStartDate() {
+    if (!this.end_date) {
+      return;
+    }
+    this.router.transitionTo('events.view.tickets.attendees.list', {
+      queryParams: {
+        start_date : this.start_date,
+        end_date   : this.end_date,
+        filter     : 'date'
+      }
+    });
+  }
+
+  @action
+  onChangeEndDate() {
+    if (!this.start_date) {
+      return;
+    }
+    this.router.transitionTo('events.view.tickets.attendees.list', {
+      queryParams: {
+        start_date : this.start_date,
+        end_date   : this.end_date,
+        filter     : 'date'
+      }
+    });
+  }
+
   requestLoop(exportJobInfo, mode) {
     run.later(() => {
       this.loader
@@ -32,7 +94,7 @@ export default class AttendeesController extends Controller {
             window.location = exportJobStatus.result.download_url;
             this.notify.success(this.l10n.t('Download Ready'));
           } else if (exportJobStatus.state === 'WAITING') {
-            this.requestLoop(exportJobInfo);
+            this.requestLoop(exportJobInfo, mode);
             this.notify.alert(this.l10n.t('Task is going on.'));
           } else {
             this.notify.error(mode.toUpperCase() + ' ' + this.l10n.t('Export has failed.'));
