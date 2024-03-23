@@ -1,21 +1,25 @@
 # Mario Behling <mb@mariobehling.de>, 2023.
 # thegaro0310 <anhkhoi03102000@gmail.com>, 2023.
-# Hong Phuc Dang <hp@fossasia.org>, 2023.
+# Hong Phuc Dang <hp@fossasia.org>, 2023, 2024.
 # Khang On - TMA <odkhang@tma.com.vn>, 2023.
+# Nguyen Khanh Muoi <nkmuoilnbg@gmail.com>, 2024.
+# Diễm Quỳnh <quynhnguyen8803@gmail.com>, 2024.
+# Quyên Trần Lê Thục <quyentlt256@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: open-event-frontend\n"
 "Report-Msgid-Bugs-To: open-event@googlegroups.com\n"
 "POT-Creation-Date: 2019-01-31 16:31+0800\n"
-"PO-Revision-Date: 2023-07-04 04:49+0000\n"
-"Last-Translator: Khang On - TMA <odkhang@tma.com.vn>\n"
-"Language-Team: Vietnamese <https://hosted.weblate.org/projects/open-event/frontend/vi/>\n"
+"PO-Revision-Date: 2024-03-23 19:02+0000\n"
+"Last-Translator: Diễm Quỳnh <quynhnguyen8803@gmail.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/open-event/"
+"frontend/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Crowdin-Project: open-event-frontend\n"
 "X-Crowdin-Language: vi\n"
 "X-Crowdin-File: /development/translations/en.po\n"
@@ -101,7 +105,7 @@ msgstr "Hãy điền tên đăng nhập email của bạn"
 #: app/components/forms/session-speaker-form.js:191:23
 #: app/components/forms/user-profile-form.js:41:23
 msgid "Please enter a valid email address"
-msgstr "Vui lòng nhập một địa chỉ thư hợp lệ"
+msgstr "Vui lòng nhập một địa chỉ email hợp lệ"
 
 #: app/components/account/contact-info-section.js:35:23
 #: app/components/forms/user-payment-info-form.js:82:23
@@ -1023,7 +1027,7 @@ msgstr "Các diễn giả"
 #: app/templates/events/view/tickets.hbs:12:10
 #: app/templates/public/session/view.hbs:14:27
 msgid "Attendees"
-msgstr "Attendees"
+msgstr "Những người tham dự"
 
 #: app/components/forms/events/view/videoroom-form.hbs:170:69
 msgid "All logged in users"
@@ -1512,11 +1516,11 @@ msgstr "Vui lòng nhập họ của bạn"
 
 #: app/components/forms/user-profile-form.js:52:23
 msgid "Please enter a valid phone number"
-msgstr "Xin nhập một số điện thoại hợp lệ."
+msgstr "Xin nhập một số điện thoại hợp lệ"
 
 #: app/components/forms/user-profile-form.js:66:32
 msgid "Your profile has been updated"
-msgstr "Hồ sơ của bạn đã được cập nhật."
+msgstr "Hồ sơ của bạn đã được cập nhật"
 
 #: app/components/forms/wizard/basic-details-step.js:25:22
 msgid "Venue"
@@ -1912,7 +1916,7 @@ msgstr "Hủy"
 #: app/components/forms/wizard/wizard-footer.hbs:14:8
 #: app/templates/components/public/exhibition-view.hbs:6:16
 msgid "Previous"
-msgstr "Previous"
+msgstr "Trước đó"
 
 #: app/components/forms/wizard/wizard-footer.hbs:20:8
 #: app/templates/components/public/exhibition-view.hbs:9:16
@@ -2338,7 +2342,7 @@ msgstr "Buổi triển lãm"
 #: app/routes/public/stream/view/chat.ts:12:11
 #: app/templates/events/view.hbs:47:10
 msgid "Chat"
-msgstr ""
+msgstr "Trò chuyện"
 
 #: app/components/public/stream/side-panel.hbs:51:10
 #: app/routes/events/view/videoroom/list.js:8:11
@@ -2847,7 +2851,7 @@ msgstr "Trạng thái hóa đơn đã được thay đổi thành công thành {
 #: app/templates/components/forms/admin/content/pages-form.hbs:7:28
 #: app/templates/components/forms/events/view/edit-session.hbs:3:11
 msgid "Title"
-msgstr "Title"
+msgstr "Tiêu đề"
 
 #: app/controllers/admin/sessions/list.js:38:26
 #: app/controllers/events/view/sessions/list.js:52:26
@@ -3275,7 +3279,7 @@ msgstr "Biểu mẫu người tham dự của bạn đã được lưu"
 
 #: app/controllers/events/view/tickets/orders/list.js:80:28
 msgid "Order has been marked completed successfully."
-msgstr "Đơn hàng đã được đánh dấu là đã hoàn thành thành công."
+msgstr "Thao tác được ghi nhận là đã hoàn thành."
 
 #: app/controllers/events/view/tickets/orders/list.js:122:26
 msgid "Email confirmation has been sent to attendees successfully"
@@ -3421,7 +3425,7 @@ msgstr "Người dùng đã tồn tại."
 
 #: app/controllers/register.js:34:35
 msgid "Invalid email address."
-msgstr "Email không hợp lệ"
+msgstr "Email không hợp lệ."
 
 #: app/mixins/event-wizard.js:17:22
 #: app/routes/events/view/edit/basic-details.js:8:11
@@ -3593,7 +3597,7 @@ msgstr "Tóm tắt dài"
 #: app/templates/components/forms/admin/content/translation-form.hbs:8:32
 #: app/utils/dictionary/event.ts:41:71
 msgid "Language"
-msgstr "Language"
+msgstr "Ngôn ngữ"
 
 #: app/models/custom-form.js:42:18
 #: app/templates/components/forms/wizard/sponsors-step.hbs:45:17
@@ -3770,7 +3774,7 @@ msgstr "Chủ đề phụ"
 #: app/routes/admin/content/translations.js:7:11
 #: app/templates/admin/content.hbs:15:10
 msgid "Translations"
-msgstr ""
+msgstr "Phiên dịch"
 
 #: app/routes/admin/events/import.js:7:11 app/routes/events/import.js:6:11
 #: app/templates/admin/events.hbs:21:10 app/templates/events.hbs:17:12
@@ -3821,7 +3825,7 @@ msgstr "Đã xoá"
 #: app/templates/explore/events.hbs:21:8 app/templates/explore/groups.hbs:19:8
 #: app/templates/explore/groups.hbs:22:26
 msgid "Groups"
-msgstr "Groups"
+msgstr "Nhóm"
 
 #: app/routes/admin/messages.js:6:11 app/templates/admin.hbs:29:8
 #: app/templates/admin/index.hbs:109:10
@@ -3939,7 +3943,7 @@ msgstr "Thanh toán quản trị"
 #: app/templates/admin/settings.hbs:15:10
 #: app/templates/components/explore/side-bar.hbs:242:8
 msgid "Images"
-msgstr "Images"
+msgstr "Ảnh"
 
 #: app/routes/admin/settings/index.js:8:11
 #: app/templates/admin/settings.hbs:6:10
@@ -4840,7 +4844,7 @@ msgstr "Vai trò hệ thống"
 #: app/templates/admin/permissions/system-roles.hbs:20:12
 #: app/templates/components/modals/add-system-role-modal.hbs:18:8
 msgid "Panels"
-msgstr "Panels"
+msgstr "Bảng điều khiển"
 
 #: app/templates/admin/permissions/system-roles.hbs:29:10
 #: app/templates/admin/permissions/system-roles.hbs:38:10
@@ -5164,7 +5168,7 @@ msgstr "Truy cập Câu hỏi thường gặp của chúng tôi để tìm câu 
 
 #: app/templates/components/account/application-section.hbs:1:4
 msgid "Connect with Facebook"
-msgstr "Connect with Facebook"
+msgstr "Kết nối với Facebook"
 
 #: app/templates/components/account/danger-zone.hbs:5:8
 #: app/templates/components/account/danger-zone.hbs:22:8
@@ -5226,7 +5230,7 @@ msgstr "Không có sự kiện nào được tạo bởi người dùng"
 #: app/templates/components/account/password-section.hbs:4:6
 #: app/templates/components/account/password-section.hbs:7:102
 msgid "Current Password"
-msgstr "Mật khẩu hiện tại:"
+msgstr "Mật khẩu hiện tại"
 
 #: app/templates/components/account/password-section.hbs:17:6
 #: app/templates/components/account/password-section.hbs:20:94
@@ -5615,7 +5619,7 @@ msgstr "Tùy chỉnh các biểu mẫu đăng ký phiên và diễn giả"
 #: app/templates/components/events/view/overview/event-tickets.hbs:5:24
 #: app/templates/components/events/view/overview/speaker-session.hbs:5:24
 msgid "Summary"
-msgstr "Summary"
+msgstr "Bản tóm tắt"
 
 #: app/templates/components/events/view/overview/event-tickets.hbs:9:12
 msgid "Total tickets sold"
@@ -5696,7 +5700,7 @@ msgstr "Bấm vào đây để thêm"
 
 #: app/templates/components/events/view/overview/general-info.hbs:64:20
 msgid "No. of SupportersSupporters"
-msgstr ""
+msgstr "Không có nhà tài trợ"
 
 #: app/templates/components/events/view/overview/general-info.hbs:65:81
 msgid "No Supporter added yet."
@@ -5717,7 +5721,7 @@ msgstr "Thêm người"
 #: app/templates/components/events/view/overview/manage-roles.hbs:14:103
 #: app/templates/groups/team.hbs:22:111
 msgid "Invited"
-msgstr "Invited"
+msgstr "Được mời"
 
 #: app/templates/components/events/view/overview/manage-roles.hbs:20:12
 #: app/templates/groups/team.hbs:27:18
@@ -5759,7 +5763,7 @@ msgstr "Xếp hạng trung bình"
 
 #: app/templates/components/events/view/overview/session-view.hbs:57:49
 msgid "Locked"
-msgstr "Locked"
+msgstr "Đã khóa"
 
 #: app/templates/components/events/view/overview/speaker-session.hbs:9:20
 #: app/templates/components/forms/wizard/sessions-speakers-step.hbs:101:30
@@ -5850,7 +5854,7 @@ msgstr "Bắt đầu"
 #: app/templates/components/widgets/forms/ticket-input.hbs:151:56
 #: app/templates/components/widgets/forms/ticket-input.hbs:353:58
 msgid "Ends"
-msgstr "Ends"
+msgstr "Kết thúc"
 
 #: app/templates/components/explore/side-bar.hbs:122:8
 msgid "Categories"
@@ -5944,7 +5948,7 @@ msgstr "Kết nối với chúng tôi"
 #: app/templates/components/footer-main.hbs:73:43
 #: app/templates/components/forms/admin/content/social-links-form.hbs:46:11
 msgid "YouTube"
-msgstr ""
+msgstr "YouTube"
 
 #: app/templates/components/footer-main.hbs:78:49
 msgid "Google Groups"
@@ -5984,7 +5988,7 @@ msgstr "Tiêu đề của trang"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:11:28
 msgid "Path"
-msgstr "Path"
+msgstr "Đường"
 
 #: app/templates/components/forms/admin/content/pages-form.hbs:12:73
 msgid "URL for the Page"
@@ -6500,7 +6504,7 @@ msgstr "Dàn dựng"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:15:20
 msgid "Production"
-msgstr "Production"
+msgstr "Sản phẩm"
 
 #: app/templates/components/forms/admin/settings/system-form.hbs:18:4
 #: app/templates/components/forms/admin/settings/system-form.hbs:25:6
@@ -6795,7 +6799,7 @@ msgstr "lưu trữ trong"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:14:18
 msgid "Google Storage"
-msgstr "Google Storage"
+msgstr "Cửa hàng Google"
 
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:26:6
 #: app/templates/components/forms/admin/settings/system/storage-option.hbs:76:6
@@ -6954,7 +6958,7 @@ msgstr "Sự kiện nhóm"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:16:30
 msgid "Group name"
-msgstr "Tên nhóm:"
+msgstr "Tên nhóm"
 
 #: app/templates/components/forms/group/group-settings-form.hbs:24:13
 msgid "About"
@@ -8027,7 +8031,7 @@ msgstr "Quản trị viên bán hàng"
 
 #: app/templates/components/modals/event-delete-modal.hbs:2:2
 msgid "Are you sure you would like to delete this event?"
-msgstr "Bạn có chắc muốn xóa sự kiện này không"
+msgstr "Bạn có chắc muốn xóa sự kiện này không?"
 
 #: app/templates/components/modals/event-delete-modal.hbs:4:4
 msgid "Deleting the event will delete all the data associated with it."
@@ -8600,7 +8604,7 @@ msgstr "Gửi lại thư hóa đơn"
 #: app/templates/components/ui-table/cell/admin/users/cell-actions.hbs:16:64
 #: app/templates/components/ui-table/cell/admin/users/cell-first-name.hbs:18:64
 msgid "Are you sure you would like to delete this user?"
-msgstr "Bạn có chắc muốn xóa sự kiện này không"
+msgstr "Bạn có chắc muốn xóa người dùng này không?"
 
 #: app/templates/components/ui-table/cell/admin/users/cell-event-roles.hbs:3:4
 msgid "User has administrative privileges, he has privileges of the following roles for all the events:"
@@ -9082,7 +9086,7 @@ msgstr "Sự kiện chuyển nhượng"
 
 #: app/templates/events/view/settings/options.hbs:26:10
 msgid "Delete this event"
-msgstr "Xóa sự kiện này?"
+msgstr "Xóa sự kiện này"
 
 #: app/templates/events/view/settings/options.hbs:29:10
 msgid "Once you delete an event, you will lose all the data related to this event."
@@ -10564,7 +10568,7 @@ msgstr "Thụy Điển"
 
 #: app/utils/dictionary/demography.ts:802:11
 msgid "Singapore"
-msgstr ""
+msgstr "Singapore"
 
 #: app/utils/dictionary/demography.ts:806:11
 msgid "Saint Helena"
@@ -11121,7 +11125,7 @@ msgstr "DIY"
 
 #: app/utils/dictionary/event.ts:64:69
 msgid "Drawing & Painting"
-msgstr "Vẽ & Vẽ tranh"
+msgstr "Vẽ & Đổ màu"
 
 #: app/utils/dictionary/event.ts:65:4
 msgid "Knitting"
@@ -11461,7 +11465,7 @@ msgstr "Cuối tuần này"
 
 #: app/utils/dictionary/filters.js:24:13
 msgid "Next week"
-msgstr "Next week"
+msgstr "Tuần tới"
 
 #: app/utils/dictionary/filters.js:28:13
 msgid "This Month"
@@ -11473,7 +11477,7 @@ msgstr "Ngày tùy chỉnh"
 
 #: app/utils/dictionary/licenses.ts:12:15
 msgid "Attribution-NonCommercial-NoDerivs"
-msgstr "Attribution-NonCommercial-NoDerivs"
+msgstr "Ghi công-Phi thương mại-NoDerivs"
 
 #: app/utils/dictionary/licenses.ts:18:15
 msgid "Attribution-NonCommercial"
@@ -11489,11 +11493,11 @@ msgstr "Ghi công"
 
 #: app/utils/dictionary/licenses.ts:36:15
 msgid "All rights reserved"
-msgstr "Đã đăng ký bản quyền."
+msgstr "Đã đăng ký bản quyền"
 
 #: app/utils/dictionary/licenses.ts:42:15
 msgid "Attribution-NoDerivs"
-msgstr "Attribution-NoDerivs"
+msgstr "Ghi công-NoDerivs"
 
 #: app/utils/dictionary/licenses.ts:48:15
 msgid "Public Domain Work"
@@ -11501,11 +11505,11 @@ msgstr "Công việc trên miền công cộng"
 
 #: app/utils/dictionary/licenses.ts:54:15
 msgid "Attribution-NonCommercial-ShareAlike"
-msgstr "Attribution-NonCommercial-ShareAlike"
+msgstr "Ghi công-Phi thương mại-ShareAlike"
 
 #: app/utils/dictionary/licenses.ts:60:15
 msgid "Attribution-ShareAlike"
-msgstr "Attribution-ShareAlike"
+msgstr "Ghi công-ShareAlike"
 
 #: app/utils/dictionary/payment.ts:21:13
 msgid "Polish zloty"
@@ -11726,7 +11730,7 @@ msgstr "Chính sách không gian thân thiện"
 
 #: app/models/custom-form.js:113:28
 msgid "Code of conduct consent"
-msgstr "đồng ý quy tắc ứng xử "
+msgstr "đồng ý quy tắc ứng xử"
 
 #: app/utils/dictionary/boolean-complex.ts:13:15
 msgid "Not sure yet"
