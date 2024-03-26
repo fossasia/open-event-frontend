@@ -122,7 +122,7 @@ export default class extends Route.extend(EmberTableRouteMixin) {
 
 
     let queryString = {
-      include        : 'user,order',
+      include        : 'user,ticket',
       filter         : filterOptions,
       'page[size]'   : params.per_page,
       'page[number]' : params.page || 1
@@ -134,9 +134,11 @@ export default class extends Route.extend(EmberTableRouteMixin) {
       this.addDefaultValue(tags);
     }
     const attendees = await this.asArray(await eventDetails.query('attendees', queryString));
+    const orders = await this.asArray(await eventDetails.query('orders', {}));
     return {
       tags,
-      attendees
+      attendees,
+      orders
     };
   }
 }
