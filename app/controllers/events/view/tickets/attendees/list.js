@@ -43,13 +43,6 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         isSortable      : true
       },
       {
-        name            : 'Ticket Name',
-        width           : 80,
-        valuePath       : 'ticket.name',
-        headerComponent : 'tables/headers/sort',
-        isSortable      : true
-      },
-      {
         name            : 'Tags',
         width           : 100,
         valuePath       : 'tagId',
