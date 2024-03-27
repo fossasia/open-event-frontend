@@ -166,6 +166,7 @@ export default class PublicStreamVideoStream extends Component<Args> {
   async setupRoomChat(stream:any) {
     this.currentRoom = stream;
     this.shown = false;
+fix-contributor-guidlines
     this.eventCheckIn(this.args.event.identifier, stream.microlocationId)
   }
 
