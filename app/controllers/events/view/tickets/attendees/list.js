@@ -25,14 +25,13 @@ export default class extends Controller.extend(EmberTableControllerMixin) {
         },
         options: {
           tags: this.model.tags
-
         }
       },
       {
         name            : 'Order',
         width           : 190,
-        valuePath       : 'order',
-        extraValuePaths : ['user'],
+        valuePath       : 'order.identifier',
+        extraValuePaths : ['order'],
         cellComponent   : 'ui-table/cell/events/view/tickets/attendees/cell-order'
       },
       {

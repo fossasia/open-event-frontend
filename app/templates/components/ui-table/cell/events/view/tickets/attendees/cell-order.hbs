@@ -1,20 +1,22 @@
-<div class="ui tiny header">
-  <LinkTo @route="orders.view" @model={{this.record.identifier}}>{{this.record.identifier}}</LinkTo>
-  <div class="ui basic mini {{order-color this.record.status}} label attendees-margin">
-    {{this.record.status}}
+{{#if this.record}}
+  <div class="ui tiny header">
+    <LinkTo @route="orders.view" @model={{this.extraRecords.order.identifier}}>{{this.extraRecords.order.identifier}}</LinkTo>
+    <div class="ui basic mini {{order-color this.extraRecords.order.status}} label attendees-margin">
+      {{this.extraRecords.order.status}}
+    </div>
+    <div class="sub header">
+      {{#if this.extraRecords.order.paidVia}}
+        <span class="weight-800">
+          {{t 'Payment via'}} {{this.extraRecords.order.paidVia}}
+        </span>
+      {{/if}}
+      {{#if (eq this.extraRecords.order.status 'completed')}}
+        {{general-date this.extraRecords.order.completedAt 'date-time-short'}}
+        {{moment-from-now this.extraRecords.order.completedAt}}
+      {{else}}
+        {{general-date this.extraRecords.order.createdAt 'date-time-short'}}
+        {{moment-from-now this.extraRecords.order.createdAt}}
+      {{/if}}
+    </div>
   </div>
-  <div class="sub header">
-    {{#if this.record.paidVia}}
-      <span class="weight-800">
-        {{t 'Payment via'}} {{this.record.paidVia}}
-      </span>
-    {{/if}}
-    {{#if (eq this.record.status 'completed')}}
-      {{general-date this.record.completedAt 'date-time-short'}}
-      {{moment-from-now this.record.completedAt}}
-    {{else}}
-      {{general-date this.record.createdAt 'date-time-short'}}
-      {{moment-from-now this.record.createdAt}}
-    {{/if}}
-  </div>
-</div>
+{{/if}}
