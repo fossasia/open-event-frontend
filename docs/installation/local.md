@@ -23,6 +23,19 @@ cd open-event-frontend
 ```
 
 - `yarn`
+## Important Note:
+- **Only for Debian-based users (like Ubuntu)** : If you encounter an error when trying to run `yarn`, it's due to a conflict with the cmdtest package. You can resolve this by removing cmdtest and installing yarn using apt. Additionally, if you encounter an error due to Node.js version incompatibility, you can use nvm (Node Version Manager) to install and switch to the compatible Node.js version. Here are the steps:
+1. Install nvm by running the following command: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash`
+2. Source nvm to use it in the current session: `source ~/.nvm/nvm.sh`
+3. Install and use a compatible version of Node.js (for example, 14.18.1): `nvm install 14.18.1`
+                                                                           `nvm use 14.18.1`
+Also, If you encounter an error indicating that your `.npmrc` file has a globalconfig and/or a prefix setting, which are incompatible with nvm,
+1. run the following command: `nvm use --delete-prefix v14.18.1`
+2. Remove cmdtest: `sudo apt remove cmdtest`
+3. Install yarn: `sudo apt install yarn`
+
+You're good to go. Now, continue with the normal installation.
+
 - `cp .env.example .env`
 - `yarn l10n:generate`
 

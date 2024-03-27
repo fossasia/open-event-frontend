@@ -166,11 +166,29 @@ export default class PublicStreamVideoStream extends Component<Args> {
   async setupRoomChat(stream:any) {
     this.currentRoom = stream;
     this.shown = false;
+fix-contributor-guidlines
+    this.eventCheckIn(this.args.event.identifier, stream.microlocationId)
   }
 
   @action
   hideStreamYard() {
     this.selectingLanguage.setStreamYardVisibility(false);
+  }
+
+  async eventCheckIn(event_identifier: string, microlocation_id: number) {
+    try {
+      const data:any = {
+        'check_in_type' : 'room',
+        microlocation_id,
+        'is_check_in'   : true
+      };
+      if (microlocation_id === undefined) {
+        data.check_in_type = 'virtual-room'
+      }
+      await this.loader.post(`events/${event_identifier}/virtual/check-in`, data);
+    } catch (e) {
+      // Ignore error to prevent stackoverflow
+    }
   }
 
 }
