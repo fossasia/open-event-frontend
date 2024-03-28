@@ -5,7 +5,7 @@ import { filterBy } from '@ember/object/computed';
 import Controller from '@ember/controller';
 import moment from 'moment-timezone';
 import { tracked } from '@glimmer/tracking';
-
+import { later } from '@ember/runloop';
 
 @classic
 export default class ApplicationController extends Controller {
@@ -51,7 +51,9 @@ export default class ApplicationController extends Controller {
   @action
   hideCookieMessage() {
     this.getCookieSeen(true);
-    this.showCookie = false;
+    later(this, () => {
+      this.showCookie = false;
+    }, 2000);
   }
 
   @action
