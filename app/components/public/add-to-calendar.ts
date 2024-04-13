@@ -12,7 +12,7 @@ interface Args {
   location: string
 }
 
-export default class AddToCalender extends Component<Args> {
+export default class AddToCalendar extends Component<Args> {
 
   @service loader: any;
 

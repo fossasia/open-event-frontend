@@ -1,4 +1,4 @@
-<div class="ui list basic segment m-0 pl-0 pr-0 pb-0 add-to-calender-join-video">
+<div class="ui list basic segment m-0 pl-0 pr-0 pb-0 add-to-calendar-join-video">
   {{#if @hasStreams}}
     <div class="btn-join-video-mobile">
       <button class="{{unless @showVideo 'primary' 'basic'}} ui button no-wrap" {{action this.openPanel}}>
@@ -6,7 +6,7 @@
         {{t 'Join Live Event'}}
       </button>
     </div>
-    <div class="btn-add-to-calender-mobile">
+    <div class="btn-add-to-calendar-mobile">
       <UiDropdown class="ui floating dropdown button w-full text center aligned pl-4">
           <i class="add to calendar icon"></i>
           {{t 'Add to Calendar'}}

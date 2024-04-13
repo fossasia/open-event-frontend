@@ -20,7 +20,7 @@ interface Args {
 }
 
 
-export default class AddToCalender extends Component<Args> {
+export default class AddToCalendar extends Component<Args> {
   @service
   authManager!: AuthManagerService;
 
