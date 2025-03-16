@@ -4,7 +4,8 @@ import Component from '@glimmer/component';
 const locales = {
   'de'      : 'de-DE',
   'zh_Hans' : 'zh-CN',
-  'zh_Hant' : 'zh-TW'
+  'zh_Hant' : 'zh-TW',
+  'fa_IR'   : 'fa-IR'
 };
 
 export default class CurrencyAmount extends Component {

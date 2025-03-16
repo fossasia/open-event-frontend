@@ -13,7 +13,7 @@ const dateFormats = {
   'tz'                 : ' '
 };
 
-const locales12Hours = new Set(['en', 'bn', 'hi', 'id', 'ja', 'run', 'th', 'vi', 'ko']);
+const locales12Hours = new Set(['en', 'bn', 'fa_IR', 'hi', 'id', 'ja', 'run', 'th', 'vi', 'ko']);
 
 export function generalDate(params, { tz }) {
   const timezone = tz || moment.tz.guess();

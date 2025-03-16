@@ -16,7 +16,8 @@ export const LANGUAGE_CODE_ENUM = {
   ARABIC              : 'ar',
   HINDI               : 'hi',
   SWEDISH             : 'sv',
-  NORWEGIAN           : 'nb_NO'
+  NORWEGIAN           : 'nb_NO',
+  PERSIAN             : 'fa_IR'
 }
 
 export const translateLanguages = [
@@ -43,6 +44,11 @@ export const translateLanguages = [
   {
     name      : 'Español',
     code      : LANGUAGE_CODE_ENUM.SPANISH,
+    isChecked : false
+  },
+  {
+    name      : 'قارسی',
+    code      : LANGUAGE_CODE_ENUM.PERSIAN,
     isChecked : false
   },
   {

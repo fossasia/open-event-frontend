@@ -20,6 +20,11 @@ export const fluentLanguage = [
     isChecked : false
   },
   {
+    name      : 'فارسی',
+    code      : 'fa-IR',
+    isChecked : false
+  },
+  {
     name      : 'Français',
     code      : 'fr-FR',
     isChecked : false

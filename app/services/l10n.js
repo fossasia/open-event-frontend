@@ -21,6 +21,7 @@ export default class L10nService extends L10n {
       'de'      : 'Deutsch',
       'en'      : 'English',
       'es'      : 'Español',
+      'fa_IR'   : 'فارسی',
       'fr'      : 'Français',
       'hi'      : 'हिंदी',
       'hr'      : 'Hrvatski',
@@ -82,6 +83,8 @@ export default class L10nService extends L10n {
         locale = 'zh-tw';
       } else if (locale === 'nb_NO') {
         locale = 'nb';
+      } else if (locale === 'fa_IR') {
+        locale = 'fa-IR';
       }
 
       getScript(`/assets/moment-locales/${locale}.js`)
