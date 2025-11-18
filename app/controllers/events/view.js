@@ -1,28 +1,24 @@
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
-export default class extends Controller {
+export default class EventsViewController extends Controller {
+  @service eventCopier;
+  isCopying = false;
+
   @action
-  copyEvent() {
-    this.set('isCopying', true);
-    this.loader
-      .post(`events/${this.model.id}/copy`, {})
-      .then(copiedEvent => {
-        this.transitionToRoute('events.view.edit', copiedEvent.identifier);
-        this.notify.success(this.l10n.t('Event copied successfully'),
-          {
-            id: 'event_copy_succ'
-          });
-      })
-      .catch(e => {
-        console.error('Error while copying event', e);
-        this.notify.error(this.l10n.t('Copying of event failed'),
-          {
-            id: 'event_copy_fail'
-          });
-      })
-      .finally(() => {
-        this.set('isCopying', false);
-      });
+  async copyEvent() {
+    this.isCopying = true;
+
+    try {
+      const copiedEvent = await this.eventCopier.copy(this.model.id);
+      this.transitionToRoute('events.view.edit', copiedEvent.identifier);
+      this.eventCopier.success();
+    } catch (e) {
+      console.error('Error copying event', e);
+      this.eventCopier.error();
+    } finally {
+      this.isCopying = false;
+    }
   }
 }
