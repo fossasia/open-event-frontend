@@ -12,7 +12,8 @@
 [![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 [![Twitter Follow](https://img.shields.io/twitter/follow/eventyay.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/eventyay)
 
-The front end for the **Open Event Server**
+This repository contains the frontend application for the **Open Event Server**.
+
 
 **API Documentation:**
 
@@ -37,7 +38,8 @@ The Open Event Frontend can be easily deployed on a variety of platforms. Detail
 
 **Note**: Please follow [installation steps](/docs/installation/local.md#steps) listed above carefully before running
 
-Unfortunately, no one reads the note above, so please just run the following commands when setting up for the first time:
+Many users miss the note above, so please run the following commands when setting up the project for the first time:
+
 
 - `yarn`
 - `cp .env.example .env`
