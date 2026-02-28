@@ -129,3 +129,18 @@ When you file a feature request or when you are submitting a bug report to the [
 This project is currently licensed under the [Apache License version 2.0](LICENSE).
 
 To obtain the software under a different license, Please contact **[FOSSASIA](https://blog.fossasia.org/contact/)**.
+
+
+---
+
+### ✅ Pull Request Checklist
+
+Before submitting your Pull Request, please ensure the following:
+
+- [ ] **Branch:** Your changes are made on a new branch (not `development`).
+- [ ] **Linting:** Your code follows the project's style guidelines.
+- [ ] **Tests:** All tests pass locally (`yarn test`).
+- [ ] **Description:** You have clearly described the changes and linked any related issues.
+- [ ] **Screenshots:** For UI changes, you have included before/after screenshots.
+
+Following this checklist helps maintainers review your contribution faster! 🚀
