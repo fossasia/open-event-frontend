@@ -23,6 +23,19 @@ The front end for the **Open Event Server**
 
 Please join our [Mailing list](https://groups.google.com/forum/#!forum/open-event) or [chat channel](https://gitter.im/fossasia/open-event-frontend) to get in touch with the developers.
 
+## 🌟 First-Time Contributors Guide
+
+Welcome to **Open Event Frontend**! 🎉  
+If this is your first time contributing to open source, follow these steps:
+
+### 1️⃣ Fork the Repository
+Click the **Fork** button on the top right of this page.
+
+### 2️⃣ Clone Your Fork
+```bash
+git clone [https://github.com/](https://github.com/)<your-username>/open-event-frontend.git
+cd open-event-frontend
+
 ## Installation
 
 The Open Event Frontend can be easily deployed on a variety of platforms. Detailed platform specific instructions have been provided below.
