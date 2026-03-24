@@ -1,14 +1,24 @@
-<Tables::Default
-  @columns={{this.columns}}
-  @rows={{this.model.data}}
-  @currentPage={{this.page}}
-  @pageSize={{this.per_page}}
-  @searchQuery={{this.search}}
-  @sortBy={{this.sort_by}}
-  @sortDir={{this.sort_dir}}
-  @metaData={{this.model.meta}}
-  @filterOptions={{this.filterOptions}}
-  @widthConstraint="eq-container"
-  @resizeMode="fluid"
-  @fillMode="equal-column"
-  @classEvent="table-event-live"/>
+{{#if (and this.model.data (gt this.model.data.length 0))}}
+  <Tables::Default
+    @columns={{this.columns}}
+    @rows={{this.model.data}}
+    @currentPage={{this.page}}
+    @pageSize={{this.per_page}}
+    @searchQuery={{this.search}}
+    @sortBy={{this.sort_by}}
+    @sortDir={{this.sort_dir}}
+    @metaData={{this.model.meta}}
+    @filterOptions={{this.filterOptions}}
+    @widthConstraint="eq-container"
+    @resizeMode="fluid"
+    @fillMode="equal-column"
+    @classEvent="table-event-live"
+  />
+{{else}}
+  <div class="ui placeholder segment">
+    <div class="ui icon header">
+      <i class="calendar outline icon"></i>
+      No events available
+    </div>
+  </div>
+{{/if}}
