@@ -1,5 +1,5 @@
-{{#if (and this.model.sessions.data (gt this.model.sessions.data.length 0))}}
-  <div class="sixteen wide column session-list {{if (lte this.model.sessions.data.length 1) 'reset-overflow'}}">
+<div class="sixteen wide column session-list {{if (lte this.model.sessions.data.length 1) 'reset-overflow'}}">
+  {{#if (and this.model.sessions this.model.sessions.data (gt this.model.sessions.data.length 0))}}
     <Tables::Default
       @columns={{this.columns}}
       @rows={{this.model.sessions.data}}
@@ -14,12 +14,12 @@
       @widthConstraint="eq-container"
       @resizeMode="fluid"
       @fillMode="equal-column" />
-  </div>
-{{else}}
-  <div class="ui placeholder segment">
-    <div class="ui icon header">
-      <i class="calendar outline icon"></i>
-      No sessions available
+  {{else}}
+    <div class="ui placeholder segment">
+      <div class="ui icon header">
+        <i class="calendar outline icon"></i>
+        No sessions available
+      </div>
     </div>
-  </div>
-{{/if}}
+  {{/if}}
+</div>
