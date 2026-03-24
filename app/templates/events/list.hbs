@@ -1,4 +1,4 @@
-{{#if this.model.data.length}}
+{{#if (and this.model.data (gt this.model.data.length 0))}}
   <Tables::Default
     @columns={{this.columns}}
     @rows={{this.model.data}}
