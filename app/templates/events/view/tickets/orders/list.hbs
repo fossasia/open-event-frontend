@@ -1,15 +1,22 @@
-<div class="sixteen column wide">
-  <Tables::Default
-    @columns={{this.columns}}
-    @rows={{this.rows}}
-    @currentPage={{this.page}}
-    @pageSize={{this.per_page}}
-    @searchQuery={{this.search}}
-    @sortBy={{this.sort_by}}
-    @sortDir={{this.sort_dir}}
-    @metaData={{this.model.meta}}
-    @filterOptions={{this.filterOptions}}
-    @widthConstraint="eq-container"
-    @resizeMode="fluid"
-    @fillMode="equal-column" />
+<div class="sixteen wide column order-list">
+  {{#if (and this.rows (gt this.rows.length 0))}}
+    <Tables::Default
+      @columns={{this.columns}}
+      @rows={{this.rows}}
+      @currentPage={{this.page}}
+      @pageSize={{this.per_page}}
+      @searchQuery={{this.search}}
+      @sortBy={{this.sort_by}}
+      @sortDir={{this.sort_dir}}
+      @metaData={{this.model.meta}}
+      @filterOptions={{this.filterOptions}}
+      @widthConstraint="eq-container"
+      @resizeMode="fluid"
+      @fillMode="equal-column" />
+  {{else}}
+    <Ui::EmptyState 
+      @icon="ticket" 
+      @message="No orders available" 
+    />
+  {{/if}}
 </div>
