@@ -1,5 +1,5 @@
 <div class="sixteen wide column order-list">
-  {{#if (and this.model.orders this.model.orders.data.length)}}
+  {{#if (and this.model.orders this.model.orders.data (gt this.model.orders.data.length 0))}}
     <Tables::Default
       @columns={{this.columns}}
       @rows={{this.model.orders.data}}
