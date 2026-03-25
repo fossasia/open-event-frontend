@@ -27,3 +27,46 @@ body {
   z-index: -1;
 }
 
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90%;
+  max-width: 900px;
+
+  background: linear-gradient(
+    rgba(0, 0, 0, .6),
+    rgba(0, 0, 0, .3)
+  );
+
+  padding: 30px 20px;
+  border-radius: 6px;
+
+  text-align: center;
+  color: #fff;
+
+  h1 {
+    font-size: 2.2rem;
+    line-height: 1.4;
+  }
+
+  .button {
+    margin-top: 15px;
+    transition: transform .3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    position: static;
+    transform: none;
+    margin: 20px auto;
+    width: 95%;
+  }
+}
