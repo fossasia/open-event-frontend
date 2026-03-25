@@ -18,7 +18,14 @@
       {{/each}}
     </div>
   {{else}}
-    <h2 class="main-heading mb-4">{{t 'No Upcoming Events Found'}}</h2>
+    <div class="empty-state">
+  <h2 class="main-heading mb-2">{{t 'No Upcoming Events Found'}}</h2>
+  <p>{{t 'Looks like there are no events yet. Why not create one?'}}</p>
+  
+  <LinkTo @route="create" class="ui primary button">
+    {{t 'Create Event'}}
+  </LinkTo>
+</div>
   {{/if}}
   {{#if this.model.callForSpeakersEvents}}
     <h2 class="main-heading mb-4">{{t 'Call for speakers'}}</h2>
