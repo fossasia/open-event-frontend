@@ -79,9 +79,9 @@
         <label>
           {{t 'Language Preference'}}
         </label>
-        <UiDropdown @class="fluid search selection" @selected={{this.user.languagePrefrence}} @forceSelection={{false}} @onChange={{action (mut this.user.languagePrefrence)}}>
+        <UiDropdown @class="fluid search selection" @selected={{this.user.languagePreference}} @forceSelection={{false}} @onChange={{action (mut this.user.languagePreference)}}>
           <i class="dropdown icon"></i>
-          <span class="text">{{this.user.languagePrefrence}}</span>
+          <span class="text">{{this.user.languagePreference}}</span>
           <div class="ui language menu">
             {{#each-in this.l10n.availableLocales as |key value|}}
               <div class="item" data-value="{{key}}">{{value}}</div>

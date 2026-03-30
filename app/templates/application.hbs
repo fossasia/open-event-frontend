@@ -18,7 +18,9 @@
     {{/if}}
     <div id="main-container"
       class="ui fluid container main-container {{unless this.device.isInternetExplorer 'flexed-container' ''}}">
-      {{outlet}}
+      <div class="page-transition-wrapper">
+        {{outlet}}
+      </div>
     </div>
     <FooterMain @socialLinks={{this.model.socialLinks}} />
   </div>

@@ -1,5 +1,22 @@
 .event.card {
   height: auto;
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: transform .2s ease, box-shadow .2s ease !important;
+  cursor: pointer;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .14) !important;
+  }
+
+  &:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .14) !important;
+  }
 
   .header {
     height: 50px;
@@ -13,7 +30,9 @@
 
   img {
     height: 179px !important;
+    max-height: 179px;
     object-fit: cover;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
   }
 }
 
@@ -28,7 +47,12 @@
   }
 
   .link.item {
-    color: #555 !important;
+    color: #444 !important; // Improved contrast: was #555 (AA borderline), now #444 (AA pass)
+    transition: color .15s ease;
+
+    &:hover {
+      color: var(--color-primary) !important;
+    }
   }
 }
 

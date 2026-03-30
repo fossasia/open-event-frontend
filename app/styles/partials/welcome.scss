@@ -1,34 +1,103 @@
 .welcome-header {
-  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('/images/landing.jpg');
+  background: linear-gradient(160deg, rgba(0, 0, 0, .65) 0%, rgba(0, 0, 0, .35) 100%), url('/images/landing.jpg');
   background-position: center;
+  background-size: cover;
   color: #fff;
   height: 500px;
   overflow: hidden;
   position: relative;
 
-  .content {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(33, 133, 208, .28) 0%, rgba(0, 0, 0, 0) 52%);
+    opacity: .9;
+    pointer-events: none;
+    z-index: 0;
+  }
 
+  .content {
+    animation: fadeInUp .6s ease both;
     left: 20%;
     position: absolute;
     right: 20%;
-    top: 150px;
+    top: 140px;
+    z-index: 1;
+
+    padding-top: var(--space-5);
+    padding-right: var(--space-6);
+    padding-bottom: var(--space-5);
+    padding-left: var(--space-6);
+    border-radius: var(--radius-md);
+    background: rgba(0, 0, 0, .18);
+    backdrop-filter: blur(10px);
 
     .lead {
-      font-size: 50px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+      font-size: clamp(28px, 4vw, 50px);
+      font-weight: 700;
+      letter-spacing: -.5px;
+      line-height: 1.15;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+    }
+
+    .sub-lead {
+      font-size: 1.125rem;
+      font-weight: 300;
+      margin-top: 8px;
+      opacity: .9;
     }
 
     .button {
+      backdrop-filter: blur(4px);
       font-size: 16px;
-      font-weight: 400;
-      margin-top: 20px;
+      font-weight: 500;
+      margin-top: var(--space-6);
       text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: transform .15s ease, box-shadow .15s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .3) !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 380px;
+
+    .content {
+      left: 5%;
+      right: 5%;
+      top: 100px;
+      padding: var(--space-4) .875rem;
+
+      .lead {
+        font-size: 32px;
+      }
+
+      .sub-lead {
+        font-size: 15px;
+      }
     }
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .main-heading {
-  color: #2185d0;
+  color: var(--color-primary);
 }
 
 .blur-blue-btn {

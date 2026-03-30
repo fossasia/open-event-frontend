@@ -1,6 +1,17 @@
 .nav-bar > .item > .ui.blue.button {
   font-weight: 400;
   text-transform: uppercase;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .18) !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(33, 133, 208, .45);
+    outline-offset: 2px;
+  }
 }
 
 .nav-bar-image {
@@ -37,7 +48,15 @@
   height: 100%;
   padding-left: unset !important;
   padding-right: unset !important;
-  font-size: 10px;
+  font-size: 12px; // Improved readability over 10-11px
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, transform .15s ease, opacity .15s ease;
+
+  &:hover {
+    background-color: rgba(33, 133, 208, .08) !important;
+    color: #2185d0 !important;
+    transform: translateY(-1px);
+  }
 }
 
 .item-exhibition {
@@ -47,7 +66,8 @@
 }
 
 .item-public {
-  font-size: 9px !important;
+  font-size: 12px !important; // Fixed: was 9-11px — below minimum readable threshold
+  line-height: 1.2;
 }
 
 .item-menu-right {
@@ -55,7 +75,7 @@
   border-left: 1px solid rgba(34, 36, 38, .15) !important;
   padding-left: 3px !important;
   padding-right: 3px !important;
-  font-size: 11px !important;
+  font-size: 12px !important;
 }
 
 .item-padding {
