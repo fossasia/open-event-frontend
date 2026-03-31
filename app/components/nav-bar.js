@@ -121,25 +121,25 @@ export default class NavBar extends Component {
     });
     document.querySelector('#mobile-bar').classList.remove('show-bar');
   }
-  
+
   @action
   toggleSearchBar() {
     document.querySelector('#mobile-bar').classList.toggle('show-bar');
   }
-   
+
   @action
   toggleMobileSearchBar() {
-   const mobileBar = document.getElementById('mobile-bar');
-   const mobileSearchBar = document.getElementById('mobileSearchBar');
+    const mobileBar = document.getElementById('mobile-bar');
+    const mobileSearchBar = document.getElementById('mobileSearchBar');
 
-   mobileBar.classList.add('show-bar');
-   mobileSearchBar.focus();
+    mobileBar.classList.add('show-bar');
+    mobileSearchBar.focus();
 
     if (this._handleOutsideClick) {
       document.removeEventListener('click', this._handleOutsideClick);
     }
 
-    this._handleOutsideClick = (e) => {
+    this._handleOutsideClick = e => {
       if (!mobileBar.contains(e.target)) {
         mobileBar.classList.remove('show-bar');
         document.removeEventListener('click', this._handleOutsideClick);
