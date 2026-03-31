@@ -27,3 +27,22 @@ body {
   z-index: -1;
 }
 
+
+.mobile-search-container {
+  position: relative;
+}
+
+.mobile-search-container input {
+  width: 100%;
+}
+
+.mobile-search-container .results,
+.mobile-search-container .dropdown,
+.mobile-search-container .menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: white;
+}
