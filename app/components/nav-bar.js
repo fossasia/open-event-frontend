@@ -106,7 +106,9 @@ export default class NavBar extends Component {
   @action
   handleKeyPress() {
     if (event.keyCode === 13 || event.which === 13) {
-      this.search();
+      this.router.transitionTo('explore.events', {
+        queryParams: { name: document.getElementById('mobileSearchBar').value }
+      });
       document.querySelector('#mobile-bar').classList.remove('show-bar');
       document.getElementById('mobileSearchBar').blur();
     }
@@ -114,7 +116,9 @@ export default class NavBar extends Component {
 
   @action
   searchOnClick() {
-    this.sendAction('search');
+    this.router.transitionTo('explore.events', {
+      queryParams: { name: document.getElementById('mobileSearchBar').value }
+    });
     document.querySelector('#mobile-bar').classList.remove('show-bar');
   }
 
@@ -127,14 +131,18 @@ export default class NavBar extends Component {
   toggleMobileSearchBar() {
     const mobileBar = document.getElementById('mobile-bar');
     const mobileSearchBar = document.getElementById('mobileSearchBar');
+
     mobileBar.classList.add('show-bar');
     mobileSearchBar.focus();
-    document.querySelector('.pusher').addEventListener('click', function(e) {
-      if (e.target === mobileSearchBar) {
-        return;
+
+    const handleOutsideClick = e => {
+      if (!mobileBar.contains(e.target)) {
+        mobileBar.classList.remove('show-bar');
+        document.removeEventListener('click', handleOutsideClick);
       }
-      mobileBar.classList.remove('show-bar');
-    });
+    };
+
+    document.addEventListener('click', handleOutsideClick);
   }
 
 

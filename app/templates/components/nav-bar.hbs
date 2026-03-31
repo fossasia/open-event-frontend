@@ -72,7 +72,7 @@
 <div class="mobile only row header-mobile">
   <div class="ui six column grid navbar menu  layout-header-mobile">
   <div class="row reset-pd">
-    <div id="mobile-bar" class="search-bar search-bar-mobile d-flex items-center space-between m-1 p-2">
+    <div id="mobile-bar" class="search-bar search-bar-mobile mobile-search-container d-flex items-center space-between m-1 p-2">
       <Input @class="prompt" id="mobileSearchBar" @type="text" @key-up={{action "handleKeyPress"}} @value={{this.event_name}} placeholder={{t "Search"}} />
       <i role="button" class="search icon" style="cursor: auto;" {{on "click" this.searchOnClick}}></i>
     </div>
