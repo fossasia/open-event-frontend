@@ -104,47 +104,50 @@ export default class NavBar extends Component {
   }
 
   @action
-  handleKeyPress() {
-    if (event.keyCode === 13 || event.which === 13) {
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
       this.router.transitionTo('explore.events', {
-        queryParams: { name: document.getElementById('mobileSearchBar').value }
+        queryParams: { name: event.target.value }
       });
       document.querySelector('#mobile-bar').classList.remove('show-bar');
-      document.getElementById('mobileSearchBar').blur();
+      event.target.blur();
     }
   }
 
   @action
-  searchOnClick() {
+  searchOnClick(event) {
     this.router.transitionTo('explore.events', {
-      queryParams: { name: document.getElementById('mobileSearchBar').value }
+      queryParams: { name: event.target.value }
     });
     document.querySelector('#mobile-bar').classList.remove('show-bar');
   }
-
+  
   @action
   toggleSearchBar() {
     document.querySelector('#mobile-bar').classList.toggle('show-bar');
   }
-
+   
   @action
   toggleMobileSearchBar() {
-    const mobileBar = document.getElementById('mobile-bar');
-    const mobileSearchBar = document.getElementById('mobileSearchBar');
+   const mobileBar = document.getElementById('mobile-bar');
+   const mobileSearchBar = document.getElementById('mobileSearchBar');
 
-    mobileBar.classList.add('show-bar');
-    mobileSearchBar.focus();
+   mobileBar.classList.add('show-bar');
+   mobileSearchBar.focus();
 
-    const handleOutsideClick = e => {
+    if (this._handleOutsideClick) {
+      document.removeEventListener('click', this._handleOutsideClick);
+    }
+
+    this._handleOutsideClick = (e) => {
       if (!mobileBar.contains(e.target)) {
         mobileBar.classList.remove('show-bar');
-        document.removeEventListener('click', handleOutsideClick);
+        document.removeEventListener('click', this._handleOutsideClick);
       }
     };
 
-    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('click', this._handleOutsideClick);
   }
-
 
   @action
   handleClick() {
