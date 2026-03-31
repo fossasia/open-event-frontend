@@ -9,6 +9,8 @@ export default class NavBar extends Component {
   @service router;
   @service globalData;
   @service('event') eventService;
+  @service session;
+  @service authManager;
 
   loaded = false
 
@@ -43,7 +45,9 @@ export default class NavBar extends Component {
     if (this.isGroupRoute) {
       return true;
     }
-    return !(String(this.session.currentRouteName).includes('public'));
+    const routeName = String(this.session.currentRouteName);
+    // Hide UI elements on both public event pages and organizer event detail pages.
+    return !(routeName.includes('public') || routeName.includes('events.view'));
   }
 
   @computed('session.currentRouteName')
@@ -51,7 +55,7 @@ export default class NavBar extends Component {
     if (this.isGroupRoute) {
       return true;
     }
-    return !String(this.session.currentRouteName) !== 'create';
+    return String(this.session.currentRouteName) !== 'create';
   }
 
   @computed('session.currentRouteName')
@@ -78,9 +82,9 @@ export default class NavBar extends Component {
     return !(String(this.session.currentRouteName).includes('order'));
   }
 
-  @computed('session.currentRouteName')
+  @computed('session.currentRouteName', 'router.currentRouteName')
   get isNotEventDetailPageRoute() {
-    if (this.isGroupRoute || this.routing.currentRouteName === 'events.list') {
+    if (this.isGroupRoute || this.router.currentRouteName === 'events.list') {
       return true;
     }
     return !(String(this.session.currentRouteName).includes('events.view'));
@@ -104,8 +108,8 @@ export default class NavBar extends Component {
   }
 
   @action
-  handleKeyPress() {
-    if (event.keyCode === 13 || event.which === 13) {
+  handleKeyPress(event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
       this.search();
       document.querySelector('#mobile-bar').classList.remove('show-bar');
       document.getElementById('mobileSearchBar').blur();
@@ -144,13 +148,22 @@ export default class NavBar extends Component {
   }
 
   @action
-  redirectToPage(event) {
-    const optionValue = event;
-    if (optionValue === 'speakers') {
+  redirectToPage(eventOrOptionValue, optionValue) {
+    // When used with `{{on "click" (fn this.redirectToPage 'schedule')}}`,
+    // Ember will pass the click event plus the fn argument.
+    // Support both argument orders to avoid brittle template coupling.
+    const resolvedOptionValue = (typeof optionValue === 'string')
+      ? optionValue
+      : (typeof eventOrOptionValue === 'string' ? eventOrOptionValue : optionValue ?? eventOrOptionValue);
+    if (typeof resolvedOptionValue !== 'string' && eventOrOptionValue?.preventDefault) {
+      eventOrOptionValue.preventDefault();
+    }
+
+    if (resolvedOptionValue === 'speakers') {
       this.router.replaceWith('public.speakers',  this.globalData.idEvent);
-    } else if (optionValue === 'exhibition') {
+    } else if (resolvedOptionValue === 'exhibition') {
       this.router.replaceWith('public.exhibition',  this.globalData.idEvent);
-    } else if (optionValue === 'schedule') {
+    } else if (resolvedOptionValue === 'schedule') {
       this.router.replaceWith('public.sessions.index',  this.globalData.idEvent);
     } else {
       this.router.replaceWith('public.index',  this.globalData.idEvent);
@@ -173,7 +186,7 @@ export default class NavBar extends Component {
   @action
   logout() {
     this.authManager.logout();
-    this.routing.transitionTo('index');
+    this.router.transitionTo('index');
   }
 
 }

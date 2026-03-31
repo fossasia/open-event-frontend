@@ -67,7 +67,7 @@ export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin
   }
 
   _loadCurrentUser() {
-    return this.currentUser.load().catch(() => this.getsession.invalidate());
+    return this.currentUser.load().catch(() => this.session.invalidate());
   }
 
   /**

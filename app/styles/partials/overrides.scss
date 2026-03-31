@@ -5,6 +5,27 @@
   box-shadow: none !important;
 }
 
+.ui,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Lato', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+* {
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
 .ui.active.search.dropdown input.search {
   &:focus + .text {
     color: rgba(177, 176, 176, .87) !important;
@@ -26,18 +47,34 @@ body.dimmable.undetached.dimmed {
 }
 
 .ui.fluid.container {
-  padding: 0 20px;
+  padding: 0 var(--container-gutter-desktop);
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .ui.fluid.container {
-    padding: 0 10px;
+    padding: 0 var(--container-gutter-tablet);
   }
 }
 
 @media screen and (max-width: 768px) {
   .ui.fluid.container {
-    padding: 0;
+    padding: 0 var(--space-3);
+  }
+}
+
+.ui a,
+a.ui,
+a {
+  color: var(--color-primary);
+}
+
+.ui {
+  button,
+  input,
+  textarea {
+    &:disabled {
+      opacity: .65;
+    }
   }
 }
 
@@ -81,4 +118,37 @@ body.dimmable.undetached.dimmed {
   left: auto !important;
   margin-left: auto !important;
   margin-top: auto !important;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.page-transition-wrapper {
+  animation: pageEnter .22s ease both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

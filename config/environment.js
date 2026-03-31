@@ -14,7 +14,7 @@ module.exports = function(environment) {
     modulePrefix             : 'open-event-frontend',
     environment,
     rootURL                  : process.env.ROOT_URL || '/',
-    locationType             : 'router-scroll',
+    locationType             : 'history',
     historySupportMiddleware : true,
     mapboxToken              : process.env.MAPBOX_ACCESS_TOKEN,
     hcaptchaKey              : process.env.HCAPTCHA_SITE_KEY,

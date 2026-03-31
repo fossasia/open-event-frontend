@@ -9,8 +9,8 @@ export default class IndexRoute extends Route {
 
   beforeModel(transition) {
     super.beforeModel(transition);
-    if (this.authManager.currentUser?.languagePrefrence && this.session.currentRouteName === 'login') {
-      this.l10n.switchLanguage(this.authManager.currentUser.languagePrefrence);
+    if (this.authManager.currentUser?.languagePreference && this.session.currentRouteName === 'login') {
+      this.l10n.switchLanguage(this.authManager.currentUser.languagePreference);
     }
   }
 
@@ -85,7 +85,7 @@ export default class IndexRoute extends Route {
 
     let popularGroup = [];
     try {
-      popularGroup = this.store.query('group', {
+      popularGroup = await this.store.query('group', {
         include      : 'user,follower',
         'page[size]' : 12,
         filter       : promotedGroupFilter,
@@ -203,15 +203,24 @@ export default class IndexRoute extends Route {
     ];
 
 
-    return hash({
-      filteredEvents: this.store.query('event', {
+    const followedGroupsPromise = this.authManager.currentUser?.email
+      ? this.authManager.currentUser.query('followedGroups', { include: 'group,user' })
+      : Promise.resolve([]);
+
+    const [
+      filteredEvents,
+      featuredEvents,
+      callForSpeakersEvents,
+      followedGroups
+    ] = await Promise.all([
+      this.store.query('event', {
         upcoming     : true,
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         cache        : true,
         public       : true,
         'page[size]' : 12
       }),
-      featuredEvents: this.store.query('event', {
+      this.store.query('event', {
         sort         : 'starts-at',
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter       : featuredOptions,
@@ -219,7 +228,7 @@ export default class IndexRoute extends Route {
         public       : true,
         'page[size]' : 6
       }),
-      callForSpeakersEvents: this.store.query('event', {
+      this.store.query('event', {
         sort         : 'starts-at',
         include      : 'event-topic,event-sub-topic,event-type,speakers-call',
         filter       : callForSpeakersFilter,
@@ -227,10 +236,15 @@ export default class IndexRoute extends Route {
         public       : true,
         'page[size]' : 6
       }),
-      promotedGroup  : popularGroup,
-      followedGroups : this.authManager.currentUser?.email ? this.authManager.currentUser.query('followedGroups', {
-        include: 'group,user'
-      }) : []
+      followedGroupsPromise
+    ]);
+
+    return hash({
+      filteredEvents,
+      featuredEvents,
+      callForSpeakersEvents,
+      promotedGroup: popularGroup,
+      followedGroups
     });
 
   }

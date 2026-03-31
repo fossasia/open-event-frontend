@@ -31,3 +31,37 @@ input.preview {
     color: #737373 !important;
   }
 }
+
+// Premium, consistent form control styling
+.ui.form {
+  input,
+  textarea {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm) !important;
+    box-shadow: none !important;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+
+  input,
+  textarea {
+    &:focus,
+    &:focus-visible {
+      border-color: var(--color-primary) !important;
+      box-shadow: 0 0 0 3px rgba(33, 133, 208, .2) !important;
+      outline: 0;
+    }
+  }
+
+  .field.error {
+    input,
+    textarea {
+      border-color: rgba(219, 40, 40, .65) !important;
+      box-shadow: 0 0 0 3px rgba(219, 40, 40, .15) !important;
+    }
+  }
+
+  .ui.error.message {
+    border-radius: var(--radius-sm) !important;
+  }
+}
